@@ -1,0 +1,26 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static %}
+
+{% block extrahead %}
+    {{block.super}}
+    <script type="text/javascript" src="{% static "jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "jquery-ui.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "jquery-ui.css" %}">
+{% endblock %}
+
+{% block branding %}
+    {{block.super}}
+
+{% endblock %}
+
+{% block userlinks %}
+    {{block.super}}
+
+    <li>
+        <a href="{% url 'api-docs:docs-index' %}">{% trans 'API' %}</a>
+    </li>
+    <li>
+        <a href="{% url 'api-swagger' %}">{% trans 'Swagger' %}</a>
+    </li>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% autoescape off %}
+Dear {{ username }},
+
+Your ADRF password is set to expire in {{ remaining_days }} day{{ remaining_days|pluralize }}.
+
+In order to maintain access to the ADRF, it is required that you update the password before it expires.
+Please refer to the following document for instructions on how to update your password.
+
+{{ instructions_link }}
+
+Remember the ADRF password policy requires minimum of twelve (12) characters, and at least one (1) of each: upper-case letters, lower-case letters, numbers, and special characters.
+
+Should you have any questions, please contact support via Slack (#adrf-tech-support) or email support@applieddataanalyticsprogram.org.
+
+Thank you,
+ADRF Team
+
+Date: {{ curr_date|date:"M d, Y" }}
+
+{{ url }}
+{% endautoescape %}

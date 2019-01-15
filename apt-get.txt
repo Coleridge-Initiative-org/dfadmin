@@ -1,0 +1,9 @@
+build-essential
+python-dev
+python-pip
+libldap2-dev
+libsasl2-dev
+libssl-dev
+python-pygraphviz
+tzdata
+git
