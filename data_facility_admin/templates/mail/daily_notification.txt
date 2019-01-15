@@ -1,0 +1,81 @@
+{% autoescape off %}
+DfAdmin daily notification for {{ curr_date|date:"M d, Y" }}.
+
+--------- 24h Summary ---------
+Users created: {{ users_created|length }}
+Users updated: {{ users_updated|length }}
+Users locked (pwd expired): {{ users_pwd_expired|length }}
+
+Projects created: {{ projects_created|length }}
+Projects updated: {{ projects_updated|length }}
+
+Datasets created: {{ datasets_created|length }}
+Datasets updated: {{ datasets_updated|length }}
+
+Data Access created: {{ datasets_accesses_created|length }}
+Data Access updated: {{ datasets_accesses_updated|length }}
+-------------------------------
+
+{% if users_created %}
+List of Users created:
+{% for user in users_created %}
+    - {{ user }}
+{% endfor %}
+{% endif %}
+{% if users_updated %}
+
+List of Users updated:
+{% for user in users_updated %}
+    - {{ user }}
+{% endfor %}
+{% endif %}
+{% if users_enabled %}
+
+List of Users locked by password expired:
+{% for user in users_pwd_expired %}
+    - {{ user }}
+{% endfor %}
+{% endif %}
+{% if projects_created %}
+
+List of Projects created:
+{% for proj in projects_created %}
+    - {{ proj }}
+{% endfor %}
+{% endif %}
+{% if projects_updated %}
+
+List of Projects updated:
+{% for proj in projects_updated %}
+    - {{ proj }}
+{% endfor %}
+{% endif %}
+{% if datasets_created %}
+
+List of Datasets created:
+{% for dataset in datasets_created %}
+    - {{ dataset }}
+{% endfor %}
+{% endif %}
+{% if datasets_updated %}
+
+List of Datasets updated:
+{% for dataset in datasets_updated %}
+    - {{ dataset }}
+{% endfor %}
+{% endif %}
+{% if datasets_accesses_created %}
+
+List of Datasets Accesses created:
+{% for dataset in datasets_accesses_created %}
+    - {{ dataset }}
+{% endfor %}
+{% endif %}
+{% if datasets_accesses_updated %}
+
+List of Datasets Accesses updated:
+{% for dataset in datasets_accesses_updated %}
+    - {{ dataset }}
+{% endfor %}
+{% endif %}
+{% endautoescape %}

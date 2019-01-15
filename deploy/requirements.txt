@@ -1,0 +1,6 @@
+-r ../requirements.txt
+
+uwsgi==2.0.15
+
+# Production
+# gunicorn==19.6.0

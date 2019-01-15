@@ -1,0 +1,21 @@
+pweb:
+    container_name: datafacility-deploy-web
+    environment:
+#      - DJANGO_SETTINGS_MODULE=data_facility.deploy_settings
+    restart: always
+    image: datafacility:latest
+    ports:
+        - 8010:80
+    links:
+        - pdb
+#    entrypoint: ./docker-compose-scripts/wait-for-it/wait-for-it.sh db:5432 --
+pdb:
+    container_name: datafacility-deploy-db
+    restart: always
+    image: postgres:9.5
+#    environment:
+#        POSTGRES_PASSWORD: postgres
+#        PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+#        - "/tmp/postgres:/var/lib/postgresql/data"
+        - datafacility-postgres-prod:/var/lib/postgresql/data
