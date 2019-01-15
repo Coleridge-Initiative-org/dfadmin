@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.5
+    volumes:
+#      - ./running/postgres-files:/var/lib/postgresql/data
+      - .:/code
+    ports:
+      - "8432:5432"
+  web:
+    environment:
+      - DJANGO_SETTINGS_MODULE=data_facility.settings
+      - CODACY_PROJECT_TOKEN=6aefb79c080240aeba2c4ac1e13428e8
+    restart: always
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    entrypoint: ./docker-compose-scripts/wait-for-it/wait-for-it.sh db:5432 --
+    command: python manage.py runserver 0.0.0.0:8000
+    extra_hosts:
+      - "meat.adrf.info:34.225.207.35"

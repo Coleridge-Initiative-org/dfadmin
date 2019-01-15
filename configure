@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sudo apt-get install libsasl2-dev python-dev libldap2-dev libssl-dev
