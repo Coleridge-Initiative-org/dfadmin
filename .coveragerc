@@ -1,0 +1,8 @@
+[run]
+omit =
+        scripts/*
+        deploy/*
+        data_facility/wsgi.py
+        */test_*
+[xml]
+output = coverage.xml
