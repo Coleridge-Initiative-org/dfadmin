@@ -1,0 +1,4 @@
+venv/
+running/
+*.md
+*.sock
