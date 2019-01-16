@@ -1,4 +1,4 @@
-# Data Facility Admin
+w# Data Facility Admin
 
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6b5106ff994c4087b9f8ec733f391299)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=NYU-Chicago-data-facility/dfadmin&amp;utm_campaign=Badge_Grade)
@@ -46,7 +46,7 @@ Copy the code to the desired server and run:
 ## Prepare the application and database
 0. Run `ln -s local.env .env` to symlink the local dev configuration
 1. Run the containers `docker-compose up -d`
-2. Prepare the database with the data backup and migrate `make dev-db-restore`
+2. Prepare the database with the data backup and migrate `make dev-db-restore` or just `make db-migrate` if you don't have a previous db backup to use.
 3. Create the super user: `docker-compose exec web ./manage.py createsuperuser` (if you restored the dev db it might already have a super user with `dfadmin/dfadmin` credentials)
 4. Run tests (`make test`) to make sure all is right.
 
@@ -55,9 +55,6 @@ Cheers! Go to `http://localhost:8000` and check the DF Admin website.
 ## Running tests
 You can run tests with the following:
 * `make test`: to run tests creating the database (necessary on the first run)
-* `make test-quick`: to run tests without running migrations and re-using the database. This might fail if the database is out of sync.
-
-Note that `make test` should be used at least once before you run `make test-quick`. You also need to create the docker containers (see above), but don`t need to run the migrations or restore a database.
 
 ## Clean the database (Postgres)
 This will wipe out everything (tables, sequences and views; the whole schema): `dev-db-clear`
@@ -67,7 +64,7 @@ Now access the `<host>:8000/admin` and you should be prompted for login credenti
 
 ## Before commit
 Before commit your changes, please:
-1. Run tests: `make test` or `make test-quick`
+1. Run tests: `make test`
 2. Run code checks: `make code-check`
 
 
