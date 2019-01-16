@@ -132,14 +132,17 @@ def grab_nyc_open_data_datasets():
 
 @transaction.atomic
 def run():
-    print('Loading Datasets from CSV')
-    import_from_adrf_csv('ADRF_Dataset_Metadata-supplementary-datasets-20181220.csv')
-    return
+    try:
+        print('Loading Datasets from CSV')
+        adrf_metadata_file = 'ADRF_Dataset_Metadata-supplementary-datasets-20181220.csv'
+        import_from_adrf_csv(adrf_metadata_file )
+    except IOError:
+        print("    [ERROR] Error ingesting the ADRF metadata on file: %s" % adrf_metadata_file)
 
-    print('Loading random Datasets')
+    print('\n\nLoading random Datasets')
     grab_nyc_open_data_datasets()
 
-    print('Creating Storage Types')
+    print('\n\nCreating Storage Types')
     try:
         s3 = StorageType.objects.get(name='S3')
     except StorageType.DoesNotExist:
@@ -151,7 +154,7 @@ def run():
         pg = StorageType(name='PG')
         pg.save()
 
-    print('Creating Data Stores')
+    print('\n\nCreating Data Stores')
     try:
         db = DataStore.objects.get(name='Postgres', host='db.adrf.info')
     except DataStore.DoesNotExist:
@@ -167,7 +170,7 @@ def run():
 
     h9gi = Dataset.objects.get(dataset_id='h9gi-nx95')
 
-    print('Creating Data Table')
+    print('\n\nCreating Data Table')
     if PhysicalDataTable.objects.count() == 0:
         dt = DataTable(name='Collisions', dataset=h9gi)
         dt.save()
@@ -187,4 +190,4 @@ def run():
         print('Creating projects')
         ProjectFactory.create_batch(100)
 
-    print("Initial data loaded with success.")
+    print("\n\nInitial data loaded with success.")
