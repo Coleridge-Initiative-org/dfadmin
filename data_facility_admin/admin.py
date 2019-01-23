@@ -194,7 +194,11 @@ class UserAdmin(SimpleHistoryAdmin):
     if not settings.ADRF_ENABLE_CUSTOM_USERNAME:
         readonly_fields += ['ldap_name']
 
-    actions = [user_unlock, user_disable, user_activate, user_send_welcome_email]
+    actions = [user_unlock,
+               user_disable,
+               user_activate,
+               user_send_welcome_email,
+               user_send_rules_of_behavior]
     preserve_filters = True
     # To facilitate reporting only.
     # list_max_show_all = 600

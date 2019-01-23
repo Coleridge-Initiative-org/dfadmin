@@ -16,7 +16,7 @@ from data_facility_admin.serializers import UserLDAPSerializer, DatasetLDAPSeria
 from data_facility_admin.serializers import ProjectLDAPSerializer
 from data_facility_admin.serializers import DfRoleLDAPSerializer
 from data_facility_admin.serializers import UserPrivateGroupLDAPSerializer
-
+from django.core.mail import EmailMultiAlternatives
 from django.utils import timezone
 import datetime
 
@@ -47,7 +47,6 @@ class UserHelper:
                 charssets['s'] = S
 
         return ''.join(random.choice(charssets[t[_ % len(t)]]) for _ in range(0, int(z)))
-
 
 class KeycloakHelper(object):
     def __init__(self):
@@ -675,3 +674,28 @@ class LDAPHelper:
                 except Exception as e:
                     self.logger.exception("Dataset not updated: %s", cn)
         self.logger.info("Datasets Export has ended.")
+
+class EmailHelper:
+    @staticmethod
+    def send_updated_rules_of_behavior_email(users):
+        logger = logging.getLogger(__name__)
+
+        email_subject = "ADRF Rules of Behavior"
+        email_from = settings.EMAIL_FROM
+
+        email_text = render_to_string('mail/updated_rules_of_behavior.txt', {})
+        logger.debug('Email message: \n%s' % email_text)
+
+        if not users:
+            user_emails = list(User.objects.filter(status__in=User.MEMBERSHIP_STATUS_WHITELIST,
+                                                          system_user=False).values_list('email', flat=True))
+        else:
+            user_emails = (u.email for u in users)
+        logger.debug('emails: ', user_emails)
+
+        msg = EmailMultiAlternatives(email_subject, email_text, email_from, [], bcc=user_emails)
+
+        msg.send()
+        logger.info('Sent email (%s)\n Subject: %s\n To: %s\nText: %s' % (
+            timezone.now(), email_subject, user_emails, email_text))
+
