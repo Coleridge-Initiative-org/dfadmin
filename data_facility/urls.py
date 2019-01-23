@@ -6,6 +6,8 @@ from data_facility_metadata.api import urls as metadata_router
 from rest_framework_swagger.views import get_swagger_view
 from ajax_select import urls as ajax_select_urls
 from rest_framework.documentation import include_docs_urls
+from rest_framework.schemas import get_schema_view
+from rest_framework_swagger.renderers import OpenAPIRenderer
 
 urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
@@ -19,6 +21,7 @@ urlpatterns = [
 ]
 
 # API
+DFADMIN_API = 'DFAdmin API'
 
 api_urls = admin_router.urls
 api_urls += metadata_router.urls
@@ -26,8 +29,9 @@ api_urls += metadata_router.urls
 urlpatterns += [
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^api/v1/', include(api_urls)),#,  namespace='api')),
-    url(r'^api/v1/docs/swagger/$', get_swagger_view(title='DFAdmin API'), name='api-swagger'),
-    url(r'^api/v1/docs/open-api/', include_docs_urls(title='DFAdmin API'), name='api-docs')
+    url(r'^api/v1/schema.json$', get_schema_view(title=DFADMIN_API, renderer_classes=[OpenAPIRenderer]), name='api-schema'),
+    url(r'^api/v1/docs/swagger/$', get_swagger_view(title=DFADMIN_API), name='api-swagger'),
+    url(r'^api/v1/docs/open-api/', include_docs_urls(title=DFADMIN_API), name='api-docs'),
 ]
 
 
