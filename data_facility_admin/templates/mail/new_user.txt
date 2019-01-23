@@ -3,53 +3,32 @@ Dear {{ username }},
 
 Congratulations on creating your new {{ system_name }} account!
 
-Please find instructions for setting up your account below.
+Please find instructions for setting up your account and accessing the {{ system_name }} below.
 
 {% if otp_instructions %}
- The class environment uses two-factor authentication for additional security. You'll need to install an one-time password (OTP) application to your mobile device.
+ The {{ system_name }} uses two-factor authentication for additional security. You'll need to install an one-time password (OTP) application to your mobile device.
 
- 1. Download FreeOTP or Google Authenticator to your phone.
-     If you do not have a phone capable of installing FreeOTP or Google Authenticator, see the instructions in step A. at the very bottom of this email.
+ 1. Download DUO Mobile to your phone.
+     If you do not have a phone capable of installing DUO Mobile, contact support at support@adrf.zendesk.com.
 
  2. Go to {{ keycloak_url }}auth/realms/master/account/ and enter the following credentials:
 
      Username: {{ username }}
      Password: {{ password }}
+
  3. Scan the QR with the app. Enter the 6 digit code into the website and click Submit.
 
-     The important thing to know about these one time codes is that any given 6 digit code only works for a 30 second window.  Both FreeOTP and Google Authenticator represent this validity window with a circle that starts out full, and disappears, as if a clock hand was erasing it.  When the circle has disappeared, that 6 digit code is no longer valid.
+     Note on OneTimePasswords: The important thing to know about these one-time codes is that any given 6 digit code only works for a 30 second window.  Both FreeOTP and Google Authenticator represent this validity window with a circle that starts out full, and disappears, as if a clock hand was erasing it.  When the circle has disappeared, that 6 digit code is no longer valid.
 
      If, when you first generate a code, the circle is just a small wedge, you might want to wait for that code to expire, and just use the next code so that you have a full 30 seconds to get it typed in.
 
 
  4. Enter a new password and click the Submit button.
 
-     If you successfully gotten to this point, you can try to log in to the workspace, but be forewarned that there can be up to two minutes of latency in between when you first log in to {{ keycloak_url }} with your OTP, and when the workspace will be able to recognize one time tokens from your token generator.
+     If you successfully gotten to this point, you can try to log in to the workspace. Please refer to the “Accessing the workspace” instructions for how to log in to the ADRF: https://ada.coleridgeinitiative.org/accessing-the-adrf.
+     Note on latency between activating your account and logging into the ADRF: be forewarned that there can be up to two minutes of latency in between when you first log in to {{ keycloak_url }} with your OTP, and when the workspace will be able to recognize one time tokens from your token generator.
 
      Which is to say:  if you are successful at logging all the way in on {{ keycloak_url }}, if you immediately try to log in to the workspace, there's a chance it will fail, even though there's nothing wrong. If this happens, simply wait a minute and try again.  This delay is a one-time setup issue.
-
-
- A.  Setting up a One Time Password token generator without a phone.
-
-     Time based One Time Passwords are generated in a standard way, so there are many different applications that can generate them, including some that will run on your Windows or MacOS computer.
-
-     To add OTP tokens to these, you’ll be prompted for the Issuer, Username, and OTP Secret (or similar). The Issuer is “ADRF” (no quotes), Username is your username, and the Secret is the string below the QR code on our ID claiming site, which you can copy and paste. Make sure you save!
-
-     If you do not have a phone capable of installing one of our recommended OTP token generator apps, we recommend that you try one of these options:
-
-         For Mac OS X, OTP Manager is available via the App Store:
-        https://itunes.apple.com/us/app/otp-manager/id928941247?mt=12
-
-         For Windows, WinAuth (https://winauth.com/) is a free OTP token generator. The latest version can also be installed using Microsoft ClickOnce.
-        https://winauth.com/downloads/WinAuth.application
-         More detailed download and installation instructions are here:
-        https://winauth.com/download/
-
-     If you cannot install executable programs on your computer, we even have an option that can run in your browser, without sending or retrieving anything from the internet.  Gauth has been confirmed to work with Firefox and Safari and is known to not work with Chrome.  It has not been tested (by us, yet) with Internet Explorer.
-
-         Gauth:
-        https://github.com/gbraad/gauth/archive/master.zip
-         The file will download as gauth_master.zip.  Unzip the file (double clicking on it will probably suffice), then open your browser.  Go to the “File” menu, “Open File”, then browse to the “gauth_master” subdirectory.  (This will probably be inside your Downloads folder, unless you put the zip file somewhere else). Select the “index.html” file from the “gauth_master” directory to open.  If there is a button marked “Add”, you can press it to be ready to type in your OTP secret.  If you don’t see a button marked “Add”, you can click on the pencil icon in the upper right corner.  Doing so should bring up the “Add” button.
 
 {% else %}
 1. Go to {{ keycloak_url }}auth/realms/master/account/ and enter the following credentials:
@@ -59,7 +38,7 @@ Please find instructions for setting up your account below.
 
 2. Enter a new password and click the Submit button.
 
-If you face any issues, please contact Graham Henke at grahamhenke@nyu.edu.
+If you face any issues, please contact our support at support@adrf.zendesk.com.
 {% endif %}
 
 The {{ system_name }} Team.
