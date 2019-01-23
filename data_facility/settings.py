@@ -106,7 +106,6 @@ INSTALLED_APPS = (
     'ajax_select',
     'nested_admin',
     'corsheaders',
-    'django_jenkins',
     # 'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
