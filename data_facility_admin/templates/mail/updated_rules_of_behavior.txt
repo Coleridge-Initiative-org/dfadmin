@@ -1,0 +1,10 @@
+Dear ADRF user,
+
+As part of the FedRAMP process, our Rules of Behavior need to be re-signed annually and when changes are made.
+As we released a new version, please sign them again.
+
+ADRF Rules of Behavior are available at: https://ada.coleridgeinitiative.org/rules-of-behavior
+
+If you don't sign the Rules of Behavior, your ADRF access will be disabled until they're signed.
+
+Thanks!
