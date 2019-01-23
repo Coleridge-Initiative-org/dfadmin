@@ -167,20 +167,20 @@ def run():
                                   host='centralstore.s3.amazonaws.com',
                                   type=s3)
     central_store.save()
-
-    h9gi = Dataset.objects.get(dataset_id='h9gi-nx95')
-
-    print('\n\nCreating Data Table')
-    if PhysicalDataTable.objects.count() == 0:
-        dt = DataTable(name='Collisions', dataset=h9gi)
-        dt.save()
-
-        PhysicalDataTable(logical_data_table=dt,
-                          path=h9gi.dataset_id + '.collisions',
-                          data_store=db).save()
-        PhysicalDataTable(logical_data_table=dt,
-                          path=h9gi.dataset_id + '/collisions.csv',
-                          data_store=central_store).save()
+    #
+    # h9gi = Dataset.objects.get(dataset_id='h9gi-nx95')
+    #
+    # print('\n\nCreating Data Table')
+    # if PhysicalDataTable.objects.count() == 0:
+    #     dt = DataTable(name='Collisions', dataset=h9gi)
+    #     dt.save()
+    #
+    #     PhysicalDataTable(logical_data_table=dt,
+    #                       path=h9gi.dataset_id + '.collisions',
+    #                       data_store=db).save()
+    #     PhysicalDataTable(logical_data_table=dt,
+    #                       path=h9gi.dataset_id + '/collisions.csv',
+    #                       data_store=central_store).save()
 
     if User.objects.count() < 100:
         print('Creating users')
