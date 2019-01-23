@@ -6,7 +6,7 @@ from . import serializers
 # TODO: Add API versioning: https://www.django-rest-framework.org/api-guide/versioning/
 
 
-class DfRoleViewSet(viewsets.ReadOnlyModelViewSet):
+class DfRoleViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `detail` actions.
     """
@@ -14,7 +14,7 @@ class DfRoleViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.DfRoleSerializer
 
 
-class DatasetViewSet(viewsets.ReadOnlyModelViewSet):
+class DatasetViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `detail` actions.
     """
@@ -26,7 +26,7 @@ class DatasetViewSet(viewsets.ReadOnlyModelViewSet):
     # lookup_field = 'dataset_id'
 
 
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `detail` actions.
     """
@@ -37,7 +37,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     ordering_fields = ('first_name', 'last_name', )
 
 
-class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
+class ProjectViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `detail` actions.
     """
