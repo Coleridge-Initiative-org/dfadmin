@@ -168,6 +168,21 @@ class TermsOfUseAdmin(SimpleHistoryAdmin):
     list_filter = ['version', 'release_date']
 
 
+@admin.register(Keyword)
+class KeywordAdmin(SimpleHistoryAdmin):
+    """Admin Manager for model Terms"""
+    list_display = ('name', 'description')
+    search_fields = ('name', 'description')
+    list_filter = ['dataset']
+
+
+@admin.register(DataClassification)
+class KeywordAdmin(SimpleHistoryAdmin):
+    """Admin Manager for model Terms"""
+    list_display = ('name', 'description')
+    search_fields = ('name', 'description')
+
+
 @admin.register(Training)
 class TrainingAdmin(SimpleHistoryAdmin):
     """Admin Manager for model Training"""

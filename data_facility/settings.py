@@ -177,6 +177,8 @@ ADMIN_REORDER = (
                 'data_facility_admin.DataAgreement',
                 'data_facility_admin.DataAgreementSignature',
                 'data_facility_admin.DatasetAccess',
+                'data_facility_admin.Keyword',
+                'data_facility_admin.DataClassification',
                 )},
     {'app': 'data_facility_metadata'},
     {'app': 'auth', 'label': 'DF Admin - Authentication and Authorization'},
