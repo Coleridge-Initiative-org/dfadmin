@@ -2,6 +2,7 @@ PYTHON=python2.7
 
 db-migrate:
 	docker-compose exec web $(PYTHON) manage.py migrate
+	docker-compose exec web $(PYTHON) manage.py runscript setup_database
 
 db-prepare: db-migrate
 	docker-compose exec web $(PYTHON) manage.py runscript load_cdf_staff
@@ -12,6 +13,7 @@ dev-db-clear:
 	docker-compose exec db psql -U postgres -c 'DROP SCHEMA public CASCADE; CREATE SCHEMA public; GRANT ALL ON SCHEMA public TO postgres;'
 
 dev-db-restore: dev-db-clear db-restore db-migrate
+	docker-compose exec web $(PYTHON) manage.py runscript init_dev_database
 	echo 'Database reset done.'
 
 dev-up:
