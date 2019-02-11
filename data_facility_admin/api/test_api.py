@@ -47,7 +47,7 @@ class ApiTests(TestCase):
     def test_api_needs_authentication(self):
         request = self.factory.get(API_BASE, format='json')
         response = api_views.DatabaseSyncListView(request)
-        self.assertEqual(status.HTTP_403_FORBIDDEN, response.status_code)
+        self.assertEqual(status.HTTP_401_UNAUTHORIZED, response.status_code)
 
     def test_api_works_with_authentication(self):
         request = self.factory.get(API_BASE, format='json')
