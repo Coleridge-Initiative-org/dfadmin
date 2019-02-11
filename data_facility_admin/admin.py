@@ -3,6 +3,7 @@
 from ajax_select.admin import AjaxSelectAdmin
 from ajax_select import make_ajax_form
 from django.contrib import admin
+from rest_framework.authtoken.models import Token
 from simple_history.admin import SimpleHistoryAdmin
 from .models import *
 from .actions import *
