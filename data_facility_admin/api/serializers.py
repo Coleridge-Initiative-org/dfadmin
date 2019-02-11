@@ -36,8 +36,9 @@ class DatabaseSyncSerializer(HyperlinkedModelSerializerWithId):
 class UserSerializer(HyperlinkedModelSerializerWithId):
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'full_name',
-                  'username', 'email', 'job_title', 'affiliation', 'avatar', 'id', 'url')
+        # fields = ('first_name', 'last_name', 'full_name',
+        #           'username', 'email', 'job_title', 'affiliation', 'avatar', 'id', 'url')
+        fields = '__all__'
 
 
 class DfRoleSerializer(HyperlinkedModelSerializerWithId):
