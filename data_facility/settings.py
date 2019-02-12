@@ -91,7 +91,7 @@ INSTALLED_APPS = (
     'admin_view_permission',
     'grappelli',
     'django.contrib.admin',
-    'admin_reorder',
+    # 'admin_reorder',
     'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -100,6 +100,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_extensions',
     'simple_history',
+    'rest_framework.authtoken',
     'rest_framework',
     'django_filters',
     'rest_framework_swagger',
@@ -177,10 +178,15 @@ ADMIN_REORDER = (
                 'data_facility_admin.DataAgreement',
                 'data_facility_admin.DataAgreementSignature',
                 'data_facility_admin.DatasetAccess',
+                'data_facility_admin.Keyword',
+                'data_facility_admin.DataClassification',
                 )},
     {'app': 'data_facility_metadata'},
     {'app': 'auth', 'label': 'DF Admin - Authentication and Authorization'},
+    {'app': 'authtoken', 'label': 'DFAdmin - API'},
+
 )
+
 # ----------------- DJANGO GRAPPELLI -------------------------
 GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin'
 
@@ -199,8 +205,14 @@ AJAX_SELECT_INLINES = 'inline'
 
 # ----------------- API: DJANGO REST FRAMEWORK -------------------------
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
         # Only authenticated users
+        'rest_framework.permissions.IsAdminUser',
         'rest_framework.permissions.IsAuthenticated',
 
         # Use Django's standard `django.contrib.auth` permissions,
@@ -214,6 +226,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100,
 }
+
 
 # --------------------------------- DF Admin LDAP import/export -----------------------
 USER_LDAP_MAP = {
@@ -420,10 +433,10 @@ LOGGING = {
         },
     },
     'handlers': {
-        'django.server': {
+        'console': {
                 'level': DJANGO_SERVER_LOGGING_LEVEL,
                 'class': 'logging.StreamHandler',
-                'formatter': 'django.server',
+                'formatter': 'verbose',
         },
         'file': {
             'level': LOGGING_LEVEL,
@@ -444,8 +457,23 @@ LOGGING = {
         },
     },
     'loggers': {
+        '': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'data_facility_metadata': {
+            'handlers': ['file'],
+            'level': LOGGING_LEVEL,
+            'propagate': True,
+        },
+        'data_facility_admin': {
+            'handlers': ['file'],
+            'level': LOGGING_LEVEL,
+            'propagate': True,
+        },
         'django.server': {
-            'handlers': ['django.server'],
+            'handlers': ['console'],
             'level': DJANGO_SERVER_LOGGING_LEVEL,
             'propagate': False,
         },
@@ -467,9 +495,13 @@ LOGGING = {
     },
 }
 
+# SHELL_PLUS = "ipython"
+SHELL_PLUS_MODEL_IMPORTS_RESOLVER = 'django_extensions.collision_resolvers.FullPathCR'
 SHELL_PLUS_POST_IMPORTS = [
+    # ('django.contrib.auth.models', 'User', 'DjangoUser'),
     ('data_facility_admin.factories', '*'),
     ('data_facility_admin.models', 'User'),
+    ('rest_framework.authtoken.models', 'Token'),
 ]
 
 print ('DEBUG=', DEBUG)
