@@ -40,6 +40,11 @@ test:
 	docker-compose exec web coverage xml
 	docker-compose exec web coverage report
 
+test-quick:
+	docker-compose exec web coverage run --source='.' manage.py test --keepdb --noinput -v2 --parallel 2
+	docker-compose exec web coverage xml
+	docker-compose exec web coverage report
+
 codacy-report: test
 	# docker-compose exec web pytest --cov=data_facility --cov=data_facility_admin --cov=scripts --cov-report=xml:coverage.xml
 	docker-compose exec web python-codacy-coverage -r coverage.xml

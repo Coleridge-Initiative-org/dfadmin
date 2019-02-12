@@ -2,9 +2,11 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 from rest_framework.test import APIRequestFactory, force_authenticate, APIClient, RequestsClient
 from data_facility_admin.api import views as api_views
 from data_facility_admin.models import Project, DfRole
+import requests
 from requests.auth import HTTPBasicAuth
 
 ADMIN_USERNAME = 'ADMIN'
@@ -177,7 +179,25 @@ class ApiClientTests(TestCase):
         response = self.client.get(reverse('project-list', args=[]), format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
 
-#
+# Token Authentication
+    def test_token_authentication(self):
+        # Create token
+        token = Token.objects.create(user=User.objects.get(username=ADMIN_USERNAME))
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+        response = client.get(SERVER_URL + API_BASE + 'users/?ldap_name=tdiogo')
+        self.assertEqual(status.HTTP_200_OK, response.status_code,
+                         "Status is not 200, but %s. Reponse: %s" % (response.status_code, response.content))
+
+    def test_token_authentication_does_not_work_with_fake_token(self):
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION='Token abcd')
+        response = client.get(SERVER_URL + API_BASE + 'users/?ldap_name=tdiogo')
+        self.assertEqual(status.HTTP_401_UNAUTHORIZED, response.status_code,
+                         "Status is not 401. Reponse: %s" % response.content)
+
+
+   #
 # class RequestClientTests(TestCase):
 #
 #     @classmethod
