@@ -7,6 +7,8 @@ It uses the Django Rest Framework Token Authentication. More details at 'tokenau
 ## Token Creation
 Tokens are associated with (Django) Users on DFAdmin. First, create a user account and then assiciate a token with this user. Take note of the token as it should be saved on the clien service so it can authenticate with the API. 
 
+#### On Python
+
 First, run `make shell` or `./manage.py shell_plus` to open the Django Shell. Then, run the following code:
 Step 1: Create the new service client account - also doable on the Admin UI.
 ```python 
@@ -26,3 +28,8 @@ Step 3: **(Optional)** Add this user to read-only group. If you prefer to set th
 group = Group.objects.get(name='ADRF Staff')
 group.user_set.add(user)
 ``` 
+
+#### Using an admin task
+
+
+According to [Django Rest Framework documentation](https://www.django-rest-framework.org/api-guide/authentication/#using-django-managepy-command), run `./manage.py drf_create_token <username>`

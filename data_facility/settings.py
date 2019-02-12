@@ -212,6 +212,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         # Only authenticated users
+        'rest_framework.permissions.IsAdminUser',
         'rest_framework.permissions.IsAuthenticated',
 
         # Use Django's standard `django.contrib.auth` permissions,
