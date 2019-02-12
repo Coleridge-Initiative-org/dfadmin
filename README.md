@@ -1,4 +1,4 @@
-w# Data Facility Admin
+# Data Facility Admin
 
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6b5106ff994c4087b9f8ec733f391299)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=NYU-Chicago-data-facility/dfadmin&amp;utm_campaign=Badge_Grade)
@@ -26,7 +26,7 @@ DFAdmin was created to organize the core entities of a Data Facility such as Dat
 
 # Requirements
 
-* Docker (v 17.12.0)& Docker Compose (https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-centos-7)
+* Docker (v 17.12.0)& [Docker Compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-centos-7)
 * Wait-for-it. After git clone, run `make git-submodules-init`
 
 Teste on MacOX: Docker version 17.12.0-ce, build c97c6d6
@@ -81,6 +81,8 @@ All the groups that exist in LDAP should come from DF Admin. We should have the 
 # Documentation
 
 Reference the folder `documentation`.
+
+* [API documentation](data_facility_admin/api)
 
 ## UML Class Diagram
 A class diagram can be generated automatically based on the models with [django_model_graph.sh](https://gist.github.com/perrygeo/5380196)

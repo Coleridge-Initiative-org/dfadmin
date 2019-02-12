@@ -11,6 +11,7 @@ from simple_history.models import HistoricalRecords
 import unicodedata
 from datetime import date
 import hashlib
+from model_utils import Choices
 
 CHAR_FIELD_MAX_LENGTH = settings.CHAR_FIELD_MAX_LENGTH
 TEXT_FIELD_MAX_LENGTH = settings.TEXT_FIELD_MAX_LENGTH
@@ -664,6 +665,54 @@ class DatabaseSchema(models.Model):
         ordering = ['name']
 
 
+class Keyword(models.Model):
+    """
+    Keywords/Terms are tags for datasets.
+    """
+    name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
+    description = models.TextField(blank=True, null=True)
+
+    # Automatic Fields
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+
+
+class DataClassification(models.Model):
+    """
+    Data Classification indicates if the dataset is public (green), private or what.
+    """
+    name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
+    description = models.TextField(blank=True, null=True)
+    VISIBILITY_CHOICES = Choices('Public', 'Private')
+    VISIBILITY_HELP_TEXT = '''<b>Public</b>: indicates that the {0} will be listed to everyone without requiring access. 
+    </br><b>Private</b>: means that the {0} will not be listed unless the user has access to it.   
+    '''
+    METADATA_VISIBILITY_HELP_TEXT = VISIBILITY_HELP_TEXT.format('metadata')
+    DATA_VISIBILITY_HELP_TEXT = VISIBILITY_HELP_TEXT.format('data')
+    metadata_visibility = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH,
+                                  choices=VISIBILITY_CHOICES, default=VISIBILITY_CHOICES.Private,
+                                           help_text=METADATA_VISIBILITY_HELP_TEXT)
+    data_visibility = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH,
+                                           choices=VISIBILITY_CHOICES, default=VISIBILITY_CHOICES.Private,
+                                           help_text=DATA_VISIBILITY_HELP_TEXT)
+
+    # Automatic Fields
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+
+
 class Dataset(LdapObject):
     ''' This model will be refactored on the future to represent the whole dataset,
         considering files and variables.
@@ -740,6 +789,9 @@ class Dataset(LdapObject):
     report_frequency = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH,
                                         choices=REPORT_FREQUENCY_CHOICES,
                                         default=REPORT_FREQUENCY_NONE)
+
+    keywords = models.ManyToManyField(Keyword, blank=True)
+
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
