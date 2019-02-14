@@ -78,6 +78,8 @@ class ProjectToolInline(admin.TabularInline):
     """Inline Manager for model ProjectTool"""
     model = ProjectTool
     extra = 0
+    readonly_fields = ['system_info']
+    # prepopulated_fields = {"request_id": ("?",)}
 
 
 class TermsOfUseInline(admin.TabularInline):
