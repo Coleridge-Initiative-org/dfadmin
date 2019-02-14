@@ -107,6 +107,7 @@ INSTALLED_APPS = (
     'ajax_select',
     'nested_admin',
     'corsheaders',
+    'data_facility_integrations',
     # 'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
@@ -425,7 +426,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(message)s'
+            'format': '%(levelname)s %(asctime)s [%(module)s] %(message)s'
         },
         'django.server': {
             '()': 'django.utils.log.ServerFormatter',
@@ -463,12 +464,17 @@ LOGGING = {
             'propagate': True,
         },
         'data_facility_metadata': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console'],
+            'level': LOGGING_LEVEL,
+            'propagate': True,
+        },
+        'data_facility_integrations': {
+            'handlers': ['file', 'console'],
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
         'data_facility_admin': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console'],
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
@@ -503,5 +509,8 @@ SHELL_PLUS_POST_IMPORTS = [
     ('data_facility_admin.models', 'User'),
     ('rest_framework.authtoken.models', 'Token'),
 ]
+
+RDS_INTEGRATION = config('RDS_INTEGRATION', cast=bool, default=False)
+WS_K8S_INTEGRATION = config('WS_K8S_INTEGRATION', cast=bool, default=False)
 
 print ('DEBUG=', DEBUG)

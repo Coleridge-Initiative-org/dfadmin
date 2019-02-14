@@ -12,6 +12,7 @@ import unicodedata
 from datetime import date
 import hashlib
 from model_utils import Choices
+from django.contrib.postgres.fields import JSONField
 
 CHAR_FIELD_MAX_LENGTH = settings.CHAR_FIELD_MAX_LENGTH
 TEXT_FIELD_MAX_LENGTH = settings.TEXT_FIELD_MAX_LENGTH
@@ -432,6 +433,9 @@ class Project(LdapObject):
     updated_at = models.DateTimeField(auto_now=True)
     history = HistoricalRecords()
 
+    def is_active(self):
+        return self.status == Project.STATUS_ACTIVE
+
     def db_schema(self):
         return self.ldap_name.replace(Project.PROJECT_PREFIX, '')
 
@@ -584,35 +588,33 @@ class ProjectTool(models.Model):
 
     ADDITIONAL_INFO_HELP = 'Additional info, such as database name. In case it does not follow ' \
                            'the Data Facility convention.'
-    additional_info = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True,
+    additional_info = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True, null=True,
                                        help_text=ADDITIONAL_INFO_HELP)
+    system_info = JSONField(blank=True, null=True)
+
     REQUEST_ID_HELP_TEXT = 'Id for from the ticketing system (if not the same from project ' \
                            'creation), so it is possible to trace back if more info is needed.'
-    request_id = models.IntegerField(default=None, blank=True, null=True,
-                                     help_text=REQUEST_ID_HELP_TEXT)
-    TOOL_GIT = 'Git Lab'
-    TOOL_DATABASE_PG = 'Postgres'
-    TOOL_DATABASE_ORACLE = 'Oracle'
-    TOOL_FILESYSTEM = 'POSIX'
-    TOOL_OTHER = 'Other'
-    TOOL_CHOICES = (
-        (TOOL_GIT, TOOL_GIT),
-        (TOOL_DATABASE_PG, TOOL_DATABASE_PG),
-        (TOOL_DATABASE_ORACLE, TOOL_DATABASE_ORACLE),
-        (TOOL_FILESYSTEM, TOOL_FILESYSTEM),
-        (TOOL_OTHER, TOOL_OTHER),
+    notes = models.TextField(blank=True, null=True, help_text=REQUEST_ID_HELP_TEXT)
+    TOOL_CHOICES = Choices(
+        'SelectOne',
+        'GitLab',
+        'Postgres',
+        'PG_RDS',
+        'Oracle',
+        'POSIX',
+        'Other',
+        'Python',
+        'R',
+        'Stata',
+        'Workspace_K8s'
     )
-    tool_name = models.CharField(max_length=10, choices=TOOL_CHOICES, default=TOOL_DATABASE_PG)
-    other_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True,
+
+    tool_name = models.CharField(max_length=10,
+                                 choices=TOOL_CHOICES,
+                                 default=TOOL_CHOICES.SelectOne)
+    other_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH,
+                                  blank=True,
                                   help_text='Specify the tool name if Other is selected.')
-    STATUS_ACTIVE = 'Active'
-    STATUS_DEACTIVATED = 'Deactivated'
-    STATUS_CHOICES = (
-        (STATUS_ACTIVE, STATUS_ACTIVE),
-        (STATUS_DEACTIVATED, STATUS_DEACTIVATED),
-    )
-    status = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, choices=STATUS_CHOICES,
-                              default=STATUS_ACTIVE)
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
@@ -629,6 +631,7 @@ class ProjectTool(models.Model):
 
     class Meta:
         ordering = ['tool_name', 'other_name']
+        unique_together = ('project', 'tool_name')
 
 
 class DataProvider(models.Model):
