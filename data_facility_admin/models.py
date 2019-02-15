@@ -294,7 +294,7 @@ class User(LdapObject):
         return self.first_name + ' ' + self.last_name + " (" + self.username() + ")"
 
     class Meta:
-        ordering = ['first_name', 'last_name']
+        ordering = ['first_name', 'last_name', 'ldap_name', 'email']
 
 
 class UserDfRole(models.Model):
