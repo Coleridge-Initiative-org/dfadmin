@@ -201,7 +201,7 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 # ----------------- DJANGO AJAX SELECT -------------------------
-AJAX_SELECT_BOOTSTRAP = True
+AJAX_SELECT_BOOTSTRAP = False
 AJAX_SELECT_INLINES = 'inline'
 
 # ----------------- API: DJANGO REST FRAMEWORK -------------------------
