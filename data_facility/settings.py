@@ -107,8 +107,13 @@ INSTALLED_APPS = (
     'ajax_select',
     'nested_admin',
     'corsheaders',
+    'graphene_django',
     # 'django.contrib.admindocs.middleware.XViewMiddleware',
 )
+
+GRAPHENE = {
+    'SCHEMA': 'data_facility.schema.schema' # Where your Graphene schema lives
+}
 
 
 MIDDLEWARE_CLASSES = (
@@ -420,6 +425,7 @@ except OSError as exc:
     if exc.errno == errno.EEXIST and os.path.isdir(LOG_LOCATION):
         pass
 
+LOGIN_URL='/login'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
