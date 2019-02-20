@@ -94,3 +94,16 @@ make docs
 ## Release
 
 Please check the [RELEASE documentation](documentation/RELEASE.md) when preparing a release.  
+
+
+# Keycloak Integration
+
+Postman Collections: https://www.getpostman.com/collections/1b72e4b52b9e5ad42d3c
+
+Getting KeyCloak PubKey (It needs to have the "----BEGIN..." And "-----END...") (PEM format): https://www.getpostman.com/collections/1b72e4b52b9e5ad42d3c
+
+## References:
+https://zapier.com/engineering/apikey-oauth-jwt/
+https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
+http://getblimp.github.io/django-rest-framework-jwt/#additional-settings
+https://auth0.com/blog/building-modern-applications-with-django-and-vuejs/
