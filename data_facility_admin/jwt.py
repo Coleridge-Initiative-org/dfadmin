@@ -1,5 +1,5 @@
-import rest_framework_jwt.authentication as jwt_authentication
-
+#import rest_framework_jwt.authentication as jwt_authentication
+print("hi")
 def jwt_get_username_from_payload_handler(payload):
     print('import')
     from django.contrib.auth.models import Group, User
@@ -8,13 +8,13 @@ def jwt_get_username_from_payload_handler(payload):
     if 'preferred_username' in payload:
         username = payload['preferred_username']
         if 'email' in payload:
-            email = pauyload['email']
+            email = payload['email']
         else:
             email = username+'@dfadmin.local'
         try:
             User.objects.get(username=username)
         except User.DoesNotExist:
-            user = User(username=username, is_active=True, email=email, staff=True)
+            user = User(username=username, is_active=True, email=email)
             user.save()
 
         # TODO: Add Groups
