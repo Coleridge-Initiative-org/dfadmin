@@ -217,7 +217,7 @@ AJAX_SELECT_INLINES = 'inline'
 # ----------------- API: DJANGO REST FRAMEWORK -------------------------
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'data_facility_admin.jwt.HappyAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
@@ -471,7 +471,7 @@ LOGGING = {
     },
     'loggers': {
         '': {
-            'handlers': ['console'],
+            'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,
         },
@@ -518,13 +518,13 @@ LOGGING = {
     },
 }
 
-#from django.auth.models import User
-def jwt_get_username_from_payload_handler(payload):
-    if 'preferred_username' in payload:
-        return payload['preferred_username']
-
+# #from django.auth.models import User
+# def jwt_get_username_from_payload_handler(payload):
+#     if 'preferred_username' in payload:
+#         return payload['preferred_username']
+from data_facility_admin import jwt
 JWT_AUTH = {
-    'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt_get_username_from_payload_handler,
+    'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt.jwt_get_username_from_payload_handler,
     'JWT_PUBLIC_KEY': '-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAnPISCA726xJ4GEI9wZEyVPqOFKmW9L/fqSLywkFDvxrgH6VrPrsV\nHITFSzw5agg+CJ2gQc5BDPq+SmhJv9bVmJ0Uqj56l3Ek+uLJEj8aDHtqKcXD6aNW\ncii3nlJz9r/LrkDYynsm3hAlNEYLXpn5hDnDwLx47dukD5+sUQfcdeSQGhe4ar/L\nHDLI8XYhG860eQiG8Pz4Sd/hf1nAw58Koj+xCmCD2Pcjgh6tm2JBnIkobfjDCadG\nucJLTbVtvXfo15YWABX4PMvKdsY/1q9NY/0BRP+ZmcPrzWNV4iFZDb27s9xfD38U\npeqQ0Mk8+k0XPSpsOLkI5+cxHhUhHNIsyQIDAQAB\n-----END RSA PUBLIC KEY-----\n',
     'JWT_ALGORITHM': 'RS256',
     'JWT_AUDIENCE': 'dfadmin',
