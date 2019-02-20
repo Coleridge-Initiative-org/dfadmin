@@ -13,6 +13,10 @@ import errno
 import ldap
 from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 from decouple import config, Csv
+import json
+#from six.moves.urllib import request
+#from cryptography.x509 import load_pem_x509_certificate
+#from cryptography.hazmat.backends import default_backend
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -102,6 +106,7 @@ INSTALLED_APPS = (
     'simple_history',
     'rest_framework.authtoken',
     'rest_framework',
+    'rest_framework_jwt',
     'django_filters',
     'rest_framework_swagger',
     'ajax_select',
@@ -212,6 +217,7 @@ AJAX_SELECT_INLINES = 'inline'
 # ----------------- API: DJANGO REST FRAMEWORK -------------------------
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'data_facility_admin.jwt.HappyAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
@@ -465,8 +471,8 @@ LOGGING = {
     },
     'loggers': {
         '': {
-            'handlers': ['file'],
-            'level': 'INFO',
+            'handlers': ['console'],
+            'level': 'DEBUG',
             'propagate': True,
         },
         'data_facility_metadata': {
@@ -504,7 +510,26 @@ LOGGING = {
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
+        'rest_framework_jwt': {
+            'handlers': ['console'],
+            'level': LOGGING_LEVEL,
+            'propagate': True,
+        },
     },
+}
+
+#from django.auth.models import User
+def jwt_get_username_from_payload_handler(payload):
+    if 'preferred_username' in payload:
+        return payload['preferred_username']
+
+JWT_AUTH = {
+    'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt_get_username_from_payload_handler,
+    'JWT_PUBLIC_KEY': '-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAnPISCA726xJ4GEI9wZEyVPqOFKmW9L/fqSLywkFDvxrgH6VrPrsV\nHITFSzw5agg+CJ2gQc5BDPq+SmhJv9bVmJ0Uqj56l3Ek+uLJEj8aDHtqKcXD6aNW\ncii3nlJz9r/LrkDYynsm3hAlNEYLXpn5hDnDwLx47dukD5+sUQfcdeSQGhe4ar/L\nHDLI8XYhG860eQiG8Pz4Sd/hf1nAw58Koj+xCmCD2Pcjgh6tm2JBnIkobfjDCadG\nucJLTbVtvXfo15YWABX4PMvKdsY/1q9NY/0BRP+ZmcPrzWNV4iFZDb27s9xfD38U\npeqQ0Mk8+k0XPSpsOLkI5+cxHhUhHNIsyQIDAQAB\n-----END RSA PUBLIC KEY-----\n',
+    'JWT_ALGORITHM': 'RS256',
+    'JWT_AUDIENCE': 'dfadmin',
+    'JWT_ISSUER': "https://meat.adrf.info:8443/auth/realms/master",
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }
 
 # SHELL_PLUS = "ipython"
