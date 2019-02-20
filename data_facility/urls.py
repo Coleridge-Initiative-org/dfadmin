@@ -32,6 +32,7 @@ class DRFAuthenticatedGraphQLView(GraphQLView):
         view = super(DRFAuthenticatedGraphQLView, cls).as_view(*args, **kwargs)
         view = permission_classes((IsAuthenticated,))(view)
         view = authentication_classes((JSONWebTokenAuthentication, TokenAuthentication,))(view)
+        #view = authentication_classes((TokenAuthentication,))(view)
         view = api_view(['POST'])(view)
         return view
 
