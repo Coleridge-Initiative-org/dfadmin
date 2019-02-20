@@ -11,6 +11,7 @@ from rest_framework_swagger.renderers import OpenAPIRenderer
 from graphene_django.views import GraphQLView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
+import rest_framework
 
 class PrivateGraphQLView(LoginRequiredMixin, GraphQLView):
     """Adds a login requirement to graphQL API access via main endpoint."""
@@ -24,6 +25,10 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
 class DRFAuthenticatedGraphQLView(GraphQLView):
+    def parse_body(self, request):
+        if isinstance(request, rest_framework.request.Request):
+            return request.data
+        return super(DRFAuthenticatedGraphQLView, self).parse_body(request)
     # custom view for using DRF TokenAuthentication with graphene GraphQL.as_view()
     # all requests to Graphql endpoint will require token for auth, obtained from DRF endpoint
     # https://github.com/graphql-python/graphene/issues/249
