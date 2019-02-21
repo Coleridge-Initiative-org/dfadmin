@@ -44,12 +44,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
     queryset = models.Project.objects.all()
     serializer_class = serializers.ProjectSerializer
     filter_fields = ('name', 'status', 'has_irb', 'owner')
-    search_fields = ('name', 'owner', 'methodology', 'abstract', 'expected_outcomes')
+    search_fields = ('name', 'owner', 'methodology', 'abstract', 'expected_outcomes', 'projectmember__member_ldap_name')
     ordering_fields = ('name', 'owner', )
-
-
-DatabaseSyncListView = ListAPIView.as_view(queryset=models.Project.objects.all(),
-                                           serializer_class=serializers.DatabaseSyncSerializer)
 
 
 class DataStewardViewSet(viewsets.ModelViewSet):
@@ -67,3 +63,7 @@ class DataProviderViewSet(viewsets.ModelViewSet):
     search_fields = '__all__'
     # ordering_fields = ('name', 'owner', )
     # lookup_field = 'name'
+
+
+DatabaseSyncListView = ListAPIView.as_view(queryset=models.Project.objects.all(),
+                                           serializer_class=serializers.DatabaseSyncSerializer)
