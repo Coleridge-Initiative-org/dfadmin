@@ -6,11 +6,13 @@ from data_facility_admin.models import User, Project, ProjectMember
 from graphene import relay, ObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
+
 class UserNode(DjangoObjectType):
     class Meta:
         model = User
         filter_fields = ["ldap_id", "ldap_name"]
         interfaces = (relay.Node, )
+
 
 class ProjectNode(DjangoObjectType):
     class Meta:
@@ -20,6 +22,7 @@ class ProjectNode(DjangoObjectType):
             'ldap_name': ['exact'],
         }
         interfaces = (relay.Node, )
+
 
 class ProjectMemberNode(DjangoObjectType):
     class Meta:
@@ -33,6 +36,7 @@ class ProjectMemberNode(DjangoObjectType):
             'member__ldap_id': ['exact'],
         }
         interfaces = (relay.Node, )
+
 
 class Query(object):
     user = relay.Node.Field(UserNode)
