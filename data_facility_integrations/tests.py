@@ -1,19 +1,22 @@
-# # -*- coding: utf-8 -*-
-# from __future__ import unicode_literals
-# from .rds_hooks import *
-#
-# from django.test import TestCase
-#
-# class TestDatabaseRDS(TestCase):
-#
-#     def test_should(self):
-#         self.signal_was_called = False
-#         self.total = None
-#         def handler(sender, total, **kwargs):
-#             self.signal_was_called = True
-#             self.total = total
-#         charge_completed.connect(handler)
-#         charge(100)
-#         self.assertTrue(self.signal_was_called)
-#         self.assertEqual(self.total, 100)
-#         charge_completed.disconnect(handler)
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+from .rds_hooks import *
+import rds_client
+from django.test import TestCase
+from data_facility_admin.factories import ProjectFactory
+
+
+class TestRDSClient(TestCase):
+
+    def setUp(self):
+        self.test_project = ProjectFactory.create(name='dfadmin_test_project')
+        self.test_project_tool = ProjectTool(project=self.test_project, tool_name=ProjectTool.TOOL_CHOICES.PG_RDS)
+
+    def test_rds_client_create_config_if_not_present(self):
+        rds_client.init_system_info(self.test_project_tool)
+
+        self.assertIsNotNone(self.test_project_tool.system_info)
+        self.assertTrue(self.test_project_tool.system_info, 'System info is still None or empty.')
+
+    # def test_rds_client_create_database(self):
+    #     response = rds_client.create_database(self.test_project_tool)
