@@ -471,8 +471,8 @@ LOGGING = {
     },
     'loggers': {
         '': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+            'handlers': ['file'],
+            'level': LOGGING_LEVEL,
             'propagate': True,
         },
         'data_facility_metadata': {
