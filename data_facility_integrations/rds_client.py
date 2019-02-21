@@ -43,7 +43,7 @@ def init_system_info(project_tool):
 def call_api(action, api_endpoint, params):
     try:
         logger.debug("params = %s" % params)
-        logger.info('Creating RDS for project: %s' % project_tool.project)
+        logger.info('Calling API {0} {1} with params: {2}'.format(action, api_endpoint, params))
         if action is ACTION_CREATE:
             response = requests.post(api_endpoint, params)
         elif action is ACTION_DELETE:
