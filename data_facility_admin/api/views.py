@@ -44,7 +44,12 @@ class ProjectViewSet(viewsets.ModelViewSet):
     queryset = models.Project.objects.all()
     serializer_class = serializers.ProjectSerializer
     filter_fields = ('name', 'status', 'has_irb', 'owner')
-    search_fields = ('name', 'owner', 'methodology', 'abstract', 'expected_outcomes', 'projectmember__member_ldap_name')
+    search_fields = ('name', 'owner__first_name', 'owner__last_name', 'owner__ldap_name', 'methodology', 'abstract',
+                     'outcomes', 'mission',
+                     'projectmember__member__ldap_name',
+                     'projectmember__member__first_name',
+                     'projectmember__member__last_name',
+                     )
     ordering_fields = ('name', 'owner', )
 
 

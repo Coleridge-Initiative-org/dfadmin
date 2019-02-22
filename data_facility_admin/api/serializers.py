@@ -34,6 +34,7 @@ class DatabaseSyncSerializer(HyperlinkedModelSerializerWithId):
 
 
 class UserSerializer(HyperlinkedModelSerializerWithId):
+    username = serializers.ReadOnlyField(source='ldap_name')
     class Meta:
         model = User
         # fields = ('first_name', 'last_name', 'full_name',
@@ -84,8 +85,8 @@ class ProjectSerializer(HyperlinkedModelSerializerWithId):
 
     class Meta:
         model = Project
-        fields = ('name', 'abstract', 'owner', 'methodology', 'has_irb', 'expected_outcomes', 'status', 'url', 'id')
-        # fields = '__all__'
+        # fields = ('name', 'abstract', 'owner', 'methodology', 'has_irb', 'expected_outcomes', 'status', 'url', 'id')
+        fields = '__all__'
 
 
 class DataStewardSerializer(HyperlinkedModelSerializerWithId):
