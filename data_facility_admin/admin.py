@@ -36,10 +36,10 @@ class ProjectMembershipInline(admin.TabularInline):
     extra = 0
     min_num = 0
     can_delete = False
-    form = make_ajax_form(ProjectMember, {
-        'member': 'users',
-        'project': 'projects',
-    })
+    # form = make_ajax_form(ProjectMember, {
+    #     'member': 'users',
+    #     'project': 'projects',
+    # })
 
 
 class DatasetAccessInline(admin.StackedInline):
@@ -245,10 +245,10 @@ class ProjectAdmin(SimpleHistoryAdmin):
     list_filter = ['environment', 'status', 'has_irb', 'type']
     inlines = [ProjectMembershipInline, DatasetAccessInline, ProjectToolInline]
     readonly_fields = ['ldap_id', 'ldap_name']
-    form = make_ajax_form(Project, {
-        'owner': 'users',
-        'parent_project': 'projects',
-    })
+    # form = make_ajax_form(Project, {
+    #     'owner': 'users',
+    #     'parent_project': 'projects',
+    # })
 
 
 @admin.register(ProjectRole)
