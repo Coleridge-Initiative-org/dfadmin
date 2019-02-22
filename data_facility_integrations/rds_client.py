@@ -1,6 +1,7 @@
 from decouple import config
 import logging
 import requests
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +42,10 @@ def init_system_info(project_tool):
 
 
 def call_api(action, api_endpoint, params):
+    if not settings.RDS_INTEGRATION:
+        logger.info('Not calling API as settings.RDS_INTEGRATION is %s' % settings.RDS_INTEGRATION)
+        return None
+
     try:
         logger.debug("params = %s" % params)
         logger.info('Calling API {0} {1} with params: {2}'.format(action, api_endpoint, params))
