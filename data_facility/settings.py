@@ -486,22 +486,17 @@ LOGGING = {
             'propagate': True,
         },
         'data_facility_admin': {
-            'handlers': ['file', 'console'],
+            'handlers': ['file', 'console', 'df_file'],
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
         'django.server': {
             'handlers': ['console'],
             'level': DJANGO_SERVER_LOGGING_LEVEL,
-            'propagate': False,
+            'propagate': True,
         },
         'django': {
             'handlers': ['file'],
-            'level': LOGGING_LEVEL,
-            'propagate': True,
-        },
-        'data_facility_admin': {
-            'handlers': ['df_file'],
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
