@@ -6,6 +6,7 @@ from django.test import TestCase
 from data_facility_admin.factories import ProjectFactory
 from django.test import tag
 
+
 class TestRDSClient(TestCase):
 
     def setUp(self):
