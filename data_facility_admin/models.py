@@ -371,7 +371,8 @@ class Project(LdapObject):
         It has a group of users and tools associated with it.
     '''
     PROJECT_PREFIX = 'project-'
-    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.PROTECT, help_text=SEARCH_HELP_TEXT)
+    requester = models.ForeignKey(User, null=True, blank=True, related_name='requester')
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, help_text=SEARCH_HELP_TEXT)
     parent_project = models.ForeignKey('self', null=True, blank=True,
                                        on_delete=models.PROTECT, help_text=SEARCH_HELP_TEXT)
     # TODO: Add validation: instructors is only for project type Class
@@ -384,7 +385,9 @@ class Project(LdapObject):
     name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
     abstract = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH)
     methodology = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
-    expected_outcomes = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
+    question = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
+    mission = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
+    outcomes = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
     STATUS_NEW = 'Pending Approval'
     STATUS_ACTIVE = 'Active'
     STATUS_ARCHIVED = 'Archived'
