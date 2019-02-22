@@ -1,6 +1,7 @@
 from settings import *
 
 print('USING TEST SETTINGS...')
+print('logging configuration is updated for tests: logs go to ')
 
 RDS_INTEGRATION = False
 WS_K8S_INTEGRATION = False

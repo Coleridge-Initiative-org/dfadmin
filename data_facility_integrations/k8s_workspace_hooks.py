@@ -5,6 +5,7 @@ from django.dispatch import receiver
 import logging
 from . import rds_client
 from decouple import config
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -18,8 +19,6 @@ DEFAULT_K8S_CONFIG = {
 
 @receiver(post_save, sender=Project)
 def prepare_default_config_workspace_k8s(sender, instance, **kwargs):
-    if not settings.WS_K8S_INTEGRATION: return
-
     K8S = ProjectTool.TOOL_CHOICES.Workspace_K8s
     logger.debug('called project_saved - from "{0}" with params: {1}'.format(sender, kwargs))
     project = instance
@@ -30,4 +29,4 @@ def prepare_default_config_workspace_k8s(sender, instance, **kwargs):
     except ProjectTool.DoesNotExist:
         ProjectTool.objects.create(project=project, tool_name=K8S, system_info=DEFAULT_K8S_CONFIG)
         logger.info("Created new K8S config for project %s" % project.ldap_name)
-    print("Project Default Config - END")
+    logger.debug("Project Default Config - END")
