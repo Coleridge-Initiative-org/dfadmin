@@ -12,10 +12,10 @@ python-decouple==3.1
 django-admin-view-permission==1.6
 factory-boy==2.11.1
 django-rest-swagger==2.2.0
-django-ajax-selects==1.7.1
+django-ajax-selects==1.6.0
 django-model-utils==3.1.2
 django-modeladmin-reorder==0.3.1
-django-grappelli==2.12.2
+django-grappelli==2.10.4
 django-nested-admin==3.1.2
 parameterized==0.6.1
 
