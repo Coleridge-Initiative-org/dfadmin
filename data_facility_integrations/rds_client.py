@@ -76,8 +76,8 @@ def call_api(action, api_endpoint, params):
                          'Status code: {1}, message: {2}'.format(action, response.status_code, response.text))
 
     except Exception as ex:
-        logger.error('Error creating PG RDS with params: ' % params, exc_info=True)
-        raise ex
+        logger.error('Error {0} with params: {1}'.format(action, params), exc_info=True)
+        # raise ex
 
 
 def create_database(project_tool):
