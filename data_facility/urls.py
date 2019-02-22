@@ -51,8 +51,8 @@ urlpatterns = [
     # django-ajax-select
     url(r'^ajax_select/', include(ajax_select_urls)),
     url(r'^nested_admin/', include('nested_admin.urls')),
-    url(r'^graphqlapi', csrf_exempt(DRFAuthenticatedGraphQLView.as_view(graphiql=True))),
-    url(r'^graphql', PrivateGraphQLView.as_view(graphiql=True)),
+    url(r'^api/v1/graphqlapi', csrf_exempt(DRFAuthenticatedGraphQLView.as_view(graphiql=True))),
+    url(r'^api/v1/graphql', PrivateGraphQLView.as_view(graphiql=True)),
 ]
 
 # API
