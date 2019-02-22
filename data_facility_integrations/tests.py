@@ -4,7 +4,7 @@ from .rds_hooks import *
 import rds_client
 from django.test import TestCase
 from data_facility_admin.factories import ProjectFactory
-
+from django.test import tag
 
 class TestRDSClient(TestCase):
 
@@ -12,6 +12,7 @@ class TestRDSClient(TestCase):
         self.test_project = ProjectFactory.create(name='dfadmin_test_project')
         self.test_project_tool = ProjectTool(project=self.test_project, tool_name=ProjectTool.TOOL_CHOICES.PG_RDS)
 
+    @tag('integration')
     def test_rds_client_create_config_if_not_present(self):
         rds_client.init_system_info(self.test_project_tool)
 
