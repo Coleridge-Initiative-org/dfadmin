@@ -609,7 +609,7 @@ class ProjectTool(models.Model):
         'Workspace_K8s'
     )
 
-    tool_name = models.CharField(max_length=10,
+    tool_name = models.CharField(max_length=100,
                                  choices=TOOL_CHOICES,
                                  default=TOOL_CHOICES.SelectOne)
     other_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH,
