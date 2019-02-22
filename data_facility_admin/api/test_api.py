@@ -8,6 +8,8 @@ from data_facility_admin.api import views as api_views
 from data_facility_admin.models import Project, DfRole
 import requests
 from requests.auth import HTTPBasicAuth
+from django.test import tag
+
 
 ADMIN_USERNAME = 'ADMIN'
 ADMIN_PASSWORD = 'PASSWD'
@@ -31,13 +33,10 @@ class ApiTests(TestCase):
         super(ApiTests, cls).setUpClass()
         User.objects.create_superuser(username=ADMIN_USERNAME, password=ADMIN_PASSWORD, email='')
         #
-        test_project = Project(name=PROJECT_NAME,
-                               ldap_name=PROJECT_LDAP_NAME,
-                               abstract=PROJECT_ABSTRACT)
+        test_project = Project(name=PROJECT_NAME, ldap_name=PROJECT_LDAP_NAME, abstract=PROJECT_ABSTRACT)
         test_project.save()
-
-        test_dfrole = DfRole(name=DF_ROLE_NAME,
-                               description=DF_ROLE_DESCRIPTION)
+        #
+        test_dfrole = DfRole(name=DF_ROLE_NAME, description=DF_ROLE_DESCRIPTION)
         test_dfrole.save()
 
     def setUp(self):
@@ -179,10 +178,21 @@ class ApiClientTests(TestCase):
         response = self.client.get(reverse('project-list', args=[]), format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
 
-# Token Authentication
+
+class ApiAuthorizationTests(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super(ApiAuthorizationTests, cls).setUpClass()
+        # TODO: Move this admin creation to Test Fixtures
+        User.objects.create_superuser(username=ADMIN_USERNAME, password=ADMIN_PASSWORD, email='')
+        test_dfrole = DfRole(name=DF_ROLE_NAME, description=DF_ROLE_DESCRIPTION)
+        test_dfrole.save()
+
+    # Token Authentication
     def test_token_authentication(self):
         # Create token
-        token = Token.objects.create(user=User.objects.get(username=ADMIN_USERNAME))
+        admin = User.objects.get(username=ADMIN_USERNAME)
+        token = Token.objects.create(user=admin)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         response = client.get(SERVER_URL + API_BASE + 'users/?ldap_name=tdiogo')
