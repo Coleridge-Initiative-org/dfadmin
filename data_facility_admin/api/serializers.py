@@ -82,11 +82,31 @@ class DatasetSerializer(HyperlinkedModelSerializerWithId):
 
 class ProjectSerializer(HyperlinkedModelSerializerWithId):
     owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail', read_only=True)
+    active_members = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True)
+    owner_username = serializers.ReadOnlyField(source='owner__ldap_name')
 
     class Meta:
         model = Project
-        # fields = ('name', 'abstract', 'owner', 'methodology', 'has_irb', 'outcomes', 'status', 'url', 'id')
-        fields = '__all__'
+        fields = ('name',
+                  'requester',
+                  'abstract',
+                  'owner',
+                  'methodology',
+                  'mission',
+                  'outcomes',
+                  'mission',
+                  'has_irb',
+                  'status',
+                  'url',
+                  'id',
+                  'owner_username',
+                  'active_members',
+                  'active_member_permissions',
+                  'datasets_with_access',
+                  'created_at',
+                  'updated_at',
+                  )
+        # fields = '__all__'
 
 
 class DataStewardSerializer(HyperlinkedModelSerializerWithId):
