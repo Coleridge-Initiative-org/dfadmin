@@ -85,7 +85,7 @@ class ProjectSerializer(HyperlinkedModelSerializerWithId):
 
     class Meta:
         model = Project
-        # fields = ('name', 'abstract', 'owner', 'methodology', 'has_irb', 'expected_outcomes', 'status', 'url', 'id')
+        # fields = ('name', 'abstract', 'owner', 'methodology', 'has_irb', 'outcomes', 'status', 'url', 'id')
         fields = '__all__'
 
 
