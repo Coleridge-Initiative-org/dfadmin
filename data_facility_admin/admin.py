@@ -238,7 +238,7 @@ class UserAdmin(SimpleHistoryAdmin):
 @admin.register(Project)
 class ProjectAdmin(SimpleHistoryAdmin):
     """Admin Manager for model Project"""
-    search_fields = ('name', 'ldap_name', 'abstract', 'methodology', 'expected_outcomes',
+    search_fields = ('name', 'ldap_name', 'abstract', 'methodology', 'outcomes',
                      'status', 'environment', 'type', 'ldap_name', 'ldap_id')
     list_display = ('name', 'owner', 'status', 'environment', 'members', 'members_count',
                     'created_at',)
