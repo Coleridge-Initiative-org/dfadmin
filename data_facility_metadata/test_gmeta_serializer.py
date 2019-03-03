@@ -30,6 +30,12 @@ class GmetaTests(TestCase):
     def test_load_gmeta_has_description(self):
         self.assertIsNotNone(self.dataset.description)
 
+    def test_load_gmeta_has_version(self):
+        self.assertIsNotNone(self.dataset.version)
+
+    def test_load_gmeta_has_dataset_id(self):
+        self.assertIsNotNone(self.dataset.dataset_id)
+
     def test_load_gmeta_has_expected_search_gmeta(self):
         self.assertEqual(self.example_search_gmeta, self.dataset.search_gmeta)
 
