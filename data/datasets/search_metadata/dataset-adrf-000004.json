@@ -1,0 +1,60 @@
+{
+    "gmeta": [
+        {
+            "adrf-000004": {
+                "mimetype": "application/json",
+                "content": {
+                    "temporal_coverage_end": "2016",
+                    "files_total": 1,
+                    "data_classification": "Restricted",
+                    "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.",
+                    "geographical_coverage": [
+                        "Illinois"
+                    ],
+                    "keywords": [
+                        "income",
+                        "welfare",
+                        "public housing",
+                        "households",
+                        "demographics",
+                        "socioeconomics"
+                    ],
+                    "dataset_id": "adrf-000004",
+                    "category": "Socioeconomic Characteristics",
+                    "dataset_version": 1,
+                    "title": "US Department of Housing and Urban Development Program Microdata 2004-2016 - Individuals: Illinois",
+                    "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the US Department of Housing and Urban Development. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by a data steward before export from this system. Export of whole or partial records from the data is not permitted.",
+                    "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU",
+                    "data_steward": "Julia Lane",
+                    "access_requirements": "You must be enrolled in an ADRF class to access these data.",
+                    "description": "Detailed transactional data consisting of tenant-level data for individuals in the US Department of Housing and Urban Development's (HUD) largest rental assistance programs: the Housing Choice Voucher Program, Public Housing, Project-based Section 8, and the Section 202/811 Programs. The dataset includes information on individuals aggregated at the Census block level, including rent, years in program, and income; and individual race and gender. Data originate from two sources within HUD: The Public and Indian Housing (PIH) Information Center and Tenant Rental Assistance Certification System (TRACS).\n\nThe summary of this dataset\u2019s fields is a sample of records only. Please access the full dataset in course database table: hud_individual_block_data",
+                    "source_url": "",
+                    "geographical_unit": [
+                        "State",
+                        "Census Block"
+                    ],
+                    "related_articles": [
+                        "rc-000007",
+                        "rc-000008"
+                    ],
+                    "data_provider": "US Department of Housing and Urban Development",
+                    "dataset_documentation": [
+                        "HUD-50058.pdf",
+                        "HUD-50059.pdf"
+                    ],
+                    "dataset_version_date": 1488823197,
+                    "source_archive": "",
+                    "dataset_citation": "US Department of Housing and Urban Development, 2016, \"US Department of Housing and Urban Development Program Microdata 2004-2016 - Individuals: Illinois\", Applied Data Analytics Course [Distributor], 1 [Version]",
+                    "reference_url": "https://www.huduser.gov/portal/pumd/index.html",
+                    "temporal_coverage_start": "2004",
+                    "file_names": [
+                        "adrf-000004.csv"
+                    ]
+                },
+                "visible_to": [
+                    "dataset-adrf-000004"
+                ]
+            }
+        }
+    ]
+}
