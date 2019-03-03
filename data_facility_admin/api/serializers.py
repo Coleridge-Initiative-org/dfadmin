@@ -1,5 +1,7 @@
 from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider
 from rest_framework import serializers
+import logging
+logger = logging.getLogger(__name__)
 
 
 class HyperlinkedModelSerializerWithId(serializers.HyperlinkedModelSerializer):
@@ -76,7 +78,7 @@ class DatasetSerializer(HyperlinkedModelSerializerWithId):
                   'data_ingested_at', 'data_updated_at',
                   'adrf_id', 'db_schema', 'db_schema_public', 'curator_permissions',
                   'public', 'data_provider', 'status', 'active_stewards',
-                  'id', 'url')
+                  'id', 'url', 'search_gmeta', 'detailed_gmeta')
         # fields = '__all__'
 
 
@@ -107,6 +109,14 @@ class ProjectSerializer(HyperlinkedModelSerializerWithId):
                   'updated_at',
                   )
         # fields = '__all__'
+
+
+    def create(self, validated_data):
+        logger.debug('Create called with params: %s' % validated_data)
+        project = Project(**validated_data)
+        logger.debug('project: %s' % project)
+
+        return project
 
 
 class DataStewardSerializer(HyperlinkedModelSerializerWithId):
