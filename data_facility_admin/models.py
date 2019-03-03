@@ -732,6 +732,8 @@ class Dataset(LdapObject):
                                                           'have access to this dataset.')
     dataset_id = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
     name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
+    detailed_gmeta = JSONField(blank=True, null=True)
+    search_gmeta = JSONField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     dataset_citation = models.TextField(blank=True, null=True)
     version = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True, null=True, default='1')
@@ -1035,6 +1037,14 @@ class DatasetAccess(models.Model):
     def member_url(self):
         return "ldap:///%s?%s?sub?(cn=%s)" % (
             settings.LDAP_BASE_DN, settings.LDAP_GROUP_FIELD_MEMBERS, self.project.ldap_name)
+
+    @property
+    def tools(self):
+        tools = self.projecttool_set.all()
+        if tools:
+            return ['{0}:{1}'.format(t.tool_name, t.system_info ) for t in tools]
+        else:
+            return ''
 
 
 class Training(models.Model):
