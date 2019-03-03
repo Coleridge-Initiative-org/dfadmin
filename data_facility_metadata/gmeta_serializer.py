@@ -29,6 +29,8 @@ def load(search_gmeta, detailed_gmeta=None):
     # The first key on gmeta is the item id. Gmeta is prepared to return a list of metadata.
     # So we need to get the first in this case.
     gmeta_data = search_gmeta[0][search_gmeta[0].keys()[0]]
+
+
     mimetype = gmeta_data['mimetype']
     content = gmeta_data['content']
 
