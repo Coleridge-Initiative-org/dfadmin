@@ -13,7 +13,7 @@ from data_facility_metadata.models import *
 import csv
 from os import listdir
 from os.path import isfile, join
-from data_facility_metadata import gmeta_helper
+from data_facility_metadata import gmeta_serializer
 
 DATASETS_FOLDER = 'data/datasets/search_metadata'
 
@@ -38,7 +38,7 @@ def update_or_create_datasets(datasets):
             print('     Getting gmeta')
             gmeta = get_search_metadata_gmeta(dataset_id)
             print('     Loading gmeta')
-            dataset = gmeta_helper.load(gmeta)
+            dataset = gmeta_serializer.load(gmeta)
             print('     Save dataset')
             save_or_update(dataset)
         # break
