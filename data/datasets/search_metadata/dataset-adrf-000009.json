@@ -1,0 +1,58 @@
+{
+    "gmeta": [
+        {
+            "adrf-000009": {
+                "mimetype": "application/json",
+                "content": {
+                    "temporal_coverage_end": "2014",
+                    "files_total": 1,
+                    "data_classification": "Public",
+                    "access_actions_required": "No further actions required to access this dataset",
+                    "geographical_coverage": [
+                        "Cook County",
+                        "Illinois"
+                    ],
+                    "keywords": [
+                        "census",
+                        "geospatial",
+                        "socioeconomics"
+                    ],
+                    "dataset_id": "adrf-000009",
+                    "category": "Economic Characteristics",
+                    "dataset_version": 1,
+                    "title": "Illinois Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics - Workplace Area Characteristics - Cook County, IL",
+                    "data_usage_policy": "This dataset is intended for public access and use.",
+                    "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU",
+                    "data_steward": "Clayton Hunter",
+                    "access_requirements": "No access restrictions on this dataset",
+                    "description": "LEHD Origin-Destination Employment Statistics (LODES) used by OnTheMap are available for download below. Version 7 of LODES was enumerated by 2010 census blocks. Previous versions of LODES were enumerated with 2000 census blocks. Data files are state-based and organized into three types: Origin-Destination (OD), Residence Area Characteristics (RAC), and Workplace Area Characteristics (WAC), all at census block geographic detail. Data is available for most states for the years 2002-2014.",
+                    "source_url": "https://lehd.ces.census.gov/data/lodes/LODES7/",
+                    "geographical_unit": [
+                        "Census Block"
+                    ],
+                    "related_articles": [
+                        "rc-000064",
+                        "rc-000065",
+                        "rc-000067",
+                        "rc-000068"
+                    ],
+                    "data_provider": "US Census Bureau",
+                    "dataset_documentation": [
+                        "LODESTechDoc7.2.pdf"
+                    ],
+                    "dataset_version_date": 1488823173,
+                    "source_archive": "Longitudinal Employer-Household Dynamics Origin-Destination Employee Statistics",
+                    "dataset_citation": "",
+                    "reference_url": "http://lehd.ces.census.gov/data/lodes/LODES7/LODESTechDoc7.2.pdf",
+                    "temporal_coverage_start": "2014",
+                    "file_names": [
+                        "adrf-000009.csv"
+                    ]
+                },
+                "visible_to": [
+                    "public"
+                ]
+            }
+        }
+    ]
+}
