@@ -473,11 +473,11 @@ LOGGING = {
         },
     },
     'loggers': {
-        '': {
-            'handlers': ['file'],
-            'level': LOGGING_LEVEL,
-            'propagate': True,
-        },
+        # '': {
+        #     'handlers': ['file'],
+        #     'level': LOGGING_LEVEL,
+        #     'propagate': True,
+        # },
         'rest_framework_jwt': {
             'handlers': ['file', 'console'],
             'level': LOGGING_LEVEL,
