@@ -20,6 +20,7 @@ DATASETS_FOLDER = 'data/datasets/search_metadata'
 import logging
 logger = logging.getLogger(__name__)
 
+
 def get_dataset_list():
     return (f.rstrip('.json') for f in listdir(DATASETS_FOLDER) if
             isfile(join(DATASETS_FOLDER, f)) and f.endswith('.json'))
@@ -32,7 +33,7 @@ def get_search_metadata_gmeta(dataset):
 
 
 def update_or_create_datasets(datasets):
-    for dataset_id in datasets:
+    for dataset_id in sorted(datasets):
         try:
             print("\nProcessing dataset: %s" % dataset_id)
             print('     Getting gmeta')
@@ -53,7 +54,7 @@ def save_or_update(dataset):
         db_dataset = Dataset.objects.get(dataset_id=dataset.dataset_id)
         db_dataset.search_gmeta = dataset.search_gmeta
         db_dataset.detailed_gmeta = dataset.detailed_gmeta
-        db_dataset.title = dataset.title
+        db_dataset.name = dataset.name
         db_dataset.description = dataset.description
         db_dataset.save()
 
@@ -61,6 +62,7 @@ def save_or_update(dataset):
     except Dataset.DoesNotExist:
         dataset.save()
         print(" > Dataset %s - created." % dataset)
+
 
 def run():
     print("Loading datasets from folder %s " % DATASETS_FOLDER)
