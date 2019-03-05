@@ -37,7 +37,7 @@ def run(*args):
 
         data = {
             'remaining_days': remaining_days,
-            'username': user.username(),
+            'username': user.username,
             'instructions_link': settings.PWD_RESET_INSTRUCTIONS,
             'curr_date': TODAY,
             'url': settings.ADRF_URL,
