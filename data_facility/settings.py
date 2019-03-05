@@ -528,10 +528,10 @@ LOGGING = {
 from data_facility_admin import jwt
 JWT_AUTH = {
     'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt.jwt_get_username_from_payload_handler,
-    'JWT_PUBLIC_KEY': '-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAzsgAZ4YmUdsGcmO2kBAOvsNB5Fj27u3spYsTcKqD37GO+lTCQapA\nHIIyiQt938cao4XC7NJKezVEBc0YI7hzMBP1Rs04LZfbR7iOfWAKinPhh/VMgjXn\nuZlnTsfqzeRrkWX7PERS1Jr0ZIN+ga120o1Wdb4H1YzCsvActX9ynhxjLI5eX7D8\nK2K8C4K1xNZRt3LpCUVxc1pSVzy4TO/s9p8MAHVoaZMOnRg/NAzSgbvvooWdQ+ax\n5pSs+dHZPue9AUEkdQTizk+s0ZeWYA+Jny1twETrTGmMz5pO63waWmX6Q/OzTDYx\nQw22t6ZScqthjeCgjFt3trKzn7M7HTJVYwIDAQAB\n-----END RSA PUBLIC KEY-----\n',
+    'JWT_PUBLIC_KEY': '-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAnPISCA726xJ4GEI9wZEyVPqOFKmW9L/fqSLywkFDvxrgH6VrPrsV\nHITFSzw5agg+CJ2gQc5BDPq+SmhJv9bVmJ0Uqj56l3Ek+uLJEj8aDHtqKcXD6aNW\ncii3nlJz9r/LrkDYynsm3hAlNEYLXpn5hDnDwLx47dukD5+sUQfcdeSQGhe4ar/L\nHDLI8XYhG860eQiG8Pz4Sd/hf1nAw58Koj+xCmCD2Pcjgh6tm2JBnIkobfjDCadG\nucJLTbVtvXfo15YWABX4PMvKdsY/1q9NY/0BRP+ZmcPrzWNV4iFZDb27s9xfD38U\npeqQ0Mk8+k0XPSpsOLkI5+cxHhUhHNIsyQIDAQAB\n-----END RSA PUBLIC KEY-----\n',
     'JWT_ALGORITHM': 'RS256',
     'JWT_AUDIENCE': 'vision',
-    'JWT_ISSUER': "https://meat.adrf.info/auth/realms/datastewardship",
+    'JWT_ISSUER': "https://meat.adrf.info/auth/realms/master",
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
     'JWT_VERIFY_EXPIRATION': False,
 }
