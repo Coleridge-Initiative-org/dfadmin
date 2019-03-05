@@ -130,8 +130,7 @@ class DfRole(LdapObject):
     def active_usernames(self):
         '''return a list of all active users checking their statuses.'''
         # TODO: this method should be renamed to active_user_df_roles
-        return [u for u in self.active_users().values_list('user__ldap_name', flat=True)]
-
+        return [u.user.username for u in self.active_users()]
 
     def ldap_full_dn(self):
         return "cn={0},{1},{2}".format(self.ldap_name,
@@ -269,6 +268,7 @@ class User(LdapObject):
                                         settings.LDAP_SETTINGS['Users']['BaseDn'],
                                         settings.LDAP_BASE_DN)
 
+    @property
     def username(self):
         return self.ldap_name
 
@@ -291,7 +291,7 @@ class User(LdapObject):
             return None
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name + " (" + self.username() + ")"
+        return self.first_name + ' ' + self.last_name + " (" + self.username + ")"
 
     class Meta:
         ordering = ['first_name', 'last_name', 'ldap_name', 'email']
@@ -319,6 +319,10 @@ class UserDfRole(models.Model):
                 return self.begin <= timezone.now()
         else:
             return False
+
+    @property
+    def username(self):
+        return self.user.username
 
     def __str__(self):
         return '%s: %s (%s)' % (self.user, self.role, self.active())
@@ -484,13 +488,13 @@ class Project(LdapObject):
         # Project Instructors have write permissions by default.
         if self.instructors:
             for mr in self.instructors.active_users():
-                member_permissions.append({'username': mr.user.username(),
+                member_permissions.append({'username': mr.user.username,
                                            'system_role': ProjectRole.SYSTEM_ROLE_WRITER})
         instructor_usernames = [mp['username'] for mp in member_permissions]
         # Member permissions depend on associated project role.
         for pm in self.projectmember_set.all():
-            if pm.member in active_members and pm.member.username() not in instructor_usernames:
-                member_permissions.append({'username': pm.member.username(),
+            if pm.member in active_members and pm.member.username not in instructor_usernames:
+                member_permissions.append({'username': pm.member.username,
                                            'system_role': pm.role.system_role})
 
         return member_permissions

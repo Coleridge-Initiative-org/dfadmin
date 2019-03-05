@@ -4,14 +4,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class HyperlinkedModelSerializerWithId(serializers.HyperlinkedModelSerializer):
+class DFAdminModelSerializerWithId(serializers.ModelSerializer):
     """Extend the HyperlinkedModelSerializer to add IDs as well for the best of
     both worlds.
     """
     id = serializers.ReadOnlyField()
 
 
-class DatabaseSyncSerializer(HyperlinkedModelSerializerWithId):
+class DatabaseSyncSerializer(DFAdminModelSerializerWithId):
     owner = serializers.ReadOnlyField(source='owner.username')
     parent_project_ldap_name = serializers.ReadOnlyField(source='parent_project.ldap_name')
     dfri = serializers.ReadOnlyField(source='ldap_name')
@@ -35,7 +35,7 @@ class DatabaseSyncSerializer(HyperlinkedModelSerializerWithId):
                   )
 
 
-class UserSerializer(HyperlinkedModelSerializerWithId):
+class UserSerializer(DFAdminModelSerializerWithId):
     username = serializers.ReadOnlyField(source='ldap_name')
     avatar_url = serializers.ReadOnlyField(source='avatar')
 
@@ -46,8 +46,8 @@ class UserSerializer(HyperlinkedModelSerializerWithId):
         fields = '__all__'
 
 
-class DfRoleSerializer(HyperlinkedModelSerializerWithId):
-    active_users = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True)
+class DfRoleSerializer(DFAdminModelSerializerWithId):
+    active_users = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True, lookup_field='username')
 
     class Meta:
         model = DfRole
@@ -55,15 +55,15 @@ class DfRoleSerializer(HyperlinkedModelSerializerWithId):
         # fields = '__all__'
 
 
-class DataProviderSerializer(HyperlinkedModelSerializerWithId):
-    # dataset = serializers.HyperlinkedRelatedField(many=True, view_name='dataset-detail', read_only=True)
+class DataProviderSerializer(DFAdminModelSerializerWithId):
+    dataset = serializers.HyperlinkedRelatedField(many=True, view_name='dataset-detail', read_only=True)
 
     class Meta:
         model = DataProvider
         fields = '__all__'
 
 
-class DatasetSerializer(HyperlinkedModelSerializerWithId):
+class DatasetSerializer(DFAdminModelSerializerWithId):
     db_schema = serializers.ReadOnlyField(source='db_schema_name')
     # gmeta = serializers.ReadOnlyField(source='search_gmeta')
     adrf_id = serializers.ReadOnlyField(source='ldap_name')
@@ -85,9 +85,15 @@ class DatasetSerializer(HyperlinkedModelSerializerWithId):
         # fields = '__all__'
 
 
-class ProjectSerializer(HyperlinkedModelSerializerWithId):
-    owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail', read_only=True)
-    active_members = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True)
+class ProjectSerializer(DFAdminModelSerializerWithId):
+    # owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail',
+    #                                             read_only=True, lookup_field='username')
+    owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail', read_only=True, lookup_field='username')
+    # owner = UserSerializer(many=False, read_only=True)
+    # active_members = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail',
+    #                                                      read_only=True, lookup_field='username')
+    active_members = UserSerializer(many=True, read_only=True)
+
     owner_username = serializers.ReadOnlyField(source='owner__ldap_name')
 
     class Meta:
@@ -114,15 +120,16 @@ class ProjectSerializer(HyperlinkedModelSerializerWithId):
         # fields = '__all__'
 
 
-    def create(self, validated_data):
-        logger.debug('Create called with params: %s' % validated_data)
-        project = Project(**validated_data)
-        logger.debug('project: %s' % project)
+    # TODO: fix project creation
+    # def create(self, validated_data):
+    #     logger.debug('Create called with params: %s' % validated_data)
+    #     project = Project(**validated_data)
+    #     logger.debug('project: %s' % project)
+    #
+    #     return project
 
-        return project
 
-
-class DataStewardSerializer(HyperlinkedModelSerializerWithId):
+class DataStewardSerializer(DFAdminModelSerializerWithId):
 
     class Meta:
         model = DataSteward
