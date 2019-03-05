@@ -37,6 +37,8 @@ class DatabaseSyncSerializer(HyperlinkedModelSerializerWithId):
 
 class UserSerializer(HyperlinkedModelSerializerWithId):
     username = serializers.ReadOnlyField(source='ldap_name')
+    avatar_url = serializers.ReadOnlyField(source='avatar')
+
     class Meta:
         model = User
         # fields = ('first_name', 'last_name', 'full_name',

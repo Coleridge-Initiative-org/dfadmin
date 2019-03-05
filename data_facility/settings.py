@@ -205,9 +205,12 @@ GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin'
 # Based on: https://www.techiediaries.com/django-cors/
 CORS_ORIGIN_ALLOW_ALL = False
 
+# TODO Configure the whitelist properly:
+#  https://github.com/ottoyiu/django-cors-headers/#configuration
 CORS_ORIGIN_WHITELIST = (
-    'http//:localhost',
-    'http://docker.for.mac.localhost',
+    'localhost:8000',
+    'localhost:8088',
+    'docker.for.mac.localhost',
 )
 
 # ----------------- DJANGO AJAX SELECT -------------------------
@@ -224,12 +227,12 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         # Only authenticated users
-        'rest_framework.permissions.IsAdminUser',
+        # 'rest_framework.permissions.IsAdminUser',
         'rest_framework.permissions.IsAuthenticated',
 
         # Use Django's standard `django.contrib.auth` permissions,
         # or allow read-only access for unauthenticated users.
-        'rest_framework.permissions.DjangoModelPermissions',
+        # 'rest_framework.permissions.DjangoModelPermissions',
     ],
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',
                                 'rest_framework.filters.SearchFilter',
@@ -475,6 +478,11 @@ LOGGING = {
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
+        'rest_framework_jwt': {
+            'handlers': ['file', 'console'],
+            'level': LOGGING_LEVEL,
+            'propagate': True,
+        },
         'data_facility_metadata': {
             'handlers': ['file', 'console'],
             'level': LOGGING_LEVEL,
@@ -522,9 +530,10 @@ JWT_AUTH = {
     'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt.jwt_get_username_from_payload_handler,
     'JWT_PUBLIC_KEY': '-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAzsgAZ4YmUdsGcmO2kBAOvsNB5Fj27u3spYsTcKqD37GO+lTCQapA\nHIIyiQt938cao4XC7NJKezVEBc0YI7hzMBP1Rs04LZfbR7iOfWAKinPhh/VMgjXn\nuZlnTsfqzeRrkWX7PERS1Jr0ZIN+ga120o1Wdb4H1YzCsvActX9ynhxjLI5eX7D8\nK2K8C4K1xNZRt3LpCUVxc1pSVzy4TO/s9p8MAHVoaZMOnRg/NAzSgbvvooWdQ+ax\n5pSs+dHZPue9AUEkdQTizk+s0ZeWYA+Jny1twETrTGmMz5pO63waWmX6Q/OzTDYx\nQw22t6ZScqthjeCgjFt3trKzn7M7HTJVYwIDAQAB\n-----END RSA PUBLIC KEY-----\n',
     'JWT_ALGORITHM': 'RS256',
-    'JWT_AUDIENCE': 'dfadmin',
-    'JWT_ISSUER': "https://meat.adrf.info:8443/auth/realms/master",
+    'JWT_AUDIENCE': 'vision',
+    'JWT_ISSUER': "https://meat.adrf.info/auth/realms/datastewardship",
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_VERIFY_EXPIRATION': False,
 }
 
 # SHELL_PLUS = "ipython"
