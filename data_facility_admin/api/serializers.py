@@ -68,7 +68,8 @@ class DatasetSerializer(DFAdminModelSerializerWithId):
     # gmeta = serializers.ReadOnlyField(source='search_gmeta')
     adrf_id = serializers.ReadOnlyField(source='ldap_name')
     db_schema_public = serializers.ReadOnlyField(source='database_schema.public')
-    active_stewards = UserSerializer(many=True, read_only=True)
+    # active_stewards = UserSerializer(many=True, read_only=True)
+    active_stewards = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True, lookup_field='username')
     # data_provider = DataProviderSerializer(many=False)
     # data_provider = serializers.HyperlinkedRelatedField(many=False, view_name='dataprovider-detail', read_only=True,
     #                                                     lookup_field='name')
@@ -81,7 +82,7 @@ class DatasetSerializer(DFAdminModelSerializerWithId):
                   'data_ingested_at', 'data_updated_at',
                   'adrf_id', 'db_schema', 'db_schema_public', 'curator_permissions',
                   'public', 'data_provider', 'status', 'active_stewards',
-                  'id', 'url', 'search_gmeta', 'detailed_gmeta', 'gmeta')
+                  'gmeta')
         # fields = '__all__'
 
 
