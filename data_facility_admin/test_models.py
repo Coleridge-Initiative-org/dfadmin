@@ -25,7 +25,7 @@ class DatabaseTests(TestCase):
     def test_usersame_correctly_generated(self):
         user = models.User.objects.create(first_name='Daniel', last_name="Castellani")
         self.assertEqual(USERNAME, user.ldap_name)
-        self.assertEqual(USERNAME, user.username())
+        self.assertEqual(USERNAME, user.username)
 
     def test_save_multiple_users_with_same_name(self):
         u1 = User(first_name='daniel', last_name='castellani', email='dcastellani1@adrf.info')
