@@ -12,6 +12,8 @@ class DfRoleViewSet(viewsets.ModelViewSet):
     """
     queryset = models.DfRole.objects.all().order_by('name')
     serializer_class = serializers.DfRoleSerializer
+    lookup_field = 'ldap_name'
+    # lookup_url_kwarg = 'ldap_name'
 
 
 class DatasetViewSet(viewsets.ModelViewSet):
@@ -30,7 +32,10 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `detail` actions.
     """
-    queryset = models.User.objects.all().order_by('ldap_name')
+    lookup_field = 'ldap_name'
+    lookup_url_kwarg = 'username'
+    STATUS_WHITELIST = models.User.MEMBERSHIP_STATUS_WHITELIST
+    queryset = models.User.objects.filter(status__in=STATUS_WHITELIST).order_by('ldap_name')
     serializer_class = serializers.UserSerializer
     filter_fields = ('first_name', 'last_name', 'email', 'ldap_name')
     search_fields = ('first_name', 'last_name',)

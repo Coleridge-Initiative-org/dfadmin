@@ -54,7 +54,7 @@ class LdapSerializersTests(TestCase):
         # print('ldap_user=', self.ldap_user)
 
     def test_user_ldap_serializer_dump_uid(self):
-        self.assertEqual(self.user_dc.username(), self.ldap_user[1]['uid'][0])
+        self.assertEqual(self.user_dc.username, self.ldap_user[1]['uid'][0])
 
     def test_user_ldap_serializer_dump_sn(self):
         self.assertEqual(self.user_dc.last_name, self.ldap_user[1]['sn'][0])
@@ -69,7 +69,7 @@ class LdapSerializersTests(TestCase):
         self.assertEqual(self.user_dc.first_name, self.ldap_user[1]['givenName'][0])
 
     def test_user_ldap_serializer_dump_home_dir(self):
-        self.assertEqual('/nfshome/' + self.user_dc.username(),
+        self.assertEqual('/nfshome/' + self.user_dc.username,
                          self.ldap_user[1]['homeDirectory'][0])
 
     def test_user_ldap_serializer_dump_gidNumber(self):
