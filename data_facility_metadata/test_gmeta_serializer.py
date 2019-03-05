@@ -24,8 +24,8 @@ class GmetaTests(TestCase):
         self.example_detailed_gmeta = example_detailed_gmeta()
         self.dataset = gmeta_serializer.load(self.example_search_gmeta, self.example_detailed_gmeta)
 
-    def test_load_gmeta_has_title(self):
-        self.assertIsNotNone(self.dataset.title)
+    def test_load_gmeta_has_name(self):
+        self.assertIsNotNone(self.dataset.name)
 
     def test_load_gmeta_has_description(self):
         self.assertIsNotNone(self.dataset.description)

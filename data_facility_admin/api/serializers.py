@@ -63,6 +63,7 @@ class DataProviderSerializer(HyperlinkedModelSerializerWithId):
 
 class DatasetSerializer(HyperlinkedModelSerializerWithId):
     db_schema = serializers.ReadOnlyField(source='db_schema_name')
+    # gmeta = serializers.ReadOnlyField(source='search_gmeta')
     adrf_id = serializers.ReadOnlyField(source='ldap_name')
     db_schema_public = serializers.ReadOnlyField(source='database_schema.public')
     active_stewards = UserSerializer(many=True, read_only=True)
@@ -78,7 +79,7 @@ class DatasetSerializer(HyperlinkedModelSerializerWithId):
                   'data_ingested_at', 'data_updated_at',
                   'adrf_id', 'db_schema', 'db_schema_public', 'curator_permissions',
                   'public', 'data_provider', 'status', 'active_stewards',
-                  'id', 'url', 'search_gmeta', 'detailed_gmeta')
+                  'id', 'url', 'search_gmeta', 'detailed_gmeta', 'gmeta')
         # fields = '__all__'
 
 

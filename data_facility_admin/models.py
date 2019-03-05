@@ -800,7 +800,6 @@ class Dataset(LdapObject):
 
     keywords = models.ManyToManyField(Keyword, blank=True)
 
-
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -866,6 +865,10 @@ class Dataset(LdapObject):
 
     def active_stewards(self):
         return [s.user for s in self.datasteward_set.all() if s.is_active()]
+
+    @property
+    def gmeta(self):
+        return self.search_gmeta
 
 
 class DataSteward(models.Model):
