@@ -259,7 +259,15 @@ class User(LdapObject):
             if self.contractor:
                 self.ldap_name += '_ctr'
 
-        super(User, self).save(*args, **kwargs)
+        return super(User, self).save(*args, **kwargs)
+
+    def save_without_historical_record(self, *args, **kwargs):
+        self.skip_history_when_saving = True
+        try:
+            ret = self.save(*args, **kwargs)
+        finally:
+            del self.skip_history_when_saving
+        return ret
 
     def role(self):
         try:
