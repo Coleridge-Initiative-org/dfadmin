@@ -56,7 +56,8 @@ class DfRoleSerializer(DFAdminModelSerializerWithId):
 
 
 class DataProviderSerializer(DFAdminModelSerializerWithId):
-    dataset = serializers.HyperlinkedRelatedField(many=True, view_name='dataset-detail', read_only=True)
+    dataset = serializers.HyperlinkedRelatedField(many=True, view_name='dataset-detail',
+                                                  read_only=True, lookup_field='dataset_id')
 
     class Meta:
         model = DataProvider
@@ -65,14 +66,15 @@ class DataProviderSerializer(DFAdminModelSerializerWithId):
 
 class DatasetSerializer(DFAdminModelSerializerWithId):
     db_schema = serializers.ReadOnlyField(source='db_schema_name')
-    # gmeta = serializers.ReadOnlyField(source='search_gmeta')
     adrf_id = serializers.ReadOnlyField(source='ldap_name')
     db_schema_public = serializers.ReadOnlyField(source='database_schema.public')
-    # active_stewards = UserSerializer(many=True, read_only=True)
     active_stewards = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True, lookup_field='username')
     # data_provider = DataProviderSerializer(many=False)
-    # data_provider = serializers.HyperlinkedRelatedField(many=False, view_name='dataprovider-detail', read_only=True,
-    #                                                     lookup_field='name')
+    # data_provider = serializers.HyperlinkedRelatedField(many=False,
+    #                                                     view_name='dataprovider-detail',
+    #                                                     read_only=True,
+                                                        # lookup_field='name'
+                                                        # )
 
     class Meta:
         model = Dataset
@@ -82,7 +84,7 @@ class DatasetSerializer(DFAdminModelSerializerWithId):
                   'data_ingested_at', 'data_updated_at',
                   'adrf_id', 'db_schema', 'db_schema_public', 'curator_permissions',
                   'public', 'data_provider', 'status', 'active_stewards',
-                  'gmeta')
+                  'metadata', 'search_gmeta', 'detailed_gmeta')
         # fields = '__all__'
 
 
