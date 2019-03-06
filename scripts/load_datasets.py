@@ -13,23 +13,34 @@ from data_facility_metadata.models import *
 import csv
 from os import listdir
 from os.path import isfile, join
-from data_facility_metadata import gmeta_serializer
+from data_facility_admin import metadata_serializer
 
-DATASETS_FOLDER = 'data/datasets/search_metadata'
+DATASETS_SEARCH_META_FOLDER = 'data/datasets/search_metadata'
+DATASETS_DETAIL_META_FOLDER = 'data/datasets/detail_metadata'
 
 import logging
 logger = logging.getLogger(__name__)
 
 
 def get_dataset_list():
-    return (f.rstrip('.json') for f in listdir(DATASETS_FOLDER) if
-            isfile(join(DATASETS_FOLDER, f)) and f.endswith('.json'))
+    return (f.rstrip('.json') for f in listdir(DATASETS_SEARCH_META_FOLDER) if
+            isfile(join(DATASETS_SEARCH_META_FOLDER, f)) and f.endswith('.json'))
 
 
 def get_search_metadata_gmeta(dataset):
-    with open('{0}/{1}.json'.format(DATASETS_FOLDER, dataset)) as f:
+    with open('{0}/{1}.json'.format(DATASETS_SEARCH_META_FOLDER, dataset)) as f:
         data = json.load(f)
         return data['gmeta']
+
+
+def get_detailed_metadata_gmeta(dataset):
+    try:
+        with open('{0}/{1}.json'.format(DATASETS_DETAIL_META_FOLDER, dataset)) as f:
+            data = json.load(f)
+            return data['gmeta']
+    except Exception as ex:
+        logger.warning('Detailed metadata for dataset %s not found' % dataset)
+        return None
 
 
 def update_or_create_datasets(datasets):
@@ -37,9 +48,10 @@ def update_or_create_datasets(datasets):
         try:
             print("\nProcessing dataset: %s" % dataset_id)
             print('     Getting gmeta')
-            gmeta = get_search_metadata_gmeta(dataset_id)
+            search_gmeta = get_search_metadata_gmeta(dataset_id)
+            detailed_gmeta = get_detailed_metadata_gmeta(dataset_id)
             print('     Loading gmeta')
-            dataset = gmeta_serializer.load(gmeta)
+            dataset = metadata_serializer.load(search_gmeta, detailed_gmeta)
             print('     Save dataset')
             save_or_update(dataset)
         # break
@@ -65,7 +77,7 @@ def save_or_update(dataset):
 
 
 def run():
-    print("Loading datasets from folder %s " % DATASETS_FOLDER)
+    print("Loading datasets from folder %s " % DATASETS_SEARCH_META_FOLDER)
 
     datasets = get_dataset_list()
     # print('Datasets found: %s' % len(datasets))
