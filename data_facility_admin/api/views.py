@@ -25,7 +25,7 @@ class DatasetViewSet(viewsets.ModelViewSet):
     filter_fields = ('dataset_id', 'name', 'public', 'data_provider', 'data_classification')
     search_fields = ('name', 'dataset_id', 'data_provider', 'description')
     ordering_fields = ('name', 'dataset_id')
-    lookup_field = 'ldap_name'
+    lookup_field = 'dataset_id'
     lookup_url_kwarg = 'dataset_id'
 
 
@@ -73,7 +73,8 @@ class DataProviderViewSet(viewsets.ModelViewSet):
     filter_fields = '__all__'
     search_fields = '__all__'
     # ordering_fields = ('name', 'owner', )
-    # lookup_field = 'name'
+    lookup_field = 'slug'
+    lookup_url_kwarg = 'slug'
 
 
 DatabaseSyncListView = ListAPIView.as_view(queryset=models.Project.objects.all(),

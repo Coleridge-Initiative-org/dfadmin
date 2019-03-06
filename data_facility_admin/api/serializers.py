@@ -56,8 +56,8 @@ class DfRoleSerializer(DFAdminModelSerializerWithId):
 
 
 class DataProviderSerializer(DFAdminModelSerializerWithId):
-    dataset = serializers.HyperlinkedRelatedField(many=True, view_name='dataset-detail',
-                                                  read_only=True, lookup_field='dataset_id')
+    # dataset = serializers.HyperlinkedRelatedField(many=True, view_name='dataset-detail',
+    #                                               read_only=True, lookup_field='dataset_id')
 
     class Meta:
         model = DataProvider
