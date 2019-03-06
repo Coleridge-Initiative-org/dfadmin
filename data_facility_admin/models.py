@@ -4,6 +4,7 @@ from django.core.validators import RegexValidator, URLValidator, EmailValidator
 from django.db import models
 from django.db.models import Max, Q
 from django.utils import timezone
+from django.utils.text import slugify
 # from django.db.models import FileField
 from django.conf import settings
 from django.utils.text import slugify
@@ -13,7 +14,7 @@ from datetime import date
 import hashlib
 from model_utils import Choices
 from django.contrib.postgres.fields import JSONField
-
+from django.utils.text import slugify
 CHAR_FIELD_MAX_LENGTH = settings.CHAR_FIELD_MAX_LENGTH
 TEXT_FIELD_MAX_LENGTH = settings.TEXT_FIELD_MAX_LENGTH
 
@@ -22,6 +23,7 @@ SEARCH_HELP_TEXT = 'Enter Text to Search'
 
 import logging
 logger = logging.getLogger(__name__)
+
 
 class LdapObject(models.Model):
     ''' Django Model LdapObject
@@ -646,12 +648,18 @@ class ProjectTool(models.Model):
 class DataProvider(models.Model):
     ''' Represent the Owner of the data or the user which added the date to the System. '''
     name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
+    slug = models.SlugField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True, null=True)
 
+    @property
     def datasets_count(self):
         return self.dataset_set.all().count()
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(DataProvider, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['name']
