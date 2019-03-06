@@ -783,8 +783,7 @@ class Dataset(LdapObject):
                                                           'have access to this dataset.')
     dataset_id = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
     name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
-    detailed_gmeta = JSONField(blank=True, null=True)
-    search_gmeta = JSONField(blank=True, null=True)
+
     description = models.TextField(blank=True, null=True)
     dataset_citation = models.TextField(blank=True, null=True)
     version = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True, null=True, default='1')
@@ -850,6 +849,9 @@ class Dataset(LdapObject):
                                         default=REPORT_FREQUENCY_NONE)
 
     keywords = models.ManyToManyField(Keyword, blank=True)
+
+    detailed_gmeta = JSONField(blank=True, null=True)
+    search_gmeta = JSONField(blank=True, null=True)
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
@@ -925,6 +927,12 @@ class Dataset(LdapObject):
         except Exception as ex:
             logger.error('Error generating metadata for dataset %s' % self)
             logger.exception(ex)
+            return None
+
+    def detailed_metadata(self):
+        if self.data_classification == Dataset.DATA_CLASSIFICATION_GREEN:
+            return self.detailed_gmeta
+        else:
             return None
 
 

@@ -85,7 +85,7 @@ class DatasetSerializer(DFAdminModelSerializerWithId):
                   'data_ingested_at', 'data_updated_at',
                   'adrf_id', 'db_schema', 'db_schema_public', 'curator_permissions',
                   'public', 'data_provider_name', 'status', 'active_stewards',
-                  'search_metadata', 'search_gmeta', 'detailed_gmeta')
+                  'search_metadata', 'detailed_metadata', 'search_gmeta', 'detailed_gmeta')
         # fields = '__all__'
 
 
