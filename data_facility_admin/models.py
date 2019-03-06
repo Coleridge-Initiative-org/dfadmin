@@ -1,13 +1,12 @@
 '''DfAdmin Django models'''
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User as DjangoUser
 from django.core.validators import RegexValidator, URLValidator, EmailValidator
 from django.db import models
 from django.db.models import Max, Q
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
-from django.utils.text import slugify
-# from django.db.models import FileField
 from django.conf import settings
-from django.utils.text import slugify
 from simple_history.models import HistoricalRecords
 import unicodedata
 from datetime import date
@@ -165,8 +164,7 @@ class User(LdapObject):
     ''' Represents the Data Facility User.
         Should never be deleted, but only disabled.
     '''
-    # user = models.OneToOneField(User, blank=True, null=True)
-    # username = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
+    django_user = models.OneToOneField(DjangoUser, blank=True, null=True)
 
     first_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
     last_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
@@ -307,6 +305,37 @@ class User(LdapObject):
 
     class Meta:
         ordering = ['first_name', 'last_name', 'ldap_name', 'email']
+
+
+@receiver(post_save, sender=User)
+def create_django_user(sender, instance, created, **kwargs):
+    if created:
+        du = DjangoUser.objects.create(username=instance.ldap_name,
+                                  first_name=instance.first_name,
+                                  last_name=instance.last_name,
+                                  email=instance.email,
+                                  )
+        instance.django_user = du
+        instance.save()
+        logger.info('Created DjangoUser for User: %s' % instance)
+
+
+@receiver(post_save, sender=User)
+def save_django_user(sender, instance, **kwargs):
+    try:
+        django_user = DjangoUser.objects.get(username=instance.ldap_name)
+        django_user.first_name = instance.first_name
+        django_user.last_name = instance.last_name
+        django_user.email = instance.email
+        django_user.save()
+        logger.info('Updated DjangoUser for User: %s' % instance)
+
+    except DjangoUser.DoesNotExist as ex:
+        kwargs['created'] = True
+        create_django_user(sender, instance, kwargs)
+
+    except Exception as ex:
+        logger.error('Error while updating DjangoUser for User: %s' % instance, exec_info=True)
 
 
 class UserDfRole(models.Model):
