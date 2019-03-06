@@ -2,6 +2,7 @@
 #
 # This script populates the initial data required for DFAdmin and ADRF to work properly.
 from django.contrib.auth.models import Group, Permission
+from django.conf import settings
 
 from data_facility_admin.models import ProjectRole, DfRole
 
@@ -68,8 +69,23 @@ def create_base_permissions_and_auth_groups():
     for permission in view_permissions:
         staff.permissions.add(permission)
     staff.save()
+    print(' - ADRF Staff created/updated.')
 
-    print(' - ADRF Staff created.')
+    try:
+        authenticated = Group.objects.get(name=settings.DFAFMIN_API_GENERIC_GROUP)
+    except Group.DoesNotExist:
+        authenticated = Group(name=settings.DFAFMIN_API_GENERIC_GROUP)
+        authenticated.save()
+    authenticated.permissions.add(Permission.objects.get(name='Can view user',
+                                                         content_type__app_label='data_facility_admin'))
+    authenticated.permissions.add(Permission.objects.get(name='Can view dataset',
+                                                         content_type__app_label='data_facility_admin'))
+    authenticated.permissions.add(Permission.objects.get(name='Can view dataprovider',
+                                                         content_type__app_label='data_facility_admin'))
+    authenticated.permissions.add(Permission.objects.get(name='Can view datasteward',
+                                                         content_type__app_label='data_facility_admin'))
+    authenticated.save()
+    print(' - Authenticated created/updated.')
 
     try:
         managers = Group.objects.get(name='ADRF Managers')
@@ -170,7 +186,7 @@ def create_base_permissions_and_auth_groups():
     managers.permissions.add(Permission.objects.get(name='Can view usertraining',
                                                     content_type__model='usertraining'))
     managers.save()
-    print(' - ADRF Managers created')
+    print(' - ADRF Managers created/updated')
 
     try:
         curators = Group.objects.get(name='ADRF Curators')
@@ -264,7 +280,7 @@ def create_base_permissions_and_auth_groups():
     curators.permissions.add(Permission.objects.get(name='Can view ldapobject',
                                                     content_type__model='ldapobject'))
     curators.save()
-    print(' - ADRF Curators created')
+    print(' - ADRF Curators created/updated')
 
 
 def run():
