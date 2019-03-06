@@ -549,4 +549,5 @@ SHELL_PLUS_POST_IMPORTS = [
 RDS_INTEGRATION = config('RDS_INTEGRATION', cast=bool, default=False)
 WS_K8S_INTEGRATION = config('WS_K8S_INTEGRATION', cast=bool, default=False)
 
+DFAFMIN_API_GENERIC_GROUP = config('DFAFMIN_API_GENERIC_GROUP', default='Authenticated')
 print ('DEBUG=', DEBUG)
