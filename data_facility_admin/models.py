@@ -918,7 +918,7 @@ class Dataset(LdapObject):
         return [s.user for s in self.datasteward_set.all() if s.is_active()]
 
     @property
-    def metadata(self):
+    def search_metadata(self):
         try:
             from data_facility_admin import metadata_serializer
             return metadata_serializer.dumps(self)
