@@ -114,6 +114,7 @@ INSTALLED_APPS = (
     'corsheaders',
     'data_facility_integrations',
     'graphene_django',
+    'django_json_widget',
     # 'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
