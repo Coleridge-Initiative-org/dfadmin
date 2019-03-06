@@ -59,11 +59,11 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
     # The first key on gmeta is the item id. Gmeta is prepared to return a list of metadata.
     # So we need to get the first in this case.
     gmeta_data = search_gmeta[0][search_gmeta[0].keys()[0]]
-    if detailed_gmeta:
+    if detailed_gmeta is not None:
         detailed_gmeta_data = detailed_gmeta[0][search_gmeta[0].keys()[0]]
         detailed_content = detailed_gmeta_data['content']
     else:
-        detailed_content = None
+        detailed_content = {}
 
     mimetype = gmeta_data['mimetype']
     search_content = gmeta_data['content']
@@ -82,6 +82,7 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
             # Set attribute on dataset and then remove the field from gmeta to avoid duplicates
             setattr(dataset, field_mapping.dataset, value)
             search_content.pop(field_mapping.gmeta, None)
+            detailed_content.pop(field_mapping.gmeta, None)
 
         except UnicodeEncodeError as ex:
             setattr(dataset, field_mapping.dataset, value.encode('ascii', 'ignore'))
@@ -91,7 +92,7 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
     dataset.data_provider = __get_data_provider(search_content[DATA_PROVIDER_KEY])
 
     dataset.search_gmeta = search_content
-    dataset.detailed_gmeta = detailed_gmeta
+    dataset.detailed_gmeta = detailed_content
     return dataset
 
 

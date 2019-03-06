@@ -16,7 +16,7 @@ from os.path import isfile, join
 from data_facility_admin import metadata_serializer
 
 DATASETS_SEARCH_META_FOLDER = 'data/datasets/search_metadata'
-DATASETS_DETAIL_META_FOLDER = 'data/datasets/detail_metadata'
+DATASETS_DETAIL_META_FOLDER = 'data/datasets/detailed_metadata'
 
 import logging
 logger = logging.getLogger(__name__)
@@ -34,25 +34,34 @@ def get_search_metadata_gmeta(dataset):
 
 
 def get_detailed_metadata_gmeta(dataset):
+    filename = '{0}/{1}.json'.format(DATASETS_DETAIL_META_FOLDER, dataset)
     try:
-        with open('{0}/{1}.json'.format(DATASETS_DETAIL_META_FOLDER, dataset)) as f:
+        print('===> %s' %filename)
+        with open(filename) as f:
             data = json.load(f)
+            print(' Detailed gmeta found!')
             return data['gmeta']
+
+    except IOError as ex:
+        print('File not found: %s' % filename)
     except Exception as ex:
-        logger.warning('Detailed metadata for dataset %s not found' % dataset)
+        raise ex
+        print('Detailed metadata for dataset %s not found' % dataset)
         return None
 
 
 def update_or_create_datasets(datasets):
     for dataset_id in sorted(datasets):
+        # if dataset_id not in ['dataset-adrf-000005']: continue
         try:
             print("\nProcessing dataset: %s" % dataset_id)
             print('     Getting gmeta')
             search_gmeta = get_search_metadata_gmeta(dataset_id)
             detailed_gmeta = get_detailed_metadata_gmeta(dataset_id)
             print('     Loading gmeta')
-            dataset = metadata_serializer.load(search_gmeta, detailed_gmeta)
+            dataset = metadata_serializer.load(search_gmeta, detailed_gmeta=detailed_gmeta)
             print('     Save dataset')
+
             save_or_update(dataset)
         # break
         except UnicodeEncodeError as ex:
@@ -62,18 +71,21 @@ def update_or_create_datasets(datasets):
 
 
 def save_or_update(dataset):
+    fields_to_update = ['data_provider', 'name', 'description', 'data_classification', 'search_gmeta', 'detailed_gmeta',
+                        'version', 'dataset_citation']
     try:
         db_dataset = Dataset.objects.get(dataset_id=dataset.dataset_id)
-        db_dataset.search_gmeta = dataset.search_gmeta
-        db_dataset.detailed_gmeta = dataset.detailed_gmeta
-        db_dataset.name = dataset.name
-        db_dataset.description = dataset.description
+        for attr in fields_to_update:
+            print('     Updating attr: ' + attr)
+            value = getattr(dataset, attr, None)
+            setattr(db_dataset, attr, value)
         db_dataset.save()
 
-        print(" > Dataset %s - updated." % dataset)
+        print(" > Dataset %s - updated." % dataset.dataset_id)
+
     except Dataset.DoesNotExist:
         dataset.save()
-        print(" > Dataset %s - created." % dataset)
+        print(" > Dataset %s - created." % dataset.dataset_id)
 
 
 def run():
