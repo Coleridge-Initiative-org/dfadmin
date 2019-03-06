@@ -151,10 +151,17 @@ class DatabaseSchemaAdmin(SimpleHistoryAdmin):
     search_fields = ('name',)
     list_filter = ['public']
 
+from django.contrib import admin
+from django.contrib.postgres import fields
+from django_json_widget.widgets import JSONEditorWidget
 
 @admin.register(Dataset)
 class DatasetAdmin(SimpleHistoryAdmin):
     """Admin Manager for model Dataset"""
+    formfield_overrides = {
+        fields.JSONField: {'widget': JSONEditorWidget},
+    }
+
     list_display = ('dataset_id', 'name', 'active_stewards', 'data_classification', 'public', 'database_schema')
     search_fields = ('dataset_id', 'name', 'data_classification', 'ldap_name',
                      'ldap_id', 'public', 'database_schema__name')
