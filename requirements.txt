@@ -47,3 +47,4 @@ graphene-django>=2.0
 djangorestframework-jwt==1.11.0
 cryptography
 python-jose
+git+https://github.com/NYU-Chicago-data-facility/django-json-widget.git@v0.2.1
