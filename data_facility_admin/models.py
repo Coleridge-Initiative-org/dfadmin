@@ -20,6 +20,8 @@ TEXT_FIELD_MAX_LENGTH = settings.TEXT_FIELD_MAX_LENGTH
 MISSING_INFO_FLAG = '_Undefined_'
 SEARCH_HELP_TEXT = 'Enter Text to Search'
 
+import logging
+logger = logging.getLogger(__name__)
 
 class LdapObject(models.Model):
     ''' Django Model LdapObject
@@ -871,8 +873,14 @@ class Dataset(LdapObject):
         return [s.user for s in self.datasteward_set.all() if s.is_active()]
 
     @property
-    def gmeta(self):
-        return self.search_gmeta
+    def metadata(self):
+        try:
+            from data_facility_admin import metadata_serializer
+            return metadata_serializer.dumps(self)
+        except Exception as ex:
+            logger.error('Error generating metadata for dataset %s' % self)
+            logger.exception(ex)
+            return None
 
 
 class DataSteward(models.Model):
