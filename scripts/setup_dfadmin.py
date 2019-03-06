@@ -64,94 +64,11 @@ def create_base_permissions_and_auth_groups():
     except Group.DoesNotExist:
         staff = Group(name='ADRF Staff')
         staff.save()
-    staff.permissions.add(Permission.objects.get(name='Can view logentry',
-                                                 content_type__model='logentry'))
-    staff.permissions.add(Permission.objects.get(name='Can view group',
-                                                 content_type__model='group'))
-    staff.permissions.add(Permission.objects.get(name='Can view contenttype',
-                                                 content_type__model='contenttype'))
-    staff.permissions.add(Permission.objects.get(name='Can view dataagreement',
-                                                 content_type__model='dataagreement'))
-    staff.permissions.add(Permission.objects.get(name='Can view dataagreementsignature',
-                                                 content_type__model='dataagreementsignature'))
-    staff.permissions.add(Permission.objects.get(name='Can view databaseschema',
-                                                 content_type__model='databaseschema'))
-    staff.permissions.add(Permission.objects.get(name='Can view dataprovider',
-                                                 content_type__model='dataprovider'))
-    staff.permissions.add(Permission.objects.get(name='Can view dataset',
-                                                 content_type__model='dataset'))
-    staff.permissions.add(Permission.objects.get(name='Can view datasetaccess',
-                                                 content_type__model='datasetaccess'))
-    staff.permissions.add(Permission.objects.get(name='Can view datasteward',
-                                                 content_type__model='datasteward'))
-    staff.permissions.add(Permission.objects.get(name='Can view dfrole',
-                                                 content_type__model='dfrole'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaldataagreement',
-                                                 content_type__model='historicaldataagreement'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaldataagreementsignature',
-                                                 content_type__model='historicaldataagreementsignature'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaldatabaseschema',
-                                                 content_type__model='historicaldatabaseschema'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaldataset',
-                                                 content_type__model='historicaldataset'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaldatasetaccess',
-                                                 content_type__model='historicaldatasetaccess'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaldatasteward',
-                                                 content_type__model='historicaldatasteward'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaldfrole',
-                                                 content_type__model='historicaldfrole'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicalprofiletag',
-                                                 content_type__model='historicalprofiletag'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicalproject',
-                                                 content_type__model='historicalproject'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicalprojectmember',
-                                                 content_type__model='historicalprojectmember'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicalprojectrole',
-                                                 content_type__model='historicalprojectrole'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicalprojecttool',
-                                                 content_type__model='historicalprojecttool'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicalsignedtermsofuse',
-                                                 content_type__model='historicalsignedtermsofuse'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaltermsofuse',
-                                                 content_type__model='historicaltermsofuse'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaltraining',
-                                                 content_type__model='historicaltraining'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaluser',
-                                                 content_type__model='historicaluser'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicaluserdfrole',
-                                                 content_type__model='historicaluserdfrole'))
-    staff.permissions.add(Permission.objects.get(name='Can view historicalusertraining',
-                                                 content_type__model='historicalusertraining'))
-    staff.permissions.add(Permission.objects.get(name='Can view ldapobject',
-                                                 content_type__model='ldapobject'))
-    staff.permissions.add(Permission.objects.get(name='Can view profiletag',
-                                                 content_type__model='profiletag'))
-    staff.permissions.add(Permission.objects.get(name='Can view project',
-                                                 content_type__model='project'))
-    staff.permissions.add(Permission.objects.get(name='Can view projectmember',
-                                                 content_type__model='projectmember'))
-    staff.permissions.add(Permission.objects.get(name='Can view projectrole',
-                                                 content_type__model='projectrole'))
-    staff.permissions.add(Permission.objects.get(name='Can view projecttool',
-                                                 content_type__model='projecttool'))
-    staff.permissions.add(Permission.objects.get(name='Can view signedtermsofuse',
-                                                 content_type__model='signedtermsofuse'))
-    staff.permissions.add(Permission.objects.get(name='Can view systeminfo',
-                                                 content_type__model='systeminfo'))
-    staff.permissions.add(Permission.objects.get(name='Can view termsofuse',
-                                                 content_type__model='termsofuse'))
-    staff.permissions.add(Permission.objects.get(name='Can view training',
-                                                 content_type__model='training'))
-    staff.permissions.add(Permission.objects.get(name='Can view user',
-                                                 content_type__model='user',
-                                                 content_type__app_label='data_facility_admin'))
-    staff.permissions.add(Permission.objects.get(name='Can view userdfrole',
-                                                 content_type__model='userdfrole'))
-    staff.permissions.add(Permission.objects.get(name='Can view usertraining',
-                                                 content_type__model='usertraining'))
-    staff.permissions.add(Permission.objects.get(name='Can view session',
-                                                 content_type__model='session'))
+    view_permissions = Permission.objects.filter(name__startswith='Can view')
+    for permission in view_permissions:
+        staff.permissions.add(permission)
     staff.save()
+
     print(' - ADRF Staff created.')
 
     try:
