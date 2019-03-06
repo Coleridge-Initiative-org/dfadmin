@@ -102,10 +102,12 @@ def dumps(dataset):
     :param dataset:
     :return:
     """
-    metadata = dataset.search_gmeta.copy()
+    metadata = {}
+    if dataset.search_gmeta:
+        metadata.update(dataset.search_gmeta)
     for field_mapping in DIRECT_FIELD_MAPPINGS:
         value = getattr(dataset, field_mapping.dataset, None)
         metadata[field_mapping.gmeta] = value
-    metadata[DATA_PROVIDER_KEY] = dataset.data_provider.name
+    metadata[DATA_PROVIDER_KEY] = dataset.data_provider.name if dataset.data_provider else None
     return metadata
 
