@@ -100,7 +100,9 @@ class DataProviderAdmin(SimpleHistoryAdmin):
     """Admin Manager for model DataProvider"""
     list_display = ('name', 'datasets_count')
     search_fields = ('name',)
+    readonly_fields = ['slug']
     inlines = [DatasetInline]
+
 
 
 @admin.register(ProfileTag)
@@ -214,7 +216,7 @@ class UserAdmin(SimpleHistoryAdmin):
     list_filter = ['status', 'signed_terms_at', 'ldap_last_auth_time', 'affiliation',
                    'userdfrole__role', 'ldap_last_pwd_change', 'tags' ]
     readonly_fields = ['ldap_id', 'ldap_lock_time', 'ldap_last_auth_time', 
-                       'ldap_last_pwd_change']
+                       'ldap_last_pwd_change', 'django_user']
     history_list_display = ['status']
     if not settings.ADRF_ENABLE_CUSTOM_USERNAME:
         readonly_fields += ['ldap_name']
