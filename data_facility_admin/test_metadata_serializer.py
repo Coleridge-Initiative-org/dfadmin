@@ -44,7 +44,7 @@ class GmetaTests(TestCase):
         # self.assertEqual(example_search_metadata(), self.dataset.metadata)
         expected_metadata = example_search_metadata()
         for key in expected_metadata:
-            self.assertIn(key, self.dataset.metadata)
+            self.assertIn(key, self.dataset.search_metadata)
 
     def test_load_gmeta_has_expected_detailed_gmeta(self):
         self.assertEqual(self.example_detailed_gmeta, self.dataset.detailed_gmeta)
