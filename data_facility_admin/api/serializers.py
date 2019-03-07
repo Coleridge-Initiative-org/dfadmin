@@ -1,5 +1,6 @@
 from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider
 from rest_framework import serializers
+from drf_dynamic_fields import DynamicFieldsMixin
 import logging
 logger = logging.getLogger(__name__)
 
@@ -64,7 +65,9 @@ class DataProviderSerializer(DFAdminModelSerializerWithId):
         fields = '__all__'
 
 
-class DatasetSerializer(DFAdminModelSerializerWithId):
+class DatasetSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
+    INCLUDE_DETAILS = 'include_detailed_metadata'
+
     db_schema = serializers.ReadOnlyField(source='db_schema_name')
     adrf_id = serializers.ReadOnlyField(source='ldap_name')
     data_provider_name = serializers.ReadOnlyField(source='data_provider__name')
@@ -85,7 +88,7 @@ class DatasetSerializer(DFAdminModelSerializerWithId):
                   'data_ingested_at', 'data_updated_at',
                   'adrf_id', 'db_schema', 'db_schema_public', 'curator_permissions',
                   'public', 'data_provider_name', 'status', 'active_stewards',
-                  'search_metadata', 'detailed_metadata', 'search_gmeta', 'detailed_gmeta')
+                  'search_metadata', 'detailed_metadata')
         # fields = '__all__'
 
 
