@@ -670,7 +670,7 @@ class ProjectTool(models.Model):
     history = HistoricalRecords()
 
     def name(self):
-        if self.tool_name is ProjectTool.TOOL_OTHER:
+        if self.tool_name is ProjectTool.TOOL_CHOICES.Other:
             return self.other_name
         return self.tool_name
 
@@ -930,8 +930,14 @@ class Dataset(LdapObject):
             return None
 
     def detailed_metadata(self):
-        if self.data_classification == Dataset.DATA_CLASSIFICATION_GREEN:
-            return self.detailed_gmeta
+        if self.data_classification == Dataset.DATA_CLASSIFICATION_GREEN and self.detailed_gmeta:
+            logger.debug('Generating detailed metadata: %s' % len(self.detailed_gmeta))
+            metadata_to_return = self.detailed_gmeta.copy()
+            temp_search_metadata = self.search_metadata
+            if temp_search_metadata is not None:
+                logger.debug('Updating detailed metadata with search metadata: %s' % len(temp_search_metadata))
+                metadata_to_return.update(temp_search_metadata)
+            return metadata_to_return
         else:
             return None
 
