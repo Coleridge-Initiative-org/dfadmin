@@ -142,7 +142,7 @@ class DataAgreementAdmin(SimpleHistoryAdmin):
 class DataStewardAdmin(SimpleHistoryAdmin):
     """Admin Manager for model DataSteward"""
     list_display = ('dataset', 'user', 'start_date', 'end_date')
-    search_fields = ('dataset_title', 'dataset__dataset_id', 'user')
+    search_fields = ('dataset__name', 'dataset__dataset_id', 'user__first_name', 'user__last_name', 'user__ldap_name')
     list_filter = ['start_date', 'end_date']
 
 
@@ -263,7 +263,7 @@ class ProjectAdmin(SimpleHistoryAdmin):
 @admin.register(ProjectRole)
 class ProjectRoleAdmin(SimpleHistoryAdmin):
     """Admin Manager for model ProjectRole"""
-    search_fields = ('name', 'system_role', 'description', 'ldap_name', 'ldap_id')
+    search_fields = ('name', 'system_role', 'description')
     list_display = ('name', 'system_role', 'description')
     list_filter = ['system_role']
 

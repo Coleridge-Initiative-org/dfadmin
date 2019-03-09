@@ -21,6 +21,15 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 ENV = config('ENV', 'PRODUCTION')
+ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
+                      'LOCAL': 'gray',
+                      'DEVELOPMENT': 'green'}
+ENVIRONMENT_COLOR = 'black'
+if config('ENVIRONMENT_COLOR', None):
+    ENVIRONMENT_COLOR = config('ENVIRONMENT_COLOR')
+    if config('ENVIRONMENT_COLOR') in ENVIRONMENT_COLORS:
+        ENVIRONMENT_COLOR = ENVIRONMENT_COLORS[ENV]
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 CHAR_FIELD_MAX_LENGTH = 256
 TEXT_FIELD_MAX_LENGTH = 1024
@@ -156,6 +165,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                'data_facility_admin.context_processors.from_settings',
             ],
             # 'connect_timeout': 5,
         },
@@ -200,7 +210,7 @@ ADMIN_REORDER = (
 )
 
 # ----------------- DJANGO GRAPPELLI -------------------------
-GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin'
+GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin < {0} >'.format(ADRF_SYSTEM_NAME)
 
 # ----------------- CORS Config for Vue -------------------------
 # Based on: https://www.techiediaries.com/django-cors/

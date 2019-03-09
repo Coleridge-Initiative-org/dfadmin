@@ -20,6 +20,10 @@ def example_detailed_gmeta():
     return None
 
 
+def example_detailed_metadata():
+    return None
+
+
 # Create your tests here.
 class GmetaTests(TestCase):
 
@@ -47,4 +51,4 @@ class GmetaTests(TestCase):
             self.assertIn(key, self.dataset.search_metadata)
 
     def test_load_gmeta_has_expected_detailed_gmeta(self):
-        self.assertEqual({}, self.dataset.detailed_metadata())
+        self.assertEqual(example_detailed_metadata(), self.dataset.detailed_metadata())
