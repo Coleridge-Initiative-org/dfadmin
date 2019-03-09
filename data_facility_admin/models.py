@@ -779,8 +779,6 @@ class Dataset(LdapObject):
                                         on_delete=models.PROTECT,
                                         help_text='The database schema that this dataset should be '
                                                   'stored to.')
-    public = models.BooleanField(default=False, help_text='Check this if everyone should '
-                                                          'have access to this dataset.')
     dataset_id = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
     name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
 
@@ -801,10 +799,11 @@ class Dataset(LdapObject):
                       'This information is internal.'
     vault_volume = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True, null=True,
                                     help_text=VAULT_VOLUME_HELP_TEXT)
+    public = models.BooleanField(default=False, help_text='Check this if everyone should '
+                                                          'have access to this dataset.')
     needs_review = models.BooleanField(default=False)
-    shareable = models.BooleanField(default=True,
-                                    help_text='Indicates if this dataset can be shared with '
-                                              'other users.')
+    available = models.BooleanField(default=True,
+                                    help_text='Indicates if this dataset available to be listed for usage.')
     temporal_coverage_start = models.DateField(blank=True, null=True)
     temporal_coverage_end = models.DateField(blank=True, null=True)
     data_ingested_at = models.DateField(blank=True, null=True)
