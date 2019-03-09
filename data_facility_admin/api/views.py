@@ -25,7 +25,7 @@ class DatasetViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `detail` actions.
     """
-    queryset = models.Dataset.objects.all().order_by('dataset_id')
+    queryset = models.Dataset.objects.filter(available=True).order_by('dataset_id')
     serializer_class = serializers.DatasetSerializer
     filter_fields = ('dataset_id', 'name', 'public', 'data_provider', 'data_classification')
     search_fields = ('name', 'dataset_id', 'data_provider__name', 'description')

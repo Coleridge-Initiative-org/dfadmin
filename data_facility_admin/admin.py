@@ -167,7 +167,7 @@ class DatasetAdmin(SimpleHistoryAdmin):
     list_display = ('dataset_id', 'name', 'active_stewards', 'data_classification', 'public', 'database_schema')
     search_fields = ('dataset_id', 'name', 'data_classification', 'ldap_name',
                      'ldap_id', 'public', 'database_schema__name')
-    list_filter = ['data_classification', 'shareable', 'data_provider', 'public']
+    list_filter = ['data_classification', 'available', 'data_provider', 'public']
     inlines = [DatasetAgreementInline, DataStewardInline, DatasetAccessInline]
     readonly_fields = ['ldap_id', 'ldap_name']
 
@@ -271,8 +271,8 @@ class ProjectRoleAdmin(SimpleHistoryAdmin):
 @admin.register(ProjectTool)
 class ProjectToolAdmin(SimpleHistoryAdmin):
     """Admin Manager for model ProjectTool"""
-    search_fields = ('project', 'tool_name', 'other_name', 'additional_info')
-    list_display = ('project', 'name', 'additional_info')
+    search_fields = ('project__name', 'tool_name', 'other_name', 'additional_info')
+    list_display = ('project', 'tool_name', 'other_name', 'additional_info')
     list_filter = ['tool_name']
 
 
