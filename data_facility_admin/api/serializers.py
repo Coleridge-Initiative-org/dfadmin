@@ -82,7 +82,7 @@ class DatasetSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
 
     class Meta:
         model = Dataset
-        fields = ('dataset_id', 'name', 'description', 'dataset_citation', 'version', 'storage_location', 'shareable',
+        fields = ('dataset_id', 'name', 'description', 'dataset_citation', 'version', 'storage_location', 'available',
                   'expiration', 'data_classification', 'report_frequency',
                   'created_at', 'updated_at', 'expiration', 'temporal_coverage_start', 'temporal_coverage_end',
                   'data_ingested_at', 'data_updated_at',
