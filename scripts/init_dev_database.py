@@ -69,15 +69,12 @@ def import_from_adrf_csv(file_name):
                     try:
                         ds = DataSteward(user=u, dataset=dataset, start_date=timezone.now())
                         ds.save()
-                    except:
+                    except Exception:
                         pass
                 if row[headers['data_provider']]:
                     dp = create_or_get_data_provider(row[headers['data_provider']])
                     dataset.data_provider = dp
                 # dataset.save()
-
-
-
 
 
 def grab_nyc_open_data_datasets():

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User, UserManager
 from django.db import IntegrityError
 from django.test import Client, TestCase
 # from django.test import SimpleTestCase
+from parameterized import parameterized
 
 from .models import DfRole
 from data_facility_admin import models
@@ -54,7 +55,7 @@ class AdminSiteTests(TestCase):
         response = Client().post('/login/', {'name': 'dfadmin', 'passwd': 'dfadmin'})
         self.assertEqual(200, response.status_code)
 
-# List Page
+    # List Page
 
     def test_list_data_agreement_signature(self):
         self.assertEqual(200, self.clnt.get('/data_facility_admin/dataagreementsignature/').status_code)
@@ -89,7 +90,7 @@ class AdminSiteTests(TestCase):
     def test_list_database_schema(self):
         self.assertEqual(200, self.clnt.get('/data_facility_admin/databaseschema/').status_code)
 
-# List Page - search
+    # List Page - search
 
     def test_search_users(self):
         self.assertEqual(200, self.clnt.get('/data_facility_admin/user/?q=a').status_code)
@@ -124,7 +125,7 @@ class AdminSiteTests(TestCase):
     def test_search_database_schema(self):
         self.assertEqual(200, self.clnt.get('/data_facility_admin/databaseschema/?q=a').status_code)
 
-# Add Page
+    # Add Page
 
     def test_add_data_agreement_signature(self):
         self.assertEqual(200,
@@ -166,3 +167,57 @@ class AdminSiteTests(TestCase):
         ma = ModelAdmin(DfRole, self.site)
         self.assertEqual(set(ma.get_form(request).base_fields),
                          {'ldap_name', 'name', 'description'})
+
+    ERROR_MESSAGE = 'Error accessing {0} page for model: {1}.'
+    MODELS = [
+        ('/data_facility_admin/', 'User',),
+        ('/data_facility_admin/', 'DFRole',),
+        ('/data_facility_admin/', 'TermsOfUse',),
+        ('/data_facility_admin/', 'Training',),
+        ('/data_facility_admin/', 'ProfileTag',),
+        ('/data_facility_admin/', 'Project',),
+        ('/data_facility_admin/', 'ProjectRole',),
+        ('/data_facility_admin/', 'ProjectTool', ),
+        ('/data_facility_admin/', 'Dataset', ),
+        ('/data_facility_admin/', 'DataProvider', ),
+        ('/data_facility_admin/', 'DataSteward', ),
+        ('/data_facility_admin/', 'DatabaseSchema', ),
+        ('/data_facility_admin/', 'DataAgreement', ),
+        ('/data_facility_admin/', 'DataAgreementSignature', ),
+        ('/data_facility_admin/', 'DatasetAccess', ),
+        ('/data_facility_admin/', 'Keyword', ),
+        ('/data_facility_admin/', 'DataClassification', ),
+        # ('DataStore', ),
+        # ('DataType', ),
+        # ('FileFormat', ),
+        # ('File', ),
+        # ('StorageType', ),
+    ]
+
+    @parameterized.expand(MODELS)
+    def test_admin_page_list_model(self, model_path, model_name):
+        try:
+            self.assertEqual(200, self.clnt.get(model_path + model_name.lower() + '/').status_code,
+                             AdminSiteTests.ERROR_MESSAGE.format('list', model_name))
+        except Exception as ex:
+            print(AdminSiteTests.ERROR_MESSAGE.format('list', model_name))
+            raise ex
+
+    @parameterized.expand(MODELS)
+    def test_admin_page_search_model(self, model_path, model_name):
+        try:
+            self.assertEqual(200, self.clnt.get(model_path + model_name.lower() + '/?q=a').status_code,
+                             AdminSiteTests.ERROR_MESSAGE.format('search', model_name))
+        except Exception as ex:
+            print(AdminSiteTests.ERROR_MESSAGE.format('search', model_name))
+            raise ex
+
+    @parameterized.expand(MODELS)
+    def test_admin_page_add_model(self, model_path, model_name):
+        try:
+            self.assertEqual(200, self.clnt.get(model_path + model_name.lower() + '/add/').status_code,
+                             AdminSiteTests.ERROR_MESSAGE.format('add', model_name))
+        except Exception as ex:
+            print(AdminSiteTests.ERROR_MESSAGE.format('add', model_name))
+            raise ex
+
