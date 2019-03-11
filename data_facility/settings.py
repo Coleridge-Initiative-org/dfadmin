@@ -222,6 +222,7 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'localhost:8088',
     'docker.for.mac.localhost',
+    'vision.adrf.info',
 )
 
 # ----------------- DJANGO AJAX SELECT -------------------------
