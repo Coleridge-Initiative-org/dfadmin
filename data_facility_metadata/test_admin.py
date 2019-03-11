@@ -7,8 +7,7 @@ from django.test import Client, TestCase
 # from django.test import SimpleTestCase
 from parameterized import parameterized
 
-from .models import DfRole
-from data_facility_admin import models
+from data_facility_metadata import models
 
 # pylint: disable:too-few-public-methods
 
@@ -55,30 +54,13 @@ class AdminSiteTests(TestCase):
         response = Client().post('/login/', {'name': 'dfadmin', 'passwd': 'dfadmin'})
         self.assertEqual(200, response.status_code)
 
-    def test_df_role_model_admin_has_fields(self):
-        ma = ModelAdmin(DfRole, self.site)
-        self.assertEqual(set(ma.get_form(request).base_fields),
-                         {'ldap_name', 'name', 'description'})
-
     ERROR_MESSAGE = 'Error accessing {0} page for model: {1}.'
     MODELS = [
-        ('User', '/data_facility_admin/',),
-        ('DFRole', '/data_facility_admin/',),
-        ('TermsOfUse', '/data_facility_admin/',),
-        ('Training', '/data_facility_admin/',),
-        ('ProfileTag', '/data_facility_admin/',),
-        ('Project', '/data_facility_admin/',),
-        ('ProjectRole', '/data_facility_admin/',),
-        ('ProjectTool', '/data_facility_admin/',),
-        ('Dataset', '/data_facility_admin/',),
-        ('DataProvider', '/data_facility_admin/',),
-        ('DataSteward', '/data_facility_admin/',),
-        ('DatabaseSchema', '/data_facility_admin/',),
-        ('DataAgreement', '/data_facility_admin/',),
-        ('DataAgreementSignature', '/data_facility_admin/',),
-        ('DatasetAccess', '/data_facility_admin/',),
-        ('Keyword', '/data_facility_admin/',),
-        ('DataClassification', '/data_facility_admin/',),
+        ('DataStore', '/data_facility_metadata/',),
+        ('DataType', '/data_facility_metadata/',),
+        ('FileFormat', '/data_facility_metadata/',),
+        ('File', '/data_facility_metadata/',),
+        ('StorageType', '/data_facility_metadata/',),
     ]
 
     @parameterized.expand(MODELS)
