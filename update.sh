@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Stop current service
+# Stop current service and kill processes if pending
 sudo supervisorctl stop dfadmin && \
+pkill '/usr/bin/uwsgi --ini /opt/dfadmin_config/deploy/adrf/uwsgi.ini' -f && \
 
 # Upgrade pip and install new requirements
 env/bin/pip install --upgrade pip && \
