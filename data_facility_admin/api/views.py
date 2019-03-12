@@ -34,16 +34,33 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class DatasetViewSet(viewsets.ModelViewSet):
     """
     Search is based on 'name', 'dataset_id', 'data_provider__name', 'description'.
+
+    Additional filters:
+        - access_type: Public (Green), Restricted (Restricted Green) or Private (Yellow)
     """
-    queryset = models.Dataset.objects.filter(available=True).order_by('dataset_id')
     serializer_class = serializers.DatasetSerializer
     filter_fields = ('dataset_id', 'name', 'public', 'data_provider__name', 'data_classification',
-                     'category__name',)
+                     'category__name')
     search_fields = ('name', 'dataset_id', 'data_provider__name', 'description')
     ordering = ('name',)
     ordering_fields = ('name', 'dataset_id')
     lookup_field = 'dataset_id'
     lookup_url_kwarg = 'dataset_id'
+
+    def get_queryset(self):
+        """
+        Retrieve datasets respecting ACLs.
+        """
+        queryset = models.Dataset.objects.filter(available=True)
+        access_type = self.request.query_params.get('access_type', None)
+        logger.debug('Access_type filter: %s' % access_type)
+        if access_type:
+            from data_facility_admin import metadata_serializer
+            data_classification = metadata_serializer.data_classification_to_model(access_type)
+            logger.debug('Filter queryset also by data classification = %s' % data_classification)
+            queryset = queryset.filter(data_classification=data_classification)
+            logger.debug('QUERYSET.query=%s' % queryset.query)
+        return queryset
 
 
 class UserViewSet(viewsets.ModelViewSet):
