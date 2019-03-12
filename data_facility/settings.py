@@ -194,6 +194,7 @@ ADMIN_REORDER = (
                    )},
     {'app': 'data_facility_admin', 'label': 'Data',
      'models': ('data_facility_admin.Dataset',
+                'data_facility_admin.Category',
                 'data_facility_admin.DataProvider',
                 'data_facility_admin.DataSteward',
                 'data_facility_admin.DatabaseSchema',
