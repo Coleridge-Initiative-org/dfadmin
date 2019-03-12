@@ -7,7 +7,9 @@ from rest_framework.authtoken.models import Token
 from simple_history.admin import SimpleHistoryAdmin
 from .models import *
 from .actions import *
-
+from django.contrib import admin
+from django.contrib.postgres import fields
+from django_json_widget.widgets import JSONEditorWidget
 
 admin.site.site_header = 'Data Facility Admin'
 admin.site.site_title = 'Data Facility Admin'
@@ -104,6 +106,12 @@ class DataProviderAdmin(SimpleHistoryAdmin):
     inlines = [DatasetInline]
 
 
+@admin.register(Category)
+class CategoryAdmin(SimpleHistoryAdmin):
+    """Admin Manager for model DataProvider"""
+    list_display = ('name',)
+    search_fields = ('name',)
+
 
 @admin.register(ProfileTag)
 class ProfileTagAdmin(SimpleHistoryAdmin):
@@ -153,9 +161,6 @@ class DatabaseSchemaAdmin(SimpleHistoryAdmin):
     search_fields = ('name',)
     list_filter = ['public']
 
-from django.contrib import admin
-from django.contrib.postgres import fields
-from django_json_widget.widgets import JSONEditorWidget
 
 @admin.register(Dataset)
 class DatasetAdmin(SimpleHistoryAdmin):
@@ -164,7 +169,8 @@ class DatasetAdmin(SimpleHistoryAdmin):
         fields.JSONField: {'widget': JSONEditorWidget},
     }
 
-    list_display = ('dataset_id', 'name', 'active_stewards', 'data_classification', 'public', 'database_schema')
+    list_display = ('dataset_id', 'name', 'active_stewards', 'data_classification', 'public', 'database_schema',
+                    'data_provider')
     search_fields = ('dataset_id', 'name', 'data_classification', 'ldap_name',
                      'ldap_id', 'public', 'database_schema__name')
     list_filter = ['data_classification', 'available', 'data_provider', 'public']
