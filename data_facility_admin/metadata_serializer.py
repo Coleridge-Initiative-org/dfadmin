@@ -6,12 +6,12 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-FieldMapping = namedtuple('FieldMapping', ['dataset', 'gmeta', 'mapping'])
+FieldMapping = namedtuple('FieldMapping', ['dataset', 'gmeta', 'to_model', 'to_json'])
 DATA_CLASSIFICATION_MAPPING = [
-    FieldMapping(Dataset.DATA_CLASSIFICATION_GREEN, 'Public', None),
-    FieldMapping(Dataset.DATA_CLASSIFICATION_RESTRICTED_GREEN, 'Restricted', None),
-    FieldMapping(Dataset.DATA_CLASSIFICATION_YELLOW, 'Private', None),
-    FieldMapping(Dataset.DATA_CLASSIFICATION_RED, None, None),
+    FieldMapping(Dataset.DATA_CLASSIFICATION_GREEN, 'Public', None, None),
+    FieldMapping(Dataset.DATA_CLASSIFICATION_RESTRICTED_GREEN, 'Restricted', None, None),
+    FieldMapping(Dataset.DATA_CLASSIFICATION_YELLOW, 'Private', None, None),
+    FieldMapping(Dataset.DATA_CLASSIFICATION_RED, None, None, None),
 ]
 DATA_PROVIDER_KEY = 'data_provider'
 CATEGORY_KEY = 'category'
@@ -25,10 +25,12 @@ def data_classification_to_metadata(data_classification=None):
 
 
 def data_classification_to_model(data_classification=None):
-    map = {mapping.gmeta: mapping.dataset for mapping in DATA_CLASSIFICATION_MAPPING}
-    # print map
-    # print('data_classification_to_metadata=', data_classification_to_metadata)
-    return map.get(data_classification, None)
+    map = {mapping.gmeta.lower(): mapping.dataset for mapping in DATA_CLASSIFICATION_MAPPING if mapping.gmeta is not None}
+    print map
+    value = map.get(data_classification.lower(), None)
+    print('data_classification_to_model(%s)=%s' % (data_classification, map.get(data_classification, None)))
+
+    return value
 
 
 def __get_classification_model(gmeta_classification):
@@ -46,6 +48,7 @@ def __get_data_provider(data_provider_name):
         dp.save()
         return dp
 
+
 def __get_category(category_name):
     logger.debug('Category: %s' % category_name)
 
@@ -58,13 +61,21 @@ def __get_category(category_name):
         return o
 
 
+def __name_if_not_none(value):
+    logger.debug('Value to get name or None: %s' % value)
+    return value.name if value else None
+
+
 DIRECT_FIELD_MAPPINGS = [
-    FieldMapping('name', 'title', None),
-    FieldMapping('description', 'description', None),
-    FieldMapping('dataset_id', 'dataset_id', None),
-    FieldMapping('version', 'dataset_version', None),
-    FieldMapping('dataset_citation', 'dataset_citation', None),
-    # FieldMapping('data_provider', 'data_provider', __get_data_provider),
+    FieldMapping('name', 'title', None, None),
+    FieldMapping('description', 'description', None, None),
+    FieldMapping('dataset_id', 'dataset_id', None, None),
+    FieldMapping('version', 'dataset_version', None, None),
+    FieldMapping('dataset_citation', 'dataset_citation', None, None),
+    FieldMapping('category', 'category', __get_category, __name_if_not_none),
+    FieldMapping('data_provider', 'data_provider', __get_data_provider, __name_if_not_none),
+    FieldMapping('data_classification', 'data_classification',
+                 __get_classification_model, data_classification_to_metadata),
     # FieldMapping('keywords', 'keywords'),
 ]
 
@@ -99,8 +110,8 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
             logger.debug('Dataset field "{0}" from gmeta field "{1}" = {2}'.format(field_mapping.dataset,
                                                                                    field_mapping.gmeta,
                                                                                    value))
-            if field_mapping.mapping:
-                value = field_mapping.mapping(value)
+            if field_mapping.to_model:
+                value = field_mapping.to_model(value)
             # Set attribute on dataset and then remove the field from gmeta to avoid duplicates
             setattr(dataset, field_mapping.dataset, value)
             search_content.pop(field_mapping.gmeta, None)
@@ -108,11 +119,6 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
 
         except UnicodeEncodeError as ex:
             setattr(dataset, field_mapping.dataset, value.encode('ascii', 'ignore'))
-
-    # Add other fields that need nested entities
-    dataset.data_classification = __get_classification_model(search_content['data_classification'])
-    dataset.data_provider = __get_data_provider(search_content[DATA_PROVIDER_KEY])
-    dataset.category = __get_category(search_content[CATEGORY_KEY])
 
     dataset.search_gmeta = search_content
     dataset.detailed_gmeta = detailed_content
@@ -131,7 +137,8 @@ def dumps(dataset):
         metadata.update(dataset.search_gmeta)
     for field_mapping in DIRECT_FIELD_MAPPINGS:
         value = getattr(dataset, field_mapping.dataset, None)
+        if field_mapping.to_json:
+            value = field_mapping.to_json(value)
         metadata[field_mapping.gmeta] = value
-    metadata[DATA_PROVIDER_KEY] = dataset.data_provider.name if dataset.data_provider else None
     return metadata
 
