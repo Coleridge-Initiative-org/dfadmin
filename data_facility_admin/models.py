@@ -770,13 +770,30 @@ class DataClassification(models.Model):
         ordering = ['name']
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
+
+    # Automatic Fields
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    history = HistoricalRecords()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = "categories"
+
+
 class Dataset(LdapObject):
     ''' This model will be refactored on the future to represent the whole dataset,
         considering files and variables.
     '''
-    data_provider = models.ForeignKey(DataProvider, null=True, blank=True, on_delete=models.PROTECT)
+    data_provider = models.ForeignKey(DataProvider, null=True, blank=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
     database_schema = models.ForeignKey(DatabaseSchema, null=True, blank=True,
-                                        on_delete=models.PROTECT,
+                                        on_delete=models.CASCADE,
                                         help_text='The database schema that this dataset should be '
                                                   'stored to.')
     dataset_id = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
@@ -917,6 +934,11 @@ class Dataset(LdapObject):
 
     def active_stewards(self):
         return [s.user for s in self.datasteward_set.all() if s.is_active()]
+
+    @property
+    def access_type(self):
+        from data_facility_admin import metadata_serializer
+        return metadata_serializer.data_classification_to_metadata(self.data_classification)
 
     @property
     def search_metadata(self):

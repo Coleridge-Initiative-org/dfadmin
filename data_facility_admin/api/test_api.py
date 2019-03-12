@@ -197,6 +197,7 @@ class ApiClientTests(TestCase):
     MODELS = [
         ('User', '/data_facility_admin/',),
         ('DFRole', '/data_facility_admin/',),
+        ('Category', '/data_facility_admin/',),
         # ('TermsOfUse', '/data_facility_admin/',),
         # ('Training', '/data_facility_admin/',),
         # ('ProfileTag', '/data_facility_admin/',),

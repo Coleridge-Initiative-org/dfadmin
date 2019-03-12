@@ -70,6 +70,7 @@ class AdminSiteTests(TestCase):
         ('Project', '/data_facility_admin/',),
         ('ProjectRole', '/data_facility_admin/',),
         ('ProjectTool', '/data_facility_admin/',),
+        ('Category', '/data_facility_admin/',),
         ('Dataset', '/data_facility_admin/',),
         ('DataProvider', '/data_facility_admin/',),
         ('DataSteward', '/data_facility_admin/',),
