@@ -1,4 +1,4 @@
-from data_facility_admin.models import Dataset, DataProvider
+from data_facility_admin.models import Dataset, DataProvider, Category
 from collections import namedtuple
 import json
 
@@ -6,21 +6,33 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
-
-DATA_CLASSIFICATION_MAPPING = {
-    'Public': Dataset.DATA_CLASSIFICATION_GREEN,
-    'Restricted': Dataset.DATA_CLASSIFICATION_RESTRICTED_GREEN,
-    '?': Dataset.DATA_CLASSIFICATION_YELLOW,
-    '??': Dataset.DATA_CLASSIFICATION_RED,
-}
+FieldMapping = namedtuple('FieldMapping', ['dataset', 'gmeta', 'mapping'])
+DATA_CLASSIFICATION_MAPPING = [
+    FieldMapping(Dataset.DATA_CLASSIFICATION_GREEN, 'Public', None),
+    FieldMapping(Dataset.DATA_CLASSIFICATION_RESTRICTED_GREEN, 'Restricted', None),
+    FieldMapping(Dataset.DATA_CLASSIFICATION_YELLOW, 'Private', None),
+    FieldMapping(Dataset.DATA_CLASSIFICATION_RED, None, None),
+]
 DATA_PROVIDER_KEY = 'data_provider'
+CATEGORY_KEY = 'category'
+
+
+def data_classification_to_metadata(data_classification=None):
+    map = {mapping.dataset: mapping.gmeta for mapping in DATA_CLASSIFICATION_MAPPING}
+    # print map
+    # print('metadata_data_classification=', metadata_data_classification)
+    return map.get(data_classification, Dataset.DATA_CLASSIFICATION_RED)
+
+
+def data_classification_to_model(data_classification=None):
+    map = {mapping.gmeta: mapping.dataset for mapping in DATA_CLASSIFICATION_MAPPING}
+    # print map
+    # print('data_classification_to_metadata=', data_classification_to_metadata)
+    return map.get(data_classification, None)
 
 
 def __get_classification_model(gmeta_classification):
-    if gmeta_classification in DATA_CLASSIFICATION_MAPPING:
-        return DATA_CLASSIFICATION_MAPPING[gmeta_classification]
-    return None
+    return data_classification_to_model(gmeta_classification)
 
 
 def __get_data_provider(data_provider_name):
@@ -34,8 +46,18 @@ def __get_data_provider(data_provider_name):
         dp.save()
         return dp
 
+def __get_category(category_name):
+    logger.debug('Category: %s' % category_name)
 
-FieldMapping = namedtuple('FieldMapping', ['dataset', 'gmeta', 'mapping'])
+    try:
+        return Category.objects.get(name=category_name)
+    except Category.DoesNotExist:
+        logger.info('Created Category: %s' % category_name)
+        o = Category(name=category_name)
+        o.save()
+        return o
+
+
 DIRECT_FIELD_MAPPINGS = [
     FieldMapping('name', 'title', None),
     FieldMapping('description', 'description', None),
@@ -90,6 +112,7 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
     # Add other fields that need nested entities
     dataset.data_classification = __get_classification_model(search_content['data_classification'])
     dataset.data_provider = __get_data_provider(search_content[DATA_PROVIDER_KEY])
+    dataset.category = __get_category(search_content[CATEGORY_KEY])
 
     dataset.search_gmeta = search_content
     dataset.detailed_gmeta = detailed_content

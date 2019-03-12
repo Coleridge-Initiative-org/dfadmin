@@ -21,14 +21,26 @@ class DfRoleViewSet(viewsets.ModelViewSet):
     # lookup_url_kwarg = 'ldap_name'
 
 
+class CategoryViewSet(viewsets.ModelViewSet):
+    """
+    Search based on name.
+    """
+    queryset = models.Category.objects.all().order_by('dataset_id')
+    serializer_class = serializers.CategorySerializer
+    search_fields = ('name')
+    ordering = ('name',)
+
+
 class DatasetViewSet(viewsets.ModelViewSet):
     """
-    This viewset automatically provides `list` and `detail` actions.
+    Search is based on 'name', 'dataset_id', 'data_provider__name', 'description'.
     """
     queryset = models.Dataset.objects.filter(available=True).order_by('dataset_id')
     serializer_class = serializers.DatasetSerializer
-    filter_fields = ('dataset_id', 'name', 'public', 'data_provider', 'data_classification')
+    filter_fields = ('dataset_id', 'name', 'public', 'data_provider__name', 'data_classification',
+                     'category__name',)
     search_fields = ('name', 'dataset_id', 'data_provider__name', 'description')
+    ordering = ('name',)
     ordering_fields = ('name', 'dataset_id')
     lookup_field = 'dataset_id'
     lookup_url_kwarg = 'dataset_id'

@@ -1,4 +1,4 @@
-from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider
+from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider, Category
 from rest_framework import serializers
 from drf_dynamic_fields import DynamicFieldsMixin
 import logging
@@ -65,9 +65,16 @@ class DataProviderSerializer(DFAdminModelSerializerWithId):
         fields = '__all__'
 
 
+class CategorySerializer(DFAdminModelSerializerWithId):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+
 class DatasetSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     INCLUDE_DETAILS = 'include_detailed_metadata'
 
+    category = CategorySerializer()
     db_schema = serializers.ReadOnlyField(source='db_schema_name')
     adrf_id = serializers.ReadOnlyField(source='ldap_name')
     data_provider_name = serializers.ReadOnlyField(source='data_provider__name')
@@ -82,8 +89,10 @@ class DatasetSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
 
     class Meta:
         model = Dataset
-        fields = ('dataset_id', 'name', 'description', 'dataset_citation', 'version', 'storage_location', 'available',
-                  'expiration', 'data_classification', 'report_frequency',
+        fields = ('dataset_id', 'name', 'description', 'dataset_citation', 'version',
+                  'category',
+                  'storage_location', 'available',
+                  'expiration', 'data_classification', 'access_type', 'report_frequency',
                   'created_at', 'updated_at', 'expiration', 'temporal_coverage_start', 'temporal_coverage_end',
                   'data_ingested_at', 'data_updated_at',
                   'adrf_id', 'db_schema', 'db_schema_public', 'curator_permissions',
