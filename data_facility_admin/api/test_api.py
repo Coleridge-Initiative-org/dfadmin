@@ -141,13 +141,43 @@ class ApiTests(TestCase):
         response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
         self.assertEqual(status.HTTP_200_OK, response.status_code)
 
-    def test_api_dataset_list_omit_detailed_metadata(self):
+    def test_api_dataset_list_param_omit_detailed_metadata(self):
         request = self.factory.get(API_BASE + 'datasets/?omit=detailed_metadata', format='json')
         force_authenticate(request, user=self.user)
         response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
         self.assertEqual(status.HTTP_200_OK, response.status_code)
 
-    def test_api_dataset_detail_fields_metadata(self):
+    def test_api_dataset_list_param_access_type(self):
+        request = self.factory.get(API_BASE + 'datasets/?access_type=private', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_list_param_data_provider_name(self):
+        request = self.factory.get(API_BASE + 'datasets/?data_provider__name=a', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_list_param_category(self):
+        request = self.factory.get(API_BASE + 'datasets/?category__name=a', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_list_param_limit(self):
+        request = self.factory.get(API_BASE + 'datasets/?limit=1', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_list_param_offset(self):
+        request = self.factory.get(API_BASE + 'datasets/?offset=1', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_detail_param_fields_metadata(self):
         request = self.factory.get(API_BASE + 'datasets/1/?fields=detailed_metadata', format='json')
         force_authenticate(request, user=self.user)
         response = api_views.DatasetViewSet.as_view({'get': 'list'})(request, pk=1).render()
