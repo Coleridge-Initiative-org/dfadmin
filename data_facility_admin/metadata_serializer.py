@@ -1,4 +1,4 @@
-from data_facility_admin.models import Dataset, DataProvider, Category
+from data_facility_admin.models import Dataset, DataProvider, Category, Keyword
 from collections import namedtuple
 import json
 
@@ -26,9 +26,9 @@ def data_classification_to_metadata(data_classification=None):
 
 def data_classification_to_model(data_classification=None):
     map = {mapping.gmeta.lower(): mapping.dataset for mapping in DATA_CLASSIFICATION_MAPPING if mapping.gmeta is not None}
-    print map
+    # print map
     value = map.get(data_classification.lower(), None)
-    print('data_classification_to_model(%s)=%s' % (data_classification, map.get(data_classification, None)))
+    # print('data_classification_to_model(%s)=%s' % (data_classification, map.get(data_classification, None)))
 
     return value
 
@@ -66,12 +66,42 @@ def __name_if_not_none(value):
     return value.name if value else None
 
 
+def __to_date(s):
+    import datetime
+    return datetime.datetime.strptime(s, "%Y").date()
+
+
+def __get_year(d):
+    return d.year if d is not None else None
+
+
+def __to_keywords(keywords_list):
+    keywords = []
+    for keywork in keywords_list:
+        try:
+            k = Keyword.objects.get(name=keywork)
+        except Keyword.DoesNotExist:
+            k = Keyword(name=keywork)
+            k.save()
+        keywords.append(k)
+    return keywords
+
+
+def __keywords_to_list(dataset_keywords):
+    return [k.name for k in dataset_keywords.all()] if keywords else []
+
+DATASET_ID_FIELD = 'dataset_id'
 DIRECT_FIELD_MAPPINGS = [
     FieldMapping('name', 'title', None, None),
     FieldMapping('description', 'description', None, None),
-    FieldMapping('dataset_id', 'dataset_id', None, None),
+    FieldMapping(DATASET_ID_FIELD, DATASET_ID_FIELD, None, None),
     FieldMapping('version', 'dataset_version', None, None),
     FieldMapping('dataset_citation', 'dataset_citation', None, None),
+    FieldMapping('source_url', 'source_url', None, None),
+    FieldMapping('source_archive', 'source_archive', None, None),
+    # FieldMapping('keywords', 'keywords', __to_keywords, __keywords_to_list),
+    FieldMapping('temporal_coverage_start', 'temporal_coverage_start', __to_date, __get_year),
+    FieldMapping('temporal_coverage_end', 'temporal_coverage_end', __to_date, __get_year),
     FieldMapping('category', 'category', __get_category, __name_if_not_none),
     FieldMapping('data_provider', 'data_provider', __get_data_provider, __name_if_not_none),
     FieldMapping('data_classification', 'data_classification',
@@ -88,7 +118,6 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
     :return:
     """
     # print('Gmeta: \n %s' % json.dumps(search_gmeta, indent=4))
-    dataset = given_dataset if given_dataset else Dataset()
     # The first key on gmeta is the item id. Gmeta is prepared to return a list of metadata.
     # So we need to get the first in this case.
     gmeta_data = search_gmeta[0][search_gmeta[0].keys()[0]]
@@ -101,11 +130,20 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
     mimetype = gmeta_data['mimetype']
     search_content = gmeta_data['content']
 
+    # Prep dataset if not given.
+    if given_dataset:
+        dataset = given_dataset
+    else:
+        try:
+            dataset = Dataset.objects.get(dataset_id=search_content[DATASET_ID_FIELD])
+        except Dataset.DoesNotExist:
+            dataset = Dataset()
+
     # Load fields with direct Mapping
     for field_mapping in DIRECT_FIELD_MAPPINGS:
         try:
             value = search_content[field_mapping.gmeta]
-            #If there is a method to map, call it.
+            # If there is a method to map, call it.
 
             logger.debug('Dataset field "{0}" from gmeta field "{1}" = {2}'.format(field_mapping.dataset,
                                                                                    field_mapping.gmeta,
