@@ -7,7 +7,7 @@ from . import serializers
 from django.shortcuts import get_object_or_404
 
 import logging
-from django_filters import rest_framework as filters
+# from django_filters import rest_framework as filters
 from django.db.models import Q
 
 logger = logging.getLogger(__name__)
@@ -44,12 +44,14 @@ class DatasetViewSet(viewsets.ModelViewSet):
         - access_type: Public (Green), Restricted (Restricted Green) or Private (Yellow)
         - category__name: name of the category. Can be a single value or multiple '|' separated.
         - data_provider__name: name of the data provider. Can be a single value or multiple '|' separated.
+        - start_date and end_date: to filter datasets by temporal_coverage
     """
-    filter_backends = (filters.DjangoFilterBackend,)
+    # filter_backends = (filters.DjangoFilterBackend,)
     serializer_class = serializers.DatasetSerializer
-    filter_fields = ('dataset_id', 'name', 'public', 'data_classification',
-                     # 'category__name',
-                     # 'data_provider__name',
+    filter_fields = ('dataset_id',
+                     'name',
+                     'public',
+                     'data_classification',
                      )
     # filterset_fields = ('category__name',)
     # filterset_fields = {'category__name': ['exact']}
@@ -97,8 +99,15 @@ class DatasetViewSet(viewsets.ModelViewSet):
             for c in providers:
                 q_filter = q_filter | Q(data_provider__name=c) if q_filter else Q(data_provider__name=c)
             queryset = queryset.filter(q_filter)
-            logger.debug('Added filter Data Provider')
-            logger.debug(q_filter)
+
+        # Start and End Date
+        start_date = self.request.query_params.get('start_date', None)
+        end_date = self.request.query_params.get('end_date', None)
+        if start_date:
+            queryset = queryset.filter(temporal_coverage_start__year__gte=int(start_date))
+        if end_date:
+            queryset = queryset.filter(temporal_coverage_end__year__lte=int(end_date))
+
 
         request_user = self.request.user
         logger.debug('Current user: %s' % request_user)
