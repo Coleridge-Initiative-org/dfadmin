@@ -1,3 +1,4 @@
+from django_filters import filters
 from rest_framework import mixins, generics, viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
@@ -6,7 +7,11 @@ from . import serializers
 from django.shortcuts import get_object_or_404
 
 import logging
+from django_filters import rest_framework as filters
+from django.db.models import Q
+
 logger = logging.getLogger(__name__)
+
 
 # TODO: Add API versioning: https://www.django-rest-framework.org/api-guide/versioning/
 
@@ -37,10 +42,26 @@ class DatasetViewSet(viewsets.ModelViewSet):
 
     Additional filters:
         - access_type: Public (Green), Restricted (Restricted Green) or Private (Yellow)
+        - category__name: name of the category. Can be a single value or multiple '|' separated.
+        - data_provider__name: name of the data provider. Can be a single value or multiple '|' separated.
     """
+    filter_backends = (filters.DjangoFilterBackend,)
     serializer_class = serializers.DatasetSerializer
-    filter_fields = ('dataset_id', 'name', 'public', 'data_provider__name', 'data_classification',
-                     'category__name')
+    filter_fields = ('dataset_id', 'name', 'public', 'data_classification',
+                     # 'category__name',
+                     # 'data_provider__name',
+                     )
+    # filterset_fields = ('category__name',)
+    # filterset_fields = {'category__name': ['exact']}
+
+    # filterset_fields = {'dataset_id': ['exact'],
+    #                     'name': ['exact'],
+    #                     'public': ['exact'],
+    #                     'data_classification': ['exact'],
+    #                     'category__name': ['exact'],
+    #                     'data_provider__name': ['exact'],
+    #                     'temporal_coverage_start__year': ['gte'],
+    #                     'temporal_coverage_end__year': ['lte']}
     search_fields = ('name', 'dataset_id', 'data_provider__name', 'description')
     ordering = ('name',)
     ordering_fields = ('name', 'dataset_id')
@@ -60,6 +81,28 @@ class DatasetViewSet(viewsets.ModelViewSet):
             logger.debug('Filter queryset also by data classification = %s' % data_classification)
             queryset = queryset.filter(data_classification=data_classification)
             logger.debug('QUERYSET.query=%s' % queryset.query)
+
+        # Categories
+        if self.request.query_params.get('category__name', None):
+            categories = self.request.query_params.get('category__name', '').split('|')
+            q_filter = None
+            for c in categories:
+                q_filter = q_filter | Q(category__name=c) if q_filter else Q(category__name=c)
+            queryset = queryset.filter(q_filter)
+
+        # Data Provider
+        if self.request.query_params.get('data_provider__name', None):
+            providers = self.request.query_params.get('data_provider__name', '').split('|')
+            q_filter = None
+            for c in providers:
+                q_filter = q_filter | Q(data_provider__name=c) if q_filter else Q(data_provider__name=c)
+            queryset = queryset.filter(q_filter)
+            logger.debug('Added filter Data Provider')
+            logger.debug(q_filter)
+
+        request_user = self.request.user
+        logger.debug('Current user: %s' % request_user)
+
         return queryset
 
 
@@ -74,7 +117,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.UserSerializer
     filter_fields = ('first_name', 'last_name', 'email', 'ldap_name')
     search_fields = ('first_name', 'last_name',)
-    ordering_fields = ('first_name', 'last_name', )
+    ordering_fields = ('first_name', 'last_name',)
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
@@ -90,7 +133,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
                      'projectmember__member__first_name',
                      'projectmember__member__last_name',
                      )
-    ordering_fields = ('name', 'owner', )
+    ordering_fields = ('name', 'owner',)
 
 
 class DataStewardViewSet(viewsets.ModelViewSet):

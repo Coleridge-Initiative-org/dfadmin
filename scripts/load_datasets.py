@@ -71,10 +71,11 @@ def update_or_create_datasets(datasets):
 
 
 def save_or_update(dataset):
-    fields_to_update = ['data_provider', 'name', 'description',
-                        'data_classification', 'search_gmeta', 'detailed_gmeta',
-                        'version', 'dataset_citation', 'category',
-                        ]
+    # fields_to_update = ['data_provider', 'name', 'description',
+    #                     'data_classification', 'search_gmeta', 'detailed_gmeta',
+    #                     'version', 'dataset_citation', 'category',
+    #                     ]
+    fields_to_update = (mapping.dataset for mapping in metadata_serializer.DIRECT_FIELD_MAPPINGS)
     try:
         db_dataset = Dataset.objects.get(dataset_id=dataset.dataset_id)
         for attr in fields_to_update:
