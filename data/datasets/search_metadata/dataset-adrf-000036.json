@@ -1,0 +1,66 @@
+{
+    "gmeta": [
+        {
+            "adrf-000036": {
+                "mimetype": "application/json",
+                "content": {
+                    "temporal_coverage_end": "2015",
+                    "files_total": 1,
+                    "data_classification": "Restricted",
+                    "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.",
+                    "geographical_coverage": [
+                        "Illinois"
+                    ],
+                    "keywords": [
+                        "criminal justice system",
+                        "inmates",
+                        "jail",
+                        "correctional facilities",
+                        "health",
+                        "employment",
+                        "demographics",
+                        "offenses"
+                    ],
+                    "dataset_id": "adrf-000036",
+                    "category": "Inmate Populations",
+                    "dataset_version": 1,
+                    "title": "Illinois Department of Corrections (DOC) Parolee address data - 2009-2015",
+                    "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.",
+                    "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU",
+                    "data_steward": "Julia Lane",
+                    "access_requirements": "You must be enrolled in an ADRF class to access these data.",
+                    "description": "Location information for persons active in the Illinois parole system from 2009 to 2015. A given person could have multiple rows in this table, one per year they were on parole. Each row contains a latitude/longitude coordinate based on the parolee\u2019s address on file (redacted from this file), as well as additional information on original and derived county, city, and zip code and metadata that indicates who confident we are that the point corresponds to the address. Because the parole system doesn\u2019t include historical data, parolees who exited the system before 2009 won\u2019t be represented in this data set.\n\nFrom IDOC:\nplease note you are receiving parolee address information as of the last day of the FY for all active parolees for the added period in question. There are some cautions associated with address data including; some parolees are showing as AWOL which means the parolee is currently not residing at a known/approved location. In addition, some addresses are actually county jail addresses where parolees are being held pending new criminal charges. Some addresses are treatment facilities, recovery homes, or homeless shelters where offenders may be residing temporarily. Finally, some address are merely places where the parolee meets with the agent but does not actually reside. While it is our policy to verify addresses to the best of our ability, there are a number of offenders who do not wish us to know where they really reside and as such, utilize the address of a family member or friend who they know will provide assurance that the parolee resides there. Also please note, addresses are input by Agents so there are always possibilities that human errors are contained in the dataset. These are a few of the reasons why we do not create policy based on address, as a number of our parolees live a transient lifestyle and do not necessarily reside where they work or commit new crimes.\n\nThe summary of this dataset\u2019s fields is a sample of records only. Please access the full dataset in course database table: il_doc_parole\n",
+                    "source_url": "",
+                    "geographical_unit": [
+                        "State",
+                        "Point",
+                        "City",
+                        "Zip Code"
+                    ],
+                    "related_articles": [
+                        "rc-000001",
+                        "rc-000003",
+                        "rc-000005",
+                        "rc-000009",
+                        "rc-000010"
+                    ],
+                    "data_provider": "Illinois Department of Corrections",
+                    "dataset_documentation": [
+                        ""
+                    ],
+                    "dataset_version_date": 1488823197,
+                    "source_archive": "",
+                    "dataset_citation": "Illinois Department of Corrections, 2016, \"Illinois Department of Corrections (DOC) Parolee address data - 2009-2015\", Applied Data Analytics Course [Distributor], 1 [Version]",
+                    "reference_url": "https://www.illinois.gov/idoc/Pages/default.aspx",
+                    "temporal_coverage_start": "2009",
+                    "file_names": [
+                        "adrf-000036.csv"
+                    ]
+                },
+                "visible_to": [
+                    "dataset-adrf-000036"
+                ]
+            }
+        }
+    ]
+}

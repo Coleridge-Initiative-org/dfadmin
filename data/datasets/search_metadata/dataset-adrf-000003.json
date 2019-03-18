@@ -1,0 +1,61 @@
+{
+    "gmeta": [
+        {
+            "adrf-000003": {
+                "mimetype": "application/json",
+                "content": {
+                    "temporal_coverage_end": "2015",
+                    "files_total": 1,
+                    "data_classification": "Restricted",
+                    "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.",
+                    "geographical_coverage": [
+                        "Illinois"
+                    ],
+                    "keywords": [
+                        "income",
+                        "welfare",
+                        "poverty",
+                        "socioeconomics"
+                    ],
+                    "dataset_id": "adrf-000003",
+                    "category": "Economic Characteristics",
+                    "dataset_version": 1,
+                    "title": "Illinois Department of Employment Security (IDES) Unemployment Insurance (UI) wage records - 2005-2015",
+                    "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.",
+                    "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU",
+                    "data_steward": "Julia Lane",
+                    "access_requirements": "You must be enrolled in an ADRF class to access these data.",
+                    "description": "Quarterly records of wages for every job held by each person in the state of Illinois from 2005 to 2015. This data is derived from the Illinois Dept. of Employment Security (IDES) Unemployment Insurance (UI) wage file that the Local Employment Dynamics (LED) state partners supply to the Census department for use in producing Quarterly Workforce Indicators (QWI). See attached data dictionary for field details.\n\nThe summary of this dataset\u2019s fields is a sample of records only. Please access the full dataset in course database table: il_wage",
+                    "source_url": "",
+                    "geographical_unit": [
+                        "State"
+                    ],
+                    "related_articles": [
+                        "rc-000001",
+                        "rc-000002",
+                        "rc-000064",
+                        "rc-000065",
+                        "rc-000066",
+                        "rc-000067",
+                        "rc-000068"
+                    ],
+                    "data_provider": "Illinois Department of Employment Security, US Census Bureau",
+                    "dataset_documentation": [
+                        "ides_wage_data_dictionary.pdf"
+                    ],
+                    "dataset_version_date": 1488823197,
+                    "source_archive": "",
+                    "dataset_citation": "Illinois Department of Economic Security, US Census Bureau, 2016, \"Illinois Department of Employment Security (IDES) Unemployment Insurance (UI) wage records - 2005-2015\", Applied Data Analytics Course [Distributor], 1 [Version]",
+                    "reference_url": "http://www.ides.illinois.gov/Pages/Unemployment%20Insurance.aspx",
+                    "temporal_coverage_start": "2005",
+                    "file_names": [
+                        "adrf-000003.csv"
+                    ]
+                },
+                "visible_to": [
+                    "dataset-adrf-000003"
+                ]
+            }
+        }
+    ]
+}

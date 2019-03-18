@@ -128,7 +128,7 @@ class UserLDAPSerializer(object):
 
     @staticmethod
     def dumps(user):
-        user_dn = str("uid=%s,%s,%s" % (user.username(), settings.LDAP_USER_SEARCH,
+        user_dn = str("uid=%s,%s,%s" % (user.username, settings.LDAP_USER_SEARCH,
                                         settings.LDAP_BASE_DN))
         data = {
             'objectClass': settings.LDAP_SETTINGS['Users']['ObjectClasses'],
@@ -136,7 +136,7 @@ class UserLDAPSerializer(object):
             # 'uidNumber': "%s" % get_max_uid_number() + 1),
             'loginShell': [settings.LDAP_SETTINGS['Users']['DefaultLoginShell']],
             'homeDirectory': [settings.LDAP_SETTINGS['Users']['DefaultHomeDirectory']
-                                  .format(user.username())],
+                                  .format(user.username)],
             'nda': [settings.LDAP_SETTINGS['Users']['DefaultNDA']],
         }
         for df_key, ldap_key in settings.USER_LDAP_MAP.iteritems():
@@ -238,7 +238,7 @@ class UserPrivateGroupLDAPSerializer(object):
 
     @staticmethod
     def dumps(user):
-        dn = str("cn=%s,%s,%s" % (user.username(), settings.LDAP_GROUP_SEARCH, settings.LDAP_BASE_DN))
+        dn = str("cn=%s,%s,%s" % (user.username, settings.LDAP_GROUP_SEARCH, settings.LDAP_BASE_DN))
 
         data = {
             'objectClass': settings.LDAP_SETTINGS['UserPrivateGroups']['ObjectClasses'],

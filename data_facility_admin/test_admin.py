@@ -5,6 +5,7 @@ from django.contrib.auth.models import User, UserManager
 from django.db import IntegrityError
 from django.test import Client, TestCase
 # from django.test import SimpleTestCase
+from parameterized import parameterized
 
 from .models import DfRole
 from data_facility_admin import models
@@ -54,115 +55,57 @@ class AdminSiteTests(TestCase):
         response = Client().post('/login/', {'name': 'dfadmin', 'passwd': 'dfadmin'})
         self.assertEqual(200, response.status_code)
 
-# List Page
-
-    def test_list_data_agreement_signature(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dataagreementsignature/').status_code)
-
-    def test_list_data_agreements(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dataagreement/').status_code)
-
-    def test_list_dataset_access(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/datasetaccess/').status_code)
-
-    def test_list_datasets(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dataset/').status_code)
-
-    def test_list_profile_tags(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/profiletag/').status_code)
-
-    def test_list_research_projects(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/project/').status_code)
-
-    def test_list_roles(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dfrole/').status_code)
-
-    def test_list_terms_of_use(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/termsofuse/').status_code)
-
-    def test_list_training(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/training/').status_code)
-
-    def test_list_users(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/user/').status_code)
-
-    def test_list_database_schema(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/databaseschema/').status_code)
-
-# List Page - search
-
-    def test_search_users(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/user/?q=a').status_code)
-
-    def test_search_data_agreement_signature(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dataagreementsignature/?q=a').status_code)
-
-    def test_search_data_agreements(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dataagreement/?q=a').status_code)
-
-    def test_search_dataset_access(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/datasetaccess/?q=a').status_code)
-
-    def test_search_datasets(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dataset/?q=a').status_code)
-
-    def test_search_profile_tags(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/profiletag/?q=a').status_code)
-
-    def test_search_research_projects(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/project/?q=a').status_code)
-
-    def test_search_roles(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dfrole/?q=a').status_code)
-
-    def test_search_terms_of_use(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/termsofuse/?q=a').status_code)
-
-    def test_search_training(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/training/?q=a').status_code)
-
-    def test_search_database_schema(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/databaseschema/?q=a').status_code)
-
-# Add Page
-
-    def test_add_data_agreement_signature(self):
-        self.assertEqual(200,
-                         self.clnt.get('/data_facility_admin/dataagreementsignature/add/').status_code)
-
-    def test_add_data_agreement(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dataagreement/add/').status_code)
-
-    def test_add_dataset_access(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/datasetaccess/add/').status_code)
-
-    def test_add_dataset(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dataset/add/').status_code)
-
-    def test_add_profile_tag(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/profiletag/add/').status_code)
-
-    def test_add_research_project(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/project/add/').status_code)
-
-    def test_add_role(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/dfrole/add/').status_code)
-
-    # TODO: Add test for signed terms of use from user page.
-
-    def test_add_terms_of_use(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/termsofuse/add/').status_code)
-
-    def test_add_training(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/training/add/').status_code)
-
-    def test_add_user(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/user/add/').status_code)
-
-    def test_add_database_schema(self):
-        self.assertEqual(200, self.clnt.get('/data_facility_admin/databaseschema/add/').status_code)
-
     def test_df_role_model_admin_has_fields(self):
         ma = ModelAdmin(DfRole, self.site)
         self.assertEqual(set(ma.get_form(request).base_fields),
                          {'ldap_name', 'name', 'description'})
+
+    ERROR_MESSAGE = 'Error accessing {0} page for model: {1}.'
+    MODELS = [
+        ('User', '/data_facility_admin/',),
+        ('DFRole', '/data_facility_admin/',),
+        ('TermsOfUse', '/data_facility_admin/',),
+        ('Training', '/data_facility_admin/',),
+        ('ProfileTag', '/data_facility_admin/',),
+        ('Project', '/data_facility_admin/',),
+        ('ProjectRole', '/data_facility_admin/',),
+        ('ProjectTool', '/data_facility_admin/',),
+        ('Category', '/data_facility_admin/',),
+        ('Dataset', '/data_facility_admin/',),
+        ('DataProvider', '/data_facility_admin/',),
+        ('DataSteward', '/data_facility_admin/',),
+        ('DatabaseSchema', '/data_facility_admin/',),
+        ('DataAgreement', '/data_facility_admin/',),
+        ('DataAgreementSignature', '/data_facility_admin/',),
+        ('DatasetAccess', '/data_facility_admin/',),
+        ('Keyword', '/data_facility_admin/',),
+        ('DataClassification', '/data_facility_admin/',),
+    ]
+
+    @parameterized.expand(MODELS)
+    def test_admin_page_list_model(self, model_name, model_path):
+        try:
+            self.assertEqual(200, self.clnt.get(model_path + model_name.lower() + '/').status_code,
+                             AdminSiteTests.ERROR_MESSAGE.format('list', model_name))
+        except Exception as ex:
+            print(AdminSiteTests.ERROR_MESSAGE.format('list', model_name))
+            raise ex
+
+    @parameterized.expand(MODELS)
+    def test_admin_page_search_model(self, model_name, model_path):
+        try:
+            self.assertEqual(200, self.clnt.get(model_path + model_name.lower() + '/?q=a').status_code,
+                             AdminSiteTests.ERROR_MESSAGE.format('search', model_name))
+        except Exception as ex:
+            print(AdminSiteTests.ERROR_MESSAGE.format('search', model_name))
+            raise ex
+
+    @parameterized.expand(MODELS)
+    def test_admin_page_add_model(self, model_name, model_path):
+        try:
+            self.assertEqual(200, self.clnt.get(model_path + model_name.lower() + '/add/').status_code,
+                             AdminSiteTests.ERROR_MESSAGE.format('add', model_name))
+        except Exception as ex:
+            print(AdminSiteTests.ERROR_MESSAGE.format('add', model_name))
+            raise ex
+

@@ -1,0 +1,56 @@
+{
+    "gmeta": [
+        {
+            "adrf-000011": {
+                "mimetype": "application/json",
+                "content": {
+                    "temporal_coverage_end": "2015",
+                    "files_total": 1,
+                    "data_classification": "Public",
+                    "access_actions_required": "No further actions required to access this dataset",
+                    "geographical_coverage": [
+                        "USA"
+                    ],
+                    "keywords": [
+                        "census",
+                        "demographics",
+                        "geospatial",
+                        "population"
+                    ],
+                    "dataset_id": "adrf-000011",
+                    "category": "Demographic Characteristics",
+                    "dataset_version": 1,
+                    "title": "American Community Survey 2015 5yr estimates - ACS DEMOGRAPHIC AND HOUSING ESTIMATES",
+                    "data_usage_policy": "This dataset is intended for public access and use.",
+                    "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU",
+                    "data_steward": "Drew Gordon",
+                    "access_requirements": "No access restrictions on this dataset",
+                    "description": "The American Community Survey (ACS) is part of the U.S. Census Bureau's Decennial Census Program and is designed to provide current demographic, social, economic, and housing estimates throughout the decade. Table DP05 provides demographic characteristics: the number of people by age, sex, race and of voting age.",
+                    "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml#none",
+                    "geographical_unit": [
+                        "Census Tract"
+                    ],
+                    "related_articles": [
+                        "rc-000068"
+                    ],
+                    "data_provider": "US Census Bureau",
+                    "dataset_documentation": [
+                        "ACS_15_5YR_DP05.txt",
+                        "ACS_15_5YR_DP05_metadata.csv"
+                    ],
+                    "dataset_version_date": 1488823173,
+                    "source_archive": "American FactFinder",
+                    "dataset_citation": "US Census Bureau, 2010, \"American Community Survey 2015 5yr estimates - ACS DEMOGRAPHIC AND HOUSING ESTIMATES\", https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml#none, US Census Bureau American FactFinder [Distributor], 1 [Version]",
+                    "reference_url": "http://www.census.gov/programs-surveys/acs/methodology/design-and-methodology.html",
+                    "temporal_coverage_start": "2010",
+                    "file_names": [
+                        "adrf-000011.csv"
+                    ]
+                },
+                "visible_to": [
+                    "public"
+                ]
+            }
+        }
+    ]
+}

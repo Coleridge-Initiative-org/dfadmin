@@ -8,6 +8,9 @@ from data_facility_admin.api import views as api_views
 from data_facility_admin.models import Project, DfRole
 import requests
 from requests.auth import HTTPBasicAuth
+from django.test import tag
+from parameterized import parameterized
+
 
 ADMIN_USERNAME = 'ADMIN'
 ADMIN_PASSWORD = 'PASSWD'
@@ -31,13 +34,10 @@ class ApiTests(TestCase):
         super(ApiTests, cls).setUpClass()
         User.objects.create_superuser(username=ADMIN_USERNAME, password=ADMIN_PASSWORD, email='')
         #
-        test_project = Project(name=PROJECT_NAME,
-                               ldap_name=PROJECT_LDAP_NAME,
-                               abstract=PROJECT_ABSTRACT)
+        test_project = Project(name=PROJECT_NAME, ldap_name=PROJECT_LDAP_NAME, abstract=PROJECT_ABSTRACT)
         test_project.save()
-
-        test_dfrole = DfRole(name=DF_ROLE_NAME,
-                               description=DF_ROLE_DESCRIPTION)
+        #
+        test_dfrole = DfRole(name=DF_ROLE_NAME, description=DF_ROLE_DESCRIPTION)
         test_dfrole.save()
 
     def setUp(self):
@@ -138,23 +138,67 @@ class ApiTests(TestCase):
     def test_api_dataset_list(self):
         request = self.factory.get(API_BASE + 'datasets/', format='json')
         force_authenticate(request, user=self.user)
-        response = api_views.DfRoleViewSet.as_view({'get': 'list'})(request).render()
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
         self.assertEqual(status.HTTP_200_OK, response.status_code)
 
-    def test_api_dfrole_detail(self):
-        request = self.factory.get(API_BASE + 'datasets/1/', format='json')
+    def test_api_dataset_list_param_omit_detailed_metadata(self):
+        request = self.factory.get(API_BASE + 'datasets/?omit=detailed_metadata', format='json')
         force_authenticate(request, user=self.user)
-        response = api_views.DfRoleViewSet.as_view({'get': 'list'})(request, pk=1).render()
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
         self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_list_param_access_type(self):
+        request = self.factory.get(API_BASE + 'datasets/?access_type=private', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_list_param_data_provider_name(self):
+        request = self.factory.get(API_BASE + 'datasets/?data_provider__name=a', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_list_param_category(self):
+        request = self.factory.get(API_BASE + 'datasets/?category__name=a', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_list_param_limit(self):
+        request = self.factory.get(API_BASE + 'datasets/?limit=1', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_list_param_offset(self):
+        request = self.factory.get(API_BASE + 'datasets/?offset=1', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    def test_api_dataset_detail_param_fields_metadata(self):
+        request = self.factory.get(API_BASE + 'datasets/1/?fields=detailed_metadata', format='json')
+        force_authenticate(request, user=self.user)
+        response = api_views.DatasetViewSet.as_view({'get': 'list'})(request, pk=1).render()
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    # def test_api_dataset_has_search_metadata(self):
+    #     request = self.factory.get(API_BASE + 'datasets/', format='json')
+    #     force_authenticate(request, user=self.user)
+    #     response = api_views.DatasetViewSet.as_view({'get': 'list'})(request).render()
+    #     data = response.data['results']
+    #     print('data=', data)
+    #     assert 'search_metadata' in data
 
 # Project
     def test_api_project_list(self):
         request = self.factory.get(API_BASE + 'projects/', format='json')
         force_authenticate(request, user=self.user)
-        response = api_views.DfRoleViewSet.as_view({'get': 'list'})(request).render()
+        response = api_views.ProjectViewSet.as_view({'get': 'list'})(request).render()
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(1, len(response.data['results']))
-        self.assertEqual('test name', response.data['results'][0]['name'])
+        self.assertEqual('test Project', response.data['results'][0]['name'])
 
 
 class ApiClientTests(TestCase):
@@ -171,18 +215,66 @@ class ApiClientTests(TestCase):
         self.client = APIClient()
         self.client.login(username=ADMIN_USERNAME, password=ADMIN_PASSWORD)
 
-    def test_api_client_dfrole_list(self):
-        response = self.client.get(reverse('dfrole-list', args=[]), format='json')
+    # def test_api_client_dfrole_list(self):
+    #     response = self.client.get(reverse('dfrole-list', args=[]), format='json')
+    #     self.assertEqual(status.HTTP_200_OK, response.status_code)
+    #
+    # def test_api_project_list(self):
+    #     response = self.client.get(reverse('project-list', args=[]), format='json')
+    #     self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+    # Some APIs for models were not created yet, so they're commented.
+    MODELS = [
+        ('User', '/data_facility_admin/',),
+        ('DFRole', '/data_facility_admin/',),
+        ('Category', '/data_facility_admin/',),
+        # ('TermsOfUse', '/data_facility_admin/',),
+        # ('Training', '/data_facility_admin/',),
+        # ('ProfileTag', '/data_facility_admin/',),
+        ('Project', '/data_facility_admin/',),
+        # ('ProjectRole', '/data_facility_admin/',),
+        # ('ProjectTool', '/data_facility_admin/',),
+        ('Dataset', '/data_facility_admin/',),
+        ('DataProvider', '/data_facility_admin/',),
+        ('DataSteward', '/data_facility_admin/',),
+        # ('DatabaseSchema', '/data_facility_admin/',),
+        # ('DataAgreement', '/data_facility_admin/',),
+        # ('DataAgreementSignature', '/data_facility_admin/',),
+        # ('DatasetAccess', '/data_facility_admin/',),
+        # ('Keyword', '/data_facility_admin/',),
+        # ('DataClassification', '/data_facility_admin/',),
+    ]
+
+    @parameterized.expand(MODELS)
+    def test_api_list_model(self, model_name, model_path):
+        response = self.client.get(reverse(model_name.lower() + '-list', args=[]), format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
 
-    def test_api_project_list(self):
-        response = self.client.get(reverse('project-list', args=[]), format='json')
+    @parameterized.expand(MODELS)
+    def test_api_list_search_model(self, model_name, model_path):
+        response = self.client.get(reverse(model_name.lower() + '-list', args=[]), search='a', format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
 
-# Token Authentication
+    # @parameterized.expand(MODELS)
+    # def test_api_detail_model(self, model_name, model_path):
+    #     response = self.client.get(reverse(model_name.lower() + '-detail', args=[]), format='json')
+    #     self.assertEqual(status.HTTP_200_OK, response.status_code)
+
+
+class ApiAuthorizationTests(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super(ApiAuthorizationTests, cls).setUpClass()
+        # TODO: Move this admin creation to Test Fixtures
+        User.objects.create_superuser(username=ADMIN_USERNAME, password=ADMIN_PASSWORD, email='')
+        test_dfrole = DfRole(name=DF_ROLE_NAME, description=DF_ROLE_DESCRIPTION)
+        test_dfrole.save()
+
+    # Token Authentication
     def test_token_authentication(self):
         # Create token
-        token = Token.objects.create(user=User.objects.get(username=ADMIN_USERNAME))
+        admin = User.objects.get(username=ADMIN_USERNAME)
+        token = Token.objects.create(user=admin)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         response = client.get(SERVER_URL + API_BASE + 'users/?ldap_name=tdiogo')
