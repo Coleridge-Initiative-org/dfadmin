@@ -13,10 +13,23 @@ import errno
 import ldap
 from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 from decouple import config, Csv
+import json
+#from six.moves.urllib import request
+#from cryptography.x509 import load_pem_x509_certificate
+#from cryptography.hazmat.backends import default_backend
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 ENV = config('ENV', 'PRODUCTION')
+ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
+                      'LOCAL': 'gray',
+                      'DEVELOPMENT': 'green'}
+ENVIRONMENT_COLOR = 'black'
+if config('ENVIRONMENT_COLOR', None):
+    ENVIRONMENT_COLOR = config('ENVIRONMENT_COLOR')
+    if config('ENVIRONMENT_COLOR') in ENVIRONMENT_COLORS:
+        ENVIRONMENT_COLOR = ENVIRONMENT_COLORS[ENV]
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 CHAR_FIELD_MAX_LENGTH = 256
 TEXT_FIELD_MAX_LENGTH = 1024
@@ -102,13 +115,21 @@ INSTALLED_APPS = (
     'simple_history',
     'rest_framework.authtoken',
     'rest_framework',
+    'rest_framework_jwt',
     'django_filters',
     'rest_framework_swagger',
     'ajax_select',
     'nested_admin',
     'corsheaders',
+    'data_facility_integrations',
+    'graphene_django',
+    'django_json_widget',
     # 'django.contrib.admindocs.middleware.XViewMiddleware',
 )
+
+GRAPHENE = {
+    'SCHEMA': 'data_facility.schema.schema' # Where your Graphene schema lives
+}
 
 
 MIDDLEWARE_CLASSES = (
@@ -144,6 +165,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                'data_facility_admin.context_processors.from_settings',
             ],
             # 'connect_timeout': 5,
         },
@@ -172,6 +194,7 @@ ADMIN_REORDER = (
                    )},
     {'app': 'data_facility_admin', 'label': 'Data',
      'models': ('data_facility_admin.Dataset',
+                'data_facility_admin.Category',
                 'data_facility_admin.DataProvider',
                 'data_facility_admin.DataSteward',
                 'data_facility_admin.DatabaseSchema',
@@ -188,36 +211,42 @@ ADMIN_REORDER = (
 )
 
 # ----------------- DJANGO GRAPPELLI -------------------------
-GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin'
+GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin < {0} >'.format(ADRF_SYSTEM_NAME)
 
 # ----------------- CORS Config for Vue -------------------------
 # Based on: https://www.techiediaries.com/django-cors/
 CORS_ORIGIN_ALLOW_ALL = False
 
+# TODO Configure the whitelist properly:
+#  https://github.com/ottoyiu/django-cors-headers/#configuration
 CORS_ORIGIN_WHITELIST = (
-    'http//:localhost',
-    'http://docker.for.mac.localhost',
+    'localhost:8000',
+    'localhost:8088',
+    'docker.for.mac.localhost',
+    'vision.adrf.info',
 )
 
 # ----------------- DJANGO AJAX SELECT -------------------------
-AJAX_SELECT_BOOTSTRAP = True
+AJAX_SELECT_BOOTSTRAP = False
 AJAX_SELECT_INLINES = 'inline'
 
 # ----------------- API: DJANGO REST FRAMEWORK -------------------------
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         # Only authenticated users
-        'rest_framework.permissions.IsAdminUser',
-        'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.IsAdminUser',
+        #'rest_framework.permissions.IsAuthenticated',
 
         # Use Django's standard `django.contrib.auth` permissions,
         # or allow read-only access for unauthenticated users.
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        # 'rest_framework.permissions.DjangoModelPermissions',
+        'data_facility_admin.api.permissions.ADRFPermissions',
     ],
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',
                                 'rest_framework.filters.SearchFilter',
@@ -420,12 +449,13 @@ except OSError as exc:
     if exc.errno == errno.EEXIST and os.path.isdir(LOG_LOCATION):
         pass
 
+LOGIN_URL='/login'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(message)s'
+            'format': '%(levelname)s %(asctime)s [%(module)s] %(message)s'
         },
         'django.server': {
             '()': 'django.utils.log.ServerFormatter',
@@ -457,33 +487,38 @@ LOGGING = {
         },
     },
     'loggers': {
-        '': {
-            'handlers': ['file'],
-            'level': 'INFO',
+        # '': {
+        #     'handlers': ['file'],
+        #     'level': LOGGING_LEVEL,
+        #     'propagate': True,
+        # },
+        'rest_framework_jwt': {
+            'handlers': ['file', 'console'],
+            'level': LOGGING_LEVEL,
             'propagate': True,
         },
         'data_facility_metadata': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console'],
+            'level': LOGGING_LEVEL,
+            'propagate': True,
+        },
+        'data_facility_integrations': {
+            'handlers': ['file', 'console'],
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
         'data_facility_admin': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console', 'df_file'],
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
         'django.server': {
             'handlers': ['console'],
             'level': DJANGO_SERVER_LOGGING_LEVEL,
-            'propagate': False,
+            'propagate': True,
         },
         'django': {
             'handlers': ['file'],
-            'level': LOGGING_LEVEL,
-            'propagate': True,
-        },
-        'data_facility_admin': {
-            'handlers': ['df_file'],
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
@@ -492,7 +527,27 @@ LOGGING = {
             'level': LOGGING_LEVEL,
             'propagate': True,
         },
+        'rest_framework_jwt': {
+            'handlers': ['console'],
+            'level': LOGGING_LEVEL,
+            'propagate': True,
+        },
     },
+}
+
+# #from django.auth.models import User
+# def jwt_get_username_from_payload_handler(payload):
+#     if 'preferred_username' in payload:
+#         return payload['preferred_username']
+from data_facility_admin import jwt
+JWT_AUTH = {
+    'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt.jwt_get_username_from_payload_handler,
+    'JWT_PUBLIC_KEY': '-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAnPISCA726xJ4GEI9wZEyVPqOFKmW9L/fqSLywkFDvxrgH6VrPrsV\nHITFSzw5agg+CJ2gQc5BDPq+SmhJv9bVmJ0Uqj56l3Ek+uLJEj8aDHtqKcXD6aNW\ncii3nlJz9r/LrkDYynsm3hAlNEYLXpn5hDnDwLx47dukD5+sUQfcdeSQGhe4ar/L\nHDLI8XYhG860eQiG8Pz4Sd/hf1nAw58Koj+xCmCD2Pcjgh6tm2JBnIkobfjDCadG\nucJLTbVtvXfo15YWABX4PMvKdsY/1q9NY/0BRP+ZmcPrzWNV4iFZDb27s9xfD38U\npeqQ0Mk8+k0XPSpsOLkI5+cxHhUhHNIsyQIDAQAB\n-----END RSA PUBLIC KEY-----\n',
+    'JWT_ALGORITHM': 'RS256',
+    'JWT_AUDIENCE': 'vision',
+    'JWT_ISSUER': "https://meat.adrf.info/auth/realms/master",
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_VERIFY_EXPIRATION': False,
 }
 
 # SHELL_PLUS = "ipython"
@@ -504,4 +559,8 @@ SHELL_PLUS_POST_IMPORTS = [
     ('rest_framework.authtoken.models', 'Token'),
 ]
 
+RDS_INTEGRATION = config('RDS_INTEGRATION', cast=bool, default=False)
+WS_K8S_INTEGRATION = config('WS_K8S_INTEGRATION', cast=bool, default=False)
+
+DFAFMIN_API_GENERIC_GROUP = config('DFAFMIN_API_GENERIC_GROUP', default='Authenticated')
 print ('DEBUG=', DEBUG)

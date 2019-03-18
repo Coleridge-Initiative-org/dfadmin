@@ -1,0 +1,64 @@
+{
+    "gmeta": [
+        {
+            "adrf-000001": {
+                "mimetype": "application/json",
+                "content": {
+                    "temporal_coverage_end": "2015",
+                    "files_total": 1,
+                    "data_classification": "Restricted",
+                    "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.",
+                    "geographical_coverage": [
+                        "Illinois"
+                    ],
+                    "keywords": [
+                        "criminal justice system",
+                        "inmates",
+                        "jail",
+                        "correctional facilities",
+                        "health",
+                        "employment",
+                        "demographics",
+                        "offenses"
+                    ],
+                    "dataset_id": "adrf-000001",
+                    "category": "Inmate Populations",
+                    "dataset_version": 1,
+                    "title": "Illinois Department of Corrections (DOC) Inmate Admissions 1990-2015",
+                    "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Corrections (IDOC). The user shall not attempt to re-identify individuals represented in the data and agree to not disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDOC before export from this system.",
+                    "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU",
+                    "data_steward": "Julia Lane",
+                    "access_requirements": "You must be enrolled in an ADRF class to access these data.",
+                    "description": "Detailed transactional data of each time a person was admitted to an Illinois Department of Corrections (DOC) facility from 1990 to 2015. Variables include demographic, charges, sentencing, conduct, security level, health and mental health status, gang affiliation. Data are collected using correctional facility data and court records. See data dictionary documentation for detailed description of all fields.\n\nThe summary of this dataset\u2019s fields is a sample of records only. Please access the full dataset in course database table: ildoc_admit",
+                    "source_url": "",
+                    "geographical_unit": [
+                        "State",
+                        "Zip Code"
+                    ],
+                    "related_articles": [
+                        "rc-000001",
+                        "rc-000003",
+                        "rc-000005",
+                        "rc-000009",
+                        "rc-000010"
+                    ],
+                    "data_provider": "Illinois Department of Corrections",
+                    "dataset_documentation": [
+                        "idoc_admissions_data_dictionary.pdf"
+                    ],
+                    "dataset_version_date": 1488823197,
+                    "source_archive": "",
+                    "dataset_citation": "Illinois Department of Corrections, 2016, \"Illinois Department of Corrections (DOC) Inmate Admissions 1990-2015\", Applied Data Analytics Course [Distributor], 1 [Version]",
+                    "reference_url": "https://www.illinois.gov/idoc/Pages/default.aspx",
+                    "temporal_coverage_start": "1990",
+                    "file_names": [
+                        "adrf-000001.csv"
+                    ]
+                },
+                "visible_to": [
+                    "dataset-adrf-000001"
+                ]
+            }
+        }
+    ]
+}
