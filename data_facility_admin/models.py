@@ -1,23 +1,27 @@
 '''DfAdmin Django models'''
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User as DjangoUser
 from django.core.validators import RegexValidator, URLValidator, EmailValidator
 from django.db import models
 from django.db.models import Max, Q
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
-# from django.db.models import FileField
 from django.conf import settings
-from django.utils.text import slugify
 from simple_history.models import HistoricalRecords
 import unicodedata
 from datetime import date
 import hashlib
 from model_utils import Choices
-
+from django.contrib.postgres.fields import JSONField
+from django.utils.text import slugify
 CHAR_FIELD_MAX_LENGTH = settings.CHAR_FIELD_MAX_LENGTH
 TEXT_FIELD_MAX_LENGTH = settings.TEXT_FIELD_MAX_LENGTH
 
 MISSING_INFO_FLAG = '_Undefined_'
 SEARCH_HELP_TEXT = 'Enter Text to Search'
+
+import logging
+logger = logging.getLogger(__name__)
 
 
 class LdapObject(models.Model):
@@ -129,8 +133,7 @@ class DfRole(LdapObject):
     def active_usernames(self):
         '''return a list of all active users checking their statuses.'''
         # TODO: this method should be renamed to active_user_df_roles
-        return [u for u in self.active_users().values_list('user__ldap_name', flat=True)]
-
+        return [u.user.username for u in self.active_users()]
 
     def ldap_full_dn(self):
         return "cn={0},{1},{2}".format(self.ldap_name,
@@ -161,8 +164,7 @@ class User(LdapObject):
     ''' Represents the Data Facility User.
         Should never be deleted, but only disabled.
     '''
-    # user = models.OneToOneField(User, blank=True, null=True)
-    # username = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
+    django_user = models.OneToOneField(DjangoUser, blank=True, null=True)
 
     first_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
     last_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
@@ -255,7 +257,15 @@ class User(LdapObject):
             if self.contractor:
                 self.ldap_name += '_ctr'
 
-        super(User, self).save(*args, **kwargs)
+        return super(User, self).save(*args, **kwargs)
+
+    def save_without_historical_record(self, *args, **kwargs):
+        self.skip_history_when_saving = True
+        try:
+            ret = self.save(*args, **kwargs)
+        finally:
+            del self.skip_history_when_saving
+        return ret
 
     def role(self):
         try:
@@ -268,6 +278,7 @@ class User(LdapObject):
                                         settings.LDAP_SETTINGS['Users']['BaseDn'],
                                         settings.LDAP_BASE_DN)
 
+    @property
     def username(self):
         return self.ldap_name
 
@@ -290,10 +301,41 @@ class User(LdapObject):
             return None
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name + " (" + self.username() + ")"
+        return self.first_name + ' ' + self.last_name + " (" + self.username + ")"
 
     class Meta:
-        ordering = ['first_name', 'last_name']
+        ordering = ['first_name', 'last_name', 'ldap_name', 'email']
+
+
+@receiver(post_save, sender=User)
+def create_django_user(sender, instance, created, **kwargs):
+    if created:
+        du = DjangoUser.objects.create(username=instance.ldap_name,
+                                  first_name=instance.first_name,
+                                  last_name=instance.last_name,
+                                  email=instance.email,
+                                  )
+        instance.django_user = du
+        instance.save()
+        logger.info('Created DjangoUser for User: %s' % instance)
+
+
+@receiver(post_save, sender=User)
+def save_django_user(sender, instance, **kwargs):
+    try:
+        django_user = DjangoUser.objects.get(username=instance.ldap_name)
+        django_user.first_name = instance.first_name
+        django_user.last_name = instance.last_name
+        django_user.email = instance.email
+        django_user.save()
+        logger.info('Updated DjangoUser for User: %s' % instance)
+
+    except DjangoUser.DoesNotExist as ex:
+        kwargs['created'] = True
+        create_django_user(sender, instance, kwargs)
+
+    except Exception as ex:
+        logger.error('Error while updating DjangoUser for User: %s' % instance, exec_info=True)
 
 
 class UserDfRole(models.Model):
@@ -318,6 +360,10 @@ class UserDfRole(models.Model):
                 return self.begin <= timezone.now()
         else:
             return False
+
+    @property
+    def username(self):
+        return self.user.username
 
     def __str__(self):
         return '%s: %s (%s)' % (self.user, self.role, self.active())
@@ -370,7 +416,8 @@ class Project(LdapObject):
         It has a group of users and tools associated with it.
     '''
     PROJECT_PREFIX = 'project-'
-    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.PROTECT, help_text=SEARCH_HELP_TEXT)
+    requester = models.ForeignKey(User, null=True, blank=True, related_name='requester')
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, help_text=SEARCH_HELP_TEXT)
     parent_project = models.ForeignKey('self', null=True, blank=True,
                                        on_delete=models.PROTECT, help_text=SEARCH_HELP_TEXT)
     # TODO: Add validation: instructors is only for project type Class
@@ -383,7 +430,9 @@ class Project(LdapObject):
     name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
     abstract = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH)
     methodology = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
-    expected_outcomes = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
+    question = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
+    mission = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
+    outcomes = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
     STATUS_NEW = 'Pending Approval'
     STATUS_ACTIVE = 'Active'
     STATUS_ARCHIVED = 'Archived'
@@ -432,6 +481,9 @@ class Project(LdapObject):
     updated_at = models.DateTimeField(auto_now=True)
     history = HistoricalRecords()
 
+    def is_active(self):
+        return self.status == Project.STATUS_ACTIVE
+
     def db_schema(self):
         return self.ldap_name.replace(Project.PROJECT_PREFIX, '')
 
@@ -477,13 +529,13 @@ class Project(LdapObject):
         # Project Instructors have write permissions by default.
         if self.instructors:
             for mr in self.instructors.active_users():
-                member_permissions.append({'username': mr.user.username(),
+                member_permissions.append({'username': mr.user.username,
                                            'system_role': ProjectRole.SYSTEM_ROLE_WRITER})
         instructor_usernames = [mp['username'] for mp in member_permissions]
         # Member permissions depend on associated project role.
         for pm in self.projectmember_set.all():
-            if pm.member in active_members and pm.member.username() not in instructor_usernames:
-                member_permissions.append({'username': pm.member.username(),
+            if pm.member in active_members and pm.member.username not in instructor_usernames:
+                member_permissions.append({'username': pm.member.username,
                                            'system_role': pm.role.system_role})
 
         return member_permissions
@@ -584,35 +636,33 @@ class ProjectTool(models.Model):
 
     ADDITIONAL_INFO_HELP = 'Additional info, such as database name. In case it does not follow ' \
                            'the Data Facility convention.'
-    additional_info = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True,
+    additional_info = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True, null=True,
                                        help_text=ADDITIONAL_INFO_HELP)
+    system_info = JSONField(blank=True, null=True)
+
     REQUEST_ID_HELP_TEXT = 'Id for from the ticketing system (if not the same from project ' \
                            'creation), so it is possible to trace back if more info is needed.'
-    request_id = models.IntegerField(default=None, blank=True, null=True,
-                                     help_text=REQUEST_ID_HELP_TEXT)
-    TOOL_GIT = 'Git Lab'
-    TOOL_DATABASE_PG = 'Postgres'
-    TOOL_DATABASE_ORACLE = 'Oracle'
-    TOOL_FILESYSTEM = 'POSIX'
-    TOOL_OTHER = 'Other'
-    TOOL_CHOICES = (
-        (TOOL_GIT, TOOL_GIT),
-        (TOOL_DATABASE_PG, TOOL_DATABASE_PG),
-        (TOOL_DATABASE_ORACLE, TOOL_DATABASE_ORACLE),
-        (TOOL_FILESYSTEM, TOOL_FILESYSTEM),
-        (TOOL_OTHER, TOOL_OTHER),
+    notes = models.TextField(blank=True, null=True, help_text=REQUEST_ID_HELP_TEXT)
+    TOOL_CHOICES = Choices(
+        'SelectOne',
+        'GitLab',
+        'Postgres',
+        'PG_RDS',
+        'Oracle',
+        'POSIX',
+        'Other',
+        'Python',
+        'R',
+        'Stata',
+        'Workspace_K8s'
     )
-    tool_name = models.CharField(max_length=10, choices=TOOL_CHOICES, default=TOOL_DATABASE_PG)
-    other_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True,
+
+    tool_name = models.CharField(max_length=100,
+                                 choices=TOOL_CHOICES,
+                                 default=TOOL_CHOICES.SelectOne)
+    other_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH,
+                                  blank=True,
                                   help_text='Specify the tool name if Other is selected.')
-    STATUS_ACTIVE = 'Active'
-    STATUS_DEACTIVATED = 'Deactivated'
-    STATUS_CHOICES = (
-        (STATUS_ACTIVE, STATUS_ACTIVE),
-        (STATUS_DEACTIVATED, STATUS_DEACTIVATED),
-    )
-    status = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, choices=STATUS_CHOICES,
-                              default=STATUS_ACTIVE)
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
@@ -620,7 +670,7 @@ class ProjectTool(models.Model):
     history = HistoricalRecords()
 
     def name(self):
-        if self.tool_name is ProjectTool.TOOL_OTHER:
+        if self.tool_name is ProjectTool.TOOL_CHOICES.Other:
             return self.other_name
         return self.tool_name
 
@@ -629,17 +679,24 @@ class ProjectTool(models.Model):
 
     class Meta:
         ordering = ['tool_name', 'other_name']
+        unique_together = ('project', 'tool_name')
 
 
 class DataProvider(models.Model):
     ''' Represent the Owner of the data or the user which added the date to the System. '''
     name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
+    slug = models.SlugField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True, null=True)
 
+    @property
     def datasets_count(self):
         return self.dataset_set.all().count()
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(DataProvider, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['name']
@@ -713,19 +770,36 @@ class DataClassification(models.Model):
         ordering = ['name']
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
+
+    # Automatic Fields
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    history = HistoricalRecords()
+
+    def __str__(self):
+        return self.name
+
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = "categories"
+
+
 class Dataset(LdapObject):
     ''' This model will be refactored on the future to represent the whole dataset,
         considering files and variables.
     '''
-    data_provider = models.ForeignKey(DataProvider, null=True, blank=True, on_delete=models.PROTECT)
+    data_provider = models.ForeignKey(DataProvider, null=True, blank=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
     database_schema = models.ForeignKey(DatabaseSchema, null=True, blank=True,
-                                        on_delete=models.PROTECT,
+                                        on_delete=models.CASCADE,
                                         help_text='The database schema that this dataset should be '
                                                   'stored to.')
-    public = models.BooleanField(default=False, help_text='Check this if everyone should '
-                                                          'have access to this dataset.')
     dataset_id = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
     name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
+
     description = models.TextField(blank=True, null=True)
     dataset_citation = models.TextField(blank=True, null=True)
     version = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True, null=True, default='1')
@@ -743,10 +817,11 @@ class Dataset(LdapObject):
                       'This information is internal.'
     vault_volume = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True, null=True,
                                     help_text=VAULT_VOLUME_HELP_TEXT)
+    public = models.BooleanField(default=False, help_text='Check this if everyone should '
+                                                          'have access to this dataset.')
     needs_review = models.BooleanField(default=False)
-    shareable = models.BooleanField(default=True,
-                                    help_text='Indicates if this dataset can be shared with '
-                                              'other users.')
+    available = models.BooleanField(default=True,
+                                    help_text='Indicates if this dataset available to be listed for usage.')
     temporal_coverage_start = models.DateField(blank=True, null=True)
     temporal_coverage_end = models.DateField(blank=True, null=True)
     data_ingested_at = models.DateField(blank=True, null=True)
@@ -792,6 +867,8 @@ class Dataset(LdapObject):
 
     keywords = models.ManyToManyField(Keyword, blank=True)
 
+    detailed_gmeta = JSONField(blank=True, null=True)
+    search_gmeta = JSONField(blank=True, null=True)
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
@@ -858,6 +935,33 @@ class Dataset(LdapObject):
 
     def active_stewards(self):
         return [s.user for s in self.datasteward_set.all() if s.is_active()]
+
+    @property
+    def access_type(self):
+        from data_facility_admin import metadata_serializer
+        return metadata_serializer.data_classification_to_metadata(self.data_classification)
+
+    @property
+    def search_metadata(self):
+        try:
+            from data_facility_admin import metadata_serializer
+            return metadata_serializer.dumps(self)
+        except Exception as ex:
+            logger.error('Error generating metadata for dataset %s' % self)
+            logger.exception(ex)
+            return None
+
+    def detailed_metadata(self):
+        if self.data_classification == Dataset.DATA_CLASSIFICATION_GREEN and self.detailed_gmeta:
+            logger.debug('Generating detailed metadata: %s' % len(self.detailed_gmeta))
+            metadata_to_return = self.detailed_gmeta.copy()
+            temp_search_metadata = self.search_metadata
+            if temp_search_metadata is not None:
+                logger.debug('Updating detailed metadata with search metadata: %s' % len(temp_search_metadata))
+                metadata_to_return.update(temp_search_metadata)
+            return metadata_to_return
+        else:
+            return None
 
 
 class DataSteward(models.Model):
@@ -1029,6 +1133,14 @@ class DatasetAccess(models.Model):
     def member_url(self):
         return "ldap:///%s?%s?sub?(cn=%s)" % (
             settings.LDAP_BASE_DN, settings.LDAP_GROUP_FIELD_MEMBERS, self.project.ldap_name)
+
+    @property
+    def tools(self):
+        tools = self.projecttool_set.all()
+        if tools:
+            return ['{0}:{1}'.format(t.tool_name, t.system_info ) for t in tools]
+        else:
+            return ''
 
 
 class Training(models.Model):

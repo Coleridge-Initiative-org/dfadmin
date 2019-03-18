@@ -1,0 +1,61 @@
+{
+    "gmeta": [
+        {
+            "adrf-000006": {
+                "mimetype": "application/json",
+                "content": {
+                    "temporal_coverage_end": "2010",
+                    "files_total": 1,
+                    "data_classification": "Public",
+                    "access_actions_required": "No further actions required to access this dataset",
+                    "geographical_coverage": [
+                        "Illinois"
+                    ],
+                    "keywords": [
+                        "census",
+                        "demographics",
+                        "geospatial",
+                        "population",
+                        "socioeconomics"
+                    ],
+                    "dataset_id": "adrf-000006",
+                    "category": "Demographic Characteristics",
+                    "dataset_version": 1,
+                    "title": "Decennial Census Illinois Profile of General Population and Housing Characteristics: 2010",
+                    "data_usage_policy": "This dataset is intended for public access and use.",
+                    "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU",
+                    "data_steward": "Drew Gordon",
+                    "access_requirements": "No access restrictions on this dataset",
+                    "description": "The Demographic Profile Summary File contains 100 percent data asked of all people and about every housing unit on topics such as sex, age, race, Hispanic or Latino origin, household relationship, householdtype, group quarters population, housing occupancy, and housing tenure.",
+                    "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml",
+                    "geographical_unit": [
+                        "Census Tract"
+                    ],
+                    "related_articles": [
+                        "rc-000005",
+                        "rc-000006",
+                        "rc-000066",
+                        "rc-000068"
+                    ],
+                    "data_provider": "US Census Bureau",
+                    "dataset_documentation": [
+                        "DEC_10_SF1_SF1DP1_metadata.csv",
+                        "DEC_10_SF1_SF1DP1.txt",
+                        "2010_census_demographic_profile_summary_file.pdf"
+                    ],
+                    "dataset_version_date": 1488823173,
+                    "source_archive": "American FactFinder",
+                    "dataset_citation": "US Census Bureau, 2010, \"Illinois Profile of General Population and Housing Characteristics\", https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml#none, US Census Bureau American FactFinder [Distributor], 1 [Version]",
+                    "reference_url": "http://www.census.gov/prod/cen2010/doc/dpsf.pdf",
+                    "temporal_coverage_start": "2000",
+                    "file_names": [
+                        "adrf-000006.csv"
+                    ]
+                },
+                "visible_to": [
+                    "public"
+                ]
+            }
+        }
+    ]
+}

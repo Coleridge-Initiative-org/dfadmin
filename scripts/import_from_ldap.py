@@ -172,7 +172,7 @@ def import_groups():
 
             print '  Disabling old members:'
             for previous_member in df_role.userdfrole_set.all():
-                if previous_member.active() and previous_member.user.username() not in current_members:
+                if previous_member.active() and previous_member.user.username not in current_members:
                     previous_member.end = TIME_NOW
                     previous_member.save()
                     print '   > Member disabled:', previous_member.user
@@ -275,7 +275,7 @@ def import_projects():
             print '   This project has no members.'
 
         print('   Members=%s' % len(current_members))
-        for disabled_member in [pm for pm in previous_members if pm.member.username() not in current_members]:
+        for disabled_member in [pm for pm in previous_members if pm.member.username not in current_members]:
             if disabled_member.active():
                 disabled_member.end_date = TIME_NOW
                 disabled_member.save()

@@ -78,7 +78,7 @@ class KeycloakHelper(object):
             # send welcome email
             try:
                 msg_plain = render_to_string('mail/new_user.txt',
-                                             {'username': user.username(),
+                                             {'username': user.username,
                                                'password': tmp_password,
                                                'current_time': timezone.now(),
                                                'keycloak_url': settings.WELCOME_EMAIL_KEYCLOAK_URL,
@@ -296,11 +296,11 @@ class LDAPHelper:
                             ldap_last_auth_time = ldap_last_auth_time.replace(tzinfo=pytz.utc)
                             if df_user.ldap_last_auth_time != ldap_last_auth_time:
                                 df_user.ldap_last_auth_time = ldap_last_auth_time
-                                df_user.save()
+                                df_user.save_without_historical_record()
                         except:
                             if df_user.ldap_last_auth_time is not None:
                                 df_user.ldap_last_auth_time = None
-                                df_user.save()
+                                df_user.save_without_historical_record()
                     if settings.USER_LDAP_MAP["ldap_last_pwd_change"] in ldap_user[1]:
                         try:
                             ldap_last_pwd_change = ldap_user[1][settings.USER_LDAP_MAP["ldap_last_pwd_change"]][0]
@@ -396,13 +396,13 @@ class LDAPHelper:
         ldap_users = self.get_ldap_users()
         df_users = User.objects.all()
         #self.logger.debug("Exporting %d users", len(df_users))
-        ldap_tuple_df = dict([(str(user.username()), UserLDAPSerializer.dumps(user)) for user in df_users])
+        ldap_tuple_df = dict([(str(user.username), UserLDAPSerializer.dumps(user)) for user in df_users])
         ldap_tuple_curr = dict(
             [(ldap_user[1][settings.USER_LDAP_MAP['username']][0], ldap_user) for ldap_user in ldap_users])
         ldap_usernames = set([ldap_user[1][settings.USER_LDAP_MAP['username']][0] for ldap_user in ldap_users if
                               settings.USER_LDAP_MAP['username'] in ldap_user[1] and ldap_user[1][
                                   settings.USER_LDAP_MAP['username']]])
-        df_usernames = set([df_user.username() for df_user in df_users])
+        df_usernames = set([df_user.username for df_user in df_users])
         users_just_in_ldap = ldap_usernames - df_usernames
         created_users = []
 
@@ -416,7 +416,7 @@ class LDAPHelper:
                 [(str(ldap_group[1][settings.USER_PRIVATE_GROUP_LDAP_MAP['ldap_name']][0]), ldap_group) for ldap_group
                  in ldap_groups])
             ldap_private_group_tuple_new = dict(
-                [(str(user.username()), UserPrivateGroupLDAPSerializer.dumps(user)) for user in df_users])
+                [(str(user.username), UserPrivateGroupLDAPSerializer.dumps(user)) for user in df_users])
 
         for username in users_just_in_ldap:
             if settings.LDAP_SETTINGS['General']['CleanNotInDB']:
@@ -433,41 +433,41 @@ class LDAPHelper:
                 try:
                     if settings.LDAP_SETTINGS['General']['UserPrivateGroups']:
                         try:
-                            self.ldap_add(ldap_private_group_tuple_new[df_user.username()])
-                            self.logger.debug("Creating User Private Group %s", df_user.username())
+                            self.ldap_add(ldap_private_group_tuple_new[df_user.username])
+                            self.logger.debug("Creating User Private Group %s", df_user.username)
                         except Exception as ex:
                             self.logger.debug("Error creating User Private Group: " + ex.message)
 
-                    self.ldap_add(ldap_tuple_df[df_user.username()])
-                    self.logger.debug("Creating user %s in LDAP", df_user.username())
+                    self.ldap_add(ldap_tuple_df[df_user.username])
+                    self.logger.debug("Creating user %s in LDAP", df_user.username)
                     df_user.status = User.STATUS_ACTIVE
                     df_user.save()
                     created_users.append(df_user)
-                    self.logger.debug("Set status of user %s to Active", df_user.username())
+                    self.logger.debug("Set status of user %s to Active", df_user.username)
                 except Exception:
-                    self.logger.exception("The user %s was not created in LDAP" % df_user.username())
+                    self.logger.exception("The user %s was not created in LDAP" % df_user.username)
             elif df_user.status == User.STATUS_DISABLED or df_user.status == User.STATUS_LOCKED_BY_ADMIN:
                 try:
-                    ldap_tuple = ldap_tuple_df[df_user.username()]
+                    ldap_tuple = ldap_tuple_df[df_user.username]
                     ldap_tuple[1][settings.USER_LDAP_MAP["ldap_lock_time"]] = ["000001010000Z"]
-                    self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username()])
-                    self.logger.debug("Locking user %s in LDAP", df_user.username())
+                    self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username])
+                    self.logger.debug("Locking user %s in LDAP", df_user.username)
                     keycloak_helper.disable_user(df_user)
                 except Exception:
-                    self.logger.exception("The user %s was not disabled in LDAP" % df_user.username())
+                    self.logger.exception("The user %s was not disabled in LDAP" % df_user.username)
             elif df_user.status == User.STATUS_UNLOCKED_BY_ADMIN:
                 try:
-                    ldap_tuple = ldap_tuple_df[df_user.username()]
+                    ldap_tuple = ldap_tuple_df[df_user.username]
                     if 'pwdAccountLockedTime' in ldap_tuple[1]:
                         ldap_tuple[1].pop(settings.USER_LDAP_MAP["ldap_lock_time"])
-                    self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username()])
-                    self.logger.debug("Unlocking user %s in LDAP", df_user.username())
+                    self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username])
+                    self.logger.debug("Unlocking user %s in LDAP", df_user.username)
                     df_user.status = User.STATUS_ACTIVE
                     keycloak_helper.enable_user(df_user)
                     df_user.save()
-                    self.logger.debug("Set status of user %s to Active", df_user.username())
+                    self.logger.debug("Set status of user %s to Active", df_user.username)
                 except Exception:
-                    self.logger.exception("The user %s was not unlocked in LDAP" % df_user.username())
+                    self.logger.exception("The user %s was not unlocked in LDAP" % df_user.username)
             elif df_user.status in User.MEMBERSHIP_STATUS_WHITELIST and \
                     (df_user.ldap_last_auth_time is not None and df_user.ldap_last_auth_time < timezone.now() -
                         datetime.timedelta(60, 0, 0)) or (df_user.ldap_last_auth_time is None and
@@ -478,39 +478,39 @@ class LDAPHelper:
                 if last_unlocked_time is not None and last_locked_time is not None \
                         and last_unlocked_time.history_date > last_locked_time.history_date and \
                                 last_unlocked_time.history_date > timezone.now() - datetime.timedelta(60, 0, 0):
-                    self.logger.debug("The user %s was not locked by inactivity because the user was unlocked by admin", df_user.username())
+                    self.logger.debug("The user %s was not locked by inactivity because the user was unlocked by admin", df_user.username)
                 else:
                     try:
-                        ldap_tuple = ldap_tuple_df[df_user.username()]
+                        ldap_tuple = ldap_tuple_df[df_user.username]
                         ldap_tuple[1][settings.USER_LDAP_MAP["ldap_lock_time"]] = ["000001010000Z"]
-                        self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username()])
-                        self.logger.debug("Locking the user %s in LDAP", df_user.username())
+                        self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username])
+                        self.logger.debug("Locking the user %s in LDAP", df_user.username)
                         df_user.status = User.STATUS_LOCKED_INACTIVITY
                         df_user.save()
-                        self.logger.debug("Setting the status of user %s to Locked by Inactivity", df_user.username())
+                        self.logger.debug("Setting the status of user %s to Locked by Inactivity", df_user.username)
                     except Exception:
-                        self.logger.exception("The user %s was not locked by inactivity in LDAP" % df_user.username())
+                        self.logger.exception("The user %s was not locked by inactivity in LDAP" % df_user.username)
             #Next is the update part, make sure the entry exists in LDAP before update ...
-            elif df_user.username() in ldap_tuple_curr:
+            elif df_user.username in ldap_tuple_curr:
                 if settings.LDAP_SETTINGS['General']['UserPrivateGroups']:
-                    if df_user.username() in ldap_groups_tuple_curr:
+                    if df_user.username in ldap_groups_tuple_curr:
                         try:
-                            self.ldap_update(ldap_private_group_tuple_new[df_user.username()],
-                                             ldap_groups_tuple_curr[df_user.username()])
-                            self.logger.debug("Updating User Private Group for user %s", df_user.username())
+                            self.ldap_update(ldap_private_group_tuple_new[df_user.username],
+                                             ldap_groups_tuple_curr[df_user.username])
+                            self.logger.debug("Updating User Private Group for user %s", df_user.username)
                         except Exception:
-                            self.logger.exception("UserPrivateGroup not updated: %s", df_user.username())
+                            self.logger.exception("UserPrivateGroup not updated: %s", df_user.username)
                     elif df_user.status in User.MEMBERSHIP_STATUS_WHITELIST:
                         try:
-                            self.ldap_add(ldap_private_group_tuple_new[df_user.username()])
-                            self.logger.debug("Creating User Private Group for user %s in LDAP", df_user.username())
+                            self.ldap_add(ldap_private_group_tuple_new[df_user.username])
+                            self.logger.debug("Creating User Private Group for user %s in LDAP", df_user.username)
                         except Exception:
-                            self.logger.exception("UserPrivateGroup not created: %s", df_user.username())
+                            self.logger.exception("UserPrivateGroup not created: %s", df_user.username)
                 try:
-                    self.ldap_update(ldap_tuple_df[df_user.username()], ldap_tuple_curr[df_user.username()])
-                    self.logger.debug("Updating user %s in LDAP", df_user.username())
+                    self.ldap_update(ldap_tuple_df[df_user.username], ldap_tuple_curr[df_user.username])
+                    self.logger.debug("Updating user %s in LDAP", df_user.username)
                 except Exception:
-                    self.logger.exception("User not updated: %s", df_user.username())
+                    self.logger.exception("User not updated: %s", df_user.username)
 
         keycloak_helper.send_welcome_email(created_users, reset_otp=True)
 
@@ -585,7 +585,7 @@ class LDAPHelper:
 
         cns_to_delete = ldap_cns - df_role_cns
         if settings.LDAP_SETTINGS['General']['UserPrivateGroups']:
-            ldap_private_group_cns = set([str(user.username()) for user in User.objects.all()])
+            ldap_private_group_cns = set([str(user.username) for user in User.objects.all()])
             cns_to_delete = cns_to_delete - ldap_private_group_cns
         cns_to_create = df_role_cns - ldap_cns
         cns_to_update = df_role_cns & ldap_cns
