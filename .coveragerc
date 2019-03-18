@@ -2,6 +2,7 @@
 omit =
         scripts/*
         deploy/*
+        data/*
         data_facility/wsgi.py
         */test_*
 [xml]

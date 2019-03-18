@@ -7,7 +7,9 @@ from rest_framework.authtoken.models import Token
 from simple_history.admin import SimpleHistoryAdmin
 from .models import *
 from .actions import *
-
+from django.contrib import admin
+from django.contrib.postgres import fields
+from django_json_widget.widgets import JSONEditorWidget
 
 admin.site.site_header = 'Data Facility Admin'
 admin.site.site_title = 'Data Facility Admin'
@@ -36,10 +38,10 @@ class ProjectMembershipInline(admin.TabularInline):
     extra = 0
     min_num = 0
     can_delete = False
-    form = make_ajax_form(ProjectMember, {
-        'member': 'users',
-        'project': 'projects',
-    })
+    # form = make_ajax_form(ProjectMember, {
+    #     'member': 'users',
+    #     'project': 'projects',
+    # })
 
 
 class DatasetAccessInline(admin.StackedInline):
@@ -78,6 +80,8 @@ class ProjectToolInline(admin.TabularInline):
     """Inline Manager for model ProjectTool"""
     model = ProjectTool
     extra = 0
+    readonly_fields = ['system_info']
+    # prepopulated_fields = {"request_id": ("?",)}
 
 
 class TermsOfUseInline(admin.TabularInline):
@@ -98,7 +102,15 @@ class DataProviderAdmin(SimpleHistoryAdmin):
     """Admin Manager for model DataProvider"""
     list_display = ('name', 'datasets_count')
     search_fields = ('name',)
+    readonly_fields = ['slug']
     inlines = [DatasetInline]
+
+
+@admin.register(Category)
+class CategoryAdmin(SimpleHistoryAdmin):
+    """Admin Manager for model DataProvider"""
+    list_display = ('name',)
+    search_fields = ('name',)
 
 
 @admin.register(ProfileTag)
@@ -138,7 +150,7 @@ class DataAgreementAdmin(SimpleHistoryAdmin):
 class DataStewardAdmin(SimpleHistoryAdmin):
     """Admin Manager for model DataSteward"""
     list_display = ('dataset', 'user', 'start_date', 'end_date')
-    search_fields = ('dataset_title', 'dataset__dataset_id', 'user')
+    search_fields = ('dataset__name', 'dataset__dataset_id', 'user__first_name', 'user__last_name', 'user__ldap_name')
     list_filter = ['start_date', 'end_date']
 
 
@@ -153,10 +165,15 @@ class DatabaseSchemaAdmin(SimpleHistoryAdmin):
 @admin.register(Dataset)
 class DatasetAdmin(SimpleHistoryAdmin):
     """Admin Manager for model Dataset"""
-    list_display = ('dataset_id', 'name', 'active_stewards', 'data_classification', 'public', 'database_schema')
+    formfield_overrides = {
+        fields.JSONField: {'widget': JSONEditorWidget},
+    }
+
+    list_display = ('dataset_id', 'name', 'active_stewards', 'data_classification', 'public', 'database_schema',
+                    'data_provider')
     search_fields = ('dataset_id', 'name', 'data_classification', 'ldap_name',
                      'ldap_id', 'public', 'database_schema__name')
-    list_filter = ['data_classification', 'shareable', 'data_provider', 'public']
+    list_filter = ['data_classification', 'available', 'data_provider', 'public']
     inlines = [DatasetAgreementInline, DataStewardInline, DatasetAccessInline]
     readonly_fields = ['ldap_id', 'ldap_name']
 
@@ -205,7 +222,7 @@ class UserAdmin(SimpleHistoryAdmin):
     list_filter = ['status', 'signed_terms_at', 'ldap_last_auth_time', 'affiliation',
                    'userdfrole__role', 'ldap_last_pwd_change', 'tags' ]
     readonly_fields = ['ldap_id', 'ldap_lock_time', 'ldap_last_auth_time', 
-                       'ldap_last_pwd_change']
+                       'ldap_last_pwd_change', 'django_user']
     history_list_display = ['status']
     if not settings.ADRF_ENABLE_CUSTOM_USERNAME:
         readonly_fields += ['ldap_name']
@@ -236,23 +253,23 @@ class UserAdmin(SimpleHistoryAdmin):
 @admin.register(Project)
 class ProjectAdmin(SimpleHistoryAdmin):
     """Admin Manager for model Project"""
-    search_fields = ('name', 'ldap_name', 'abstract', 'methodology', 'expected_outcomes',
+    search_fields = ('name', 'ldap_name', 'abstract', 'methodology', 'outcomes',
                      'status', 'environment', 'type', 'ldap_name', 'ldap_id')
     list_display = ('name', 'owner', 'status', 'environment', 'members', 'members_count',
                     'created_at',)
     list_filter = ['environment', 'status', 'has_irb', 'type']
     inlines = [ProjectMembershipInline, DatasetAccessInline, ProjectToolInline]
     readonly_fields = ['ldap_id', 'ldap_name']
-    form = make_ajax_form(Project, {
-        'owner': 'users',
-        'parent_project': 'projects',
-    })
+    # form = make_ajax_form(Project, {
+    #     'owner': 'users',
+    #     'parent_project': 'projects',
+    # })
 
 
 @admin.register(ProjectRole)
 class ProjectRoleAdmin(SimpleHistoryAdmin):
     """Admin Manager for model ProjectRole"""
-    search_fields = ('name', 'system_role', 'description', 'ldap_name', 'ldap_id')
+    search_fields = ('name', 'system_role', 'description')
     list_display = ('name', 'system_role', 'description')
     list_filter = ['system_role']
 
@@ -260,8 +277,8 @@ class ProjectRoleAdmin(SimpleHistoryAdmin):
 @admin.register(ProjectTool)
 class ProjectToolAdmin(SimpleHistoryAdmin):
     """Admin Manager for model ProjectTool"""
-    search_fields = ('project', 'tool_name', 'other_name', 'additional_info')
-    list_display = ('project', 'name', 'additional_info')
+    search_fields = ('project__name', 'tool_name', 'other_name', 'additional_info')
+    list_display = ('project', 'tool_name', 'other_name', 'additional_info')
     list_filter = ['tool_name']
 
 

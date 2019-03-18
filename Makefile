@@ -36,12 +36,12 @@ code-check:
 	pylint --load-plugins pylint_django data_facility data_facility_admin
 
 test:
-	docker-compose exec web coverage run --source='.' manage.py test --noinput -v2 --parallel 2
+	docker-compose exec web coverage run --source='.' manage.py test --settings=data_facility.test_settings --noinput -v2 --parallel 1
 	docker-compose exec web coverage xml
 	docker-compose exec web coverage report
 
 test-quick:
-	docker-compose exec web coverage run --source='.' manage.py test --keepdb --noinput -v2 --parallel 2
+	docker-compose exec web coverage run --source='.' manage.py test --settings=data_facility.test_settings --keepdb --noinput -v2 --parallel 1
 	docker-compose exec web coverage xml
 	docker-compose exec web coverage report
 
