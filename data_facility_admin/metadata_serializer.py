@@ -68,7 +68,23 @@ def __name_if_not_none(value):
 
 def __to_date(s):
     import datetime
-    return datetime.datetime.strptime(s, "%Y").date()
+    try:
+        if not s: return None
+        elif '/' in s:
+            return datetime.datetime.strptime(s, "%m/%d/%y").date()
+        elif '-' not in s:
+            return datetime.datetime.strptime(s, "%Y").date()
+        elif len(s.split('-')) == 2:
+            return datetime.datetime.strptime(s, "%Y-%m").date()
+        elif len(s.split('-')) == 3:
+            try:
+                return datetime.datetime.strptime(s, "%Y-%d-%m").date()
+            except:
+                return datetime.datetime.strptime(s, "%Y-%m-%d").date()
+    except:
+        logger.error('Error translating %s to date.' % s)
+        raise
+        return None
 
 
 def __get_year(d):
