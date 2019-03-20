@@ -20,7 +20,7 @@ import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-ENV = config('ENV', 'PRODUCTION')
+ENV = config('ENV', default='PRODUCTION')
 ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
                       'LOCAL': 'gray',
                       'DEVELOPMENT': 'green'}
@@ -334,7 +334,7 @@ LDAP_SETTINGS = {
         'AttributesBlackList': ['memberUid'],
         'RecreateGroups': False,
         'SystemUserPpolicyConfig': "cn=system-users,ou=policies,dc=adrf,dc=info",
-        'PpolicyLockDownDurationSeconds': 900 
+        'PpolicyLockDownDurationSeconds': 900
     },
     'Connection': {
         'BindDN': config('LDAP_BIND_DN', default="cn=admin,dc=adrf,dc=info"),
@@ -535,19 +535,15 @@ LOGGING = {
     },
 }
 
-# #from django.auth.models import User
-# def jwt_get_username_from_payload_handler(payload):
-#     if 'preferred_username' in payload:
-#         return payload['preferred_username']
 from data_facility_admin import jwt
 JWT_AUTH = {
     'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt.jwt_get_username_from_payload_handler,
-    'JWT_PUBLIC_KEY': '-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAnPISCA726xJ4GEI9wZEyVPqOFKmW9L/fqSLywkFDvxrgH6VrPrsV\nHITFSzw5agg+CJ2gQc5BDPq+SmhJv9bVmJ0Uqj56l3Ek+uLJEj8aDHtqKcXD6aNW\ncii3nlJz9r/LrkDYynsm3hAlNEYLXpn5hDnDwLx47dukD5+sUQfcdeSQGhe4ar/L\nHDLI8XYhG860eQiG8Pz4Sd/hf1nAw58Koj+xCmCD2Pcjgh6tm2JBnIkobfjDCadG\nucJLTbVtvXfo15YWABX4PMvKdsY/1q9NY/0BRP+ZmcPrzWNV4iFZDb27s9xfD38U\npeqQ0Mk8+k0XPSpsOLkI5+cxHhUhHNIsyQIDAQAB\n-----END RSA PUBLIC KEY-----\n',
-    'JWT_ALGORITHM': 'RS256',
-    'JWT_AUDIENCE': 'vision',
-    'JWT_ISSUER': "https://meat.adrf.info/auth/realms/master",
-    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
-    'JWT_VERIFY_EXPIRATION': False,
+    'JWT_PUBLIC_KEY': config('JWT_AUTH_PUBLIC_KEY', default='-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAnPISCA726xJ4GEI9wZEyVPqOFKmW9L/fqSLywkFDvxrgH6VrPrsV\nHITFSzw5agg+CJ2gQc5BDPq+SmhJv9bVmJ0Uqj56l3Ek+uLJEj8aDHtqKcXD6aNW\ncii3nlJz9r/LrkDYynsm3hAlNEYLXpn5hDnDwLx47dukD5+sUQfcdeSQGhe4ar/L\nHDLI8XYhG860eQiG8Pz4Sd/hf1nAw58Koj+xCmCD2Pcjgh6tm2JBnIkobfjDCadG\nucJLTbVtvXfo15YWABX4PMvKdsY/1q9NY/0BRP+ZmcPrzWNV4iFZDb27s9xfD38U\npeqQ0Mk8+k0XPSpsOLkI5+cxHhUhHNIsyQIDAQAB\n-----END RSA PUBLIC KEY-----\n'),
+    'JWT_ALGORITHM': config('JWT_AUTH_ALGORITHM', default='RS256'),
+    'JWT_AUDIENCE': config('JWT_AUTH_AUDIENCE', default='vision'),
+    'JWT_ISSUER': config('JWT_AUTH_ISSUER', default="https://meat.adrf.info/auth/realms/master"),
+    'JWT_AUTH_HEADER_PREFIX': config('JWT_AUTH_HEADER_PREFIX', default="Bearer"),
+    'JWT_VERIFY_EXPIRATION': config('JWT_AUTH_VERIFY_EXPIRATION', cast=bool, default=True),
 }
 
 # SHELL_PLUS = "ipython"

@@ -82,11 +82,13 @@ def save_or_update(dataset):
             print('     Updating attr: ' + attr)
             value = getattr(dataset, attr, None)
             setattr(db_dataset, attr, value)
+        db_dataset.available = False
         db_dataset.save()
 
         print(" > Dataset %s - updated." % dataset.dataset_id)
 
     except Dataset.DoesNotExist:
+        db_dataset.available = False
         dataset.save()
         print(" > Dataset %s - created." % dataset.dataset_id)
 
