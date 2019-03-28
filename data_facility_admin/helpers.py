@@ -221,13 +221,13 @@ class LDAPHelper:
             curr_attrs.remove("authTimestamp")
             new_attrs.remove("authTimestamp")
         except Exception as ex:
-            self.logger.debug("There is no <authTimestamp> to remove for dn: " + dn)
+            self.logger.debug("There is no <authTimestamp> to remove for dn: %s" % dn)
 
         try:
             curr_attrs.remove("pwdChangedTime")
             new_attrs.remove("pwdChangedTime")
         except:
-            self.logger.debug("There is no <pwdChangedTime> to remove for dn: " + dn)
+            self.logger.debug("There is no <pwdChangedTime> to remove for dn: %s" % dn)
 
         user_values = settings.USER_LDAP_MAP.values()
         user_flat_values = []
@@ -424,7 +424,7 @@ class LDAPHelper:
                     self.__ldap_conn.delete_s(ldap_tuple_curr[username][0])
                     self.logger.warning("The user %s is not in DFAdmin Database and it's deleted." % username)
                 except Exception:
-                    self.logger.exception("User not deleted: %s", username)
+                    self.logger.exception("User not deleted: %s" % username)
             else:
                 self.logger.warning("The user %s is not in DFAdmin Database" % username)
 
@@ -434,12 +434,12 @@ class LDAPHelper:
                     if settings.LDAP_SETTINGS['General']['UserPrivateGroups']:
                         try:
                             self.ldap_add(ldap_private_group_tuple_new[df_user.username])
-                            self.logger.debug("Creating User Private Group %s", df_user.username)
+                            self.logger.debug("Creating User Private Group %s" % df_user.username)
                         except Exception as ex:
                             self.logger.debug("Error creating User Private Group: " + ex.message)
 
                     self.ldap_add(ldap_tuple_df[df_user.username])
-                    self.logger.debug("Creating user %s in LDAP", df_user.username)
+                    self.logger.debug("Creating user %s in LDAP" % df_user.username)
                     df_user.status = User.STATUS_ACTIVE
                     df_user.save()
                     created_users.append(df_user)
@@ -451,7 +451,7 @@ class LDAPHelper:
                     ldap_tuple = ldap_tuple_df[df_user.username]
                     ldap_tuple[1][settings.USER_LDAP_MAP["ldap_lock_time"]] = ["000001010000Z"]
                     self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username])
-                    self.logger.debug("Locking user %s in LDAP", df_user.username)
+                    self.logger.debug("Locking user %s in LDAP" % df_user.username)
                     keycloak_helper.disable_user(df_user)
                 except Exception:
                     self.logger.exception("The user %s was not disabled in LDAP" % df_user.username)
@@ -461,7 +461,7 @@ class LDAPHelper:
                     if 'pwdAccountLockedTime' in ldap_tuple[1]:
                         ldap_tuple[1].pop(settings.USER_LDAP_MAP["ldap_lock_time"])
                     self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username])
-                    self.logger.debug("Unlocking user %s in LDAP", df_user.username)
+                    self.logger.debug("Unlocking user %s in LDAP" % df_user.username)
                     df_user.status = User.STATUS_ACTIVE
                     keycloak_helper.enable_user(df_user)
                     df_user.save()
@@ -484,7 +484,7 @@ class LDAPHelper:
                         ldap_tuple = ldap_tuple_df[df_user.username]
                         ldap_tuple[1][settings.USER_LDAP_MAP["ldap_lock_time"]] = ["000001010000Z"]
                         self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username])
-                        self.logger.debug("Locking the user %s in LDAP", df_user.username)
+                        self.logger.debug("Locking the user %s in LDAP" % df_user.username)
                         df_user.status = User.STATUS_LOCKED_INACTIVITY
                         df_user.save()
                         self.logger.debug("Setting the status of user %s to Locked by Inactivity", df_user.username)
@@ -503,14 +503,14 @@ class LDAPHelper:
                     elif df_user.status in User.MEMBERSHIP_STATUS_WHITELIST:
                         try:
                             self.ldap_add(ldap_private_group_tuple_new[df_user.username])
-                            self.logger.debug("Creating User Private Group for user %s in LDAP", df_user.username)
+                            self.logger.debug("Creating User Private Group for user %s in LDAP" % df_user.username)
                         except Exception:
                             self.logger.exception("UserPrivateGroup not created: %s", df_user.username)
                 try:
                     self.ldap_update(ldap_tuple_df[df_user.username], ldap_tuple_curr[df_user.username])
-                    self.logger.debug("Updating user %s in LDAP", df_user.username)
+                    self.logger.debug("Updating user %s in LDAP" % df_user.username)
                 except Exception:
-                    self.logger.exception("User not updated: %s", df_user.username)
+                    self.logger.exception("User not updated: %s" % df_user.username)
 
         keycloak_helper.send_welcome_email(created_users, reset_otp=True)
 
@@ -536,7 +536,7 @@ class LDAPHelper:
                     self.__ldap_conn.delete_s(ldap_tuple_curr[cn][0])
                     self.logger.debug("The project %s is not in DFAdmin Database and it's deleted." % cn)
                 except Exception as e:
-                    self.logger.exception("Project not deleted: %s", cn)
+                    self.logger.exception("Project not deleted: %s" % cn)
             else:
                 self.logger.warning("The project %s is not in DFAdmin Database" % cn)
 
@@ -545,13 +545,13 @@ class LDAPHelper:
                 self.__ldap_conn.delete_s(ldap_tuple_curr[cn][0])
                 self.logger.debug("The project %s has been deleted." % cn)
             except Exception as e:
-                self.logger.exception("Project not deleted: %s", cn)
+                self.logger.exception("Project not deleted: %s" % cn)
         for cn in cns_to_create:
             try:
                 self.ldap_add(ldap_tuple_new[cn])
                 self.logger.debug("The project %s has been created." % cn)
             except Exception as e:
-                self.logger.exception("Project not created: %s", cn)
+                self.logger.exception("Project not created: %s" % cn)
         for cn in cns_to_update:
             if settings.LDAP_SETTINGS['General']['RecreateGroups']:
                 try:
@@ -564,13 +564,13 @@ class LDAPHelper:
                     self.ldap_update(orig_tuple, copy_tuple)
                     self.logger.debug("The project %s has been recreadted." % cn)
                 except Exception as e:
-                    self.logger.exception("Project not recreated: %s", cn)
+                    self.logger.exception("Project not recreated: %s" % cn)
             else:
                 try:
                     self.ldap_update(ldap_tuple_new[cn], ldap_tuple_curr[cn])
                     self.logger.debug("The project %s has been updated" % cn)
                 except Exception as e:
-                    self.logger.exception("Project not updated: %s", cn)
+                    self.logger.exception("Project not updated: %s" % cn)
         self.logger.info("Project Export has ended.")
 
     def export_df_roles(self):
@@ -593,9 +593,9 @@ class LDAPHelper:
         for cn in cns_to_delete:
             try:
                 self.__ldap_conn.delete_s(ldap_tuple_curr[cn][0])
-                self.logger.debug("DfRole %s has been deleted", cn)
+                self.logger.debug("DfRole %s has been deleted" % cn)
             except Exception as e:
-                self.logger.exception("DfRole not deleted: %s", cn)
+                self.logger.exception("DfRole not deleted: %s" % cn)
 
         for cn in cns_to_create:
             try:
