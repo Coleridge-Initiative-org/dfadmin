@@ -146,6 +146,10 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
     mimetype = gmeta_data['mimetype']
     search_content = gmeta_data['content']
 
+    # Clear duplicates in detailed content and search_content
+    for key in search_content:
+        del detailed_content[key]
+
     # Prep dataset if not given.
     if given_dataset:
         dataset = given_dataset
