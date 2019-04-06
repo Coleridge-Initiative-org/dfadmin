@@ -76,6 +76,8 @@ def save_or_update(dataset):
     #                     'version', 'dataset_citation', 'category',
     #                     ]
     fields_to_update = (mapping.dataset for mapping in metadata_serializer.DIRECT_FIELD_MAPPINGS)
+    fields_to_update.remove('dataset_id')
+    fields_to_update += ['search_gmeta', 'detailed_gmeta']
     try:
         db_dataset = Dataset.objects.get(dataset_id=dataset.dataset_id)
         for attr in fields_to_update:
