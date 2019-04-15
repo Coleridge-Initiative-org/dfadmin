@@ -10,11 +10,7 @@ phases:
       - echo Build started on `date`
       - docker-compose build
       - docker-compose up -d
-      - echo "Checking for Django errors"
-      - make check
-      - echo "Running tests..."
-      - make test
-      - echo "Checking code smells..."
+      - make ci
 
   post_build:
     commands:
