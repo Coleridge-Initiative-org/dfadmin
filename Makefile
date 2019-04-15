@@ -39,9 +39,9 @@ code-check:
 
 test:
 	echo "Running DFAdmin tests..."
-	docker-compose exec web coverage run --source='.' manage.py test --settings=data_facility.test_settings --noinput -v2 --parallel 1
-	docker-compose exec web coverage xml
-	docker-compose exec web coverage report
+	docker-compose exec -T web coverage run --source='.' manage.py test --settings=data_facility.test_settings --noinput -v2 --parallel 1
+	docker-compose exec -T web coverage xml
+	docker-compose exec -T web coverage report
 	echo "Tests done!"
 
 test-quick:
@@ -52,7 +52,7 @@ test-quick:
 codacy-report:
 	echo "Reporting test results to Codacy"
 	# docker-compose exec web pytest --cov=data_facility --cov=data_facility_admin --cov=scripts --cov-report=xml:coverage.xml
-	docker-compose exec web python-codacy-coverage -r coverage.xml
+	docker-compose exec -T web python-codacy-coverage -r coverage.xml
 
 ci: dev-web-rebuild test codacy-report
 
