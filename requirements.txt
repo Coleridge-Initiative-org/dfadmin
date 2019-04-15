@@ -50,3 +50,4 @@ python-jose
 
 #JSON widget
 git+https://github.com/NYU-Chicago-data-facility/django-json-widget.git@v0.2.1
+django_jenkins
