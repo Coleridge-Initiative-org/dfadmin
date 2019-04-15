@@ -24,6 +24,7 @@ dev-makemigrations:
 	docker-compose exec web $(PYTHON) manage.py makemigrations
 
 dev-web-rebuild:
+	echo "Rebuilding DFAdmin web container and (re)starting it."
 	docker-compose up -d --build web
 
 bash:
@@ -33,19 +34,23 @@ shell:
 	docker-compose exec web $(PYTHON) manage.py shell_plus
 
 code-check:
+	echo "Checking the code for bad smells"
 	pylint --load-plugins pylint_django data_facility data_facility_admin
 
 test:
+	echo "Running DFAdmin tests..."
 	docker-compose exec web coverage run --source='.' manage.py test --settings=data_facility.test_settings --noinput -v2 --parallel 1
 	docker-compose exec web coverage xml
 	docker-compose exec web coverage report
+	echo "Tests done!"
 
 test-quick:
 	docker-compose exec web coverage run --source='.' manage.py test --settings=data_facility.test_settings --keepdb --noinput -v2 --parallel 1
 	docker-compose exec web coverage xml
 	docker-compose exec web coverage report
 
-codacy-report: test
+codacy-report:
+	echo "Reporting test results to Codacy"
 	# docker-compose exec web pytest --cov=data_facility --cov=data_facility_admin --cov=scripts --cov-report=xml:coverage.xml
 	docker-compose exec web python-codacy-coverage -r coverage.xml
 
