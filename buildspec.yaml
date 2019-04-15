@@ -5,6 +5,8 @@ phases:
     commands:
       - echo "Preparing the project"
       - make git-submodules-init
+      - ln -s local.env .env
+
   build:
     commands:
       - echo Build started on `date`
