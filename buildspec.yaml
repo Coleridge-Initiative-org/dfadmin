@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Preparing the project"
+      - make git-submodules-init
+  build:
+    commands:
+      - echo Build started on `date`
+      - docker-compose build
+      - docker-compose up -d
+      - echo "Checking for Django errors"
+      - make check
+      - echo "Running tests..."
+      - make test
+      - echo "Checking code smells..."
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo "Reporting to Codacy"
+      - make codacy-report
