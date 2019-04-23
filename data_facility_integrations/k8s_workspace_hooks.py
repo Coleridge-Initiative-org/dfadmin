@@ -10,10 +10,10 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 DEFAULT_K8S_CONFIG = {
-    'REMOTE_DESKTOP_CPU':  config('RDS_DEFAULT_CONFIG__REGION', default=1),
-    'REMOTE_DESKTOP_MEMORY':  config('RDS_DEFAULT_CONFIG__REGION', default=1000),
-    'JUPYTER_CPU':  config('RDS_DEFAULT_CONFIG__REGION', default=1),
-    'JUPYTER_MEMORY':  config('RDS_DEFAULT_CONFIG__REGION', default=1000),
+    'REMOTE_DESKTOP_CPU':  config('K8S_REMOTE_DESKTOP_CPU', default=1),
+    'REMOTE_DESKTOP_MEMORY':  config('K8S_REMOTE_DESKTOP_MEMORY', default=1000),
+    'JUPYTER_CPU':  config('K8S_JUPYTER_CPU', default=1),
+    'JUPYTER_MEMORY':  config('K8S_JUPYTER_MEMORY', default=1000),
 }
 
 
