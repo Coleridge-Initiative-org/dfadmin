@@ -549,6 +549,10 @@ class Project(LdapObject):
         # TODO: write unit tests for this
         return slugify(self.name).replace('-', '_')
 
+    @property
+    def tools(self):
+        return [pt.to_json() for pt in ProjectTool.objects.filter(project=self)]
+
     def save(self, *args, **kwargs):
         if self.ldap_name is None:
             self.ldap_name = Project.PROJECT_PREFIX + self.system_name()
@@ -676,6 +680,13 @@ class ProjectTool(models.Model):
 
     def __str__(self):
         return '%s %s %s' % (self.tool_name, self.other_name, self.additional_info)
+
+    def to_json(self):
+        return {'tool_name': self.tool_name,
+                'other_name': self.other_name,
+                'notes': self.notes,
+                'system_info': self.system_info,
+                'additional_info': self.additional_info}
 
     class Meta:
         ordering = ['tool_name', 'other_name']
