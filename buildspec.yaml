@@ -4,7 +4,7 @@ phases:
   pre_build:
     commands:
       - echo "Preparing the project"
-      - make git-submodules-init
+      - git submodule update --init --recursive
       - ln -s local.env .env
 
   build:
