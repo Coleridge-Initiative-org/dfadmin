@@ -2,8 +2,11 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = '441870321480.dkr.ecr.us-east-1.amazonaws.com/dfadmin'
+        ECR_URL = '441870321480.dkr.ecr.us-east-1.amazonaws.com/dfadmin'
+        REPO_NAME = 'dfadmin'
+        IMAGE_NAME = ${ECR_URL}:${REPO_NAME}
         IMAGE_TAG = 'latest'
+        GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
     }
 
     stages {
@@ -52,6 +55,7 @@ pipeline {
                 withDockerRegistry([credentialsId: "dockerhub-creds", url: ""]){
                     sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${IMAGE_TAG}'
                     sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
+                    sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
                 }
             }
         }
