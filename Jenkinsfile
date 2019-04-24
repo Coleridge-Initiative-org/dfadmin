@@ -59,6 +59,13 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+        post {
+        always {
+            junit '**/target/*.xml'
+        }
+        failure {
+            mail to: daniel.castellani@nyu.edu, subject: 'ADRF Jenkins - The Pipeline failed :('
+        }
     }
 
 }
