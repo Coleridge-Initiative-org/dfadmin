@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Git Prepare') {
+        stage('Prepare') {
             steps {
                 echo 'Initializing submodules..'
+                sh 'ln -s local.env .env'
                 sh 'make git-submodules-init'
             }
         }
