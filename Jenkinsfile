@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                docker-compose build
+                docker build .
             }
         }
         stage('Test') {
