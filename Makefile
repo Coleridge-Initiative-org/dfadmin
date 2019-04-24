@@ -2,7 +2,7 @@ PYTHON=python2.7
 
 db-migrate:
 	docker-compose exec web $(PYTHON) manage.py migrate
-	docker-compose exec web $(PYTHON) manage.py runscript setup_database
+	docker-compose exec web $(PYTHON) manage.py runscript setup_dfadmin
 
 db-prepare: db-migrate
 	docker-compose exec web $(PYTHON) manage.py runscript load_cdf_staff
