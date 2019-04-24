@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = '441870321480.dkr.ecr.us-east-1.amazonaws.com/dfadmin'
+        IMAGE_TAG = 'latest'
+    }
+
     stages {
         stage('Prepare') {
             steps {
@@ -15,7 +20,7 @@ pipeline {
                 sh 'docker-compose build'
             }
         }
-        stage('Test') {
+/*        stage('Test') {
             steps {
                 echo 'Testing..'
                 sh 'docker-compose up -d'
@@ -33,6 +38,13 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh 'make codacy-report'
+            }
+        }
+*/
+        stage('Scan') {
+            steps {
+                sh 'apk add bash curl'
+                sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- -d Dockerfile -b .anchore_policy.json ${IMAGE_NAME}:ci'
             }
         }
         stage('Deploy') {
