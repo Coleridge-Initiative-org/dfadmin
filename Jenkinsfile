@@ -6,20 +6,13 @@ pipeline {
             steps {
                 echo 'Initializing submodules..'
                 sh 'ln -s local.env .env'
-                sh 'make git-submodules-init'
+                sh 'git submodule update --init --recursive'
             }
         }
         stage('Build') {
             steps {
                 echo 'Building..'
                 sh 'docker-compose build'
-            }
-        }
-        stage('Starting') {
-            steps {
-                echo 'Starting DFAdmin..'
-                sh 'docker-compose stop'
-                sh 'docker-compose up -d'
             }
         }
         stage('Test') {
