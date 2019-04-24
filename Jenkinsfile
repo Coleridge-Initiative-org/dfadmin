@@ -6,12 +6,13 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'docker-compose build'
+                sh 'make git-submodules-init'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                docker-compose up -d
+                sh 'docker-compose up -d'
                 sh 'make check || true'
                 junit '**/target/*.xml'
             }
@@ -19,7 +20,7 @@ pipeline {
         stage('QA') {
             steps {
                 echo 'Testing..'
-                make codacy-report
+                sh 'make codacy-report'
             }
         }
         stage('Deploy') {
