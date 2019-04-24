@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker build -t ${IMAGE_NAME}:ci'
+                sh 'docker build . -t ${IMAGE_NAME}:ci'
             }
         }
         stage('Scan') {
@@ -26,26 +26,26 @@ pipeline {
                 sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- ${IMAGE_NAME}:ci'
             }
         }
-//        stage('Test') {
-//            steps {
-//                echo 'Testing..'
+        stage('Test') {
+            steps {
+                echo 'Testing..'
 //                sh 'docker-compose up -d --build'
 //               sh 'make check || true'
 //                junit '**/target/*.xml'
-//            }
-//        }
+            }
+        }
 //        stage('Stopping') {
 //            steps {
 //                echo 'Stopping DFAdmin..'
 //                sh 'docker-compose stop'
 //            }
 //        }
-//        stage('QA') {
-//            steps {
-//                echo 'Testing..'
+        stage('QA') {
+            steps {
+                echo 'Checking code..'
 //                sh 'make codacy-report'
-//            }
-//        }
+            }
+        }
 
         stage('Push Image') {
             steps {
