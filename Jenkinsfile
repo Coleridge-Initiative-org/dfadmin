@@ -59,11 +59,5 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        post {
-            always {
-                junit '**/target/*.xml'
-            }
-        }
     }
-
 }
