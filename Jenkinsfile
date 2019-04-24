@@ -20,26 +20,26 @@ pipeline {
                 sh 'docker-compose build'
             }
         }
-/*        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh 'docker-compose up -d'
-                sh 'make check || true'
-                junit '**/target/*.xml'
-            }
-        }
-        stage('Stopping') {
-            steps {
-                echo 'Stopping DFAdmin..'
-                sh 'docker-compose stop'
-            }
-        }
-        stage('QA') {
-            steps {
-                echo 'Testing..'
-                sh 'make codacy-report'
-            }
-        } */
+//        stage('Test') {
+//            steps {
+//                echo 'Testing..'
+//                sh 'docker-compose up -d'
+//               sh 'make check || true'
+//                junit '**/target/*.xml'
+//            }
+//        }
+//        stage('Stopping') {
+//            steps {
+//                echo 'Stopping DFAdmin..'
+//                sh 'docker-compose stop'
+//            }
+//        }
+//        stage('QA') {
+//            steps {
+//                echo 'Testing..'
+//                sh 'make codacy-report'
+//            }
+//        }
         stage('Scan') {
             steps {
                 sh 'apk add bash curl'
