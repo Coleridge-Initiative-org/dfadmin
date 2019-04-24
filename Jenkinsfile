@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker-compose build ${IMAGE_NAME}:ci'
+                sh 'docker-compose build -t ${IMAGE_NAME}:ci'
             }
         }
 //        stage('Test') {
