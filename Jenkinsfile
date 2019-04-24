@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        ECR_URL = '441870321480.dkr.ecr.us-east-1.amazonaws.com/dfadmin'
+        ECR_URL = '441870321480.dkr.ecr.us-east-1.amazonaws.com'
         REPO_NAME = 'dfadmin'
-        IMAGE_NAME = '${ECR_URL}:${REPO_NAME}'
+        IMAGE_NAME = '${ECR_URL}/${REPO_NAME}'
         IMAGE_TAG = 'latest'
         GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
     }
