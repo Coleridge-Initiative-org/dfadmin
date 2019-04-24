@@ -64,3 +64,9 @@ pipeline {
         }
     }
 }
+
+node {
+  def imageLine = 'debian:latest'
+  writeFile file: 'anchore_images', text: imageLine
+  anchore name: 'anchore_images'
+}
