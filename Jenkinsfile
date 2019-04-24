@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo 'Starting DFAdmin..'
                 sh 'docker-compose stop'
-                sh 'docker-compose up -d --rebuild web'
+                sh 'docker-compose up -d'
             }
         }
         stage('Test') {
