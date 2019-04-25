@@ -538,9 +538,9 @@ LOGGING = {
 from data_facility_admin import jwt
 JWT_AUTH = {
     'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt.jwt_get_username_from_payload_handler,
-    'JWT_PUBLIC_KEY': config('JWT_AUTH_PUBLIC_KEY', default='-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAnPISCA726xJ4GEI9wZEyVPqOFKmW9L/fqSLywkFDvxrgH6VrPrsV\nHITFSzw5agg+CJ2gQc5BDPq+SmhJv9bVmJ0Uqj56l3Ek+uLJEj8aDHtqKcXD6aNW\ncii3nlJz9r/LrkDYynsm3hAlNEYLXpn5hDnDwLx47dukD5+sUQfcdeSQGhe4ar/L\nHDLI8XYhG860eQiG8Pz4Sd/hf1nAw58Koj+xCmCD2Pcjgh6tm2JBnIkobfjDCadG\nucJLTbVtvXfo15YWABX4PMvKdsY/1q9NY/0BRP+ZmcPrzWNV4iFZDb27s9xfD38U\npeqQ0Mk8+k0XPSpsOLkI5+cxHhUhHNIsyQIDAQAB\n-----END RSA PUBLIC KEY-----\n'),
+    'JWT_PUBLIC_KEY': config('JWT_AUTH_PUBLIC_KEY', default='-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAisoDl8aPBJl0U1bx++6u7nFjhBAksEj209E4P9+SUnkuAKpwnf80\nyQ1QCc/xzHAlO7tM17h2Qh+0/7mUjpk17iBGmz0b5JKiFwiNoUiX/tmC2fOqNEI3\nb/4b91SJFVXILyjjExVmMroQL1I5Eh2Janoldt6he6wtBsrwqy9XsIOvNSX3oK1h\nRIeWI0FuJLgZd2lLUuPNRd2WUCK3vXb1zYXV04MHaZ89FUJSW6N0dd/VzKe2PriG\na3Z6sEwi048/rs3bmbWymjjZ+p08jyEzkK0uREFSbhxQcqSy1j7mT0QGmjjfg+wq\noxfkT6RAUBL8YC4jvpalznAxtmQCZ3phcwIDAQAB\n-----END RSA PUBLIC KEY-----\n'),
     'JWT_ALGORITHM': config('JWT_AUTH_ALGORITHM', default='RS256'),
-    'JWT_AUDIENCE': config('JWT_AUTH_AUDIENCE', default='vision'),
+    'JWT_AUDIENCE': config('JWT_AUTH_AUDIENCE', default='account'),
     'JWT_ISSUER': config('JWT_AUTH_ISSUER', default="https://meat.adrf.info/auth/realms/master"),
     'JWT_AUTH_HEADER_PREFIX': config('JWT_AUTH_HEADER_PREFIX', default="Bearer"),
     'JWT_VERIFY_EXPIRATION': config('JWT_AUTH_VERIFY_EXPIRATION', cast=bool, default=True),
