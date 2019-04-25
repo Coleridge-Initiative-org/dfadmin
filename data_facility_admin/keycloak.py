@@ -14,7 +14,7 @@ class KeycloakAPI(object):
         self.keycloak_api = urljoin(url, '/auth/admin/')
         request_data = {'username': login, 'password': password, 'grant_type': 'password',
                         'client_id': 'admin-cli'}
-        req = requests.post(urljoin(url, os.path.join('auth/realms/', os.path.join(realm,
+        req = requests.post(urljoin(url, os.path.join('auth/realms/', os.path.join('master',
                                     'protocol/openid-connect/token'))), data=request_data,
                             headers={'Content-Type': 'application/x-www-form-urlencoded'})
 
@@ -88,7 +88,7 @@ class KeycloakAPI(object):
             if req.status_code == 200:
                 return req.json()
             else:
-                raise Exception("The Keycloak API service STATUS code is " + req.status_code)
+                raise Exception("The Keycloak API service STATUS code is " + str(req.status_code))
 
     def reset_user_password(self, user_id, password, temporary):
         if not self.is_authenticated():

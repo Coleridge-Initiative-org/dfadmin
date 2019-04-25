@@ -24,7 +24,6 @@ def example_detailed_metadata():
     return None
 
 
-# Create your tests here.
 class GmetaTests(TestCase):
 
     def setUp(self):
