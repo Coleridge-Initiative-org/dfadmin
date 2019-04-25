@@ -50,11 +50,11 @@ pipeline {
 
         stage('Push Image') {
             steps {
-                withDockerRegistry([credentialsId: "dockerhub-creds", url: ""]){
-                    sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${IMAGE_TAG}'
-                    sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
-                    sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
-                }
+            	sh '$(aws ecr get-login --no-include-email)'
+		        sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${IMAGE_TAG}'
+                sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
+		        sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
+                sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
             }
         }
         stage('Deploy') {
