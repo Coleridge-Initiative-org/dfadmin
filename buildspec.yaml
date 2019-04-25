@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Preparing the project"
+      - git submodule update --init --recursive
+      - ln -s local.env .env
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - docker-compose build
+      - docker-compose up -d
+      - docker-compose ps
+      - make test
+
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo "Reporting to Codacy"
+      - make codacy-report
