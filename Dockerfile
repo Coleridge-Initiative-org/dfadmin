@@ -17,3 +17,5 @@ RUN pip install -r requirements.txt
 RUN pip install -r test-requirements.txt
 
 LABEL maintainer="Daniel.Castellani@nyu.edu"
+
+RUN apt-get update && apt-get upgrade -y
