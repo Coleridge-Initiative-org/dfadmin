@@ -3,6 +3,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6b5106ff994c4087b9f8ec733f391299)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=NYU-Chicago-data-facility/dfadmin&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/6b5106ff994c4087b9f8ec733f391299)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=NYU-Chicago-data-facility/dfadmin&utm_campaign=Badge_Coverage)
+[![Jenkins Build Status](https://jenkins.dev.adrf.cloud/buildStatus/icon?job=dfadmin-test)](https://jenkins.dev.adrf.cloud/job/dfadmin-test/)
 
 Admin system for the Data Facility.
 
