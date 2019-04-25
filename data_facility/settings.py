@@ -415,7 +415,12 @@ DATABASES = {
         'PASSWORD': config('DATABASES_PASSWORD'),
         'HOST': config('DATABASES_HOST'),
         'PORT': config('DATABASES_PORT', cast=int, default=5432),
+    },
+    'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+
 }
 
 # Internationalization
