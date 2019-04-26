@@ -29,10 +29,9 @@ pipeline {
         //}
         stage('Scan') {
             steps {
-		          echo 'Scanning..'
-//                sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- ${IMAGE_NAME}:ci'
-		          writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
-	              anchore name: "anchore_images", engineurl: "http://18.210.16.116:8228/v1", engineCredentialsId: "anchore-engine"
+		echo 'Scanning..'
+		writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
+	        anchore name: "anchore_images"
             }
         }
         stage('Test') {
