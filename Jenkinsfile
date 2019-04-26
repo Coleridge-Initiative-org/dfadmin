@@ -30,7 +30,8 @@ pipeline {
         stage('Scan') {
             steps {
 		echo 'Scanning..'
-		writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
+		sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
+		writeFile file: "anchore_images", text: "${IMAGE_NAME}:${GIT_COMMIT_HASH}"
 	        anchore name: "anchore_images"
             }
         }
