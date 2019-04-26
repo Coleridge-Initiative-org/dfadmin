@@ -21,10 +21,18 @@ pipeline {
                 sh 'docker build . -t ${IMAGE_NAME}:ci'
             }
         }
+ //       stage('Scan') {
+   //         steps {
+//                sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- -d Dockerfile -b .anchore_policy.json ${IMAGE_NAME}:ci'
+     //           sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- ${IMAGE_NAME}:ci'
+       //     }
+        //}
         stage('Scan') {
             steps {
-//                sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- -d Dockerfile -b .anchore_policy.json ${IMAGE_NAME}:ci'
-                sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- ${IMAGE_NAME}:ci'
+		          echo 'Scanning..'
+//                sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- ${IMAGE_NAME}:ci'
+		          writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
+	              anchore name: "anchore_images", engineurl: http://18.210.16.116:8228/v1, engineCredentialsId: anchore-engine
             }
         }
         stage('Test') {
