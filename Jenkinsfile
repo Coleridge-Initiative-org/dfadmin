@@ -21,18 +21,11 @@ pipeline {
                 sh 'docker build . -t ${IMAGE_NAME}:ci'
             }
         }
- //       stage('Scan') {
-   //         steps {
-//                sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- -d Dockerfile -b .anchore_policy.json ${IMAGE_NAME}:ci'
-     //           sh 'curl -s https://ci-tools.anchore.io/inline_scan-v0.3.3 | bash -s -- ${IMAGE_NAME}:ci'
-       //     }
-        //}
         stage('Scan') {
             steps {
 		echo 'Scanning..'
-		sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${GIT_COMMIT_HASH} '
-         	sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
-		writeFile file: "anchore_images", text: "${IMAGE_NAME}:${GIT_COMMIT_HASH}"
+         	sh 'docker push ${IMAGE_NAME}:ci'
+		writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
 	        anchore name: "anchore_images"
             }
         }
@@ -61,7 +54,6 @@ pipeline {
             steps {
                     sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${IMAGE_TAG}'
                     sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
-                    sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT_HASH}-OK'
             }
         }
         stage('Deploy') {
