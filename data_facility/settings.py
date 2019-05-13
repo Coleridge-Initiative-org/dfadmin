@@ -20,6 +20,9 @@ import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
+#DFAdmin Version
+VERSION = 'v2019-04'
+
 ENV = config('ENV', default='PRODUCTION')
 ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
                       'LOCAL': 'gray',
@@ -211,7 +214,7 @@ ADMIN_REORDER = (
 )
 
 # ----------------- DJANGO GRAPPELLI -------------------------
-GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin < {0} >'.format(ADRF_SYSTEM_NAME)
+GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin < {0} @{1} >'.format(ADRF_SYSTEM_NAME, VERSION)
 
 # ----------------- CORS Config for Vue -------------------------
 # Based on: https://www.techiediaries.com/django-cors/
