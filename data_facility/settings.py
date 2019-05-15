@@ -36,6 +36,7 @@ if config('ENVIRONMENT_COLOR', None):
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 CHAR_FIELD_MAX_LENGTH = 256
 TEXT_FIELD_MAX_LENGTH = 1024
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
