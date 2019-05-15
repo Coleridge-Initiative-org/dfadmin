@@ -447,7 +447,7 @@ class Project(LdapObject):
     <br/><b>Active</b>: Active projects will have database schemas and project folders created.
     <br/><b>Archived</b>: Archived projects don't have a database schema neither project folders.
     '''
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_NEW,
+    status = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, choices=STATUS_CHOICES, default=STATUS_NEW,
                               help_text=status_help)
     PROJECT_TYPE_CLASS = 'Class'
     PROJECT_TYPE_CAPSTONE = 'Capstone'
@@ -459,7 +459,7 @@ class Project(LdapObject):
         (PROJECT_TYPE_RESEARCH, PROJECT_TYPE_RESEARCH),
         (PROJECT_TYPE_DATA_TRANSFER, PROJECT_TYPE_DATA_TRANSFER),
     )
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default=PROJECT_TYPE_RESEARCH)
+    type = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, choices=TYPE_CHOICES, default=PROJECT_TYPE_RESEARCH)
     ENV_GREEN = 'Green'
     ENV_YELLOW = 'Yellow'
     ENV_RED = 'Red'
