@@ -38,29 +38,34 @@ pipeline {
                 sh 'docker build . -t ${IMAGE_NAME}:ci'
             }
         }
-        stage('Scan') {
-            steps {
-                echo 'Scanning..'
-                sh '$(aws ecr get-login --no-include-email)'
-                sh 'docker push ${IMAGE_NAME}:ci'
-                writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
-                anchore name: "anchore_images"
+//        parallel {
+            stage('Scan') {
+                steps {
+                    echo 'Scanning..'
+                    sh '$(aws ecr get-login --no-include-email)'
+                    sh 'docker push ${IMAGE_NAME}:ci'
+                    writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
+                    anchore name: "anchore_images"
+                }
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh 'docker-compose up -d'
-                sh 'make check || true'
-//                junit '**/target/*.xml'
+            stage('Test') {
+                steps {
+                    echo 'Testing..'
+                    sh 'docker-compose stop || true'
+                    sh 'docker-compose up -d'
+                    sh 'sleep 15s'
+                    sh 'make test || true'
+                    sh 'make check || true'
+    //                junit '**/target/*.xml'
+                }
             }
-        }
-//        stage('Stopping') {
-//            steps {
-//                echo 'Stopping DFAdmin..'
-//                sh 'docker-compose stop'
-//            }
 //        }
+        stage('Stopping') {
+            steps {
+                echo 'Stopping DFAdmin..'
+                sh 'docker-compose stop || true'
+            }
+        }
         stage('QA') {
             steps {
                 echo 'Checking code..'
