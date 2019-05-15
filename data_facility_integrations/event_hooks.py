@@ -62,7 +62,6 @@ def dataset_saved(sender, instance, **kwargs):
         'sender': 'DFAdmin',
         'status': instance.status,
         'name': instance.name,
-
     }
 
     # TODO: Log some nice message
