@@ -15,7 +15,7 @@ pipeline {
         IMAGE_NAME = '441870321480.dkr.ecr.us-east-1.amazonaws.com/dfadmin'
         IMAGE_TAG = 'latest'
         GIT_COMMIT_HASH = sh (script: "git rev-parse --short `git log -n 1 --pretty=format:'%H'`", returnStdout: true)
-	GIT_COMMITER = sh (script: "git show -s --pretty=%an", returnStdout: true)
+        GIT_COMMITER = sh (script: "git show -s --pretty=%an", returnStdout: true)
     }
 
     stages {
@@ -34,10 +34,11 @@ pipeline {
         }
         stage('Scan') {
             steps {
-		echo 'Scanning..'
-         	sh 'docker push ${IMAGE_NAME}:ci'
-		writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
-	        anchore name: "anchore_images"
+                echo 'Scanning..'
+                sh '$(aws ecr get-login --no-include-email)'
+                sh 'docker push ${IMAGE_NAME}:ci'
+                writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
+                anchore name: "anchore_images"
             }
         }
         stage('Test') {
@@ -63,11 +64,11 @@ pipeline {
 
         stage('Push Image') {
             steps {
-            	sh '$(aws ecr get-login --no-include-email)'
-		          sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${IMAGE_TAG}'
-              sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
-		          sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
-              sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
+                sh '$(aws ecr get-login --no-include-email)'
+                sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${IMAGE_TAG}'
+                sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
+                sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
+                sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
             }
         }
         stage('Deploy') {
