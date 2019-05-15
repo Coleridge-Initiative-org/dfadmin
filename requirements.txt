@@ -21,6 +21,10 @@ parameterized==0.6.1
 
 django-cors-headers==2.4.0
 
+# Hooks
+aws
+boto3
+
 # API
 djangorestframework==3.9.1
 markdown==2.6.11

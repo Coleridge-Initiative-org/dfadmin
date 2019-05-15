@@ -16,3 +16,5 @@ class DataFacilityIntegrationsConfig(AppConfig):
         if settings.WS_K8S_INTEGRATION:
             from data_facility_integrations import rds_hooks
         pass
+        if 'ACTIVE' in settings.SNS_HOOK and settings.SNS_HOOK['ACTIVE']:
+            from data_facility_integrations import event_hooks
