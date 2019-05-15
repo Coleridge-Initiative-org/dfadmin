@@ -19,6 +19,12 @@ pipeline {
     }
 
     stages {
+        stage ('Start') {
+              steps {
+            // send build started notifications
+                  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH}  (${env.BUILD_URL})")
+              }
+        }
         stage('Prepare') {
             steps {
                 echo 'Initializing submodules..'
@@ -44,8 +50,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-//                sh 'docker-compose up -d --build'
-//               sh 'make check || true'
+                sh 'docker-compose up -d'
+                sh 'make check || true'
 //                junit '**/target/*.xml'
             }
         }
@@ -88,10 +94,4 @@ pipeline {
 	    }
     }
 
-}
-
-node {
-  def imageLine = 'debian:latest'
-  writeFile file: 'anchore_images', text: imageLine
-  anchore name: 'anchore_images'
 }
