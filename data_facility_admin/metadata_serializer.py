@@ -148,7 +148,10 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
 
     # Clear duplicates in detailed content and search_content
     for key in search_content:
-        del detailed_content[key]
+        try:
+            del detailed_content[key]
+        except:
+            pass #this just means that the detailed metadata does not have some key from the search. Not a problem.
 
     # Prep dataset if not given.
     if given_dataset:
