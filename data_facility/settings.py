@@ -564,7 +564,7 @@ WS_K8S_INTEGRATION = config('WS_K8S_INTEGRATION', cast=bool, default=False)
 DFAFMIN_API_GENERIC_GROUP = config('DFAFMIN_API_GENERIC_GROUP', default='Authenticated')
 
 SNS_HOOK = {
-    'ACTIVE': config('SNS_HOOK_ACTIVE', cast=bool, default=False)
+    'ACTIVE': config('SNS_HOOK_ACTIVE', cast=bool, default=False),
     'BASE_ARN': config('SNS_HOOK_BASE_ARN', default='?'),
     'REGION': config('SNS_HOOK_REGION', default='us-east-1'),
     'AWS_ACCESS_KEY_ID': config('SNS_HOOK_AWS_ACCESS_KEY_ID', default='?'),
