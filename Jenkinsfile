@@ -51,7 +51,6 @@ pipeline {
             stage('Test') {
                 steps {
                     echo 'Testing..'
-                    sh 'docker-compose stop || true'
                     sh 'docker-compose up -d'
                     sh 'sleep 15s'
                     sh 'make test || true'
@@ -96,6 +95,8 @@ pipeline {
 	    failure {
 	      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH} (${env.BUILD_URL})");    
 	      setBuildStatus("Build failed", "FAILURE");
+          sh 'docker-compose stop || true'
+
 	    }
     }
 
