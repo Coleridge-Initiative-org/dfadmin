@@ -80,7 +80,7 @@ pipeline {
         stage('QA') {
             steps {
                 echo 'Checking code..'
-//                sh 'make codacy-report'
+                sh 'make codacy-report'
             }
         }
 
@@ -101,11 +101,11 @@ pipeline {
     }
     post {
 	    success {
-	      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH}  (${env.BUILD_URL})");
+	      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} (${env.BUILD_URL})");
 	      setBuildStatus("Build succeeded", "SUCCESS");
 	    }
 	    failure {
-	      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH}  (${env.BUILD_URL})");
+	      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} (${env.BUILD_URL})");
 	      setBuildStatus("Build failed", "FAILURE");
           sh 'docker-compose down'
           sh 'sudo rm -rf logs || true'
