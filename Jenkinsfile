@@ -63,6 +63,8 @@ pipeline {
             steps {
                 echo 'Stopping DFAdmin..'
                 sh 'docker-compose stop || true'
+                sh 'docker-compose down || true'
+
             }
         }
         stage('QA') {
