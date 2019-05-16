@@ -48,7 +48,7 @@ pipeline {
                     anchore name: "anchore_images"
                 }
             }
-            stage('Start') {
+            stage('Run') {
                 steps {
                     echo 'Starting..'
                     sh 'docker-compose up -d'
