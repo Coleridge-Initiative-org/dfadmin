@@ -101,7 +101,7 @@ pipeline {
     }
     post {
 	    success {
-	      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH}  (${env.BUILD_URL})") (${env.BUILD_URL})");
+	      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH}  (${env.BUILD_URL})");
 	      setBuildStatus("Build succeeded", "SUCCESS");
 	    }
 	    failure {
