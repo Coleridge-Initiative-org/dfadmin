@@ -11,6 +11,10 @@ void setBuildStatus(String message, String state) {
 pipeline {
     agent any
 
+    options {
+        disableConcurrentBuilds()
+    }
+
     environment {
         IMAGE_NAME = '441870321480.dkr.ecr.us-east-1.amazonaws.com/dfadmin'
         IMAGE_TAG = 'latest'
