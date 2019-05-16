@@ -48,18 +48,27 @@ pipeline {
                     anchore name: "anchore_images"
                 }
             }
+            stage('Start') {
+                steps {
+                    echo 'Starting..'
+                    sh 'docker-compose up -d'
+                    sh 'sleep 15s'
+                }
+            }
+            stage('Check') {
+                steps {
+                    sh 'make check'
+                }
+            }
             stage('Test') {
                 steps {
                     echo 'Testing..'
-                    sh 'docker-compose up -d'
-                    sh 'sleep 15s'
-                    sh 'make test || true'
-                    sh 'make check || true'
+                    sh 'make test'
     //                junit '**/target/*.xml'
                 }
             }
 //        }
-        stage('Stopping') {
+        stage('Stop') {
             steps {
                 echo 'Stopping DFAdmin..'
                 sh 'docker-compose stop || true'
