@@ -39,9 +39,8 @@ pipeline {
             }
         }
 //        parallel {
-            stage('Scan') {
+            stage('Vulnerability Scan') {
                 steps {
-                    echo 'Scanning..'
                     sh '$(aws ecr get-login --no-include-email)'
                     sh 'docker push ${IMAGE_NAME}:ci'
                     writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
@@ -50,7 +49,6 @@ pipeline {
             }
             stage('Run') {
                 steps {
-                    echo 'Starting..'
                     sh 'docker-compose up -d'
                     sh 'sleep 15s'
                 }
@@ -60,9 +58,13 @@ pipeline {
                     sh 'make check'
                 }
             }
+            stage('QA') {
+                steps {
+                    sh 'make codacy-report'
+                }
+            }
             stage('Test') {
                 steps {
-                    echo 'Testing..'
                     sh 'make test'
     //                junit '**/target/*.xml'
                 }
@@ -77,14 +79,7 @@ pipeline {
 
             }
         }
-        stage('QA') {
-            steps {
-                echo 'Checking code..'
-                sh 'make codacy-report'
-            }
-        }
-
-        stage('Push Image') {
+        stage('Release Image') {
             steps {
                 sh '$(aws ecr get-login --no-include-email)'
                 sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${IMAGE_TAG}'
