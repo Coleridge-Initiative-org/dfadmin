@@ -58,15 +58,15 @@ pipeline {
                     sh 'make check'
                 }
             }
-            stage('QA') {
-                steps {
-                    sh 'make codacy-report'
-                }
-            }
             stage('Test') {
                 steps {
                     sh 'make test'
     //                junit '**/target/*.xml'
+                }
+            }
+            stage('QA') {
+                steps {
+                    sh 'make codacy-report'
                 }
             }
 //        }
