@@ -57,7 +57,7 @@ pipeline {
             }
             stage('Check') {
                 steps {
-                    sh 'make check || true'
+                    sh 'make check'
                 }
             }
             stage('Test') {
@@ -73,7 +73,7 @@ pipeline {
                 echo 'Stopping DFAdmin..'
                 sh 'docker-compose stop || true'
                 sh 'docker-compose down || true'
-                sh 'sudo rm -rf logs'
+                sh 'sudo rm -rf logs || true'
 
             }
         }
@@ -108,7 +108,7 @@ pipeline {
 	      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH}  (${env.BUILD_URL})");
 	      setBuildStatus("Build failed", "FAILURE");
           sh 'docker-compose down'
-          sh 'sudo rm -rf logs'
+          sh 'sudo rm -rf logs || true'
 	    }
     }
 
