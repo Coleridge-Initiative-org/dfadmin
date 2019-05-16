@@ -11,10 +11,6 @@ void setBuildStatus(String message, String state) {
 pipeline {
     agent any
 
-    options {
-        disableConcurrentBuilds()
-    }
-
     environment {
         IMAGE_NAME = '441870321480.dkr.ecr.us-east-1.amazonaws.com/dfadmin'
         IMAGE_TAG = 'latest'
@@ -31,7 +27,7 @@ pipeline {
         }
         stage('Prepare') {
             steps {
-                echo 'Initializing submodules and creating symlink  ..'
+                echo 'Initializing submodules..'
                 sh 'ln -s local.env .env'
                 sh 'git submodule update --init --recursive'
             }
