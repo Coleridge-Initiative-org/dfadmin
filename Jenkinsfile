@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Prepare') {
             steps {
-                echo 'Initializing submodules..'
+                echo 'Initializing submodules and creating symlink  ..'
                 sh 'ln -s local.env .env'
                 sh 'git submodule update --init --recursive'
             }
