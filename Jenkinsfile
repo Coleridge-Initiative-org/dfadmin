@@ -59,7 +59,7 @@ pipeline {
                     sh 'sleep 15s'
                     sh 'make test || true'
                     sh 'make check || true'
-    //                junit '**/target/*.xml'
+                    junit '**/target/*.xml'
                 }
             }
 //        }
