@@ -8,7 +8,7 @@ api_router.register(r'dfroles', views.DfRoleViewSet)
 api_router.register(r'users', views.UserViewSet)
 api_router.register(r'datasets', views.DatasetViewSet, basename='dataset')
 api_router.register(r'categories', views.CategoryViewSet)
-api_router.register(r'projects', views.ProjectViewSet)
+api_router.register(r'projects', views.ProjectViewSet, basename='project')
 api_router.register(r'DataStewards'.lower(), views.DataStewardViewSet)
 api_router.register(r'DataProviders'.lower(), views.DataProviderViewSet)
 
