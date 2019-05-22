@@ -190,15 +190,15 @@ class ApiTests(TestCase):
     #     data = response.data['results']
     #     print('data=', data)
     #     assert 'search_metadata' in data
-
-# Project
-    def test_api_project_list(self):
-        request = self.factory.get(API_BASE + 'projects/', format='json')
-        force_authenticate(request, user=self.user)
-        response = api_views.ProjectViewSet.as_view({'get': 'list'})(request).render()
-        self.assertEqual(status.HTTP_200_OK, response.status_code)
-        self.assertEqual(1, len(response.data['results']))
-        self.assertEqual('test Project', response.data['results'][0]['name'])
+#
+# # Project
+#     def test_api_project_list(self):
+#         request = self.factory.get(API_BASE + 'projects/', format='json')
+#         force_authenticate(request, user=self.user)
+#         response = api_views.ProjectViewSet.as_view({'get': 'list'})(request).render()
+#         self.assertEqual(status.HTTP_200_OK, response.status_code)
+#         self.assertEqual(1, len(response.data['results']))
+#         self.assertEqual('test Project', response.data['results'][0]['name'])
 
 
 class ApiClientTests(TestCase):
