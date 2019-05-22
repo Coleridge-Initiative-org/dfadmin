@@ -108,7 +108,6 @@ class DatasetViewSet(viewsets.ModelViewSet):
         if end_date:
             queryset = queryset.filter(temporal_coverage_end__year__lte=int(end_date))
 
-
         request_user = self.request.user
         logger.debug('Current user: %s' % request_user)
 
@@ -133,16 +132,33 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `detail` actions.
     """
-    queryset = models.Project.objects.all()
+    # queryset = models.Project.objects.all()
     serializer_class = serializers.ProjectSerializer
     filter_fields = ('name', 'status', 'has_irb', 'owner')
-    search_fields = ('name', 'owner__first_name', 'owner__last_name', 'owner__ldap_name', 'methodology', 'abstract',
+    search_fields = ('name', 'owner__first_name', 'owner__last_name',
+                     'owner__ldap_name', 'methodology', 'abstract',
                      'outcomes', 'mission',
                      'projectmember__member__ldap_name',
                      'projectmember__member__first_name',
                      'projectmember__member__last_name',
                      )
     ordering_fields = ('name', 'owner',)
+
+    def get_queryset(self):
+        """
+        Retrieve datasets respecting ACLs.
+        """
+        queryset = models.Project.objects.filter(status=models.Project.STATUS_ACTIVE)
+        member = self.request.query_params.get('member', None)
+        logger.debug('member filter: %s' % member)
+        # member
+        if self.request.query_params.get('member', None):
+            queryset = queryset.filter(projectmember__member__ldap_name=member)
+
+        request_user = self.request.user
+        logger.debug('Current user: %s' % request_user)
+
+        return queryset
 
 
 class DataStewardViewSet(viewsets.ModelViewSet):
