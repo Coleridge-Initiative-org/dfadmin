@@ -15,10 +15,16 @@ pipeline {
         IMAGE_NAME = '441870321480.dkr.ecr.us-east-1.amazonaws.com/dfadmin'
         IMAGE_TAG = 'latest'
         GIT_COMMIT_HASH = sh (script: "git rev-parse --short `git log -n 1 --pretty=format:'%H'`", returnStdout: true)
-	GIT_COMMITER = sh (script: "git show -s --pretty=%an", returnStdout: true)
+        GIT_COMMITER = sh (script: "git show -s --pretty=%an", returnStdout: true)
     }
 
     stages {
+//        stage ('Start') {
+//              steps {
+//            // send build started notifications
+//                  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH}  (${env.BUILD_URL})")
+//              }
+//        }
         stage('Prepare') {
             steps {
                 echo 'Initializing submodules..'
@@ -32,39 +38,54 @@ pipeline {
                 sh 'docker build . -t ${IMAGE_NAME}:ci'
             }
         }
-        stage('Scan') {
-            steps {
-		echo 'Scanning..'
-         	sh 'docker push ${IMAGE_NAME}:ci'
-		writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
-	        anchore name: "anchore_images"
+//        parallel {
+            stage('Vulnerability Scan') {
+                steps {
+                    sh '$(aws ecr get-login --no-include-email)'
+                    sh 'docker push ${IMAGE_NAME}:ci'
+                    writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
+                    anchore name: "anchore_images"
+                }
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-//                sh 'docker-compose up -d --build'
-//               sh 'make check || true'
-//                junit '**/target/*.xml'
+            stage('Run') {
+                steps {
+                    sh 'docker-compose up -d'
+                    sh 'sleep 15s'
+                }
             }
-        }
-//        stage('Stopping') {
-//            steps {
-//                echo 'Stopping DFAdmin..'
-//                sh 'docker-compose stop'
-//            }
+            stage('Check') {
+                steps {
+                    sh 'make check'
+                }
+            }
+            stage('Test') {
+                steps {
+                    sh 'make test'
+    //                junit '**/target/*.xml'
+                }
+            }
+            stage('QA') {
+                steps {
+                    sh 'make codacy-report'
+                }
+            }
 //        }
-        stage('QA') {
+        stage('Stop') {
             steps {
-                echo 'Checking code..'
-//                sh 'make codacy-report'
+                echo 'Stopping DFAdmin..'
+                sh 'docker-compose stop || true'
+                sh 'docker-compose down || true'
+                sh 'sudo rm -rf logs || true'
+
             }
         }
-
-        stage('Push Image') {
+        stage('Release Image') {
             steps {
-                    sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${IMAGE_TAG}'
-                    sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
+                sh '$(aws ecr get-login --no-include-email)'
+                sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${IMAGE_TAG}'
+                sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
+                sh 'docker tag ${IMAGE_NAME}:ci ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
+                sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
             }
         }
         stage('Deploy') {
@@ -75,19 +96,15 @@ pipeline {
     }
     post {
 	    success {
-	      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})");
+	      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} (${env.BUILD_URL})");
 	      setBuildStatus("Build succeeded", "SUCCESS");
 	    }
 	    failure {
-	      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH} (${env.BUILD_URL})");    
+	      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} (${env.BUILD_URL})");
 	      setBuildStatus("Build failed", "FAILURE");
+          sh 'docker-compose down'
+          sh 'sudo rm -rf logs || true'
 	    }
     }
 
-}
-
-node {
-  def imageLine = 'debian:latest'
-  writeFile file: 'anchore_images', text: imageLine
-  anchore name: 'anchore_images'
 }

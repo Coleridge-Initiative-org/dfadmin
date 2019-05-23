@@ -1,4 +1,6 @@
-from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider, Category
+from rest_framework.relations import PrimaryKeyRelatedField
+
+from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider, Category, ProjectTool
 from rest_framework import serializers
 from drf_dynamic_fields import DynamicFieldsMixin
 import logging
@@ -101,6 +103,13 @@ class DatasetSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
         # fields = '__all__'
 
 
+class ProjectToolSerializer(DFAdminModelSerializerWithId):
+
+    class Meta:
+        model = ProjectTool
+        fields = ('tool_name', 'other_name', 'notes', 'system_info', 'additional_info')
+
+
 class ProjectSerializer(DFAdminModelSerializerWithId):
     # owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail',
     #                                             read_only=True, lookup_field='username')
@@ -111,6 +120,8 @@ class ProjectSerializer(DFAdminModelSerializerWithId):
     active_members = UserSerializer(many=True, read_only=True)
 
     owner_username = serializers.ReadOnlyField(source='owner__ldap_name')
+    # tools = PrimaryKeyRelatedField(queryset=ProjectTool.objects.all())
+    related_tools = ProjectToolSerializer(many=True, read_only=True)
 
     class Meta:
         model = Project
@@ -132,6 +143,8 @@ class ProjectSerializer(DFAdminModelSerializerWithId):
                   'datasets_with_access',
                   'created_at',
                   'updated_at',
+                  'tools',
+                  'related_tools'
                   )
         # fields = '__all__'
 
