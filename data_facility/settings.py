@@ -20,7 +20,10 @@ import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-ENV = config('ENV', 'PRODUCTION')
+#DFAdmin Version
+VERSION = 'v2019-04'
+
+ENV = config('ENV', default='PRODUCTION')
 ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
                       'LOCAL': 'gray',
                       'DEVELOPMENT': 'green'}
@@ -33,6 +36,7 @@ if config('ENVIRONMENT_COLOR', None):
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 CHAR_FIELD_MAX_LENGTH = 256
 TEXT_FIELD_MAX_LENGTH = 1024
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -211,7 +215,7 @@ ADMIN_REORDER = (
 )
 
 # ----------------- DJANGO GRAPPELLI -------------------------
-GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin < {0} >'.format(ADRF_SYSTEM_NAME)
+GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin < {0} @{1} >'.format(ADRF_SYSTEM_NAME, VERSION)
 
 # ----------------- CORS Config for Vue -------------------------
 # Based on: https://www.techiediaries.com/django-cors/
@@ -334,7 +338,7 @@ LDAP_SETTINGS = {
         'AttributesBlackList': ['memberUid'],
         'RecreateGroups': False,
         'SystemUserPpolicyConfig': "cn=system-users,ou=policies,dc=adrf,dc=info",
-        'PpolicyLockDownDurationSeconds': 900 
+        'PpolicyLockDownDurationSeconds': 900
     },
     'Connection': {
         'BindDN': config('LDAP_BIND_DN', default="cn=admin,dc=adrf,dc=info"),
@@ -535,19 +539,15 @@ LOGGING = {
     },
 }
 
-# #from django.auth.models import User
-# def jwt_get_username_from_payload_handler(payload):
-#     if 'preferred_username' in payload:
-#         return payload['preferred_username']
 from data_facility_admin import jwt
 JWT_AUTH = {
     'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt.jwt_get_username_from_payload_handler,
-    'JWT_PUBLIC_KEY': '-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAnPISCA726xJ4GEI9wZEyVPqOFKmW9L/fqSLywkFDvxrgH6VrPrsV\nHITFSzw5agg+CJ2gQc5BDPq+SmhJv9bVmJ0Uqj56l3Ek+uLJEj8aDHtqKcXD6aNW\ncii3nlJz9r/LrkDYynsm3hAlNEYLXpn5hDnDwLx47dukD5+sUQfcdeSQGhe4ar/L\nHDLI8XYhG860eQiG8Pz4Sd/hf1nAw58Koj+xCmCD2Pcjgh6tm2JBnIkobfjDCadG\nucJLTbVtvXfo15YWABX4PMvKdsY/1q9NY/0BRP+ZmcPrzWNV4iFZDb27s9xfD38U\npeqQ0Mk8+k0XPSpsOLkI5+cxHhUhHNIsyQIDAQAB\n-----END RSA PUBLIC KEY-----\n',
-    'JWT_ALGORITHM': 'RS256',
-    'JWT_AUDIENCE': 'vision',
-    'JWT_ISSUER': "https://meat.adrf.info/auth/realms/master",
-    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
-    'JWT_VERIFY_EXPIRATION': False,
+    'JWT_PUBLIC_KEY': config('JWT_AUTH_PUBLIC_KEY', default='-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAisoDl8aPBJl0U1bx++6u7nFjhBAksEj209E4P9+SUnkuAKpwnf80\nyQ1QCc/xzHAlO7tM17h2Qh+0/7mUjpk17iBGmz0b5JKiFwiNoUiX/tmC2fOqNEI3\nb/4b91SJFVXILyjjExVmMroQL1I5Eh2Janoldt6he6wtBsrwqy9XsIOvNSX3oK1h\nRIeWI0FuJLgZd2lLUuPNRd2WUCK3vXb1zYXV04MHaZ89FUJSW6N0dd/VzKe2PriG\na3Z6sEwi048/rs3bmbWymjjZ+p08jyEzkK0uREFSbhxQcqSy1j7mT0QGmjjfg+wq\noxfkT6RAUBL8YC4jvpalznAxtmQCZ3phcwIDAQAB\n-----END RSA PUBLIC KEY-----\n'),
+    'JWT_ALGORITHM': config('JWT_AUTH_ALGORITHM', default='RS256'),
+    'JWT_AUDIENCE': config('JWT_AUTH_AUDIENCE', default='account'),
+    'JWT_ISSUER': config('JWT_AUTH_ISSUER', default="https://meat.adrf.info/auth/realms/master"),
+    'JWT_AUTH_HEADER_PREFIX': config('JWT_AUTH_HEADER_PREFIX', default="Bearer"),
+    'JWT_VERIFY_EXPIRATION': config('JWT_AUTH_VERIFY_EXPIRATION', cast=bool, default=True),
 }
 
 # SHELL_PLUS = "ipython"
@@ -563,4 +563,12 @@ RDS_INTEGRATION = config('RDS_INTEGRATION', cast=bool, default=False)
 WS_K8S_INTEGRATION = config('WS_K8S_INTEGRATION', cast=bool, default=False)
 
 DFAFMIN_API_GENERIC_GROUP = config('DFAFMIN_API_GENERIC_GROUP', default='Authenticated')
+
+SNS_HOOK = {
+    'ACTIVE': config('SNS_HOOK_ACTIVE', cast=bool, default=False),
+    'BASE_ARN': config('SNS_HOOK_BASE_ARN', default='?'),
+    'REGION': config('SNS_HOOK_REGION', default='us-east-1'),
+    'AWS_ACCESS_KEY_ID': config('SNS_HOOK_AWS_ACCESS_KEY_ID', default='?'),
+    'AWS_ACCESS_KEY': config('SNS_HOOK_AWS_ACCESS_KEY', default='?'),
+}
 print ('DEBUG=', DEBUG)

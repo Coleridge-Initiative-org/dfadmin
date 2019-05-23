@@ -447,7 +447,7 @@ class Project(LdapObject):
     <br/><b>Active</b>: Active projects will have database schemas and project folders created.
     <br/><b>Archived</b>: Archived projects don't have a database schema neither project folders.
     '''
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_NEW,
+    status = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, choices=STATUS_CHOICES, default=STATUS_NEW,
                               help_text=status_help)
     PROJECT_TYPE_CLASS = 'Class'
     PROJECT_TYPE_CAPSTONE = 'Capstone'
@@ -459,7 +459,7 @@ class Project(LdapObject):
         (PROJECT_TYPE_RESEARCH, PROJECT_TYPE_RESEARCH),
         (PROJECT_TYPE_DATA_TRANSFER, PROJECT_TYPE_DATA_TRANSFER),
     )
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default=PROJECT_TYPE_RESEARCH)
+    type = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, choices=TYPE_CHOICES, default=PROJECT_TYPE_RESEARCH)
     ENV_GREEN = 'Green'
     ENV_YELLOW = 'Yellow'
     ENV_RED = 'Red'
@@ -548,6 +548,10 @@ class Project(LdapObject):
     def system_name(self):
         # TODO: write unit tests for this
         return slugify(self.name).replace('-', '_')
+
+    @property
+    def tools(self):
+        return [pt.to_json() for pt in ProjectTool.objects.filter(project=self)]
 
     def save(self, *args, **kwargs):
         if self.ldap_name is None:
@@ -676,6 +680,13 @@ class ProjectTool(models.Model):
 
     def __str__(self):
         return '%s %s %s' % (self.tool_name, self.other_name, self.additional_info)
+
+    def to_json(self):
+        return {'tool_name': self.tool_name,
+                'other_name': self.other_name,
+                'notes': self.notes,
+                'system_info': self.system_info,
+                'additional_info': self.additional_info}
 
     class Meta:
         ordering = ['tool_name', 'other_name']
