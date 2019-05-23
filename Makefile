@@ -45,13 +45,13 @@ test:
 	echo "Tests done!"
 
 test-quick:
-	docker-compose exec web coverage run --source='.' manage.py test --settings=data_facility.test_settings --keepdb --noinput -v2 --parallel 1
+	docker-compose exec -T web coverage run --source='.' manage.py test --settings=data_facility.test_settings --keepdb --noinput -v2 --parallel 1
 	docker-compose exec web coverage xml
 	docker-compose exec web coverage report
 
 codacy-report:
 	echo "Reporting test results to Codacy"
-	# docker-compose exec web pytest --cov=data_facility --cov=data_facility_admin --cov=scripts --cov-report=xml:coverage.xml
+	# docker-compose exec  -T web pytest --cov=data_facility --cov=data_facility_admin --cov=scripts --cov-report=xml:coverage.xml
 	docker-compose exec -T web python-codacy-coverage -r coverage.xml
 
 ci: dev-web-rebuild test codacy-report
@@ -101,7 +101,7 @@ ldap_import:
 	docker-compose exec web $(PYTHON) manage.py runscript import_from_ldap
 
 docs:
-	docker-compose exec web python manage.py graph_models data_facility_admin data_facility_metadata -o documentation/current_class_diagram.png -g --exclude-models 'Historical*' #--layout fdp
+	docker-compose exec -T web python manage.py graph_models data_facility_admin data_facility_metadata -o documentation/current_class_diagram.png -g --exclude-models 'Historical*' #--layout fdp
 
 check:
-	docker-compose exec web python -Wall manage.py check
+	docker-compose exec -T web python -Wall manage.py check

@@ -25,7 +25,7 @@ Please find instructions for setting up your account and accessing the {{ system
 
  4. Enter a new password and click the Submit button.
 
-     If you successfully gotten to this point, you can try to log in to the workspace. Please refer to the “Accessing the workspace” instructions for how to log in to the ADRF: https://ada.coleridgeinitiative.org/accessing-the-adrf.
+     If you have successfully gotten to this point, you can try to log in to the workspace. Please refer to the “Accessing the workspace” instructions for how to log in to the ADRF: https://ada.coleridgeinitiative.org/accessing-the-adrf. (Website password: adrf)
      Note on latency between activating your account and logging into the ADRF: be forewarned that there can be up to two minutes of latency in between when you first log in to {{ keycloak_url }} with your OTP, and when the workspace will be able to recognize one time tokens from your token generator.
 
      Which is to say:  if you are successful at logging all the way in on {{ keycloak_url }}, if you immediately try to log in to the workspace, there's a chance it will fail, even though there's nothing wrong. If this happens, simply wait a minute and try again.  This delay is a one-time setup issue.
