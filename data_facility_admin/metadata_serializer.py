@@ -68,7 +68,23 @@ def __name_if_not_none(value):
 
 def __to_date(s):
     import datetime
-    return datetime.datetime.strptime(s, "%Y").date()
+    try:
+        if not s: return None
+        elif '/' in s:
+            return datetime.datetime.strptime(s, "%m/%d/%y").date()
+        elif '-' not in s:
+            return datetime.datetime.strptime(s, "%Y").date()
+        elif len(s.split('-')) == 2:
+            return datetime.datetime.strptime(s, "%Y-%m").date()
+        elif len(s.split('-')) == 3:
+            try:
+                return datetime.datetime.strptime(s, "%Y-%d-%m").date()
+            except:
+                return datetime.datetime.strptime(s, "%Y-%m-%d").date()
+    except:
+        logger.error('Error translating %s to date.' % s)
+        raise
+        return None
 
 
 def __get_year(d):
@@ -129,6 +145,13 @@ def load(search_gmeta, detailed_gmeta=None, given_dataset=None):
 
     mimetype = gmeta_data['mimetype']
     search_content = gmeta_data['content']
+
+    # Clear duplicates in detailed content and search_content
+    for key in search_content:
+        try:
+            del detailed_content[key]
+        except:
+            pass #this just means that the detailed metadata does not have some key from the search. Not a problem.
 
     # Prep dataset if not given.
     if given_dataset:
