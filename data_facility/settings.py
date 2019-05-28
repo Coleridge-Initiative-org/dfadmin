@@ -21,7 +21,7 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 #DFAdmin Version
-VERSION = 'V2.3-ALPHA'
+VERSION = 'v2.3-ALPHA'
 
 ENV = config('ENV', default='PRODUCTION')
 ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
@@ -571,4 +571,4 @@ SNS_HOOK = {
     'AWS_ACCESS_KEY_ID': config('SNS_HOOK_AWS_ACCESS_KEY_ID', default='?'),
     'AWS_ACCESS_KEY': config('SNS_HOOK_AWS_ACCESS_KEY', default='?'),
 }
-print ('DEBUG=', DEBUG)
+print ('DEBUG=%s' % DEBUG)
