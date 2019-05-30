@@ -14,6 +14,8 @@ DEFAULT_K8S_CONFIG = {
     'REMOTE_DESKTOP_MEMORY':  config('K8S_REMOTE_DESKTOP_MEMORY', default=1000),
     'JUPYTER_CPU':  config('K8S_JUPYTER_CPU', default=1),
     'JUPYTER_MEMORY':  config('K8S_JUPYTER_MEMORY', default=1000),
+    'JUPYTER_IMAGE':  config('WS_K8S_JUPYTER_IMAGE', default='?'),
+    'REMOTE_DESKTOP_IMAGE':  config('WS_K8S_REMOTE_DESKTOP_IMAGE', default='?'),
 }
 logger.info('Loading K8S Hooks...')
 
