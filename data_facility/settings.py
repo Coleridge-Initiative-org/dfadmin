@@ -80,7 +80,7 @@ ADRF_SYSTEM_NAME = config('ADRF_SYSTEM_NAME', default=None)
 
 ## --- DFADMIN
 ADRF_URL = config('ADRF_URL')
-WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL')
+WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL_PUBLIC')
 PWD_RESET_INSTRUCTIONS = config('PWD_RESET_INSTRUCTIONS', default='???')
 ADRF_PASS_EXPIRATION_TIME = config('ADRF_PASS_EXPIRATION_TIME', cast=int, default=60)
 ADRF_ENABLE_CUSTOM_USERNAME = config('ADRF_ENABLE_CUSTOM_USERNAME', cast=bool, default=False)
@@ -347,7 +347,7 @@ LDAP_SETTINGS = {
 }
 
 KEYCLOAK = {
-    'API_URL': config('ID_ADRF_URL'),
+    'API_URL': config('ID_ADRF_URL_API'),
     'REALM': config('ID_ADRF_REALM', default='master'),
     'ADMIN_USERNAME': config('ID_ADRF_USER', default='***REMOVED***'),
     'ADMIN_PASSWORD': config('ID_ADRF_PASSWORD', default=''),
