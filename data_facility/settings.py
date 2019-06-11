@@ -21,7 +21,7 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 #DFAdmin Version
-VERSION = 'V2.2_2019-05'
+VERSION = 'v2.3-ALPHA'
 
 ENV = config('ENV', default='PRODUCTION')
 ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
@@ -80,7 +80,7 @@ ADRF_SYSTEM_NAME = config('ADRF_SYSTEM_NAME', default=None)
 
 ## --- DFADMIN
 ADRF_URL = config('ADRF_URL')
-WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL')
+WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL_PUBLIC')
 PWD_RESET_INSTRUCTIONS = config('PWD_RESET_INSTRUCTIONS', default='???')
 ADRF_PASS_EXPIRATION_TIME = config('ADRF_PASS_EXPIRATION_TIME', cast=int, default=60)
 ADRF_ENABLE_CUSTOM_USERNAME = config('ADRF_ENABLE_CUSTOM_USERNAME', cast=bool, default=False)
@@ -347,7 +347,7 @@ LDAP_SETTINGS = {
 }
 
 KEYCLOAK = {
-    'API_URL': config('ID_ADRF_URL'),
+    'API_URL': config('ID_ADRF_URL_API'),
     'REALM': config('ID_ADRF_REALM', default='master'),
     'ADMIN_USERNAME': config('ID_ADRF_USER', default='***REMOVED***'),
     'ADMIN_PASSWORD': config('ID_ADRF_PASSWORD', default=''),
@@ -542,7 +542,7 @@ LOGGING = {
 from data_facility_admin import jwt
 JWT_AUTH = {
     'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt.jwt_get_username_from_payload_handler,
-    'JWT_PUBLIC_KEY': config('JWT_AUTH_PUBLIC_KEY', default='-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAisoDl8aPBJl0U1bx++6u7nFjhBAksEj209E4P9+SUnkuAKpwnf80\nyQ1QCc/xzHAlO7tM17h2Qh+0/7mUjpk17iBGmz0b5JKiFwiNoUiX/tmC2fOqNEI3\nb/4b91SJFVXILyjjExVmMroQL1I5Eh2Janoldt6he6wtBsrwqy9XsIOvNSX3oK1h\nRIeWI0FuJLgZd2lLUuPNRd2WUCK3vXb1zYXV04MHaZ89FUJSW6N0dd/VzKe2PriG\na3Z6sEwi048/rs3bmbWymjjZ+p08jyEzkK0uREFSbhxQcqSy1j7mT0QGmjjfg+wq\noxfkT6RAUBL8YC4jvpalznAxtmQCZ3phcwIDAQAB\n-----END RSA PUBLIC KEY-----\n'),
+    'JWT_PUBLIC_KEY': config('JWT_AUTH_PUBLIC_KEY', default='?').replace('\\n', '\n'),
     'JWT_ALGORITHM': config('JWT_AUTH_ALGORITHM', default='RS256'),
     'JWT_AUDIENCE': config('JWT_AUTH_AUDIENCE', default='account'),
     'JWT_ISSUER': config('JWT_AUTH_ISSUER', default="https://meat.adrf.info/auth/realms/master"),
@@ -571,4 +571,4 @@ SNS_HOOK = {
     'AWS_ACCESS_KEY_ID': config('SNS_HOOK_AWS_ACCESS_KEY_ID', default='?'),
     'AWS_ACCESS_KEY': config('SNS_HOOK_AWS_ACCESS_KEY', default='?'),
 }
-print ('DEBUG=', DEBUG)
+print ('DEBUG=%s' % DEBUG)
