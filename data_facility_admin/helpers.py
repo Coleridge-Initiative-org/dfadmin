@@ -97,7 +97,7 @@ class KeycloakHelper(object):
         try:
             keycloak_user = self.api.get_keycloak_user(df_user.email)
             if len(keycloak_user) == 0:
-                self.logger.info('User not found on keycloak: %s. Ignoring.' % df_user.username)
+                self.logger.info('Ignoring user not found on keycloak: %s' % df_user.username)
                 return
             keycloak_user = keycloak_user[0]
             if keycloak_user["enabled"]:
