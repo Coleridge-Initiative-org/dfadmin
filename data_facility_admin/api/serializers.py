@@ -14,7 +14,7 @@ class DFAdminModelSerializerWithId(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
 
 
-class DatabaseSyncSerializer(DFAdminModelSerializerWithId):
+class DatabaseSyncSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     owner = serializers.ReadOnlyField(source='owner.username')
     parent_project_ldap_name = serializers.ReadOnlyField(source='parent_project.ldap_name')
     dfri = serializers.ReadOnlyField(source='ldap_name')
@@ -38,7 +38,7 @@ class DatabaseSyncSerializer(DFAdminModelSerializerWithId):
                   )
 
 
-class UserSerializer(DFAdminModelSerializerWithId):
+class UserSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     username = serializers.ReadOnlyField(source='ldap_name')
     avatar_url = serializers.ReadOnlyField(source='avatar')
 
@@ -49,7 +49,7 @@ class UserSerializer(DFAdminModelSerializerWithId):
         fields = '__all__'
 
 
-class DfRoleSerializer(DFAdminModelSerializerWithId):
+class DfRoleSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     active_users = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True, lookup_field='username')
 
     class Meta:
@@ -58,7 +58,7 @@ class DfRoleSerializer(DFAdminModelSerializerWithId):
         # fields = '__all__'
 
 
-class DataProviderSerializer(DFAdminModelSerializerWithId):
+class DataProviderSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     # dataset = serializers.HyperlinkedRelatedField(many=True, view_name='dataset-detail',
     #                                               read_only=True, lookup_field='dataset_id')
 
@@ -67,7 +67,7 @@ class DataProviderSerializer(DFAdminModelSerializerWithId):
         fields = '__all__'
 
 
-class CategorySerializer(DFAdminModelSerializerWithId):
+class CategorySerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     class Meta:
         model = Category
         fields = '__all__'
@@ -103,14 +103,14 @@ class DatasetSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
         # fields = '__all__'
 
 
-class ProjectToolSerializer(DFAdminModelSerializerWithId):
+class ProjectToolSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
 
     class Meta:
         model = ProjectTool
         fields = ('tool_name', 'other_name', 'notes', 'system_info', 'additional_info')
 
 
-class ProjectSerializer(DFAdminModelSerializerWithId):
+class ProjectSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     # owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail',
     #                                             read_only=True, lookup_field='username')
     owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail', read_only=True, lookup_field='username')
