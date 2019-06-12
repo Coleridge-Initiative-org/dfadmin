@@ -15,7 +15,7 @@ env/bin/python manage.py check && \
 env/bin/python manage.py migrate && \
 
 # Collect statics
-env/bin/python manage.py collectstatic -c --no-input && \
+env/bin/python manage.py collectstatic -c --no-input -v 0 && \
 
 # Start service again
 sudo supervisorctl start dfadmin
