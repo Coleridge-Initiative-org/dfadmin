@@ -512,10 +512,11 @@ class LDAPHelper:
                         ldap_tuple[1][settings.USER_LDAP_MAP["ldap_lock_time"]] = ["000001010000Z"]
                         self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username])
                         self.logger.debug("Locking the user %s in LDAP" % df_user.username)
-                        df_user.status = User.STATUS_LOCKED_INACTIVITY
-                        df_user.changeReason = '[LDAP Export] updated 516: Locking by inactivity . -> STATUS_LOCKED_INACTIVITY'
-                        df_user.save()
-                        self.logger.debug("Setting the status of user %s to Locked by Inactivity", df_user.username)
+                        if df_user.status != User.STATUS_LOCKED_INACTIVITY:
+                            df_user.status = User.STATUS_LOCKED_INACTIVITY
+                            df_user.changeReason = '[LDAP Export] updated 516: Locking by inactivity . -> STATUS_LOCKED_INACTIVITY'
+                            df_user.save()
+                            self.logger.debug("Setting the status of user %s to Locked by Inactivity", df_user.username)
                     except Exception:
                         self.logger.exception("The user %s was not locked by inactivity in LDAP" % df_user.username)
             #Next is the update part, make sure the entry exists in LDAP before update ...
