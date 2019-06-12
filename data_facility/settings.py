@@ -83,6 +83,7 @@ ADRF_URL = config('ADRF_URL')
 WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL_PUBLIC')
 PWD_RESET_INSTRUCTIONS = config('PWD_RESET_INSTRUCTIONS', default='???')
 ADRF_PASS_EXPIRATION_TIME = config('ADRF_PASS_EXPIRATION_TIME', cast=int, default=60)
+PASS_EXPIRATION_NOTIFICATION_DAYS = config('PASS_EXPIRATION_NOTIFICATION_DAYS', cast=int, default=7)
 ADRF_ENABLE_CUSTOM_USERNAME = config('ADRF_ENABLE_CUSTOM_USERNAME', cast=bool, default=False)
 
 # ----------------- DF Admin LDAP Configuration -------------------------
