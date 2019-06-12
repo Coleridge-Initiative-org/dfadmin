@@ -1,5 +1,6 @@
 ''' URLS for DFAdmin '''
 from django.conf.urls import include, url
+from django.views.generic.base import RedirectView
 from django.contrib import admin
 from data_facility_admin.api import urls as admin_router
 from data_facility_metadata.api import urls as metadata_router
@@ -67,6 +68,7 @@ urlpatterns += [
     url(r'^api/v1/schema.json$', get_schema_view(title=DFADMIN_API, renderer_classes=[OpenAPIRenderer]), name='api-schema'),
     url(r'^api/v1/docs/swagger/$', get_swagger_view(title=DFADMIN_API), name='api-swagger'),
     url(r'^api/v1/docs/open-api/', include_docs_urls(title=DFADMIN_API), name='api-docs'),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
 ]
 
 
