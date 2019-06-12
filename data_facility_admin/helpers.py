@@ -466,6 +466,7 @@ class LDAPHelper:
                     self.ldap_add(ldap_tuple_df[df_user.username])
                     self.logger.debug("Creating user %s in LDAP" % df_user.username)
                     df_user.status = User.STATUS_ACTIVE
+                    df_user.changeReason = '[LDAP Export] updated 469: Activating user. NEW -> ACTIVE'
                     df_user.save()
                     created_users.append(df_user)
                     self.logger.debug("Set status of user %s to Active", df_user.username)
@@ -489,6 +490,7 @@ class LDAPHelper:
                     self.logger.debug("Unlocking user %s in LDAP" % df_user.username)
                     df_user.status = User.STATUS_ACTIVE
                     keycloak_helper.enable_user(df_user)
+                    df_user.changeReason = '[LDAP Export] updated 493: Unlocking user. STATUS_UNLOCKED_BY_ADMIN -> STATUS_ACTIVE'
                     df_user.save()
                     self.logger.debug("Set status of user %s to Active", df_user.username)
                 except Exception:
@@ -511,6 +513,7 @@ class LDAPHelper:
                         self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username])
                         self.logger.debug("Locking the user %s in LDAP" % df_user.username)
                         df_user.status = User.STATUS_LOCKED_INACTIVITY
+                        df_user.changeReason = '[LDAP Export] updated 516: Locking by inactivity . -> STATUS_LOCKED_INACTIVITY'
                         df_user.save()
                         self.logger.debug("Setting the status of user %s to Locked by Inactivity", df_user.username)
                     except Exception:
