@@ -357,7 +357,7 @@ class LDAPHelper:
                         self.logger.info("User %s was unlocked automatically", ldap_user[0])
                         df_user.ldap_lock_time = None
                         df_user.changeReason = '[Import from LDAP] 344: Cleaning ldap_lock_time on DFadmin'
-                        df_user.save()
+                        df_user.save_without_historical_record()
 
                     elif df_user.status == User.STATUS_ACTIVE and \
                                     df_user.ldap_lock_time is not None and \
