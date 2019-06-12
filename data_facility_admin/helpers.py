@@ -337,14 +337,30 @@ class LDAPHelper:
                                 df_user.ldap_lock_time = None
                                 df_user.changeReason = '[Import from LDAP] updated ldap_lock_time (except)'
                                 df_user.save()
-                    if (df_user.status == User.STATUS_LOCKED_WRONG_PASSWD or df_user.status == User.STATUS_ACTIVE) and \
-                                    ( df_user.ldap_lock_time is None or \
-                                    timezone.now() > df_user.ldap_lock_time + datetime.timedelta(seconds=settings.LDAP_SETTINGS['General']['PpolicyLockDownDurationSeconds']) ):
+
+    # # Locked in DFAdmin but not on LDAP anymore
+    # df_user.status == User.STATUS_LOCKED_WRONG_PASSWD and settings.USER_LDAP_MAP["ldap_lock_time"] not in ldap_user[1]
+    #
+    # # Locked in DFAdmin and still has the flag on LDAP bc the user didn't login again.
+    # df_user.status == User.STATUS_LOCKED_WRONG_PASSWD and timezone.now() > df_user.ldap_lock_time + datetime.timedelta(seconds=settings.LDAP_SETTINGS['General']['PpolicyLockDownDurationSeconds'])
+
+                    if df_user.status == User.STATUS_LOCKED_WRONG_PASSWD and \
+                        ( df_user.ldap_lock_time is None or
+                        timezone.now() > df_user.ldap_lock_time + datetime.timedelta(seconds=settings.LDAP_SETTINGS['General']['PpolicyLockDownDurationSeconds']) ):
                         self.logger.info("User %s was unlocked automatically", ldap_user[0])
                         df_user.status = User.STATUS_ACTIVE
                         df_user.ldap_lock_time = None
-                        df_user.changeReason = '[Import from LDAP] 344: Unlocking user'
+                        df_user.changeReason = '[Import from LDAP] 344: Unlocking user (STATUS=STATUS_LOCKED_WRONG_PASSWD)'
                         df_user.save()
+                    elif df_user.status == User.STATUS_ACTIVE and \
+                        (df_user.ldap_lock_time is None or
+                         timezone.now() > df_user.ldap_lock_time + datetime.timedelta(seconds=settings.LDAP_SETTINGS['General']['PpolicyLockDownDurationSeconds'])):
+                        self.logger.info("User %s was unlocked automatically", ldap_user[0])
+                        df_user.status = User.STATUS_ACTIVE
+                        df_user.ldap_lock_time = None
+                        df_user.changeReason = '[Import from LDAP] 344: Unlocking user (STATUS=ACTIVE)'
+                        df_user.save()
+
                     elif df_user.status == User.STATUS_ACTIVE and \
                                     df_user.ldap_lock_time is not None and \
                                     timezone.now() < df_user.ldap_lock_time + datetime.timedelta(seconds=settings.LDAP_SETTINGS['General']['PpolicyLockDownDurationSeconds']):
