@@ -353,12 +353,10 @@ class LDAPHelper:
                         df_user.changeReason = '[Import from LDAP] 344: Unlocking user (STATUS=STATUS_LOCKED_WRONG_PASSWD)'
                         df_user.save()
                     elif df_user.status == User.STATUS_ACTIVE and \
-                        (df_user.ldap_lock_time is None or
-                         timezone.now() > df_user.ldap_lock_time + datetime.timedelta(seconds=settings.LDAP_SETTINGS['General']['PpolicyLockDownDurationSeconds'])):
+                        (df_user.ldap_lock_time is not None or timezone.now() > df_user.ldap_lock_time + datetime.timedelta(seconds=settings.LDAP_SETTINGS['General']['PpolicyLockDownDurationSeconds'])):
                         self.logger.info("User %s was unlocked automatically", ldap_user[0])
-                        df_user.status = User.STATUS_ACTIVE
                         df_user.ldap_lock_time = None
-                        df_user.changeReason = '[Import from LDAP] 344: Unlocking user (STATUS=ACTIVE)'
+                        df_user.changeReason = '[Import from LDAP] 344: Cleaning ldap_lock_time on DFadmin'
                         df_user.save()
 
                     elif df_user.status == User.STATUS_ACTIVE and \
