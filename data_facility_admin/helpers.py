@@ -312,10 +312,12 @@ class LDAPHelper:
                             ldap_last_pwd_change = ldap_last_pwd_change.replace(tzinfo=pytz.utc)
                             if df_user.ldap_last_pwd_change != ldap_last_pwd_change:
                                 df_user.ldap_last_pwd_change = ldap_last_pwd_change
+                                df_user.changeReason = '[Import from LDAP] updated ldap_last_pwd_change'
                                 df_user.save()
                         except:
                             if df_user.ldap_last_pwd_change is not None:
                                 df_user.ldap_last_pwd_change = None
+                                df_user.changeReason = '[Import from LDAP] updated ldap_last_pwd_change (except)'
                                 df_user.save()
                     if settings.USER_LDAP_MAP["ldap_lock_time"] in ldap_user[1]:
                         try:
@@ -326,22 +328,26 @@ class LDAPHelper:
                             ldap_lock_time = ldap_lock_time.replace(tzinfo=pytz.utc)
                             if df_user.ldap_lock_time != ldap_lock_time:
                                 df_user.ldap_lock_time = ldap_lock_time
+                                df_user.changeReason = '[Import from LDAP] updated ldap_lock_time'
                                 df_user.save()
                         except:
                             if df_user.ldap_lock_time is not None:
                                 df_user.ldap_lock_time = None
+                                df_user.changeReason = '[Import from LDAP] updated ldap_lock_time (except)'
                                 df_user.save()
-                    if ( df_user.status == User.STATUS_LOCKED_WRONG_PASSWD or df_user.status == User.STATUS_ACTIVE ) and \
+                    if (df_user.status == User.STATUS_LOCKED_WRONG_PASSWD or df_user.status == User.STATUS_ACTIVE) and \
                                     ( df_user.ldap_lock_time is None or \
                                     timezone.now() > df_user.ldap_lock_time + datetime.timedelta(seconds=settings.LDAP_SETTINGS['General']['PpolicyLockDownDurationSeconds']) ):
                         self.logger.info("User %s was unlocked automatically", ldap_user[0])
                         df_user.status = User.STATUS_ACTIVE
                         df_user.ldap_lock_time = None
+                        df_user.changeReason = '[Import from LDAP] 344: Unlocking user'
                         df_user.save()
                     elif df_user.status == User.STATUS_ACTIVE and \
                                     df_user.ldap_lock_time is not None and \
                                     timezone.now() < df_user.ldap_lock_time + datetime.timedelta(seconds=settings.LDAP_SETTINGS['General']['PpolicyLockDownDurationSeconds']):
                         df_user.status = User.STATUS_LOCKED_WRONG_PASSWD
+                        df_user.changeReason = '[Import from LDAP] updated 350: STATUS_LOCKED_WRONG_PASSWD'
                         df_user.save()
                     self.logger.debug("User %s processed in import user", ldap_user[0])
         self.logger.info("Finishing LDAP partial import")
