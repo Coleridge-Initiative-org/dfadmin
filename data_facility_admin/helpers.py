@@ -299,10 +299,12 @@ class LDAPHelper:
                             ldap_last_auth_time = ldap_last_auth_time.replace(tzinfo=pytz.utc)
                             if df_user.ldap_last_auth_time != ldap_last_auth_time:
                                 df_user.ldap_last_auth_time = ldap_last_auth_time
+                                df_user.changeReason = '[Import from LDAP] updated 302: ldap_last_auth_time'
                                 df_user.save_without_historical_record()
                         except:
                             if df_user.ldap_last_auth_time is not None:
                                 df_user.ldap_last_auth_time = None
+                                df_user.changeReason = '[Import from LDAP] updated 307: ldap_last_auth_time (except)'
                                 df_user.save_without_historical_record()
                     if settings.USER_LDAP_MAP["ldap_last_pwd_change"] in ldap_user[1]:
                         try:
