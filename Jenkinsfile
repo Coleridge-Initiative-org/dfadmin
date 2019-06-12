@@ -93,6 +93,13 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+        stage('Clean') {
+            steps {
+                sh 'docker rmi ${IMAGE_NAME}:ci'
+                sh 'docker rmi ${IMAGE_NAME}:${IMAGE_TAG}'
+                sh 'docker rmi ${IMAGE_NAME}:${GIT_COMMIT_HASH}'
+            }
+        }
     }
     post {
 	    success {
