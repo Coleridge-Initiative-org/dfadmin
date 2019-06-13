@@ -49,6 +49,7 @@ def run(*args):
             'username': user.username,
             'instructions_link': settings.PWD_RESET_INSTRUCTIONS,
             'curr_date': TODAY,
+            'support_email': settings.SUPPORT_EMAIL,
             'url': settings.ADRF_URL,
         }
         msg_plain = render_to_string('mail/pwd_expiration_email.txt', data)
