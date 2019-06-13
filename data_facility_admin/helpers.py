@@ -78,11 +78,13 @@ class KeycloakHelper(object):
                                       % (user.email, ex.message))
             # send welcome email
             try:
+                keycloak_url = settings.WELCOME_EMAIL_KEYCLOAK_URL + 'auth/realms/' \
+                               + settings.KEYCLOAK['REALM'] + '/account/'
                 msg_plain = render_to_string('mail/new_user.txt',
                                              {'username': user.username,
                                                'password': tmp_password,
                                                'current_time': timezone.now(),
-                                               'keycloak_url': settings.WELCOME_EMAIL_KEYCLOAK_URL,
+                                               'keycloak_url': keycloak_url,
                                               'otp_instructions': settings.ADRF_MFA_ACTIVATED,
                                               'system_name': settings.ADRF_SYSTEM_NAME,
                                               })
