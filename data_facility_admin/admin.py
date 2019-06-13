@@ -10,6 +10,7 @@ from .actions import *
 from django.contrib import admin
 from django.contrib.postgres import fields
 from django_json_widget.widgets import JSONEditorWidget
+from django.conf import settings
 
 admin.site.site_header = 'Data Facility Admin'
 admin.site.site_title = 'Data Facility Admin'
@@ -230,10 +231,12 @@ class UserAdmin(SimpleHistoryAdmin):
     actions = [user_unlock,
                user_disable,
                user_activate,
+               user_send_rules_of_behavior,
                user_send_welcome_email,
                user_reset_pwd_only,
-               user_reset_otp_only,
-               user_send_rules_of_behavior]
+               ]
+    if settings.ADRF_MFA_ACTIVATED:
+        actions.append(user_reset_otp_only)
     preserve_filters = True
     # To facilitate reporting only.
     # list_max_show_all = 600
