@@ -1,7 +1,7 @@
 ''' Custom actions for DFAdmin admin website. '''
 from .models import User
 from data_facility_admin.helpers import KeycloakHelper, EmailHelper
-
+from django.conf import settings
 
 def user_unlock(modeladmin, request, queryset):
     ''' Unlock selected users. '''
@@ -24,7 +24,7 @@ user_activate.short_description = "Activate selected users (Status will be New)"
 def user_send_welcome_email(modeladmin, request, queryset):
     ''' Unlock selected users. '''
     users = queryset.all()
-    KeycloakHelper().send_welcome_email(users, reset_pwd=True, reset_otp=True)
+    KeycloakHelper().send_welcome_email(users, reset_pwd=True, reset_otp=settings.ADRF_MFA_ACTIVATED)
 user_send_welcome_email.short_description = "Re-send the welcome email. (Reset Password + OTP)"
 
 
