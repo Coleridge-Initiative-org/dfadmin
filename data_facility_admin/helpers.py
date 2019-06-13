@@ -63,6 +63,7 @@ class KeycloakHelper(object):
         for user in df_users:
             tmp_password = None
             # Reset user password on Keycloak
+            tmp_password = '(Your password did not change)'
             try:
                 keycloak_user = self.api.get_keycloak_user(user.email)
                 keycloak_user = keycloak_user[0]
@@ -70,12 +71,14 @@ class KeycloakHelper(object):
                     tmp_password = UserHelper.pwgen(12, ['u', 'l', 'n', 's'])
                     self.api.reset_user_password(keycloak_user['id'], tmp_password, True)
                     keycloak_user["requiredActions"] = ["UPDATE_PASSWORD"]
+
                 if reset_otp:
                     keycloak_user["requiredActions"].append("CONFIGURE_TOTP")
                 self.api.update_keycloak_user(keycloak_user['id'], keycloak_user)
             except Exception as ex:
                 self.logger.exception("Error reseting user password for user %s. Error message: %s"
                                       % (user.email, ex.message))
+                return
             # send welcome email
             try:
                 keycloak_url = settings.WELCOME_EMAIL_KEYCLOAK_URL + 'auth/realms/' \
