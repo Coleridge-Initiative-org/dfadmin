@@ -58,7 +58,7 @@ class KeycloakHelper(object):
     def close(self):
         pass
 
-    def send_welcome_email(self, df_users, reset_otp=False):
+    def send_welcome_email(self, df_users, reset_otp=False, reset_pwd=True):
         self.api.ldap_full_sync(settings.KEYCLOAK['LDAP_ID'])
         for user in df_users:
             tmp_password = None
@@ -66,9 +66,10 @@ class KeycloakHelper(object):
             try:
                 keycloak_user = self.api.get_keycloak_user(user.email)
                 keycloak_user = keycloak_user[0]
-                tmp_password = UserHelper.pwgen(12, ['u', 'l', 'n', 's'])
-                self.api.reset_user_password(keycloak_user['id'], tmp_password, True)
-                keycloak_user["requiredActions"] = ["UPDATE_PASSWORD"]
+                if reset_pwd:
+                    tmp_password = UserHelper.pwgen(12, ['u', 'l', 'n', 's'])
+                    self.api.reset_user_password(keycloak_user['id'], tmp_password, True)
+                    keycloak_user["requiredActions"] = ["UPDATE_PASSWORD"]
                 if reset_otp:
                     keycloak_user["requiredActions"].append("CONFIGURE_TOTP")
                 self.api.update_keycloak_user(keycloak_user['id'], keycloak_user)
@@ -541,7 +542,7 @@ class LDAPHelper:
                 except Exception:
                     self.logger.exception("User not updated: %s" % df_user.username)
 
-        keycloak_helper.send_welcome_email(created_users, reset_otp=True)
+        keycloak_helper.send_welcome_email(created_users, reset_otp=True, reset_pwd=True)
 
     def export_projects(self):
         self.logger.info("Starting projects export.")
