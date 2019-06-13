@@ -1,7 +1,7 @@
 {% autoescape off %}
 Dear {{ username }},
 
-Congratulations on creating your new {{ system_name }} account!
+Congratulations on creating your {{ system_name }} account!
 
 Please find instructions for setting up your account and accessing the {{ system_name }} below.
 
