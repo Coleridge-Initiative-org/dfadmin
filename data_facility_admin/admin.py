@@ -231,6 +231,8 @@ class UserAdmin(SimpleHistoryAdmin):
                user_disable,
                user_activate,
                user_send_welcome_email,
+               user_reset_pwd_only,
+               user_reset_otp_only,
                user_send_rules_of_behavior]
     preserve_filters = True
     # To facilitate reporting only.
