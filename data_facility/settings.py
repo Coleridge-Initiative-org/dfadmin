@@ -71,6 +71,8 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default=None)
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default=None)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
 EMAIL_FROM = config('EMAIL_FROM', default='dfadmin@adrf.info')
+SUPPORT_EMAIL = config('SUPPORT_EMAIL', default='support@dfadmin.local')
+
 SERVER_EMAIL = EMAIL_FROM
 DEFAULT_FROM_EMAIL = EMAIL_FROM
 

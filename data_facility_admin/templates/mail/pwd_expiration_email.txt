@@ -10,7 +10,7 @@ Please refer to the following document for instructions on how to update your pa
 
 Remember the ADRF password policy requires minimum of twelve (12) characters, and at least one (1) of each: upper-case letters, lower-case letters, numbers, and special characters.
 
-Should you have any questions, please contact support via Slack (#adrf-tech-support) or email support@applieddataanalyticsprogram.org.
+Should you have any questions, please contact support via email at {{ support_email }}.
 
 Thank you,
 ADRF Team
