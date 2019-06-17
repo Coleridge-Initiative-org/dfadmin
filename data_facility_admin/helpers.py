@@ -76,9 +76,8 @@ class KeycloakHelper(object):
                     keycloak_user["requiredActions"].append("CONFIGURE_TOTP")
                 self.api.update_keycloak_user(keycloak_user['id'], keycloak_user)
             except Exception as ex:
-                self.logger.exception("Error reseting user password for user %s. Error message: %s"
-                                      % (user.email, ex.message))
-                return
+                self.logger.exception("Error reseting user password for user %s. Error message: %s" % (user.email, ex.message))
+                raise ex
             # send welcome email
             try:
                 keycloak_url = settings.WELCOME_EMAIL_KEYCLOAK_URL + 'auth/realms/' \
@@ -96,8 +95,8 @@ class KeycloakHelper(object):
                                     settings.EMAIL_FROM,
                                     [user.email])
             except Exception as ex:
-                self.logger.exception("Error sending welcome email to user %s. Error message: %s"
-                                      % (user.email, ex.message))
+                self.logger.exception("Error sending welcome email to user %s. Error message: %s" % (user.email, ex.message))
+                raise ex
 
     def disable_user(self, df_user):
         try:

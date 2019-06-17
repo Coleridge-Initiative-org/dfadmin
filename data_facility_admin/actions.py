@@ -1,7 +1,10 @@
 ''' Custom actions for DFAdmin admin website. '''
+from requests import ConnectionError, HTTPError, TooManyRedirects
+
 from .models import User
 from data_facility_admin.helpers import KeycloakHelper, EmailHelper
 from django.conf import settings
+from django.contrib import messages
 
 def user_unlock(modeladmin, request, queryset):
     ''' Unlock selected users. '''
@@ -24,21 +27,38 @@ user_activate.short_description = "Activate selected users (Status will be New)"
 def user_send_welcome_email(modeladmin, request, queryset):
     ''' Unlock selected users. '''
     users = queryset.all()
-    KeycloakHelper().send_welcome_email(users, reset_pwd=True, reset_otp=settings.ADRF_MFA_ACTIVATED)
+    try:
+        KeycloakHelper().send_welcome_email(users, reset_pwd=True, reset_otp=settings.ADRF_MFA_ACTIVATED)
+    except (ConnectionError, TooManyRedirects, HTTPError) as ex:
+        messages.error(request, "Error updating password on Keycloak.")
+    except Exception as ex:
+        messages.error(request, "Error sending email.")
+
 user_send_welcome_email.short_description = "Re-send the welcome email. (Reset Password + OTP)"
 
 
 def user_reset_pwd_only(modeladmin, request, queryset):
     ''' Unlock selected users. '''
     users = queryset.all()
-    KeycloakHelper().send_welcome_email(users, reset_pwd=True, reset_otp=False)
+    try:
+        KeycloakHelper().send_welcome_email(users, reset_pwd=True, reset_otp=False)
+    except (ConnectionError, TooManyRedirects, HTTPError) as ex:
+        messages.error(request, "Error updating password on Keycloak. The email was not sent.")
+    except Exception as ex:
+        messages.error(request, "Error sending email.")
+
 user_reset_pwd_only.short_description = "Reset User Password (only)"
 
 
 def user_reset_otp_only(modeladmin, request, queryset):
     ''' Unlock selected users. '''
     users = queryset.all()
-    KeycloakHelper().send_welcome_email(users, reset_otp=True, reset_pwd=False)
+    try:
+        KeycloakHelper().send_welcome_email(users, reset_otp=True, reset_pwd=False)
+    except (ConnectionError, TooManyRedirects, HTTPError) as ex:
+        messages.error(request, "Error updating password on Keycloak.")
+    except Exception as ex:
+        messages.error(request, "Error sending email.")
 user_reset_otp_only.short_description = "Reset User OTP (only)"
 
 
