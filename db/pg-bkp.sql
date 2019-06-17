@@ -2,11 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.15
--- Dumped by pg_dump version 9.5.15
+-- Dumped from database version 10.6 (Debian 10.6-1.pgdg90+1)
+-- Dumped by pg_dump version 10.6 (Debian 10.6-1.pgdg90+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -3564,476 +3565,476 @@ CREATE TABLE public.django_session (
 ALTER TABLE public.django_session OWNER TO postgres;
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_group ALTER COLUMN id SET DEFAULT nextval('public.auth_group_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_group_permissions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_permission ALTER COLUMN id SET DEFAULT nextval('public.auth_permission_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: auth_user id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user ALTER COLUMN id SET DEFAULT nextval('public.auth_user_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: auth_user_groups id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_groups ALTER COLUMN id SET DEFAULT nextval('public.auth_user_groups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: auth_user_user_permissions id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_user_user_permissions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_category id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_category ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_category_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataagreement id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataagreement ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_dataagreement_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataagreementsignature id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataagreementsignature ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_dataagreementsignature_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_databaseschema id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_databaseschema ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_databaseschema_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataclassification id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataclassification ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_dataclassification_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataprovider id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataprovider ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_dataprovider_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset_keywords id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset_keywords ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_dataset_keywords_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_datasetaccess id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_datasetaccess ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_datasetaccess_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_datasteward id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_datasteward ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_datasteward_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalcategory history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalcategory ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicalcategory_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldataagreement history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldataagreement ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaldataagreement_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldataagreementsignature history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldataagreementsignature ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaldataagreementsigna_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldatabaseschema history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldatabaseschema ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaldatabaseschema_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldataset history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldataset ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaldataset_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldatasetaccess history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldatasetaccess ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaldatasetaccess_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldatasteward history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldatasteward ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaldatasteward_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldfrole history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldfrole ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaldfrole_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprofiletag history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprofiletag ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicalprofiletag_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalproject history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalproject ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicalresearchproject_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprojectmember history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprojectmember ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicalprojectmember_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprojectrole history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprojectrole ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicalprojectrole_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprojecttool history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprojecttool ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicalprojecttool_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalsignedtermsofuse history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalsignedtermsofuse ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicalsignedtermsofuse_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaltermsofuse history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaltermsofuse ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaltermsofuse_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaltraining history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaltraining ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaltraining_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaluser history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaluser ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaluser_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaluserdfrole history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaluserdfrole ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicaluserdfrole_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalusertraining history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalusertraining ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_admin_historicalusertraining_history_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_keyword id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_keyword ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_keyword_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_ldapobject id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_ldapobject ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_ldapobject_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_profiletag id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_profiletag ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_profiletag_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_projectmember id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_projectmember ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_projectmember_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_projectrole id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_projectrole ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_projectrole_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_projecttool id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_projecttool ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_projecttool_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_signedtermsofuse id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_signedtermsofuse ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_signedtermsofuse_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_systeminfo id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_systeminfo ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_systeminfo_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_termsofuse id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_termsofuse ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_termsofuse_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_training id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_training ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_training_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_user_tags id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_user_tags ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_user_tags_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_userdfrole id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_userdfrole ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_userdfrole_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_usertraining id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_usertraining ALTER COLUMN id SET DEFAULT nextval('public.data_facility_admin_usertraining_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datastore id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datastore ALTER COLUMN id SET DEFAULT nextval('public.data_facility_metadata_datastore_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datatable id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datatable ALTER COLUMN id SET DEFAULT nextval('public.data_facility_metadata_datatable_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datatype id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datatype ALTER COLUMN id SET DEFAULT nextval('public.data_facility_metadata_datatype_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_file id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_file ALTER COLUMN id SET DEFAULT nextval('public.data_facility_metadata_file_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_fileformat id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_fileformat ALTER COLUMN id SET DEFAULT nextval('public.data_facility_metadata_fileformat_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicaldatastore history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicaldatastore ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_metadata_historicaldatastore_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicaldatatable history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicaldatatable ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_metadata_historicaldatatable_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicaldatatype history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicaldatatype ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_metadata_historicaldatatype_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalfile history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalfile ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_metadata_historicalfile_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalfileformat history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalfileformat ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_metadata_historicalfileformat_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalphysicaldatatable history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalphysicaldatatable ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_metadata_historicalphysicaldatatab_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalstoragetype history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalstoragetype ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_metadata_historicalstoragetype_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalvalue history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalvalue ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_metadata_historicalvalue_history_id_seq'::regclass);
 
 
 --
--- Name: history_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalvariable history_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalvariable ALTER COLUMN history_id SET DEFAULT nextval('public.data_facility_metadata_historicalvariable_history_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_physicaldatatable id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_physicaldatatable ALTER COLUMN id SET DEFAULT nextval('public.data_facility_metadata_physicaldatatable_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_storagetype id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_storagetype ALTER COLUMN id SET DEFAULT nextval('public.data_facility_metadata_storagetype_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_value id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_value ALTER COLUMN id SET DEFAULT nextval('public.data_facility_metadata_value_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_variable id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_variable ALTER COLUMN id SET DEFAULT nextval('public.data_facility_metadata_variable_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_admin_log ALTER COLUMN id SET DEFAULT nextval('public.django_admin_log_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_content_type ALTER COLUMN id SET DEFAULT nextval('public.django_content_type_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_migrations ALTER COLUMN id SET DEFAULT nextval('public.django_migrations_id_seq'::regclass);
@@ -4049,13 +4050,6 @@ COPY public.auth_group (id, name) FROM stdin;
 7	ADRF Managers
 8	ADRF Curators
 \.
-
-
---
--- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.auth_group_id_seq', 8, true);
 
 
 --
@@ -4219,13 +4213,6 @@ COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
 308	5	272
 309	5	268
 \.
-
-
---
--- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 309, true);
 
 
 --
@@ -4509,20 +4496,14 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 
 
 --
--- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 272, true);
-
-
---
 -- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-2		\N	f	daniel			daniel.castellani@nyu.edu	f	t	2019-03-06 16:53:11.2743+00
 3	pbkdf2_sha256$36000$WWQ9cOd5J3UE$xsCb/RhW7y7A1EsjtRLnRO7b+pOUdkfWbykAuiUa7TI=	2019-03-06 20:03:16.354165+00	f	gonen				f	t	2019-03-06 17:32:02+00
-1	pbkdf2_sha256$36000$dVrXeVlG4Dv4$XgA9jKG5EOnryiCeBHD6Tl6awrIae/WHw3rZ3lb/bCE=	2019-05-14 20:37:06.814655+00	t	dfadmin			dfadmin@adrf.info	t	t	2017-10-26 22:44:25.508988+00
+4		\N	f	tdiogo			td1457@nyu.edu	f	t	2019-05-30 16:16:41.280984+00
+2		\N	f	daniel	Daniel	Castellani	daniel.castellani@nyu.edu	f	t	2019-03-06 16:53:11.2743+00
+1	pbkdf2_sha256$36000$dVrXeVlG4Dv4$XgA9jKG5EOnryiCeBHD6Tl6awrIae/WHw3rZ3lb/bCE=	2019-06-13 18:05:17.647377+00	t	dfadmin			dfadmin@adrf.info	t	t	2017-10-26 22:44:25.508988+00
 \.
 
 
@@ -4531,21 +4512,9 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 --
 
 COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
+3	4	6
+4	2	6
 \.
-
-
---
--- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 2, true);
-
-
---
--- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.auth_user_id_seq', 3, true);
 
 
 --
@@ -4554,13 +4523,6 @@ SELECT pg_catalog.setval('public.auth_user_id_seq', 3, true);
 
 COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 \.
-
-
---
--- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 
 
 --
@@ -4580,25 +4542,11 @@ COPY public.data_facility_admin_category (id, name, created_at, updated_at) FROM
 
 
 --
--- Name: data_facility_admin_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_category_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_dataagreement; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_dataagreement (id, title, text, version, created_at, updated_at, dataset_id, delete_on_expiration, deletion_method, document, expiration_date, internal_notes) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_dataagreement_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_dataagreement_id_seq', 1, false);
 
 
 --
@@ -4610,13 +4558,6 @@ COPY public.data_facility_admin_dataagreementsignature (id, accepted, date, stat
 
 
 --
--- Name: data_facility_admin_dataagreementsignature_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_dataagreementsignature_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_databaseschema; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -4625,25 +4566,11 @@ COPY public.data_facility_admin_databaseschema (id, name, public, created_at, up
 
 
 --
--- Name: data_facility_admin_databaseschema_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_databaseschema_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_dataclassification; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_dataclassification (id, name, description, metadata_visibility, data_visibility, created_at, updated_at) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_dataclassification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_dataclassification_id_seq', 1, false);
 
 
 --
@@ -4660,13 +4587,6 @@ COPY public.data_facility_admin_dataprovider (id, name, slug) FROM stdin;
 
 
 --
--- Name: data_facility_admin_dataprovider_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_dataprovider_id_seq', 5, true);
-
-
---
 -- Data for Name: data_facility_admin_dataset; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -4676,68 +4596,69 @@ adrf-9999	Dataset Adrf 9999	Yellow	2017-10-26 22:44:07.526785+00	2017-10-26 22:4
 testdata2	Dataset Testdata2	Yellow	2017-10-26 22:44:07.588868+00	2017-10-26 22:44:07.588942+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	236	f	\N	Disabled	\N	\N	\N	\N	\N	\N	\N	\N	f	\N	\N	t	\N
 testdata3	Dataset Testdata3	Yellow	2017-10-26 22:44:07.616817+00	2017-10-26 22:44:07.616894+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	237	f	\N	Disabled	\N	\N	\N	\N	\N	\N	\N	\N	f	\N	\N	t	\N
 testdata1	Dataset Testdata1	Yellow	2017-10-26 22:44:07.559864+00	2017-10-27 20:45:13.0295+00		\N	\N	f	No Reporting Needed		1	\N	235	f	\N	Disabled	\N	\N	\N	\N	\N	\N	\N	\N	f	\N	\N	t	\N
-kwxv-fwze	Lottery Cash 4 Life Winning Numbers: Beginning 2014	Green	2019-03-06 01:00:55.565081+00	2019-03-06 01:00:55.565112+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	260	t	\N	Disabled	\N	Go to http://on.ny.gov/1xRIvPz on the New York Lottery website for past Cash 4 Life results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-qcn7-gc3g	Order and Referring	Green	2019-03-06 01:00:55.619299+00	2019-03-06 01:00:55.619324+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	261	t	\N	Disabled	\N	Order and Referring data file has National Provider Identifier (NPI) and legal name (last name, first name) of all physicians and non-physician practitioners who are of a type/specialty that is legally eligible to order and refer in the Medicare program and who have current enrollment records in Medicare (i.e., they have enrollment records in PECOS)	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-qccx-65fg	Howard County Police Department Call For Service - 2014-2017	Green	2019-03-06 01:00:55.706236+00	2019-03-06 01:00:55.706304+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	262	t	\N	Disabled	\N	Calls for Service by computer aided dispatch (CAD) event type, date, time, location, statistical reporting area (SRA), and beat.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-9fxf-t2tr	Dallas Police Active Calls	Green	2019-03-06 01:00:55.782368+00	2019-03-06 01:00:55.782393+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	263	t	\N	Disabled	\N	Disclaimer  - The calls listed here are only those where the element assigned to the call has arrived and is currently working the call.   It does not include any calls for service, whether currently being worked or not, that are not releasable due to privacy laws.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-kvz2-j5cj	Building, Electrical, Fire, Grading, Mechanical, Plumbing & Sign Permits: 2010 - Present	Green	2019-03-06 01:00:55.873904+00	2019-03-06 01:00:55.87393+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	264	t	\N	Disabled	\N	Issued Permits:  01/01/2010 - Present	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-ic3t-wcy2	DOB Job Application Filings	Green	2019-03-06 01:00:55.971241+00	2019-03-06 01:00:55.971267+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	265	t	\N	Disabled	\N	This dataset contains all job applications submitted through the Borough Offices, through eFiling, or through the HUB, which have a "Latest Action Date" since January 1, 2000. This dataset does not include jobs submitted through DOB NOW. See the DOB NOW: Build – Job Application Filings dataset for DOB NOW jobs.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-xvpn-2pnt	Fire And Rescue Apparatus Responses: 2012 - 2017	Green	2019-03-06 01:00:56.593051+00	2019-03-06 01:00:56.593076+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	266	t	\N	Disabled	\N	One record for each emergency response by a Fire Department unit, including dispatch and response times, action taken, and counts of personnel which responded. This is an expansion of data available in the Howard County Fire And Rescue Incidents data set. Further detail is available in the Howard County Fire and Rescue Personnel Responses data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-f362-6fup	Fire & Rescue Incidents: 2012 - Present	Green	2019-03-06 01:00:56.679137+00	2019-03-06 01:00:56.679167+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	267	t	\N	Disabled	\N	One record for each emergency on which the Fire Department sent apparatus and personnel. More detail is available in the Apparatus Response and Personnel Response data sets.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-8fxg-nyr5	Fire & Rescue Personnel Responses: 2012 - 2017	Green	2019-03-06 01:00:56.839448+00	2019-03-06 01:00:56.839474+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	268	t	\N	Disabled	\N	One record for each emergency response by a Fire Department member, including rank and career / volunteer / contingent status of personnel which responded. This is an expansion of data available in the Howard County Fire And Rescue Incidents data set. Further detail is available in the Howard County Fire and Rescue Personnel Responses data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-6uza-cd7z	Fire Dispatches: 2012 - 2017	Green	2019-03-06 01:00:56.895215+00	2019-03-06 01:00:56.89524+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	269	t	\N	Disabled	\N	Emergency incidents created by HCPD's 911 Dispatch Center and classified as Fire, Rescue or Emergency Medical Service (EMS) calls. Not all of these incidents are created as cases, and thus not all of these incidents have a matching record in the Howard County Fire & Rescue Incidents table.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-dpec-ucu7	TLC New Driver Application Status	Green	2019-03-06 01:00:56.971968+00	2019-03-06 01:00:56.971997+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	270	t	\N	Disabled	\N	THIS DATASET IS UPDATED SEVERAL TIMES PER DAY. TLC Driver application status check for applicants who had applied for a new TLC driver’s license. For more information and to upload missing requirements, visit www.nyc.gov/tlcup\r\n\r\nFor historical/archived data of past application statuses, please see- https://data.cityofnewyork.us/Transportation/Historical-Driver-Application-Status/p32s-yqxq	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 adrf-000034	Illinois Department of Employment Security (IDES) Employer records - 2005-2015	Yellow	2017-10-26 22:44:07.966516+00	2019-03-06 01:02:32.271785+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	248	f	\N	Disabled	\N	Detailed quarterly information on all of the employers who are present in Illinois wage files. Employer information includes address information, key dates in the quarter, and information on wages and employees per business per quarter. See attached data dictionary for field details.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: il_qcew_employers	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["income", "welfare", "poverty", "socioeconomics"], "file_names": ["adrf-000034.csv"], "source_url": "", "description": "Detailed quarterly information on all of the employers who are present in Illinois’ wage files.  Employer information includes address information, key dates in the quarter, and information on wages and employees per business per quarter. See attached data dictionary for field details.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: il_qcew_employers", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Department of Employment Security, US Census Bureau", "reference_url": "http://www.ides.illinois.gov/Pages/Unemployment%20Insurance.aspx", "source_archive": "", "related_articles": ["rc-000004", "rc-000065", "rc-000066"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.", "geographical_unit": ["State", "Point", "Census Tract", "Census Block"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["ides_qcew_data_dictionary.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2005", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 adrf-000055	IL Corrections Industries Training 2011-2016 dataset	Yellow	2017-10-26 22:44:08.086896+00	2019-03-06 01:06:10.673216+00	\N	\N	\N	f	No Reporting Needed	\N	1	5	252	f	\N	Disabled		This data contains the individuals who participated in an Illinois Correctional Industries vocational training program for forward years 2011 - 2016. The dataset includes a "Shop Function Code" designating the program, start and end dates of the program, and the result of that training program for the inmate in question. These data are tracked by hand by ICI's payroll unit.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Inmate Populations", "keywords": ["inmates", "jail", "correctional facilities", "employment", "training"], "file_names": ["adrf-000055.csv"], "source_url": "", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Correctional Industries", "reference_url": "http://www.ici.illinois.gov/(S(xstjb5250ujgsiqjdbz0o2zy)A(aaPj--PlzAEkAAAAOTE1ZmM0NTMtYzRhZC00OGUxLTljMTgtOGFlMGViMmU4ZDUzTpilbQ8Uxwiam45T0FLMVGA7WE81))/AnnualReport.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000003", "rc-000005", "rc-000009", "rc-000010"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the US Department of Housing and Urban Development. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by a data steward before export from this system. Export of whole or partial records from the data is not permitted.", "geographical_unit": ["State"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["ici_function_codes.pdf", "ici_function_codes.csv", "adrf-000055_dd.csv"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2016", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2011", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
-xzkq-xp2w	Current Employee Names, Salaries, and Position Titles	Green	2019-03-06 01:00:57.075453+00	2019-03-06 01:00:57.075484+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	271	t	\N	Disabled	\N	This dataset is a listing of all current City of Chicago employees, complete with full names, departments, positions, employment status (part-time or full-time), frequency of hourly employee –where applicable—and annual salaries or hourly rate. For hourly employees, the City is providing the hourly rate and frequency of hourly employees (40, 35, 20 and 10) to allow dataset users to estimate annual wages for hourly employees. Please note that annual wages will vary by employee, depending on number of hours worked and seasonal status. For information on the positions and related salaries detailed in the annual budgets, see https://www.cityofchicago.org/city/en/depts/obm.html	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-vx8i-nprf	Civil Service List (Active)	Green	2019-03-06 01:00:57.140181+00	2019-03-06 01:00:57.140209+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	272	t	\N	Disabled	\N	A Civil Service List consists of all candidates who passed an exam, ranked in score order. An established list is considered active for no less than one year and no more than four years from the date of establishment. For more information visit DCAS’ “Work for the City” webpage at: http://www.nyc.gov/html/dcas/html/work/work.shtml	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-7yuw-754z	Opt Out Affidavits	Green	2019-03-06 01:00:57.306623+00	2019-03-06 01:00:57.306653+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	273	t	\N	Disabled	\N	A list of practitioners who have opted out of Medicare.*  \n\nSource: Provider Enrollment, Chain and Ownership System (PECOS) as of January 31st, 2019	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-hsys-3def	Lottery Daily Numbers/Win-4 Winning Numbers: Beginning 1980	Green	2019-03-06 01:00:57.478768+00	2019-03-06 01:00:57.478924+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	274	t	\N	Disabled	\N	Go to http://on.ny.gov/1Cx6zvs or http://on.ny.gov/1KYjE6X on the New York Lottery website for past Daily Numbers/Win-4 results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-8wbx-tsch	For Hire Vehicles (FHV) - Active	Green	2019-03-06 01:00:57.599887+00	2019-03-06 01:00:57.599913+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	275	t	\N	Disabled	\N	TLC authorized For-Hire vehicles that are active. This list is accurate to the date and time represented in the Last Date Updated and Last Time Updated fields. For inquiries about the contents of this dataset, please email licensinginquiries@tlc.nyc.gov.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-b8in-sz6k	QHP Landscape Individual Market Medical	Green	2019-03-06 01:00:57.793537+00	2019-03-06 01:00:57.793567+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	276	t	\N	Disabled	\N	QHP Landscape Individual Market Medical - For instructions on how to read and use this data, please view the documentation available under the ‘About’ tab on this page.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-qxh8-f4bd	Health Care Provider Credential Data	Green	2019-03-06 01:00:58.480917+00	2019-03-06 01:00:58.480958+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	277	t	\N	Disabled	\N	The Washington State Department of Health presents this information as a service to the public. True and correct copies of legal disciplinary actions taken after July 1998 are available on our Provider Credential Search site. These records are considered certified by the Department of Health. \r\n\r\nThis includes information on health care providers.\r\n\r\nPlease contact our Customer Service Center at 360-236-4700 for information about actions before July 1998. \r\nThe information on this site comes directly from our database and is updated daily at 10:00 a.m.. This data is a primary source for verification of credentials and is extracted from the primary database at 2:00 a.m. daily.\r\n\r\nNews releases about disciplinary actions taken against Washington State healthcare providers, agencies or facilities are on the agency's Newsroom webpage.\r\n\r\nDisclaimer\r\nThe absence of information in the Provider Credential Search system doesn't imply any recommendation, endorsement or guarantee of competence of any healthcare professional. The presence of information in this system doesn't imply a provider isn't competent or qualified to practice. The reader is encouraged to carefully evaluate any information found in this data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-n59h-ggai	Local Severe Weather Warning Systems in Missouri	Green	2019-03-06 01:00:58.680053+00	2019-03-06 01:00:58.680085+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	278	t	\N	Disabled	\N	List of 'Severe Weather Alert Systems' throughout Missouri provided by local governments, media outlets, and other sources.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-s6ew-h6mp	Consumer Complaints	Green	2019-03-06 01:00:58.736534+00	2019-03-06 01:00:58.736561+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	279	t	\N	Disabled	\N	Each week we send thousands of consumers' complaints about financial products and services to companies for response. Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first.<br><br>\r\n\r\nWe publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. See our <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf">Scrubbing Standard</a> for more details<br><br>\r\n\r\nWe don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is generally refreshed nightly. Company level information should be considered in context of company size and/or market share.<br><br>\r\n\r\n<a href="http://www.consumerfinance.gov/complaintdatabase/">More about the Consumer Complaint Database</a> | <a href="http://www.consumerfinance.gov/complaint/data-use/">How we use complaint data</a> | <a href="http://www.consumerfinance.gov/complaintdatabase/technical-documentation/">Technical documentation</a>	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-xjfq-wh2d	For Hire Vehicles (FHV) - Active Drivers	Green	2019-03-06 01:00:58.930651+00	2019-03-06 01:00:58.930676+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	280	t	\N	Disabled	\N	NYC TLC Licensed FHV drivers that are currently active and in good standing. This list is accurate to the date and time represented in the Last Date Updated and Last Time Updated fields. For inquiries about the contents of this dataset, please email licensinginquiries@tlc.nyc.gov.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-fkt2-8smh	Missouri Beer, Wine and Liquor Wholesaler List with Zip Code	Green	2019-03-06 01:00:59.003533+00	2019-03-06 01:00:59.003563+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	281	t	\N	Disabled	\N	Listing of current Missouri beer, wine and liquor wholesalers with their associated zip codes.  This listing is updated daily.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-mmn5-wy78	Missouri Beer, Wine and Liquor Solicitor List with Zip Code	Green	2019-03-06 01:00:59.067557+00	2019-03-06 01:00:59.067583+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	282	t	\N	Disabled	\N	Listing of all current beer, wine and liquor solicitors and their associated zip code.  This is updated daily	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-cgbu-k38b	Missouri Law Enforcement Agencies	Green	2019-03-06 01:00:59.132124+00	2019-03-06 01:00:59.132148+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	283	t	\N	Disabled	\N	List of Active law enforcement agencies (Sheriff, Municipal, University, Court, etc)	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-ydr8-5enu	Building Permits	Green	2019-03-06 01:00:59.229715+00	2019-03-06 01:00:59.22974+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	284	t	\N	Disabled	\N	Permits issued by the Department of Buildings in the City of Chicago from 2006 to the present. The dataset for each year contains more than 65,000 records/rows of data and cannot be viewed in full in Microsoft Excel. Therefore, when downloading the file, select CSV from the Export menu. Open the file in an ASCII text editor, such as Wordpad, to view and search. Data fields requiring description are detailed below. \r\nPERMIT TYPE: "New Construction and Renovation" includes new projects or rehabilitations of existing buildings; "Other Construction" includes items that require plans such as cell towers and cranes; "Easy Permit" includes minor repairs that require no plans; "Wrecking/Demolition" includes private demolition of buildings and other structures; "Electrical Wiring" includes major and minor electrical work both permanent and temporary; "Sign Permit" includes signs, canopies and awnings both on private property and over the public way; "Porch Permit" includes new porch construction and renovation (defunct permit type porches are now issued under "New Construction and Renovation" directly); "Reinstate Permit" includes original permit reinstatements; "Extension Permits" includes extension of original permit when construction has not started within six months of original permit issuance. WORK DESCRIPTION: The description of work being done on the issued permit, which is printed on the permit. PIN1 – PIN10: A maximum of ten assessor parcel index numbers belonging to the permitted property. PINs are provided by the customer seeking the permit since mid-2008 where required by the Cook County Assessor’s Office. CONTRACTOR INFORMATION: The contractor type, name, and contact information. Data includes up to 15 different contractors per permit if applicable.\r\n\r\nData Owner: Buildings.\r\n\r\nTime Period: January 1, 2006 to present.\r\n\r\nFrequency: Data is updated daily.\r\n\r\nRelated Applications: Building Data Warehouse (https://webapps.cityofchicago.org/buildingviolations/violations/searchaddresspage.html).	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-mtgj-bnbx	Missouri Alcohol Licenses Not Renewed for the New License Year	Green	2019-03-06 01:01:00.143608+00	2019-03-06 01:01:00.143632+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	285	t	\N	Disabled	\N	List of Missouri alcohol licenses not yet renewed for the next license year.  License year begins July 1.  This dataset is generated nightly during the months of April through July for the license renewal period.  This dataset will be empty the rest of the year.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-gfq7-aa86	Solicitor Product List with Assigned Wholesaler	Green	2019-03-06 01:01:00.289941+00	2019-03-06 01:01:00.290005+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	286	t	\N	Disabled	\N	Active list of products sold by the associated solicitor to the wholesaler.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-qahs-fevu	Parking Garage Space Availability	Green	2019-03-06 01:01:00.37132+00	2019-03-06 01:01:00.371348+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	287	t	\N	Disabled	\N	This dataset includes parking spaces availability for Montgomery County Public Parking Facilities. This dataset only includes facilities that are equipped with vehicle counting systems.\r\n\r\nUpdate frequency:  Every few minutes	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-hbmv-rqk9	County Clerk License Information	Green	2019-03-06 01:01:00.425665+00	2019-03-06 01:01:00.425691+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	288	t	\N	Disabled	\N	Alcohol Licensing information by County compiled weekly storing 3 weeks at a time	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-yyhn-562y	Missouri Active Alcohol License Data	Green	2019-03-06 01:01:00.666503+00	2019-03-06 01:01:00.666639+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	289	t	\N	Disabled	\N	Current license information of businesses involved in the manufacture, shipping, and/or sale of alcohol in the State of Missouri	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-7t5a-79ri	Child Support Lien List	Green	2019-03-06 01:01:00.824779+00	2019-03-06 01:01:00.824813+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	290	t	\N	Disabled	\N		\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-dymb-xy5c	New Liquor Licenses	Green	2019-03-06 01:01:00.905471+00	2019-03-06 01:01:00.9055+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	291	t	\N	Disabled	\N	Weekly listing of new Liquor Licenses for the past 3 weeks	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-nytw-fmz3	Missouri Alcohol Licenses Out of Business	Green	2019-03-06 01:01:01.19714+00	2019-03-06 01:01:01.19717+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	292	t	\N	Disabled	\N	List of alcohol licenses of businesses who have gone out of business	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-au6r-w9n3	Open Meetings	Green	2019-03-06 01:01:01.342894+00	2019-03-06 01:01:01.342919+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	293	t	\N	Disabled	\N	Schedule of Missouri Open Meetings	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-j56h-zgnm	Adult Jail Booking February 1, 2018 to January 31, 2019 as of February 6, 2019	Green	2019-03-06 01:01:01.571579+00	2019-03-06 01:01:01.571608+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	294	t	\N	Disabled	\N		\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-dg63-4siq	Lottery Take 5 Winning Numbers	Green	2019-03-06 01:01:01.667911+00	2019-03-06 01:01:01.667936+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	295	t	\N	Disabled	\N	Go to http://on.ny.gov/1DYGlWJ on the New York Lottery website for past Take 5 results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-n3tx-eq5q	Missouri Alcohol Temporary License Expirations	Green	2019-03-06 01:01:01.718843+00	2019-03-06 01:01:01.718869+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	296	t	\N	Disabled	\N	List of temporary alcohol license expiration dates	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-qek8-9bd4	Comprehensive Care for Joint Replacement Model: Metropolitan Statistical Areas (MSAs)	Green	2019-03-06 01:01:01.897172+00	2019-03-06 01:01:01.897198+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	297	t	\N	Disabled	\N	This data set presents Metropolitan Statistical Areas (MSAs) that are participating in the Comprehensive Care for Joint Replacement Model, a proposed model to support better and more efficient care for beneficiaries undergoing the most common inpatient surgery for Medicare beneficiaries: hip and knee replacements.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-yv23-pmwf	Building and Safety Permit Information	Green	2019-03-06 01:01:01.94497+00	2019-03-06 01:01:01.94502+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	298	t	\N	Disabled	\N	The Department of Building and Safety issues permits for the construction, remodeling, and repair of buildings and structures in the City of Los Angeles.  Permits are categorized into building permits, electrical permits, and mechanical permits (which include plumbing, HVAC systems, fire sprinklers, elevators, and pressure vessels).  Depending on the complexity of a project, a permit may be issued the same day with Express Permit or e-Permit ("No Plan Check" category), or a permit may require that the plans be reviewed ("Plan Check" category) by a Building and Safety Plan Check personnel.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-f29f-zza5	Food Establishment Inspection Data	Green	2019-03-06 01:01:02.39189+00	2019-03-06 01:01:02.391914+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	299	t	\N	Disabled	\N	Health Department inspection results for food service establishments in King County, 2006 to the present. This data is organized by Business / Inspection Date / Violation. Each row in this dataset is an inspection, and if an inspection at a particular buiness results in multiple violations there will be multiple rows for that business with the same Inspection_Serial_Num. This dataset was last updated on 03/04/2019 and is current from 1/1/2006 to 03/01/2019.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-ijzp-q8t2	Crimes - 2001 to present	Green	2019-03-06 01:01:02.535723+00	2019-03-06 01:01:02.535752+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	300	t	\N	Disabled	\N	This dataset reflects reported incidents of crime (with the exception of murders where data exists for each victim) that occurred in the City of Chicago from 2001 to present, minus the most recent seven days. Data is extracted from the Chicago Police Department's CLEAR (Citizen Law Enforcement Analysis and Reporting) system. In order to protect the privacy of crime victims, addresses are shown at the block level only and specific locations are not identified. Should you have questions about this dataset, you may contact the Research & Development Division of the Chicago Police Department at PSITAdministration@ChicagoPolice.org.  Disclaimer: These crimes may be based upon preliminary information supplied to the Police Department by the reporting parties that have not been verified. The preliminary crime classifications may be changed at a later date based upon additional investigation and there is always the possibility of mechanical or human error. Therefore, the Chicago Police Department does not guarantee (either expressed or implied) the accuracy, completeness, timeliness, or correct sequencing of the information and the information should not be used for comparison purposes over time. The Chicago Police Department will not be responsible for any error or omission, or for the use of, or the results obtained from the use of this information. All data visualizations on maps should be considered approximate and attempts to derive specific addresses are strictly prohibited. The Chicago Police Department is not responsible for the content of any off-site pages that are referenced by or that reference this web page other than an official City of Chicago or Chicago Police Department web page. The user specifically acknowledges that the Chicago Police Department is not responsible for any defamatory, offensive, misleading, or illegal conduct of other users, links, or third parties and that the risk of injury from the foregoing rests entirely with the user.  The unauthorized use of the words "Chicago Police Department," "Chicago Police," or any colorable imitation of these words or the unauthorized use of the Chicago Police Department logo is unlawful. This web page does not, in any way, authorize such use. Data are updated daily. The dataset contains more than 65,000 records/rows of data and cannot be viewed in full in Microsoft Excel. Therefore, when downloading the file, select CSV from the Export menu. Open the file in an ASCII text editor, such as Wordpad, to view and search. To access a list of Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) codes, go to http://data.cityofchicago.org/Public-Safety/Chicago-Police-Department-Illinois-Uniform-Crime-R/c7ck-438e	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-6sdz-r9ba	Restaurant and Food Inspections	Green	2019-03-06 01:01:02.687238+00	2019-03-06 01:01:02.687264+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	301	t	\N	Disabled	\N	Licensed restaurants, inspections, and violations published to the Simplified LIVES Schema available here:\r\nhttps://docs.google.com/document/d/1eeO5T_lt8QHGHMjpj6M9071y5OFOXcADFI4F7AIZ2iE/edit#heading=h.rjwrosiwiw5o	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 adrf-000002	Illinois Department of Corrections (DOC) Inmate Exits - 1990-2015	Yellow	2017-10-26 22:44:07.674503+00	2019-03-06 01:02:31.729184+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	239	f	\N	Disabled	\N	Detailed transactional data of each time an inmate was released from an Illinois Department of Corrections (DOC) facility from 1990 to 2015. Variables include demographic, residence, charges, sentencing, conduct, security level, health and mental health status, gang affiliation. Data are collected using correctional facility data and court records. See data dictionary documentation for detailed description of all fields.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: ildoc_exit	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Inmate Populations", "keywords": ["criminal justice system", "inmates", "jail", "correctional facilities", "health", "employment", "demographics", "offenses"], "file_names": ["adrf-000002.csv"], "source_url": "", "description": "Detailed transactional data of each time an inmate was released from an Illinois Department of Corrections (DOC) facility from 1990 to 2015. Variables include demographic, residence, charges, sentencing, conduct, security level, health and mental health status, gang affiliation. Data are collected using correctional facility data and court records. See data dictionary documentation for detailed description of all fields.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: ildoc_exit", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Department of Corrections", "reference_url": "https://www.illinois.gov/idoc/Pages/default.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000003", "rc-000005", "rc-000009", "rc-000010"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Corrections (IDOC). The user shall not attempt to re-identify individuals represented in the data and agree to not disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDOC before export from this system.", "geographical_unit": ["State", "Zip Code"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["idoc_exits_data_dictionary.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "1990", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
-s6ha-ppgi	Affordable Rental Housing Developments	Green	2019-03-06 01:01:02.794116+00	2019-03-06 01:01:02.794143+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	302	t	\N	Disabled	\N	The rental housing developments listed below are among the thousands of affordable units that are supported by City of Chicago programs to maintain affordability in local neighborhoods. The list is updated periodically when construction is completed for new projects or when the compliance period for older projects expire, typically after 30 years. The list is provided as a courtesy to the public. It does not include every City-assisted affordable housing unit that may be available for rent, nor does it include the hundreds of thousands of naturally occurring affordable housing units located throughout Chicago without City subsidies. For information on rents, income requirements and availability for the projects listed, contact each property directly. For information on other affordable rental properties in Chicago and Illinois, call (877) 428-8844, or visit www.ILHousingSearch.org.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-ss3e-3mza	QHP Landscape SHOP Market Medical	Green	2019-03-06 01:01:02.910243+00	2019-03-06 01:01:02.910281+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	303	t	\N	Disabled	\N	QHP Landscape SHOP Market Medical - For instructions on how to read and use this data, please view the documentation available under the ‘About’ tab on this page.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
-im7g-fucq	Missouri Zip Codes by County/City	Green	2019-03-06 01:01:03.597213+00	2019-03-06 01:01:03.597242+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	304	t	\N	Disabled	\N	List of cities, zip codes and counties in Missouri	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+gfq7-aa86	Solicitor Product List with Assigned Wholesaler	Green	2019-03-06 01:01:00.289941+00	2019-05-22 21:53:47.574175+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	286	t	\N	Disabled	\N	Active list of products sold by the associated solicitor to the wholesaler.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 w5xs-s3mj	Individual Navigators	Green	2019-03-06 01:01:03.649539+00	2019-03-06 01:01:03.649566+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	305	t	\N	Disabled	\N	Individual Navigators licensed in Missouri.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 adrf-000001	Illinois Department of Corrections (DOC) Inmate Admissions 1990-2015	Yellow	2017-10-26 22:44:07.645849+00	2019-03-06 01:02:31.678346+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	238	f	\N	Disabled	\N	Detailed transactional data of each time a person was admitted to an Illinois Department of Corrections (DOC) facility from 1990 to 2015. Variables include demographic, charges, sentencing, conduct, security level, health and mental health status, gang affiliation. Data are collected using correctional facility data and court records. See data dictionary documentation for detailed description of all fields.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: ildoc_admit	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Inmate Populations", "keywords": ["criminal justice system", "inmates", "jail", "correctional facilities", "health", "employment", "demographics", "offenses"], "file_names": ["adrf-000001.csv"], "source_url": "", "description": "Detailed transactional data of each time a person was admitted to an Illinois Department of Corrections (DOC) facility from 1990 to 2015. Variables include demographic, charges, sentencing, conduct, security level, health and mental health status, gang affiliation. Data are collected using correctional facility data and court records. See data dictionary documentation for detailed description of all fields.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: ildoc_admit", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Department of Corrections", "reference_url": "https://www.illinois.gov/idoc/Pages/default.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000003", "rc-000005", "rc-000009", "rc-000010"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Corrections (IDOC). The user shall not attempt to re-identify individuals represented in the data and agree to not disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDOC before export from this system.", "geographical_unit": ["State", "Zip Code"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["idoc_admissions_data_dictionary.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "1990", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 adrf-000003	Illinois Department of Employment Security (IDES) Unemployment Insurance (UI) wage records - 2005-2015	Yellow	2017-10-26 22:44:07.702965+00	2019-03-06 01:02:31.784795+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	240	f	\N	Disabled	\N	Quarterly records of wages for every job held by each person in the state of Illinois from 2005 to 2015. This data is derived from the Illinois Dept. of Employment Security (IDES) Unemployment Insurance (UI) wage file that the Local Employment Dynamics (LED) state partners supply to the Census department for use in producing Quarterly Workforce Indicators (QWI). See attached data dictionary for field details.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: il_wage	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["income", "welfare", "poverty", "socioeconomics"], "file_names": ["adrf-000003.csv"], "source_url": "", "description": "Quarterly records of wages for every job held by each person in the state of Illinois from 2005 to 2015. This data is derived from the Illinois Dept. of Employment Security (IDES) Unemployment Insurance (UI) wage file that the Local Employment Dynamics (LED) state partners supply to the Census department for use in producing Quarterly Workforce Indicators (QWI). See attached data dictionary for field details.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: il_wage", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Department of Employment Security, US Census Bureau", "reference_url": "http://www.ides.illinois.gov/Pages/Unemployment%20Insurance.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000002", "rc-000064", "rc-000065", "rc-000066", "rc-000067", "rc-000068"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.", "geographical_unit": ["State"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["ides_wage_data_dictionary.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2005", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 adrf-000004	US Department of Housing and Urban Development Program Microdata 2004-2016 - Individuals: Illinois	Yellow	2017-10-26 22:44:07.730933+00	2019-03-06 01:02:31.839006+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	241	f	\N	Disabled	\N	Detailed transactional data consisting of tenant-level data for individuals in the US Department of Housing and Urban Development's (HUD) largest rental assistance programs: the Housing Choice Voucher Program, Public Housing, Project-based Section 8, and the Section 202/811 Programs. The dataset includes information on individuals aggregated at the Census block level, including rent, years in program, and income; and individual race and gender. Data originate from two sources within HUD: The Public and Indian Housing (PIH) Information Center and Tenant Rental Assistance Certification System (TRACS).\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: hud_individual_block_data	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Socioeconomic Characteristics", "keywords": ["income", "welfare", "public housing", "households", "demographics", "socioeconomics"], "file_names": ["adrf-000004.csv"], "source_url": "", "description": "Detailed transactional data consisting of tenant-level data for individuals in the US Department of Housing and Urban Development's (HUD) largest rental assistance programs: the Housing Choice Voucher Program, Public Housing, Project-based Section 8, and the Section 202/811 Programs. The dataset includes information on individuals aggregated at the Census block level, including rent, years in program, and income; and individual race and gender. Data originate from two sources within HUD: The Public and Indian Housing (PIH) Information Center and Tenant Rental Assistance Certification System (TRACS).\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: hud_individual_block_data", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "US Department of Housing and Urban Development", "reference_url": "https://www.huduser.gov/portal/pumd/index.html", "source_archive": "", "related_articles": ["rc-000007", "rc-000008"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the US Department of Housing and Urban Development. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by a data steward before export from this system. Export of whole or partial records from the data is not permitted.", "geographical_unit": ["State", "Census Block"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["HUD-50058.pdf", "HUD-50059.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2016", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2004", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 adrf-000006	Decennial Census Illinois Profile of General Population and Housing Characteristics: 2010	Yellow	2017-10-26 22:44:07.791789+00	2019-03-06 01:02:31.998375+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	243	f	\N	Disabled	\N	The Demographic Profile Summary File contains 100 percent data asked of all people and about every housing unit on topics such as sex, age, race, Hispanic or Latino origin, household relationship, householdtype, group quarters population, housing occupancy, and housing tenure.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Demographic Characteristics", "keywords": ["census", "demographics", "geospatial", "population", "socioeconomics"], "file_names": ["adrf-000006.csv"], "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml", "files_total": 1, "data_steward": "Drew Gordon", "data_provider": "US Census Bureau", "reference_url": "http://www.census.gov/prod/cen2010/doc/dpsf.pdf", "source_archive": "American FactFinder", "related_articles": ["rc-000005", "rc-000006", "rc-000066", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Tract"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["DEC_10_SF1_SF1DP1_metadata.csv", "DEC_10_SF1_SF1DP1.txt", "2010_census_demographic_profile_summary_file.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2010", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2000", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
+ic3t-wcy2	DOB Job Application Filings	Green	2019-03-06 01:00:55.971241+00	2019-05-22 21:53:44.380304+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	265	t	\N	Disabled	\N	This dataset contains all job applications submitted through the Borough Offices, through eFiling, or through the HUB, which have a "Latest Action Date" since January 1, 2000. This dataset does not include jobs submitted through DOB NOW. See the DOB NOW: Build – Job Application Filings dataset for DOB NOW jobs.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 adrf-000009	Illinois Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics - Workplace Area Characteristics - Cook County, IL	Yellow	2017-10-26 22:44:07.862381+00	2019-03-06 01:02:32.099915+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	245	f	\N	Disabled	\N	LEHD Origin-Destination Employment Statistics (LODES) used by OnTheMap are available for download below. Version 7 of LODES was enumerated by 2010 census blocks. Previous versions of LODES were enumerated with 2000 census blocks. Data files are state-based and organized into three types: Origin-Destination (OD), Residence Area Characteristics (RAC), and Workplace Area Characteristics (WAC), all at census block geographic detail. Data is available for most states for the years 2002-2014.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["census", "geospatial", "socioeconomics"], "file_names": ["adrf-000009.csv"], "source_url": "https://lehd.ces.census.gov/data/lodes/LODES7/", "files_total": 1, "data_steward": "Clayton Hunter", "data_provider": "US Census Bureau", "reference_url": "http://lehd.ces.census.gov/data/lodes/LODES7/LODESTechDoc7.2.pdf", "source_archive": "Longitudinal Employer-Household Dynamics Origin-Destination Employee Statistics", "related_articles": ["rc-000064", "rc-000065", "rc-000067", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Block"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["LODESTechDoc7.2.pdf"], "geographical_coverage": ["Cook County", "Illinois"], "temporal_coverage_end": "2014", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2014", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 adrf-000011	American Community Survey 2015 5yr estimates - ACS DEMOGRAPHIC AND HOUSING ESTIMATES	Yellow	2017-10-26 22:44:07.938729+00	2019-03-06 01:02:32.186703+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	247	f	\N	Disabled	\N	The American Community Survey (ACS) is part of the U.S. Census Bureau's Decennial Census Program and is designed to provide current demographic, social, economic, and housing estimates throughout the decade. Table DP05 provides demographic characteristics: the number of people by age, sex, race and of voting age.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Demographic Characteristics", "keywords": ["census", "demographics", "geospatial", "population"], "file_names": ["adrf-000011.csv"], "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml#none", "files_total": 1, "data_steward": "Drew Gordon", "data_provider": "US Census Bureau", "reference_url": "http://www.census.gov/programs-surveys/acs/methodology/design-and-methodology.html", "source_archive": "American FactFinder", "related_articles": ["rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Tract"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["ACS_15_5YR_DP05.txt", "ACS_15_5YR_DP05_metadata.csv"], "geographical_coverage": ["USA"], "temporal_coverage_end": "2015", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2010", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 adrf-000035	Illinois Department of Employment Security (IDES) establishment data addendum to employer records - 2012-2015	Yellow	2017-10-26 22:44:07.999558+00	2019-03-06 01:02:32.301132+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	249	f	\N	Disabled	\N	More detailed quarterly location data for the employers in the employer records file above created by IDES using their preferred geocoding process. Only created from 2012 to present. Includes latitude and longitude as well as Census ID to the block level.\n\nLocation information for employers was derived quarterly, but only from 2012 to 2015. Employers from wage records from earlier years might be present in this table, but it wouldnt be historical data. Just location.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: il_des_establishment	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["income", "welfare", "poverty", "socioeconomics"], "file_names": ["adrf-000035.csv"], "source_url": "", "description": "More detailed quarterly location data for the employers in the employer records file above created by IDES using their preferred geocoding process. Only created from 2012 to present. Includes latitude and longitude as well as Census ID to the block level.\\n\\nLocation information for employers was derived quarterly, but only from 2012 to 2015.  Employers from wage records from earlier years might be present in this table, but it wouldn’t be historical data. Just location.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: il_des_establishment", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Department of Employment Security, US Census Bureau", "reference_url": "http://www.ides.illinois.gov/Pages/Unemployment%20Insurance.aspx", "source_archive": "", "related_articles": [], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.", "geographical_unit": ["State", "Point", "Census Tract", "Census Block"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": [""], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2005", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 adrf-000037	US Department of Housing and Urban Development Program Microdata 2004-2016 - Households: Illinois	Yellow	2017-10-26 22:44:08.056037+00	2019-03-06 01:02:32.379889+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	251	f	\N	Disabled	\N	Detailed transactional data consisting of tenant-level data for households in the US Department of Housing and Urban Development's (HUD) largest rental assistance programs: the Housing Choice Voucher Program, Public Housing, Project-based Section 8, and the Section 202/811 Programs. The dataset includes information on households aggregated at the Census block level, including household family type, rent, years in program, and income. Data originate from two sources within HUD: The Public and Indian Housing (PIH) Information Center and Tenant Rental Assistance Certification System (TRACS).\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: hud_household_block_data	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Socioeconomic Characteristics", "keywords": ["income", "welfare", "public housing", "households", "demographics", "socioeconomics"], "file_names": ["adrf-000037.csv"], "source_url": "", "description": "Detailed transactional data consisting of tenant-level data for households in the US Department of Housing and Urban Development's (HUD) largest rental assistance programs: the Housing Choice Voucher Program, Public Housing, Project-based Section 8, and the Section 202/811 Programs. The dataset includes information on households aggregated at the Census block level, including household family type, rent, years in program, and income. Data originate from two sources within HUD: The Public and Indian Housing (PIH) Information Center and Tenant Rental Assistance Certification System (TRACS).\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: hud_household_block_data", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "US Department of Housing and Urban Development", "reference_url": "https://www.huduser.gov/portal/pumd/index.html", "source_archive": "", "related_articles": ["rc-000007", "rc-000008"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the US Department of Housing and Urban Development. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by a data steward before export from this system. Export of whole or partial records from the data is not permitted.", "geographical_unit": ["State", "Census Block"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["HUD-50058.pdf", "HUD-50059.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2016", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2004", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 adrf-000008	Illinois Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics - Residential Area Characteristics - Cook County, IL	Yellow	2017-10-26 22:44:07.821691+00	2019-03-06 01:02:32.059426+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	244	f	\N	Disabled	\N	LEHD Origin-Destination Employment Statistics (LODES) used by OnTheMap are available for download below. Version 7 of LODES was enumerated by 2010 census blocks. Previous versions of LODES were enumerated with 2000 census blocks. Data files are state-based and organized into three types: Origin-Destination (OD), Residence Area Characteristics (RAC), and Workplace Area Characteristics (WAC), all at census block geographic detail. Data is available for most states for the years 2002-2014.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["census", "geospatial", "socioeconomics"], "file_names": ["adrf-000008.csv"], "source_url": "https://lehd.ces.census.gov/data/lodes/LODES7/", "files_total": 1, "data_steward": "Clayton Hunter", "data_provider": "US Census Bureau", "reference_url": "http://lehd.ces.census.gov/data/lodes/LODES7/LODESTechDoc7.2.pdf", "source_archive": "Longitudinal Employer-Household Dynamics Origin-Destination Employee Statistics", "related_articles": ["rc-000064", "rc-000065", "rc-000067", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Block"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["LODESTechDoc7.2.pdf"], "geographical_coverage": ["Cook County", "Illinois"], "temporal_coverage_end": "2014", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2014", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
+xvpn-2pnt	Fire And Rescue Apparatus Responses: 2012 - 2017	Green	2019-03-06 01:00:56.593051+00	2019-05-22 21:53:44.870892+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	266	t	\N	Disabled	\N	One record for each emergency response by a Fire Department unit, including dispatch and response times, action taken, and counts of personnel which responded. This is an expansion of data available in the Howard County Fire And Rescue Incidents data set. Further detail is available in the Howard County Fire and Rescue Personnel Responses data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 adrf-000010	American Community Survey 2015 5yr estimates - SELECTED ECONOMIC CHARACTERISTICS	Yellow	2017-10-26 22:44:07.902319+00	2019-03-06 01:02:32.146054+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	246	f	\N	Disabled	\N	The American Community Survey (ACS) is part of the U.S. Census Bureau's Decennial Census Program and is designed to provide current demographic, social, economic, and housing estimates throughout the decade. Table DP03 provides socioeconomic characteristics such as unemployment, occupation and industry type, number of households by income bracket, number of people by health insurance coverage type, and numbers living under the poverty level.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["census", "demographics", "geospatial", "population", "socioeconomics", "poverty"], "file_names": ["adrf-000010.csv"], "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml#none", "files_total": 1, "data_steward": "Drew Gordon", "data_provider": "US Census Bureau", "reference_url": "http://www.census.gov/programs-surveys/acs/methodology/design-and-methodology.html", "source_archive": "American FactFinder", "related_articles": ["rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Tract"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["ACS_15_5YR_DP03.txt", "ACS_15_5YR_DP03_metadata.csv"], "geographical_coverage": ["USA"], "temporal_coverage_end": "2015", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2010", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
+dpec-ucu7	TLC New Driver Application Status	Green	2019-03-06 01:00:56.971968+00	2019-05-22 21:53:45.237562+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	270	t	\N	Disabled	\N	THIS DATASET IS UPDATED SEVERAL TIMES PER DAY. TLC Driver application status check for applicants who had applied for a new TLC driver’s license. For more information and to upload missing requirements, visit www.nyc.gov/tlcup\r\n\r\nFor historical/archived data of past application statuses, please see- https://data.cityofnewyork.us/Transportation/Historical-Driver-Application-Status/p32s-yqxq	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 adrf-000036	Illinois Department of Corrections (DOC) Parolee address data - 2009-2015	Yellow	2017-10-26 22:44:08.027442+00	2019-03-06 01:02:32.338113+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	250	f	\N	Disabled	\N	Location information for persons active in the Illinois parole system from 2009 to 2015. A given person could have multiple rows in this table, one per year they were on parole. Each row contains a latitude/longitude coordinate based on the parolees address on file (redacted from this file), as well as additional information on original and derived county, city, and zip code and metadata that indicates who confident we are that the point corresponds to the address. Because the parole system doesnt include historical data, parolees who exited the system before 2009 wont be represented in this data set.\n\nFrom IDOC:\nplease note you are receiving parolee address information as of the last day of the FY for all active parolees for the added period in question. There are some cautions associated with address data including; some parolees are showing as AWOL which means the parolee is currently not residing at a known/approved location. In addition, some addresses are actually county jail addresses where parolees are being held pending new criminal charges. Some addresses are treatment facilities, recovery homes, or homeless shelters where offenders may be residing temporarily. Finally, some address are merely places where the parolee meets with the agent but does not actually reside. While it is our policy to verify addresses to the best of our ability, there are a number of offenders who do not wish us to know where they really reside and as such, utilize the address of a family member or friend who they know will provide assurance that the parolee resides there. Also please note, addresses are input by Agents so there are always possibilities that human errors are contained in the dataset. These are a few of the reasons why we do not create policy based on address, as a number of our parolees live a transient lifestyle and do not necessarily reside where they work or commit new crimes.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: il_doc_parole\n	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Inmate Populations", "keywords": ["criminal justice system", "inmates", "jail", "correctional facilities", "health", "employment", "demographics", "offenses"], "file_names": ["adrf-000036.csv"], "source_url": "", "description": "Location information for persons active in the Illinois parole system from 2009 to 2015. A given person could have multiple rows in this table, one per year they were on parole. Each row contains a latitude/longitude coordinate based on the parolee’s address on file (redacted from this file), as well as additional information on original and derived county, city, and zip code and metadata that indicates who confident we are that the point corresponds to the address. Because the parole system doesn’t include historical data, parolees who exited the system before 2009 won’t be represented in this data set.\\n\\nFrom IDOC:\\nplease note you are receiving parolee address information as of the last day of the FY for all active parolees for the added period in question. There are some cautions associated with address data including; some parolees are showing as AWOL which means the parolee is currently not residing at a known/approved location. In addition, some addresses are actually county jail addresses where parolees are being held pending new criminal charges. Some addresses are treatment facilities, recovery homes, or homeless shelters where offenders may be residing temporarily. Finally, some address are merely places where the parolee meets with the agent but does not actually reside. While it is our policy to verify addresses to the best of our ability, there are a number of offenders who do not wish us to know where they really reside and as such, utilize the address of a family member or friend who they know will provide assurance that the parolee resides there. Also please note, addresses are input by Agents so there are always possibilities that human errors are contained in the dataset. These are a few of the reasons why we do not create policy based on address, as a number of our parolees live a transient lifestyle and do not necessarily reside where they work or commit new crimes.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: il_doc_parole\\n", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Department of Corrections", "reference_url": "https://www.illinois.gov/idoc/Pages/default.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000003", "rc-000005", "rc-000009", "rc-000010"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.", "geographical_unit": ["State", "Point", "City", "Zip Code"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": [""], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2009", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 adrf-000005	Decennial Census Illinois Profile of General Population and Housing Characteristics: 2000	Yellow	2017-10-26 22:44:07.760688+00	2019-03-06 01:05:22.842961+00	\N	\N	\N	f	No Reporting Needed	\N	1	4	242	f	\N	Disabled		The Demographic Profile Summary File (SF1) contains 100 percent data asked of all people and about every housing unit on topics such as sex, age, race, Hispanic or Latino origin, household relationship, householdtype, group quarters population, housing occupancy, and housing tenure.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Demographic Characteristics", "keywords": ["census", "demographics", "geospatial", "population", "socioeconomics"], "file_names": ["adrf-000005.csv"], "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml", "files_total": 1, "data_steward": "Drew Gordon", "data_provider": "US Census Bureau", "reference_url": "https://www.census.gov/prod/cen2000/doc/ProfileTD.pdf", "source_archive": "American FactFinder", "related_articles": ["rc-000005", "rc-000006", "rc-000066", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Tract"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["DEC_00_SF1_DP1_metadata.csv", "DEC_00_SF1_DP1.txt", "2000_census_demographic_profile_summary_file.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2000", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "1990", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 aaa-testa23	adrf-desktop	Green	2019-05-14 17:32:44.923918+00	2019-05-14 20:37:19.633566+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	419	f	\N	Disabled		aaa	\N	\N	\N	\N	\N	\N	f	\N	\N	t	\N
+kwxv-fwze	Lottery Cash 4 Life Winning Numbers: Beginning 2014	Green	2019-03-06 01:00:55.565081+00	2019-05-22 21:53:44.122394+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	260	t	\N	Disabled	\N	Go to http://on.ny.gov/1xRIvPz on the New York Lottery website for past Cash 4 Life results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+qcn7-gc3g	Order and Referring	Green	2019-03-06 01:00:55.619299+00	2019-05-22 21:53:44.176467+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	261	t	\N	Disabled	\N	Order and Referring data file has National Provider Identifier (NPI) and legal name (last name, first name) of all physicians and non-physician practitioners who are of a type/specialty that is legally eligible to order and refer in the Medicare program and who have current enrollment records in Medicare (i.e., they have enrollment records in PECOS)	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+qccx-65fg	Howard County Police Department Call For Service - 2014-2017	Green	2019-03-06 01:00:55.706236+00	2019-05-22 21:53:44.206389+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	262	t	\N	Disabled	\N	Calls for Service by computer aided dispatch (CAD) event type, date, time, location, statistical reporting area (SRA), and beat.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+9fxf-t2tr	Dallas Police Active Calls	Green	2019-03-06 01:00:55.782368+00	2019-05-22 21:53:44.24765+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	263	t	\N	Disabled	\N	Disclaimer  - The calls listed here are only those where the element assigned to the call has arrived and is currently working the call.   It does not include any calls for service, whether currently being worked or not, that are not releasable due to privacy laws.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+kvz2-j5cj	Building, Electrical, Fire, Grading, Mechanical, Plumbing & Sign Permits: 2010 - Present	Green	2019-03-06 01:00:55.873904+00	2019-05-22 21:53:44.316179+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	264	t	\N	Disabled	\N	Issued Permits:  01/01/2010 - Present	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+f362-6fup	Fire & Rescue Incidents: 2012 - Present	Green	2019-03-06 01:00:56.679137+00	2019-05-22 21:53:44.947968+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	267	t	\N	Disabled	\N	One record for each emergency on which the Fire Department sent apparatus and personnel. More detail is available in the Apparatus Response and Personnel Response data sets.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+8fxg-nyr5	Fire & Rescue Personnel Responses: 2012 - 2017	Green	2019-03-06 01:00:56.839448+00	2019-05-22 21:53:45.082188+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	268	t	\N	Disabled	\N	One record for each emergency response by a Fire Department member, including rank and career / volunteer / contingent status of personnel which responded. This is an expansion of data available in the Howard County Fire And Rescue Incidents data set. Further detail is available in the Howard County Fire and Rescue Personnel Responses data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+6uza-cd7z	Fire Dispatches: 2012 - 2017	Green	2019-03-06 01:00:56.895215+00	2019-05-22 21:53:45.121146+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	269	t	\N	Disabled	\N	Emergency incidents created by HCPD's 911 Dispatch Center and classified as Fire, Rescue or Emergency Medical Service (EMS) calls. Not all of these incidents are created as cases, and thus not all of these incidents have a matching record in the Howard County Fire & Rescue Incidents table.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+xzkq-xp2w	Current Employee Names, Salaries, and Position Titles	Green	2019-03-06 01:00:57.075453+00	2019-05-22 21:53:45.310434+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	271	t	\N	Disabled	\N	This dataset is a listing of all current City of Chicago employees, complete with full names, departments, positions, employment status (part-time or full-time), frequency of hourly employee –where applicable—and annual salaries or hourly rate. For hourly employees, the City is providing the hourly rate and frequency of hourly employees (40, 35, 20 and 10) to allow dataset users to estimate annual wages for hourly employees. Please note that annual wages will vary by employee, depending on number of hours worked and seasonal status. For information on the positions and related salaries detailed in the annual budgets, see https://www.cityofchicago.org/city/en/depts/obm.html	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+7yuw-754z	Opt Out Affidavits	Green	2019-03-06 01:00:57.306623+00	2019-05-22 21:53:45.368229+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	273	t	\N	Disabled	\N	A list of practitioners who have opted out of Medicare.*  \n\nSource: Provider Enrollment, Chain and Ownership System (PECOS) as of January 31st, 2019	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+vx8i-nprf	Civil Service List (Active)	Green	2019-03-06 01:00:57.140181+00	2019-05-22 21:53:45.436178+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	272	t	\N	Disabled	\N	A Civil Service List consists of all candidates who passed an exam, ranked in score order. An established list is considered active for no less than one year and no more than four years from the date of establishment. For more information visit DCAS’ “Work for the City” webpage at: http://www.nyc.gov/html/dcas/html/work/work.shtml	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+hsys-3def	Lottery Daily Numbers/Win-4 Winning Numbers: Beginning 1980	Green	2019-03-06 01:00:57.478768+00	2019-05-22 21:53:45.546309+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	274	t	\N	Disabled	\N	Go to http://on.ny.gov/1Cx6zvs or http://on.ny.gov/1KYjE6X on the New York Lottery website for past Daily Numbers/Win-4 results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+8wbx-tsch	For Hire Vehicles (FHV) - Active	Green	2019-03-06 01:00:57.599887+00	2019-05-22 21:53:45.619057+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	275	t	\N	Disabled	\N	TLC authorized For-Hire vehicles that are active. This list is accurate to the date and time represented in the Last Date Updated and Last Time Updated fields. For inquiries about the contents of this dataset, please email licensinginquiries@tlc.nyc.gov.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+qxh8-f4bd	Health Care Provider Credential Data	Green	2019-03-06 01:00:58.480917+00	2019-05-22 21:53:45.732991+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	277	t	\N	Disabled	\N	The Washington State Department of Health presents this information as a service to the public. True and correct copies of legal disciplinary actions taken after July 1998 are available on our Provider Credential Search site. These records are considered certified by the Department of Health. \r\n\r\nThis includes information on health care providers.\r\n\r\nPlease contact our Customer Service Center at 360-236-4700 for information about actions before July 1998. \r\nThe information on this site comes directly from our database and is updated daily at 10:00 a.m.. This data is a primary source for verification of credentials and is extracted from the primary database at 2:00 a.m. daily.\r\n\r\nNews releases about disciplinary actions taken against Washington State healthcare providers, agencies or facilities are on the agency's Newsroom webpage.\r\n\r\nDisclaimer\r\nThe absence of information in the Provider Credential Search system doesn't imply any recommendation, endorsement or guarantee of competence of any healthcare professional. The presence of information in this system doesn't imply a provider isn't competent or qualified to practice. The reader is encouraged to carefully evaluate any information found in this data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+b8in-sz6k	QHP Landscape Individual Market Medical	Green	2019-03-06 01:00:57.793537+00	2019-05-22 21:53:45.860337+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	276	t	\N	Disabled	\N	QHP Landscape Individual Market Medical - For instructions on how to read and use this data, please view the documentation available under the ‘About’ tab on this page.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+xjfq-wh2d	For Hire Vehicles (FHV) - Active Drivers	Green	2019-03-06 01:00:58.930651+00	2019-05-22 21:53:46.435059+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	280	t	\N	Disabled	\N	NYC TLC Licensed FHV drivers that are currently active and in good standing. This list is accurate to the date and time represented in the Last Date Updated and Last Time Updated fields. For inquiries about the contents of this dataset, please email licensinginquiries@tlc.nyc.gov.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+n59h-ggai	Local Severe Weather Warning Systems in Missouri	Green	2019-03-06 01:00:58.680053+00	2019-05-22 21:53:46.486397+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	278	t	\N	Disabled	\N	List of 'Severe Weather Alert Systems' throughout Missouri provided by local governments, media outlets, and other sources.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+s6ew-h6mp	Consumer Complaints	Green	2019-03-06 01:00:58.736534+00	2019-05-22 21:53:46.531189+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	279	t	\N	Disabled	\N	Each week we send thousands of consumers' complaints about financial products and services to companies for response. Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first.<br><br>\r\n\r\nWe publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. See our <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf">Scrubbing Standard</a> for more details<br><br>\r\n\r\nWe don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is generally refreshed nightly. Company level information should be considered in context of company size and/or market share.<br><br>\r\n\r\n<a href="http://www.consumerfinance.gov/complaintdatabase/">More about the Consumer Complaint Database</a> | <a href="http://www.consumerfinance.gov/complaint/data-use/">How we use complaint data</a> | <a href="http://www.consumerfinance.gov/complaintdatabase/technical-documentation/">Technical documentation</a>	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+fkt2-8smh	Missouri Beer, Wine and Liquor Wholesaler List with Zip Code	Green	2019-03-06 01:00:59.003533+00	2019-05-22 21:53:46.625616+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	281	t	\N	Disabled	\N	Listing of current Missouri beer, wine and liquor wholesalers with their associated zip codes.  This listing is updated daily.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+mmn5-wy78	Missouri Beer, Wine and Liquor Solicitor List with Zip Code	Green	2019-03-06 01:00:59.067557+00	2019-05-22 21:53:46.66368+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	282	t	\N	Disabled	\N	Listing of all current beer, wine and liquor solicitors and their associated zip code.  This is updated daily	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+f29f-zza5	Food Establishment Inspection Data	Green	2019-03-06 01:01:02.39189+00	2019-05-22 21:53:49.188634+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	299	t	\N	Disabled	\N	Health Department inspection results for food service establishments in King County, 2006 to the present. This data is organized by Business / Inspection Date / Violation. Each row in this dataset is an inspection, and if an inspection at a particular buiness results in multiple violations there will be multiple rows for that business with the same Inspection_Serial_Num. This dataset was last updated on 03/04/2019 and is current from 1/1/2006 to 03/01/2019.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+6sdz-r9ba	Restaurant and Food Inspections	Green	2019-03-06 01:01:02.687238+00	2019-05-22 21:53:49.294639+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	301	t	\N	Disabled	\N	Licensed restaurants, inspections, and violations published to the Simplified LIVES Schema available here:\r\nhttps://docs.google.com/document/d/1eeO5T_lt8QHGHMjpj6M9071y5OFOXcADFI4F7AIZ2iE/edit#heading=h.rjwrosiwiw5o	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+ydr8-5enu	Building Permits	Green	2019-03-06 01:00:59.229715+00	2019-05-22 21:53:46.702009+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	284	t	\N	Disabled	\N	Permits issued by the Department of Buildings in the City of Chicago from 2006 to the present. The dataset for each year contains more than 65,000 records/rows of data and cannot be viewed in full in Microsoft Excel. Therefore, when downloading the file, select CSV from the Export menu. Open the file in an ASCII text editor, such as Wordpad, to view and search. Data fields requiring description are detailed below. \r\nPERMIT TYPE: "New Construction and Renovation" includes new projects or rehabilitations of existing buildings; "Other Construction" includes items that require plans such as cell towers and cranes; "Easy Permit" includes minor repairs that require no plans; "Wrecking/Demolition" includes private demolition of buildings and other structures; "Electrical Wiring" includes major and minor electrical work both permanent and temporary; "Sign Permit" includes signs, canopies and awnings both on private property and over the public way; "Porch Permit" includes new porch construction and renovation (defunct permit type porches are now issued under "New Construction and Renovation" directly); "Reinstate Permit" includes original permit reinstatements; "Extension Permits" includes extension of original permit when construction has not started within six months of original permit issuance. WORK DESCRIPTION: The description of work being done on the issued permit, which is printed on the permit. PIN1 – PIN10: A maximum of ten assessor parcel index numbers belonging to the permitted property. PINs are provided by the customer seeking the permit since mid-2008 where required by the Cook County Assessor’s Office. CONTRACTOR INFORMATION: The contractor type, name, and contact information. Data includes up to 15 different contractors per permit if applicable.\r\n\r\nData Owner: Buildings.\r\n\r\nTime Period: January 1, 2006 to present.\r\n\r\nFrequency: Data is updated daily.\r\n\r\nRelated Applications: Building Data Warehouse (https://webapps.cityofchicago.org/buildingviolations/violations/searchaddresspage.html).	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+cgbu-k38b	Missouri Law Enforcement Agencies	Green	2019-03-06 01:00:59.132124+00	2019-05-22 21:53:47.351014+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	283	t	\N	Disabled	\N	List of Active law enforcement agencies (Sheriff, Municipal, University, Court, etc)	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+qahs-fevu	Parking Garage Space Availability	Green	2019-03-06 01:01:00.37132+00	2019-05-22 21:53:47.413973+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	287	t	\N	Disabled	\N	This dataset includes parking spaces availability for Montgomery County Public Parking Facilities. This dataset only includes facilities that are equipped with vehicle counting systems.\r\n\r\nUpdate frequency:  Every few minutes	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+mtgj-bnbx	Missouri Alcohol Licenses Not Renewed for the New License Year	Green	2019-03-06 01:01:00.143608+00	2019-05-22 21:53:47.447634+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	285	t	\N	Disabled	\N	List of Missouri alcohol licenses not yet renewed for the next license year.  License year begins July 1.  This dataset is generated nightly during the months of April through July for the license renewal period.  This dataset will be empty the rest of the year.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+hbmv-rqk9	County Clerk License Information	Green	2019-03-06 01:01:00.425665+00	2019-05-22 21:53:47.636115+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	288	t	\N	Disabled	\N	Alcohol Licensing information by County compiled weekly storing 3 weeks at a time	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+7t5a-79ri	Child Support Lien List	Green	2019-03-06 01:01:00.824779+00	2019-05-22 21:53:47.827646+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	290	t	\N	Disabled	\N		\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+yyhn-562y	Missouri Active Alcohol License Data	Green	2019-03-06 01:01:00.666503+00	2019-05-22 21:53:47.871462+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	289	t	\N	Disabled	\N	Current license information of businesses involved in the manufacture, shipping, and/or sale of alcohol in the State of Missouri	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+dymb-xy5c	New Liquor Licenses	Green	2019-03-06 01:01:00.905471+00	2019-05-22 21:53:47.984229+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	291	t	\N	Disabled	\N	Weekly listing of new Liquor Licenses for the past 3 weeks	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+qek8-9bd4	Comprehensive Care for Joint Replacement Model: Metropolitan Statistical Areas (MSAs)	Green	2019-03-06 01:01:01.897172+00	2019-05-22 21:53:48.106621+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	297	t	\N	Disabled	\N	This data set presents Metropolitan Statistical Areas (MSAs) that are participating in the Comprehensive Care for Joint Replacement Model, a proposed model to support better and more efficient care for beneficiaries undergoing the most common inpatient surgery for Medicare beneficiaries: hip and knee replacements.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+dg63-4siq	Lottery Take 5 Winning Numbers	Green	2019-03-06 01:01:01.667911+00	2019-05-22 21:53:48.146834+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	295	t	\N	Disabled	\N	Go to http://on.ny.gov/1DYGlWJ on the New York Lottery website for past Take 5 results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+nytw-fmz3	Missouri Alcohol Licenses Out of Business	Green	2019-03-06 01:01:01.19714+00	2019-05-22 21:53:48.206217+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	292	t	\N	Disabled	\N	List of alcohol licenses of businesses who have gone out of business	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+au6r-w9n3	Open Meetings	Green	2019-03-06 01:01:01.342894+00	2019-05-22 21:53:48.352073+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	293	t	\N	Disabled	\N	Schedule of Missouri Open Meetings	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+j56h-zgnm	Adult Jail Booking February 1, 2018 to January 31, 2019 as of February 6, 2019	Green	2019-03-06 01:01:01.571579+00	2019-05-22 21:53:48.535211+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	294	t	\N	Disabled	\N		\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+n3tx-eq5q	Missouri Alcohol Temporary License Expirations	Green	2019-03-06 01:01:01.718843+00	2019-05-22 21:53:48.60552+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	296	t	\N	Disabled	\N	List of temporary alcohol license expiration dates	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+ijzp-q8t2	Crimes - 2001 to present	Green	2019-03-06 01:01:02.535723+00	2019-05-22 21:53:48.726292+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	300	t	\N	Disabled	\N	This dataset reflects reported incidents of crime (with the exception of murders where data exists for each victim) that occurred in the City of Chicago from 2001 to present, minus the most recent seven days. Data is extracted from the Chicago Police Department's CLEAR (Citizen Law Enforcement Analysis and Reporting) system. In order to protect the privacy of crime victims, addresses are shown at the block level only and specific locations are not identified. Should you have questions about this dataset, you may contact the Research & Development Division of the Chicago Police Department at PSITAdministration@ChicagoPolice.org.  Disclaimer: These crimes may be based upon preliminary information supplied to the Police Department by the reporting parties that have not been verified. The preliminary crime classifications may be changed at a later date based upon additional investigation and there is always the possibility of mechanical or human error. Therefore, the Chicago Police Department does not guarantee (either expressed or implied) the accuracy, completeness, timeliness, or correct sequencing of the information and the information should not be used for comparison purposes over time. The Chicago Police Department will not be responsible for any error or omission, or for the use of, or the results obtained from the use of this information. All data visualizations on maps should be considered approximate and attempts to derive specific addresses are strictly prohibited. The Chicago Police Department is not responsible for the content of any off-site pages that are referenced by or that reference this web page other than an official City of Chicago or Chicago Police Department web page. The user specifically acknowledges that the Chicago Police Department is not responsible for any defamatory, offensive, misleading, or illegal conduct of other users, links, or third parties and that the risk of injury from the foregoing rests entirely with the user.  The unauthorized use of the words "Chicago Police Department," "Chicago Police," or any colorable imitation of these words or the unauthorized use of the Chicago Police Department logo is unlawful. This web page does not, in any way, authorize such use. Data are updated daily. The dataset contains more than 65,000 records/rows of data and cannot be viewed in full in Microsoft Excel. Therefore, when downloading the file, select CSV from the Export menu. Open the file in an ASCII text editor, such as Wordpad, to view and search. To access a list of Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) codes, go to http://data.cityofchicago.org/Public-Safety/Chicago-Police-Department-Illinois-Uniform-Crime-R/c7ck-438e	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+yv23-pmwf	Building and Safety Permit Information	Green	2019-03-06 01:01:01.94497+00	2019-05-22 21:53:48.879851+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	298	t	\N	Disabled	\N	The Department of Building and Safety issues permits for the construction, remodeling, and repair of buildings and structures in the City of Los Angeles.  Permits are categorized into building permits, electrical permits, and mechanical permits (which include plumbing, HVAC systems, fire sprinklers, elevators, and pressure vessels).  Depending on the complexity of a project, a permit may be issued the same day with Express Permit or e-Permit ("No Plan Check" category), or a permit may require that the plans be reviewed ("Plan Check" category) by a Building and Safety Plan Check personnel.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+s6ha-ppgi	Affordable Rental Housing Developments	Green	2019-03-06 01:01:02.794116+00	2019-05-22 21:53:49.399026+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	302	t	\N	Disabled	\N	The rental housing developments listed below are among the thousands of affordable units that are supported by City of Chicago programs to maintain affordability in local neighborhoods. The list is updated periodically when construction is completed for new projects or when the compliance period for older projects expire, typically after 30 years. The list is provided as a courtesy to the public. It does not include every City-assisted affordable housing unit that may be available for rent, nor does it include the hundreds of thousands of naturally occurring affordable housing units located throughout Chicago without City subsidies. For information on rents, income requirements and availability for the projects listed, contact each property directly. For information on other affordable rental properties in Chicago and Illinois, call (877) 428-8844, or visit www.ILHousingSearch.org.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+xubh-q36u	Hospital General Information	Green	2019-05-22 21:53:49.555036+00	2019-05-22 21:53:49.555059+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	420	t	\N	Disabled	\N	A list of all hospitals that have been registered with Medicare. The list includes addresses, phone numbers, hospital type, and overall hospital rating.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+im7g-fucq	Missouri Zip Codes by County/City	Green	2019-03-06 01:01:03.597213+00	2019-05-22 21:53:49.683051+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	304	t	\N	Disabled	\N	List of cities, zip codes and counties in Missouri	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+ss3e-3mza	QHP Landscape SHOP Market Medical	Green	2019-03-06 01:01:02.910243+00	2019-05-22 21:53:49.714355+00	\N	\N	\N	f	No Reporting Needed	\N	1	\N	303	t	\N	Disabled	\N	QHP Landscape SHOP Market Medical - For instructions on how to read and use this data, please view the documentation available under the ‘About’ tab on this page.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 \.
 
 
@@ -4750,13 +4671,6 @@ COPY public.data_facility_admin_dataset_keywords (id, dataset_id, keyword_id) FR
 
 
 --
--- Name: data_facility_admin_dataset_keywords_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_dataset_keywords_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_datasetaccess; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -4766,25 +4680,11 @@ COPY public.data_facility_admin_datasetaccess (id, request_id, created_at, updat
 
 
 --
--- Name: data_facility_admin_datasetaccess_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_datasetaccess_id_seq', 1, true);
-
-
---
 -- Data for Name: data_facility_admin_datasteward; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_datasteward (id, start_date, end_date, created_at, updated_at, dataset_id, user_id) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_datasteward_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_datasteward_id_seq', 1, false);
 
 
 --
@@ -4833,32 +4733,11 @@ COPY public.data_facility_admin_historicalcategory (id, name, created_at, update
 
 
 --
--- Name: data_facility_admin_historicalcategory_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicalcategory_history_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_historicaldataagreement; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_historicaldataagreement (id, title, text, version, created_at, updated_at, history_id, history_date, history_type, dataset_id, history_user_id, delete_on_expiration, deletion_method, document, expiration_date, history_change_reason, internal_notes) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_historicaldataagreement_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaldataagreement_history_id_seq', 1, false);
-
-
---
--- Name: data_facility_admin_historicaldataagreementsigna_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaldataagreementsigna_history_id_seq', 1, false);
 
 
 --
@@ -4875,13 +4754,6 @@ COPY public.data_facility_admin_historicaldataagreementsignature (id, accepted, 
 
 COPY public.data_facility_admin_historicaldatabaseschema (id, name, public, created_at, updated_at, history_id, history_date, history_change_reason, history_type, history_user_id) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_historicaldatabaseschema_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaldatabaseschema_history_id_seq', 1, false);
 
 
 --
@@ -4964,11 +4836,14 @@ COPY public.data_facility_admin_historicaldataset (id, dataset_id, name, data_cl
 243	adrf-000006	Decennial Census Illinois Profile of General Population and Housing Characteristics: 2010	Yellow	2017-10-26 22:44:07.791789+00	2019-03-06 01:01:13.274174+00	73	2019-03-06 01:01:13.28147+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7008	dataset-adrf-000006	243	f	\N	\N	Disabled	\N	The Demographic Profile Summary File contains 100 percent data asked of all people and about every housing unit on topics such as sex, age, race, Hispanic or Latino origin, household relationship, householdtype, group quarters population, housing occupancy, and housing tenure.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Demographic Characteristics", "keywords": ["census", "demographics", "geospatial", "population", "socioeconomics"], "file_names": ["adrf-000006.csv"], "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml", "files_total": 1, "data_steward": "Drew Gordon", "reference_url": "http://www.census.gov/prod/cen2010/doc/dpsf.pdf", "source_archive": "American FactFinder", "related_articles": ["rc-000005", "rc-000006", "rc-000066", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Tract"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["DEC_10_SF1_SF1DP1_metadata.csv", "DEC_10_SF1_SF1DP1.txt", "2010_census_demographic_profile_summary_file.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2010", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2000", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 244	adrf-000008	Illinois Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics - Residential Area Characteristics - Cook County, IL	Yellow	2017-10-26 22:44:07.821691+00	2019-03-06 01:01:13.35398+00	74	2019-03-06 01:01:13.367365+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7012	dataset-adrf-000008	244	f	\N	\N	Disabled	\N	LEHD Origin-Destination Employment Statistics (LODES) used by OnTheMap are available for download below. Version 7 of LODES was enumerated by 2010 census blocks. Previous versions of LODES were enumerated with 2000 census blocks. Data files are state-based and organized into three types: Origin-Destination (OD), Residence Area Characteristics (RAC), and Workplace Area Characteristics (WAC), all at census block geographic detail. Data is available for most states for the years 2002-2014.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["census", "geospatial", "socioeconomics"], "file_names": ["adrf-000008.csv"], "source_url": "https://lehd.ces.census.gov/data/lodes/LODES7/", "files_total": 1, "data_steward": "Clayton Hunter", "reference_url": "http://lehd.ces.census.gov/data/lodes/LODES7/LODESTechDoc7.2.pdf", "source_archive": "Longitudinal Employer-Household Dynamics Origin-Destination Employee Statistics", "related_articles": ["rc-000064", "rc-000065", "rc-000067", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Block"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["LODESTechDoc7.2.pdf"], "geographical_coverage": ["Cook County", "Illinois"], "temporal_coverage_end": "2014", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2014", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 252	adrf-000055	IL Corrections Industries Training 2011-2016 dataset	Yellow	2017-10-26 22:44:08.086896+00	2019-03-06 01:02:32.414961+00	97	2019-03-06 01:02:32.418377+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7011	dataset-adrf-000055	252	f	\N	\N	Disabled	\N	This data contains the individuals who participated in an Illinois Correctional Industries vocational training program for forward years 2011 - 2016. The dataset includes a "Shop Function Code" designating the program, start and end dates of the program, and the result of that training program for the inmate in question. These data are tracked by hand by ICI's payroll unit.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Inmate Populations", "keywords": ["inmates", "jail", "correctional facilities", "employment", "training"], "file_names": ["adrf-000055.csv"], "source_url": "", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Correctional Industries", "reference_url": "http://www.ici.illinois.gov/(S(xstjb5250ujgsiqjdbz0o2zy)A(aaPj--PlzAEkAAAAOTE1ZmM0NTMtYzRhZC00OGUxLTljMTgtOGFlMGViMmU4ZDUzTpilbQ8Uxwiam45T0FLMVGA7WE81))/AnnualReport.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000003", "rc-000005", "rc-000009", "rc-000010"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the US Department of Housing and Urban Development. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by a data steward before export from this system. Export of whole or partial records from the data is not permitted.", "geographical_unit": ["State"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["ici_function_codes.pdf", "ici_function_codes.csv", "adrf-000055_dd.csv"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2016", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2011", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
+266	xvpn-2pnt	Fire And Rescue Apparatus Responses: 2012 - 2017	Green	2019-03-06 01:00:56.593051+00	2019-05-22 21:53:44.870892+00	139	2019-05-22 21:53:44.874056+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100011	xvpn-2pnt	266	t	\N	\N	Disabled	\N	One record for each emergency response by a Fire Department unit, including dispatch and response times, action taken, and counts of personnel which responded. This is an expansion of data available in the Howard County Fire And Rescue Incidents data set. Further detail is available in the Howard County Fire and Rescue Personnel Responses data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+267	f362-6fup	Fire & Rescue Incidents: 2012 - Present	Green	2019-03-06 01:00:56.679137+00	2019-05-22 21:53:44.947968+00	140	2019-05-22 21:53:44.951497+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100012	f362-6fup	267	t	\N	\N	Disabled	\N	One record for each emergency on which the Fire Department sent apparatus and personnel. More detail is available in the Apparatus Response and Personnel Response data sets.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 245	adrf-000009	Illinois Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics - Workplace Area Characteristics - Cook County, IL	Yellow	2017-10-26 22:44:07.862381+00	2019-03-06 01:01:13.43523+00	75	2019-03-06 01:01:13.443116+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7015	dataset-adrf-000009	245	f	\N	\N	Disabled	\N	LEHD Origin-Destination Employment Statistics (LODES) used by OnTheMap are available for download below. Version 7 of LODES was enumerated by 2010 census blocks. Previous versions of LODES were enumerated with 2000 census blocks. Data files are state-based and organized into three types: Origin-Destination (OD), Residence Area Characteristics (RAC), and Workplace Area Characteristics (WAC), all at census block geographic detail. Data is available for most states for the years 2002-2014.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["census", "geospatial", "socioeconomics"], "file_names": ["adrf-000009.csv"], "source_url": "https://lehd.ces.census.gov/data/lodes/LODES7/", "files_total": 1, "data_steward": "Clayton Hunter", "reference_url": "http://lehd.ces.census.gov/data/lodes/LODES7/LODESTechDoc7.2.pdf", "source_archive": "Longitudinal Employer-Household Dynamics Origin-Destination Employee Statistics", "related_articles": ["rc-000064", "rc-000065", "rc-000067", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Block"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["LODESTechDoc7.2.pdf"], "geographical_coverage": ["Cook County", "Illinois"], "temporal_coverage_end": "2014", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2014", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 246	adrf-000010	American Community Survey 2015 5yr estimates - SELECTED ECONOMIC CHARACTERISTICS	Yellow	2017-10-26 22:44:07.902319+00	2019-03-06 01:01:13.487605+00	76	2019-03-06 01:01:13.496084+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7013	dataset-adrf-000010	246	f	\N	\N	Disabled	\N	The American Community Survey (ACS) is part of the U.S. Census Bureau's Decennial Census Program and is designed to provide current demographic, social, economic, and housing estimates throughout the decade. Table DP03 provides socioeconomic characteristics such as unemployment, occupation and industry type, number of households by income bracket, number of people by health insurance coverage type, and numbers living under the poverty level.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["census", "demographics", "geospatial", "population", "socioeconomics", "poverty"], "file_names": ["adrf-000010.csv"], "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml#none", "files_total": 1, "data_steward": "Drew Gordon", "reference_url": "http://www.census.gov/programs-surveys/acs/methodology/design-and-methodology.html", "source_archive": "American FactFinder", "related_articles": ["rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Tract"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["ACS_15_5YR_DP03.txt", "ACS_15_5YR_DP03_metadata.csv"], "geographical_coverage": ["USA"], "temporal_coverage_end": "2015", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2010", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 247	adrf-000011	American Community Survey 2015 5yr estimates - ACS DEMOGRAPHIC AND HOUSING ESTIMATES	Yellow	2017-10-26 22:44:07.938729+00	2019-03-06 01:01:13.542795+00	77	2019-03-06 01:01:13.546161+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7014	dataset-adrf-000011	247	f	\N	\N	Disabled	\N	The American Community Survey (ACS) is part of the U.S. Census Bureau's Decennial Census Program and is designed to provide current demographic, social, economic, and housing estimates throughout the decade. Table DP05 provides demographic characteristics: the number of people by age, sex, race and of voting age.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Demographic Characteristics", "keywords": ["census", "demographics", "geospatial", "population"], "file_names": ["adrf-000011.csv"], "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml#none", "files_total": 1, "data_steward": "Drew Gordon", "reference_url": "http://www.census.gov/programs-surveys/acs/methodology/design-and-methodology.html", "source_archive": "American FactFinder", "related_articles": ["rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Tract"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["ACS_15_5YR_DP05.txt", "ACS_15_5YR_DP05_metadata.csv"], "geographical_coverage": ["USA"], "temporal_coverage_end": "2015", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2010", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 248	adrf-000034	Illinois Department of Employment Security (IDES) Employer records - 2005-2015	Yellow	2017-10-26 22:44:07.966516+00	2019-03-06 01:01:13.590486+00	78	2019-03-06 01:01:13.595641+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7009	dataset-adrf-000034	248	f	\N	\N	Disabled	\N	Detailed quarterly information on all of the employers who are present in Illinois wage files. Employer information includes address information, key dates in the quarter, and information on wages and employees per business per quarter. See attached data dictionary for field details.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: il_qcew_employers	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["income", "welfare", "poverty", "socioeconomics"], "file_names": ["adrf-000034.csv"], "source_url": "", "description": "Detailed quarterly information on all of the employers who are present in Illinois’ wage files.  Employer information includes address information, key dates in the quarter, and information on wages and employees per business per quarter. See attached data dictionary for field details.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: il_qcew_employers", "files_total": 1, "data_steward": "Julia Lane", "reference_url": "http://www.ides.illinois.gov/Pages/Unemployment%20Insurance.aspx", "source_archive": "", "related_articles": ["rc-000004", "rc-000065", "rc-000066"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.", "geographical_unit": ["State", "Point", "Census Tract", "Census Block"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["ides_qcew_data_dictionary.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2005", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 249	adrf-000035	Illinois Department of Employment Security (IDES) establishment data addendum to employer records - 2012-2015	Yellow	2017-10-26 22:44:07.999558+00	2019-03-06 01:01:13.634398+00	79	2019-03-06 01:01:13.64052+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7019	dataset-adrf-000035	249	f	\N	\N	Disabled	\N	More detailed quarterly location data for the employers in the employer records file above created by IDES using their preferred geocoding process. Only created from 2012 to present. Includes latitude and longitude as well as Census ID to the block level.\n\nLocation information for employers was derived quarterly, but only from 2012 to 2015. Employers from wage records from earlier years might be present in this table, but it wouldnt be historical data. Just location.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: il_des_establishment	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["income", "welfare", "poverty", "socioeconomics"], "file_names": ["adrf-000035.csv"], "source_url": "", "description": "More detailed quarterly location data for the employers in the employer records file above created by IDES using their preferred geocoding process. Only created from 2012 to present. Includes latitude and longitude as well as Census ID to the block level.\\n\\nLocation information for employers was derived quarterly, but only from 2012 to 2015.  Employers from wage records from earlier years might be present in this table, but it wouldn’t be historical data. Just location.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: il_des_establishment", "files_total": 1, "data_steward": "Julia Lane", "reference_url": "http://www.ides.illinois.gov/Pages/Unemployment%20Insurance.aspx", "source_archive": "", "related_articles": [], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.", "geographical_unit": ["State", "Point", "Census Tract", "Census Block"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": [""], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2005", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
+268	8fxg-nyr5	Fire & Rescue Personnel Responses: 2012 - 2017	Green	2019-03-06 01:00:56.839448+00	2019-05-22 21:53:45.082188+00	141	2019-05-22 21:53:45.083732+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100013	8fxg-nyr5	268	t	\N	\N	Disabled	\N	One record for each emergency response by a Fire Department member, including rank and career / volunteer / contingent status of personnel which responded. This is an expansion of data available in the Howard County Fire And Rescue Incidents data set. Further detail is available in the Howard County Fire and Rescue Personnel Responses data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 250	adrf-000036	Illinois Department of Corrections (DOC) Parolee address data - 2009-2015	Yellow	2017-10-26 22:44:08.027442+00	2019-03-06 01:01:13.671153+00	80	2019-03-06 01:01:13.676125+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7010	dataset-adrf-000036	250	f	\N	\N	Disabled	\N	Location information for persons active in the Illinois parole system from 2009 to 2015. A given person could have multiple rows in this table, one per year they were on parole. Each row contains a latitude/longitude coordinate based on the parolees address on file (redacted from this file), as well as additional information on original and derived county, city, and zip code and metadata that indicates who confident we are that the point corresponds to the address. Because the parole system doesnt include historical data, parolees who exited the system before 2009 wont be represented in this data set.\n\nFrom IDOC:\nplease note you are receiving parolee address information as of the last day of the FY for all active parolees for the added period in question. There are some cautions associated with address data including; some parolees are showing as AWOL which means the parolee is currently not residing at a known/approved location. In addition, some addresses are actually county jail addresses where parolees are being held pending new criminal charges. Some addresses are treatment facilities, recovery homes, or homeless shelters where offenders may be residing temporarily. Finally, some address are merely places where the parolee meets with the agent but does not actually reside. While it is our policy to verify addresses to the best of our ability, there are a number of offenders who do not wish us to know where they really reside and as such, utilize the address of a family member or friend who they know will provide assurance that the parolee resides there. Also please note, addresses are input by Agents so there are always possibilities that human errors are contained in the dataset. These are a few of the reasons why we do not create policy based on address, as a number of our parolees live a transient lifestyle and do not necessarily reside where they work or commit new crimes.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: il_doc_parole\n	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Inmate Populations", "keywords": ["criminal justice system", "inmates", "jail", "correctional facilities", "health", "employment", "demographics", "offenses"], "file_names": ["adrf-000036.csv"], "source_url": "", "description": "Location information for persons active in the Illinois parole system from 2009 to 2015. A given person could have multiple rows in this table, one per year they were on parole. Each row contains a latitude/longitude coordinate based on the parolee’s address on file (redacted from this file), as well as additional information on original and derived county, city, and zip code and metadata that indicates who confident we are that the point corresponds to the address. Because the parole system doesn’t include historical data, parolees who exited the system before 2009 won’t be represented in this data set.\\n\\nFrom IDOC:\\nplease note you are receiving parolee address information as of the last day of the FY for all active parolees for the added period in question. There are some cautions associated with address data including; some parolees are showing as AWOL which means the parolee is currently not residing at a known/approved location. In addition, some addresses are actually county jail addresses where parolees are being held pending new criminal charges. Some addresses are treatment facilities, recovery homes, or homeless shelters where offenders may be residing temporarily. Finally, some address are merely places where the parolee meets with the agent but does not actually reside. While it is our policy to verify addresses to the best of our ability, there are a number of offenders who do not wish us to know where they really reside and as such, utilize the address of a family member or friend who they know will provide assurance that the parolee resides there. Also please note, addresses are input by Agents so there are always possibilities that human errors are contained in the dataset. These are a few of the reasons why we do not create policy based on address, as a number of our parolees live a transient lifestyle and do not necessarily reside where they work or commit new crimes.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: il_doc_parole\\n", "files_total": 1, "data_steward": "Julia Lane", "reference_url": "https://www.illinois.gov/idoc/Pages/default.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000003", "rc-000005", "rc-000009", "rc-000010"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.", "geographical_unit": ["State", "Point", "City", "Zip Code"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": [""], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2009", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 251	adrf-000037	US Department of Housing and Urban Development Program Microdata 2004-2016 - Households: Illinois	Yellow	2017-10-26 22:44:08.056037+00	2019-03-06 01:01:13.724027+00	81	2019-03-06 01:01:13.73033+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7016	dataset-adrf-000037	251	f	\N	\N	Disabled	\N	Detailed transactional data consisting of tenant-level data for households in the US Department of Housing and Urban Development's (HUD) largest rental assistance programs: the Housing Choice Voucher Program, Public Housing, Project-based Section 8, and the Section 202/811 Programs. The dataset includes information on households aggregated at the Census block level, including household family type, rent, years in program, and income. Data originate from two sources within HUD: The Public and Indian Housing (PIH) Information Center and Tenant Rental Assistance Certification System (TRACS).\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: hud_household_block_data	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Socioeconomic Characteristics", "keywords": ["income", "welfare", "public housing", "households", "demographics", "socioeconomics"], "file_names": ["adrf-000037.csv"], "source_url": "", "description": "Detailed transactional data consisting of tenant-level data for households in the US Department of Housing and Urban Development's (HUD) largest rental assistance programs: the Housing Choice Voucher Program, Public Housing, Project-based Section 8, and the Section 202/811 Programs. The dataset includes information on households aggregated at the Census block level, including household family type, rent, years in program, and income. Data originate from two sources within HUD: The Public and Indian Housing (PIH) Information Center and Tenant Rental Assistance Certification System (TRACS).\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: hud_household_block_data", "files_total": 1, "data_steward": "Julia Lane", "reference_url": "https://www.huduser.gov/portal/pumd/index.html", "source_archive": "", "related_articles": ["rc-000007", "rc-000008"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the US Department of Housing and Urban Development. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by a data steward before export from this system. Export of whole or partial records from the data is not permitted.", "geographical_unit": ["State", "Census Block"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["HUD-50058.pdf", "HUD-50059.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2016", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2004", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 252	adrf-000055	IL Corrections Industries Training 2011-2016 dataset	Yellow	2017-10-26 22:44:08.086896+00	2019-03-06 01:01:13.774543+00	82	2019-03-06 01:01:13.777825+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7011	dataset-adrf-000055	252	f	\N	\N	Disabled	\N	This data contains the individuals who participated in an Illinois Correctional Industries vocational training program for forward years 2011 - 2016. The dataset includes a "Shop Function Code" designating the program, start and end dates of the program, and the result of that training program for the inmate in question. These data are tracked by hand by ICI's payroll unit.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Inmate Populations", "keywords": ["inmates", "jail", "correctional facilities", "employment", "training"], "file_names": ["adrf-000055.csv"], "source_url": "", "files_total": 1, "data_steward": "Julia Lane", "reference_url": "http://www.ici.illinois.gov/(S(xstjb5250ujgsiqjdbz0o2zy)A(aaPj--PlzAEkAAAAOTE1ZmM0NTMtYzRhZC00OGUxLTljMTgtOGFlMGViMmU4ZDUzTpilbQ8Uxwiam45T0FLMVGA7WE81))/AnnualReport.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000003", "rc-000005", "rc-000009", "rc-000010"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the US Department of Housing and Urban Development. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by a data steward before export from this system. Export of whole or partial records from the data is not permitted.", "geographical_unit": ["State"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["ici_function_codes.pdf", "ici_function_codes.csv", "adrf-000055_dd.csv"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2016", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2011", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
@@ -4976,6 +4851,8 @@ COPY public.data_facility_admin_historicaldataset (id, dataset_id, name, data_cl
 239	adrf-000002	Illinois Department of Corrections (DOC) Inmate Exits - 1990-2015	Yellow	2017-10-26 22:44:07.674503+00	2019-03-06 01:02:31.729184+00	84	2019-03-06 01:02:31.739303+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7020	dataset-adrf-000002	239	f	\N	\N	Disabled	\N	Detailed transactional data of each time an inmate was released from an Illinois Department of Corrections (DOC) facility from 1990 to 2015. Variables include demographic, residence, charges, sentencing, conduct, security level, health and mental health status, gang affiliation. Data are collected using correctional facility data and court records. See data dictionary documentation for detailed description of all fields.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: ildoc_exit	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Inmate Populations", "keywords": ["criminal justice system", "inmates", "jail", "correctional facilities", "health", "employment", "demographics", "offenses"], "file_names": ["adrf-000002.csv"], "source_url": "", "description": "Detailed transactional data of each time an inmate was released from an Illinois Department of Corrections (DOC) facility from 1990 to 2015. Variables include demographic, residence, charges, sentencing, conduct, security level, health and mental health status, gang affiliation. Data are collected using correctional facility data and court records. See data dictionary documentation for detailed description of all fields.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: ildoc_exit", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Department of Corrections", "reference_url": "https://www.illinois.gov/idoc/Pages/default.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000003", "rc-000005", "rc-000009", "rc-000010"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Corrections (IDOC). The user shall not attempt to re-identify individuals represented in the data and agree to not disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDOC before export from this system.", "geographical_unit": ["State", "Zip Code"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["idoc_exits_data_dictionary.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "1990", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 240	adrf-000003	Illinois Department of Employment Security (IDES) Unemployment Insurance (UI) wage records - 2005-2015	Yellow	2017-10-26 22:44:07.702965+00	2019-03-06 01:02:31.784795+00	85	2019-03-06 01:02:31.790239+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7007	dataset-adrf-000003	240	f	\N	\N	Disabled	\N	Quarterly records of wages for every job held by each person in the state of Illinois from 2005 to 2015. This data is derived from the Illinois Dept. of Employment Security (IDES) Unemployment Insurance (UI) wage file that the Local Employment Dynamics (LED) state partners supply to the Census department for use in producing Quarterly Workforce Indicators (QWI). See attached data dictionary for field details.\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: il_wage	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["income", "welfare", "poverty", "socioeconomics"], "file_names": ["adrf-000003.csv"], "source_url": "", "description": "Quarterly records of wages for every job held by each person in the state of Illinois from 2005 to 2015. This data is derived from the Illinois Dept. of Employment Security (IDES) Unemployment Insurance (UI) wage file that the Local Employment Dynamics (LED) state partners supply to the Census department for use in producing Quarterly Workforce Indicators (QWI). See attached data dictionary for field details.\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: il_wage", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "Illinois Department of Employment Security, US Census Bureau", "reference_url": "http://www.ides.illinois.gov/Pages/Unemployment%20Insurance.aspx", "source_archive": "", "related_articles": ["rc-000001", "rc-000002", "rc-000064", "rc-000065", "rc-000066", "rc-000067", "rc-000068"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the Illinois Department of Economic Security (IDES). All data provided here are protected under the provisions of Title 13, U.S. Code and users accessing them are subject to the provisions of 820 ILCS 405/1900. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by IDES before export from this system.", "geographical_unit": ["State"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["ides_wage_data_dictionary.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2015", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2005", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 241	adrf-000004	US Department of Housing and Urban Development Program Microdata 2004-2016 - Individuals: Illinois	Yellow	2017-10-26 22:44:07.730933+00	2019-03-06 01:02:31.839006+00	86	2019-03-06 01:02:31.849114+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7017	dataset-adrf-000004	241	f	\N	\N	Disabled	\N	Detailed transactional data consisting of tenant-level data for individuals in the US Department of Housing and Urban Development's (HUD) largest rental assistance programs: the Housing Choice Voucher Program, Public Housing, Project-based Section 8, and the Section 202/811 Programs. The dataset includes information on individuals aggregated at the Census block level, including rent, years in program, and income; and individual race and gender. Data originate from two sources within HUD: The Public and Indian Housing (PIH) Information Center and Tenant Rental Assistance Certification System (TRACS).\n\nThe summary of this datasets fields is a sample of records only. Please access the full dataset in course database table: hud_individual_block_data	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Socioeconomic Characteristics", "keywords": ["income", "welfare", "public housing", "households", "demographics", "socioeconomics"], "file_names": ["adrf-000004.csv"], "source_url": "", "description": "Detailed transactional data consisting of tenant-level data for individuals in the US Department of Housing and Urban Development's (HUD) largest rental assistance programs: the Housing Choice Voucher Program, Public Housing, Project-based Section 8, and the Section 202/811 Programs. The dataset includes information on individuals aggregated at the Census block level, including rent, years in program, and income; and individual race and gender. Data originate from two sources within HUD: The Public and Indian Housing (PIH) Information Center and Tenant Rental Assistance Certification System (TRACS).\\n\\nThe summary of this dataset’s fields is a sample of records only. Please access the full dataset in course database table: hud_individual_block_data", "files_total": 1, "data_steward": "Julia Lane", "data_provider": "US Department of Housing and Urban Development", "reference_url": "https://www.huduser.gov/portal/pumd/index.html", "source_archive": "", "related_articles": ["rc-000007", "rc-000008"], "data_usage_policy": "This dataset is restricted to ADRF course participants who have approval and have agreed to the terms of use provided by the US Department of Housing and Urban Development. The user shall not attempt to re-identify individuals represented in the data and agree not to disclose any data contained here to any unauthorized parties. Any analyses and data products derived from the data must be reviewed by a data steward before export from this system. Export of whole or partial records from the data is not permitted.", "geographical_unit": ["State", "Census Block"], "access_requirements": "You must be enrolled in an ADRF class to access these data.", "data_classification": "Restricted", "dataset_version_date": 1488823197, "dataset_documentation": ["HUD-50058.pdf", "HUD-50059.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2016", "access_actions_required": "This is ADRF course data. In order to access, you must have signed the appropriate NDA and agreed to the ADRF terms of usage. These data are located in the course database. Field specific metadata are a sample only.", "temporal_coverage_start": "2004", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
+269	6uza-cd7z	Fire Dispatches: 2012 - 2017	Green	2019-03-06 01:00:56.895215+00	2019-05-22 21:53:45.121146+00	142	2019-05-22 21:53:45.123971+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100014	6uza-cd7z	269	t	\N	\N	Disabled	\N	Emergency incidents created by HCPD's 911 Dispatch Center and classified as Fire, Rescue or Emergency Medical Service (EMS) calls. Not all of these incidents are created as cases, and thus not all of these incidents have a matching record in the Howard County Fire & Rescue Incidents table.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+270	dpec-ucu7	TLC New Driver Application Status	Green	2019-03-06 01:00:56.971968+00	2019-05-22 21:53:45.237562+00	143	2019-05-22 21:53:45.240637+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100015	dpec-ucu7	270	t	\N	\N	Disabled	\N	THIS DATASET IS UPDATED SEVERAL TIMES PER DAY. TLC Driver application status check for applicants who had applied for a new TLC driver’s license. For more information and to upload missing requirements, visit www.nyc.gov/tlcup\r\n\r\nFor historical/archived data of past application statuses, please see- https://data.cityofnewyork.us/Transportation/Historical-Driver-Application-Status/p32s-yqxq	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 242	adrf-000005	Decennial Census Illinois Profile of General Population and Housing Characteristics: 2000	Yellow	2017-10-26 22:44:07.760688+00	2019-03-06 01:02:31.91434+00	87	2019-03-06 01:02:31.925868+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7021	dataset-adrf-000005	242	f	\N	\N	Disabled	\N	The Demographic Profile Summary File (SF1) contains 100 percent data asked of all people and about every housing unit on topics such as sex, age, race, Hispanic or Latino origin, household relationship, householdtype, group quarters population, housing occupancy, and housing tenure.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Demographic Characteristics", "keywords": ["census", "demographics", "geospatial", "population", "socioeconomics"], "file_names": ["adrf-000005.csv"], "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml", "files_total": 1, "data_steward": "Drew Gordon", "data_provider": "US Census Bureau", "reference_url": "https://www.census.gov/prod/cen2000/doc/ProfileTD.pdf", "source_archive": "American FactFinder", "related_articles": ["rc-000005", "rc-000006", "rc-000066", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Tract"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["DEC_00_SF1_DP1_metadata.csv", "DEC_00_SF1_DP1.txt", "2000_census_demographic_profile_summary_file.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2000", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "1990", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 243	adrf-000006	Decennial Census Illinois Profile of General Population and Housing Characteristics: 2010	Yellow	2017-10-26 22:44:07.791789+00	2019-03-06 01:02:31.998375+00	88	2019-03-06 01:02:32.006248+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7008	dataset-adrf-000006	243	f	\N	\N	Disabled	\N	The Demographic Profile Summary File contains 100 percent data asked of all people and about every housing unit on topics such as sex, age, race, Hispanic or Latino origin, household relationship, householdtype, group quarters population, housing occupancy, and housing tenure.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Demographic Characteristics", "keywords": ["census", "demographics", "geospatial", "population", "socioeconomics"], "file_names": ["adrf-000006.csv"], "source_url": "https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml", "files_total": 1, "data_steward": "Drew Gordon", "data_provider": "US Census Bureau", "reference_url": "http://www.census.gov/prod/cen2010/doc/dpsf.pdf", "source_archive": "American FactFinder", "related_articles": ["rc-000005", "rc-000006", "rc-000066", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Tract"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["DEC_10_SF1_SF1DP1_metadata.csv", "DEC_10_SF1_SF1DP1.txt", "2010_census_demographic_profile_summary_file.pdf"], "geographical_coverage": ["Illinois"], "temporal_coverage_end": "2010", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2000", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
 244	adrf-000008	Illinois Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics - Residential Area Characteristics - Cook County, IL	Yellow	2017-10-26 22:44:07.821691+00	2019-03-06 01:02:32.059426+00	89	2019-03-06 01:02:32.0641+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	7012	dataset-adrf-000008	244	f	\N	\N	Disabled	\N	LEHD Origin-Destination Employment Statistics (LODES) used by OnTheMap are available for download below. Version 7 of LODES was enumerated by 2010 census blocks. Previous versions of LODES were enumerated with 2000 census blocks. Data files are state-based and organized into three types: Origin-Destination (OD), Residence Area Characteristics (RAC), and Workplace Area Characteristics (WAC), all at census block geographic detail. Data is available for most states for the years 2002-2014.	\N	\N	\N	\N	\N	\N	f	\N	{"category": "Economic Characteristics", "keywords": ["census", "geospatial", "socioeconomics"], "file_names": ["adrf-000008.csv"], "source_url": "https://lehd.ces.census.gov/data/lodes/LODES7/", "files_total": 1, "data_steward": "Clayton Hunter", "data_provider": "US Census Bureau", "reference_url": "http://lehd.ces.census.gov/data/lodes/LODES7/LODESTechDoc7.2.pdf", "source_archive": "Longitudinal Employer-Household Dynamics Origin-Destination Employee Statistics", "related_articles": ["rc-000064", "rc-000065", "rc-000067", "rc-000068"], "data_usage_policy": "This dataset is intended for public access and use.", "geographical_unit": ["Census Block"], "access_requirements": "No access restrictions on this dataset", "data_classification": "Public", "dataset_version_date": 1488823173, "dataset_documentation": ["LODESTechDoc7.2.pdf"], "geographical_coverage": ["Cook County", "Illinois"], "temporal_coverage_end": "2014", "access_actions_required": "No further actions required to access this dataset", "temporal_coverage_start": "2014", "data_steward_organization": "Center for Urban Science and Progress (CUSP), NYU"}	t	\N
@@ -4999,14 +4876,48 @@ COPY public.data_facility_admin_historicaldataset (id, dataset_id, name, data_cl
 419	aaa-testa2	adrf-desktop	Green	2019-05-14 17:32:44.923918+00	2019-05-14 18:15:37.790854+00	130	2019-05-14 18:15:37.804682+00	~	1	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100151	aaa-test	419	f	\N	\N	Disabled		aaa	\N	\N	\N	\N	\N	\N	f	\N	\N	t	\N
 419	aaa-testa2	adrf-desktop	Green	2019-05-14 17:32:44.923918+00	2019-05-14 18:20:49.477014+00	131	2019-05-14 18:20:49.478959+00	~	1	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100151	aaa-test	419	f	\N	\N	Disabled		aaa	\N	\N	\N	\N	\N	\N	f	\N	\N	t	\N
 419	aaa-testa23	adrf-desktop	Green	2019-05-14 17:32:44.923918+00	2019-05-14 20:37:19.633566+00	132	2019-05-14 20:37:19.635483+00	~	1	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100151	aaa-test	419	f	\N	\N	Disabled		aaa	\N	\N	\N	\N	\N	\N	f	\N	\N	t	\N
+260	kwxv-fwze	Lottery Cash 4 Life Winning Numbers: Beginning 2014	Green	2019-03-06 01:00:55.565081+00	2019-05-22 21:53:44.122394+00	133	2019-05-22 21:53:44.125959+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100005	kwxv-fwze	260	t	\N	\N	Disabled	\N	Go to http://on.ny.gov/1xRIvPz on the New York Lottery website for past Cash 4 Life results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+261	qcn7-gc3g	Order and Referring	Green	2019-03-06 01:00:55.619299+00	2019-05-22 21:53:44.176467+00	134	2019-05-22 21:53:44.179046+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100006	qcn7-gc3g	261	t	\N	\N	Disabled	\N	Order and Referring data file has National Provider Identifier (NPI) and legal name (last name, first name) of all physicians and non-physician practitioners who are of a type/specialty that is legally eligible to order and refer in the Medicare program and who have current enrollment records in Medicare (i.e., they have enrollment records in PECOS)	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+262	qccx-65fg	Howard County Police Department Call For Service - 2014-2017	Green	2019-03-06 01:00:55.706236+00	2019-05-22 21:53:44.206389+00	135	2019-05-22 21:53:44.208369+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100007	qccx-65fg	262	t	\N	\N	Disabled	\N	Calls for Service by computer aided dispatch (CAD) event type, date, time, location, statistical reporting area (SRA), and beat.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+263	9fxf-t2tr	Dallas Police Active Calls	Green	2019-03-06 01:00:55.782368+00	2019-05-22 21:53:44.24765+00	136	2019-05-22 21:53:44.24947+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100008	9fxf-t2tr	263	t	\N	\N	Disabled	\N	Disclaimer  - The calls listed here are only those where the element assigned to the call has arrived and is currently working the call.   It does not include any calls for service, whether currently being worked or not, that are not releasable due to privacy laws.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+264	kvz2-j5cj	Building, Electrical, Fire, Grading, Mechanical, Plumbing & Sign Permits: 2010 - Present	Green	2019-03-06 01:00:55.873904+00	2019-05-22 21:53:44.316179+00	137	2019-05-22 21:53:44.318197+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100009	kvz2-j5cj	264	t	\N	\N	Disabled	\N	Issued Permits:  01/01/2010 - Present	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+265	ic3t-wcy2	DOB Job Application Filings	Green	2019-03-06 01:00:55.971241+00	2019-05-22 21:53:44.380304+00	138	2019-05-22 21:53:44.382238+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100010	ic3t-wcy2	265	t	\N	\N	Disabled	\N	This dataset contains all job applications submitted through the Borough Offices, through eFiling, or through the HUB, which have a "Latest Action Date" since January 1, 2000. This dataset does not include jobs submitted through DOB NOW. See the DOB NOW: Build – Job Application Filings dataset for DOB NOW jobs.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+271	xzkq-xp2w	Current Employee Names, Salaries, and Position Titles	Green	2019-03-06 01:00:57.075453+00	2019-05-22 21:53:45.310434+00	144	2019-05-22 21:53:45.314079+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100016	xzkq-xp2w	271	t	\N	\N	Disabled	\N	This dataset is a listing of all current City of Chicago employees, complete with full names, departments, positions, employment status (part-time or full-time), frequency of hourly employee –where applicable—and annual salaries or hourly rate. For hourly employees, the City is providing the hourly rate and frequency of hourly employees (40, 35, 20 and 10) to allow dataset users to estimate annual wages for hourly employees. Please note that annual wages will vary by employee, depending on number of hours worked and seasonal status. For information on the positions and related salaries detailed in the annual budgets, see https://www.cityofchicago.org/city/en/depts/obm.html	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+273	7yuw-754z	Opt Out Affidavits	Green	2019-03-06 01:00:57.306623+00	2019-05-22 21:53:45.368229+00	145	2019-05-22 21:53:45.370716+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100018	7yuw-754z	273	t	\N	\N	Disabled	\N	A list of practitioners who have opted out of Medicare.*  \n\nSource: Provider Enrollment, Chain and Ownership System (PECOS) as of January 31st, 2019	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+272	vx8i-nprf	Civil Service List (Active)	Green	2019-03-06 01:00:57.140181+00	2019-05-22 21:53:45.436178+00	146	2019-05-22 21:53:45.438236+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100017	vx8i-nprf	272	t	\N	\N	Disabled	\N	A Civil Service List consists of all candidates who passed an exam, ranked in score order. An established list is considered active for no less than one year and no more than four years from the date of establishment. For more information visit DCAS’ “Work for the City” webpage at: http://www.nyc.gov/html/dcas/html/work/work.shtml	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+274	hsys-3def	Lottery Daily Numbers/Win-4 Winning Numbers: Beginning 1980	Green	2019-03-06 01:00:57.478768+00	2019-05-22 21:53:45.546309+00	147	2019-05-22 21:53:45.54872+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100019	hsys-3def	274	t	\N	\N	Disabled	\N	Go to http://on.ny.gov/1Cx6zvs or http://on.ny.gov/1KYjE6X on the New York Lottery website for past Daily Numbers/Win-4 results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+275	8wbx-tsch	For Hire Vehicles (FHV) - Active	Green	2019-03-06 01:00:57.599887+00	2019-05-22 21:53:45.619057+00	148	2019-05-22 21:53:45.62211+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100020	8wbx-tsch	275	t	\N	\N	Disabled	\N	TLC authorized For-Hire vehicles that are active. This list is accurate to the date and time represented in the Last Date Updated and Last Time Updated fields. For inquiries about the contents of this dataset, please email licensinginquiries@tlc.nyc.gov.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+277	qxh8-f4bd	Health Care Provider Credential Data	Green	2019-03-06 01:00:58.480917+00	2019-05-22 21:53:45.732991+00	149	2019-05-22 21:53:45.737668+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100022	qxh8-f4bd	277	t	\N	\N	Disabled	\N	The Washington State Department of Health presents this information as a service to the public. True and correct copies of legal disciplinary actions taken after July 1998 are available on our Provider Credential Search site. These records are considered certified by the Department of Health. \r\n\r\nThis includes information on health care providers.\r\n\r\nPlease contact our Customer Service Center at 360-236-4700 for information about actions before July 1998. \r\nThe information on this site comes directly from our database and is updated daily at 10:00 a.m.. This data is a primary source for verification of credentials and is extracted from the primary database at 2:00 a.m. daily.\r\n\r\nNews releases about disciplinary actions taken against Washington State healthcare providers, agencies or facilities are on the agency's Newsroom webpage.\r\n\r\nDisclaimer\r\nThe absence of information in the Provider Credential Search system doesn't imply any recommendation, endorsement or guarantee of competence of any healthcare professional. The presence of information in this system doesn't imply a provider isn't competent or qualified to practice. The reader is encouraged to carefully evaluate any information found in this data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+276	b8in-sz6k	QHP Landscape Individual Market Medical	Green	2019-03-06 01:00:57.793537+00	2019-05-22 21:53:45.860337+00	150	2019-05-22 21:53:45.863299+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100021	b8in-sz6k	276	t	\N	\N	Disabled	\N	QHP Landscape Individual Market Medical - For instructions on how to read and use this data, please view the documentation available under the ‘About’ tab on this page.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+280	xjfq-wh2d	For Hire Vehicles (FHV) - Active Drivers	Green	2019-03-06 01:00:58.930651+00	2019-05-22 21:53:46.435059+00	151	2019-05-22 21:53:46.437867+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100025	xjfq-wh2d	280	t	\N	\N	Disabled	\N	NYC TLC Licensed FHV drivers that are currently active and in good standing. This list is accurate to the date and time represented in the Last Date Updated and Last Time Updated fields. For inquiries about the contents of this dataset, please email licensinginquiries@tlc.nyc.gov.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+278	n59h-ggai	Local Severe Weather Warning Systems in Missouri	Green	2019-03-06 01:00:58.680053+00	2019-05-22 21:53:46.486397+00	152	2019-05-22 21:53:46.489828+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100023	n59h-ggai	278	t	\N	\N	Disabled	\N	List of 'Severe Weather Alert Systems' throughout Missouri provided by local governments, media outlets, and other sources.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+279	s6ew-h6mp	Consumer Complaints	Green	2019-03-06 01:00:58.736534+00	2019-05-22 21:53:46.531189+00	153	2019-05-22 21:53:46.535539+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100024	s6ew-h6mp	279	t	\N	\N	Disabled	\N	Each week we send thousands of consumers' complaints about financial products and services to companies for response. Complaints are listed in the database after the company responds or after they’ve had the complaint for 15 calendar days, whichever comes first.<br><br>\r\n\r\nWe publish the consumer’s description of what happened if the consumer opts to share it and after taking steps to remove personal information. See our <a href="http://files.consumerfinance.gov/a/assets/201503_cfpb_Narrative-Scrubbing-Standard.pdf">Scrubbing Standard</a> for more details<br><br>\r\n\r\nWe don’t verify all the facts alleged in these complaints, but we take steps to confirm a commercial relationship. We may remove complaints if they don’t meet all of the publication criteria. Data is generally refreshed nightly. Company level information should be considered in context of company size and/or market share.<br><br>\r\n\r\n<a href="http://www.consumerfinance.gov/complaintdatabase/">More about the Consumer Complaint Database</a> | <a href="http://www.consumerfinance.gov/complaint/data-use/">How we use complaint data</a> | <a href="http://www.consumerfinance.gov/complaintdatabase/technical-documentation/">Technical documentation</a>	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+281	fkt2-8smh	Missouri Beer, Wine and Liquor Wholesaler List with Zip Code	Green	2019-03-06 01:00:59.003533+00	2019-05-22 21:53:46.625616+00	154	2019-05-22 21:53:46.627325+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100026	fkt2-8smh	281	t	\N	\N	Disabled	\N	Listing of current Missouri beer, wine and liquor wholesalers with their associated zip codes.  This listing is updated daily.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+282	mmn5-wy78	Missouri Beer, Wine and Liquor Solicitor List with Zip Code	Green	2019-03-06 01:00:59.067557+00	2019-05-22 21:53:46.66368+00	155	2019-05-22 21:53:46.66633+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100027	mmn5-wy78	282	t	\N	\N	Disabled	\N	Listing of all current beer, wine and liquor solicitors and their associated zip code.  This is updated daily	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+284	ydr8-5enu	Building Permits	Green	2019-03-06 01:00:59.229715+00	2019-05-22 21:53:46.702009+00	156	2019-05-22 21:53:46.704355+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100029	ydr8-5enu	284	t	\N	\N	Disabled	\N	Permits issued by the Department of Buildings in the City of Chicago from 2006 to the present. The dataset for each year contains more than 65,000 records/rows of data and cannot be viewed in full in Microsoft Excel. Therefore, when downloading the file, select CSV from the Export menu. Open the file in an ASCII text editor, such as Wordpad, to view and search. Data fields requiring description are detailed below. \r\nPERMIT TYPE: "New Construction and Renovation" includes new projects or rehabilitations of existing buildings; "Other Construction" includes items that require plans such as cell towers and cranes; "Easy Permit" includes minor repairs that require no plans; "Wrecking/Demolition" includes private demolition of buildings and other structures; "Electrical Wiring" includes major and minor electrical work both permanent and temporary; "Sign Permit" includes signs, canopies and awnings both on private property and over the public way; "Porch Permit" includes new porch construction and renovation (defunct permit type porches are now issued under "New Construction and Renovation" directly); "Reinstate Permit" includes original permit reinstatements; "Extension Permits" includes extension of original permit when construction has not started within six months of original permit issuance. WORK DESCRIPTION: The description of work being done on the issued permit, which is printed on the permit. PIN1 – PIN10: A maximum of ten assessor parcel index numbers belonging to the permitted property. PINs are provided by the customer seeking the permit since mid-2008 where required by the Cook County Assessor’s Office. CONTRACTOR INFORMATION: The contractor type, name, and contact information. Data includes up to 15 different contractors per permit if applicable.\r\n\r\nData Owner: Buildings.\r\n\r\nTime Period: January 1, 2006 to present.\r\n\r\nFrequency: Data is updated daily.\r\n\r\nRelated Applications: Building Data Warehouse (https://webapps.cityofchicago.org/buildingviolations/violations/searchaddresspage.html).	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+283	cgbu-k38b	Missouri Law Enforcement Agencies	Green	2019-03-06 01:00:59.132124+00	2019-05-22 21:53:47.351014+00	157	2019-05-22 21:53:47.352645+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100028	cgbu-k38b	283	t	\N	\N	Disabled	\N	List of Active law enforcement agencies (Sheriff, Municipal, University, Court, etc)	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+287	qahs-fevu	Parking Garage Space Availability	Green	2019-03-06 01:01:00.37132+00	2019-05-22 21:53:47.413973+00	158	2019-05-22 21:53:47.416385+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100032	qahs-fevu	287	t	\N	\N	Disabled	\N	This dataset includes parking spaces availability for Montgomery County Public Parking Facilities. This dataset only includes facilities that are equipped with vehicle counting systems.\r\n\r\nUpdate frequency:  Every few minutes	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+285	mtgj-bnbx	Missouri Alcohol Licenses Not Renewed for the New License Year	Green	2019-03-06 01:01:00.143608+00	2019-05-22 21:53:47.447634+00	159	2019-05-22 21:53:47.450283+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100030	mtgj-bnbx	285	t	\N	\N	Disabled	\N	List of Missouri alcohol licenses not yet renewed for the next license year.  License year begins July 1.  This dataset is generated nightly during the months of April through July for the license renewal period.  This dataset will be empty the rest of the year.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+286	gfq7-aa86	Solicitor Product List with Assigned Wholesaler	Green	2019-03-06 01:01:00.289941+00	2019-05-22 21:53:47.574175+00	160	2019-05-22 21:53:47.576711+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100031	gfq7-aa86	286	t	\N	\N	Disabled	\N	Active list of products sold by the associated solicitor to the wholesaler.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+288	hbmv-rqk9	County Clerk License Information	Green	2019-03-06 01:01:00.425665+00	2019-05-22 21:53:47.636115+00	161	2019-05-22 21:53:47.639243+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100033	hbmv-rqk9	288	t	\N	\N	Disabled	\N	Alcohol Licensing information by County compiled weekly storing 3 weeks at a time	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+290	7t5a-79ri	Child Support Lien List	Green	2019-03-06 01:01:00.824779+00	2019-05-22 21:53:47.827646+00	162	2019-05-22 21:53:47.829968+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100035	7t5a-79ri	290	t	\N	\N	Disabled	\N		\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+289	yyhn-562y	Missouri Active Alcohol License Data	Green	2019-03-06 01:01:00.666503+00	2019-05-22 21:53:47.871462+00	163	2019-05-22 21:53:47.873902+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100034	yyhn-562y	289	t	\N	\N	Disabled	\N	Current license information of businesses involved in the manufacture, shipping, and/or sale of alcohol in the State of Missouri	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+291	dymb-xy5c	New Liquor Licenses	Green	2019-03-06 01:01:00.905471+00	2019-05-22 21:53:47.984229+00	164	2019-05-22 21:53:47.987122+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100036	dymb-xy5c	291	t	\N	\N	Disabled	\N	Weekly listing of new Liquor Licenses for the past 3 weeks	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+297	qek8-9bd4	Comprehensive Care for Joint Replacement Model: Metropolitan Statistical Areas (MSAs)	Green	2019-03-06 01:01:01.897172+00	2019-05-22 21:53:48.106621+00	165	2019-05-22 21:53:48.109151+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100042	qek8-9bd4	297	t	\N	\N	Disabled	\N	This data set presents Metropolitan Statistical Areas (MSAs) that are participating in the Comprehensive Care for Joint Replacement Model, a proposed model to support better and more efficient care for beneficiaries undergoing the most common inpatient surgery for Medicare beneficiaries: hip and knee replacements.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+295	dg63-4siq	Lottery Take 5 Winning Numbers	Green	2019-03-06 01:01:01.667911+00	2019-05-22 21:53:48.146834+00	166	2019-05-22 21:53:48.150414+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100040	dg63-4siq	295	t	\N	\N	Disabled	\N	Go to http://on.ny.gov/1DYGlWJ on the New York Lottery website for past Take 5 results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+292	nytw-fmz3	Missouri Alcohol Licenses Out of Business	Green	2019-03-06 01:01:01.19714+00	2019-05-22 21:53:48.206217+00	167	2019-05-22 21:53:48.209827+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100037	nytw-fmz3	292	t	\N	\N	Disabled	\N	List of alcohol licenses of businesses who have gone out of business	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+293	au6r-w9n3	Open Meetings	Green	2019-03-06 01:01:01.342894+00	2019-05-22 21:53:48.352073+00	168	2019-05-22 21:53:48.354352+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100038	au6r-w9n3	293	t	\N	\N	Disabled	\N	Schedule of Missouri Open Meetings	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+294	j56h-zgnm	Adult Jail Booking February 1, 2018 to January 31, 2019 as of February 6, 2019	Green	2019-03-06 01:01:01.571579+00	2019-05-22 21:53:48.535211+00	169	2019-05-22 21:53:48.537014+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100039	j56h-zgnm	294	t	\N	\N	Disabled	\N		\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+296	n3tx-eq5q	Missouri Alcohol Temporary License Expirations	Green	2019-03-06 01:01:01.718843+00	2019-05-22 21:53:48.60552+00	170	2019-05-22 21:53:48.608091+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100041	n3tx-eq5q	296	t	\N	\N	Disabled	\N	List of temporary alcohol license expiration dates	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+300	ijzp-q8t2	Crimes - 2001 to present	Green	2019-03-06 01:01:02.535723+00	2019-05-22 21:53:48.726292+00	171	2019-05-22 21:53:48.72901+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100045	ijzp-q8t2	300	t	\N	\N	Disabled	\N	This dataset reflects reported incidents of crime (with the exception of murders where data exists for each victim) that occurred in the City of Chicago from 2001 to present, minus the most recent seven days. Data is extracted from the Chicago Police Department's CLEAR (Citizen Law Enforcement Analysis and Reporting) system. In order to protect the privacy of crime victims, addresses are shown at the block level only and specific locations are not identified. Should you have questions about this dataset, you may contact the Research & Development Division of the Chicago Police Department at PSITAdministration@ChicagoPolice.org.  Disclaimer: These crimes may be based upon preliminary information supplied to the Police Department by the reporting parties that have not been verified. The preliminary crime classifications may be changed at a later date based upon additional investigation and there is always the possibility of mechanical or human error. Therefore, the Chicago Police Department does not guarantee (either expressed or implied) the accuracy, completeness, timeliness, or correct sequencing of the information and the information should not be used for comparison purposes over time. The Chicago Police Department will not be responsible for any error or omission, or for the use of, or the results obtained from the use of this information. All data visualizations on maps should be considered approximate and attempts to derive specific addresses are strictly prohibited. The Chicago Police Department is not responsible for the content of any off-site pages that are referenced by or that reference this web page other than an official City of Chicago or Chicago Police Department web page. The user specifically acknowledges that the Chicago Police Department is not responsible for any defamatory, offensive, misleading, or illegal conduct of other users, links, or third parties and that the risk of injury from the foregoing rests entirely with the user.  The unauthorized use of the words "Chicago Police Department," "Chicago Police," or any colorable imitation of these words or the unauthorized use of the Chicago Police Department logo is unlawful. This web page does not, in any way, authorize such use. Data are updated daily. The dataset contains more than 65,000 records/rows of data and cannot be viewed in full in Microsoft Excel. Therefore, when downloading the file, select CSV from the Export menu. Open the file in an ASCII text editor, such as Wordpad, to view and search. To access a list of Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) codes, go to http://data.cityofchicago.org/Public-Safety/Chicago-Police-Department-Illinois-Uniform-Crime-R/c7ck-438e	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+298	yv23-pmwf	Building and Safety Permit Information	Green	2019-03-06 01:01:01.94497+00	2019-05-22 21:53:48.879851+00	172	2019-05-22 21:53:48.882104+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100043	yv23-pmwf	298	t	\N	\N	Disabled	\N	The Department of Building and Safety issues permits for the construction, remodeling, and repair of buildings and structures in the City of Los Angeles.  Permits are categorized into building permits, electrical permits, and mechanical permits (which include plumbing, HVAC systems, fire sprinklers, elevators, and pressure vessels).  Depending on the complexity of a project, a permit may be issued the same day with Express Permit or e-Permit ("No Plan Check" category), or a permit may require that the plans be reviewed ("Plan Check" category) by a Building and Safety Plan Check personnel.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+299	f29f-zza5	Food Establishment Inspection Data	Green	2019-03-06 01:01:02.39189+00	2019-05-22 21:53:49.188634+00	173	2019-05-22 21:53:49.190729+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100044	f29f-zza5	299	t	\N	\N	Disabled	\N	Health Department inspection results for food service establishments in King County, 2006 to the present. This data is organized by Business / Inspection Date / Violation. Each row in this dataset is an inspection, and if an inspection at a particular buiness results in multiple violations there will be multiple rows for that business with the same Inspection_Serial_Num. This dataset was last updated on 03/04/2019 and is current from 1/1/2006 to 03/01/2019.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+301	6sdz-r9ba	Restaurant and Food Inspections	Green	2019-03-06 01:01:02.687238+00	2019-05-22 21:53:49.294639+00	174	2019-05-22 21:53:49.296679+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100046	6sdz-r9ba	301	t	\N	\N	Disabled	\N	Licensed restaurants, inspections, and violations published to the Simplified LIVES Schema available here:\r\nhttps://docs.google.com/document/d/1eeO5T_lt8QHGHMjpj6M9071y5OFOXcADFI4F7AIZ2iE/edit#heading=h.rjwrosiwiw5o	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+302	s6ha-ppgi	Affordable Rental Housing Developments	Green	2019-03-06 01:01:02.794116+00	2019-05-22 21:53:49.399026+00	175	2019-05-22 21:53:49.404644+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100047	s6ha-ppgi	302	t	\N	\N	Disabled	\N	The rental housing developments listed below are among the thousands of affordable units that are supported by City of Chicago programs to maintain affordability in local neighborhoods. The list is updated periodically when construction is completed for new projects or when the compliance period for older projects expire, typically after 30 years. The list is provided as a courtesy to the public. It does not include every City-assisted affordable housing unit that may be available for rent, nor does it include the hundreds of thousands of naturally occurring affordable housing units located throughout Chicago without City subsidies. For information on rents, income requirements and availability for the projects listed, contact each property directly. For information on other affordable rental properties in Chicago and Illinois, call (877) 428-8844, or visit www.ILHousingSearch.org.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+420	xubh-q36u	Hospital General Information	Green	2019-05-22 21:53:49.555036+00	2019-05-22 21:53:49.555059+00	176	2019-05-22 21:53:49.555819+00	+	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100152	xubh-q36u	420	t	\N	\N	Disabled	\N	A list of all hospitals that have been registered with Medicare. The list includes addresses, phone numbers, hospital type, and overall hospital rating.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+304	im7g-fucq	Missouri Zip Codes by County/City	Green	2019-03-06 01:01:03.597213+00	2019-05-22 21:53:49.683051+00	177	2019-05-22 21:53:49.685427+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100049	im7g-fucq	304	t	\N	\N	Disabled	\N	List of cities, zip codes and counties in Missouri	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+303	ss3e-3mza	QHP Landscape SHOP Market Medical	Green	2019-03-06 01:01:02.910243+00	2019-05-22 21:53:49.714355+00	178	2019-05-22 21:53:49.716344+00	~	\N	\N	\N	\N	f	No Reporting Needed	\N	1	\N	100048	ss3e-3mza	303	t	\N	\N	Disabled	\N	QHP Landscape SHOP Market Medical - For instructions on how to read and use this data, please view the documentation available under the ‘About’ tab on this page.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 \.
-
-
---
--- Name: data_facility_admin_historicaldataset_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaldataset_history_id_seq', 132, true);
 
 
 --
@@ -5021,25 +4932,11 @@ COPY public.data_facility_admin_historicaldatasetaccess (id, request_id, request
 
 
 --
--- Name: data_facility_admin_historicaldatasetaccess_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaldatasetaccess_history_id_seq', 3, true);
-
-
---
 -- Data for Name: data_facility_admin_historicaldatasteward; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_historicaldatasteward (id, start_date, end_date, created_at, updated_at, history_id, history_date, history_type, dataset_id, history_user_id, user_id, history_change_reason) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_historicaldatasteward_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaldatasteward_history_id_seq', 1, false);
 
 
 --
@@ -5088,25 +4985,11 @@ COPY public.data_facility_admin_historicaldfrole (id, name, description, created
 
 
 --
--- Name: data_facility_admin_historicaldfrole_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaldfrole_history_id_seq', 37, true);
-
-
---
 -- Data for Name: data_facility_admin_historicalprofiletag; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_historicalprofiletag (id, text, description, created_at, updated_at, history_id, history_date, history_type, history_user_id, history_change_reason) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_historicalprofiletag_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicalprofiletag_history_id_seq', 1, false);
 
 
 --
@@ -5270,6 +5153,23 @@ COPY public.data_facility_admin_historicalproject (id, has_irb, name, abstract, 
 403	f	Dealer	Engineer, automotive			Pending Approval	Research	Green	\N	2019-03-06 01:01:07.019705+00	2019-03-06 01:01:07.019744+00	154	2019-03-06 01:01:07.021392+00	+	\N	\N		\N	100148	project-dealer	403	\N	\N			\N
 404	f	Sub	Analytical chemist			Pending Approval	Research	Green	\N	2019-03-06 01:01:07.047679+00	2019-03-06 01:01:07.047725+00	155	2019-03-06 01:01:07.049617+00	+	\N	\N		\N	100149	project-sub	404	\N	\N			\N
 405	f	Producer, radio	Clinical scientist, histocompatibility and immunogenetics			Pending Approval	Research	Green	\N	2019-03-06 01:01:07.073411+00	2019-03-06 01:01:07.07344+00	156	2019-03-06 01:01:07.075024+00	+	\N	\N		\N	100150	project-producer_radio	405	\N	\N			\N
+226	f	adrf-dev	Not Provided			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:19:59.262129+00	157	2019-05-28 21:19:59.263332+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Provided			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:22:35.094536+00	158	2019-05-28 21:22:35.095608+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Provided			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:22:54.557312+00	159	2019-05-28 21:22:54.560315+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Provided			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:34:40.529797+00	160	2019-05-28 21:34:40.530918+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Provided			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:35:06.715115+00	161	2019-05-28 21:35:06.718671+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Provided			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:35:06.732577+00	162	2019-05-28 21:35:06.734635+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Provided			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:35:14.639109+00	163	2019-05-28 21:35:14.640355+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Provided			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:35:19.705492+00	164	2019-05-28 21:35:19.706887+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Provided			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:38:38.297661+00	165	2019-05-28 21:38:38.299235+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Providedaa			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:38:48.60028+00	166	2019-05-28 21:38:48.602642+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Providedaa			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:42:09.688062+00	167	2019-05-28 21:42:09.689194+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Providedaa			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:42:57.9251+00	168	2019-05-28 21:42:57.928088+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+226	f	adrf-dev	Not Providedaa			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:43:22.025461+00	169	2019-05-28 21:43:22.027585+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
+353	f	Academic librarian	Engineer, chemical			Pending Approval	Research	Green	\N	2019-03-06 01:01:05.300458+00	2019-05-28 21:47:39.838959+00	170	2019-05-28 21:47:39.840677+00	~	1	\N	asdasd	\N	100098	project-academic_librarian1	353	\N	\N			\N
+421	f	test	Abstract			Pending Approval	Research	Green	\N	2019-05-28 21:48:15.759007+00	2019-05-28 21:48:15.759048+00	171	2019-05-28 21:48:15.7603+00	+	1	\N		\N	100153	project-test	421	\N	\N			\N
+421	f	test	Abstract			Pending Approval	Research	Green	\N	2019-05-28 21:48:15.759007+00	2019-05-28 21:50:28.345096+00	172	2019-05-28 21:50:28.348028+00	~	1	\N		\N	100153	project-test	421	\N	\N			\N
+226	f	adrf-dev	Not Providedaa			Active	Research	Green	\N	2017-10-26 22:44:06.993877+00	2019-05-28 21:51:21.598036+00	173	2019-05-28 21:51:21.599126+00	~	1	180		\N	7001	project-adrf-dev	226	2	\N			\N
 \.
 
 
@@ -5287,14 +5187,8 @@ COPY public.data_facility_admin_historicalprojectmember (id, request_id, created
 6	\N	2017-10-27 20:21:27.530151+00	2017-10-27 20:45:50.912803+00	7	2017-10-27 20:45:50.914097+00	~	1	30	226	2017-10-27 20:44:55+00	2017-10-27 20:39:52+00	3	\N
 6	\N	2017-10-27 20:21:27.530151+00	2018-11-14 18:46:45.128286+00	8	2018-11-14 18:46:45.137629+00	~	1	30	226	2017-10-27 20:44:55+00	2017-10-27 20:39:52+00	2	\N
 7	\N	2018-11-15 23:18:20.912129+00	2018-11-15 23:18:20.912162+00	9	2018-11-15 23:18:20.917893+00	+	1	20	230	\N	2018-11-15 23:18:17+00	3	\N
+8	\N	2019-05-28 21:19:59.274316+00	2019-05-28 21:19:59.274343+00	10	2019-05-28 21:19:59.275594+00	+	1	22	226	\N	2019-05-28 21:19:00+00	3	\N
 \.
-
-
---
--- Name: data_facility_admin_historicalprojectmember_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicalprojectmember_history_id_seq', 9, true);
 
 
 --
@@ -5303,13 +5197,6 @@ SELECT pg_catalog.setval('public.data_facility_admin_historicalprojectmember_his
 
 COPY public.data_facility_admin_historicalprojectrole (id, name, description, system_role, created_at, updated_at, history_id, history_date, history_type, history_user_id, history_change_reason) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_historicalprojectrole_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicalprojectrole_history_id_seq', 1, false);
 
 
 --
@@ -5417,21 +5304,13 @@ COPY public.data_facility_admin_historicalprojecttool (id, tool_name, other_name
 98	Workspace_K8s		2019-03-06 01:01:07.032597+00	2019-03-06 01:01:07.032629+00	98	2019-03-06 01:01:07.034229+00	+	\N	403	\N	\N	\N	{"JUPYTER_CPU": "us-west", "JUPYTER_MEMORY": "us-west", "REMOTE_DESKTOP_CPU": "us-west", "REMOTE_DESKTOP_MEMORY": "us-west"}
 99	Workspace_K8s		2019-03-06 01:01:07.059101+00	2019-03-06 01:01:07.05928+00	99	2019-03-06 01:01:07.060774+00	+	\N	404	\N	\N	\N	{"JUPYTER_CPU": "us-west", "JUPYTER_MEMORY": "us-west", "REMOTE_DESKTOP_CPU": "us-west", "REMOTE_DESKTOP_MEMORY": "us-west"}
 100	Workspace_K8s		2019-03-06 01:01:07.085038+00	2019-03-06 01:01:07.085063+00	100	2019-03-06 01:01:07.086754+00	+	\N	405	\N	\N	\N	{"JUPYTER_CPU": "us-west", "JUPYTER_MEMORY": "us-west", "REMOTE_DESKTOP_CPU": "us-west", "REMOTE_DESKTOP_MEMORY": "us-west"}
+101	Workspace_K8s		2019-05-28 21:22:35.097663+00	2019-05-28 21:22:35.097686+00	101	2019-05-28 21:22:35.102387+00	+	1	226	\N	\N		\N
+102	Postgres		2019-05-28 21:22:54.564846+00	2019-05-28 21:22:54.564902+00	102	2019-05-28 21:22:54.566075+00	+	1	226	\N	\N		\N
+103	Python		2019-05-28 21:22:54.568564+00	2019-05-28 21:22:54.568592+00	103	2019-05-28 21:22:54.569327+00	+	1	226	\N	\N		\N
+101	Workspace_K8s		2019-05-28 21:22:35.097663+00	2019-05-28 21:22:35.097686+00	104	2019-05-28 21:35:14.643011+00	-	1	226	\N	\N		\N
+104	Workspace_K8s		2019-05-28 21:50:28.354207+00	2019-05-28 21:50:28.354243+00	105	2019-05-28 21:50:28.355974+00	+	1	421	\N	\N	\N	{"JUPYTER_CPU": 1, "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_MEMORY": 1000}
+105	Workspace_K8s		2019-05-28 21:51:21.603692+00	2019-05-28 21:51:21.603717+00	106	2019-05-28 21:51:21.60437+00	+	1	226	\N	\N	\N	{"JUPYTER_CPU": 1, "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_MEMORY": 1000}
 \.
-
-
---
--- Name: data_facility_admin_historicalprojecttool_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicalprojecttool_history_id_seq', 100, true);
-
-
---
--- Name: data_facility_admin_historicalresearchproject_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicalresearchproject_history_id_seq', 156, true);
 
 
 --
@@ -5443,13 +5322,6 @@ COPY public.data_facility_admin_historicalsignedtermsofuse (id, signed_at, creat
 
 
 --
--- Name: data_facility_admin_historicalsignedtermsofuse_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicalsignedtermsofuse_history_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_historicaltermsofuse; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -5458,25 +5330,11 @@ COPY public.data_facility_admin_historicaltermsofuse (id, text, version, release
 
 
 --
--- Name: data_facility_admin_historicaltermsofuse_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaltermsofuse_history_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_historicaltraining; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_historicaltraining (id, name, url, description, date, created_at, updated_at, history_id, history_date, history_type, history_user_id, history_change_reason) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_historicaltraining_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaltraining_history_id_seq', 1, false);
 
 
 --
@@ -5847,14 +5705,8 @@ COPY public.data_facility_admin_historicaluser (id, first_name, last_name, orc_i
 34	Thiago	Diogo			thiagodiogo@nyu.edu.adrf.dev			\N	2017-10-26 22:43:33.06083+00	2018-02-08 23:32:54.651154+00	361	2018-02-08 23:32:54.658798+00	~	\N	Active	100004	tdiogo	34	2017-10-27 15:27:38+00	\N	f	2017-12-09 23:32:48.365078+00	\N	f	f	\N
 20	bcooke	Cooke			bryce.cooke@ers.usda.gov.adrf.dev			\N	2017-10-26 22:43:32.657577+00	2018-11-15 23:18:20.871611+00	362	2018-11-15 23:18:20.885705+00	~	1	Disabled	12036	bcooke	20	\N	\N	f	\N	\N	f	f	\N
 36	amiller	Miller			ammiller@kauffman.org.adrf.dev			\N	2017-10-26 22:43:33.117842+00	2019-03-06 16:55:19.164625+00	363	2019-03-06 16:55:19.169471+00	~	1	Unlocked	12037	amiller	36	\N	\N	f	\N	\N	f	f	\N
+22	Daniel	Castellani			daniel.castellani@nyu.edu			\N	2017-10-26 22:43:32.713453+00	2019-06-12 16:44:02.804068+00	364	2019-06-12 16:44:02.809785+00	~	\N	Active	10002	daniel	22	2017-10-19 19:10:17+00	\N	f	2017-12-13 19:31:49.037853+00	Testing	f	f	\N
 \.
-
-
---
--- Name: data_facility_admin_historicaluser_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaluser_history_id_seq', 363, true);
 
 
 --
@@ -5890,13 +5742,6 @@ COPY public.data_facility_admin_historicaluserdfrole (id, created_at, updated_at
 
 
 --
--- Name: data_facility_admin_historicaluserdfrole_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicaluserdfrole_history_id_seq', 24, true);
-
-
---
 -- Data for Name: data_facility_admin_historicalusertraining; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -5905,25 +5750,11 @@ COPY public.data_facility_admin_historicalusertraining (id, date, created_at, up
 
 
 --
--- Name: data_facility_admin_historicalusertraining_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_historicalusertraining_history_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_keyword; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_keyword (id, name, description, created_at, updated_at) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_keyword_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_keyword_id_seq', 1, false);
 
 
 --
@@ -6161,11 +5992,9 @@ COPY public.data_facility_admin_ldapobject (id, ldap_id, ldap_name) FROM stdin;
 31	12030	rwelsh
 46	12031	nzaroff
 19	12032	zzeng
-22	10002	daniel
 193	5109	adrf-admin-grp
 231	17010	project-adrf-ingestion
 229	7002	project-baking-pizzas
-226	7001	project-adrf-dev
 20	12036	bcooke
 253	902	instructors1
 254	903	admin-tech1
@@ -6174,51 +6003,6 @@ COPY public.data_facility_admin_ldapobject (id, ldap_id, ldap_name) FROM stdin;
 257	907	t13-export-reviewers1
 258	908	t13-admin-tech1
 259	909	adrf-staff
-260	100005	kwxv-fwze
-261	100006	qcn7-gc3g
-262	100007	qccx-65fg
-263	100008	9fxf-t2tr
-264	100009	kvz2-j5cj
-265	100010	ic3t-wcy2
-266	100011	xvpn-2pnt
-267	100012	f362-6fup
-268	100013	8fxg-nyr5
-269	100014	6uza-cd7z
-270	100015	dpec-ucu7
-271	100016	xzkq-xp2w
-272	100017	vx8i-nprf
-273	100018	7yuw-754z
-274	100019	hsys-3def
-275	100020	8wbx-tsch
-276	100021	b8in-sz6k
-277	100022	qxh8-f4bd
-278	100023	n59h-ggai
-279	100024	s6ew-h6mp
-280	100025	xjfq-wh2d
-281	100026	fkt2-8smh
-282	100027	mmn5-wy78
-283	100028	cgbu-k38b
-284	100029	ydr8-5enu
-285	100030	mtgj-bnbx
-286	100031	gfq7-aa86
-287	100032	qahs-fevu
-288	100033	hbmv-rqk9
-289	100034	yyhn-562y
-290	100035	7t5a-79ri
-291	100036	dymb-xy5c
-292	100037	nytw-fmz3
-293	100038	au6r-w9n3
-294	100039	j56h-zgnm
-295	100040	dg63-4siq
-296	100041	n3tx-eq5q
-297	100042	qek8-9bd4
-298	100043	yv23-pmwf
-299	100044	f29f-zza5
-300	100045	ijzp-q8t2
-301	100046	6sdz-r9ba
-302	100047	s6ha-ppgi
-303	100048	ss3e-3mza
-304	100049	im7g-fucq
 305	100050	w5xs-s3mj
 306	100051	project-garmenttextile_technologist
 307	100052	project-scientist_biomedical
@@ -6243,6 +6027,7 @@ COPY public.data_facility_admin_ldapobject (id, ldap_id, ldap_name) FROM stdin;
 239	7020	dataset-adrf-000002
 314	100059	project-doctor_general_practice
 315	100060	project-television_production_assistant
+226	7001	project-adrf-dev
 316	100061	project-veterinary_surgeon
 317	100062	project-community_development_worker
 318	100063	project-web_designer
@@ -6280,7 +6065,6 @@ COPY public.data_facility_admin_ldapobject (id, ldap_id, ldap_name) FROM stdin;
 350	100095	project-recycling_officer
 351	100096	project-retail_buyer
 352	100097	project-clinical_psychologist
-353	100098	project-academic_librarian1
 354	100099	project-psychotherapist_child
 355	100100	project-teacher_early_yearspre
 356	100101	project-higher_education_lecturer
@@ -6337,14 +6121,56 @@ COPY public.data_facility_admin_ldapobject (id, ldap_id, ldap_name) FROM stdin;
 252	7011	dataset-adrf-000055
 36	12037	amiller
 419	100151	aaa-test
+260	100005	kwxv-fwze
+261	100006	qcn7-gc3g
+262	100007	qccx-65fg
+263	100008	9fxf-t2tr
+264	100009	kvz2-j5cj
+265	100010	ic3t-wcy2
+266	100011	xvpn-2pnt
+267	100012	f362-6fup
+268	100013	8fxg-nyr5
+269	100014	6uza-cd7z
+270	100015	dpec-ucu7
+271	100016	xzkq-xp2w
+273	100018	7yuw-754z
+272	100017	vx8i-nprf
+274	100019	hsys-3def
+275	100020	8wbx-tsch
+277	100022	qxh8-f4bd
+276	100021	b8in-sz6k
+280	100025	xjfq-wh2d
+278	100023	n59h-ggai
+279	100024	s6ew-h6mp
+281	100026	fkt2-8smh
+282	100027	mmn5-wy78
+284	100029	ydr8-5enu
+283	100028	cgbu-k38b
+287	100032	qahs-fevu
+285	100030	mtgj-bnbx
+286	100031	gfq7-aa86
+288	100033	hbmv-rqk9
+290	100035	7t5a-79ri
+289	100034	yyhn-562y
+291	100036	dymb-xy5c
+297	100042	qek8-9bd4
+295	100040	dg63-4siq
+292	100037	nytw-fmz3
+293	100038	au6r-w9n3
+294	100039	j56h-zgnm
+296	100041	n3tx-eq5q
+300	100045	ijzp-q8t2
+298	100043	yv23-pmwf
+299	100044	f29f-zza5
+301	100046	6sdz-r9ba
+302	100047	s6ha-ppgi
+420	100152	xubh-q36u
+304	100049	im7g-fucq
+303	100048	ss3e-3mza
+353	100098	project-academic_librarian1
+421	100153	project-test
+22	10002	daniel
 \.
-
-
---
--- Name: data_facility_admin_ldapobject_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_ldapobject_id_seq', 419, true);
 
 
 --
@@ -6353,13 +6179,6 @@ SELECT pg_catalog.setval('public.data_facility_admin_ldapobject_id_seq', 419, tr
 
 COPY public.data_facility_admin_profiletag (id, text, description, created_at, updated_at) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_profiletag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_profiletag_id_seq', 1, false);
 
 
 --
@@ -6404,7 +6223,6 @@ f	xport-reviewers	Not Provided			Active	Green	2017-10-26 22:44:07.272849+00	2017
 f	Webinar Students	Not Provided			Active	Green	2017-10-26 22:44:07.325987+00	2017-10-26 22:44:07.326063+00	\N	\N	Research		\N	233	2			\N
 f	adrf-ingestion	Not Provided			Active	Green	2017-10-26 22:44:07.243316+00	2018-11-14 19:52:04.378787+00	22	\N	Research		\N	231	2			\N
 f	baking-pizzas	Not Provided			Active	Green	2017-10-26 22:44:07.170765+00	2018-11-15 23:04:39.39393+00	\N	\N	Research		\N	229	2			\N
-f	adrf-dev	Not Provided			Active	Green	2017-10-26 22:44:06.993877+00	2018-11-15 23:17:36.404475+00	180	\N	Research		\N	226	2			\N
 f	Garment/textile technologist	Field seismologist			Pending Approval	Green	2019-03-06 01:01:03.759113+00	2019-03-06 01:01:03.759138+00	\N	\N	Research		\N	306	\N			\N
 f	Scientist, biomedical	Patent examiner			Pending Approval	Green	2019-03-06 01:01:03.79702+00	2019-03-06 01:01:03.797085+00	\N	\N	Research		\N	307	\N			\N
 f	Musician	Counsellor			Pending Approval	Green	2019-03-06 01:01:03.829218+00	2019-03-06 01:01:03.829261+00	\N	\N	Research		\N	308	\N			\N
@@ -6452,7 +6270,6 @@ f	Chief Strategy Officer	Engineer, biomedical			Pending Approval	Green	2019-03-0
 f	Recycling officer	Museum/gallery curator			Pending Approval	Green	2019-03-06 01:01:05.208256+00	2019-03-06 01:01:05.208297+00	\N	\N	Research		\N	350	\N			\N
 f	Retail buyer	Teacher, secondary school			Pending Approval	Green	2019-03-06 01:01:05.239338+00	2019-03-06 01:01:05.239383+00	\N	\N	Research		\N	351	\N			\N
 f	Clinical psychologist	Professor Emeritus			Pending Approval	Green	2019-03-06 01:01:05.271346+00	2019-03-06 01:01:05.271469+00	\N	\N	Research		\N	352	\N			\N
-f	Academic librarian	Engineer, chemical			Pending Approval	Green	2019-03-06 01:01:05.300458+00	2019-03-06 01:01:05.300489+00	\N	\N	Research		\N	353	\N			\N
 f	Psychotherapist, child	Tax inspector			Pending Approval	Green	2019-03-06 01:01:05.327627+00	2019-03-06 01:01:05.327661+00	\N	\N	Research		\N	354	\N			\N
 f	Teacher, early years/pre	Science writer			Pending Approval	Green	2019-03-06 01:01:05.357703+00	2019-03-06 01:01:05.357735+00	\N	\N	Research		\N	355	\N			\N
 f	Higher education lecturer	Facilities manager			Pending Approval	Green	2019-03-06 01:01:05.383711+00	2019-03-06 01:01:05.383748+00	\N	\N	Research		\N	356	\N			\N
@@ -6505,6 +6322,9 @@ f	Nurse, learning disability	Lighting technician, broadcasting/film/video			Pend
 f	Dealer	Engineer, automotive			Pending Approval	Green	2019-03-06 01:01:07.019705+00	2019-03-06 01:01:07.019744+00	\N	\N	Research		\N	403	\N			\N
 f	Sub	Analytical chemist			Pending Approval	Green	2019-03-06 01:01:07.047679+00	2019-03-06 01:01:07.047725+00	\N	\N	Research		\N	404	\N			\N
 f	Producer, radio	Clinical scientist, histocompatibility and immunogenetics			Pending Approval	Green	2019-03-06 01:01:07.073411+00	2019-03-06 01:01:07.07344+00	\N	\N	Research		\N	405	\N			\N
+f	Academic librarian	Engineer, chemical			Pending Approval	Green	2019-03-06 01:01:05.300458+00	2019-05-28 21:47:39.838959+00	\N	\N	Research	asdasd	\N	353	\N			\N
+f	test	Abstract			Pending Approval	Green	2019-05-28 21:48:15.759007+00	2019-05-28 21:50:28.345096+00	\N	\N	Research		\N	421	\N			\N
+f	adrf-dev	Not Providedaa			Active	Green	2017-10-26 22:44:06.993877+00	2019-05-28 21:51:21.598036+00	180	\N	Research		\N	226	2			\N
 \.
 
 
@@ -6520,14 +6340,8 @@ COPY public.data_facility_admin_projectmember (id, created_at, updated_at, membe
 5	2017-10-26 22:44:07.291648+00	2017-10-26 22:44:07.291716+00	175	232	\N	\N	2017-10-26 22:43:32.190042+00	3
 6	2017-10-27 20:21:27.530151+00	2018-11-14 18:46:45.128286+00	30	226	\N	2017-10-27 20:44:55+00	2017-10-27 20:39:52+00	2
 7	2018-11-15 23:18:20.912129+00	2018-11-15 23:18:20.912162+00	20	230	\N	\N	2018-11-15 23:18:17+00	3
+8	2019-05-28 21:19:59.274316+00	2019-05-28 21:19:59.274343+00	22	226	\N	\N	2019-05-28 21:19:00+00	3
 \.
-
-
---
--- Name: data_facility_admin_projectmember_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_projectmember_id_seq', 7, true);
 
 
 --
@@ -6540,13 +6354,6 @@ COPY public.data_facility_admin_projectrole (id, name, description, system_role,
 3	Member	Member	Writer	2017-10-26 22:42:07.921481+00	2017-10-26 22:42:07.921522+00
 4	Instructor	Instructor	Admin	2017-10-26 22:42:07.924241+00	2017-10-26 22:42:07.924257+00
 \.
-
-
---
--- Name: data_facility_admin_projectrole_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_projectrole_id_seq', 4, true);
 
 
 --
@@ -6654,14 +6461,11 @@ COPY public.data_facility_admin_projecttool (id, tool_name, other_name, created_
 98	Workspace_K8s		2019-03-06 01:01:07.032597+00	2019-03-06 01:01:07.032629+00	403	\N	\N	{"JUPYTER_CPU": "us-west", "JUPYTER_MEMORY": "us-west", "REMOTE_DESKTOP_CPU": "us-west", "REMOTE_DESKTOP_MEMORY": "us-west"}
 99	Workspace_K8s		2019-03-06 01:01:07.059101+00	2019-03-06 01:01:07.05928+00	404	\N	\N	{"JUPYTER_CPU": "us-west", "JUPYTER_MEMORY": "us-west", "REMOTE_DESKTOP_CPU": "us-west", "REMOTE_DESKTOP_MEMORY": "us-west"}
 100	Workspace_K8s		2019-03-06 01:01:07.085038+00	2019-03-06 01:01:07.085063+00	405	\N	\N	{"JUPYTER_CPU": "us-west", "JUPYTER_MEMORY": "us-west", "REMOTE_DESKTOP_CPU": "us-west", "REMOTE_DESKTOP_MEMORY": "us-west"}
+102	Postgres		2019-05-28 21:22:54.564846+00	2019-05-28 21:22:54.564902+00	226	\N		\N
+103	Python		2019-05-28 21:22:54.568564+00	2019-05-28 21:22:54.568592+00	226	\N		\N
+104	Workspace_K8s		2019-05-28 21:50:28.354207+00	2019-05-28 21:50:28.354243+00	421	\N	\N	{"JUPYTER_CPU": 1, "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_MEMORY": 1000}
+105	Workspace_K8s		2019-05-28 21:51:21.603692+00	2019-05-28 21:51:21.603717+00	226	\N	\N	{"JUPYTER_CPU": 1, "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_MEMORY": 1000}
 \.
-
-
---
--- Name: data_facility_admin_projecttool_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_projecttool_id_seq', 100, true);
 
 
 --
@@ -6673,25 +6477,11 @@ COPY public.data_facility_admin_signedtermsofuse (id, signed_at, created_at, upd
 
 
 --
--- Name: data_facility_admin_signedtermsofuse_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_signedtermsofuse_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_systeminfo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_systeminfo (id, last_export, last_import) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_systeminfo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_systeminfo_id_seq', 1, false);
 
 
 --
@@ -6703,13 +6493,6 @@ COPY public.data_facility_admin_termsofuse (id, text, version, release_date, cre
 
 
 --
--- Name: data_facility_admin_termsofuse_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_termsofuse_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_training; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6718,18 +6501,10 @@ COPY public.data_facility_admin_training (id, name, url, description, date, crea
 
 
 --
--- Name: data_facility_admin_training_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_training_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_admin_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_admin_user (first_name, last_name, orc_id, affiliation, email, job_title, sponsor, signed_terms_at, created_at, updated_at, status, ldapobject_ptr_id, ldap_last_auth_time, ldap_lock_time, system_user, ldap_last_pwd_change, contractor, foreign_national, django_user_id) FROM stdin;
-Daniel	Castellani			daniel.castellani@nyu.edu			\N	2017-10-26 22:43:32.713453+00	2018-02-08 19:31:49.04147+00	Active	22	2017-10-19 19:10:17+00	\N	f	2017-12-13 19:31:49.037853+00	f	f	\N
 Thiago	Diogo			thiagodiogo@nyu.edu.adrf.dev			\N	2017-10-26 22:43:33.06083+00	2018-02-07 22:20:38.916309+00	Active	34	2017-10-27 15:27:38+00	\N	f	2017-12-09 23:32:48.365078+00	f	f	\N
 malper	Alper			mariel.alper@usdoj.gov.adrf.dev			\N	2017-10-26 22:43:32.873573+00	2018-02-07 22:20:38.750916+00	Disabled	27	\N	\N	f	\N	f	f	\N
 Rafael	Alves			rafa.ladis@gmail.com.adrf.dev			\N	2017-10-26 22:43:32.953299+00	2018-02-07 22:20:38.757899+00	Active	30	2017-10-17 22:06:00+00	\N	f	\N	f	f	\N
@@ -6902,6 +6677,7 @@ testuser99	testuser99			cusp-testuser99@dylex.net.adrf.dev			\N	2017-10-26 22:44
 twalker	Walker			twalker@hhsconnect.nyc.gov.adrf.dev			\N	2017-10-26 22:43:33.629138+00	2018-02-07 22:20:39.695654+00	Disabled	54	\N	\N	f	\N	f	f	\N
 bcooke	Cooke			bryce.cooke@ers.usda.gov.adrf.dev			\N	2017-10-26 22:43:32.657577+00	2018-11-15 23:18:20.871611+00	Disabled	20	\N	\N	f	\N	f	f	\N
 amiller	Miller			ammiller@kauffman.org.adrf.dev			\N	2017-10-26 22:43:33.117842+00	2019-03-06 16:56:22.428841+00	Disabled	36	\N	\N	f	\N	f	f	\N
+Daniel	Castellani			daniel.castellani@nyu.edu			\N	2017-10-26 22:43:32.713453+00	2019-06-12 16:44:02.804068+00	Active	22	2017-10-19 19:10:17+00	\N	f	2017-12-13 19:31:49.037853+00	f	f	\N
 \.
 
 
@@ -6911,13 +6687,6 @@ amiller	Miller			ammiller@kauffman.org.adrf.dev			\N	2017-10-26 22:43:33.117842+
 
 COPY public.data_facility_admin_user_tags (id, user_id, profiletag_id) FROM stdin;
 \.
-
-
---
--- Name: data_facility_admin_user_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_user_tags_id_seq', 1, false);
 
 
 --
@@ -6952,13 +6721,6 @@ COPY public.data_facility_admin_userdfrole (id, created_at, updated_at, role_id,
 
 
 --
--- Name: data_facility_admin_userdfrole_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_userdfrole_id_seq', 23, true);
-
-
---
 -- Data for Name: data_facility_admin_usertraining; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6967,27 +6729,13 @@ COPY public.data_facility_admin_usertraining (id, date, created_at, updated_at, 
 
 
 --
--- Name: data_facility_admin_usertraining_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_admin_usertraining_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_metadata_datastore; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_metadata_datastore (id, name, description, host, port, database, created_at, updated_at, type_id) FROM stdin;
 1	Postgres	test	db.adrf.info	\N	\N	2019-03-06 01:01:03.705878+00	2019-03-06 01:01:03.705907+00	3
-2	Central Store	\N	centralstore.s3.amazonaws.com	\N	\N	2019-03-06 01:01:03.71335+00	2019-03-06 01:01:03.713412+00	2
+2	Central Store	\N	centralstore.s3.amazonaws.com	\N	\N	2019-03-06 01:01:03.71335+00	2019-05-22 21:53:50.046618+00	2
 \.
-
-
---
--- Name: data_facility_metadata_datastore_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_datastore_id_seq', 2, true);
 
 
 --
@@ -7041,14 +6789,8 @@ COPY public.data_facility_metadata_datatable (id, name, rows, columns, "values",
 44	QHP Landscape SHOP Market Medical	\N	\N	\N	\N	\N	\N	\N		\N	\N	2019-03-06 01:01:02.917169+00	2019-03-06 01:01:02.917197+00	303	\N
 45	Missouri Zip Codes by County/City	\N	\N	\N	\N	\N	\N	\N		\N	\N	2019-03-06 01:01:03.604675+00	2019-03-06 01:01:03.604715+00	304	\N
 46	Individual Navigators	\N	\N	\N	\N	\N	\N	\N		\N	\N	2019-03-06 01:01:03.656689+00	2019-03-06 01:01:03.656718+00	305	\N
+47	Hospital General Information	\N	\N	\N	\N	\N	\N	\N		\N	\N	2019-05-22 21:53:49.559505+00	2019-05-22 21:53:49.559529+00	420	\N
 \.
-
-
---
--- Name: data_facility_metadata_datatable_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_datatable_id_seq', 46, true);
 
 
 --
@@ -7076,71 +6818,58 @@ COPY public.data_facility_metadata_datatype (id, name, description, category, cr
 
 
 --
--- Name: data_facility_metadata_datatype_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_datatype_id_seq', 16, true);
-
-
---
 -- Data for Name: data_facility_metadata_file; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_metadata_file (id, name, type, location, size, created_at, updated_at, dataset_id, format_id) FROM stdin;
-1	kwxv-fwze.csv	\N	\N	\N	2019-03-06 01:00:55.60115+00	2019-03-06 01:00:55.601176+00	260	23
-2	qcn7-gc3g.csv	\N	\N	\N	2019-03-06 01:00:55.688027+00	2019-03-06 01:00:55.688053+00	261	23
-3	qccx-65fg.csv	\N	\N	\N	2019-03-06 01:00:55.763212+00	2019-03-06 01:00:55.76324+00	262	23
-4	9fxf-t2tr.csv	\N	\N	\N	2019-03-06 01:00:55.856877+00	2019-03-06 01:00:55.856904+00	263	23
-5	kvz2-j5cj.csv	\N	\N	\N	2019-03-06 01:00:55.952054+00	2019-03-06 01:00:55.95208+00	264	23
-6	ic3t-wcy2.csv	\N	\N	\N	2019-03-06 01:00:56.579341+00	2019-03-06 01:00:56.579368+00	265	23
-7	xvpn-2pnt.csv	\N	\N	\N	2019-03-06 01:00:56.6639+00	2019-03-06 01:00:56.663926+00	266	23
-8	f362-6fup.csv	\N	\N	\N	2019-03-06 01:00:56.825108+00	2019-03-06 01:00:56.825137+00	267	23
-9	8fxg-nyr5.csv	\N	\N	\N	2019-03-06 01:00:56.880363+00	2019-03-06 01:00:56.880389+00	268	23
-10	6uza-cd7z.csv	\N	\N	\N	2019-03-06 01:00:56.95803+00	2019-03-06 01:00:56.958059+00	269	23
-11	dpec-ucu7.csv	\N	\N	\N	2019-03-06 01:00:57.061284+00	2019-03-06 01:00:57.061317+00	270	23
-12	xzkq-xp2w.csv	\N	\N	\N	2019-03-06 01:00:57.127434+00	2019-03-06 01:00:57.127461+00	271	23
-13	vx8i-nprf.csv	\N	\N	\N	2019-03-06 01:00:57.257735+00	2019-03-06 01:00:57.25776+00	272	23
-14	7yuw-754z.csv	\N	\N	\N	2019-03-06 01:00:57.44437+00	2019-03-06 01:00:57.444396+00	273	23
-15	hsys-3def.csv	\N	\N	\N	2019-03-06 01:00:57.577845+00	2019-03-06 01:00:57.577874+00	274	23
-16	8wbx-tsch.csv	\N	\N	\N	2019-03-06 01:00:57.778479+00	2019-03-06 01:00:57.778505+00	275	23
-17	b8in-sz6k.csv	\N	\N	\N	2019-03-06 01:00:58.466085+00	2019-03-06 01:00:58.466111+00	276	23
-18	qxh8-f4bd.csv	\N	\N	\N	2019-03-06 01:00:58.662603+00	2019-03-06 01:00:58.662632+00	277	23
-19	n59h-ggai.csv	\N	\N	\N	2019-03-06 01:00:58.721588+00	2019-03-06 01:00:58.721615+00	278	23
-20	s6ew-h6mp.csv	\N	\N	\N	2019-03-06 01:00:58.908929+00	2019-03-06 01:00:58.908955+00	279	23
-21	xjfq-wh2d.csv	\N	\N	\N	2019-03-06 01:00:58.985133+00	2019-03-06 01:00:58.98516+00	280	23
-22	fkt2-8smh.csv	\N	\N	\N	2019-03-06 01:00:59.049849+00	2019-03-06 01:00:59.049875+00	281	23
-23	mmn5-wy78.csv	\N	\N	\N	2019-03-06 01:00:59.113482+00	2019-03-06 01:00:59.113507+00	282	23
-24	cgbu-k38b.csv	\N	\N	\N	2019-03-06 01:00:59.210809+00	2019-03-06 01:00:59.210836+00	283	23
-25	ydr8-5enu.csv	\N	\N	\N	2019-03-06 01:01:00.126896+00	2019-03-06 01:01:00.126922+00	284	23
-26	mtgj-bnbx.csv	\N	\N	\N	2019-03-06 01:01:00.272443+00	2019-03-06 01:01:00.272469+00	285	23
-27	gfq7-aa86.csv	\N	\N	\N	2019-03-06 01:01:00.354681+00	2019-03-06 01:01:00.354707+00	286	23
-28	qahs-fevu.csv	\N	\N	\N	2019-03-06 01:01:00.407263+00	2019-03-06 01:01:00.407288+00	287	23
-29	hbmv-rqk9.csv	\N	\N	\N	2019-03-06 01:01:00.64629+00	2019-03-06 01:01:00.646317+00	288	23
-30	yyhn-562y.csv	\N	\N	\N	2019-03-06 01:01:00.801117+00	2019-03-06 01:01:00.801144+00	289	23
-31	7t5a-79ri.csv	\N	\N	\N	2019-03-06 01:01:00.881477+00	2019-03-06 01:01:00.881504+00	290	23
-32	dymb-xy5c.csv	\N	\N	\N	2019-03-06 01:01:01.158325+00	2019-03-06 01:01:01.158367+00	291	23
-33	nytw-fmz3.csv	\N	\N	\N	2019-03-06 01:01:01.326427+00	2019-03-06 01:01:01.326453+00	292	23
-34	au6r-w9n3.csv	\N	\N	\N	2019-03-06 01:01:01.556605+00	2019-03-06 01:01:01.556631+00	293	23
-35	j56h-zgnm.csv	\N	\N	\N	2019-03-06 01:01:01.6533+00	2019-03-06 01:01:01.653326+00	294	23
-36	dg63-4siq.csv	\N	\N	\N	2019-03-06 01:01:01.698764+00	2019-03-06 01:01:01.69879+00	295	23
-37	n3tx-eq5q.csv	\N	\N	\N	2019-03-06 01:01:01.88162+00	2019-03-06 01:01:01.881646+00	296	23
-38	qek8-9bd4.csv	\N	\N	\N	2019-03-06 01:01:01.928775+00	2019-03-06 01:01:01.928801+00	297	23
-39	yv23-pmwf.csv	\N	\N	\N	2019-03-06 01:01:02.374671+00	2019-03-06 01:01:02.374698+00	298	23
-40	f29f-zza5.csv	\N	\N	\N	2019-03-06 01:01:02.507978+00	2019-03-06 01:01:02.508007+00	299	23
-41	ijzp-q8t2.csv	\N	\N	\N	2019-03-06 01:01:02.67019+00	2019-03-06 01:01:02.670217+00	300	23
-42	6sdz-r9ba.csv	\N	\N	\N	2019-03-06 01:01:02.769673+00	2019-03-06 01:01:02.769699+00	301	23
-43	s6ha-ppgi.csv	\N	\N	\N	2019-03-06 01:01:02.891253+00	2019-03-06 01:01:02.89129+00	302	23
-44	ss3e-3mza.csv	\N	\N	\N	2019-03-06 01:01:03.573475+00	2019-03-06 01:01:03.573518+00	303	23
-45	im7g-fucq.csv	\N	\N	\N	2019-03-06 01:01:03.632505+00	2019-03-06 01:01:03.632532+00	304	23
 46	w5xs-s3mj.csv	\N	\N	\N	2019-03-06 01:01:03.678031+00	2019-03-06 01:01:03.678051+00	305	23
+1	kwxv-fwze.csv	\N	\N	\N	2019-03-06 01:00:55.60115+00	2019-05-22 21:53:44.164264+00	260	23
+2	qcn7-gc3g.csv	\N	\N	\N	2019-03-06 01:00:55.688027+00	2019-05-22 21:53:44.198524+00	261	23
+3	qccx-65fg.csv	\N	\N	\N	2019-03-06 01:00:55.763212+00	2019-05-22 21:53:44.240665+00	262	23
+4	9fxf-t2tr.csv	\N	\N	\N	2019-03-06 01:00:55.856877+00	2019-05-22 21:53:44.308775+00	263	23
+5	kvz2-j5cj.csv	\N	\N	\N	2019-03-06 01:00:55.952054+00	2019-05-22 21:53:44.372935+00	264	23
+6	ic3t-wcy2.csv	\N	\N	\N	2019-03-06 01:00:56.579341+00	2019-05-22 21:53:44.861929+00	265	23
+7	xvpn-2pnt.csv	\N	\N	\N	2019-03-06 01:00:56.6639+00	2019-05-22 21:53:44.939357+00	266	23
+8	f362-6fup.csv	\N	\N	\N	2019-03-06 01:00:56.825108+00	2019-05-22 21:53:45.069801+00	267	23
+9	8fxg-nyr5.csv	\N	\N	\N	2019-03-06 01:00:56.880363+00	2019-05-22 21:53:45.111237+00	268	23
+10	6uza-cd7z.csv	\N	\N	\N	2019-03-06 01:00:56.95803+00	2019-05-22 21:53:45.226661+00	269	23
+11	dpec-ucu7.csv	\N	\N	\N	2019-03-06 01:00:57.061284+00	2019-05-22 21:53:45.303045+00	270	23
+12	xzkq-xp2w.csv	\N	\N	\N	2019-03-06 01:00:57.127434+00	2019-05-22 21:53:45.358582+00	271	23
+14	7yuw-754z.csv	\N	\N	\N	2019-03-06 01:00:57.44437+00	2019-05-22 21:53:45.423615+00	273	23
+13	vx8i-nprf.csv	\N	\N	\N	2019-03-06 01:00:57.257735+00	2019-05-22 21:53:45.537988+00	272	23
+15	hsys-3def.csv	\N	\N	\N	2019-03-06 01:00:57.577845+00	2019-05-22 21:53:45.610328+00	274	23
+16	8wbx-tsch.csv	\N	\N	\N	2019-03-06 01:00:57.778479+00	2019-05-22 21:53:45.724126+00	275	23
+18	qxh8-f4bd.csv	\N	\N	\N	2019-03-06 01:00:58.662603+00	2019-05-22 21:53:45.849403+00	277	23
+17	b8in-sz6k.csv	\N	\N	\N	2019-03-06 01:00:58.466085+00	2019-05-22 21:53:46.424694+00	276	23
+21	xjfq-wh2d.csv	\N	\N	\N	2019-03-06 01:00:58.985133+00	2019-05-22 21:53:46.47603+00	280	23
+19	n59h-ggai.csv	\N	\N	\N	2019-03-06 01:00:58.721588+00	2019-05-22 21:53:46.521631+00	278	23
+20	s6ew-h6mp.csv	\N	\N	\N	2019-03-06 01:00:58.908929+00	2019-05-22 21:53:46.616438+00	279	23
+22	fkt2-8smh.csv	\N	\N	\N	2019-03-06 01:00:59.049849+00	2019-05-22 21:53:46.656454+00	281	23
+23	mmn5-wy78.csv	\N	\N	\N	2019-03-06 01:00:59.113482+00	2019-05-22 21:53:46.694447+00	282	23
+25	ydr8-5enu.csv	\N	\N	\N	2019-03-06 01:01:00.126896+00	2019-05-22 21:53:47.343238+00	284	23
+24	cgbu-k38b.csv	\N	\N	\N	2019-03-06 01:00:59.210809+00	2019-05-22 21:53:47.405738+00	283	23
+28	qahs-fevu.csv	\N	\N	\N	2019-03-06 01:01:00.407263+00	2019-05-22 21:53:47.441381+00	287	23
+26	mtgj-bnbx.csv	\N	\N	\N	2019-03-06 01:01:00.272443+00	2019-05-22 21:53:47.565332+00	285	23
+27	gfq7-aa86.csv	\N	\N	\N	2019-03-06 01:01:00.354681+00	2019-05-22 21:53:47.627964+00	286	23
+29	hbmv-rqk9.csv	\N	\N	\N	2019-03-06 01:01:00.64629+00	2019-05-22 21:53:47.818905+00	288	23
+31	7t5a-79ri.csv	\N	\N	\N	2019-03-06 01:01:00.881477+00	2019-05-22 21:53:47.862304+00	290	23
+30	yyhn-562y.csv	\N	\N	\N	2019-03-06 01:01:00.801117+00	2019-05-22 21:53:47.974767+00	289	23
+32	dymb-xy5c.csv	\N	\N	\N	2019-03-06 01:01:01.158325+00	2019-05-22 21:53:48.097327+00	291	23
+38	qek8-9bd4.csv	\N	\N	\N	2019-03-06 01:01:01.928775+00	2019-05-22 21:53:48.13646+00	297	23
+36	dg63-4siq.csv	\N	\N	\N	2019-03-06 01:01:01.698764+00	2019-05-22 21:53:48.192597+00	295	23
+33	nytw-fmz3.csv	\N	\N	\N	2019-03-06 01:01:01.326427+00	2019-05-22 21:53:48.344805+00	292	23
+34	au6r-w9n3.csv	\N	\N	\N	2019-03-06 01:01:01.556605+00	2019-05-22 21:53:48.527669+00	293	23
+35	j56h-zgnm.csv	\N	\N	\N	2019-03-06 01:01:01.6533+00	2019-05-22 21:53:48.597701+00	294	23
+37	n3tx-eq5q.csv	\N	\N	\N	2019-03-06 01:01:01.88162+00	2019-05-22 21:53:48.718915+00	296	23
+41	ijzp-q8t2.csv	\N	\N	\N	2019-03-06 01:01:02.67019+00	2019-05-22 21:53:48.873004+00	300	23
+39	yv23-pmwf.csv	\N	\N	\N	2019-03-06 01:01:02.374671+00	2019-05-22 21:53:49.178584+00	298	23
+40	f29f-zza5.csv	\N	\N	\N	2019-03-06 01:01:02.507978+00	2019-05-22 21:53:49.283791+00	299	23
+42	6sdz-r9ba.csv	\N	\N	\N	2019-03-06 01:01:02.769673+00	2019-05-22 21:53:49.39067+00	301	23
+43	s6ha-ppgi.csv	\N	\N	\N	2019-03-06 01:01:02.891253+00	2019-05-22 21:53:49.527308+00	302	23
+47	xubh-q36u.csv	\N	\N	\N	2019-05-22 21:53:49.673303+00	2019-05-22 21:53:49.673328+00	420	23
+45	im7g-fucq.csv	\N	\N	\N	2019-03-06 01:01:03.632505+00	2019-05-22 21:53:49.706841+00	304	23
+44	ss3e-3mza.csv	\N	\N	\N	2019-03-06 01:01:03.573475+00	2019-05-22 21:53:50.031244+00	303	23
 \.
-
-
---
--- Name: data_facility_metadata_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_file_id_seq', 46, true);
 
 
 --
@@ -7179,27 +6908,14 @@ COPY public.data_facility_metadata_fileformat (id, name, mimetype, description, 
 
 
 --
--- Name: data_facility_metadata_fileformat_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_fileformat_id_seq', 27, true);
-
-
---
 -- Data for Name: data_facility_metadata_historicaldatastore; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_metadata_historicaldatastore (id, name, description, host, port, database, created_at, updated_at, history_id, history_date, history_change_reason, history_type, history_user_id, type_id) FROM stdin;
 1	Postgres	test	db.adrf.info	\N	\N	2019-03-06 01:01:03.705878+00	2019-03-06 01:01:03.705907+00	1	2019-03-06 01:01:03.708108+00	\N	+	\N	3
 2	Central Store	\N	centralstore.s3.amazonaws.com	\N	\N	2019-03-06 01:01:03.71335+00	2019-03-06 01:01:03.713412+00	2	2019-03-06 01:01:03.714576+00	\N	+	\N	2
+2	Central Store	\N	centralstore.s3.amazonaws.com	\N	\N	2019-03-06 01:01:03.71335+00	2019-05-22 21:53:50.046618+00	3	2019-05-22 21:53:50.047918+00	\N	~	\N	2
 \.
-
-
---
--- Name: data_facility_metadata_historicaldatastore_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_historicaldatastore_history_id_seq', 2, true);
 
 
 --
@@ -7253,14 +6969,8 @@ COPY public.data_facility_metadata_historicaldatatable (id, name, rows, columns,
 44	QHP Landscape SHOP Market Medical	\N	\N	\N	\N	\N	\N	\N		\N	\N	2019-03-06 01:01:02.917169+00	2019-03-06 01:01:02.917197+00	44	2019-03-06 01:01:02.91828+00	\N	+	303	\N	\N
 45	Missouri Zip Codes by County/City	\N	\N	\N	\N	\N	\N	\N		\N	\N	2019-03-06 01:01:03.604675+00	2019-03-06 01:01:03.604715+00	45	2019-03-06 01:01:03.606293+00	\N	+	304	\N	\N
 46	Individual Navigators	\N	\N	\N	\N	\N	\N	\N		\N	\N	2019-03-06 01:01:03.656689+00	2019-03-06 01:01:03.656718+00	46	2019-03-06 01:01:03.65825+00	\N	+	305	\N	\N
+47	Hospital General Information	\N	\N	\N	\N	\N	\N	\N		\N	\N	2019-05-22 21:53:49.559505+00	2019-05-22 21:53:49.559529+00	47	2019-05-22 21:53:49.56225+00	\N	+	420	\N	\N
 \.
-
-
---
--- Name: data_facility_metadata_historicaldatatable_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_historicaldatatable_history_id_seq', 46, true);
 
 
 --
@@ -7269,13 +6979,6 @@ SELECT pg_catalog.setval('public.data_facility_metadata_historicaldatatable_hist
 
 COPY public.data_facility_metadata_historicaldatatype (id, name, description, category, created_at, updated_at, history_id, history_date, history_change_reason, history_type, data_store_id, history_user_id) FROM stdin;
 \.
-
-
---
--- Name: data_facility_metadata_historicaldatatype_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_historicaldatatype_history_id_seq', 1, false);
 
 
 --
@@ -7329,14 +7032,53 @@ COPY public.data_facility_metadata_historicalfile (id, name, type, location, siz
 44	ss3e-3mza.csv	\N	\N	\N	2019-03-06 01:01:03.573475+00	2019-03-06 01:01:03.573518+00	44	2019-03-06 01:01:03.57475+00	\N	+	303	23	\N
 45	im7g-fucq.csv	\N	\N	\N	2019-03-06 01:01:03.632505+00	2019-03-06 01:01:03.632532+00	45	2019-03-06 01:01:03.633379+00	\N	+	304	23	\N
 46	w5xs-s3mj.csv	\N	\N	\N	2019-03-06 01:01:03.678031+00	2019-03-06 01:01:03.678051+00	46	2019-03-06 01:01:03.679055+00	\N	+	305	23	\N
+1	kwxv-fwze.csv	\N	\N	\N	2019-03-06 01:00:55.60115+00	2019-05-22 21:53:44.164264+00	47	2019-05-22 21:53:44.165474+00	\N	~	260	23	\N
+2	qcn7-gc3g.csv	\N	\N	\N	2019-03-06 01:00:55.688027+00	2019-05-22 21:53:44.198524+00	48	2019-05-22 21:53:44.199848+00	\N	~	261	23	\N
+3	qccx-65fg.csv	\N	\N	\N	2019-03-06 01:00:55.763212+00	2019-05-22 21:53:44.240665+00	49	2019-05-22 21:53:44.242004+00	\N	~	262	23	\N
+4	9fxf-t2tr.csv	\N	\N	\N	2019-03-06 01:00:55.856877+00	2019-05-22 21:53:44.308775+00	50	2019-05-22 21:53:44.309828+00	\N	~	263	23	\N
+5	kvz2-j5cj.csv	\N	\N	\N	2019-03-06 01:00:55.952054+00	2019-05-22 21:53:44.372935+00	51	2019-05-22 21:53:44.373876+00	\N	~	264	23	\N
+6	ic3t-wcy2.csv	\N	\N	\N	2019-03-06 01:00:56.579341+00	2019-05-22 21:53:44.861929+00	52	2019-05-22 21:53:44.863059+00	\N	~	265	23	\N
+7	xvpn-2pnt.csv	\N	\N	\N	2019-03-06 01:00:56.6639+00	2019-05-22 21:53:44.939357+00	53	2019-05-22 21:53:44.940292+00	\N	~	266	23	\N
+8	f362-6fup.csv	\N	\N	\N	2019-03-06 01:00:56.825108+00	2019-05-22 21:53:45.069801+00	54	2019-05-22 21:53:45.070492+00	\N	~	267	23	\N
+9	8fxg-nyr5.csv	\N	\N	\N	2019-03-06 01:00:56.880363+00	2019-05-22 21:53:45.111237+00	55	2019-05-22 21:53:45.112119+00	\N	~	268	23	\N
+10	6uza-cd7z.csv	\N	\N	\N	2019-03-06 01:00:56.95803+00	2019-05-22 21:53:45.226661+00	56	2019-05-22 21:53:45.227874+00	\N	~	269	23	\N
+11	dpec-ucu7.csv	\N	\N	\N	2019-03-06 01:00:57.061284+00	2019-05-22 21:53:45.303045+00	57	2019-05-22 21:53:45.304065+00	\N	~	270	23	\N
+12	xzkq-xp2w.csv	\N	\N	\N	2019-03-06 01:00:57.127434+00	2019-05-22 21:53:45.358582+00	58	2019-05-22 21:53:45.359735+00	\N	~	271	23	\N
+14	7yuw-754z.csv	\N	\N	\N	2019-03-06 01:00:57.44437+00	2019-05-22 21:53:45.423615+00	59	2019-05-22 21:53:45.424572+00	\N	~	273	23	\N
+13	vx8i-nprf.csv	\N	\N	\N	2019-03-06 01:00:57.257735+00	2019-05-22 21:53:45.537988+00	60	2019-05-22 21:53:45.539086+00	\N	~	272	23	\N
+15	hsys-3def.csv	\N	\N	\N	2019-03-06 01:00:57.577845+00	2019-05-22 21:53:45.610328+00	61	2019-05-22 21:53:45.611345+00	\N	~	274	23	\N
+16	8wbx-tsch.csv	\N	\N	\N	2019-03-06 01:00:57.778479+00	2019-05-22 21:53:45.724126+00	62	2019-05-22 21:53:45.725134+00	\N	~	275	23	\N
+18	qxh8-f4bd.csv	\N	\N	\N	2019-03-06 01:00:58.662603+00	2019-05-22 21:53:45.849403+00	63	2019-05-22 21:53:45.850929+00	\N	~	277	23	\N
+17	b8in-sz6k.csv	\N	\N	\N	2019-03-06 01:00:58.466085+00	2019-05-22 21:53:46.424694+00	64	2019-05-22 21:53:46.425642+00	\N	~	276	23	\N
+21	xjfq-wh2d.csv	\N	\N	\N	2019-03-06 01:00:58.985133+00	2019-05-22 21:53:46.47603+00	65	2019-05-22 21:53:46.477022+00	\N	~	280	23	\N
+19	n59h-ggai.csv	\N	\N	\N	2019-03-06 01:00:58.721588+00	2019-05-22 21:53:46.521631+00	66	2019-05-22 21:53:46.523238+00	\N	~	278	23	\N
+20	s6ew-h6mp.csv	\N	\N	\N	2019-03-06 01:00:58.908929+00	2019-05-22 21:53:46.616438+00	67	2019-05-22 21:53:46.61744+00	\N	~	279	23	\N
+22	fkt2-8smh.csv	\N	\N	\N	2019-03-06 01:00:59.049849+00	2019-05-22 21:53:46.656454+00	68	2019-05-22 21:53:46.657473+00	\N	~	281	23	\N
+23	mmn5-wy78.csv	\N	\N	\N	2019-03-06 01:00:59.113482+00	2019-05-22 21:53:46.694447+00	69	2019-05-22 21:53:46.695642+00	\N	~	282	23	\N
+25	ydr8-5enu.csv	\N	\N	\N	2019-03-06 01:01:00.126896+00	2019-05-22 21:53:47.343238+00	70	2019-05-22 21:53:47.344451+00	\N	~	284	23	\N
+24	cgbu-k38b.csv	\N	\N	\N	2019-03-06 01:00:59.210809+00	2019-05-22 21:53:47.405738+00	71	2019-05-22 21:53:47.406832+00	\N	~	283	23	\N
+28	qahs-fevu.csv	\N	\N	\N	2019-03-06 01:01:00.407263+00	2019-05-22 21:53:47.441381+00	72	2019-05-22 21:53:47.44242+00	\N	~	287	23	\N
+26	mtgj-bnbx.csv	\N	\N	\N	2019-03-06 01:01:00.272443+00	2019-05-22 21:53:47.565332+00	73	2019-05-22 21:53:47.566703+00	\N	~	285	23	\N
+27	gfq7-aa86.csv	\N	\N	\N	2019-03-06 01:01:00.354681+00	2019-05-22 21:53:47.627964+00	74	2019-05-22 21:53:47.629508+00	\N	~	286	23	\N
+29	hbmv-rqk9.csv	\N	\N	\N	2019-03-06 01:01:00.64629+00	2019-05-22 21:53:47.818905+00	75	2019-05-22 21:53:47.819976+00	\N	~	288	23	\N
+31	7t5a-79ri.csv	\N	\N	\N	2019-03-06 01:01:00.881477+00	2019-05-22 21:53:47.862304+00	76	2019-05-22 21:53:47.863288+00	\N	~	290	23	\N
+30	yyhn-562y.csv	\N	\N	\N	2019-03-06 01:01:00.801117+00	2019-05-22 21:53:47.974767+00	77	2019-05-22 21:53:47.975899+00	\N	~	289	23	\N
+32	dymb-xy5c.csv	\N	\N	\N	2019-03-06 01:01:01.158325+00	2019-05-22 21:53:48.097327+00	78	2019-05-22 21:53:48.098347+00	\N	~	291	23	\N
+38	qek8-9bd4.csv	\N	\N	\N	2019-03-06 01:01:01.928775+00	2019-05-22 21:53:48.13646+00	79	2019-05-22 21:53:48.139152+00	\N	~	297	23	\N
+36	dg63-4siq.csv	\N	\N	\N	2019-03-06 01:01:01.698764+00	2019-05-22 21:53:48.192597+00	80	2019-05-22 21:53:48.194772+00	\N	~	295	23	\N
+33	nytw-fmz3.csv	\N	\N	\N	2019-03-06 01:01:01.326427+00	2019-05-22 21:53:48.344805+00	81	2019-05-22 21:53:48.345843+00	\N	~	292	23	\N
+34	au6r-w9n3.csv	\N	\N	\N	2019-03-06 01:01:01.556605+00	2019-05-22 21:53:48.527669+00	82	2019-05-22 21:53:48.528855+00	\N	~	293	23	\N
+35	j56h-zgnm.csv	\N	\N	\N	2019-03-06 01:01:01.6533+00	2019-05-22 21:53:48.597701+00	83	2019-05-22 21:53:48.598644+00	\N	~	294	23	\N
+37	n3tx-eq5q.csv	\N	\N	\N	2019-03-06 01:01:01.88162+00	2019-05-22 21:53:48.718915+00	84	2019-05-22 21:53:48.719865+00	\N	~	296	23	\N
+41	ijzp-q8t2.csv	\N	\N	\N	2019-03-06 01:01:02.67019+00	2019-05-22 21:53:48.873004+00	85	2019-05-22 21:53:48.873972+00	\N	~	300	23	\N
+39	yv23-pmwf.csv	\N	\N	\N	2019-03-06 01:01:02.374671+00	2019-05-22 21:53:49.178584+00	86	2019-05-22 21:53:49.17968+00	\N	~	298	23	\N
+40	f29f-zza5.csv	\N	\N	\N	2019-03-06 01:01:02.507978+00	2019-05-22 21:53:49.283791+00	87	2019-05-22 21:53:49.284945+00	\N	~	299	23	\N
+42	6sdz-r9ba.csv	\N	\N	\N	2019-03-06 01:01:02.769673+00	2019-05-22 21:53:49.39067+00	88	2019-05-22 21:53:49.392092+00	\N	~	301	23	\N
+43	s6ha-ppgi.csv	\N	\N	\N	2019-03-06 01:01:02.891253+00	2019-05-22 21:53:49.527308+00	89	2019-05-22 21:53:49.528246+00	\N	~	302	23	\N
+47	xubh-q36u.csv	\N	\N	\N	2019-05-22 21:53:49.673303+00	2019-05-22 21:53:49.673328+00	90	2019-05-22 21:53:49.677267+00	\N	+	420	23	\N
+45	im7g-fucq.csv	\N	\N	\N	2019-03-06 01:01:03.632505+00	2019-05-22 21:53:49.706841+00	91	2019-05-22 21:53:49.708046+00	\N	~	304	23	\N
+44	ss3e-3mza.csv	\N	\N	\N	2019-03-06 01:01:03.573475+00	2019-05-22 21:53:50.031244+00	92	2019-05-22 21:53:50.032185+00	\N	~	303	23	\N
 \.
-
-
---
--- Name: data_facility_metadata_historicalfile_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_historicalfile_history_id_seq', 46, true);
 
 
 --
@@ -7345,20 +7087,6 @@ SELECT pg_catalog.setval('public.data_facility_metadata_historicalfile_history_i
 
 COPY public.data_facility_metadata_historicalfileformat (id, name, mimetype, description, created_at, updated_at, history_id, history_date, history_change_reason, history_type, history_user_id) FROM stdin;
 \.
-
-
---
--- Name: data_facility_metadata_historicalfileformat_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_historicalfileformat_history_id_seq', 1, false);
-
-
---
--- Name: data_facility_metadata_historicalphysicaldatatab_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_historicalphysicaldatatab_history_id_seq', 1, false);
 
 
 --
@@ -7380,25 +7108,11 @@ COPY public.data_facility_metadata_historicalstoragetype (id, name, description,
 
 
 --
--- Name: data_facility_metadata_historicalstoragetype_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_historicalstoragetype_history_id_seq', 2, true);
-
-
---
 -- Data for Name: data_facility_metadata_historicalvalue; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_metadata_historicalvalue (id, value, label, description, frequency, created_at, updated_at, history_id, history_date, history_change_reason, history_type, history_user_id, variable_id) FROM stdin;
 \.
-
-
---
--- Name: data_facility_metadata_historicalvalue_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_historicalvalue_history_id_seq', 1, false);
 
 
 --
@@ -8233,6 +7947,7 @@ COPY public.data_facility_metadata_historicalvariable (id, name, description, un
 825	Floor Area-L.A. Zoning Code Definition	Floor area as defined in the Los Angeles Zoning Code.	\N	\N	\N	2019-03-06 01:01:01.982315+00	2019-03-06 01:01:01.982343+00	825	2019-03-06 01:01:01.983401+00	\N	+	39	\N	\N	Number
 826	# of Residential Dwelling Units	Number of dwelling units for a residential building.	\N	\N	\N	2019-03-06 01:01:01.991491+00	2019-03-06 01:01:01.991569+00	826	2019-03-06 01:01:01.993035+00	\N	+	39	\N	\N	Number
 827	Principal Last Name	Last name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:01.996927+00	2019-03-06 01:01:01.996953+00	827	2019-03-06 01:01:01.998115+00	\N	+	39	\N	\N	Text
+606	Zip Code		\N	\N	\N	2019-03-06 01:01:00.242034+00	2019-05-22 21:53:47.503065+00	1647	2019-05-22 21:53:47.504186+00	\N	~	26	\N	\N	Number
 828	License Expiration Date	Contractor license expiration date.	\N	\N	\N	2019-03-06 01:01:02.001924+00	2019-03-06 01:01:02.00195+00	828	2019-03-06 01:01:02.003142+00	\N	+	39	\N	\N	Calendar date
 829	Applicant Last Name	Last name of the permit applicant.	\N	\N	\N	2019-03-06 01:01:02.006868+00	2019-03-06 01:01:02.006894+00	829	2019-03-06 01:01:02.008013+00	\N	+	39	\N	\N	Text
 830	License #	Contractor's license number.	\N	\N	\N	2019-03-06 01:01:02.011704+00	2019-03-06 01:01:02.011729+00	830	2019-03-06 01:01:02.012812+00	\N	+	39	\N	\N	Number
@@ -8436,14 +8151,1108 @@ COPY public.data_facility_metadata_historicalvariable (id, name, description, un
 1028	First Name		\N	\N	\N	2019-03-06 01:01:03.662029+00	2019-03-06 01:01:03.662057+00	1028	2019-03-06 01:01:03.662955+00	\N	+	46	\N	\N	Text
 1029	Last Name		\N	\N	\N	2019-03-06 01:01:03.666203+00	2019-03-06 01:01:03.666231+00	1029	2019-03-06 01:01:03.667142+00	\N	+	46	\N	\N	Text
 1030	Business Phone		\N	\N	\N	2019-03-06 01:01:03.671104+00	2019-03-06 01:01:03.671132+00	1030	2019-03-06 01:01:03.67338+00	\N	+	46	\N	\N	Text
+3	Draw Date		\N	\N	\N	2019-03-06 01:00:55.593426+00	2019-05-22 21:53:44.137914+00	1031	2019-05-22 21:53:44.145091+00	\N	~	1	\N	\N	Calendar date
+1	Winning Numbers	Winning numbers	\N	\N	\N	2019-03-06 01:00:55.582268+00	2019-05-22 21:53:44.153177+00	1032	2019-05-22 21:53:44.154213+00	\N	~	1	\N	\N	Text
+2	Cash Ball	Cash ball	\N	\N	\N	2019-03-06 01:00:55.58859+00	2019-05-22 21:53:44.156891+00	1033	2019-05-22 21:53:44.158069+00	\N	~	1	\N	\N	Text
+5	NPI		\N	\N	\N	2019-03-06 01:00:55.67624+00	2019-05-22 21:53:44.184836+00	1034	2019-05-22 21:53:44.185892+00	\N	~	2	\N	\N	Number
+6	FIRST NAME		\N	\N	\N	2019-03-06 01:00:55.681354+00	2019-05-22 21:53:44.189845+00	1035	2019-05-22 21:53:44.191064+00	\N	~	2	\N	\N	Text
+4	LAST NAME		\N	\N	\N	2019-03-06 01:00:55.669316+00	2019-05-22 21:53:44.193802+00	1036	2019-05-22 21:53:44.194907+00	\N	~	2	\N	\N	Text
+7	Date_Reported		\N	\N	\N	2019-03-06 01:00:55.721571+00	2019-05-22 21:53:44.214987+00	1037	2019-05-22 21:53:44.216129+00	\N	~	3	\N	\N	Calendar date
+8	Location		\N	\N	\N	2019-03-06 01:00:55.733231+00	2019-05-22 21:53:44.219651+00	1038	2019-05-22 21:53:44.221023+00	\N	~	3	\N	\N	Text
+9	Statistical_Reporting_Area		\N	\N	\N	2019-03-06 01:00:55.741897+00	2019-05-22 21:53:44.224011+00	1039	2019-05-22 21:53:44.225123+00	\N	~	3	\N	\N	Number
+10	Beat		\N	\N	\N	2019-03-06 01:00:55.746988+00	2019-05-22 21:53:44.22784+00	1040	2019-05-22 21:53:44.22939+00	\N	~	3	\N	\N	Text
+11	Time_Reported		\N	\N	\N	2019-03-06 01:00:55.751731+00	2019-05-22 21:53:44.232151+00	1041	2019-05-22 21:53:44.233189+00	\N	~	3	\N	\N	Text
+12	Computer_Aided_Dispatch_Event_Type		\N	\N	\N	2019-03-06 01:00:55.756875+00	2019-05-22 21:53:44.235966+00	1042	2019-05-22 21:53:44.236925+00	\N	~	3	\N	\N	Text
+13	Incident Number	Master incident number as it relates to the call (different from incident as it relates to an offense)	\N	\N	\N	2019-03-06 01:00:55.794353+00	2019-05-22 21:53:44.260697+00	1043	2019-05-22 21:53:44.26236+00	\N	~	4	\N	\N	text
+14	Division	The Largest of the police geographic areas ( 7 patrol divisions)	\N	\N	\N	2019-03-06 01:00:55.799481+00	2019-05-22 21:53:44.266015+00	1044	2019-05-22 21:53:44.267353+00	\N	~	4	\N	\N	text
+15	Nature of Call	Problem type of call, for example loud music, burglary…etc.	\N	\N	\N	2019-03-06 01:00:55.808008+00	2019-05-22 21:53:44.271511+00	1045	2019-05-22 21:53:44.272547+00	\N	~	4	\N	\N	text
+16	Priority	Calls are broken down to priority type 1-4,…. 1 being most urgent	\N	\N	\N	2019-03-06 01:00:55.813108+00	2019-05-22 21:53:44.276436+00	1046	2019-05-22 21:53:44.27756+00	\N	~	4	\N	\N	text
+17	Date/Time	Date and time  of the call	\N	\N	\N	2019-03-06 01:00:55.818013+00	2019-05-22 21:53:44.280556+00	1047	2019-05-22 21:53:44.281482+00	\N	~	4	\N	\N	calendar_date
+18	Responding Elements Number	Responding officers element (unit) number	\N	\N	\N	2019-03-06 01:00:55.823207+00	2019-05-22 21:53:44.284769+00	1048	2019-05-22 21:53:44.285843+00	\N	~	4	\N	\N	text
+19	Block	Block number of address for the call	\N	\N	\N	2019-03-06 01:00:55.828355+00	2019-05-22 21:53:44.288784+00	1049	2019-05-22 21:53:44.2898+00	\N	~	4	\N	\N	text
+20	Location	Street name of address for call	\N	\N	\N	2019-03-06 01:00:55.833311+00	2019-05-22 21:53:44.292504+00	1050	2019-05-22 21:53:44.293565+00	\N	~	4	\N	\N	text
+21	Beat	The 2nd to smallest police geography (Beats are made of Reporting Areas)	\N	\N	\N	2019-03-06 01:00:55.838241+00	2019-05-22 21:53:44.296464+00	1051	2019-05-22 21:53:44.297596+00	\N	~	4	\N	\N	text
+22	Reporting Area	Smallest police geography which makes up all other police geographic areas (Beats, Sectors, Divisions)	\N	\N	\N	2019-03-06 01:00:55.843487+00	2019-05-22 21:53:44.300335+00	1052	2019-05-22 21:53:44.301642+00	\N	~	4	\N	\N	text
+23	Status	Status of the call as it relates to the responding officers	\N	\N	\N	2019-03-06 01:00:55.849243+00	2019-05-22 21:53:44.304159+00	1053	2019-05-22 21:53:44.305077+00	\N	~	4	\N	\N	text
+24	PERMIT_NUMBER		\N	\N	\N	2019-03-06 01:00:55.890845+00	2019-05-22 21:53:44.323981+00	1054	2019-05-22 21:53:44.325103+00	\N	~	5	\N	\N	Text
+25	CATEGORY		\N	\N	\N	2019-03-06 01:00:55.898124+00	2019-05-22 21:53:44.328666+00	1055	2019-05-22 21:53:44.329805+00	\N	~	5	\N	\N	Text
+26	SEWER		\N	\N	\N	2019-03-06 01:00:55.903218+00	2019-05-22 21:53:44.333614+00	1056	2019-05-22 21:53:44.335177+00	\N	~	5	\N	\N	Text
+27	FILE_DATE		\N	\N	\N	2019-03-06 01:00:55.908204+00	2019-05-22 21:53:44.339708+00	1057	2019-05-22 21:53:44.342722+00	\N	~	5	\N	\N	Calendar date
+28	ZIP		\N	\N	\N	2019-03-06 01:00:55.913245+00	2019-05-22 21:53:44.345838+00	1058	2019-05-22 21:53:44.346869+00	\N	~	5	\N	\N	Text
+29	WATER		\N	\N	\N	2019-03-06 01:00:55.919578+00	2019-05-22 21:53:44.349881+00	1059	2019-05-22 21:53:44.351052+00	\N	~	5	\N	\N	Text
+30	PERMIT_TYPE		\N	\N	\N	2019-03-06 01:00:55.925086+00	2019-05-22 21:53:44.353791+00	1060	2019-05-22 21:53:44.354709+00	\N	~	5	\N	\N	Text
+31	CENSUS_TRACT		\N	\N	\N	2019-03-06 01:00:55.930861+00	2019-05-22 21:53:44.357222+00	1061	2019-05-22 21:53:44.358209+00	\N	~	5	\N	\N	Text
+32	ISSUE_DATE		\N	\N	\N	2019-03-06 01:00:55.935648+00	2019-05-22 21:53:44.360874+00	1062	2019-05-22 21:53:44.361921+00	\N	~	5	\N	\N	Calendar date
+33	CITY		\N	\N	\N	2019-03-06 01:00:55.940509+00	2019-05-22 21:53:44.364574+00	1063	2019-05-22 21:53:44.365523+00	\N	~	5	\N	\N	Text
+34	TYPE		\N	\N	\N	2019-03-06 01:00:55.94561+00	2019-05-22 21:53:44.368119+00	1064	2019-05-22 21:53:44.369306+00	\N	~	5	\N	\N	Text
+72	Enlargement SQ Footage	Enlargement SQ Footage	\N	\N	\N	2019-03-06 01:00:56.214515+00	2019-05-22 21:53:44.387465+00	1065	2019-05-22 21:53:44.388835+00	\N	~	6	\N	\N	Number
+76	Owner'sHouse Street Name	House Street Name of Property Owner	\N	\N	\N	2019-03-06 01:00:56.254733+00	2019-05-22 21:53:44.391811+00	1066	2019-05-22 21:53:44.393116+00	\N	~	6	\N	\N	Text
+78	WITHDRAWAL_FLAG	Withdrawal Indicator	\N	\N	\N	2019-03-06 01:00:56.28294+00	2019-05-22 21:53:44.397031+00	1067	2019-05-22 21:53:44.398263+00	\N	~	6	\N	\N	Text
+82	Assigned	Date when job is assigned to plan examiner	\N	\N	\N	2019-03-06 01:00:56.333477+00	2019-05-22 21:53:44.401109+00	1068	2019-05-22 21:53:44.402221+00	\N	~	6	\N	\N	Text
+102	GIS_CENSUS_TRACT	Census Tract	\N	\N	\N	2019-03-06 01:00:56.449441+00	2019-05-22 21:53:44.407196+00	1069	2019-05-22 21:53:44.408311+00	\N	~	6	\N	\N	Text
+119	Sprinkler	Sprinkler  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.524304+00	2019-05-22 21:53:44.411135+00	1070	2019-05-22 21:53:44.412201+00	\N	~	6	\N	\N	Text
+118	Mechanical	Mechanical  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.520278+00	2019-05-22 21:53:44.415266+00	1071	2019-05-22 21:53:44.416288+00	\N	~	6	\N	\N	Text
+117	Adult Estab	Adult Estab	\N	\N	\N	2019-03-06 01:00:56.515762+00	2019-05-22 21:53:44.421502+00	1072	2019-05-22 21:53:44.426889+00	\N	~	6	\N	\N	Text
+116	Loft Board	Loft Board	\N	\N	\N	2019-03-06 01:00:56.511799+00	2019-05-22 21:53:44.431505+00	1073	2019-05-22 21:53:44.432495+00	\N	~	6	\N	\N	Text
+115	SPECIAL_ACTION_STATUS	Special Action Status	\N	\N	\N	2019-03-06 01:00:56.507706+00	2019-05-22 21:53:44.43525+00	1074	2019-05-22 21:53:44.436207+00	\N	~	6	\N	\N	Text
+113	Horizontal Enlrgmt	Horizontal Enlrgmt	\N	\N	\N	2019-03-06 01:00:56.499924+00	2019-05-22 21:53:44.439087+00	1075	2019-05-22 21:53:44.44009+00	\N	~	6	\N	\N	Text
+100	Doc #	Document Number	\N	\N	\N	2019-03-06 01:00:56.440143+00	2019-05-22 21:53:44.442937+00	1076	2019-05-22 21:53:44.443986+00	\N	~	6	\N	\N	Text
+98	Job Status Descrp	Status code description	\N	\N	\N	2019-03-06 01:00:56.430757+00	2019-05-22 21:53:44.446841+00	1077	2019-05-22 21:53:44.447906+00	\N	~	6	\N	\N	Text
+81	Proposed Height	Proposed Height	\N	\N	\N	2019-03-06 01:00:56.326184+00	2019-05-22 21:53:44.450432+00	1078	2019-05-22 21:53:44.451382+00	\N	~	6	\N	\N	Number
+121	Proposed Dwelling Units	Proposed Dwelling Units	\N	\N	\N	2019-03-06 01:00:56.532613+00	2019-05-22 21:53:44.455296+00	1079	2019-05-22 21:53:44.456228+00	\N	~	6	\N	\N	Text
+111	Job Description	Job Description	\N	\N	\N	2019-03-06 01:00:56.491356+00	2019-05-22 21:53:44.459063+00	1080	2019-05-22 21:53:44.460131+00	\N	~	6	\N	\N	Text
+106	BUILDING_CLASS	Building Class	\N	\N	\N	2019-03-06 01:00:56.465455+00	2019-05-22 21:53:44.463211+00	1081	2019-05-22 21:53:44.464119+00	\N	~	6	\N	\N	Text
+93	City Owned	City Owned	\N	\N	\N	2019-03-06 01:00:56.399239+00	2019-05-22 21:53:44.466497+00	1082	2019-05-22 21:53:44.467429+00	\N	~	6	\N	\N	Text
+60	Owner's First Name	First Name of property owner	\N	\N	\N	2019-03-06 01:00:56.123363+00	2019-05-22 21:53:44.470357+00	1083	2019-05-22 21:53:44.471357+00	\N	~	6	\N	\N	Text
+36	Paid	Date when job is paid	\N	\N	\N	2019-03-06 01:00:55.990879+00	2019-05-22 21:53:44.473855+00	1084	2019-05-22 21:53:44.47489+00	\N	~	6	\N	\N	Text
+37	Building Type	1-2-3 Family  or Other	\N	\N	\N	2019-03-06 01:00:55.996878+00	2019-05-22 21:53:44.47752+00	1085	2019-05-22 21:53:44.478648+00	\N	~	6	\N	\N	Text
+38	House #	House Number of Residence or Commercial Property	\N	\N	\N	2019-03-06 01:00:56.002387+00	2019-05-22 21:53:44.481907+00	1086	2019-05-22 21:53:44.483014+00	\N	~	6	\N	\N	Text
+39	Street Name	Street Name where Property is located	\N	\N	\N	2019-03-06 01:00:56.007861+00	2019-05-22 21:53:44.487147+00	1087	2019-05-22 21:53:44.488529+00	\N	~	6	\N	\N	Text
+130	Fire Alarm	Fire Alarm  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.574106+00	2019-05-22 21:53:44.492183+00	1088	2019-05-22 21:53:44.493949+00	\N	~	6	\N	\N	Text
+80	ExistingNo. of Stories	ExistingNo. of Stories	\N	\N	\N	2019-03-06 01:00:56.313843+00	2019-05-22 21:53:44.497262+00	1089	2019-05-22 21:53:44.498325+00	\N	~	6	\N	\N	Number
+40	GIS_COUNCIL_DISTRICT	Council District	\N	\N	\N	2019-03-06 01:00:56.014691+00	2019-05-22 21:53:44.501821+00	1090	2019-05-22 21:53:44.504028+00	\N	~	6	\N	\N	Text
+41	TOTAL_CONSTRUCTION_FLOOR_AREA	Total  Construction Floor Area	\N	\N	\N	2019-03-06 01:00:56.020336+00	2019-05-22 21:53:44.506891+00	1091	2019-05-22 21:53:44.508762+00	\N	~	6	\N	\N	Text
+42	JOB_S1_NO	JOB_S1_NO	\N	\N	\N	2019-03-06 01:00:56.025635+00	2019-05-22 21:53:44.512939+00	1092	2019-05-22 21:53:44.514179+00	\N	~	6	\N	\N	Text
+46	Fire Suppression	Fire Suppression  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.047302+00	2019-05-22 21:53:44.517349+00	1093	2019-05-22 21:53:44.518567+00	\N	~	6	\N	\N	Text
+48	City 	City 	\N	\N	\N	2019-03-06 01:00:56.056919+00	2019-05-22 21:53:44.521603+00	1094	2019-05-22 21:53:44.52267+00	\N	~	6	\N	\N	Text
+55	Owner's House Number	House Number of Property Owner	\N	\N	\N	2019-03-06 01:00:56.091797+00	2019-05-22 21:53:44.525728+00	1095	2019-05-22 21:53:44.526836+00	\N	~	6	\N	\N	Text
+61	Zoning Dist2	Zoning Distr 2	\N	\N	\N	2019-03-06 01:00:56.128617+00	2019-05-22 21:53:44.52992+00	1096	2019-05-22 21:53:44.531051+00	\N	~	6	\N	\N	Text
+63	Owner's Last Name	Last Name of property owner	\N	\N	\N	2019-03-06 01:00:56.138808+00	2019-05-22 21:53:44.53401+00	1097	2019-05-22 21:53:44.53512+00	\N	~	6	\N	\N	Text
+64	Special District 1	Special Distr 1	\N	\N	\N	2019-03-06 01:00:56.146134+00	2019-05-22 21:53:44.537781+00	1098	2019-05-22 21:53:44.538796+00	\N	~	6	\N	\N	Text
+65	Special District 2	Special District 2	\N	\N	\N	2019-03-06 01:00:56.15062+00	2019-05-22 21:53:44.541323+00	1099	2019-05-22 21:53:44.54238+00	\N	~	6	\N	\N	Text
+66	Vertical Enlrgmt	Vertical Enlrgmt	\N	\N	\N	2019-03-06 01:00:56.155627+00	2019-05-22 21:53:44.54516+00	1100	2019-05-22 21:53:44.546243+00	\N	~	6	\N	\N	Text
+35	Total Est. Fee	Estimated fee of job	\N	\N	\N	2019-03-06 01:00:55.985077+00	2019-05-22 21:53:44.549083+00	1101	2019-05-22 21:53:44.550079+00	\N	~	6	\N	\N	Text
+108	Fully Permitted	Date when job is fully permitted	\N	\N	\N	2019-03-06 01:00:56.475063+00	2019-05-22 21:53:44.552742+00	1102	2019-05-22 21:53:44.554744+00	\N	~	6	\N	\N	Text
+109	Initial Cost	 Estimated cost of job	\N	\N	\N	2019-03-06 01:00:56.479933+00	2019-05-22 21:53:44.561545+00	1103	2019-05-22 21:53:44.564065+00	\N	~	6	\N	\N	Text
+57	Other Description	Other Description	\N	\N	\N	2019-03-06 01:00:56.10258+00	2019-05-22 21:53:44.569011+00	1104	2019-05-22 21:53:44.573001+00	\N	~	6	\N	\N	Text
+58	Equipment	Equipment  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.108424+00	2019-05-22 21:53:44.578715+00	1105	2019-05-22 21:53:44.580196+00	\N	~	6	\N	\N	Text
+59	Boiler	Boiler  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.117994+00	2019-05-22 21:53:44.589598+00	1106	2019-05-22 21:53:44.591386+00	\N	~	6	\N	\N	Text
+129	Block	Tax block assigned by Department of Finance	\N	\N	\N	2019-03-06 01:00:56.570008+00	2019-05-22 21:53:44.596056+00	1107	2019-05-22 21:53:44.597705+00	\N	~	6	\N	\N	Text
+128	GIS_NTA_NAME	NTA Name	\N	\N	\N	2019-03-06 01:00:56.565489+00	2019-05-22 21:53:44.60236+00	1108	2019-05-22 21:53:44.60391+00	\N	~	6	\N	\N	Text
+127	Existing Height	Existing Height	\N	\N	\N	2019-03-06 01:00:56.560452+00	2019-05-22 21:53:44.607606+00	1109	2019-05-22 21:53:44.609343+00	\N	~	6	\N	\N	Number
+126	Street Frontage	Street Frontage	\N	\N	\N	2019-03-06 01:00:56.553644+00	2019-05-22 21:53:44.613357+00	1110	2019-05-22 21:53:44.614716+00	\N	~	6	\N	\N	Number
+125	Professional Cert	Job is Professionally Certified by Licensed Professional instead of having it reviewed by Department of Building's Plan Examiners	\N	\N	\N	2019-03-06 01:00:56.549498+00	2019-05-22 21:53:44.61884+00	1111	2019-05-22 21:53:44.620467+00	\N	~	6	\N	\N	Text
+124	Fuel Burning	Fuel Burning  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.545416+00	2019-05-22 21:53:44.62623+00	1112	2019-05-22 21:53:44.627551+00	\N	~	6	\N	\N	Text
+123	Borough	1= Manhattan, 2= Bronx, 3 = Brooklyn, 4 = Queens, 5 = Staten Island	\N	\N	\N	2019-03-06 01:00:56.541334+00	2019-05-22 21:53:44.632289+00	1113	2019-05-22 21:53:44.633948+00	\N	~	6	\N	\N	Text
+122	Zoning Dist1	Zoning Distr 1	\N	\N	\N	2019-03-06 01:00:56.537324+00	2019-05-22 21:53:44.638455+00	1114	2019-05-22 21:53:44.640009+00	\N	~	6	\N	\N	Text
+120	Fuel Storage	Fuel Storage  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.528433+00	2019-05-22 21:53:44.643898+00	1115	2019-05-22 21:53:44.645294+00	\N	~	6	\N	\N	Text
+67	Existing Occupancy	Existing Occupancy	\N	\N	\N	2019-03-06 01:00:56.160305+00	2019-05-22 21:53:44.649043+00	1116	2019-05-22 21:53:44.650384+00	\N	~	6	\N	\N	Text
+107	Owner'sPhone #	Owner's  Phone #	\N	\N	\N	2019-03-06 01:00:56.470028+00	2019-05-22 21:53:44.654375+00	1117	2019-05-22 21:53:44.655789+00	\N	~	6	\N	\N	Text
+104	GIS_BIN	BIN	\N	\N	\N	2019-03-06 01:00:56.457412+00	2019-05-22 21:53:44.659659+00	1118	2019-05-22 21:53:44.661017+00	\N	~	6	\N	\N	Text
+97	Bin #	Number assigned by City Planning to a specific building	\N	\N	\N	2019-03-06 01:00:56.424265+00	2019-05-22 21:53:44.665707+00	1119	2019-05-22 21:53:44.667086+00	\N	~	6	\N	\N	Text
+96	Existing Dwelling Units	Existing Dwelling Units	\N	\N	\N	2019-03-06 01:00:56.418045+00	2019-05-22 21:53:44.671169+00	1120	2019-05-22 21:53:44.672549+00	\N	~	6	\N	\N	Text
+94	Zip	Zip	\N	\N	\N	2019-03-06 01:00:56.405928+00	2019-05-22 21:53:44.675698+00	1121	2019-05-22 21:53:44.677613+00	\N	~	6	\N	\N	Text
+87	Landmarked	L code indicates that the building has been assigned landmark status	\N	\N	\N	2019-03-06 01:00:56.365274+00	2019-05-22 21:53:44.681143+00	1122	2019-05-22 21:53:44.682551+00	\N	~	6	\N	\N	Text
+43	Plumbing	Plumbing Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.031052+00	2019-05-22 21:53:44.686784+00	1123	2019-05-22 21:53:44.688408+00	\N	~	6	\N	\N	Text
+44	Other	Other? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.037542+00	2019-05-22 21:53:44.69229+00	1124	2019-05-22 21:53:44.694059+00	\N	~	6	\N	\N	Text
+54	Community - Board	3-digit identifier: Borough code = first position, last 2 = community board	\N	\N	\N	2019-03-06 01:00:56.086921+00	2019-05-22 21:53:44.698168+00	1125	2019-05-22 21:53:44.699689+00	\N	~	6	\N	\N	Text
+56	Applicant's Last Name	Last Name of Applicant	\N	\N	\N	2019-03-06 01:00:56.096846+00	2019-05-22 21:53:44.703449+00	1126	2019-05-22 21:53:44.704776+00	\N	~	6	\N	\N	Text
+68	Proposed No. of Stories	Proposed No. of Stories	\N	\N	\N	2019-03-06 01:00:56.16528+00	2019-05-22 21:53:44.709163+00	1127	2019-05-22 21:53:44.71045+00	\N	~	6	\N	\N	Number
+70	Standpipe	Standpipe Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.185415+00	2019-05-22 21:53:44.71432+00	1128	2019-05-22 21:53:44.715598+00	\N	~	6	\N	\N	Text
+99	Job #	Number assigned by DOB to Job Filing	\N	\N	\N	2019-03-06 01:00:56.435522+00	2019-05-22 21:53:44.720343+00	1129	2019-05-22 21:53:44.721792+00	\N	~	6	\N	\N	Text
+91	Little e	Hazardous	\N	\N	\N	2019-03-06 01:00:56.386637+00	2019-05-22 21:53:44.727085+00	1130	2019-05-22 21:53:44.728536+00	\N	~	6	\N	\N	Text
+112	Site Fill	Site Fill	\N	\N	\N	2019-03-06 01:00:56.495601+00	2019-05-22 21:53:44.732573+00	1131	2019-05-22 21:53:44.73505+00	\N	~	6	\N	\N	Text
+47	GIS_LONGITUDE	Longitude	\N	\N	\N	2019-03-06 01:00:56.051969+00	2019-05-22 21:53:44.739185+00	1132	2019-05-22 21:53:44.740718+00	\N	~	6	\N	\N	Text
+52	PC Filed	Application Filed electronically, rather than manually	\N	\N	\N	2019-03-06 01:00:56.076772+00	2019-05-22 21:53:44.743613+00	1133	2019-05-22 21:53:44.744715+00	\N	~	6	\N	\N	Text
+51	Lot	Tax lot assigned by Department of Finance	\N	\N	\N	2019-03-06 01:00:56.072238+00	2019-05-22 21:53:44.747579+00	1134	2019-05-22 21:53:44.748749+00	\N	~	6	\N	\N	Text
+69	Cluster	Cluster	\N	\N	\N	2019-03-06 01:00:56.174365+00	2019-05-22 21:53:44.751459+00	1135	2019-05-22 21:53:44.752527+00	\N	~	6	\N	\N	Text
+89	eFiling Filed	Application Filed electronically, rather than manually	\N	\N	\N	2019-03-06 01:00:56.376328+00	2019-05-22 21:53:44.755227+00	1136	2019-05-22 21:53:44.756235+00	\N	~	6	\N	\N	Text
+83	Approved	Date when job is approved	\N	\N	\N	2019-03-06 01:00:56.339451+00	2019-05-22 21:53:44.7589+00	1137	2019-05-22 21:53:44.75997+00	\N	~	6	\N	\N	Text
+84	Pre- Filing Date	Date when job is prefiled	\N	\N	\N	2019-03-06 01:00:56.346047+00	2019-05-22 21:53:44.762716+00	1138	2019-05-22 21:53:44.763954+00	\N	~	6	\N	\N	Text
+90	Applicant License #	Number assigned to the skilled trade person/contractor or licensed professional	\N	\N	\N	2019-03-06 01:00:56.381694+00	2019-05-22 21:53:44.766694+00	1139	2019-05-22 21:53:44.767933+00	\N	~	6	\N	\N	Text
+45	Applicant Professional Title	Applicant's Professional Title	\N	\N	\N	2019-03-06 01:00:56.042404+00	2019-05-22 21:53:44.770864+00	1140	2019-05-22 21:53:44.771899+00	\N	~	6	\N	\N	Text
+85	Fully Paid	Date when job is paid and entered	\N	\N	\N	2019-03-06 01:00:56.352858+00	2019-05-22 21:53:44.775306+00	1141	2019-05-22 21:53:44.776798+00	\N	~	6	\N	\N	Text
+86	Applicant's First Name	First Name of Applicant	\N	\N	\N	2019-03-06 01:00:56.359004+00	2019-05-22 21:53:44.780698+00	1142	2019-05-22 21:53:44.782103+00	\N	~	6	\N	\N	Text
+92	Job Type	Job Type, based on DOB Job Code (NB-New Building, A1, A2, A3- Alterations 1-3, SG-Sign, etc.)	\N	\N	\N	2019-03-06 01:00:56.392284+00	2019-05-22 21:53:44.785879+00	1143	2019-05-22 21:53:44.78757+00	\N	~	6	\N	\N	Text
+103	Job Status	DOB Status code of job (A-Pre Filed, I-Sign Off, P- Approved, R-Permit Entire) Complete List - http://www.nyc.gov/html/dob/downloads/pdf/bisjobstatus.pdf	\N	\N	\N	2019-03-06 01:00:56.453355+00	2019-05-22 21:53:44.791582+00	1144	2019-05-22 21:53:44.792701+00	\N	~	6	\N	\N	Text
+62	SPECIAL_ACTION_DATE	Special Action Date	\N	\N	\N	2019-03-06 01:00:56.133508+00	2019-05-22 21:53:44.796949+00	1145	2019-05-22 21:53:44.797927+00	\N	~	6	\N	\N	Text
+77	DOBRunDate	Date when query is run and pushed to Open Data. Could be used to differentiate report dates.	\N	\N	\N	2019-03-06 01:00:56.26562+00	2019-05-22 21:53:44.800321+00	1146	2019-05-22 21:53:44.801756+00	\N	~	6	\N	\N	Calendar date
+50	Owner's Business Name	Business Name of Property Owner	\N	\N	\N	2019-03-06 01:00:56.067575+00	2019-05-22 21:53:44.804295+00	1147	2019-05-22 21:53:44.805191+00	\N	~	6	\N	\N	Text
+88	Fee Status	Type of Fee	\N	\N	\N	2019-03-06 01:00:56.370635+00	2019-05-22 21:53:44.807654+00	1148	2019-05-22 21:53:44.808514+00	\N	~	6	\N	\N	Text
+73	Proposed Occupancy	Proposed Occupancy	\N	\N	\N	2019-03-06 01:00:56.224766+00	2019-05-22 21:53:44.811509+00	1149	2019-05-22 21:53:44.812777+00	\N	~	6	\N	\N	Text
+53	Zoning Dist3	Zoning Distr 3	\N	\N	\N	2019-03-06 01:00:56.081733+00	2019-05-22 21:53:44.815596+00	1150	2019-05-22 21:53:44.816693+00	\N	~	6	\N	\N	Text
+95	Non-Profit	Non-Profit	\N	\N	\N	2019-03-06 01:00:56.412178+00	2019-05-22 21:53:44.819611+00	1151	2019-05-22 21:53:44.820606+00	\N	~	6	\N	\N	Text
+110	SIGNOFF_DATE	Sign-off Date	\N	\N	\N	2019-03-06 01:00:56.486157+00	2019-05-22 21:53:44.823306+00	1152	2019-05-22 21:53:44.824244+00	\N	~	6	\N	\N	Text
+79	GIS_LATITUDE	Latitude	\N	\N	\N	2019-03-06 01:00:56.29482+00	2019-05-22 21:53:44.8269+00	1153	2019-05-22 21:53:44.828303+00	\N	~	6	\N	\N	Text
+49	JOB_NO_GOOD_COUNT	Job No Good Count	\N	\N	\N	2019-03-06 01:00:56.062354+00	2019-05-22 21:53:44.831394+00	1154	2019-05-22 21:53:44.832429+00	\N	~	6	\N	\N	Text
+114	Curb Cut	Curb Cut  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.503771+00	2019-05-22 21:53:44.837118+00	1155	2019-05-22 21:53:44.838263+00	\N	~	6	\N	\N	Text
+74	Owner Type	Owner Type	\N	\N	\N	2019-03-06 01:00:56.234275+00	2019-05-22 21:53:44.841224+00	1156	2019-05-22 21:53:44.842351+00	\N	~	6	\N	\N	Text
+71	Existing Zoning Sqft	Existing Zoning Sqft	\N	\N	\N	2019-03-06 01:00:56.201766+00	2019-05-22 21:53:44.845049+00	1157	2019-05-22 21:53:44.846265+00	\N	~	6	\N	\N	Number
+75	State	State	\N	\N	\N	2019-03-06 01:00:56.243711+00	2019-05-22 21:53:44.849159+00	1158	2019-05-22 21:53:44.850192+00	\N	~	6	\N	\N	Text
+101	Latest Action Date	Latest status date	\N	\N	\N	2019-03-06 01:00:56.444733+00	2019-05-22 21:53:44.853012+00	1159	2019-05-22 21:53:44.854055+00	\N	~	6	\N	\N	Calendar date
+105	Proposed Zoning Sqft	Proposed Zoning Sqft	\N	\N	\N	2019-03-06 01:00:56.461463+00	2019-05-22 21:53:44.856951+00	1160	2019-05-22 21:53:44.858094+00	\N	~	6	\N	\N	Number
+131	Apparatus_ID		\N	\N	\N	2019-03-06 01:00:56.602581+00	2019-05-22 21:53:44.880459+00	1161	2019-05-22 21:53:44.881558+00	\N	~	7	\N	\N	Text
+132	Apparatus_Type_Code		\N	\N	\N	2019-03-06 01:00:56.607954+00	2019-05-22 21:53:44.885093+00	1162	2019-05-22 21:53:44.88642+00	\N	~	7	\N	\N	Number
+133	Incident_ID		\N	\N	\N	2019-03-06 01:00:56.612612+00	2019-05-22 21:53:44.890201+00	1163	2019-05-22 21:53:44.891709+00	\N	~	7	\N	\N	Number
+134	Apparartus_Type		\N	\N	\N	2019-03-06 01:00:56.617189+00	2019-05-22 21:53:44.896048+00	1164	2019-05-22 21:53:44.897171+00	\N	~	7	\N	\N	Text
+135	Enroute_Scene_Time	The time the unit began travel to the scene	\N	\N	\N	2019-03-06 01:00:56.623716+00	2019-05-22 21:53:44.899861+00	1165	2019-05-22 21:53:44.901085+00	\N	~	7	\N	\N	Calendar date
+136	Canceled_Enroute	Was the unit's response canceled by 911 or Incident Command prior to arrival?	\N	\N	\N	2019-03-06 01:00:56.628226+00	2019-05-22 21:53:44.904124+00	1166	2019-05-22 21:53:44.905143+00	\N	~	7	\N	\N	Text
+137	Number_Of_People		\N	\N	\N	2019-03-06 01:00:56.632801+00	2019-05-22 21:53:44.90996+00	1167	2019-05-22 21:53:44.911075+00	\N	~	7	\N	\N	Number
+138	Dispatch_Time	The time that the unit was alerted by the 911 Center	\N	\N	\N	2019-03-06 01:00:56.636855+00	2019-05-22 21:53:44.91388+00	1168	2019-05-22 21:53:44.914925+00	\N	~	7	\N	\N	Calendar date
+139	Arrival_Time	The time the unit arrived at the location of the incident	\N	\N	\N	2019-03-06 01:00:56.640813+00	2019-05-22 21:53:44.917967+00	1169	2019-05-22 21:53:44.919021+00	\N	~	7	\N	\N	Text
+140	Action_Taken_Code		\N	\N	\N	2019-03-06 01:00:56.645382+00	2019-05-22 21:53:44.921867+00	1170	2019-05-22 21:53:44.923021+00	\N	~	7	\N	\N	Number
+141	Action_Taken		\N	\N	\N	2019-03-06 01:00:56.649739+00	2019-05-22 21:53:44.925885+00	1171	2019-05-22 21:53:44.927297+00	\N	~	7	\N	\N	Text
+142	First_Arriving_Unit	Was this unit reported as first unit to arrive on scene?	\N	\N	\N	2019-03-06 01:00:56.654233+00	2019-05-22 21:53:44.930567+00	1172	2019-05-22 21:53:44.93164+00	\N	~	7	\N	\N	Text
+143	Responded_From_Quarters	Was this unit located in its assigned station when alerted? (Often, a unit is dispatched while still returning from a previous call.)	\N	\N	\N	2019-03-06 01:00:56.658642+00	2019-05-22 21:53:44.934597+00	1173	2019-05-22 21:53:44.93564+00	\N	~	7	\N	\N	Text
+144	FIrst_Due_Station		\N	\N	\N	2019-03-06 01:00:56.700711+00	2019-05-22 21:53:44.95757+00	1174	2019-05-22 21:53:44.95894+00	\N	~	8	\N	\N	Number
+145	Action_Taken		\N	\N	\N	2019-03-06 01:00:56.710089+00	2019-05-22 21:53:44.963707+00	1175	2019-05-22 21:53:44.964904+00	\N	~	8	\N	\N	Text
+146	Number_Fire_Personnel		\N	\N	\N	2019-03-06 01:00:56.718969+00	2019-05-22 21:53:44.967812+00	1176	2019-05-22 21:53:44.969149+00	\N	~	8	\N	\N	Number
+147	Number_Engines		\N	\N	\N	2019-03-06 01:00:56.724628+00	2019-05-22 21:53:44.972185+00	1177	2019-05-22 21:53:44.973588+00	\N	~	8	\N	\N	Number
+148	Number_Other_Personnel		\N	\N	\N	2019-03-06 01:00:56.729219+00	2019-05-22 21:53:44.976325+00	1178	2019-05-22 21:53:44.977356+00	\N	~	8	\N	\N	Number
+149	Incident_Number		\N	\N	\N	2019-03-06 01:00:56.734004+00	2019-05-22 21:53:44.980449+00	1179	2019-05-22 21:53:44.981432+00	\N	~	8	\N	\N	Number
+150	Incident_Type_Code		\N	\N	\N	2019-03-06 01:00:56.741701+00	2019-05-22 21:53:44.984018+00	1180	2019-05-22 21:53:44.985312+00	\N	~	8	\N	\N	Number
+151	Fire_Service_Fatalities		\N	\N	\N	2019-03-06 01:00:56.748327+00	2019-05-22 21:53:44.988327+00	1181	2019-05-22 21:53:44.989563+00	\N	~	8	\N	\N	Number
+152	Emergency_Medical_Service_Provided		\N	\N	\N	2019-03-06 01:00:56.753723+00	2019-05-22 21:53:44.992118+00	1182	2019-05-22 21:53:44.99333+00	\N	~	8	\N	\N	Number
+153	State		\N	\N	\N	2019-03-06 01:00:56.758413+00	2019-05-22 21:53:44.997544+00	1183	2019-05-22 21:53:44.998642+00	\N	~	8	\N	\N	Text
+154	Zip		\N	\N	\N	2019-03-06 01:00:56.762799+00	2019-05-22 21:53:45.005209+00	1184	2019-05-22 21:53:45.00793+00	\N	~	8	\N	\N	Number
+155	Incident_Type		\N	\N	\N	2019-03-06 01:00:56.768543+00	2019-05-22 21:53:45.015947+00	1185	2019-05-22 21:53:45.018504+00	\N	~	8	\N	\N	Text
+156	Citizen_Fatalities		\N	\N	\N	2019-03-06 01:00:56.773227+00	2019-05-22 21:53:45.023962+00	1186	2019-05-22 21:53:45.025864+00	\N	~	8	\N	\N	Number
+157	Property_Use		\N	\N	\N	2019-03-06 01:00:56.77769+00	2019-05-22 21:53:45.031837+00	1187	2019-05-22 21:53:45.03342+00	\N	~	8	\N	\N	Text
+158	Action_Taken_Code		\N	\N	\N	2019-03-06 01:00:56.782358+00	2019-05-22 21:53:45.037948+00	1188	2019-05-22 21:53:45.038896+00	\N	~	8	\N	\N	Number
+159	Number_Ambulances		\N	\N	\N	2019-03-06 01:00:56.78675+00	2019-05-22 21:53:45.043194+00	1189	2019-05-22 21:53:45.043953+00	\N	~	8	\N	\N	Number
+160	City		\N	\N	\N	2019-03-06 01:00:56.791347+00	2019-05-22 21:53:45.046316+00	1190	2019-05-22 21:53:45.047059+00	\N	~	8	\N	\N	Text
+161	Date_Time		\N	\N	\N	2019-03-06 01:00:56.796071+00	2019-05-22 21:53:45.048987+00	1191	2019-05-22 21:53:45.049673+00	\N	~	8	\N	\N	Calendar date
+162	Property_Use_Code		\N	\N	\N	2019-03-06 01:00:56.801177+00	2019-05-22 21:53:45.052622+00	1192	2019-05-22 21:53:45.053344+00	\N	~	8	\N	\N	Number
+163	Number_Other		\N	\N	\N	2019-03-06 01:00:56.806279+00	2019-05-22 21:53:45.05547+00	1193	2019-05-22 21:53:45.056238+00	\N	~	8	\N	\N	Number
+164	Number_Medical_Personnel		\N	\N	\N	2019-03-06 01:00:56.810831+00	2019-05-22 21:53:45.058161+00	1194	2019-05-22 21:53:45.058912+00	\N	~	8	\N	\N	Number
+165	Fire_Service_Injuries		\N	\N	\N	2019-03-06 01:00:56.8151+00	2019-05-22 21:53:45.061131+00	1195	2019-05-22 21:53:45.061863+00	\N	~	8	\N	\N	Number
+166	Citizen_Injuries		\N	\N	\N	2019-03-06 01:00:56.819362+00	2019-05-22 21:53:45.064131+00	1196	2019-05-22 21:53:45.065147+00	\N	~	8	\N	\N	Number
+167	Incident_ID		\N	\N	\N	2019-03-06 01:00:56.850905+00	2019-05-22 21:53:45.090018+00	1197	2019-05-22 21:53:45.090967+00	\N	~	9	\N	\N	Number
+168	Status		\N	\N	\N	2019-03-06 01:00:56.857428+00	2019-05-22 21:53:45.093422+00	1198	2019-05-22 21:53:45.094887+00	\N	~	9	\N	\N	Text
+169	Apparatus_ID		\N	\N	\N	2019-03-06 01:00:56.864253+00	2019-05-22 21:53:45.098068+00	1199	2019-05-22 21:53:45.098896+00	\N	~	9	\N	\N	Text
+170	Rank		\N	\N	\N	2019-03-06 01:00:56.869004+00	2019-05-22 21:53:45.101459+00	1200	2019-05-22 21:53:45.102527+00	\N	~	9	\N	\N	Text
+171	incidentdate		\N	\N	\N	2019-03-06 01:00:56.873655+00	2019-05-22 21:53:45.105941+00	1201	2019-05-22 21:53:45.10728+00	\N	~	9	\N	\N	Calendar date
+1031	Location (city)		\N	\N	\N	2019-05-22 21:53:45.130546+00	2019-05-22 21:53:45.130572+00	1202	2019-05-22 21:53:45.131459+00	\N	+	10	\N	\N	Text
+173	Sub_Type_English		\N	\N	\N	2019-03-06 01:00:56.919319+00	2019-05-22 21:53:45.135698+00	1203	2019-05-22 21:53:45.136809+00	\N	~	10	\N	\N	Text
+176	Incident_Date	The date the incident was created.	\N	\N	\N	2019-03-06 01:00:56.937538+00	2019-05-22 21:53:45.17459+00	1204	2019-05-22 21:53:45.176028+00	\N	~	10	\N	\N	Calendar date
+177	ID	A unique incident number for each call.	\N	\N	\N	2019-03-06 01:00:56.941973+00	2019-05-22 21:53:45.179765+00	1205	2019-05-22 21:53:45.181092+00	\N	~	10	\N	\N	Number
+172	Location		\N	\N	\N	2019-03-06 01:00:56.905165+00	2019-05-22 21:53:45.184937+00	1206	2019-05-22 21:53:45.186393+00	\N	~	10	\N	\N	Point
+1032	Zip Codes		\N	\N	\N	2019-05-22 21:53:45.189924+00	2019-05-22 21:53:45.189953+00	1207	2019-05-22 21:53:45.190876+00	\N	+	10	\N	\N	Number
+1033	Location (zip)		\N	\N	\N	2019-05-22 21:53:45.193823+00	2019-05-22 21:53:45.193852+00	1208	2019-05-22 21:53:45.194562+00	\N	+	10	\N	\N	Text
+1034	Location (address)		\N	\N	\N	2019-05-22 21:53:45.197933+00	2019-05-22 21:53:45.197961+00	1209	2019-05-22 21:53:45.198868+00	\N	+	10	\N	\N	Text
+1035	Location (state)		\N	\N	\N	2019-05-22 21:53:45.202262+00	2019-05-22 21:53:45.202291+00	1210	2019-05-22 21:53:45.203093+00	\N	+	10	\N	\N	Text
+179	Type_Code		\N	\N	\N	2019-03-06 01:00:56.952177+00	2019-05-22 21:53:45.206391+00	1211	2019-05-22 21:53:45.207535+00	\N	~	10	\N	\N	Text
+175	Type_English		\N	\N	\N	2019-03-06 01:00:56.932991+00	2019-05-22 21:53:45.210639+00	1212	2019-05-22 21:53:45.213918+00	\N	~	10	\N	\N	Text
+174	Sub_Type_Code	The sub-type code. Note that 'ALS' is an advanced life support call, meaning a paramedic's services are required. BLS is a basic life support call, for which an EMT is required.	\N	\N	\N	2019-03-06 01:00:56.92797+00	2019-05-22 21:53:45.217086+00	1213	2019-05-22 21:53:45.218561+00	\N	~	10	\N	\N	Text
+178	Station		\N	\N	\N	2019-03-06 01:00:56.946802+00	2019-05-22 21:53:45.221694+00	1214	2019-05-22 21:53:45.222829+00	\N	~	10	\N	\N	Number
+189	Last Updated	Latest Updated Date\n	\N	\N	\N	2019-03-06 01:00:57.042214+00	2019-05-22 21:53:45.248094+00	1215	2019-05-22 21:53:45.249298+00	\N	~	11	\N	\N	Calendar date
+191	Drug Test	Drug testing is required for Medallion and FHV TLC driver’s licenses. "Needed": You must take and pass a drug test at an approved testing facility. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you do not need to take a TLC Drug Test. “Complete”: Your drug test information has been received and updated in your TLC record.	\N	\N	\N	2019-03-06 01:00:57.053474+00	2019-05-22 21:53:45.252473+00	1216	2019-05-22 21:53:45.253676+00	\N	~	11	\N	\N	Text
+180	Driver Exam	Upon Completion of TLC Driver Training (Taxi School), you will need to take and pass a final exam. Passing score is 70%. “Needed”: Your TLC Driver Exam information is not in our system. If you have not taken your TLC Driver Exam please do so. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you will not need to take this exam. “Complete”: Your TLC Driver Exam information has been received and updated in your TLC record\n	\N	\N	\N	2019-03-06 01:00:56.983569+00	2019-05-22 21:53:45.256519+00	1217	2019-05-22 21:53:45.257612+00	\N	~	11	\N	\N	Text
+183	Medical Clearance Form	A Medical Clearance form from a licensed medical doctor is a requirement for those who apply for a Medallion or a For-Hire Vehicle driver’s license. If the entry is: “Needed”: Your Medical Clearance form is not in our system. If you have not been medically cleared by a licensed medical doctor please do so immediately. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you will not need to take this step as it is covered by your 19A status. “Complete”: Your Medical Clearance has been received and updated in your TLC record.\n	\N	\N	\N	2019-03-06 01:00:57.007598+00	2019-05-22 21:53:45.260802+00	1218	2019-05-22 21:53:45.261972+00	\N	~	11	\N	\N	Text
+213	Established Date	The date on which an eligible list is made available for certification to agencies to consider an eligible candidate for appointment.\n	\N	\N	\N	2019-03-06 01:00:57.220132+00	2019-05-22 21:53:45.482722+00	1255	2019-05-22 21:53:45.48375+00	\N	~	13	\N	\N	Calendar date
+184	WAV Course	Wheelchair Accessible Vehicle Training (WAV) is a requirement for those who apply for a Medallion or For-Hire Vehicle driver’s license. “Needed”: You must take the Wheelchair Accessible Vehicle Training Course within 90 days from the date you submitted your application. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you will not need to take this training. “Complete”: Your WAV training information has been received and updated in your TLC record.\n	\N	\N	\N	2019-03-06 01:00:57.01368+00	2019-05-22 21:53:45.264889+00	1219	2019-05-22 21:53:45.265935+00	\N	~	11	\N	\N	Text
+181	FRU Interview Scheduled	Fitness Review Unit Interview: “Not Applicable” if no Fitness Review is necessary. OR If there is a date, a Fitness Interview has been scheduled. Watch your mail/email for more information.\n	\N	\N	\N	2019-03-06 01:00:56.990005+00	2019-05-22 21:53:45.270312+00	1220	2019-05-22 21:53:45.27146+00	\N	~	11	\N	\N	Text
+185	Status	"Incomplete": Your application is missing requirements. "Pending Fitness Interview": Your application has been forwarded to the Fitness Review Unit for a Fitness Interview. "Denied": Your application has been denied. "Under Review": Your application is still being processed. "Approved - License Issued": Your application has been approved and your license will be mailed to the address provided on your application. Allow up to two weeks after approval for delivery.\n	\N	\N	\N	2019-03-06 01:00:57.019337+00	2019-05-22 21:53:45.27598+00	1221	2019-05-22 21:53:45.277063+00	\N	~	11	\N	\N	Text
+186	App No	This is the number linked to your application.\nOnce your application has been approved this will become your license number.	\N	\N	\N	2019-03-06 01:00:57.024515+00	2019-05-22 21:53:45.28045+00	1222	2019-05-22 21:53:45.281601+00	\N	~	11	\N	\N	Number
+182	Other Requirements	This field is for miscellaneous items that may need more sensitive information. Visit www.nyc.gov/tlcup for more information and to upload missing requirements. “Not Applicable”: “Other requirements” do not apply to you at this time. \n	\N	\N	\N	2019-03-06 01:00:56.994643+00	2019-05-22 21:53:45.284896+00	1223	2019-05-22 21:53:45.286069+00	\N	~	11	\N	\N	Text
+188	Type	This is the classification of license you have applied for. HDR: Medallion /For-Hire Vehicle Operator. PDR: Paratransit Vehicle Operator. VDR: Commuter Van Vehicle Operator \n	\N	\N	\N	2019-03-06 01:00:57.035024+00	2019-05-22 21:53:45.288962+00	1224	2019-05-22 21:53:45.289929+00	\N	~	11	\N	\N	Text
+187	Defensive Driving	A NYS certified 6 hour Defensive Driving Course is a requirement to receive your TLC license.\n	\N	\N	\N	2019-03-06 01:00:57.029625+00	2019-05-22 21:53:45.292386+00	1225	2019-05-22 21:53:45.293338+00	\N	~	11	\N	\N	Text
+190	App Date	The date you submitted your application.	\N	\N	\N	2019-03-06 01:00:57.047643+00	2019-05-22 21:53:45.295783+00	1226	2019-05-22 21:53:45.298222+00	\N	~	11	\N	\N	Calendar date
+195	Job Titles	Title of employee at the time when the data was updated.	\N	\N	\N	2019-03-06 01:00:57.103745+00	2019-05-22 21:53:45.320422+00	1227	2019-05-22 21:53:45.32274+00	\N	~	12	\N	\N	Text
+198	Salary or Hourly	Defines whether an employee is paid on an hourly basis or salary basis. Hourly employees are further defined by the number of hours they work in a week. See the "Frequency Description" column.	\N	\N	\N	2019-03-06 01:00:57.117107+00	2019-05-22 21:53:45.325993+00	1228	2019-05-22 21:53:45.327059+00	\N	~	12	\N	\N	Text
+193	Typical Hours	Describes the typical amount of work for hourly employees. This data does not apply to salary employees.\n\n40 - Employee paid on an hourly basis; works an 8 hour day; can be either full-time permanent (FT/P) or full-time temporary (FT-T) which is a seasonal employee; 35 - Employee paid on an hourly basis; works a 7 hour day; can be either full-time permanent (FT/P) or full-time temporary (FT-T) which is a seasonal employee; 20 - Employee paid on a part-time, hourly basis; typically works a 4 hour day, 5 days a week; 10 - Employee paid on a part-time, hourly basis; works 10 hours or less in a week.	\N	\N	\N	2019-03-06 01:00:57.093909+00	2019-05-22 21:53:45.331225+00	1229	2019-05-22 21:53:45.332344+00	\N	~	12	\N	\N	Number
+199	Name	Name of employee	\N	\N	\N	2019-03-06 01:00:57.121789+00	2019-05-22 21:53:45.335952+00	1230	2019-05-22 21:53:45.338133+00	\N	~	12	\N	\N	Text
+194	Department	Department where employee worked.	\N	\N	\N	2019-03-06 01:00:57.098883+00	2019-05-22 21:53:45.340971+00	1231	2019-05-22 21:53:45.34227+00	\N	~	12	\N	\N	Text
+196	Full or Part-Time	Whether the employee was employed full- (F) or part-time (P).	\N	\N	\N	2019-03-06 01:00:57.108181+00	2019-05-22 21:53:45.345175+00	1232	2019-05-22 21:53:45.346365+00	\N	~	12	\N	\N	Text
+192	Hourly Rate	The hourly salary rates for individuals whose pay frequency is "hourly". Hourly employees have varying hours worked throughout the week, which is described in the "Frequency Description" column.	\N	\N	\N	2019-03-06 01:00:57.088987+00	2019-05-22 21:53:45.3494+00	1233	2019-05-22 21:53:45.350654+00	\N	~	12	\N	\N	Number
+197	Annual Salary	Annual salary rates. Only applies for employees whose pay frequency is "Salary". Hourly employees rates are only shown in "Hourly Rates" column.	\N	\N	\N	2019-03-06 01:00:57.112599+00	2019-05-22 21:53:45.353558+00	1234	2019-05-22 21:53:45.354615+00	\N	~	12	\N	\N	Number
+226	Last Name		\N	\N	\N	2019-03-06 01:00:57.381546+00	2019-05-22 21:53:45.376394+00	1235	2019-05-22 21:53:45.378215+00	\N	~	14	\N	\N	Text
+228	Second Line Street Address		\N	\N	\N	2019-03-06 01:00:57.401652+00	2019-05-22 21:53:45.381415+00	1236	2019-05-22 21:53:45.382396+00	\N	~	14	\N	\N	Text
+224	Specialty		\N	\N	\N	2019-03-06 01:00:57.361349+00	2019-05-22 21:53:45.385121+00	1237	2019-05-22 21:53:45.386158+00	\N	~	14	\N	\N	Text
+225	First Name		\N	\N	\N	2019-03-06 01:00:57.37201+00	2019-05-22 21:53:45.38868+00	1238	2019-05-22 21:53:45.390043+00	\N	~	14	\N	\N	Text
+227	NPI		\N	\N	\N	2019-03-06 01:00:57.391358+00	2019-05-22 21:53:45.393207+00	1239	2019-05-22 21:53:45.394361+00	\N	~	14	\N	\N	Text
+222	Zip code		\N	\N	\N	2019-03-06 01:00:57.336069+00	2019-05-22 21:53:45.397468+00	1240	2019-05-22 21:53:45.398625+00	\N	~	14	\N	\N	Text
+223	First Line Street Address		\N	\N	\N	2019-03-06 01:00:57.346634+00	2019-05-22 21:53:45.401484+00	1241	2019-05-22 21:53:45.402577+00	\N	~	14	\N	\N	Text
+229	State Code		\N	\N	\N	2019-03-06 01:00:57.413145+00	2019-05-22 21:53:45.405202+00	1242	2019-05-22 21:53:45.406158+00	\N	~	14	\N	\N	Text
+221	Optout End Date		\N	\N	\N	2019-03-06 01:00:57.325492+00	2019-05-22 21:53:45.409745+00	1243	2019-05-22 21:53:45.410819+00	\N	~	14	\N	\N	Calendar date
+220	City Name		\N	\N	\N	2019-03-06 01:00:57.319346+00	2019-05-22 21:53:45.413947+00	1244	2019-05-22 21:53:45.415336+00	\N	~	14	\N	\N	Text
+230	Optout Effective Date		\N	\N	\N	2019-03-06 01:00:57.426483+00	2019-05-22 21:53:45.418537+00	1245	2019-05-22 21:53:45.419791+00	\N	~	14	\N	\N	Calendar date
+203	Parent Lgy Credit	A “Parent Legacy credit” is an additional credit given on an exam (10 points) to a candidate who lost a parent (FDNY, NYPD, or a First Responder, during or as a result of 911).\n	\N	\N	\N	2019-03-06 01:00:57.167327+00	2019-05-22 21:53:45.445283+00	1246	2019-05-22 21:53:45.446995+00	\N	~	13	\N	\N	Text
+210	Adj. FA	The Adjusted Final Average (“Adj. FA” or “AFA”) is an eligible candidate’s test score in addition to any additional credits granted.\n	\N	\N	\N	2019-03-06 01:00:57.204913+00	2019-05-22 21:53:45.449811+00	1247	2019-05-22 21:53:45.450709+00	\N	~	13	\N	\N	Number
+219	List Title Desc	A descriptive name that identifies a civil service title. \n	\N	\N	\N	2019-03-06 01:00:57.250826+00	2019-05-22 21:53:45.45355+00	1248	2019-05-22 21:53:45.454464+00	\N	~	13	\N	\N	Text
+218	Group No	Represents the certification order for a list. (e.g. – eligible candidates on a list with a 01 group number may be considered for appointment before an eligible candidate on primary list with a 00 group number).\n	\N	\N	\N	2019-03-06 01:00:57.245586+00	2019-05-22 21:53:45.45686+00	1249	2019-05-22 21:53:45.457837+00	\N	~	13	\N	\N	Text
+209	List Title Code	A five (5) digit number that corresponds to and represents a civil service title.\n	\N	\N	\N	2019-03-06 01:00:57.199955+00	2019-05-22 21:53:45.460585+00	1250	2019-05-22 21:53:45.462023+00	\N	~	13	\N	\N	Text
+217	List Agency Code	A three (3) digit number used to identify an agency (For Promotion List Only).\n	\N	\N	\N	2019-03-06 01:00:57.24015+00	2019-05-22 21:53:45.464843+00	1251	2019-05-22 21:53:45.465811+00	\N	~	13	\N	\N	Text
+216	List Agency Desc	The name of an appointing Agency.\n	\N	\N	\N	2019-03-06 01:00:57.235536+00	2019-05-22 21:53:45.468569+00	1252	2019-05-22 21:53:45.471836+00	\N	~	13	\N	\N	Text
+215	List Div Code	The promotional division codes/descriptions within the New York City Transit Authority only.\n	\N	\N	\N	2019-03-06 01:00:57.23062+00	2019-05-22 21:53:45.474591+00	1253	2019-05-22 21:53:45.475633+00	\N	~	13	\N	\N	Text
+214	Published Date	The date on which an eligible list is made available for review by the general public and appointing agencies.  \n	\N	\N	\N	2019-03-06 01:00:57.225452+00	2019-05-22 21:53:45.478177+00	1254	2019-05-22 21:53:45.479413+00	\N	~	13	\N	\N	Calendar date
+269	Specialty Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:57.823094+00	2019-05-22 21:53:45.885069+00	1316	2019-05-22 21:53:45.886503+00	\N	~	17	\N	\N	Text
+202	Anniversary Date	The date on which an eligible list is scheduled to expire.      \n	\N	\N	\N	2019-03-06 01:00:57.16153+00	2019-05-22 21:53:45.488212+00	1256	2019-05-22 21:53:45.489536+00	\N	~	13	\N	\N	Calendar date
+212	Extension Date	The date on which a list will be extended beyond its original expiration date.  \n	\N	\N	\N	2019-03-06 01:00:57.215135+00	2019-05-22 21:53:45.492483+00	1257	2019-05-22 21:53:45.494182+00	\N	~	13	\N	\N	Calendar date
+211	Veteran Credit	An additional credit given to a Veteran (5 points) or disabled veteran (10 points) when s/he accepts a permanent position from an eligible list. \n	\N	\N	\N	2019-03-06 01:00:57.210116+00	2019-05-22 21:53:45.497852+00	1258	2019-05-22 21:53:45.498986+00	\N	~	13	\N	\N	Text
+208	MI	A candidate’s middle initial (MI) as it appears on their application.\n	\N	\N	\N	2019-03-06 01:00:57.194724+00	2019-05-22 21:53:45.501851+00	1259	2019-05-22 21:53:45.503753+00	\N	~	13	\N	\N	Text
+204	Exam No	A four (4) digit number that identifies a civil service examination. \n\n	\N	\N	\N	2019-03-06 01:00:57.172677+00	2019-05-22 21:53:45.507958+00	1260	2019-05-22 21:53:45.509299+00	\N	~	13	\N	\N	Text
+206	First Name	A candidate’s first name as it appears on their application.\n	\N	\N	\N	2019-03-06 01:00:57.183863+00	2019-05-22 21:53:45.513654+00	1261	2019-05-22 21:53:45.51484+00	\N	~	13	\N	\N	Text
+200	Residency Credit	An additional credit given on an exam to a candidate who maintains a continuous period of residency in New York City as described in the Notice of Examination for a specific title.     \n	\N	\N	\N	2019-03-06 01:00:57.152482+00	2019-05-22 21:53:45.517857+00	1262	2019-05-22 21:53:45.519149+00	\N	~	13	\N	\N	Text
+201	Sibling Lgy Credit	A “Sibling Legacy Credit” is additional credit given on an exam (10 points) to a candidate who lost a sibling (FDNY, NYPD, or a First Responder, during or as a result of 911).\n	\N	\N	\N	2019-03-06 01:00:57.156682+00	2019-05-22 21:53:45.522118+00	1263	2019-05-22 21:53:45.523308+00	\N	~	13	\N	\N	Text
+207	Last Name	A candidate’s last name as it appears on their application.\n	\N	\N	\N	2019-03-06 01:00:57.189247+00	2019-05-22 21:53:45.526614+00	1264	2019-05-22 21:53:45.528934+00	\N	~	13	\N	\N	Text
+205	List No	An eligible candidate’s placement on a given list as of the business day that the data set is populated. \n\n	\N	\N	\N	2019-03-06 01:00:57.178295+00	2019-05-22 21:53:45.532647+00	1265	2019-05-22 21:53:45.533823+00	\N	~	13	\N	\N	Number
+234	Midday Win 4 Booster	Booster percentage for Midday Win4 number	\N	\N	\N	2019-03-06 01:00:57.514734+00	2019-05-22 21:53:45.55613+00	1266	2019-05-22 21:53:45.557506+00	\N	~	15	\N	\N	Text
+232	Evening Daily Booster	Booster percentage for Evening  Daily number	\N	\N	\N	2019-03-06 01:00:57.502647+00	2019-05-22 21:53:45.560992+00	1267	2019-05-22 21:53:45.56281+00	\N	~	15	\N	\N	Text
+242	Evening Win 4 Sum		\N	\N	\N	2019-03-06 01:00:57.563952+00	2019-05-22 21:53:45.56587+00	1268	2019-05-22 21:53:45.56693+00	\N	~	15	\N	\N	Number
+241	Evening Win 4 #		\N	\N	\N	2019-03-06 01:00:57.557016+00	2019-05-22 21:53:45.569813+00	1269	2019-05-22 21:53:45.570788+00	\N	~	15	\N	\N	Text
+238	Midday Daily #		\N	\N	\N	2019-03-06 01:00:57.538618+00	2019-05-22 21:53:45.573403+00	1270	2019-05-22 21:53:45.574374+00	\N	~	15	\N	\N	Text
+239	Midday Win 4 Sum		\N	\N	\N	2019-03-06 01:00:57.546098+00	2019-05-22 21:53:45.577343+00	1271	2019-05-22 21:53:45.57845+00	\N	~	15	\N	\N	Number
+231	Midday Win 4 #		\N	\N	\N	2019-03-06 01:00:57.496038+00	2019-05-22 21:53:45.581387+00	1272	2019-05-22 21:53:45.582426+00	\N	~	15	\N	\N	Text
+243	Midday Daily Booster	 Booster percentage for Midday Daily number	\N	\N	\N	2019-03-06 01:00:57.569966+00	2019-05-22 21:53:45.585233+00	1273	2019-05-22 21:53:45.586222+00	\N	~	15	\N	\N	Text
+240	Draw Date		\N	\N	\N	2019-03-06 01:00:57.551758+00	2019-05-22 21:53:45.588855+00	1274	2019-05-22 21:53:45.589863+00	\N	~	15	\N	\N	Calendar date
+235	Evening Daily Sum		\N	\N	\N	2019-03-06 01:00:57.520961+00	2019-05-22 21:53:45.592919+00	1275	2019-05-22 21:53:45.593935+00	\N	~	15	\N	\N	Number
+236	Evening Daily #		\N	\N	\N	2019-03-06 01:00:57.526863+00	2019-05-22 21:53:45.596691+00	1276	2019-05-22 21:53:45.597843+00	\N	~	15	\N	\N	Text
+237	Midday Daily Sum		\N	\N	\N	2019-03-06 01:00:57.532827+00	2019-05-22 21:53:45.600644+00	1277	2019-05-22 21:53:45.60312+00	\N	~	15	\N	\N	Number
+233	Evening Win 4 Booster	Booster percentage for Evening Win4 number	\N	\N	\N	2019-03-06 01:00:57.508928+00	2019-05-22 21:53:45.605854+00	1278	2019-05-22 21:53:45.606831+00	\N	~	15	\N	\N	Text
+249	Base Telephone Number	Base Telephone NumberBase Telephone Number	\N	\N	\N	2019-03-06 01:00:57.657162+00	2019-05-22 21:53:45.628837+00	1279	2019-05-22 21:53:45.630089+00	\N	~	16	\N	\N	Text
+247	Base Address	Base Address	\N	\N	\N	2019-03-06 01:00:57.64677+00	2019-05-22 21:53:45.632957+00	1280	2019-05-22 21:53:45.634012+00	\N	~	16	\N	\N	Text
+266	Last Time Updated	Last Time Updated	\N	\N	\N	2019-03-06 01:00:57.770268+00	2019-05-22 21:53:45.637416+00	1281	2019-05-22 21:53:45.638734+00	\N	~	16	\N	\N	Text
+252	Base Name	Base Name	\N	\N	\N	2019-03-06 01:00:57.672781+00	2019-05-22 21:53:45.641375+00	1282	2019-05-22 21:53:45.642755+00	\N	~	16	\N	\N	Text
+251	Base Type	Base Type	\N	\N	\N	2019-03-06 01:00:57.667627+00	2019-05-22 21:53:45.645395+00	1283	2019-05-22 21:53:45.646829+00	\N	~	16	\N	\N	Text
+250	VEH	Hybrid vehicle indicator\n	\N	\N	\N	2019-03-06 01:00:57.662364+00	2019-05-22 21:53:45.649772+00	1284	2019-05-22 21:53:45.652024+00	\N	~	16	\N	\N	Text
+257	Wheelchair Accessible	Wheelchair Accessible Indicator\n	\N	\N	\N	2019-03-06 01:00:57.698921+00	2019-05-22 21:53:45.654867+00	1285	2019-05-22 21:53:45.655894+00	\N	~	16	\N	\N	Text
+265	Active	Permit active or not\n	\N	\N	\N	2019-03-06 01:00:57.763719+00	2019-05-22 21:53:45.658665+00	1286	2019-05-22 21:53:45.659669+00	\N	~	16	\N	\N	Text
+248	Website	Base Website	\N	\N	\N	2019-03-06 01:00:57.651997+00	2019-05-22 21:53:45.662365+00	1287	2019-05-22 21:53:45.663468+00	\N	~	16	\N	\N	Text
+260	Permit License Number	Permit License Number	\N	\N	\N	2019-03-06 01:00:57.719036+00	2019-05-22 21:53:45.666316+00	1288	2019-05-22 21:53:45.667411+00	\N	~	16	\N	\N	Text
+259	DMV License Plate Number	DMV License Plate Number	\N	\N	\N	2019-03-06 01:00:57.709051+00	2019-05-22 21:53:45.670912+00	1289	2019-05-22 21:53:45.672022+00	\N	~	16	\N	\N	Text
+263	Name	Owner Name\n	\N	\N	\N	2019-03-06 01:00:57.748393+00	2019-05-22 21:53:45.675203+00	1290	2019-05-22 21:53:45.676211+00	\N	~	16	\N	\N	Text
+262	License Type	TLC License Type\n	\N	\N	\N	2019-03-06 01:00:57.732198+00	2019-05-22 21:53:45.679093+00	1291	2019-05-22 21:53:45.680279+00	\N	~	16	\N	\N	Text
+261	Expiration Date	Expiration Date	\N	\N	\N	2019-03-06 01:00:57.724543+00	2019-05-22 21:53:45.683096+00	1292	2019-05-22 21:53:45.684198+00	\N	~	16	\N	\N	Calendar date
+264	Vehicle License Number	FHV Vehicle License Number	\N	\N	\N	2019-03-06 01:00:57.756364+00	2019-05-22 21:53:45.687262+00	1293	2019-05-22 21:53:45.688425+00	\N	~	16	\N	\N	Text
+258	Vehicle VIN Number	Vehicle VIN Number	\N	\N	\N	2019-03-06 01:00:57.703409+00	2019-05-22 21:53:45.691198+00	1294	2019-05-22 21:53:45.692287+00	\N	~	16	\N	\N	Text
+256	Certification Date	Certification Date	\N	\N	\N	2019-03-06 01:00:57.694491+00	2019-05-22 21:53:45.69536+00	1295	2019-05-22 21:53:45.696559+00	\N	~	16	\N	\N	Calendar date
+253	Base Number	Base Number	\N	\N	\N	2019-03-06 01:00:57.677978+00	2019-05-22 21:53:45.699483+00	1296	2019-05-22 21:53:45.700587+00	\N	~	16	\N	\N	Text
+254	Vehicle Year	Vehicle Year	\N	\N	\N	2019-03-06 01:00:57.683085+00	2019-05-22 21:53:45.703793+00	1297	2019-05-22 21:53:45.704902+00	\N	~	16	\N	\N	Number
+255	Hack Up Date	Hack Up Date	\N	\N	\N	2019-03-06 01:00:57.689753+00	2019-05-22 21:53:45.707545+00	1298	2019-05-22 21:53:45.708514+00	\N	~	16	\N	\N	Calendar date
+245	Last Date Updated	Last Date Updated	\N	\N	\N	2019-03-06 01:00:57.635905+00	2019-05-22 21:53:45.711329+00	1299	2019-05-22 21:53:45.712301+00	\N	~	16	\N	\N	Calendar date
+244	Order Date	Date Suspension ordered\n	\N	\N	\N	2019-03-06 01:00:57.630452+00	2019-05-22 21:53:45.715225+00	1300	2019-05-22 21:53:45.716214+00	\N	~	16	\N	\N	Calendar date
+246	Reason	Reason Code A,B,C or G\n	\N	\N	\N	2019-03-06 01:00:57.641312+00	2019-05-22 21:53:45.719387+00	1301	2019-05-22 21:53:45.720413+00	\N	~	16	\N	\N	Text
+395	CredentialNumber		\N	\N	\N	2019-03-06 01:00:58.524441+00	2019-05-22 21:53:45.751723+00	1302	2019-05-22 21:53:45.75409+00	\N	~	18	\N	\N	text
+396	LastName		\N	\N	\N	2019-03-06 01:00:58.535083+00	2019-05-22 21:53:45.759186+00	1303	2019-05-22 21:53:45.76068+00	\N	~	18	\N	\N	text
+397	FirstName		\N	\N	\N	2019-03-06 01:00:58.548222+00	2019-05-22 21:53:45.768213+00	1304	2019-05-22 21:53:45.770382+00	\N	~	18	\N	\N	text
+398	MiddleName		\N	\N	\N	2019-03-06 01:00:58.559183+00	2019-05-22 21:53:45.774293+00	1305	2019-05-22 21:53:45.775319+00	\N	~	18	\N	\N	text
+399	CredentialType		\N	\N	\N	2019-03-06 01:00:58.568217+00	2019-05-22 21:53:45.780591+00	1306	2019-05-22 21:53:45.783566+00	\N	~	18	\N	\N	text
+400	Status		\N	\N	\N	2019-03-06 01:00:58.577018+00	2019-05-22 21:53:45.791089+00	1307	2019-05-22 21:53:45.792943+00	\N	~	18	\N	\N	text
+401	BirthYear		\N	\N	\N	2019-03-06 01:00:58.586161+00	2019-05-22 21:53:45.798391+00	1308	2019-05-22 21:53:45.800502+00	\N	~	18	\N	\N	text
+402	CEDueDate		\N	\N	\N	2019-03-06 01:00:58.595092+00	2019-05-22 21:53:45.806669+00	1309	2019-05-22 21:53:45.808641+00	\N	~	18	\N	\N	text
+403	FirstIssueDate		\N	\N	\N	2019-03-06 01:00:58.613658+00	2019-05-22 21:53:45.816211+00	1310	2019-05-22 21:53:45.818073+00	\N	~	18	\N	\N	text
+404	LastIssueDate		\N	\N	\N	2019-03-06 01:00:58.623394+00	2019-05-22 21:53:45.822853+00	1311	2019-05-22 21:53:45.824691+00	\N	~	18	\N	\N	text
+405	ExpirationDate		\N	\N	\N	2019-03-06 01:00:58.633842+00	2019-05-22 21:53:45.832078+00	1312	2019-05-22 21:53:45.834181+00	\N	~	18	\N	\N	text
+406	ActionTaken		\N	\N	\N	2019-03-06 01:00:58.652565+00	2019-05-22 21:53:45.840287+00	1313	2019-05-22 21:53:45.842231+00	\N	~	18	\N	\N	text
+267	Specialist  - standard		\N	\N	\N	2019-03-06 01:00:57.813304+00	2019-05-22 21:53:45.871046+00	1314	2019-05-22 21:53:45.872903+00	\N	~	17	\N	\N	Text
+268	Specialty Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:57.818223+00	2019-05-22 21:53:45.879259+00	1315	2019-05-22 21:53:45.881119+00	\N	~	17	\N	\N	Text
+270	Premium Couple 40		\N	\N	\N	2019-03-06 01:00:57.828263+00	2019-05-22 21:53:45.890385+00	1317	2019-05-22 21:53:45.891803+00	\N	~	17	\N	\N	Number
+271	Non-preferred Brand Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:57.833392+00	2019-05-22 21:53:45.895907+00	1318	2019-05-22 21:53:45.898798+00	\N	~	17	\N	\N	Text
+272	Drug Maximum Out of Pocket - Family - 73 percent		\N	\N	\N	2019-03-06 01:00:57.838323+00	2019-05-22 21:53:45.902999+00	1319	2019-05-22 21:53:45.904533+00	\N	~	17	\N	\N	Text
+273	Medical Maximum Out of Pocket - family - 73 percent		\N	\N	\N	2019-03-06 01:00:57.843474+00	2019-05-22 21:53:45.909111+00	1320	2019-05-22 21:53:45.910471+00	\N	~	17	\N	\N	Text
+274	Drug Deductible - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:57.848449+00	2019-05-22 21:53:45.914522+00	1321	2019-05-22 21:53:45.915838+00	\N	~	17	\N	\N	Text
+275	Drug Deductible - family - standard		\N	\N	\N	2019-03-06 01:00:57.853063+00	2019-05-22 21:53:45.91949+00	1322	2019-05-22 21:53:45.921171+00	\N	~	17	\N	\N	Text
+276	Drug Deductible - individual - 94 percent		\N	\N	\N	2019-03-06 01:00:57.860784+00	2019-05-22 21:53:45.925076+00	1323	2019-05-22 21:53:45.926569+00	\N	~	17	\N	\N	Text
+277	Generic Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:57.866092+00	2019-05-22 21:53:45.930907+00	1324	2019-05-22 21:53:45.93235+00	\N	~	17	\N	\N	Text
+278	Emergency Room - 73 percent		\N	\N	\N	2019-03-06 01:00:57.871505+00	2019-05-22 21:53:45.93532+00	1325	2019-05-22 21:53:45.93652+00	\N	~	17	\N	\N	Text
+279	Medical Deductible - family - 94 percent		\N	\N	\N	2019-03-06 01:00:57.876574+00	2019-05-22 21:53:45.939453+00	1326	2019-05-22 21:53:45.940459+00	\N	~	17	\N	\N	Text
+280	Premium Scenarios		\N	\N	\N	2019-03-06 01:00:57.882157+00	2019-05-22 21:53:45.94315+00	1327	2019-05-22 21:53:45.944129+00	\N	~	17	\N	\N	Text
+281	Customer Service Phone Number Local		\N	\N	\N	2019-03-06 01:00:57.887231+00	2019-05-22 21:53:45.946807+00	1328	2019-05-22 21:53:45.947875+00	\N	~	17	\N	\N	Text
+282	Metal Level		\N	\N	\N	2019-03-06 01:00:57.892061+00	2019-05-22 21:53:45.950867+00	1329	2019-05-22 21:53:45.951983+00	\N	~	17	\N	\N	Text
+283	Individual+2 children, Age 30		\N	\N	\N	2019-03-06 01:00:57.89677+00	2019-05-22 21:53:45.954883+00	1330	2019-05-22 21:53:45.955958+00	\N	~	17	\N	\N	Number
+284	Drug Maximum Out of Pocket - Family - 87 percent		\N	\N	\N	2019-03-06 01:00:57.901699+00	2019-05-22 21:53:45.958644+00	1331	2019-05-22 21:53:45.959765+00	\N	~	17	\N	\N	Text
+285	Drug Maximum Out of Pocket - Family  - 94 percent		\N	\N	\N	2019-03-06 01:00:57.906773+00	2019-05-22 21:53:45.962593+00	1332	2019-05-22 21:53:45.963662+00	\N	~	17	\N	\N	Text
+286	Inpatient Facility  - 94 percent		\N	\N	\N	2019-03-06 01:00:57.911687+00	2019-05-22 21:53:45.966439+00	1333	2019-05-22 21:53:45.967483+00	\N	~	17	\N	\N	Text
+287	Individual+1 child, Age 21		\N	\N	\N	2019-03-06 01:00:57.916779+00	2019-05-22 21:53:45.971528+00	1334	2019-05-22 21:53:45.972688+00	\N	~	17	\N	\N	Number
+288	Specialist - 94 percent		\N	\N	\N	2019-03-06 01:00:57.922195+00	2019-05-22 21:53:45.975887+00	1335	2019-05-22 21:53:45.976986+00	\N	~	17	\N	\N	Text
+289	Primary Care Physician - 94 percent		\N	\N	\N	2019-03-06 01:00:57.927132+00	2019-05-22 21:53:45.979558+00	1336	2019-05-22 21:53:45.98094+00	\N	~	17	\N	\N	Text
+290	Drug Maximum Out of Pocket - individual - 94 percent		\N	\N	\N	2019-03-06 01:00:57.932202+00	2019-05-22 21:53:45.983993+00	1337	2019-05-22 21:53:45.984978+00	\N	~	17	\N	\N	Text
+291	94 Percent Actuarial Value Silver Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:57.936793+00	2019-05-22 21:53:45.988772+00	1338	2019-05-22 21:53:45.989984+00	\N	~	17	\N	\N	Text
+292	County		\N	\N	\N	2019-03-06 01:00:57.941807+00	2019-05-22 21:53:45.993212+00	1339	2019-05-22 21:53:45.995528+00	\N	~	17	\N	\N	Text
+293	Plan Type		\N	\N	\N	2019-03-06 01:00:57.94705+00	2019-05-22 21:53:45.999142+00	1340	2019-05-22 21:53:46.000187+00	\N	~	17	\N	\N	Text
+294	Source		\N	\N	\N	2019-03-06 01:00:57.951924+00	2019-05-22 21:53:46.003482+00	1341	2019-05-22 21:53:46.004835+00	\N	~	17	\N	\N	Text
+295	Standard Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:57.957089+00	2019-05-22 21:53:46.008483+00	1342	2019-05-22 21:53:46.009741+00	\N	~	17	\N	\N	Text
+296	Premium Adult Individual Age 30		\N	\N	\N	2019-03-06 01:00:57.962325+00	2019-05-22 21:53:46.014719+00	1343	2019-05-22 21:53:46.016102+00	\N	~	17	\N	\N	Number
+297	Couple+2 children, Age 40		\N	\N	\N	2019-03-06 01:00:57.96715+00	2019-05-22 21:53:46.019387+00	1344	2019-05-22 21:53:46.020628+00	\N	~	17	\N	\N	Number
+298	Premium Adult Individual Age 21		\N	\N	\N	2019-03-06 01:00:57.971848+00	2019-05-22 21:53:46.024218+00	1345	2019-05-22 21:53:46.02528+00	\N	~	17	\N	\N	Number
+299	Individual+3 or more children, Age 30		\N	\N	\N	2019-03-06 01:00:57.976609+00	2019-05-22 21:53:46.028538+00	1346	2019-05-22 21:53:46.029554+00	\N	~	17	\N	\N	Number
+300	Couple+3 or more Children, Age 40		\N	\N	\N	2019-03-06 01:00:57.981606+00	2019-05-22 21:53:46.032813+00	1347	2019-05-22 21:53:46.034048+00	\N	~	17	\N	\N	Number
+301	Individual+1 child, Age 40		\N	\N	\N	2019-03-06 01:00:57.986363+00	2019-05-22 21:53:46.038382+00	1348	2019-05-22 21:53:46.039657+00	\N	~	17	\N	\N	Number
+302	Premium Adult Individual Age 40		\N	\N	\N	2019-03-06 01:00:57.991171+00	2019-05-22 21:53:46.042581+00	1349	2019-05-22 21:53:46.043623+00	\N	~	17	\N	\N	Number
+303	Couple+2 children, Age 50		\N	\N	\N	2019-03-06 01:00:57.996457+00	2019-05-22 21:53:46.046224+00	1350	2019-05-22 21:53:46.047378+00	\N	~	17	\N	\N	Number
+304	Premium Couple 21  		\N	\N	\N	2019-03-06 01:00:58.001464+00	2019-05-22 21:53:46.050279+00	1351	2019-05-22 21:53:46.051321+00	\N	~	17	\N	\N	Number
+305	Couple+1 child, Age 40		\N	\N	\N	2019-03-06 01:00:58.006632+00	2019-05-22 21:53:46.054686+00	1352	2019-05-22 21:53:46.055747+00	\N	~	17	\N	\N	Number
+306	Individual+3 or more children, Age 40		\N	\N	\N	2019-03-06 01:00:58.01213+00	2019-05-22 21:53:46.058526+00	1353	2019-05-22 21:53:46.059733+00	\N	~	17	\N	\N	Number
+307	Premium Adult Individual Age 27		\N	\N	\N	2019-03-06 01:00:58.018176+00	2019-05-22 21:53:46.062505+00	1354	2019-05-22 21:53:46.063597+00	\N	~	17	\N	\N	Number
+308	Individual+2 children, Age 40		\N	\N	\N	2019-03-06 01:00:58.023221+00	2019-05-22 21:53:46.066507+00	1355	2019-05-22 21:53:46.067746+00	\N	~	17	\N	\N	Number
+309	Couple+1 child, Age 50		\N	\N	\N	2019-03-06 01:00:58.027737+00	2019-05-22 21:53:46.070765+00	1356	2019-05-22 21:53:46.071851+00	\N	~	17	\N	\N	Number
+310	Premium Adult Individual Age 60		\N	\N	\N	2019-03-06 01:00:58.032353+00	2019-05-22 21:53:46.07448+00	1357	2019-05-22 21:53:46.075478+00	\N	~	17	\N	\N	Number
+311	Couple+3 or more Children, Age 30		\N	\N	\N	2019-03-06 01:00:58.036871+00	2019-05-22 21:53:46.078768+00	1358	2019-05-22 21:53:46.079889+00	\N	~	17	\N	\N	Number
+312	Premium Couple 60		\N	\N	\N	2019-03-06 01:00:58.042298+00	2019-05-22 21:53:46.082935+00	1359	2019-05-22 21:53:46.083998+00	\N	~	17	\N	\N	Number
+313	Premium Couple 50		\N	\N	\N	2019-03-06 01:00:58.046872+00	2019-05-22 21:53:46.086814+00	1360	2019-05-22 21:53:46.089041+00	\N	~	17	\N	\N	Number
+314	Individual+1 child, Age 30		\N	\N	\N	2019-03-06 01:00:58.051654+00	2019-05-22 21:53:46.0919+00	1361	2019-05-22 21:53:46.092959+00	\N	~	17	\N	\N	Number
+315	Individual+3 or more children, Age 50		\N	\N	\N	2019-03-06 01:00:58.056493+00	2019-05-22 21:53:46.095557+00	1362	2019-05-22 21:53:46.096867+00	\N	~	17	\N	\N	Number
+316	Couple+2 children, Age 21		\N	\N	\N	2019-03-06 01:00:58.06135+00	2019-05-22 21:53:46.099637+00	1363	2019-05-22 21:53:46.100569+00	\N	~	17	\N	\N	Number
+317	Individual+2 children, Age 50		\N	\N	\N	2019-03-06 01:00:58.066094+00	2019-05-22 21:53:46.103234+00	1364	2019-05-22 21:53:46.10437+00	\N	~	17	\N	\N	Number
+318	Couple+1 child, Age 21		\N	\N	\N	2019-03-06 01:00:58.070751+00	2019-05-22 21:53:46.106905+00	1365	2019-05-22 21:53:46.107986+00	\N	~	17	\N	\N	Number
+319	Individual+1 child, Age 50		\N	\N	\N	2019-03-06 01:00:58.075735+00	2019-05-22 21:53:46.111021+00	1366	2019-05-22 21:53:46.112235+00	\N	~	17	\N	\N	Number
+320	Premium Adult Individual Age 50		\N	\N	\N	2019-03-06 01:00:58.080638+00	2019-05-22 21:53:46.115318+00	1367	2019-05-22 21:53:46.116373+00	\N	~	17	\N	\N	Number
+321	Premium Child		\N	\N	\N	2019-03-06 01:00:58.085777+00	2019-05-22 21:53:46.119471+00	1368	2019-05-22 21:53:46.120672+00	\N	~	17	\N	\N	Number
+322	Individual+3 or more children, Age 21		\N	\N	\N	2019-03-06 01:00:58.091305+00	2019-05-22 21:53:46.123381+00	1369	2019-05-22 21:53:46.124454+00	\N	~	17	\N	\N	Number
+323	Couple+2 children, Age 30		\N	\N	\N	2019-03-06 01:00:58.100458+00	2019-05-22 21:53:46.127019+00	1370	2019-05-22 21:53:46.128913+00	\N	~	17	\N	\N	Number
+324	Individual+2 children, Age 21		\N	\N	\N	2019-03-06 01:00:58.105221+00	2019-05-22 21:53:46.132041+00	1371	2019-05-22 21:53:46.133038+00	\N	~	17	\N	\N	Number
+325	Premium Couple 30		\N	\N	\N	2019-03-06 01:00:58.109992+00	2019-05-22 21:53:46.13597+00	1372	2019-05-22 21:53:46.137214+00	\N	~	17	\N	\N	Number
+326	Couple+3 or more Children, Age 50		\N	\N	\N	2019-03-06 01:00:58.115084+00	2019-05-22 21:53:46.139935+00	1373	2019-05-22 21:53:46.141058+00	\N	~	17	\N	\N	Number
+327	Couple+3 or more Children, Age 21		\N	\N	\N	2019-03-06 01:00:58.120307+00	2019-05-22 21:53:46.144038+00	1374	2019-05-22 21:53:46.145143+00	\N	~	17	\N	\N	Number
+328	Couple+1 child, Age 30		\N	\N	\N	2019-03-06 01:00:58.125113+00	2019-05-22 21:53:46.148085+00	1375	2019-05-22 21:53:46.149475+00	\N	~	17	\N	\N	Number
+329	Specialty Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.130428+00	2019-05-22 21:53:46.152172+00	1376	2019-05-22 21:53:46.153544+00	\N	~	17	\N	\N	Text
+330	Inpatient Physician - standard		\N	\N	\N	2019-03-06 01:00:58.135211+00	2019-05-22 21:53:46.156281+00	1377	2019-05-22 21:53:46.157275+00	\N	~	17	\N	\N	Text
+331	Non-preferred Brand Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.140321+00	2019-05-22 21:53:46.160134+00	1378	2019-05-22 21:53:46.161319+00	\N	~	17	\N	\N	Text
+332	Preferred Brand Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.145456+00	2019-05-22 21:53:46.165276+00	1379	2019-05-22 21:53:46.166231+00	\N	~	17	\N	\N	Text
+333	Primary Care Physician  - standard		\N	\N	\N	2019-03-06 01:00:58.150312+00	2019-05-22 21:53:46.169109+00	1380	2019-05-22 21:53:46.170336+00	\N	~	17	\N	\N	Text
+334	Drug Deductible - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.15556+00	2019-05-22 21:53:46.173286+00	1381	2019-05-22 21:53:46.174309+00	\N	~	17	\N	\N	Text
+335	Emergency Room  - standard		\N	\N	\N	2019-03-06 01:00:58.16073+00	2019-05-22 21:53:46.176886+00	1382	2019-05-22 21:53:46.17896+00	\N	~	17	\N	\N	Text
+336	Inpatient Facility  - standard		\N	\N	\N	2019-03-06 01:00:58.165754+00	2019-05-22 21:53:46.182363+00	1383	2019-05-22 21:53:46.184311+00	\N	~	17	\N	\N	Text
+337	Drug Maximum Out of Pocket - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:58.170889+00	2019-05-22 21:53:46.187787+00	1384	2019-05-22 21:53:46.189192+00	\N	~	17	\N	\N	Text
+338	Medical Deductible - family - 73 percent		\N	\N	\N	2019-03-06 01:00:58.175485+00	2019-05-22 21:53:46.191615+00	1385	2019-05-22 21:53:46.192539+00	\N	~	17	\N	\N	Text
+339	Generic Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.180278+00	2019-05-22 21:53:46.195862+00	1386	2019-05-22 21:53:46.197053+00	\N	~	17	\N	\N	Text
+340	Medical Deductible - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:58.185542+00	2019-05-22 21:53:46.199641+00	1387	2019-05-22 21:53:46.200803+00	\N	~	17	\N	\N	Text
+341	Drug Deductible - family - 73 percent		\N	\N	\N	2019-03-06 01:00:58.190354+00	2019-05-22 21:53:46.203697+00	1388	2019-05-22 21:53:46.204871+00	\N	~	17	\N	\N	Text
+342	Primary Care Physician - 73 percent		\N	\N	\N	2019-03-06 01:00:58.195439+00	2019-05-22 21:53:46.207505+00	1389	2019-05-22 21:53:46.20965+00	\N	~	17	\N	\N	Text
+343	Specialist - 73 percent		\N	\N	\N	2019-03-06 01:00:58.200516+00	2019-05-22 21:53:46.212504+00	1390	2019-05-22 21:53:46.213613+00	\N	~	17	\N	\N	Text
+344	Medical Maximum Out Of Pocket - individual - standard		\N	\N	\N	2019-03-06 01:00:58.205518+00	2019-05-22 21:53:46.216217+00	1391	2019-05-22 21:53:46.217134+00	\N	~	17	\N	\N	Text
+345	Drug Maximum Out of Pocket - individual - standard		\N	\N	\N	2019-03-06 01:00:58.210468+00	2019-05-22 21:53:46.22019+00	1392	2019-05-22 21:53:46.221535+00	\N	~	17	\N	\N	Text
+346	Medical Maximum Out of Pocket - family - standard		\N	\N	\N	2019-03-06 01:00:58.215277+00	2019-05-22 21:53:46.224295+00	1393	2019-05-22 21:53:46.225268+00	\N	~	17	\N	\N	Text
+347	Drug Maximum Out of Pocket - Family  - standard		\N	\N	\N	2019-03-06 01:00:58.220718+00	2019-05-22 21:53:46.227962+00	1394	2019-05-22 21:53:46.229466+00	\N	~	17	\N	\N	Text
+348	Medical Deductible - individual - standard		\N	\N	\N	2019-03-06 01:00:58.225896+00	2019-05-22 21:53:46.232277+00	1395	2019-05-22 21:53:46.233286+00	\N	~	17	\N	\N	Text
+349	Drug Deductible - individual - standard		\N	\N	\N	2019-03-06 01:00:58.230979+00	2019-05-22 21:53:46.235894+00	1396	2019-05-22 21:53:46.237188+00	\N	~	17	\N	\N	Text
+350	Medical Deductible -family - standard		\N	\N	\N	2019-03-06 01:00:58.235892+00	2019-05-22 21:53:46.239929+00	1397	2019-05-22 21:53:46.240952+00	\N	~	17	\N	\N	Text
+351	Medical Maximum Out Of Pocket -individual - 94 percent		\N	\N	\N	2019-03-06 01:00:58.240859+00	2019-05-22 21:53:46.243603+00	1398	2019-05-22 21:53:46.244705+00	\N	~	17	\N	\N	Text
+352	Medical Deductible - individual - 94 percent		\N	\N	\N	2019-03-06 01:00:58.246065+00	2019-05-22 21:53:46.247701+00	1399	2019-05-22 21:53:46.248699+00	\N	~	17	\N	\N	Text
+353	Specialty Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.251601+00	2019-05-22 21:53:46.251475+00	1400	2019-05-22 21:53:46.252557+00	\N	~	17	\N	\N	Text
+354	Non-preferred Brand Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.256588+00	2019-05-22 21:53:46.255496+00	1401	2019-05-22 21:53:46.256486+00	\N	~	17	\N	\N	Text
+355	Preferred Brand Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.261595+00	2019-05-22 21:53:46.259113+00	1402	2019-05-22 21:53:46.260139+00	\N	~	17	\N	\N	Text
+356	Generic Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.266521+00	2019-05-22 21:53:46.262757+00	1403	2019-05-22 21:53:46.26401+00	\N	~	17	\N	\N	Text
+357	Inpatient Physician - 87 percent		\N	\N	\N	2019-03-06 01:00:58.271469+00	2019-05-22 21:53:46.266661+00	1404	2019-05-22 21:53:46.267764+00	\N	~	17	\N	\N	Text
+358	Inpatient Facility - 87 percent		\N	\N	\N	2019-03-06 01:00:58.276341+00	2019-05-22 21:53:46.270976+00	1405	2019-05-22 21:53:46.272122+00	\N	~	17	\N	\N	Text
+359	Drug Deductible - family - 94 percent		\N	\N	\N	2019-03-06 01:00:58.281022+00	2019-05-22 21:53:46.275056+00	1406	2019-05-22 21:53:46.276348+00	\N	~	17	\N	\N	Text
+360	Plan Brochure URL		\N	\N	\N	2019-03-06 01:00:58.285676+00	2019-05-22 21:53:46.279276+00	1407	2019-05-22 21:53:46.281012+00	\N	~	17	\N	\N	URL
+361	Network URL		\N	\N	\N	2019-03-06 01:00:58.290677+00	2019-05-22 21:53:46.283804+00	1408	2019-05-22 21:53:46.285079+00	\N	~	17	\N	\N	URL
+362	Drug Formulary URL		\N	\N	\N	2019-03-06 01:00:58.296208+00	2019-05-22 21:53:46.28814+00	1409	2019-05-22 21:53:46.289421+00	\N	~	17	\N	\N	URL
+363	Medical Deductible - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.303603+00	2019-05-22 21:53:46.292104+00	1410	2019-05-22 21:53:46.293093+00	\N	~	17	\N	\N	Text
+364	Customer Service Phone Number Toll Free		\N	\N	\N	2019-03-06 01:00:58.308494+00	2019-05-22 21:53:46.295593+00	1411	2019-05-22 21:53:46.296498+00	\N	~	17	\N	\N	Text
+365	State		\N	\N	\N	2019-03-06 01:00:58.313421+00	2019-05-22 21:53:46.299602+00	1412	2019-05-22 21:53:46.300574+00	\N	~	17	\N	\N	Text
+366	Issuer Name		\N	\N	\N	2019-03-06 01:00:58.318436+00	2019-05-22 21:53:46.30311+00	1413	2019-05-22 21:53:46.304587+00	\N	~	17	\N	\N	Text
+367	Plan ID - Standard Component		\N	\N	\N	2019-03-06 01:00:58.323423+00	2019-05-22 21:53:46.309079+00	1414	2019-05-22 21:53:46.310061+00	\N	~	17	\N	\N	Text
+368	Medical Deductible - family - 87 percent		\N	\N	\N	2019-03-06 01:00:58.328601+00	2019-05-22 21:53:46.313952+00	1415	2019-05-22 21:53:46.315043+00	\N	~	17	\N	\N	Text
+369	87 Percent Actuarial Value Silver Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:58.333652+00	2019-05-22 21:53:46.317539+00	1416	2019-05-22 21:53:46.318593+00	\N	~	17	\N	\N	Text
+370	Specialist - 87 percent		\N	\N	\N	2019-03-06 01:00:58.338596+00	2019-05-22 21:53:46.321929+00	1417	2019-05-22 21:53:46.322972+00	\N	~	17	\N	\N	Text
+371	Primary Care Physician - 87 percent		\N	\N	\N	2019-03-06 01:00:58.343796+00	2019-05-22 21:53:46.325771+00	1418	2019-05-22 21:53:46.326835+00	\N	~	17	\N	\N	Text
+372	Medical Maximum Out of Pocket - family - 87 percent		\N	\N	\N	2019-03-06 01:00:58.349122+00	2019-05-22 21:53:46.329643+00	1419	2019-05-22 21:53:46.330901+00	\N	~	17	\N	\N	Text
+373	Medical Maximum Out Of Pocket - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.354353+00	2019-05-22 21:53:46.333674+00	1420	2019-05-22 21:53:46.334743+00	\N	~	17	\N	\N	Text
+374	Drug Maximum Out of Pocket - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.360008+00	2019-05-22 21:53:46.338669+00	1421	2019-05-22 21:53:46.340532+00	\N	~	17	\N	\N	Text
+375	Summary of Benefits URL		\N	\N	\N	2019-03-06 01:00:58.365214+00	2019-05-22 21:53:46.343197+00	1422	2019-05-22 21:53:46.344319+00	\N	~	17	\N	\N	URL
+376	Plan Marketing Name		\N	\N	\N	2019-03-06 01:00:58.370511+00	2019-05-22 21:53:46.347385+00	1423	2019-05-22 21:53:46.348957+00	\N	~	17	\N	\N	Text
+377	Child Only Offering		\N	\N	\N	2019-03-06 01:00:58.375357+00	2019-05-22 21:53:46.351517+00	1424	2019-05-22 21:53:46.352513+00	\N	~	17	\N	\N	Text
+378	Rating Area		\N	\N	\N	2019-03-06 01:00:58.380137+00	2019-05-22 21:53:46.355407+00	1425	2019-05-22 21:53:46.356388+00	\N	~	17	\N	\N	Text
+379	Customer Service Phone Number TTY		\N	\N	\N	2019-03-06 01:00:58.384874+00	2019-05-22 21:53:46.358784+00	1426	2019-05-22 21:53:46.359811+00	\N	~	17	\N	\N	Text
+380	Drug Deductible - family - 87 percent		\N	\N	\N	2019-03-06 01:00:58.389762+00	2019-05-22 21:53:46.362496+00	1427	2019-05-22 21:53:46.363625+00	\N	~	17	\N	\N	Text
+381	Preferred Brand Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:58.394652+00	2019-05-22 21:53:46.3666+00	1428	2019-05-22 21:53:46.368186+00	\N	~	17	\N	\N	Text
+382	73 Percent Actuarial Value Silver Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:58.399307+00	2019-05-22 21:53:46.371107+00	1429	2019-05-22 21:53:46.372137+00	\N	~	17	\N	\N	Text
+383	Medical Maximum Out Of Pocket - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:58.404116+00	2019-05-22 21:53:46.374708+00	1430	2019-05-22 21:53:46.375643+00	\N	~	17	\N	\N	Text
+384	Non-preferred Brand Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:58.40899+00	2019-05-22 21:53:46.37815+00	1431	2019-05-22 21:53:46.38142+00	\N	~	17	\N	\N	Text
+385	Inpatient Physician - 73 percent		\N	\N	\N	2019-03-06 01:00:58.413758+00	2019-05-22 21:53:46.384081+00	1432	2019-05-22 21:53:46.384983+00	\N	~	17	\N	\N	Text
+386	Inpatient Facility - 73 percent		\N	\N	\N	2019-03-06 01:00:58.418806+00	2019-05-22 21:53:46.387798+00	1433	2019-05-22 21:53:46.388896+00	\N	~	17	\N	\N	Text
+387	Child Dental		\N	\N	\N	2019-03-06 01:00:58.424755+00	2019-05-22 21:53:46.39192+00	1434	2019-05-22 21:53:46.392843+00	\N	~	17	\N	\N	Text
+388	Adult Dental		\N	\N	\N	2019-03-06 01:00:58.429467+00	2019-05-22 21:53:46.395273+00	1435	2019-05-22 21:53:46.396267+00	\N	~	17	\N	\N	Text
+389	Emergency Room - 94 percent		\N	\N	\N	2019-03-06 01:00:58.435413+00	2019-05-22 21:53:46.39902+00	1436	2019-05-22 21:53:46.400128+00	\N	~	17	\N	\N	Text
+390	Medical Maximum Out of Pocket - family - 94 percent		\N	\N	\N	2019-03-06 01:00:58.44074+00	2019-05-22 21:53:46.402691+00	1437	2019-05-22 21:53:46.403804+00	\N	~	17	\N	\N	Text
+391	Preferred Brand Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:58.445425+00	2019-05-22 21:53:46.406445+00	1438	2019-05-22 21:53:46.407413+00	\N	~	17	\N	\N	Text
+392	Generic Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:58.450361+00	2019-05-22 21:53:46.411608+00	1439	2019-05-22 21:53:46.412669+00	\N	~	17	\N	\N	Text
+393	Inpatient Physician  - 94 percent		\N	\N	\N	2019-03-06 01:00:58.454949+00	2019-05-22 21:53:46.415889+00	1440	2019-05-22 21:53:46.416928+00	\N	~	17	\N	\N	Text
+394	Emergency Room - 87 percent		\N	\N	\N	2019-03-06 01:00:58.459977+00	2019-05-22 21:53:46.419938+00	1441	2019-05-22 21:53:46.421144+00	\N	~	17	\N	\N	Text
+433	Type	Type of License\n\n	\N	\N	\N	2019-03-06 01:00:58.967163+00	2019-05-22 21:53:46.442594+00	1442	2019-05-22 21:53:46.443645+00	\N	~	21	\N	\N	Text
+435	License Number	FHV License Number\n	\N	\N	\N	2019-03-06 01:00:58.977616+00	2019-05-22 21:53:46.447287+00	1443	2019-05-22 21:53:46.450208+00	\N	~	21	\N	\N	Number
+431	Wheelchair Accessible Trained	WAV if Wheelchair Accessible Trained\n	\N	\N	\N	2019-03-06 01:00:58.953977+00	2019-05-22 21:53:46.453347+00	1444	2019-05-22 21:53:46.455556+00	\N	~	21	\N	\N	Text
+432	Expiration Date	Expiration Date\n\n\n	\N	\N	\N	2019-03-06 01:00:58.961269+00	2019-05-22 21:53:46.458736+00	1445	2019-05-22 21:53:46.459783+00	\N	~	21	\N	\N	Calendar date
+430	Last Date Updated	Last Date Updated	\N	\N	\N	2019-03-06 01:00:58.948131+00	2019-05-22 21:53:46.463107+00	1446	2019-05-22 21:53:46.464216+00	\N	~	21	\N	\N	Calendar date
+434	Name	Driver Name\n\n	\N	\N	\N	2019-03-06 01:00:58.972416+00	2019-05-22 21:53:46.46686+00	1447	2019-05-22 21:53:46.467814+00	\N	~	21	\N	\N	Text
+429	Last Time Updated	Last Time Updated	\N	\N	\N	2019-03-06 01:00:58.942716+00	2019-05-22 21:53:46.471198+00	1448	2019-05-22 21:53:46.47233+00	\N	~	21	\N	\N	Text
+407	Notifications		\N	\N	\N	2019-03-06 01:00:58.694471+00	2019-05-22 21:53:46.496083+00	1449	2019-05-22 21:53:46.499296+00	\N	~	19	\N	\N	Text
+408	Web Site		\N	\N	\N	2019-03-06 01:00:58.699957+00	2019-05-22 21:53:46.503088+00	1450	2019-05-22 21:53:46.505236+00	\N	~	19	\N	\N	URL
+409	County		\N	\N	\N	2019-03-06 01:00:58.708638+00	2019-05-22 21:53:46.51041+00	1451	2019-05-22 21:53:46.512499+00	\N	~	19	\N	\N	Text
+410	User Fees		\N	\N	\N	2019-03-06 01:00:58.713674+00	2019-05-22 21:53:46.515871+00	1452	2019-05-22 21:53:46.516981+00	\N	~	19	\N	\N	Text
+411	Date received	The date the CFPB received the complaint	\N	\N	\N	2019-03-06 01:00:58.758039+00	2019-05-22 21:53:46.542284+00	1453	2019-05-22 21:53:46.543573+00	\N	~	20	\N	\N	calendar_date
+412	Product	The type of product the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.76466+00	2019-05-22 21:53:46.546403+00	1454	2019-05-22 21:53:46.547384+00	\N	~	20	\N	\N	text
+413	Sub-product	The type of sub-product the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.771336+00	2019-05-22 21:53:46.550243+00	1455	2019-05-22 21:53:46.55161+00	\N	~	20	\N	\N	text
+414	Issue	The issue the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.779152+00	2019-05-22 21:53:46.555208+00	1456	2019-05-22 21:53:46.556302+00	\N	~	20	\N	\N	text
+415	Sub-issue	The sub-issue the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.797779+00	2019-05-22 21:53:46.559165+00	1457	2019-05-22 21:53:46.560185+00	\N	~	20	\N	\N	text
+416	Consumer complaint narrative	Consumer complaint narrative is the consumer-submitted description of "what happened" from the complaint. Consumers must opt-in to share their narrative. We will not publish the narrative unless the consumer consents, and consumers can opt-out at any time. The CFPB takes reasonable steps to scrub personal information from each complaint that could be used to identify the consumer.	\N	\N	\N	2019-03-06 01:00:58.812928+00	2019-05-22 21:53:46.563058+00	1458	2019-05-22 21:53:46.564128+00	\N	~	20	\N	\N	text
+417	Company public response	The company's optional, public-facing response to a consumer's complaint. Companies provide a public response to the CFPB, for posting on the public database, by selecting a response from a set list of options.	\N	\N	\N	2019-03-06 01:00:58.827641+00	2019-05-22 21:53:46.566969+00	1459	2019-05-22 21:53:46.568062+00	\N	~	20	\N	\N	text
+418	Company	The complaint is about this company	\N	\N	\N	2019-03-06 01:00:58.838255+00	2019-05-22 21:53:46.570878+00	1460	2019-05-22 21:53:46.571995+00	\N	~	20	\N	\N	text
+419	State	The consumer’s reported mailing state for the complaint	\N	\N	\N	2019-03-06 01:00:58.845035+00	2019-05-22 21:53:46.574664+00	1461	2019-05-22 21:53:46.575833+00	\N	~	20	\N	\N	text
+420	ZIP code	Mailing ZIP code provided by the consumer. This field may: i) include the first five digits of a ZIP code; ii) include the first three digits of a ZIP code (if the consumer consented to publication of their complaint narrative); or iii) be blank (if ZIP codes have been submitted with non-numeric values, if there are less than 20,000 people in a given ZIP code, or if the complaint has an address outside of the United States).	\N	\N	\N	2019-03-06 01:00:58.851073+00	2019-05-22 21:53:46.578704+00	1462	2019-05-22 21:53:46.579799+00	\N	~	20	\N	\N	text
+421	Tags	Data that supports easier searching and sorting of complaints submitted by or on behalf of consumers	\N	\N	\N	2019-03-06 01:00:58.864328+00	2019-05-22 21:53:46.582659+00	1463	2019-05-22 21:53:46.583907+00	\N	~	20	\N	\N	text
+422	Consumer consent provided?	Identifies whether the consumer opted in to publish their complaint narrative	\N	\N	\N	2019-03-06 01:00:58.87033+00	2019-05-22 21:53:46.586606+00	1464	2019-05-22 21:53:46.5879+00	\N	~	20	\N	\N	text
+423	Submitted via	How the complaint was submitted to CFPB	\N	\N	\N	2019-03-06 01:00:58.875813+00	2019-05-22 21:53:46.591265+00	1465	2019-05-22 21:53:46.592367+00	\N	~	20	\N	\N	text
+424	Date sent to company	The date the CFPB sent the complaint to the company	\N	\N	\N	2019-03-06 01:00:58.880945+00	2019-05-22 21:53:46.595658+00	1466	2019-05-22 21:53:46.596773+00	\N	~	20	\N	\N	calendar_date
+425	Company response to consumer	This is how the company responded	\N	\N	\N	2019-03-06 01:00:58.886287+00	2019-05-22 21:53:46.599902+00	1467	2019-05-22 21:53:46.600938+00	\N	~	20	\N	\N	text
+426	Timely response?	Whether the company gave a timely response	\N	\N	\N	2019-03-06 01:00:58.892013+00	2019-05-22 21:53:46.603566+00	1468	2019-05-22 21:53:46.604766+00	\N	~	20	\N	\N	text
+427	Consumer disputed?	Whether the consumer disputed the company’s response	\N	\N	\N	2019-03-06 01:00:58.897265+00	2019-05-22 21:53:46.607311+00	1469	2019-05-22 21:53:46.608493+00	\N	~	20	\N	\N	text
+428	Complaint ID	The unique identification number for a complaint	\N	\N	\N	2019-03-06 01:00:58.902085+00	2019-05-22 21:53:46.611413+00	1470	2019-05-22 21:53:46.612587+00	\N	~	20	\N	\N	number
+437	Business Name		\N	\N	\N	2019-03-06 01:00:59.025287+00	2019-05-22 21:53:46.633685+00	1471	2019-05-22 21:53:46.634861+00	\N	~	22	\N	\N	Text
+436	City		\N	\N	\N	2019-03-06 01:00:59.018645+00	2019-05-22 21:53:46.637785+00	1472	2019-05-22 21:53:46.639698+00	\N	~	22	\N	\N	Text
+440	License Number		\N	\N	\N	2019-03-06 01:00:59.041819+00	2019-05-22 21:53:46.642361+00	1473	2019-05-22 21:53:46.64357+00	\N	~	22	\N	\N	Text
+439	License Type		\N	\N	\N	2019-03-06 01:00:59.036038+00	2019-05-22 21:53:46.646552+00	1474	2019-05-22 21:53:46.647936+00	\N	~	22	\N	\N	Text
+438	Zip Code		\N	\N	\N	2019-03-06 01:00:59.030688+00	2019-05-22 21:53:46.651471+00	1475	2019-05-22 21:53:46.652467+00	\N	~	22	\N	\N	Text
+441	Business Name		\N	\N	\N	2019-03-06 01:00:59.082407+00	2019-05-22 21:53:46.673891+00	1476	2019-05-22 21:53:46.674945+00	\N	~	23	\N	\N	Text
+442	License Type		\N	\N	\N	2019-03-06 01:00:59.088579+00	2019-05-22 21:53:46.67788+00	1477	2019-05-22 21:53:46.678914+00	\N	~	23	\N	\N	Text
+443	License Number		\N	\N	\N	2019-03-06 01:00:59.094428+00	2019-05-22 21:53:46.681722+00	1478	2019-05-22 21:53:46.682739+00	\N	~	23	\N	\N	Text
+445	Zip Code		\N	\N	\N	2019-03-06 01:00:59.105246+00	2019-05-22 21:53:46.685485+00	1479	2019-05-22 21:53:46.686615+00	\N	~	23	\N	\N	Text
+444	City		\N	\N	\N	2019-03-06 01:00:59.100032+00	2019-05-22 21:53:46.689557+00	1480	2019-05-22 21:53:46.690632+00	\N	~	23	\N	\N	Text
+578	 PIN7		\N	\N	\N	2019-03-06 01:01:00.07574+00	2019-05-22 21:53:46.710355+00	1481	2019-05-22 21:53:46.711416+00	\N	~	25	\N	\N	Text
+535	CONTRACTOR_1_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.751147+00	2019-05-22 21:53:46.714872+00	1482	2019-05-22 21:53:46.716518+00	\N	~	25	\N	\N	Text
+517	CONTRACTOR_4_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.614473+00	2019-05-22 21:53:46.720232+00	1483	2019-05-22 21:53:46.721357+00	\N	~	25	\N	\N	Text
+538	CONTRACTOR_3_TYPE		\N	\N	\N	2019-03-06 01:00:59.791905+00	2019-05-22 21:53:46.72496+00	1484	2019-05-22 21:53:46.725945+00	\N	~	25	\N	\N	Text
+480	CONTRACTOR_4_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.378465+00	2019-05-22 21:53:46.729044+00	1485	2019-05-22 21:53:46.730077+00	\N	~	25	\N	\N	Text
+499	CONTRACTOR_10_CITY		\N	\N	\N	2019-03-06 01:00:59.487353+00	2019-05-22 21:53:46.73279+00	1486	2019-05-22 21:53:46.733826+00	\N	~	25	\N	\N	Text
+555	CONTRACTOR_11_NAME		\N	\N	\N	2019-03-06 01:00:59.939472+00	2019-05-22 21:53:46.736448+00	1487	2019-05-22 21:53:46.737517+00	\N	~	25	\N	\N	Text
+561	CONTRACTOR_12_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.975798+00	2019-05-22 21:53:46.740859+00	1488	2019-05-22 21:53:46.742776+00	\N	~	25	\N	\N	Text
+587	        ESTIMATED_COST		\N	\N	\N	2019-03-06 01:01:00.120951+00	2019-05-22 21:53:46.746178+00	1489	2019-05-22 21:53:46.747332+00	\N	~	25	\N	\N	Number
+493	CONTRACTOR_9_NAME		\N	\N	\N	2019-03-06 01:00:59.455108+00	2019-05-22 21:53:46.750411+00	1490	2019-05-22 21:53:46.751412+00	\N	~	25	\N	\N	Text
+563	CONTRACTOR_12_STATE		\N	\N	\N	2019-03-06 01:00:59.987145+00	2019-05-22 21:53:46.754016+00	1491	2019-05-22 21:53:46.755109+00	\N	~	25	\N	\N	Text
+551	CONTRACTOR_14_TYPE		\N	\N	\N	2019-03-06 01:00:59.918188+00	2019-05-22 21:53:46.758037+00	1492	2019-05-22 21:53:46.759213+00	\N	~	25	\N	\N	Text
+575	     PIN10		\N	\N	\N	2019-03-06 01:01:00.063112+00	2019-05-22 21:53:46.761807+00	1493	2019-05-22 21:53:46.763192+00	\N	~	25	\N	\N	Text
+570	  SUFFIX		\N	\N	\N	2019-03-06 01:01:00.038416+00	2019-05-22 21:53:46.766123+00	1494	2019-05-22 21:53:46.767257+00	\N	~	25	\N	\N	Text
+475	CONTRACTOR_14_NAME		\N	\N	\N	2019-03-06 01:00:59.351303+00	2019-05-22 21:53:46.769953+00	1495	2019-05-22 21:53:46.771251+00	\N	~	25	\N	\N	Text
+524	CONTRACTOR_5_PHONE		\N	\N	\N	2019-03-06 01:00:59.652818+00	2019-05-22 21:53:46.774452+00	1496	2019-05-22 21:53:46.775435+00	\N	~	25	\N	\N	Text
+485	LOCATION		\N	\N	\N	2019-03-06 01:00:59.410405+00	2019-05-22 21:53:46.778018+00	1497	2019-05-22 21:53:46.77915+00	\N	~	25	\N	\N	Point
+549	CONTRACTOR_14_STATE		\N	\N	\N	2019-03-06 01:00:59.905928+00	2019-05-22 21:53:46.782524+00	1498	2019-05-22 21:53:46.783564+00	\N	~	25	\N	\N	Text
+565	CONTRACTOR_11_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.998409+00	2019-05-22 21:53:46.78664+00	1499	2019-05-22 21:53:46.787775+00	\N	~	25	\N	\N	Text
+501	CONTRACTOR_9_STATE		\N	\N	\N	2019-03-06 01:00:59.498655+00	2019-05-22 21:53:46.79117+00	1500	2019-05-22 21:53:46.792333+00	\N	~	25	\N	\N	Text
+509	CONTRACTOR_7_PHONE		\N	\N	\N	2019-03-06 01:00:59.57322+00	2019-05-22 21:53:46.795112+00	1501	2019-05-22 21:53:46.796213+00	\N	~	25	\N	\N	Text
+569	 PIN5		\N	\N	\N	2019-03-06 01:01:00.034004+00	2019-05-22 21:53:46.799143+00	1502	2019-05-22 21:53:46.800172+00	\N	~	25	\N	\N	Text
+566	CONTRACTOR_12_NAME		\N	\N	\N	2019-03-06 01:01:00.004052+00	2019-05-22 21:53:46.802752+00	1503	2019-05-22 21:53:46.803857+00	\N	~	25	\N	\N	Text
+533	CONTRACTOR_1_STATE		\N	\N	\N	2019-03-06 01:00:59.732249+00	2019-05-22 21:53:46.806646+00	1504	2019-05-22 21:53:46.807671+00	\N	~	25	\N	\N	Text
+476	CONTRACTOR_9_CITY		\N	\N	\N	2019-03-06 01:00:59.357013+00	2019-05-22 21:53:46.810551+00	1505	2019-05-22 21:53:46.81159+00	\N	~	25	\N	\N	Text
+539	CONTRACTOR_15_PHONE		\N	\N	\N	2019-03-06 01:00:59.800157+00	2019-05-22 21:53:46.814387+00	1506	2019-05-22 21:53:46.815426+00	\N	~	25	\N	\N	Text
+502	CONTRACTOR_9_PHONE		\N	\N	\N	2019-03-06 01:00:59.50434+00	2019-05-22 21:53:46.818559+00	1507	2019-05-22 21:53:46.81953+00	\N	~	25	\N	\N	Text
+457	CONTRACTOR_10_PHONE		\N	\N	\N	2019-03-06 01:00:59.246689+00	2019-05-22 21:53:46.822223+00	1508	2019-05-22 21:53:46.823265+00	\N	~	25	\N	\N	Text
+548	CONTRACTOR_14_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.89993+00	2019-05-22 21:53:46.825894+00	1509	2019-05-22 21:53:46.826888+00	\N	~	25	\N	\N	Text
+580	ID		\N	\N	\N	2019-03-06 01:01:00.084587+00	2019-05-22 21:53:46.829828+00	1510	2019-05-22 21:53:46.830942+00	\N	~	25	\N	\N	Text
+460	CONTRACTOR_13_TYPE		\N	\N	\N	2019-03-06 01:00:59.265588+00	2019-05-22 21:53:46.833791+00	1511	2019-05-22 21:53:46.834766+00	\N	~	25	\N	\N	Text
+481	CONTRACTOR_12_TYPE		\N	\N	\N	2019-03-06 01:00:59.384342+00	2019-05-22 21:53:46.837674+00	1512	2019-05-22 21:53:46.840169+00	\N	~	25	\N	\N	Text
+556	CONTRACTOR_11_STATE		\N	\N	\N	2019-03-06 01:00:59.946042+00	2019-05-22 21:53:46.842878+00	1513	2019-05-22 21:53:46.843869+00	\N	~	25	\N	\N	Text
+554	CONTRACTOR_11_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.934216+00	2019-05-22 21:53:46.846708+00	1514	2019-05-22 21:53:46.847731+00	\N	~	25	\N	\N	Text
+458	CONTRACTOR_10_STATE		\N	\N	\N	2019-03-06 01:00:59.252977+00	2019-05-22 21:53:46.851186+00	1515	2019-05-22 21:53:46.852193+00	\N	~	25	\N	\N	Text
+500	CONTRACTOR_10_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.493104+00	2019-05-22 21:53:46.855217+00	1516	2019-05-22 21:53:46.856603+00	\N	~	25	\N	\N	Text
+515	CONTRACTOR_7_CITY		\N	\N	\N	2019-03-06 01:00:59.603689+00	2019-05-22 21:53:46.859723+00	1517	2019-05-22 21:53:46.860902+00	\N	~	25	\N	\N	Text
+522	CONTRACTOR_5_STATE		\N	\N	\N	2019-03-06 01:00:59.641827+00	2019-05-22 21:53:46.864241+00	1518	2019-05-22 21:53:46.865611+00	\N	~	25	\N	\N	Text
+527	CONTRACTOR_4_PHONE		\N	\N	\N	2019-03-06 01:00:59.67748+00	2019-05-22 21:53:46.869116+00	1519	2019-05-22 21:53:46.870534+00	\N	~	25	\N	\N	Text
+571	STREET_NAME		\N	\N	\N	2019-03-06 01:01:00.043209+00	2019-05-22 21:53:46.873634+00	1520	2019-05-22 21:53:46.874595+00	\N	~	25	\N	\N	Text
+477	PERMIT#		\N	\N	\N	2019-03-06 01:00:59.362463+00	2019-05-22 21:53:46.877507+00	1521	2019-05-22 21:53:46.878608+00	\N	~	25	\N	\N	Text
+583	STREET_NUMBER		\N	\N	\N	2019-03-06 01:01:00.098004+00	2019-05-22 21:53:46.881554+00	1522	2019-05-22 21:53:46.88259+00	\N	~	25	\N	\N	Number
+568	   PIN2		\N	\N	\N	2019-03-06 01:01:00.026432+00	2019-05-22 21:53:46.885237+00	1523	2019-05-22 21:53:46.887592+00	\N	~	25	\N	\N	Text
+1036	LOCATION (state)		\N	\N	\N	2019-05-22 21:53:46.890544+00	2019-05-22 21:53:46.890568+00	1524	2019-05-22 21:53:46.891283+00	\N	+	25	\N	\N	Text
+488	 PIN8		\N	\N	\N	2019-03-06 01:00:59.427742+00	2019-05-22 21:53:46.893867+00	1525	2019-05-22 21:53:46.894995+00	\N	~	25	\N	\N	Text
+1037	LOCATION (city)		\N	\N	\N	2019-05-22 21:53:46.898078+00	2019-05-22 21:53:46.898103+00	1526	2019-05-22 21:53:46.898989+00	\N	+	25	\N	\N	Text
+1038	Boundaries - ZIP Codes		\N	\N	\N	2019-05-22 21:53:46.90166+00	2019-05-22 21:53:46.901684+00	1527	2019-05-22 21:53:46.902478+00	\N	+	25	\N	\N	Number
+1039	Community Areas		\N	\N	\N	2019-05-22 21:53:46.905284+00	2019-05-22 21:53:46.90531+00	1528	2019-05-22 21:53:46.90605+00	\N	+	25	\N	\N	Number
+1040	Zip Codes		\N	\N	\N	2019-05-22 21:53:46.908757+00	2019-05-22 21:53:46.908782+00	1529	2019-05-22 21:53:46.909462+00	\N	+	25	\N	\N	Number
+577	CONTRACTOR_1_NAME		\N	\N	\N	2019-03-06 01:01:00.071452+00	2019-05-22 21:53:46.913836+00	1530	2019-05-22 21:53:46.914873+00	\N	~	25	\N	\N	Text
+465	CONTRACTOR_1_CITY		\N	\N	\N	2019-03-06 01:00:59.293248+00	2019-05-22 21:53:46.917669+00	1531	2019-05-22 21:53:46.918872+00	\N	~	25	\N	\N	Text
+534	CONTRACTOR_1_PHONE		\N	\N	\N	2019-03-06 01:00:59.742379+00	2019-05-22 21:53:46.921494+00	1532	2019-05-22 21:53:46.922545+00	\N	~	25	\N	\N	Text
+520	CONTRACTOR_3_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.631009+00	2019-05-22 21:53:46.925421+00	1533	2019-05-22 21:53:46.926467+00	\N	~	25	\N	\N	Text
+516	CONTRACTOR_4_CITY		\N	\N	\N	2019-03-06 01:00:59.609009+00	2019-05-22 21:53:46.929709+00	1534	2019-05-22 21:53:46.931884+00	\N	~	25	\N	\N	Text
+525	CONTRACTOR_5_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.659581+00	2019-05-22 21:53:46.935463+00	1535	2019-05-22 21:53:46.93771+00	\N	~	25	\N	\N	Text
+508	CONTRACTOR_6_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.567368+00	2019-05-22 21:53:46.942231+00	1536	2019-05-22 21:53:46.943835+00	\N	~	25	\N	\N	Text
+513	CONTRACTOR_7_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.593914+00	2019-05-22 21:53:46.949098+00	1537	2019-05-22 21:53:46.951773+00	\N	~	25	\N	\N	Text
+514	CONTRACTOR_7_STATE		\N	\N	\N	2019-03-06 01:00:59.598513+00	2019-05-22 21:53:46.955618+00	1538	2019-05-22 21:53:46.957105+00	\N	~	25	\N	\N	Text
+557	CONTRACTOR_11_CITY		\N	\N	\N	2019-03-06 01:00:59.951583+00	2019-05-22 21:53:46.96457+00	1539	2019-05-22 21:53:46.966499+00	\N	~	25	\N	\N	Text
+1041	Census Tracts		\N	\N	\N	2019-05-22 21:53:46.970296+00	2019-05-22 21:53:46.970337+00	1540	2019-05-22 21:53:46.971285+00	\N	+	25	\N	\N	Number
+1042	Wards		\N	\N	\N	2019-05-22 21:53:46.975476+00	2019-05-22 21:53:46.975506+00	1541	2019-05-22 21:53:46.976409+00	\N	+	25	\N	\N	Number
+560	CONTRACTOR_12_CITY		\N	\N	\N	2019-03-06 01:00:59.970313+00	2019-05-22 21:53:46.980264+00	1542	2019-05-22 21:53:46.981896+00	\N	~	25	\N	\N	Text
+486	CONTRACTOR_12_PHONE		\N	\N	\N	2019-03-06 01:00:59.415668+00	2019-05-22 21:53:46.986062+00	1543	2019-05-22 21:53:46.988074+00	\N	~	25	\N	\N	Text
+545	CONTRACTOR_13_CITY		\N	\N	\N	2019-03-06 01:00:59.85796+00	2019-05-22 21:53:46.993162+00	1544	2019-05-22 21:53:46.995062+00	\N	~	25	\N	\N	Text
+584	         ISSUE_DATE		\N	\N	\N	2019-03-06 01:01:00.102169+00	2019-05-22 21:53:47.000536+00	1545	2019-05-22 21:53:47.001914+00	\N	~	25	\N	\N	Calendar date
+581	    TOTAL_FEE	The amount waived plus amount paid plus any amount that may still be outstanding. This total can include various fees that are part of the permit fee, such as zoning, open space, deposit, or missed appointment.  It can also include stop work order fees, reinspection fees, and various penalty fees.	\N	\N	\N	2019-03-06 01:01:00.088877+00	2019-05-22 21:53:47.006993+00	1546	2019-05-22 21:53:47.009203+00	\N	~	25	\N	\N	Number
+573	WORK_DESCRIPTION		\N	\N	\N	2019-03-06 01:01:00.054277+00	2019-05-22 21:53:47.014198+00	1547	2019-05-22 21:53:47.015738+00	\N	~	25	\N	\N	Text
+572	   PIN1		\N	\N	\N	2019-03-06 01:01:00.049673+00	2019-05-22 21:53:47.019893+00	1548	2019-05-22 21:53:47.021815+00	\N	~	25	\N	\N	Text
+579	 PIN6		\N	\N	\N	2019-03-06 01:01:00.080096+00	2019-05-22 21:53:47.026496+00	1549	2019-05-22 21:53:47.028232+00	\N	~	25	\N	\N	Text
+550	CONTRACTOR_15_TYPE		\N	\N	\N	2019-03-06 01:00:59.9114+00	2019-05-22 21:53:47.032003+00	1550	2019-05-22 21:53:47.033306+00	\N	~	25	\N	\N	Text
+471	 PIN9		\N	\N	\N	2019-03-06 01:00:59.329444+00	2019-05-22 21:53:47.036899+00	1551	2019-05-22 21:53:47.038629+00	\N	~	25	\N	\N	Text
+530	CONTRACTOR_2_TYPE		\N	\N	\N	2019-03-06 01:00:59.706223+00	2019-05-22 21:53:47.043031+00	1552	2019-05-22 21:53:47.04457+00	\N	~	25	\N	\N	Text
+529	CONTRACTOR_2_NAME		\N	\N	\N	2019-03-06 01:00:59.697957+00	2019-05-22 21:53:47.048594+00	1553	2019-05-22 21:53:47.04988+00	\N	~	25	\N	\N	Text
+1043	:@computed_region_awaf_s7ux		\N	\N	\N	2019-05-22 21:53:47.053439+00	2019-05-22 21:53:47.053467+00	1554	2019-05-22 21:53:47.054369+00	\N	+	25	\N	\N	Number
+1044	LOCATION (address)		\N	\N	\N	2019-05-22 21:53:47.060819+00	2019-05-22 21:53:47.060847+00	1555	2019-05-22 21:53:47.061607+00	\N	+	25	\N	\N	Text
+582	STREET DIRECTION		\N	\N	\N	2019-03-06 01:01:00.093564+00	2019-05-22 21:53:47.065012+00	1556	2019-05-22 21:53:47.066644+00	\N	~	25	\N	\N	Text
+559	CONTRACTOR_11_TYPE		\N	\N	\N	2019-03-06 01:00:59.962324+00	2019-05-22 21:53:47.07056+00	1557	2019-05-22 21:53:47.072331+00	\N	~	25	\N	\N	Text
+532	CONTRACTOR_2_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.723545+00	2019-05-22 21:53:47.076227+00	1558	2019-05-22 21:53:47.077833+00	\N	~	25	\N	\N	Text
+531	CONTRACTOR_2_CITY		\N	\N	\N	2019-03-06 01:00:59.715069+00	2019-05-22 21:53:47.081878+00	1559	2019-05-22 21:53:47.083459+00	\N	~	25	\N	\N	Text
+466	CONTRACTOR_2_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.298572+00	2019-05-22 21:53:47.08748+00	1560	2019-05-22 21:53:47.089576+00	\N	~	25	\N	\N	Text
+474	CONTRACTOR_2_PHONE		\N	\N	\N	2019-03-06 01:00:59.345979+00	2019-05-22 21:53:47.093099+00	1561	2019-05-22 21:53:47.094394+00	\N	~	25	\N	\N	Text
+482	CONTRACTOR_3_NAME		\N	\N	\N	2019-03-06 01:00:59.389851+00	2019-05-22 21:53:47.098096+00	1562	2019-05-22 21:53:47.099736+00	\N	~	25	\N	\N	Text
+536	CONTRACTOR_3_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.769256+00	2019-05-22 21:53:47.103508+00	1563	2019-05-22 21:53:47.10509+00	\N	~	25	\N	\N	Text
+521	CONTRACTOR_4_TYPE		\N	\N	\N	2019-03-06 01:00:59.636432+00	2019-05-22 21:53:47.109188+00	1564	2019-05-22 21:53:47.110548+00	\N	~	25	\N	\N	Text
+463	CONTRACTOR_4_NAME		\N	\N	\N	2019-03-06 01:00:59.281978+00	2019-05-22 21:53:47.114746+00	1565	2019-05-22 21:53:47.116275+00	\N	~	25	\N	\N	Text
+526	CONTRACTOR_5_TYPE		\N	\N	\N	2019-03-06 01:00:59.667812+00	2019-05-22 21:53:47.120109+00	1566	2019-05-22 21:53:47.121314+00	\N	~	25	\N	\N	Text
+528	CONTRACTOR_5_NAME		\N	\N	\N	2019-03-06 01:00:59.685167+00	2019-05-22 21:53:47.124258+00	1567	2019-05-22 21:53:47.125215+00	\N	~	25	\N	\N	Text
+464	CONTRACTOR_5_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.287714+00	2019-05-22 21:53:47.127761+00	1568	2019-05-22 21:53:47.128856+00	\N	~	25	\N	\N	Text
+523	CONTRACTOR_5_CITY		\N	\N	\N	2019-03-06 01:00:59.647478+00	2019-05-22 21:53:47.131644+00	1569	2019-05-22 21:53:47.132786+00	\N	~	25	\N	\N	Text
+506	CONTRACTOR_6_TYPE		\N	\N	\N	2019-03-06 01:00:59.539168+00	2019-05-22 21:53:47.135756+00	1570	2019-05-22 21:53:47.136879+00	\N	~	25	\N	\N	Text
+462	CONTRACTOR_6_NAME		\N	\N	\N	2019-03-06 01:00:59.276798+00	2019-05-22 21:53:47.139777+00	1571	2019-05-22 21:53:47.14077+00	\N	~	25	\N	\N	Text
+507	CONTRACTOR_6_CITY		\N	\N	\N	2019-03-06 01:00:59.553913+00	2019-05-22 21:53:47.143404+00	1572	2019-05-22 21:53:47.144459+00	\N	~	25	\N	\N	Text
+478	CONTRACTOR_6_STATE		\N	\N	\N	2019-03-06 01:00:59.368095+00	2019-05-22 21:53:47.14733+00	1573	2019-05-22 21:53:47.148479+00	\N	~	25	\N	\N	Text
+505	CONTRACTOR_6_PHONE		\N	\N	\N	2019-03-06 01:00:59.522513+00	2019-05-22 21:53:47.151436+00	1574	2019-05-22 21:53:47.152454+00	\N	~	25	\N	\N	Text
+504	CONTRACTOR_7_TYPE		\N	\N	\N	2019-03-06 01:00:59.516533+00	2019-05-22 21:53:47.155261+00	1575	2019-05-22 21:53:47.156307+00	\N	~	25	\N	\N	Text
+510	CONTRACTOR_7_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.578333+00	2019-05-22 21:53:47.159234+00	1576	2019-05-22 21:53:47.160271+00	\N	~	25	\N	\N	Text
+511	CONTRACTOR_8_NAME		\N	\N	\N	2019-03-06 01:00:59.583486+00	2019-05-22 21:53:47.163172+00	1577	2019-05-22 21:53:47.164285+00	\N	~	25	\N	\N	Text
+496	CONTRACTOR_8_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.470849+00	2019-05-22 21:53:47.167143+00	1578	2019-05-22 21:53:47.168158+00	\N	~	25	\N	\N	Text
+491	CONTRACTOR_8_PHONE		\N	\N	\N	2019-03-06 01:00:59.444808+00	2019-05-22 21:53:47.170931+00	1579	2019-05-22 21:53:47.172103+00	\N	~	25	\N	\N	Text
+490	CONTRACTOR_9_TYPE		\N	\N	\N	2019-03-06 01:00:59.439371+00	2019-05-22 21:53:47.174893+00	1580	2019-05-22 21:53:47.176009+00	\N	~	25	\N	\N	Text
+497	CONTRACTOR_10_NAME		\N	\N	\N	2019-03-06 01:00:59.475924+00	2019-05-22 21:53:47.178725+00	1581	2019-05-22 21:53:47.179768+00	\N	~	25	\N	\N	Text
+562	CONTRACTOR_12_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.98177+00	2019-05-22 21:53:47.182711+00	1582	2019-05-22 21:53:47.183733+00	\N	~	25	\N	\N	Text
+487	CONTRACTOR_13_NAME		\N	\N	\N	2019-03-06 01:00:59.421377+00	2019-05-22 21:53:47.186312+00	1583	2019-05-22 21:53:47.187331+00	\N	~	25	\N	\N	Text
+547	CONTRACTOR_13_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.894001+00	2019-05-22 21:53:47.190751+00	1584	2019-05-22 21:53:47.191789+00	\N	~	25	\N	\N	Text
+546	CONTRACTOR_13_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.888695+00	2019-05-22 21:53:47.194443+00	1585	2019-05-22 21:53:47.195499+00	\N	~	25	\N	\N	Text
+553	CONTRACTOR_14_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.928753+00	2019-05-22 21:53:47.198281+00	1586	2019-05-22 21:53:47.199599+00	\N	~	25	\N	\N	Text
+552	CONTRACTOR_14_CITY		\N	\N	\N	2019-03-06 01:00:59.923628+00	2019-05-22 21:53:47.20239+00	1587	2019-05-22 21:53:47.20359+00	\N	~	25	\N	\N	Text
+543	CONTRACTOR_15_CITY		\N	\N	\N	2019-03-06 01:00:59.834905+00	2019-05-22 21:53:47.206773+00	1588	2019-05-22 21:53:47.207892+00	\N	~	25	\N	\N	Text
+542	LATITUDE		\N	\N	\N	2019-03-06 01:00:59.823959+00	2019-05-22 21:53:47.21073+00	1589	2019-05-22 21:53:47.211847+00	\N	~	25	\N	\N	Number
+541	LONGITUDE		\N	\N	\N	2019-03-06 01:00:59.81651+00	2019-05-22 21:53:47.215022+00	1590	2019-05-22 21:53:47.21615+00	\N	~	25	\N	\N	Number
+479	CONTRACTOR_7_NAME		\N	\N	\N	2019-03-06 01:00:59.373055+00	2019-05-22 21:53:47.218987+00	1591	2019-05-22 21:53:47.219979+00	\N	~	25	\N	\N	Text
+503	CONTRACTOR_9_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.509776+00	2019-05-22 21:53:47.222829+00	1592	2019-05-22 21:53:47.223949+00	\N	~	25	\N	\N	Text
+574	CONTRACTOR_1_TYPE		\N	\N	\N	2019-03-06 01:01:00.05873+00	2019-05-22 21:53:47.226669+00	1593	2019-05-22 21:53:47.227771+00	\N	~	25	\N	\N	Text
+558	CONTRACTOR_10_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.956927+00	2019-05-22 21:53:47.230777+00	1594	2019-05-22 21:53:47.231986+00	\N	~	25	\N	\N	Text
+540	CONTRACTOR_15_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.80839+00	2019-05-22 21:53:47.234685+00	1595	2019-05-22 21:53:47.235762+00	\N	~	25	\N	\N	Text
+537	CONTRACTOR_3_STATE		\N	\N	\N	2019-03-06 01:00:59.778949+00	2019-05-22 21:53:47.238736+00	1596	2019-05-22 21:53:47.239922+00	\N	~	25	\N	\N	Text
+519	CONTRACTOR_3_PHONE		\N	\N	\N	2019-03-06 01:00:59.625615+00	2019-05-22 21:53:47.242641+00	1597	2019-05-22 21:53:47.243672+00	\N	~	25	\N	\N	Text
+518	CONTRACTOR_4_STATE		\N	\N	\N	2019-03-06 01:00:59.619995+00	2019-05-22 21:53:47.246565+00	1598	2019-05-22 21:53:47.2478+00	\N	~	25	\N	\N	Text
+498	CONTRACTOR_10_TYPE		\N	\N	\N	2019-03-06 01:00:59.481161+00	2019-05-22 21:53:47.250831+00	1599	2019-05-22 21:53:47.252028+00	\N	~	25	\N	\N	Text
+494	CONTRACTOR_8_CITY		\N	\N	\N	2019-03-06 01:00:59.460038+00	2019-05-22 21:53:47.254806+00	1600	2019-05-22 21:53:47.255877+00	\N	~	25	\N	\N	Text
+484	CONTRACTOR_15_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.405037+00	2019-05-22 21:53:47.258797+00	1601	2019-05-22 21:53:47.259841+00	\N	~	25	\N	\N	Text
+473	  PIN4		\N	\N	\N	2019-03-06 01:00:59.339972+00	2019-05-22 21:53:47.262371+00	1602	2019-05-22 21:53:47.263441+00	\N	~	25	\N	\N	Text
+472	CONTRACTOR_6_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.334571+00	2019-05-22 21:53:47.266211+00	1603	2019-05-22 21:53:47.267256+00	\N	~	25	\N	\N	Text
+470	CONTRACTOR_14_PHONE		\N	\N	\N	2019-03-06 01:00:59.324422+00	2019-05-22 21:53:47.270404+00	1604	2019-05-22 21:53:47.271585+00	\N	~	25	\N	\N	Text
+469	CONTRACTOR_13_PHONE		\N	\N	\N	2019-03-06 01:00:59.317868+00	2019-05-22 21:53:47.275329+00	1605	2019-05-22 21:53:47.276464+00	\N	~	25	\N	\N	Text
+468	CONTRACTOR_15_NAME		\N	\N	\N	2019-03-06 01:00:59.309783+00	2019-05-22 21:53:47.279239+00	1606	2019-05-22 21:53:47.280202+00	\N	~	25	\N	\N	Text
+467	CONTRACTOR_2_STATE		\N	\N	\N	2019-03-06 01:00:59.303764+00	2019-05-22 21:53:47.282906+00	1607	2019-05-22 21:53:47.283869+00	\N	~	25	\N	\N	Text
+585	  PERMIT_TYPE		\N	\N	\N	2019-03-06 01:01:00.106496+00	2019-05-22 21:53:47.286444+00	1608	2019-05-22 21:53:47.287477+00	\N	~	25	\N	\N	Text
+564	CONTRACTOR_11_PHONE		\N	\N	\N	2019-03-06 01:00:59.992433+00	2019-05-22 21:53:47.290583+00	1609	2019-05-22 21:53:47.291673+00	\N	~	25	\N	\N	Text
+461	CONTRACTOR_8_STATE		\N	\N	\N	2019-03-06 01:00:59.271459+00	2019-05-22 21:53:47.29428+00	1610	2019-05-22 21:53:47.295217+00	\N	~	25	\N	\N	Text
+567	  PIN3		\N	\N	\N	2019-03-06 01:01:00.00939+00	2019-05-22 21:53:47.298003+00	1611	2019-05-22 21:53:47.299114+00	\N	~	25	\N	\N	Text
+492	CONTRACTOR_9_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.449914+00	2019-05-22 21:53:47.301594+00	1612	2019-05-22 21:53:47.302535+00	\N	~	25	\N	\N	Text
+1045	LOCATION (zip)		\N	\N	\N	2019-05-22 21:53:47.305343+00	2019-05-22 21:53:47.305369+00	1613	2019-05-22 21:53:47.305987+00	\N	+	25	\N	\N	Text
+495	CONTRACTOR_8_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.465387+00	2019-05-22 21:53:47.308505+00	1614	2019-05-22 21:53:47.30981+00	\N	~	25	\N	\N	Text
+512	CONTRACTOR_8_TYPE		\N	\N	\N	2019-03-06 01:00:59.588772+00	2019-05-22 21:53:47.312441+00	1615	2019-05-22 21:53:47.313517+00	\N	~	25	\N	\N	Text
+489	   AMOUNT_PAID	Fee amount customer has paid.	\N	\N	\N	2019-03-06 01:00:59.433421+00	2019-05-22 21:53:47.316715+00	1616	2019-05-22 21:53:47.317801+00	\N	~	25	\N	\N	Number
+586	         AMOUNT_WAIVED	Fee amount waived by City Council ordinance	\N	\N	\N	2019-03-06 01:01:00.113034+00	2019-05-22 21:53:47.320535+00	1617	2019-05-22 21:53:47.321846+00	\N	~	25	\N	\N	Number
+459	CONTRACTOR_15_STATE		\N	\N	\N	2019-03-06 01:00:59.259627+00	2019-05-22 21:53:47.324893+00	1618	2019-05-22 21:53:47.326129+00	\N	~	25	\N	\N	Text
+544	CONTRACTOR_13_STATE		\N	\N	\N	2019-03-06 01:00:59.847737+00	2019-05-22 21:53:47.328852+00	1619	2019-05-22 21:53:47.330081+00	\N	~	25	\N	\N	Text
+483	CONTRACTOR_3_CITY		\N	\N	\N	2019-03-06 01:00:59.396357+00	2019-05-22 21:53:47.333049+00	1620	2019-05-22 21:53:47.334057+00	\N	~	25	\N	\N	Text
+576	CONTRACTOR_1_ADDRESS		\N	\N	\N	2019-03-06 01:01:00.067192+00	2019-05-22 21:53:47.33657+00	1621	2019-05-22 21:53:47.337815+00	\N	~	25	\N	\N	Text
+455	Street Address		\N	\N	\N	2019-03-06 01:00:59.198367+00	2019-05-22 21:53:47.35828+00	1622	2019-05-22 21:53:47.35934+00	\N	~	24	\N	\N	Text
+451	CEO Title		\N	\N	\N	2019-03-06 01:00:59.175418+00	2019-05-22 21:53:47.361824+00	1623	2019-05-22 21:53:47.362822+00	\N	~	24	\N	\N	Text
+450	Agency_Type		\N	\N	\N	2019-03-06 01:00:59.170252+00	2019-05-22 21:53:47.36567+00	1624	2019-05-22 21:53:47.366923+00	\N	~	24	\N	\N	Text
+452	County Name		\N	\N	\N	2019-03-06 01:00:59.181259+00	2019-05-22 21:53:47.371225+00	1625	2019-05-22 21:53:47.373537+00	\N	~	24	\N	\N	Text
+447	Street Address 2		\N	\N	\N	2019-03-06 01:00:59.153431+00	2019-05-22 21:53:47.376401+00	1626	2019-05-22 21:53:47.377542+00	\N	~	24	\N	\N	Text
+456	Voice Number		\N	\N	\N	2019-03-06 01:00:59.203791+00	2019-05-22 21:53:47.380257+00	1627	2019-05-22 21:53:47.381557+00	\N	~	24	\N	\N	Text
+453	Fax Number		\N	\N	\N	2019-03-06 01:00:59.186955+00	2019-05-22 21:53:47.384117+00	1628	2019-05-22 21:53:47.385129+00	\N	~	24	\N	\N	Text
+448	Contact Name		\N	\N	\N	2019-03-06 01:00:59.158886+00	2019-05-22 21:53:47.387779+00	1629	2019-05-22 21:53:47.388862+00	\N	~	24	\N	\N	Text
+449	Zip		\N	\N	\N	2019-03-06 01:00:59.164439+00	2019-05-22 21:53:47.391923+00	1630	2019-05-22 21:53:47.39298+00	\N	~	24	\N	\N	Text
+446	City		\N	\N	\N	2019-03-06 01:00:59.146162+00	2019-05-22 21:53:47.396186+00	1631	2019-05-22 21:53:47.397553+00	\N	~	24	\N	\N	Text
+454	Agency Name		\N	\N	\N	2019-03-06 01:00:59.192702+00	2019-05-22 21:53:47.400724+00	1632	2019-05-22 21:53:47.401788+00	\N	~	24	\N	\N	Text
+622	Facility Number        	The unique number assigned to a facility distinguishing it from the other facilities. Each facility's number falls between 0-99. 	\N	\N	\N	2019-03-06 01:01:00.385088+00	2019-05-22 21:53:47.423534+00	1633	2019-05-22 21:53:47.424769+00	\N	~	28	\N	\N	text
+623	Space Count	The total number of parking spaces available within the facility.	\N	\N	\N	2019-03-06 01:01:00.389978+00	2019-05-22 21:53:47.427474+00	1634	2019-05-22 21:53:47.428558+00	\N	~	28	\N	\N	number
+624	Total Spaces	The total number of vehicle parking spaces within the facility	\N	\N	\N	2019-03-06 01:01:00.395527+00	2019-05-22 21:53:47.431339+00	1635	2019-05-22 21:53:47.433303+00	\N	~	28	\N	\N	number
+625	Last Update	The last date and time information pertaining to the facility was modified.	\N	\N	\N	2019-03-06 01:01:00.40078+00	2019-05-22 21:53:47.43615+00	1636	2019-05-22 21:53:47.437516+00	\N	~	28	\N	\N	calendar_date
+602	latlng (state)		\N	\N	\N	2019-03-06 01:01:00.223005+00	2019-05-22 21:53:47.458408+00	1637	2019-05-22 21:53:47.460016+00	\N	~	26	\N	\N	Text
+601	latlng (city)		\N	\N	\N	2019-03-06 01:01:00.218156+00	2019-05-22 21:53:47.463819+00	1638	2019-05-22 21:53:47.46524+00	\N	~	26	\N	\N	Text
+605	City		\N	\N	\N	2019-03-06 01:01:00.237108+00	2019-05-22 21:53:47.468656+00	1639	2019-05-22 21:53:47.470384+00	\N	~	26	\N	\N	Text
+588	State		\N	\N	\N	2019-03-06 01:01:00.153563+00	2019-05-22 21:53:47.473782+00	1640	2019-05-22 21:53:47.474987+00	\N	~	26	\N	\N	Text
+608	First Name		\N	\N	\N	2019-03-06 01:01:00.251659+00	2019-05-22 21:53:47.478203+00	1641	2019-05-22 21:53:47.4795+00	\N	~	26	\N	\N	Text
+611	latlng		\N	\N	\N	2019-03-06 01:01:00.265974+00	2019-05-22 21:53:47.482908+00	1642	2019-05-22 21:53:47.48418+00	\N	~	26	\N	\N	Point
+600	latlng (address)		\N	\N	\N	2019-03-06 01:01:00.213509+00	2019-05-22 21:53:47.486834+00	1643	2019-05-22 21:53:47.487854+00	\N	~	26	\N	\N	Text
+610	Renewal Date		\N	\N	\N	2019-03-06 01:01:00.26108+00	2019-05-22 21:53:47.490541+00	1644	2019-05-22 21:53:47.491496+00	\N	~	26	\N	\N	Text
+609	Business Phone		\N	\N	\N	2019-03-06 01:01:00.256204+00	2019-05-22 21:53:47.494549+00	1645	2019-05-22 21:53:47.495569+00	\N	~	26	\N	\N	Text
+607	Last Name		\N	\N	\N	2019-03-06 01:01:00.247027+00	2019-05-22 21:53:47.498972+00	1646	2019-05-22 21:53:47.500087+00	\N	~	26	\N	\N	Text
+592	Sub District		\N	\N	\N	2019-03-06 01:01:00.174643+00	2019-05-22 21:53:47.508622+00	1648	2019-05-22 21:53:47.510143+00	\N	~	26	\N	\N	Text
+593	District		\N	\N	\N	2019-03-06 01:01:00.178969+00	2019-05-22 21:53:47.514789+00	1649	2019-05-22 21:53:47.515998+00	\N	~	26	\N	\N	Text
+603	Missouri Counties		\N	\N	\N	2019-03-06 01:01:00.227636+00	2019-05-22 21:53:47.51868+00	1650	2019-05-22 21:53:47.519624+00	\N	~	26	\N	\N	Number
+604	School Districts		\N	\N	\N	2019-03-06 01:01:00.232123+00	2019-05-22 21:53:47.522575+00	1651	2019-05-22 21:53:47.52367+00	\N	~	26	\N	\N	Number
+599	Counties		\N	\N	\N	2019-03-06 01:01:00.208697+00	2019-05-22 21:53:47.526485+00	1652	2019-05-22 21:53:47.527543+00	\N	~	26	\N	\N	Number
+589	Street Name		\N	\N	\N	2019-03-06 01:01:00.1593+00	2019-05-22 21:53:47.530648+00	1653	2019-05-22 21:53:47.531941+00	\N	~	26	\N	\N	Text
+590	Street Number		\N	\N	\N	2019-03-06 01:01:00.165434+00	2019-05-22 21:53:47.534802+00	1654	2019-05-22 21:53:47.535902+00	\N	~	26	\N	\N	Number
+591	County		\N	\N	\N	2019-03-06 01:01:00.170266+00	2019-05-22 21:53:47.538668+00	1655	2019-05-22 21:53:47.540102+00	\N	~	26	\N	\N	Text
+594	License Type		\N	\N	\N	2019-03-06 01:01:00.183548+00	2019-05-22 21:53:47.544531+00	1656	2019-05-22 21:53:47.545694+00	\N	~	26	\N	\N	Text
+595	DBA Name		\N	\N	\N	2019-03-06 01:01:00.188478+00	2019-05-22 21:53:47.548697+00	1657	2019-05-22 21:53:47.549773+00	\N	~	26	\N	\N	Text
+596	Licensee Name		\N	\N	\N	2019-03-06 01:01:00.192975+00	2019-05-22 21:53:47.552346+00	1658	2019-05-22 21:53:47.553552+00	\N	~	26	\N	\N	Text
+597	License Number		\N	\N	\N	2019-03-06 01:01:00.197823+00	2019-05-22 21:53:47.556397+00	1659	2019-05-22 21:53:47.557389+00	\N	~	26	\N	\N	Number
+598	latlng (zip)		\N	\N	\N	2019-03-06 01:01:00.203811+00	2019-05-22 21:53:47.560194+00	1660	2019-05-22 21:53:47.561265+00	\N	~	26	\N	\N	Text
+617	Proof		\N	\N	\N	2019-03-06 01:01:00.32863+00	2019-05-22 21:53:47.58398+00	1661	2019-05-22 21:53:47.585319+00	\N	~	27	\N	\N	Number
+612	Wholesaler Number		\N	\N	\N	2019-03-06 01:01:00.303255+00	2019-05-22 21:53:47.589893+00	1662	2019-05-22 21:53:47.591038+00	\N	~	27	\N	\N	Number
+618	Type		\N	\N	\N	2019-03-06 01:01:00.33366+00	2019-05-22 21:53:47.59385+00	1663	2019-05-22 21:53:47.594955+00	\N	~	27	\N	\N	Text
+613	Effective Date		\N	\N	\N	2019-03-06 01:01:00.308526+00	2019-05-22 21:53:47.599167+00	1664	2019-05-22 21:53:47.600491+00	\N	~	27	\N	\N	Calendar date
+614	Licensee Name		\N	\N	\N	2019-03-06 01:01:00.313577+00	2019-05-22 21:53:47.603268+00	1665	2019-05-22 21:53:47.604277+00	\N	~	27	\N	\N	Text
+621	Class		\N	\N	\N	2019-03-06 01:01:00.348377+00	2019-05-22 21:53:47.607138+00	1666	2019-05-22 21:53:47.608162+00	\N	~	27	\N	\N	Text
+620	Brand Number		\N	\N	\N	2019-03-06 01:01:00.343366+00	2019-05-22 21:53:47.610995+00	1667	2019-05-22 21:53:47.612114+00	\N	~	27	\N	\N	Text
+619	Brand Name		\N	\N	\N	2019-03-06 01:01:00.338408+00	2019-05-22 21:53:47.614929+00	1668	2019-05-22 21:53:47.61615+00	\N	~	27	\N	\N	Text
+615	Solicitor Number		\N	\N	\N	2019-03-06 01:01:00.318244+00	2019-05-22 21:53:47.618911+00	1669	2019-05-22 21:53:47.619827+00	\N	~	27	\N	\N	Number
+616	Wholesaler Name		\N	\N	\N	2019-03-06 01:01:00.323609+00	2019-05-22 21:53:47.622709+00	1670	2019-05-22 21:53:47.623865+00	\N	~	27	\N	\N	Text
+626	Legal 7		\N	\N	\N	2019-03-06 01:01:00.438353+00	2019-05-22 21:53:47.645004+00	1671	2019-05-22 21:53:47.646198+00	\N	~	29	\N	\N	Text
+644	Mailing Address 2		\N	\N	\N	2019-03-06 01:01:00.527285+00	2019-05-22 21:53:47.649426+00	1672	2019-05-22 21:53:47.650876+00	\N	~	29	\N	\N	Text
+643	Mailing Address 3		\N	\N	\N	2019-03-06 01:01:00.521949+00	2019-05-22 21:53:47.654568+00	1673	2019-05-22 21:53:47.655984+00	\N	~	29	\N	\N	Text
+642	Mailing Address 4		\N	\N	\N	2019-03-06 01:01:00.516603+00	2019-05-22 21:53:47.660371+00	1674	2019-05-22 21:53:47.662024+00	\N	~	29	\N	\N	Text
+641	Legal 1		\N	\N	\N	2019-03-06 01:01:00.511204+00	2019-05-22 21:53:47.664913+00	1675	2019-05-22 21:53:47.666158+00	\N	~	29	\N	\N	Text
+640	Legal 2		\N	\N	\N	2019-03-06 01:01:00.506222+00	2019-05-22 21:53:47.668888+00	1676	2019-05-22 21:53:47.670357+00	\N	~	29	\N	\N	Text
+639	Legal 3		\N	\N	\N	2019-03-06 01:01:00.501679+00	2019-05-22 21:53:47.673448+00	1677	2019-05-22 21:53:47.674584+00	\N	~	29	\N	\N	Text
+638	Legal 4		\N	\N	\N	2019-03-06 01:01:00.496667+00	2019-05-22 21:53:47.677223+00	1678	2019-05-22 21:53:47.678726+00	\N	~	29	\N	\N	Text
+637	Legal 5		\N	\N	\N	2019-03-06 01:01:00.491967+00	2019-05-22 21:53:47.681907+00	1679	2019-05-22 21:53:47.684292+00	\N	~	29	\N	\N	Text
+645	Mailing Address 1		\N	\N	\N	2019-03-06 01:01:00.532218+00	2019-05-22 21:53:47.687108+00	1680	2019-05-22 21:53:47.688265+00	\N	~	29	\N	\N	Text
+635	Legal 8		\N	\N	\N	2019-03-06 01:01:00.482335+00	2019-05-22 21:53:47.691185+00	1681	2019-05-22 21:53:47.692361+00	\N	~	29	\N	\N	Text
+634	latlng		\N	\N	\N	2019-03-06 01:01:00.477777+00	2019-05-22 21:53:47.695223+00	1682	2019-05-22 21:53:47.696671+00	\N	~	29	\N	\N	Point
+633	latlng (address)		\N	\N	\N	2019-03-06 01:01:00.472762+00	2019-05-22 21:53:47.699812+00	1683	2019-05-22 21:53:47.700858+00	\N	~	29	\N	\N	Text
+632	latlng (city)		\N	\N	\N	2019-03-06 01:01:00.468117+00	2019-05-22 21:53:47.703449+00	1684	2019-05-22 21:53:47.704423+00	\N	~	29	\N	\N	Text
+631	latlng (state)		\N	\N	\N	2019-03-06 01:01:00.463419+00	2019-05-22 21:53:47.707307+00	1685	2019-05-22 21:53:47.708336+00	\N	~	29	\N	\N	Text
+630	latlng (zip)		\N	\N	\N	2019-03-06 01:01:00.458599+00	2019-05-22 21:53:47.711459+00	1686	2019-05-22 21:53:47.71268+00	\N	~	29	\N	\N	Text
+646	Zip Code		\N	\N	\N	2019-03-06 01:01:00.537336+00	2019-05-22 21:53:47.715842+00	1687	2019-05-22 21:53:47.717084+00	\N	~	29	\N	\N	Text
+647	State		\N	\N	\N	2019-03-06 01:01:00.5419+00	2019-05-22 21:53:47.719758+00	1688	2019-05-22 21:53:47.720832+00	\N	~	29	\N	\N	Text
+648	City		\N	\N	\N	2019-03-06 01:01:00.546712+00	2019-05-22 21:53:47.723654+00	1689	2019-05-22 21:53:47.724727+00	\N	~	29	\N	\N	Text
+649	Street		\N	\N	\N	2019-03-06 01:01:00.552926+00	2019-05-22 21:53:47.727375+00	1690	2019-05-22 21:53:47.728497+00	\N	~	29	\N	\N	Text
+650	Street Number		\N	\N	\N	2019-03-06 01:01:00.558033+00	2019-05-22 21:53:47.731491+00	1691	2019-05-22 21:53:47.732749+00	\N	~	29	\N	\N	Text
+651	County		\N	\N	\N	2019-03-06 01:01:00.56395+00	2019-05-22 21:53:47.73557+00	1692	2019-05-22 21:53:47.736558+00	\N	~	29	\N	\N	Text
+652	SubDistrict		\N	\N	\N	2019-03-06 01:01:00.568987+00	2019-05-22 21:53:47.73953+00	1693	2019-05-22 21:53:47.740577+00	\N	~	29	\N	\N	Text
+653	District		\N	\N	\N	2019-03-06 01:01:00.574232+00	2019-05-22 21:53:47.74335+00	1694	2019-05-22 21:53:47.744379+00	\N	~	29	\N	\N	Text
+654	Last Name		\N	\N	\N	2019-03-06 01:01:00.579041+00	2019-05-22 21:53:47.747335+00	1695	2019-05-22 21:53:47.748412+00	\N	~	29	\N	\N	Text
+655	First Name		\N	\N	\N	2019-03-06 01:01:00.584032+00	2019-05-22 21:53:47.751761+00	1696	2019-05-22 21:53:47.752782+00	\N	~	29	\N	\N	Text
+656	Manager Phone		\N	\N	\N	2019-03-06 01:01:00.588698+00	2019-05-22 21:53:47.755651+00	1697	2019-05-22 21:53:47.756767+00	\N	~	29	\N	\N	Text
+657	Business Phone		\N	\N	\N	2019-03-06 01:01:00.59407+00	2019-05-22 21:53:47.759527+00	1698	2019-05-22 21:53:47.760605+00	\N	~	29	\N	\N	Text
+658	Expiration Date		\N	\N	\N	2019-03-06 01:01:00.598731+00	2019-05-22 21:53:47.763704+00	1699	2019-05-22 21:53:47.764847+00	\N	~	29	\N	\N	Calendar date
+659	Fee Type		\N	\N	\N	2019-03-06 01:01:00.603539+00	2019-05-22 21:53:47.767922+00	1700	2019-05-22 21:53:47.769035+00	\N	~	29	\N	\N	Text
+660	Fee Date		\N	\N	\N	2019-03-06 01:01:00.608393+00	2019-05-22 21:53:47.77188+00	1701	2019-05-22 21:53:47.773548+00	\N	~	29	\N	\N	Calendar date
+661	Effective Date		\N	\N	\N	2019-03-06 01:01:00.613017+00	2019-05-22 21:53:47.776673+00	1702	2019-05-22 21:53:47.777905+00	\N	~	29	\N	\N	Calendar date
+662	Current Status		\N	\N	\N	2019-03-06 01:01:00.617941+00	2019-05-22 21:53:47.78073+00	1703	2019-05-22 21:53:47.781952+00	\N	~	29	\N	\N	Text
+663	License Type		\N	\N	\N	2019-03-06 01:01:00.623187+00	2019-05-22 21:53:47.785569+00	1704	2019-05-22 21:53:47.786924+00	\N	~	29	\N	\N	Text
+664	DBA Name		\N	\N	\N	2019-03-06 01:01:00.627865+00	2019-05-22 21:53:47.790053+00	1705	2019-05-22 21:53:47.791302+00	\N	~	29	\N	\N	Text
+665	Licensee Name		\N	\N	\N	2019-03-06 01:01:00.63305+00	2019-05-22 21:53:47.794214+00	1706	2019-05-22 21:53:47.795511+00	\N	~	29	\N	\N	Text
+666	License Number		\N	\N	\N	2019-03-06 01:01:00.639903+00	2019-05-22 21:53:47.798332+00	1707	2019-05-22 21:53:47.799739+00	\N	~	29	\N	\N	Number
+627	Counties		\N	\N	\N	2019-03-06 01:01:00.443316+00	2019-05-22 21:53:47.802285+00	1708	2019-05-22 21:53:47.803274+00	\N	~	29	\N	\N	Number
+628	School Districts		\N	\N	\N	2019-03-06 01:01:00.448029+00	2019-05-22 21:53:47.806129+00	1709	2019-05-22 21:53:47.807154+00	\N	~	29	\N	\N	Number
+629	Missouri Counties		\N	\N	\N	2019-03-06 01:01:00.453091+00	2019-05-22 21:53:47.810194+00	1710	2019-05-22 21:53:47.811183+00	\N	~	29	\N	\N	Number
+636	Legal 6		\N	\N	\N	2019-03-06 01:01:00.48718+00	2019-05-22 21:53:47.813778+00	1711	2019-05-22 21:53:47.814772+00	\N	~	29	\N	\N	Text
+694	Lien Satisfaction Date		\N	\N	\N	2019-03-06 01:01:00.866347+00	2019-05-22 21:53:47.835584+00	1712	2019-05-22 21:53:47.836912+00	\N	~	31	\N	\N	Calendar date
+693	Child Support Lien Date		\N	\N	\N	2019-03-06 01:01:00.854343+00	2019-05-22 21:53:47.841661+00	1713	2019-05-22 21:53:47.843185+00	\N	~	31	\N	\N	Calendar date
+690	VIN Number		\N	\N	\N	2019-03-06 01:01:00.835663+00	2019-05-22 21:53:47.848217+00	1714	2019-05-22 21:53:47.849771+00	\N	~	31	\N	\N	Text
+692	Year		\N	\N	\N	2019-03-06 01:01:00.845054+00	2019-05-22 21:53:47.852547+00	1715	2019-05-22 21:53:47.853583+00	\N	~	31	\N	\N	Number
+691	Make		\N	\N	\N	2019-03-06 01:01:00.840477+00	2019-05-22 21:53:47.856864+00	1716	2019-05-22 21:53:47.857996+00	\N	~	31	\N	\N	Text
+688	School Districts		\N	\N	\N	2019-03-06 01:01:00.790557+00	2019-05-22 21:53:47.881363+00	1717	2019-05-22 21:53:47.88255+00	\N	~	30	\N	\N	Number
+685	LATLNG (state)		\N	\N	\N	2019-03-06 01:01:00.776325+00	2019-05-22 21:53:47.885278+00	1718	2019-05-22 21:53:47.886258+00	\N	~	30	\N	\N	Text
+683	LATLNG (address)		\N	\N	\N	2019-03-06 01:01:00.755769+00	2019-05-22 21:53:47.888674+00	1719	2019-05-22 21:53:47.890164+00	\N	~	30	\N	\N	Text
+682	LATLNG	Latitude and Longitude for address information	\N	\N	\N	2019-03-06 01:01:00.751238+00	2019-05-22 21:53:47.892798+00	1720	2019-05-22 21:53:47.893918+00	\N	~	30	\N	\N	Point
+680	DISTRICT		\N	\N	\N	2019-03-06 01:01:00.741385+00	2019-05-22 21:53:47.896758+00	1721	2019-05-22 21:53:47.897818+00	\N	~	30	\N	\N	Text
+679	COUNTY		\N	\N	\N	2019-03-06 01:01:00.736507+00	2019-05-22 21:53:47.901082+00	1722	2019-05-22 21:53:47.902549+00	\N	~	30	\N	\N	Text
+678	SECONDARY TYPE		\N	\N	\N	2019-03-06 01:01:00.731981+00	2019-05-22 21:53:47.905317+00	1723	2019-05-22 21:53:47.906451+00	\N	~	30	\N	\N	Text
+677	PRIMARY TYPE		\N	\N	\N	2019-03-06 01:01:00.727169+00	2019-05-22 21:53:47.909312+00	1724	2019-05-22 21:53:47.910328+00	\N	~	30	\N	\N	Text
+676	SECONDARY LICENSE		\N	\N	\N	2019-03-06 01:01:00.722453+00	2019-05-22 21:53:47.913162+00	1725	2019-05-22 21:53:47.915206+00	\N	~	30	\N	\N	Number
+675	PRIMARY LICENSE		\N	\N	\N	2019-03-06 01:01:00.717658+00	2019-05-22 21:53:47.91859+00	1726	2019-05-22 21:53:47.919648+00	\N	~	30	\N	\N	Number
+674	PHONE NUMBER		\N	\N	\N	2019-03-06 01:01:00.712998+00	2019-05-22 21:53:47.922441+00	1727	2019-05-22 21:53:47.923542+00	\N	~	30	\N	\N	Text
+686	LATLNG (zip)		\N	\N	\N	2019-03-06 01:01:00.781597+00	2019-05-22 21:53:47.926702+00	1728	2019-05-22 21:53:47.927725+00	\N	~	30	\N	\N	Text
+672	STATE		\N	\N	\N	2019-03-06 01:01:00.703493+00	2019-05-22 21:53:47.930357+00	1729	2019-05-22 21:53:47.931389+00	\N	~	30	\N	\N	Text
+671	CITY		\N	\N	\N	2019-03-06 01:01:00.698497+00	2019-05-22 21:53:47.934551+00	1730	2019-05-22 21:53:47.935634+00	\N	~	30	\N	\N	Text
+670	STREET		\N	\N	\N	2019-03-06 01:01:00.693465+00	2019-05-22 21:53:47.938311+00	1731	2019-05-22 21:53:47.939315+00	\N	~	30	\N	\N	Text
+668	DBANAME		\N	\N	\N	2019-03-06 01:01:00.683896+00	2019-05-22 21:53:47.942206+00	1732	2019-05-22 21:53:47.943131+00	\N	~	30	\N	\N	Text
+667	LICENSEE		\N	\N	\N	2019-03-06 01:01:00.679005+00	2019-05-22 21:53:47.945762+00	1733	2019-05-22 21:53:47.946734+00	\N	~	30	\N	\N	Text
+681	SUBDIST		\N	\N	\N	2019-03-06 01:01:00.745888+00	2019-05-22 21:53:47.950144+00	1734	2019-05-22 21:53:47.951195+00	\N	~	30	\N	\N	Text
+689	Counties		\N	\N	\N	2019-03-06 01:01:00.795261+00	2019-05-22 21:53:47.95393+00	1735	2019-05-22 21:53:47.954938+00	\N	~	30	\N	\N	Number
+673	ZIPCODE		\N	\N	\N	2019-03-06 01:01:00.708201+00	2019-05-22 21:53:47.957963+00	1736	2019-05-22 21:53:47.95903+00	\N	~	30	\N	\N	Text
+687	Missouri Counties		\N	\N	\N	2019-03-06 01:01:00.785974+00	2019-05-22 21:53:47.961638+00	1737	2019-05-22 21:53:47.962632+00	\N	~	30	\N	\N	Number
+684	LATLNG (city)		\N	\N	\N	2019-03-06 01:01:00.760934+00	2019-05-22 21:53:47.965509+00	1738	2019-05-22 21:53:47.966641+00	\N	~	30	\N	\N	Text
+669	STREET NUMBER		\N	\N	\N	2019-03-06 01:01:00.688598+00	2019-05-22 21:53:47.969625+00	1739	2019-05-22 21:53:47.970621+00	\N	~	30	\N	\N	Text
+711	latlng (address)		\N	\N	\N	2019-03-06 01:01:01.111881+00	2019-05-22 21:53:47.998908+00	1740	2019-05-22 21:53:48.000297+00	\N	~	32	\N	\N	Text
+713	Zip Code		\N	\N	\N	2019-03-06 01:01:01.124135+00	2019-05-22 21:53:48.003007+00	1741	2019-05-22 21:53:48.003919+00	\N	~	32	\N	\N	Text
+714	State		\N	\N	\N	2019-03-06 01:01:01.130568+00	2019-05-22 21:53:48.008626+00	1742	2019-05-22 21:53:48.010092+00	\N	~	32	\N	\N	Text
+715	City		\N	\N	\N	2019-03-06 01:01:01.136416+00	2019-05-22 21:53:48.013958+00	1743	2019-05-22 21:53:48.015784+00	\N	~	32	\N	\N	Text
+701	Original Date		\N	\N	\N	2019-03-06 01:01:01.043999+00	2019-05-22 21:53:48.019078+00	1744	2019-05-22 21:53:48.020031+00	\N	~	32	\N	\N	Calendar date
+700	District		\N	\N	\N	2019-03-06 01:01:01.035231+00	2019-05-22 21:53:48.023415+00	1745	2019-05-22 21:53:48.025019+00	\N	~	32	\N	\N	Number
+696	SubDistrict		\N	\N	\N	2019-03-06 01:01:00.978698+00	2019-05-22 21:53:48.02784+00	1746	2019-05-22 21:53:48.029284+00	\N	~	32	\N	\N	Number
+716	Street		\N	\N	\N	2019-03-06 01:01:01.143102+00	2019-05-22 21:53:48.032207+00	1747	2019-05-22 21:53:48.033539+00	\N	~	32	\N	\N	Text
+717	Street Number		\N	\N	\N	2019-03-06 01:01:01.148916+00	2019-05-22 21:53:48.036255+00	1748	2019-05-22 21:53:48.037226+00	\N	~	32	\N	\N	Text
+695	County		\N	\N	\N	2019-03-06 01:01:00.939482+00	2019-05-22 21:53:48.040155+00	1749	2019-05-22 21:53:48.041397+00	\N	~	32	\N	\N	Number
+703	Current Status		\N	\N	\N	2019-03-06 01:01:01.059196+00	2019-05-22 21:53:48.044316+00	1750	2019-05-22 21:53:48.045455+00	\N	~	32	\N	\N	Text
+704	License Type		\N	\N	\N	2019-03-06 01:01:01.06568+00	2019-05-22 21:53:48.048275+00	1751	2019-05-22 21:53:48.049504+00	\N	~	32	\N	\N	Text
+705	BusinessType		\N	\N	\N	2019-03-06 01:01:01.071295+00	2019-05-22 21:53:48.052316+00	1752	2019-05-22 21:53:48.053353+00	\N	~	32	\N	\N	Text
+706	DBAName		\N	\N	\N	2019-03-06 01:01:01.077737+00	2019-05-22 21:53:48.056273+00	1753	2019-05-22 21:53:48.057487+00	\N	~	32	\N	\N	Text
+708	Licensee		\N	\N	\N	2019-03-06 01:01:01.09067+00	2019-05-22 21:53:48.06171+00	1754	2019-05-22 21:53:48.062741+00	\N	~	32	\N	\N	Text
+697	License Number		\N	\N	\N	2019-03-06 01:01:00.999701+00	2019-05-22 21:53:48.065943+00	1755	2019-05-22 21:53:48.06702+00	\N	~	32	\N	\N	Text
+699	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.022+00	2019-05-22 21:53:48.069908+00	1756	2019-05-22 21:53:48.070863+00	\N	~	32	\N	\N	Number
+698	School Districts		\N	\N	\N	2019-03-06 01:01:01.008674+00	2019-05-22 21:53:48.073505+00	1757	2019-05-22 21:53:48.0745+00	\N	~	32	\N	\N	Number
+702	Counties		\N	\N	\N	2019-03-06 01:01:01.054139+00	2019-05-22 21:53:48.077081+00	1758	2019-05-22 21:53:48.078011+00	\N	~	32	\N	\N	Number
+712	latlng		\N	\N	\N	2019-03-06 01:01:01.118802+00	2019-05-22 21:53:48.080765+00	1759	2019-05-22 21:53:48.081766+00	\N	~	32	\N	\N	Point
+707	latlng (zip)		\N	\N	\N	2019-03-06 01:01:01.084795+00	2019-05-22 21:53:48.084581+00	1760	2019-05-22 21:53:48.085637+00	\N	~	32	\N	\N	Text
+709	latlng (state)		\N	\N	\N	2019-03-06 01:01:01.096174+00	2019-05-22 21:53:48.088689+00	1761	2019-05-22 21:53:48.089891+00	\N	~	32	\N	\N	Text
+710	latlng (city)		\N	\N	\N	2019-03-06 01:01:01.103388+00	2019-05-22 21:53:48.092618+00	1762	2019-05-22 21:53:48.09364+00	\N	~	32	\N	\N	Text
+820	MSA Title		\N	\N	\N	2019-03-06 01:01:01.910703+00	2019-05-22 21:53:48.1167+00	1763	2019-05-22 21:53:48.117735+00	\N	~	38	\N	\N	Text
+821	Counties		\N	\N	\N	2019-03-06 01:01:01.916051+00	2019-05-22 21:53:48.120288+00	1764	2019-05-22 21:53:48.121233+00	\N	~	38	\N	\N	Text
+822	MSA		\N	\N	\N	2019-03-06 01:01:01.921789+00	2019-05-22 21:53:48.125436+00	1765	2019-05-22 21:53:48.127283+00	\N	~	38	\N	\N	Number
+794	Bonus #		\N	\N	\N	2019-03-06 01:01:01.690019+00	2019-05-22 21:53:48.156141+00	1766	2019-05-22 21:53:48.157371+00	\N	~	36	\N	\N	Number
+793	Draw Date		\N	\N	\N	2019-03-06 01:01:01.684076+00	2019-05-22 21:53:48.166144+00	1767	2019-05-22 21:53:48.170039+00	\N	~	36	\N	\N	Calendar date
+792	Winning Numbers		\N	\N	\N	2019-03-06 01:01:01.678494+00	2019-05-22 21:53:48.178639+00	1768	2019-05-22 21:53:48.182424+00	\N	~	36	\N	\N	Text
+735	Street Number		\N	\N	\N	2019-03-06 01:01:01.294655+00	2019-05-22 21:53:48.221059+00	1769	2019-05-22 21:53:48.223211+00	\N	~	33	\N	\N	Number
+723	City		\N	\N	\N	2019-03-06 01:01:01.235035+00	2019-05-22 21:53:48.229656+00	1770	2019-05-22 21:53:48.23135+00	\N	~	33	\N	\N	Text
+724	State		\N	\N	\N	2019-03-06 01:01:01.239887+00	2019-05-22 21:53:48.236855+00	1771	2019-05-22 21:53:48.237981+00	\N	~	33	\N	\N	Text
+733	Sub District		\N	\N	\N	2019-03-06 01:01:01.284191+00	2019-05-22 21:53:48.240883+00	1772	2019-05-22 21:53:48.242618+00	\N	~	33	\N	\N	Text
+738	Counties		\N	\N	\N	2019-03-06 01:01:01.309466+00	2019-05-22 21:53:48.250058+00	1773	2019-05-22 21:53:48.253079+00	\N	~	33	\N	\N	Number
+737	School Districts		\N	\N	\N	2019-03-06 01:01:01.304429+00	2019-05-22 21:53:48.257974+00	1774	2019-05-22 21:53:48.259864+00	\N	~	33	\N	\N	Number
+736	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.299108+00	2019-05-22 21:53:48.263851+00	1775	2019-05-22 21:53:48.265298+00	\N	~	33	\N	\N	Number
+722	Zip Code		\N	\N	\N	2019-03-06 01:01:01.230013+00	2019-05-22 21:53:48.269777+00	1776	2019-05-22 21:53:48.271295+00	\N	~	33	\N	\N	Number
+725	License Number		\N	\N	\N	2019-03-06 01:01:01.244829+00	2019-05-22 21:53:48.275485+00	1777	2019-05-22 21:53:48.276987+00	\N	~	33	\N	\N	Number
+726	Licensee Name		\N	\N	\N	2019-03-06 01:01:01.250189+00	2019-05-22 21:53:48.280819+00	1778	2019-05-22 21:53:48.282224+00	\N	~	33	\N	\N	Text
+730	License Current Status		\N	\N	\N	2019-03-06 01:01:01.269814+00	2019-05-22 21:53:48.286391+00	1779	2019-05-22 21:53:48.28789+00	\N	~	33	\N	\N	Text
+727	DBA Name		\N	\N	\N	2019-03-06 01:01:01.255139+00	2019-05-22 21:53:48.291756+00	1780	2019-05-22 21:53:48.293224+00	\N	~	33	\N	\N	Text
+729	License Type		\N	\N	\N	2019-03-06 01:01:01.264772+00	2019-05-22 21:53:48.298001+00	1781	2019-05-22 21:53:48.299376+00	\N	~	33	\N	\N	Text
+731	Status Effective Date		\N	\N	\N	2019-03-06 01:01:01.274436+00	2019-05-22 21:53:48.30223+00	1782	2019-05-22 21:53:48.303242+00	\N	~	33	\N	\N	Calendar date
+728	Business Type		\N	\N	\N	2019-03-06 01:01:01.259595+00	2019-05-22 21:53:48.305731+00	1783	2019-05-22 21:53:48.307576+00	\N	~	33	\N	\N	Text
+721	latlng		\N	\N	\N	2019-03-06 01:01:01.225287+00	2019-05-22 21:53:48.310473+00	1784	2019-05-22 21:53:48.311511+00	\N	~	33	\N	\N	Point
+719	latlng (city)		\N	\N	\N	2019-03-06 01:01:01.215438+00	2019-05-22 21:53:48.314265+00	1785	2019-05-22 21:53:48.315297+00	\N	~	33	\N	\N	Text
+720	latlng (address)		\N	\N	\N	2019-03-06 01:01:01.220272+00	2019-05-22 21:53:48.318115+00	1786	2019-05-22 21:53:48.319271+00	\N	~	33	\N	\N	Text
+718	Street Name		\N	\N	\N	2019-03-06 01:01:01.209314+00	2019-05-22 21:53:48.322162+00	1787	2019-05-22 21:53:48.323305+00	\N	~	33	\N	\N	Text
+732	District		\N	\N	\N	2019-03-06 01:01:01.279551+00	2019-05-22 21:53:48.326099+00	1788	2019-05-22 21:53:48.327131+00	\N	~	33	\N	\N	Text
+739	latlng (zip)		\N	\N	\N	2019-03-06 01:01:01.314613+00	2019-05-22 21:53:48.32986+00	1789	2019-05-22 21:53:48.330815+00	\N	~	33	\N	\N	Text
+734	County Number		\N	\N	\N	2019-03-06 01:01:01.289399+00	2019-05-22 21:53:48.333924+00	1790	2019-05-22 21:53:48.335267+00	\N	~	33	\N	\N	Text
+740	latlng (state)		\N	\N	\N	2019-03-06 01:01:01.319965+00	2019-05-22 21:53:48.337893+00	1791	2019-05-22 21:53:48.33931+00	\N	~	33	\N	\N	Text
+769	Meeting Body Name		\N	\N	\N	2019-03-06 01:01:01.501187+00	2019-05-22 21:53:48.361485+00	1792	2019-05-22 21:53:48.362744+00	\N	~	34	\N	\N	Text
+774	End Date Time		\N	\N	\N	2019-03-06 01:01:01.527418+00	2019-05-22 21:53:48.366691+00	1793	2019-05-22 21:53:48.367883+00	\N	~	34	\N	\N	Calendar date
+778	Building Name		\N	\N	\N	2019-03-06 01:01:01.549993+00	2019-05-22 21:53:48.370871+00	1794	2019-05-22 21:53:48.37194+00	\N	~	34	\N	\N	Text
+741	Room		\N	\N	\N	2019-03-06 01:01:01.3566+00	2019-05-22 21:53:48.374917+00	1795	2019-05-22 21:53:48.376042+00	\N	~	34	\N	\N	Text
+777	Address		\N	\N	\N	2019-03-06 01:01:01.545375+00	2019-05-22 21:53:48.379051+00	1796	2019-05-22 21:53:48.380028+00	\N	~	34	\N	\N	Text
+776	Address2		\N	\N	\N	2019-03-06 01:01:01.540795+00	2019-05-22 21:53:48.382873+00	1797	2019-05-22 21:53:48.383891+00	\N	~	34	\N	\N	Text
+775	City		\N	\N	\N	2019-03-06 01:01:01.535051+00	2019-05-22 21:53:48.386473+00	1798	2019-05-22 21:53:48.387845+00	\N	~	34	\N	\N	Text
+768	State		\N	\N	\N	2019-03-06 01:01:01.495849+00	2019-05-22 21:53:48.39109+00	1799	2019-05-22 21:53:48.392162+00	\N	~	34	\N	\N	Text
+767	Zip		\N	\N	\N	2019-03-06 01:01:01.490704+00	2019-05-22 21:53:48.394801+00	1800	2019-05-22 21:53:48.395881+00	\N	~	34	\N	\N	Text
+766	Webcast URL		\N	\N	\N	2019-03-06 01:01:01.485515+00	2019-05-22 21:53:48.398623+00	1801	2019-05-22 21:53:48.399956+00	\N	~	34	\N	\N	Text
+765	Webcast Plugin		\N	\N	\N	2019-03-06 01:01:01.480742+00	2019-05-22 21:53:48.402764+00	1802	2019-05-22 21:53:48.403818+00	\N	~	34	\N	\N	Text
+764	Is Video Conf		\N	\N	\N	2019-03-06 01:01:01.476045+00	2019-05-22 21:53:48.409038+00	1803	2019-05-22 21:53:48.41004+00	\N	~	34	\N	\N	Number
+763	Is Conf Call		\N	\N	\N	2019-03-06 01:01:01.471437+00	2019-05-22 21:53:48.412656+00	1804	2019-05-22 21:53:48.413896+00	\N	~	34	\N	\N	Number
+762	Conf Call Number		\N	\N	\N	2019-03-06 01:01:01.466755+00	2019-05-22 21:53:48.417433+00	1805	2019-05-22 21:53:48.418606+00	\N	~	34	\N	\N	Text
+761	Conf Call ID		\N	\N	\N	2019-03-06 01:01:01.461338+00	2019-05-22 21:53:48.421281+00	1806	2019-05-22 21:53:48.422284+00	\N	~	34	\N	\N	Text
+760	Conf Call Password		\N	\N	\N	2019-03-06 01:01:01.455883+00	2019-05-22 21:53:48.425115+00	1807	2019-05-22 21:53:48.426172+00	\N	~	34	\N	\N	Text
+759	Contact First Name		\N	\N	\N	2019-03-06 01:01:01.450475+00	2019-05-22 21:53:48.429042+00	1808	2019-05-22 21:53:48.430031+00	\N	~	34	\N	\N	Text
+758	Contact Last Name		\N	\N	\N	2019-03-06 01:01:01.44504+00	2019-05-22 21:53:48.433302+00	1809	2019-05-22 21:53:48.435045+00	\N	~	34	\N	\N	Text
+757	Phone		\N	\N	\N	2019-03-06 01:01:01.439861+00	2019-05-22 21:53:48.438551+00	1810	2019-05-22 21:53:48.439754+00	\N	~	34	\N	\N	Text
+756	Email		\N	\N	\N	2019-03-06 01:01:01.434377+00	2019-05-22 21:53:48.442508+00	1811	2019-05-22 21:53:48.443511+00	\N	~	34	\N	\N	Text
+755	Notes		\N	\N	\N	2019-03-06 01:01:01.428883+00	2019-05-22 21:53:48.446173+00	1812	2019-05-22 21:53:48.447171+00	\N	~	34	\N	\N	Text
+754	Materials URL		\N	\N	\N	2019-03-06 01:01:01.422629+00	2019-05-22 21:53:48.449919+00	1813	2019-05-22 21:53:48.45098+00	\N	~	34	\N	\N	Text
+753	Archived URL		\N	\N	\N	2019-03-06 01:01:01.417545+00	2019-05-22 21:53:48.453545+00	1814	2019-05-22 21:53:48.454543+00	\N	~	34	\N	\N	Text
+752	Publication Date		\N	\N	\N	2019-03-06 01:01:01.412742+00	2019-05-22 21:53:48.4576+00	1815	2019-05-22 21:53:48.458812+00	\N	~	34	\N	\N	Text
+751	Amendments		\N	\N	\N	2019-03-06 01:01:01.407764+00	2019-05-22 21:53:48.461437+00	1816	2019-05-22 21:53:48.462401+00	\N	~	34	\N	\N	Text
+750	Amendment Date		\N	\N	\N	2019-03-06 01:01:01.402794+00	2019-05-22 21:53:48.465+00	1817	2019-05-22 21:53:48.46596+00	\N	~	34	\N	\N	Text
+749	LatLng		\N	\N	\N	2019-03-06 01:01:01.397701+00	2019-05-22 21:53:48.469191+00	1818	2019-05-22 21:53:48.470195+00	\N	~	34	\N	\N	Point
+748	LatLng (address)		\N	\N	\N	2019-03-06 01:01:01.392708+00	2019-05-22 21:53:48.472919+00	1819	2019-05-22 21:53:48.474008+00	\N	~	34	\N	\N	Text
+747	LatLng (city)		\N	\N	\N	2019-03-06 01:01:01.387574+00	2019-05-22 21:53:48.476872+00	1820	2019-05-22 21:53:48.477933+00	\N	~	34	\N	\N	Text
+746	LatLng (state)		\N	\N	\N	2019-03-06 01:01:01.382831+00	2019-05-22 21:53:48.480774+00	1821	2019-05-22 21:53:48.481843+00	\N	~	34	\N	\N	Text
+745	LatLng (zip)		\N	\N	\N	2019-03-06 01:01:01.377159+00	2019-05-22 21:53:48.485168+00	1822	2019-05-22 21:53:48.486391+00	\N	~	34	\N	\N	Text
+744	Counties		\N	\N	\N	2019-03-06 01:01:01.372395+00	2019-05-22 21:53:48.489516+00	1823	2019-05-22 21:53:48.49157+00	\N	~	34	\N	\N	Number
+743	School Districts		\N	\N	\N	2019-03-06 01:01:01.367237+00	2019-05-22 21:53:48.494467+00	1824	2019-05-22 21:53:48.495695+00	\N	~	34	\N	\N	Number
+742	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.362152+00	2019-05-22 21:53:48.500328+00	1825	2019-05-22 21:53:48.501475+00	\N	~	34	\N	\N	Number
+773	Has End		\N	\N	\N	2019-03-06 01:01:01.521046+00	2019-05-22 21:53:48.506342+00	1826	2019-05-22 21:53:48.508312+00	\N	~	34	\N	\N	Number
+772	Is All Day		\N	\N	\N	2019-03-06 01:01:01.515653+00	2019-05-22 21:53:48.512421+00	1827	2019-05-22 21:53:48.513611+00	\N	~	34	\N	\N	Number
+771	Begin Date Time		\N	\N	\N	2019-03-06 01:01:01.5107+00	2019-05-22 21:53:48.517432+00	1828	2019-05-22 21:53:48.518583+00	\N	~	34	\N	\N	Calendar date
+770	Committee		\N	\N	\N	2019-03-06 01:01:01.505952+00	2019-05-22 21:53:48.521463+00	1829	2019-05-22 21:53:48.522566+00	\N	~	34	\N	\N	Text
+780	Release Date Time		\N	\N	\N	2019-03-06 01:01:01.590074+00	2019-05-22 21:53:48.542492+00	1830	2019-05-22 21:53:48.543564+00	\N	~	35	\N	\N	Calendar date
+785	RCW / Ordinance Number		\N	\N	\N	2019-03-06 01:01:01.616415+00	2019-05-22 21:53:48.546115+00	1831	2019-05-22 21:53:48.54897+00	\N	~	35	\N	\N	Text
+781	Current Facility		\N	\N	\N	2019-03-06 01:01:01.595299+00	2019-05-22 21:53:48.55297+00	1832	2019-05-22 21:53:48.554513+00	\N	~	35	\N	\N	Text
+788	Booking Date Time		\N	\N	\N	2019-03-06 01:01:01.633491+00	2019-05-22 21:53:48.55916+00	1833	2019-05-22 21:53:48.560232+00	\N	~	35	\N	\N	Calendar date
+787	JrSr		\N	\N	\N	2019-03-06 01:01:01.627738+00	2019-05-22 21:53:48.563095+00	1834	2019-05-22 21:53:48.564081+00	\N	~	35	\N	\N	Text
+786	Release Reason		\N	\N	\N	2019-03-06 01:01:01.622663+00	2019-05-22 21:53:48.566994+00	1835	2019-05-22 21:53:48.56796+00	\N	~	35	\N	\N	Text
+779	Middle Name		\N	\N	\N	2019-03-06 01:01:01.583104+00	2019-05-22 21:53:48.570804+00	1836	2019-05-22 21:53:48.571809+00	\N	~	35	\N	\N	Text
+790	Last Name		\N	\N	\N	2019-03-06 01:01:01.643085+00	2019-05-22 21:53:48.574602+00	1837	2019-05-22 21:53:48.575662+00	\N	~	35	\N	\N	Text
+783	Court Case / Cause Number		\N	\N	\N	2019-03-06 01:01:01.606764+00	2019-05-22 21:53:48.578729+00	1838	2019-05-22 21:53:48.579752+00	\N	~	35	\N	\N	Text
+784	Court		\N	\N	\N	2019-03-06 01:01:01.611636+00	2019-05-22 21:53:48.582396+00	1839	2019-05-22 21:53:48.583486+00	\N	~	35	\N	\N	Text
+791	Book of Arrest Number		\N	\N	\N	2019-03-06 01:01:01.64744+00	2019-05-22 21:53:48.586019+00	1840	2019-05-22 21:53:48.586888+00	\N	~	35	\N	\N	Text
+789	First Name		\N	\N	\N	2019-03-06 01:01:01.638634+00	2019-05-22 21:53:48.590012+00	1841	2019-05-22 21:53:48.590991+00	\N	~	35	\N	\N	Text
+782	Charge		\N	\N	\N	2019-03-06 01:01:01.601714+00	2019-05-22 21:53:48.593621+00	1842	2019-05-22 21:53:48.594514+00	\N	~	35	\N	\N	Text
+802	District		\N	\N	\N	2019-03-06 01:01:01.769204+00	2019-05-22 21:53:48.613287+00	1843	2019-05-22 21:53:48.614492+00	\N	~	37	\N	\N	Text
+819	Zip Code		\N	\N	\N	2019-03-06 01:01:01.874873+00	2019-05-22 21:53:48.618029+00	1844	2019-05-22 21:53:48.619681+00	\N	~	37	\N	\N	Number
+796	State		\N	\N	\N	2019-03-06 01:01:01.735306+00	2019-05-22 21:53:48.624277+00	1845	2019-05-22 21:53:48.625841+00	\N	~	37	\N	\N	Text
+797	City		\N	\N	\N	2019-03-06 01:01:01.743246+00	2019-05-22 21:53:48.629274+00	1846	2019-05-22 21:53:48.63048+00	\N	~	37	\N	\N	Text
+798	Street Name		\N	\N	\N	2019-03-06 01:01:01.749285+00	2019-05-22 21:53:48.633724+00	1847	2019-05-22 21:53:48.634958+00	\N	~	37	\N	\N	Text
+799	Street Number		\N	\N	\N	2019-03-06 01:01:01.754281+00	2019-05-22 21:53:48.637753+00	1848	2019-05-22 21:53:48.638966+00	\N	~	37	\N	\N	Number
+800	County		\N	\N	\N	2019-03-06 01:01:01.758983+00	2019-05-22 21:53:48.641676+00	1849	2019-05-22 21:53:48.642739+00	\N	~	37	\N	\N	Text
+801	Sub District		\N	\N	\N	2019-03-06 01:01:01.764095+00	2019-05-22 21:53:48.645289+00	1850	2019-05-22 21:53:48.646649+00	\N	~	37	\N	\N	Text
+803	Expiration Date		\N	\N	\N	2019-03-06 01:01:01.782493+00	2019-05-22 21:53:48.649686+00	1851	2019-05-22 21:53:48.650871+00	\N	~	37	\N	\N	Calendar date
+804	License Current Status		\N	\N	\N	2019-03-06 01:01:01.787871+00	2019-05-22 21:53:48.653588+00	1852	2019-05-22 21:53:48.65459+00	\N	~	37	\N	\N	Text
+805	License Type		\N	\N	\N	2019-03-06 01:01:01.793006+00	2019-05-22 21:53:48.657424+00	1853	2019-05-22 21:53:48.658532+00	\N	~	37	\N	\N	Text
+806	Business Type		\N	\N	\N	2019-03-06 01:01:01.79973+00	2019-05-22 21:53:48.66116+00	1854	2019-05-22 21:53:48.662155+00	\N	~	37	\N	\N	Text
+807	DBA Name		\N	\N	\N	2019-03-06 01:01:01.808913+00	2019-05-22 21:53:48.664958+00	1855	2019-05-22 21:53:48.666344+00	\N	~	37	\N	\N	Text
+808	Licensee Name		\N	\N	\N	2019-03-06 01:01:01.813984+00	2019-05-22 21:53:48.669363+00	1856	2019-05-22 21:53:48.670807+00	\N	~	37	\N	\N	Text
+809	License Number		\N	\N	\N	2019-03-06 01:01:01.819033+00	2019-05-22 21:53:48.673685+00	1857	2019-05-22 21:53:48.674799+00	\N	~	37	\N	\N	Number
+813	latlng (zip)		\N	\N	\N	2019-03-06 01:01:01.839373+00	2019-05-22 21:53:48.677452+00	1858	2019-05-22 21:53:48.678546+00	\N	~	37	\N	\N	Text
+814	latlng (state)		\N	\N	\N	2019-03-06 01:01:01.844564+00	2019-05-22 21:53:48.681385+00	1859	2019-05-22 21:53:48.682394+00	\N	~	37	\N	\N	Text
+810	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.824269+00	2019-05-22 21:53:48.685231+00	1860	2019-05-22 21:53:48.686256+00	\N	~	37	\N	\N	Number
+811	School Districts		\N	\N	\N	2019-03-06 01:01:01.829177+00	2019-05-22 21:53:48.688896+00	1861	2019-05-22 21:53:48.690199+00	\N	~	37	\N	\N	Number
+812	Counties		\N	\N	\N	2019-03-06 01:01:01.834391+00	2019-05-22 21:53:48.693189+00	1862	2019-05-22 21:53:48.69423+00	\N	~	37	\N	\N	Number
+816	latlng (address)		\N	\N	\N	2019-03-06 01:01:01.854545+00	2019-05-22 21:53:48.696886+00	1863	2019-05-22 21:53:48.697945+00	\N	~	37	\N	\N	Text
+815	latlng (city)		\N	\N	\N	2019-03-06 01:01:01.84956+00	2019-05-22 21:53:48.700884+00	1864	2019-05-22 21:53:48.701949+00	\N	~	37	\N	\N	Text
+817	latlng		\N	\N	\N	2019-03-06 01:01:01.859233+00	2019-05-22 21:53:48.704454+00	1865	2019-05-22 21:53:48.705453+00	\N	~	37	\N	\N	Point
+818	Mailing Address Line 2		\N	\N	\N	2019-03-06 01:01:01.868523+00	2019-05-22 21:53:48.708806+00	1866	2019-05-22 21:53:48.710995+00	\N	~	37	\N	\N	Text
+795	Mailing Address		\N	\N	\N	2019-03-06 01:01:01.729874+00	2019-05-22 21:53:48.713848+00	1867	2019-05-22 21:53:48.714877+00	\N	~	37	\N	\N	Text
+918	ID	Unique identifier for the record.	\N	\N	\N	2019-03-06 01:01:02.645054+00	2019-05-22 21:53:48.735823+00	1868	2019-05-22 21:53:48.737198+00	\N	~	41	\N	\N	Number
+909	X Coordinate	The x coordinate of the location where the incident occurred in State Plane Illinois East NAD 1983 projection.  This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.598003+00	2019-05-22 21:53:48.740533+00	1869	2019-05-22 21:53:48.742658+00	\N	~	41	\N	\N	Number
+902	Location	The location where the incident occurred in a format that allows for creation of maps and other geographic operations on this data portal. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.555278+00	2019-05-22 21:53:48.74551+00	1870	2019-05-22 21:53:48.746563+00	\N	~	41	\N	\N	Point
+903	Longitude	The longitude of the location where the incident occurred. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.560999+00	2019-05-22 21:53:48.749783+00	1871	2019-05-22 21:53:48.750789+00	\N	~	41	\N	\N	Number
+1046	Location (address)		\N	\N	\N	2019-05-22 21:53:48.753468+00	2019-05-22 21:53:48.753493+00	1872	2019-05-22 21:53:48.754226+00	\N	+	41	\N	\N	Text
+908	Ward	The ward (City Council district) where the incident occurred.  See the wards at https://data.cityofchicago.org/d/sp34-6z76.	\N	\N	\N	2019-03-06 01:01:02.592366+00	2019-05-22 21:53:48.758852+00	1873	2019-05-22 21:53:48.760023+00	\N	~	41	\N	\N	Number
+915	Location Description	Description of the location where the incident occurred.	\N	\N	\N	2019-03-06 01:01:02.631462+00	2019-05-22 21:53:48.763164+00	1874	2019-05-22 21:53:48.764208+00	\N	~	41	\N	\N	Text
+916	Description	The secondary description of the IUCR code, a subcategory of the primary description.	\N	\N	\N	2019-03-06 01:01:02.635893+00	2019-05-22 21:53:48.767043+00	1875	2019-05-22 21:53:48.768088+00	\N	~	41	\N	\N	Text
+922	Arrest	Indicates whether an arrest was made.	\N	\N	\N	2019-03-06 01:01:02.664337+00	2019-05-22 21:53:48.77067+00	1876	2019-05-22 21:53:48.771576+00	\N	~	41	\N	\N	Checkbox
+905	Y Coordinate	The y coordinate of the location where the incident occurred in State Plane Illinois East NAD 1983 projection. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.577764+00	2019-05-22 21:53:48.774334+00	1877	2019-05-22 21:53:48.775307+00	\N	~	41	\N	\N	Number
+1047	Police Districts		\N	\N	\N	2019-05-22 21:53:48.778128+00	2019-05-22 21:53:48.778153+00	1878	2019-05-22 21:53:48.778735+00	\N	+	41	\N	\N	Number
+1048	Boundaries - ZIP Codes		\N	\N	\N	2019-05-22 21:53:48.7812+00	2019-05-22 21:53:48.781226+00	1879	2019-05-22 21:53:48.781976+00	\N	+	41	\N	\N	Number
+1049	Wards		\N	\N	\N	2019-05-22 21:53:48.784879+00	2019-05-22 21:53:48.784951+00	1880	2019-05-22 21:53:48.785891+00	\N	+	41	\N	\N	Number
+1050	Census Tracts		\N	\N	\N	2019-05-22 21:53:48.789057+00	2019-05-22 21:53:48.789083+00	1881	2019-05-22 21:53:48.78989+00	\N	+	41	\N	\N	Number
+1051	Community Areas		\N	\N	\N	2019-05-22 21:53:48.79251+00	2019-05-22 21:53:48.792533+00	1882	2019-05-22 21:53:48.793153+00	\N	+	41	\N	\N	Number
+1052	Zip Codes		\N	\N	\N	2019-05-22 21:53:48.795659+00	2019-05-22 21:53:48.795684+00	1883	2019-05-22 21:53:48.796302+00	\N	+	41	\N	\N	Number
+1053	Historical Wards 2003-2015		\N	\N	\N	2019-05-22 21:53:48.799307+00	2019-05-22 21:53:48.799371+00	1884	2019-05-22 21:53:48.800228+00	\N	+	41	\N	\N	Number
+1054	Police Beats		\N	\N	\N	2019-05-22 21:53:48.803324+00	2019-05-22 21:53:48.80335+00	1885	2019-05-22 21:53:48.804051+00	\N	+	41	\N	\N	Number
+1055	Location (city)		\N	\N	\N	2019-05-22 21:53:48.806884+00	2019-05-22 21:53:48.806922+00	1886	2019-05-22 21:53:48.807605+00	\N	+	41	\N	\N	Text
+1056	Location (zip)		\N	\N	\N	2019-05-22 21:53:48.810733+00	2019-05-22 21:53:48.81076+00	1887	2019-05-22 21:53:48.811425+00	\N	+	41	\N	\N	Text
+921	Community Area	Indicates the community area where the incident occurred.  Chicago has 77 community areas. \n\nSee the community areas at https://data.cityofchicago.org/d/cauq-8yn6.\n	\N	\N	\N	2019-03-06 01:01:02.65917+00	2019-05-22 21:53:48.813963+00	1888	2019-05-22 21:53:48.814941+00	\N	~	41	\N	\N	Text
+910	FBI Code	Indicates the crime classification as outlined in the FBI's National Incident-Based Reporting System (NIBRS).\n\nSee the Chicago Police Department listing of these classifications at http://gis.chicagopolice.org/clearmap_crime_sums/crime_types.html.\n	\N	\N	\N	2019-03-06 01:01:02.606893+00	2019-05-22 21:53:48.817729+00	1889	2019-05-22 21:53:48.818956+00	\N	~	41	\N	\N	Text
+904	Year	Year the incident occurred.	\N	\N	\N	2019-03-06 01:01:02.572629+00	2019-05-22 21:53:48.821678+00	1890	2019-05-22 21:53:48.822661+00	\N	~	41	\N	\N	Number
+911	Domestic	Indicates whether the incident was domestic-related as defined by the Illinois Domestic Violence Act.	\N	\N	\N	2019-03-06 01:01:02.612043+00	2019-05-22 21:53:48.825344+00	1891	2019-05-22 21:53:48.826363+00	\N	~	41	\N	\N	Checkbox
+920	Primary Type	The primary description of the IUCR code.	\N	\N	\N	2019-03-06 01:01:02.654375+00	2019-05-22 21:53:48.829442+00	1892	2019-05-22 21:53:48.830479+00	\N	~	41	\N	\N	Text
+906	Latitude	The latitude of the location where the incident occurred. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.582391+00	2019-05-22 21:53:48.833468+00	1893	2019-05-22 21:53:48.834588+00	\N	~	41	\N	\N	Number
+907	Updated On	Date and time the record was last updated.	\N	\N	\N	2019-03-06 01:01:02.587159+00	2019-05-22 21:53:48.837549+00	1894	2019-05-22 21:53:48.838603+00	\N	~	41	\N	\N	Calendar date
+912	District	Indicates the police district where the incident occurred.  See the districts at https://data.cityofchicago.org/d/fthy-xz3r.	\N	\N	\N	2019-03-06 01:01:02.616808+00	2019-05-22 21:53:48.843173+00	1895	2019-05-22 21:53:48.846577+00	\N	~	41	\N	\N	Text
+913	Beat	Indicates the beat where the incident occurred.  A beat is the smallest police geographic area – each beat has a dedicated police beat car.  Three to five beats make up a police sector, and three sectors make up a police district.  The Chicago Police Department has 22 police districts.  \n\nSee the beats at https://data.cityofchicago.org/d/aerh-rz74.\n	\N	\N	\N	2019-03-06 01:01:02.621335+00	2019-05-22 21:53:48.849688+00	1896	2019-05-22 21:53:48.850811+00	\N	~	41	\N	\N	Text
+914	IUCR	The Illinois Unifrom Crime Reporting code. This is directly linked to the Primary Type and Description. See the list of IUCR codes at https://data.cityofchicago.org/d/c7ck-438e.	\N	\N	\N	2019-03-06 01:01:02.626101+00	2019-05-22 21:53:48.853487+00	1897	2019-05-22 21:53:48.854447+00	\N	~	41	\N	\N	Text
+901	Block	The partially redacted address where the incident occurred, placing it on the same block as the actual address. 	\N	\N	\N	2019-03-06 01:01:02.548255+00	2019-05-22 21:53:48.857601+00	1898	2019-05-22 21:53:48.858535+00	\N	~	41	\N	\N	Text
+919	Date	Date when the incident occurred. this is sometimes a best estimate. 	\N	\N	\N	2019-03-06 01:01:02.64987+00	2019-05-22 21:53:48.86113+00	1899	2019-05-22 21:53:48.862056+00	\N	~	41	\N	\N	Calendar date
+917	Case Number	The Chicago Police Department RD Number (Records Division Number), which is unique to the incident. 	\N	\N	\N	2019-03-06 01:01:02.640606+00	2019-05-22 21:53:48.864589+00	1900	2019-05-22 21:53:48.865636+00	\N	~	41	\N	\N	Text
+1057	Location (state)		\N	\N	\N	2019-05-22 21:53:48.868658+00	2019-05-22 21:53:48.868681+00	1901	2019-05-22 21:53:48.869381+00	\N	+	41	\N	\N	Text
+838	Applicant Relationship		\N	\N	\N	2019-03-06 01:01:02.062915+00	2019-05-22 21:53:48.888855+00	1902	2019-05-22 21:53:48.890478+00	\N	~	39	\N	\N	Text
+866	Block	"Block" portion of a property's legal description as recorded with the Los Angeles County Recorder.	\N	\N	\N	2019-03-06 01:01:02.299169+00	2019-05-22 21:53:48.894317+00	1903	2019-05-22 21:53:48.895451+00	\N	~	39	\N	\N	Text
+869	Event Code	An event code, usually synonymous with a disaster code, represents permits issued related to repairing, demolishing, or rebuilding structures damaged from a disaster.	\N	\N	\N	2019-03-06 01:01:02.314806+00	2019-05-22 21:53:48.898251+00	1904	2019-05-22 21:53:48.899324+00	\N	~	39	\N	\N	Text
+846	Zone	The designated zone of the property or lot that determines the allowed use, maximum height, allowable area, required yards, and any other requirements specific to the property or lot.	\N	\N	\N	2019-03-06 01:01:02.131165+00	2019-05-22 21:53:48.902447+00	1905	2019-05-22 21:53:48.903439+00	\N	~	39	\N	\N	Text
+863	Zip Code	Zip code of property address for permit application.	\N	\N	\N	2019-03-06 01:01:02.283023+00	2019-05-22 21:53:48.906014+00	1906	2019-05-22 21:53:48.907368+00	\N	~	39	\N	\N	Number
+864	Street Direction	Street direction of property address for permit application.\nExample 1: For "200 - 200 Main Ave", Street Direction is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Street Direction is N. 	\N	\N	\N	2019-03-06 01:01:02.287864+00	2019-05-22 21:53:48.910677+00	1907	2019-05-22 21:53:48.911689+00	\N	~	39	\N	\N	Text
+871	Tract	"Tract" portion of a property's legal description as recorded with the Los Angeles County Recorder.	\N	\N	\N	2019-03-06 01:01:02.325129+00	2019-05-22 21:53:48.914207+00	1908	2019-05-22 21:53:48.91522+00	\N	~	39	\N	\N	Text
+851	PCIS Permit #	This is the permit number assigned by the Plan Check and Inspection System as soon as an application for a permit has been filed.  Before a permit is issued, the number is known as the Application Number.  After the permit is issued, this same number becomes the Permit Number.	\N	\N	\N	2019-03-06 01:01:02.17245+00	2019-05-22 21:53:48.918599+00	1909	2019-05-22 21:53:48.919802+00	\N	~	39	\N	\N	Text
+875	Initiating Office	Office location where the permit application is initiated, not necessarily issued.	\N	\N	\N	2019-03-06 01:01:02.353904+00	2019-05-22 21:53:48.922492+00	1910	2019-05-22 21:53:48.9236+00	\N	~	39	\N	\N	Text
+865	Street Suffix	Street suffix of property address for permit application. \nExample 1: For "200 - 200 Main Ave", Street Suffix is Ave. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Street Suffix is St. 	\N	\N	\N	2019-03-06 01:01:02.293459+00	2019-05-22 21:53:48.926784+00	1911	2019-05-22 21:53:48.927857+00	\N	~	39	\N	\N	Text
+842	# of Stories	Number of stories.	\N	\N	\N	2019-03-06 01:01:02.093295+00	2019-05-22 21:53:48.930639+00	1912	2019-05-22 21:53:48.931584+00	\N	~	39	\N	\N	Number
+1058	Latitude/Longitude (city)		\N	\N	\N	2019-05-22 21:53:48.934714+00	2019-05-22 21:53:48.934739+00	1913	2019-05-22 21:53:48.935471+00	\N	+	39	\N	\N	Text
+1059	Latitude/Longitude (state)		\N	\N	\N	2019-05-22 21:53:48.938127+00	2019-05-22 21:53:48.938152+00	1914	2019-05-22 21:53:48.93896+00	\N	+	39	\N	\N	Text
+1060	Latitude/Longitude (address)		\N	\N	\N	2019-05-22 21:53:48.942136+00	2019-05-22 21:53:48.942161+00	1915	2019-05-22 21:53:48.942881+00	\N	+	39	\N	\N	Text
+1061	LA Specific Plans		\N	\N	\N	2019-05-22 21:53:48.945497+00	2019-05-22 21:53:48.945522+00	1916	2019-05-22 21:53:48.946207+00	\N	+	39	\N	\N	Number
+1062	Neighborhood Councils (Certified)		\N	\N	\N	2019-05-22 21:53:48.949375+00	2019-05-22 21:53:48.9494+00	1917	2019-05-22 21:53:48.950275+00	\N	+	39	\N	\N	Number
+1063	Zip Codes		\N	\N	\N	2019-05-22 21:53:48.953387+00	2019-05-22 21:53:48.953412+00	1918	2019-05-22 21:53:48.954175+00	\N	+	39	\N	\N	Number
+1064	Census Tracts		\N	\N	\N	2019-05-22 21:53:48.957024+00	2019-05-22 21:53:48.95706+00	1919	2019-05-22 21:53:48.95816+00	\N	+	39	\N	\N	Number
+1065	Council Districts		\N	\N	\N	2019-05-22 21:53:48.96237+00	2019-05-22 21:53:48.962397+00	1920	2019-05-22 21:53:48.963371+00	\N	+	39	\N	\N	Number
+1066	Precinct Boundaries		\N	\N	\N	2019-05-22 21:53:48.967046+00	2019-05-22 21:53:48.967073+00	1921	2019-05-22 21:53:48.967832+00	\N	+	39	\N	\N	Number
+1067	Latitude/Longitude (zip)		\N	\N	\N	2019-05-22 21:53:48.971868+00	2019-05-22 21:53:48.971897+00	1922	2019-05-22 21:53:48.973012+00	\N	+	39	\N	\N	Text
+855	Project Number	A number used to associate a permit application with a specific construction or a development project consisting of several permit applications.	\N	\N	\N	2019-03-06 01:01:02.212821+00	2019-05-22 21:53:48.977278+00	1923	2019-05-22 21:53:48.978552+00	\N	~	39	\N	\N	Number
+862	Unit Range End	Ending unit number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave, #1-#8", Unit Range End is #8. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Unit Range End is null. 	\N	\N	\N	2019-03-06 01:01:02.277552+00	2019-05-22 21:53:48.981382+00	1924	2019-05-22 21:53:48.982443+00	\N	~	39	\N	\N	Text
+823	Contractor Address	"Street address" portion of contractor's address.	\N	\N	\N	2019-03-06 01:01:01.968935+00	2019-05-22 21:53:48.985469+00	1925	2019-05-22 21:53:48.986504+00	\N	~	39	\N	\N	Text
+844	Applicant First Name	First name of the permit applicant.	\N	\N	\N	2019-03-06 01:01:02.108663+00	2019-05-22 21:53:48.99019+00	1926	2019-05-22 21:53:48.991667+00	\N	~	39	\N	\N	Text
+829	Applicant Last Name	Last name of the permit applicant.	\N	\N	\N	2019-03-06 01:01:02.006868+00	2019-05-22 21:53:48.994629+00	1927	2019-05-22 21:53:48.995709+00	\N	~	39	\N	\N	Text
+841	Census Tract	A geographic area for population-related analysis.	\N	\N	\N	2019-03-06 01:01:02.086314+00	2019-05-22 21:53:48.998907+00	1928	2019-05-22 21:53:49.000243+00	\N	~	39	\N	\N	Text
+835	Latitude/Longitude	GPS location point.	\N	\N	\N	2019-03-06 01:01:02.038214+00	2019-05-22 21:53:49.003002+00	1929	2019-05-22 21:53:49.004041+00	\N	~	39	\N	\N	Point
+849	Assessor Book	"Book" portion of the Los Angeles County Tax Assessor "Book-Page-Parcel" number.	\N	\N	\N	2019-03-06 01:01:02.158627+00	2019-05-22 21:53:49.0071+00	1930	2019-05-22 21:53:49.009269+00	\N	~	39	\N	\N	Text
+840	Assessor Page	"Page" portion of the Los Angeles County Tax Assessor "Book-Page-Parcel" number.	\N	\N	\N	2019-03-06 01:01:02.078007+00	2019-05-22 21:53:49.013801+00	1931	2019-05-22 21:53:49.016593+00	\N	~	39	\N	\N	Text
+850	Assessor Parcel	"Parcel" portion of the Los Angeles County Tax Assessor "Book-Page-Parcel" number.	\N	\N	\N	2019-03-06 01:01:02.167201+00	2019-05-22 21:53:49.021005+00	1932	2019-05-22 21:53:49.022443+00	\N	~	39	\N	\N	Text
+856	Lot	"Lot" portion of a property's legal description as recorded with the Los Angeles County Recorder.	\N	\N	\N	2019-03-06 01:01:02.234975+00	2019-05-22 21:53:49.025631+00	1933	2019-05-22 21:53:49.027036+00	\N	~	39	\N	\N	Text
+872	Reference # (Old Permit #)	A sequential reference number issued by the Cashiering System, and used to file and retrieve original paper copies.	\N	\N	\N	2019-03-06 01:01:02.329853+00	2019-05-22 21:53:49.030094+00	1934	2019-05-22 21:53:49.03135+00	\N	~	39	\N	\N	Text
+852	Status	Status of a permit, or of a permit application.	\N	\N	\N	2019-03-06 01:01:02.183163+00	2019-05-22 21:53:49.035153+00	1935	2019-05-22 21:53:49.036412+00	\N	~	39	\N	\N	Text
+873	Status Date	Permit status date.	\N	\N	\N	2019-03-06 01:01:02.335652+00	2019-05-22 21:53:49.041382+00	1936	2019-05-22 21:53:49.043498+00	\N	~	39	\N	\N	Calendar date
+839	Permit Type	Permit application type.	\N	\N	\N	2019-03-06 01:01:02.070762+00	2019-05-22 21:53:49.046713+00	1937	2019-05-22 21:53:49.047723+00	\N	~	39	\N	\N	Text
+860	Permit Sub-Type	The permit sub-type determines whether the permit application is for a 1 or 2 family dwelling, a multi-family dwelling, or a commercial structure. 	\N	\N	\N	2019-03-06 01:01:02.267426+00	2019-05-22 21:53:49.050831+00	1938	2019-05-22 21:53:49.051841+00	\N	~	39	\N	\N	Text
+837	Permit Category	Permit category is used to determine how the permit application will be handled within the LADBS public counter and regular plan check business process.	\N	\N	\N	2019-03-06 01:01:02.048739+00	2019-05-22 21:53:49.054417+00	1939	2019-05-22 21:53:49.055373+00	\N	~	39	\N	\N	Text
+861	Issue Date	Permit issue date.	\N	\N	\N	2019-03-06 01:01:02.27261+00	2019-05-22 21:53:49.058369+00	1940	2019-05-22 21:53:49.059588+00	\N	~	39	\N	\N	Calendar date
+853	Address Start	Beginning house number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address Start is 200. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address Start is 202. 	\N	\N	\N	2019-03-06 01:01:02.192669+00	2019-05-22 21:53:49.06252+00	1941	2019-05-22 21:53:49.063574+00	\N	~	39	\N	\N	Number
+874	Address Fraction Start	Beginning fraction of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address Fraction Start is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address Fraction Start is 1/4. 	\N	\N	\N	2019-03-06 01:01:02.340707+00	2019-05-22 21:53:49.066749+00	1942	2019-05-22 21:53:49.067902+00	\N	~	39	\N	\N	Text
+836	Address End	Ending house number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address End is 200. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address End is 204. 	\N	\N	\N	2019-03-06 01:01:02.043635+00	2019-05-22 21:53:49.071193+00	1943	2019-05-22 21:53:49.072388+00	\N	~	39	\N	\N	Number
+854	Address Fraction End	Ending house number fraction of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address Fraction End is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address Fraction End is 1/2. 	\N	\N	\N	2019-03-06 01:01:02.20287+00	2019-05-22 21:53:49.075521+00	1944	2019-05-22 21:53:49.076576+00	\N	~	39	\N	\N	Text
+868	Street Name	Street name of property address for permit application.	\N	\N	\N	2019-03-06 01:01:02.309667+00	2019-05-22 21:53:49.079515+00	1945	2019-05-22 21:53:49.08061+00	\N	~	39	\N	\N	Text
+877	Suffix Direction	Street suffix direction of property address for permit application. Example 1: For "200 - 200 N Main Ave", Suffix Direction is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Suffix Direction is SE. 	\N	\N	\N	2019-03-06 01:01:02.365207+00	2019-05-22 21:53:49.084156+00	1946	2019-05-22 21:53:49.085254+00	\N	~	39	\N	\N	Text
+876	Unit Range Start	Beginning unit number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave, #1-#8", Unit Range Start is #1. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Unit Range Start is null. 	\N	\N	\N	2019-03-06 01:01:02.360868+00	2019-05-22 21:53:49.088162+00	1947	2019-05-22 21:53:49.089374+00	\N	~	39	\N	\N	Text
+858	Work Description	Describes the work to be performed under the permit application.	\N	\N	\N	2019-03-06 01:01:02.25515+00	2019-05-22 21:53:49.09224+00	1948	2019-05-22 21:53:49.093225+00	\N	~	39	\N	\N	Text
+843	Valuation	The property/structure valuation amount is used to calculate the building permit fee and all fees calculated as percentage of the building fee.  For all building permit types, except for Grading, the valuation is measured in dollars. For Grading permit applications, the valuation is measured in cubic yards of soil removed or added.	\N	\N	\N	2019-03-06 01:01:02.098597+00	2019-05-22 21:53:49.095849+00	1949	2019-05-22 21:53:49.097378+00	\N	~	39	\N	\N	Number
+825	Floor Area-L.A. Zoning Code Definition	Floor area as defined in the Los Angeles Zoning Code.	\N	\N	\N	2019-03-06 01:01:01.982315+00	2019-05-22 21:53:49.1005+00	1950	2019-05-22 21:53:49.102057+00	\N	~	39	\N	\N	Number
+826	# of Residential Dwelling Units	Number of dwelling units for a residential building.	\N	\N	\N	2019-03-06 01:01:01.991491+00	2019-05-22 21:53:49.104836+00	1951	2019-05-22 21:53:49.105876+00	\N	~	39	\N	\N	Number
+878	Contractor's Business Name	If applicable, the contractor's business name.	\N	\N	\N	2019-03-06 01:01:02.369271+00	2019-05-22 21:53:49.109354+00	1952	2019-05-22 21:53:49.11157+00	\N	~	39	\N	\N	Text
+867	Contractor City	"City" portion of contractor's address.	\N	\N	\N	2019-03-06 01:01:02.304218+00	2019-05-22 21:53:49.114742+00	1953	2019-05-22 21:53:49.117456+00	\N	~	39	\N	\N	Text
+824	Contractor State	"State" portion of contractor's address.	\N	\N	\N	2019-03-06 01:01:01.97609+00	2019-05-22 21:53:49.120276+00	1954	2019-05-22 21:53:49.121487+00	\N	~	39	\N	\N	Text
+859	License Type	Contractor's license type (class code).	\N	\N	\N	2019-03-06 01:01:02.261766+00	2019-05-22 21:53:49.124234+00	1955	2019-05-22 21:53:49.125483+00	\N	~	39	\N	\N	Text
+830	License #	Contractor's license number.	\N	\N	\N	2019-03-06 01:01:02.011704+00	2019-05-22 21:53:49.128278+00	1956	2019-05-22 21:53:49.129668+00	\N	~	39	\N	\N	Number
+831	Principal First Name	First name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:02.017005+00	2019-05-22 21:53:49.132878+00	1957	2019-05-22 21:53:49.134476+00	\N	~	39	\N	\N	Text
+845	Principal Middle Name	Middle name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:02.120156+00	2019-05-22 21:53:49.137351+00	1958	2019-05-22 21:53:49.138423+00	\N	~	39	\N	\N	Text
+827	Principal Last Name	Last name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:01.996927+00	2019-05-22 21:53:49.141191+00	1959	2019-05-22 21:53:49.142233+00	\N	~	39	\N	\N	Text
+828	License Expiration Date	Contractor license expiration date.	\N	\N	\N	2019-03-06 01:01:02.001924+00	2019-05-22 21:53:49.144831+00	1960	2019-05-22 21:53:49.145916+00	\N	~	39	\N	\N	Calendar date
+834	Applicant Business Name	If applicable, permit applicant's business name.	\N	\N	\N	2019-03-06 01:01:02.033094+00	2019-05-22 21:53:49.14863+00	1961	2019-05-22 21:53:49.149785+00	\N	~	39	\N	\N	Text
+870	Applicant Address 1	The street address portion of the permit applicant's address.	\N	\N	\N	2019-03-06 01:01:02.320214+00	2019-05-22 21:53:49.152697+00	1962	2019-05-22 21:53:49.153727+00	\N	~	39	\N	\N	Text
+847	Applicant Address 2	The unit portion of the permit applicant's address.	\N	\N	\N	2019-03-06 01:01:02.140957+00	2019-05-22 21:53:49.156358+00	1963	2019-05-22 21:53:49.157785+00	\N	~	39	\N	\N	Text
+857	Applicant Address 3	The city and state of the permit applicant's address.	\N	\N	\N	2019-03-06 01:01:02.247586+00	2019-05-22 21:53:49.161036+00	1964	2019-05-22 21:53:49.16219+00	\N	~	39	\N	\N	Text
+832	Occupancy	Occupancy is the approved use for the structure.	\N	\N	\N	2019-03-06 01:01:02.023459+00	2019-05-22 21:53:49.164916+00	1965	2019-05-22 21:53:49.166074+00	\N	~	39	\N	\N	Text
+833	Floor Area-L.A. Building Code Definition	Floor area as defined in the Los Angeles Building Code.	\N	\N	\N	2019-03-06 01:01:02.028769+00	2019-05-22 21:53:49.16921+00	1966	2019-05-22 21:53:49.17058+00	\N	~	39	\N	\N	Number
+848	Council District	The City of Los Angeles council district that has jurisdiction over the property.	\N	\N	\N	2019-03-06 01:01:02.150432+00	2019-05-22 21:53:49.17358+00	1967	2019-05-22 21:53:49.174754+00	\N	~	39	\N	\N	Text
+897	Program Identifier		\N	\N	\N	2019-03-06 01:01:02.487943+00	2019-05-22 21:53:49.195386+00	1968	2019-05-22 21:53:49.196421+00	\N	~	40	\N	\N	Text
+883	Latitude		\N	\N	\N	2019-03-06 01:01:02.421009+00	2019-05-22 21:53:49.198965+00	1969	2019-05-22 21:53:49.200133+00	\N	~	40	\N	\N	Number
+900	Inspection Type		\N	\N	\N	2019-03-06 01:01:02.501327+00	2019-05-22 21:53:49.203982+00	1970	2019-05-22 21:53:49.205359+00	\N	~	40	\N	\N	Text
+893	Violation Description		\N	\N	\N	2019-03-06 01:01:02.469932+00	2019-05-22 21:53:49.209467+00	1971	2019-05-22 21:53:49.210702+00	\N	~	40	\N	\N	Text
+892	Inspection Result		\N	\N	\N	2019-03-06 01:01:02.465772+00	2019-05-22 21:53:49.213431+00	1972	2019-05-22 21:53:49.214486+00	\N	~	40	\N	\N	Text
+886	Inspection_Serial_Num		\N	\N	\N	2019-03-06 01:01:02.435923+00	2019-05-22 21:53:49.217206+00	1973	2019-05-22 21:53:49.218288+00	\N	~	40	\N	\N	Text
+885	Violation Type		\N	\N	\N	2019-03-06 01:01:02.431521+00	2019-05-22 21:53:49.221052+00	1974	2019-05-22 21:53:49.222057+00	\N	~	40	\N	\N	Text
+879	Violation Points		\N	\N	\N	2019-03-06 01:01:02.404388+00	2019-05-22 21:53:49.224741+00	1975	2019-05-22 21:53:49.225798+00	\N	~	40	\N	\N	Number
+887	Grade	Food establishment grade	\N	\N	\N	2019-03-06 01:01:02.443175+00	2019-05-22 21:53:49.228816+00	1976	2019-05-22 21:53:49.229999+00	\N	~	40	\N	\N	Text
+889	Name		\N	\N	\N	2019-03-06 01:01:02.452354+00	2019-05-22 21:53:49.232701+00	1977	2019-05-22 21:53:49.233883+00	\N	~	40	\N	\N	Text
+891	Inspection Business Name		\N	\N	\N	2019-03-06 01:01:02.461074+00	2019-05-22 21:53:49.236707+00	1978	2019-05-22 21:53:49.237708+00	\N	~	40	\N	\N	Text
+890	Inspection Date		\N	\N	\N	2019-03-06 01:01:02.456803+00	2019-05-22 21:53:49.240491+00	1979	2019-05-22 21:53:49.241509+00	\N	~	40	\N	\N	Calendar date
+884	Description		\N	\N	\N	2019-03-06 01:01:02.426818+00	2019-05-22 21:53:49.244165+00	1980	2019-05-22 21:53:49.245182+00	\N	~	40	\N	\N	Text
+899	Longitude		\N	\N	\N	2019-03-06 01:01:02.496806+00	2019-05-22 21:53:49.248032+00	1981	2019-05-22 21:53:49.249322+00	\N	~	40	\N	\N	Number
+882	Inspection Score		\N	\N	\N	2019-03-06 01:01:02.416603+00	2019-05-22 21:53:49.252554+00	1982	2019-05-22 21:53:49.253673+00	\N	~	40	\N	\N	Number
+895	City		\N	\N	\N	2019-03-06 01:01:02.479164+00	2019-05-22 21:53:49.256303+00	1983	2019-05-22 21:53:49.25756+00	\N	~	40	\N	\N	Text
+896	Address		\N	\N	\N	2019-03-06 01:01:02.483596+00	2019-05-22 21:53:49.260228+00	1984	2019-05-22 21:53:49.261189+00	\N	~	40	\N	\N	Text
+880	Violation_Record_ID		\N	\N	\N	2019-03-06 01:01:02.40861+00	2019-05-22 21:53:49.263734+00	1985	2019-05-22 21:53:49.264772+00	\N	~	40	\N	\N	Text
+898	Phone		\N	\N	\N	2019-03-06 01:01:02.492551+00	2019-05-22 21:53:49.267676+00	1986	2019-05-22 21:53:49.268696+00	\N	~	40	\N	\N	Text
+894	Zip Code		\N	\N	\N	2019-03-06 01:01:02.47433+00	2019-05-22 21:53:49.271405+00	1987	2019-05-22 21:53:49.272473+00	\N	~	40	\N	\N	Text
+881	Business_ID		\N	\N	\N	2019-03-06 01:01:02.412558+00	2019-05-22 21:53:49.275414+00	1988	2019-05-22 21:53:49.276487+00	\N	~	40	\N	\N	Text
+888	Inspection Closed Business		\N	\N	\N	2019-03-06 01:01:02.447815+00	2019-05-22 21:53:49.279131+00	1989	2019-05-22 21:53:49.280128+00	\N	~	40	\N	\N	Checkbox
+923	business_id		\N	\N	\N	2019-03-06 01:01:02.698084+00	2019-05-22 21:53:49.304629+00	1990	2019-05-22 21:53:49.307608+00	\N	~	42	\N	\N	url
+924	business_name		\N	\N	\N	2019-03-06 01:01:02.703108+00	2019-05-22 21:53:49.314411+00	1991	2019-05-22 21:53:49.316916+00	\N	~	42	\N	\N	text
+925	business_address		\N	\N	\N	2019-03-06 01:01:02.709962+00	2019-05-22 21:53:49.32067+00	1992	2019-05-22 21:53:49.322439+00	\N	~	42	\N	\N	text
+926	business_city		\N	\N	\N	2019-03-06 01:01:02.714549+00	2019-05-22 21:53:49.326371+00	1993	2019-05-22 21:53:49.327358+00	\N	~	42	\N	\N	text
+927	business_state		\N	\N	\N	2019-03-06 01:01:02.718941+00	2019-05-22 21:53:49.330071+00	1994	2019-05-22 21:53:49.331437+00	\N	~	42	\N	\N	text
+928	business_postal_code		\N	\N	\N	2019-03-06 01:01:02.723614+00	2019-05-22 21:53:49.335672+00	1995	2019-05-22 21:53:49.337495+00	\N	~	42	\N	\N	text
+929	business_phone_number		\N	\N	\N	2019-03-06 01:01:02.728319+00	2019-05-22 21:53:49.343098+00	1996	2019-05-22 21:53:49.344755+00	\N	~	42	\N	\N	text
+930	inspection_date		\N	\N	\N	2019-03-06 01:01:02.73291+00	2019-05-22 21:53:49.349607+00	1997	2019-05-22 21:53:49.351529+00	\N	~	42	\N	\N	calendar_date
+931	inspection_score		\N	\N	\N	2019-03-06 01:01:02.738249+00	2019-05-22 21:53:49.355668+00	1998	2019-05-22 21:53:49.357684+00	\N	~	42	\N	\N	number
+932	inspection_description		\N	\N	\N	2019-03-06 01:01:02.743108+00	2019-05-22 21:53:49.361779+00	1999	2019-05-22 21:53:49.363287+00	\N	~	42	\N	\N	text
+933	inspection_type		\N	\N	\N	2019-03-06 01:01:02.747609+00	2019-05-22 21:53:49.367582+00	2000	2019-05-22 21:53:49.369146+00	\N	~	42	\N	\N	text
+934	violation_description		\N	\N	\N	2019-03-06 01:01:02.752426+00	2019-05-22 21:53:49.373221+00	2001	2019-05-22 21:53:49.374721+00	\N	~	42	\N	\N	text
+935	violation_code		\N	\N	\N	2019-03-06 01:01:02.757143+00	2019-05-22 21:53:49.378633+00	2002	2019-05-22 21:53:49.379978+00	\N	~	42	\N	\N	text
+936	business_location		\N	\N	\N	2019-03-06 01:01:02.76323+00	2019-05-22 21:53:49.383924+00	2003	2019-05-22 21:53:49.385243+00	\N	~	42	\N	\N	location
+1068	Census Tracts		\N	\N	\N	2019-05-22 21:53:49.41273+00	2019-05-22 21:53:49.412767+00	2004	2019-05-22 21:53:49.413935+00	\N	+	43	\N	\N	Number
+1069	Historical Wards 2003-2015		\N	\N	\N	2019-05-22 21:53:49.417689+00	2019-05-22 21:53:49.417724+00	2005	2019-05-22 21:53:49.419764+00	\N	+	43	\N	\N	Number
+1070	Location (state)		\N	\N	\N	2019-05-22 21:53:49.423346+00	2019-05-22 21:53:49.423377+00	2006	2019-05-22 21:53:49.424353+00	\N	+	43	\N	\N	Text
+1071	Location (zip)		\N	\N	\N	2019-05-22 21:53:49.42808+00	2019-05-22 21:53:49.428108+00	2007	2019-05-22 21:53:49.428741+00	\N	+	43	\N	\N	Text
+939	Address		\N	\N	\N	2019-03-06 01:01:02.81916+00	2019-05-22 21:53:49.4317+00	2008	2019-05-22 21:53:49.432943+00	\N	~	43	\N	\N	Text
+949	Location		\N	\N	\N	2019-03-06 01:01:02.878864+00	2019-05-22 21:53:49.437597+00	2009	2019-05-22 21:53:49.439108+00	\N	~	43	\N	\N	Point
+950	Latitude		\N	\N	\N	2019-03-06 01:01:02.884842+00	2019-05-22 21:53:49.443043+00	2010	2019-05-22 21:53:49.444496+00	\N	~	43	\N	\N	Number
+937	Community Area Number		\N	\N	\N	2019-03-06 01:01:02.804586+00	2019-05-22 21:53:49.448135+00	2011	2019-05-22 21:53:49.449724+00	\N	~	43	\N	\N	Number
+938	Community Area Name		\N	\N	\N	2019-03-06 01:01:02.811577+00	2019-05-22 21:53:49.453843+00	2012	2019-05-22 21:53:49.455231+00	\N	~	43	\N	\N	Text
+940	Property Type		\N	\N	\N	2019-03-06 01:01:02.82572+00	2019-05-22 21:53:49.459538+00	2013	2019-05-22 21:53:49.461132+00	\N	~	43	\N	\N	Text
+945	Phone Number		\N	\N	\N	2019-03-06 01:01:02.856629+00	2019-05-22 21:53:49.465554+00	2014	2019-05-22 21:53:49.46701+00	\N	~	43	\N	\N	Text
+946	Management Company		\N	\N	\N	2019-03-06 01:01:02.861703+00	2019-05-22 21:53:49.470954+00	2015	2019-05-22 21:53:49.472284+00	\N	~	43	\N	\N	Text
+947	Longitude		\N	\N	\N	2019-03-06 01:01:02.867705+00	2019-05-22 21:53:49.476629+00	2016	2019-05-22 21:53:49.478184+00	\N	~	43	\N	\N	Number
+942	X Coordinate		\N	\N	\N	2019-03-06 01:01:02.83772+00	2019-05-22 21:53:49.482422+00	2017	2019-05-22 21:53:49.484275+00	\N	~	43	\N	\N	Number
+943	Units		\N	\N	\N	2019-03-06 01:01:02.843776+00	2019-05-22 21:53:49.488511+00	2018	2019-05-22 21:53:49.490075+00	\N	~	43	\N	\N	Number
+944	Property Name		\N	\N	\N	2019-03-06 01:01:02.850165+00	2019-05-22 21:53:49.493521+00	2019	2019-05-22 21:53:49.494526+00	\N	~	43	\N	\N	Text
+948	Zip Code		\N	\N	\N	2019-03-06 01:01:02.873504+00	2019-05-22 21:53:49.497004+00	2020	2019-05-22 21:53:49.498272+00	\N	~	43	\N	\N	Text
+941	Y Coordinate		\N	\N	\N	2019-03-06 01:01:02.83248+00	2019-05-22 21:53:49.501584+00	2021	2019-05-22 21:53:49.50266+00	\N	~	43	\N	\N	Number
+1072	Location (city)		\N	\N	\N	2019-05-22 21:53:49.505464+00	2019-05-22 21:53:49.505528+00	2022	2019-05-22 21:53:49.506455+00	\N	+	43	\N	\N	Text
+1073	Location (address)		\N	\N	\N	2019-05-22 21:53:49.510744+00	2019-05-22 21:53:49.510771+00	2023	2019-05-22 21:53:49.511452+00	\N	+	43	\N	\N	Text
+1074	Community Areas		\N	\N	\N	2019-05-22 21:53:49.514466+00	2019-05-22 21:53:49.514503+00	2024	2019-05-22 21:53:49.515378+00	\N	+	43	\N	\N	Number
+1075	Zip Codes		\N	\N	\N	2019-05-22 21:53:49.519201+00	2019-05-22 21:53:49.519229+00	2025	2019-05-22 21:53:49.519923+00	\N	+	43	\N	\N	Number
+1076	Wards		\N	\N	\N	2019-05-22 21:53:49.522733+00	2019-05-22 21:53:49.522761+00	2026	2019-05-22 21:53:49.523481+00	\N	+	43	\N	\N	Number
+1077	Hospital Type		\N	\N	\N	2019-05-22 21:53:49.568231+00	2019-05-22 21:53:49.56826+00	2027	2019-05-22 21:53:49.568936+00	\N	+	47	\N	\N	Text
+1078	Mortality national comparison		\N	\N	\N	2019-05-22 21:53:49.571683+00	2019-05-22 21:53:49.571708+00	2028	2019-05-22 21:53:49.572339+00	\N	+	47	\N	\N	Text
+1079	Effectiveness of care national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.574945+00	2019-05-22 21:53:49.57497+00	2029	2019-05-22 21:53:49.575779+00	\N	+	47	\N	\N	Text
+1080	Effectiveness of care national comparison		\N	\N	\N	2019-05-22 21:53:49.578367+00	2019-05-22 21:53:49.578391+00	2030	2019-05-22 21:53:49.579135+00	\N	+	47	\N	\N	Text
+1081	City		\N	\N	\N	2019-05-22 21:53:49.581716+00	2019-05-22 21:53:49.58174+00	2031	2019-05-22 21:53:49.582361+00	\N	+	47	\N	\N	Text
+1082	Address		\N	\N	\N	2019-05-22 21:53:49.585118+00	2019-05-22 21:53:49.585143+00	2032	2019-05-22 21:53:49.585871+00	\N	+	47	\N	\N	Text
+1083	Hospital Name		\N	\N	\N	2019-05-22 21:53:49.588397+00	2019-05-22 21:53:49.588422+00	2033	2019-05-22 21:53:49.589083+00	\N	+	47	\N	\N	Text
+1084	Provider ID		\N	\N	\N	2019-05-22 21:53:49.592152+00	2019-05-22 21:53:49.592177+00	2034	2019-05-22 21:53:49.592861+00	\N	+	47	\N	\N	Text
+1085	Phone Number		\N	\N	\N	2019-05-22 21:53:49.595521+00	2019-05-22 21:53:49.595544+00	2035	2019-05-22 21:53:49.596231+00	\N	+	47	\N	\N	Text
+1086	State		\N	\N	\N	2019-05-22 21:53:49.599393+00	2019-05-22 21:53:49.599418+00	2036	2019-05-22 21:53:49.600347+00	\N	+	47	\N	\N	Text
+1087	ZIP Code		\N	\N	\N	2019-05-22 21:53:49.603216+00	2019-05-22 21:53:49.603241+00	2037	2019-05-22 21:53:49.603942+00	\N	+	47	\N	\N	Text
+1088	Patient experience national comparison		\N	\N	\N	2019-05-22 21:53:49.606608+00	2019-05-22 21:53:49.606633+00	2038	2019-05-22 21:53:49.607499+00	\N	+	47	\N	\N	Text
+1089	Patient experience national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.610349+00	2019-05-22 21:53:49.610374+00	2039	2019-05-22 21:53:49.611143+00	\N	+	47	\N	\N	Text
+1090	Safety of care national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.613893+00	2019-05-22 21:53:49.613917+00	2040	2019-05-22 21:53:49.614665+00	\N	+	47	\N	\N	Text
+1091	Readmission national comparison		\N	\N	\N	2019-05-22 21:53:49.617611+00	2019-05-22 21:53:49.617636+00	2041	2019-05-22 21:53:49.618543+00	\N	+	47	\N	\N	Text
+1092	Readmission national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.621294+00	2019-05-22 21:53:49.621319+00	2042	2019-05-22 21:53:49.622096+00	\N	+	47	\N	\N	Text
+1093	Hospital overall rating		\N	\N	\N	2019-05-22 21:53:49.624887+00	2019-05-22 21:53:49.624912+00	2043	2019-05-22 21:53:49.625755+00	\N	+	47	\N	\N	Text
+1094	Hospital overall rating footnote		\N	\N	\N	2019-05-22 21:53:49.628629+00	2019-05-22 21:53:49.628654+00	2044	2019-05-22 21:53:49.629322+00	\N	+	47	\N	\N	Text
+1095	Location		\N	\N	\N	2019-05-22 21:53:49.632303+00	2019-05-22 21:53:49.632327+00	2045	2019-05-22 21:53:49.632979+00	\N	+	47	\N	\N	Location
+1096	Efficient use of medical imaging national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.635974+00	2019-05-22 21:53:49.635999+00	2046	2019-05-22 21:53:49.636694+00	\N	+	47	\N	\N	Text
+1097	Efficient use of medical imaging national comparison		\N	\N	\N	2019-05-22 21:53:49.63937+00	2019-05-22 21:53:49.639395+00	2047	2019-05-22 21:53:49.64011+00	\N	+	47	\N	\N	Text
+1098	Timeliness of care national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.642909+00	2019-05-22 21:53:49.642934+00	2048	2019-05-22 21:53:49.643648+00	\N	+	47	\N	\N	Text
+1099	County Name		\N	\N	\N	2019-05-22 21:53:49.646571+00	2019-05-22 21:53:49.646596+00	2049	2019-05-22 21:53:49.647329+00	\N	+	47	\N	\N	Text
+1100	Meets criteria for meaningful use of EHRs		\N	\N	\N	2019-05-22 21:53:49.650546+00	2019-05-22 21:53:49.650573+00	2050	2019-05-22 21:53:49.651323+00	\N	+	47	\N	\N	Checkbox
+1101	Mortality national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.654064+00	2019-05-22 21:53:49.654089+00	2051	2019-05-22 21:53:49.654764+00	\N	+	47	\N	\N	Text
+1102	Safety of care national comparison		\N	\N	\N	2019-05-22 21:53:49.658105+00	2019-05-22 21:53:49.65813+00	2052	2019-05-22 21:53:49.658937+00	\N	+	47	\N	\N	Text
+1103	Timeliness of care national comparison		\N	\N	\N	2019-05-22 21:53:49.661452+00	2019-05-22 21:53:49.661477+00	2053	2019-05-22 21:53:49.662136+00	\N	+	47	\N	\N	Text
+1104	Emergency Services		\N	\N	\N	2019-05-22 21:53:49.664732+00	2019-05-22 21:53:49.664756+00	2054	2019-05-22 21:53:49.665426+00	\N	+	47	\N	\N	Checkbox
+1105	Hospital Ownership		\N	\N	\N	2019-05-22 21:53:49.668225+00	2019-05-22 21:53:49.668299+00	2055	2019-05-22 21:53:49.669244+00	\N	+	47	\N	\N	Text
+1025	zip code		\N	\N	\N	2019-03-06 01:01:03.612852+00	2019-05-22 21:53:49.694383+00	2056	2019-05-22 21:53:49.695387+00	\N	~	45	\N	\N	Text
+1026	county		\N	\N	\N	2019-03-06 01:01:03.618662+00	2019-05-22 21:53:49.698257+00	2057	2019-05-22 21:53:49.69941+00	\N	~	45	\N	\N	Text
+1027	city		\N	\N	\N	2019-03-06 01:01:03.626351+00	2019-05-22 21:53:49.702264+00	2058	2019-05-22 21:53:49.703366+00	\N	~	45	\N	\N	Text
+951	Premium Adult Individual Age 40		\N	\N	\N	2019-03-06 01:01:02.925536+00	2019-05-22 21:53:49.724402+00	2059	2019-05-22 21:53:49.726476+00	\N	~	44	\N	\N	Number
+952	Plan Brochure URL		\N	\N	\N	2019-03-06 01:01:02.931231+00	2019-05-22 21:53:49.729623+00	2060	2019-05-22 21:53:49.730626+00	\N	~	44	\N	\N	URL
+953	Customer Service Phone Number Toll Free		\N	\N	\N	2019-03-06 01:01:02.936774+00	2019-05-22 21:53:49.733078+00	2061	2019-05-22 21:53:49.734231+00	\N	~	44	\N	\N	Text
+954	Plan Marketing Name		\N	\N	\N	2019-03-06 01:01:02.941644+00	2019-05-22 21:53:49.736792+00	2062	2019-05-22 21:53:49.737717+00	\N	~	44	\N	\N	Text
+955	Plan Type		\N	\N	\N	2019-03-06 01:01:02.947168+00	2019-05-22 21:53:49.741387+00	2063	2019-05-22 21:53:49.742689+00	\N	~	44	\N	\N	Text
+956	Summary of Benefits URL		\N	\N	\N	2019-03-06 01:01:02.95664+00	2019-05-22 21:53:49.745391+00	2064	2019-05-22 21:53:49.746399+00	\N	~	44	\N	\N	URL
+957	Plan ID (standard component)		\N	\N	\N	2019-03-06 01:01:02.962115+00	2019-05-22 21:53:49.749386+00	2065	2019-05-22 21:53:49.750785+00	\N	~	44	\N	\N	Text
+958	Metal Level		\N	\N	\N	2019-03-06 01:01:02.967552+00	2019-05-22 21:53:49.753847+00	2066	2019-05-22 21:53:49.75489+00	\N	~	44	\N	\N	Text
+959	Issuer Name		\N	\N	\N	2019-03-06 01:01:02.973758+00	2019-05-22 21:53:49.757624+00	2067	2019-05-22 21:53:49.758971+00	\N	~	44	\N	\N	Text
+960	Rating Area		\N	\N	\N	2019-03-06 01:01:02.979724+00	2019-05-22 21:53:49.761729+00	2068	2019-05-22 21:53:49.762811+00	\N	~	44	\N	\N	Text
+961	Source		\N	\N	\N	2019-03-06 01:01:02.984685+00	2019-05-22 21:53:49.765417+00	2069	2019-05-22 21:53:49.766544+00	\N	~	44	\N	\N	Text
+962	State		\N	\N	\N	2019-03-06 01:01:02.989855+00	2019-05-22 21:53:49.769646+00	2070	2019-05-22 21:53:49.770729+00	\N	~	44	\N	\N	Text
+963	Drug Deductible -family		\N	\N	\N	2019-03-06 01:01:02.99809+00	2019-05-22 21:53:49.773431+00	2071	2019-05-22 21:53:49.774598+00	\N	~	44	\N	\N	Text
+964	Medical Maximum Out Of Pocket -individual		\N	\N	\N	2019-03-06 01:01:03.011266+00	2019-05-22 21:53:49.777654+00	2072	2019-05-22 21:53:49.778884+00	\N	~	44	\N	\N	Text
+965	Primary Care Physician		\N	\N	\N	2019-03-06 01:01:03.024997+00	2019-05-22 21:53:49.781566+00	2073	2019-05-22 21:53:49.782615+00	\N	~	44	\N	\N	Text
+966	Specialist		\N	\N	\N	2019-03-06 01:01:03.039905+00	2019-05-22 21:53:49.785799+00	2074	2019-05-22 21:53:49.786868+00	\N	~	44	\N	\N	Text
+967	Couple+3 or more Children, Age 21		\N	\N	\N	2019-03-06 01:01:03.047371+00	2019-05-22 21:53:49.790618+00	2075	2019-05-22 21:53:49.791895+00	\N	~	44	\N	\N	Number
+968	Child Only Offering		\N	\N	\N	2019-03-06 01:01:03.052291+00	2019-05-22 21:53:49.794686+00	2076	2019-05-22 21:53:49.795668+00	\N	~	44	\N	\N	Text
+969	Medical Deductible - individual		\N	\N	\N	2019-03-06 01:01:03.057199+00	2019-05-22 21:53:49.798738+00	2077	2019-05-22 21:53:49.799827+00	\N	~	44	\N	\N	Text
+970	Non-preferred Brand Drugs		\N	\N	\N	2019-03-06 01:01:03.061791+00	2019-05-22 21:53:49.802899+00	2078	2019-05-22 21:53:49.803921+00	\N	~	44	\N	\N	Text
+971	Emergency Room		\N	\N	\N	2019-03-06 01:01:03.066668+00	2019-05-22 21:53:49.806833+00	2079	2019-05-22 21:53:49.808031+00	\N	~	44	\N	\N	Text
+972	Preferred Brand Drugs		\N	\N	\N	2019-03-06 01:01:03.072633+00	2019-05-22 21:53:49.811471+00	2080	2019-05-22 21:53:49.812538+00	\N	~	44	\N	\N	Text
+973	Inpatient Facility 		\N	\N	\N	2019-03-06 01:01:03.077435+00	2019-05-22 21:53:49.815101+00	2081	2019-05-22 21:53:49.81629+00	\N	~	44	\N	\N	Text
+974	Inpatient Physician		\N	\N	\N	2019-03-06 01:01:03.08215+00	2019-05-22 21:53:49.819201+00	2082	2019-05-22 21:53:49.820315+00	\N	~	44	\N	\N	Text
+975	Generic Drugs		\N	\N	\N	2019-03-06 01:01:03.087949+00	2019-05-22 21:53:49.82302+00	2083	2019-05-22 21:53:49.824029+00	\N	~	44	\N	\N	Text
+976	Medical Deductible -family		\N	\N	\N	2019-03-06 01:01:03.093083+00	2019-05-22 21:53:49.826985+00	2084	2019-05-22 21:53:49.828031+00	\N	~	44	\N	\N	Text
+977	Specialty Drugs		\N	\N	\N	2019-03-06 01:01:03.098657+00	2019-05-22 21:53:49.831272+00	2085	2019-05-22 21:53:49.832399+00	\N	~	44	\N	\N	Text
+978	Premium Scenarios		\N	\N	\N	2019-03-06 01:01:03.10353+00	2019-05-22 21:53:49.8356+00	2086	2019-05-22 21:53:49.836623+00	\N	~	44	\N	\N	Text
+979	Child Dental		\N	\N	\N	2019-03-06 01:01:03.108641+00	2019-05-22 21:53:49.839269+00	2087	2019-05-22 21:53:49.840717+00	\N	~	44	\N	\N	Text
+980	Adult Dental		\N	\N	\N	2019-03-06 01:01:03.113479+00	2019-05-22 21:53:49.84522+00	2088	2019-05-22 21:53:49.846238+00	\N	~	44	\N	\N	Text
+981	Standard Plan Cost Sharing		\N	\N	\N	2019-03-06 01:01:03.118353+00	2019-05-22 21:53:49.849094+00	2089	2019-05-22 21:53:49.850117+00	\N	~	44	\N	\N	Text
+982	Couple+2 children, Age 21		\N	\N	\N	2019-03-06 01:01:03.123197+00	2019-05-22 21:53:49.853226+00	2090	2019-05-22 21:53:49.854306+00	\N	~	44	\N	\N	Number
+983	Individual+3 or more children, Age 40		\N	\N	\N	2019-03-06 01:01:03.127691+00	2019-05-22 21:53:49.857285+00	2091	2019-05-22 21:53:49.858559+00	\N	~	44	\N	\N	Number
+984	Couple+3 or more Children, Age 30		\N	\N	\N	2019-03-06 01:01:03.132271+00	2019-05-22 21:53:49.861251+00	2092	2019-05-22 21:53:49.862296+00	\N	~	44	\N	\N	Number
+985	Individual+2 children, Age 30		\N	\N	\N	2019-03-06 01:01:03.136974+00	2019-05-22 21:53:49.864979+00	2093	2019-05-22 21:53:49.866069+00	\N	~	44	\N	\N	Number
+986	Premium Adult Individual Age 30		\N	\N	\N	2019-03-06 01:01:03.141721+00	2019-05-22 21:53:49.869241+00	2094	2019-05-22 21:53:49.870277+00	\N	~	44	\N	\N	Number
+987	Individual+3 or more children, Age 30		\N	\N	\N	2019-03-06 01:01:03.146694+00	2019-05-22 21:53:49.875229+00	2095	2019-05-22 21:53:49.876308+00	\N	~	44	\N	\N	Number
+988	Couple+1 child, Age 21		\N	\N	\N	2019-03-06 01:01:03.151302+00	2019-05-22 21:53:49.879245+00	2096	2019-05-22 21:53:49.882041+00	\N	~	44	\N	\N	Number
+989	Premium Adult Individual Age 50		\N	\N	\N	2019-03-06 01:01:03.156054+00	2019-05-22 21:53:49.885335+00	2097	2019-05-22 21:53:49.886461+00	\N	~	44	\N	\N	Number
+990	Premium Adult Individual Age 60		\N	\N	\N	2019-03-06 01:01:03.160896+00	2019-05-22 21:53:49.889212+00	2098	2019-05-22 21:53:49.890199+00	\N	~	44	\N	\N	Number
+991	Premium Couple 30		\N	\N	\N	2019-03-06 01:01:03.165447+00	2019-05-22 21:53:49.892867+00	2099	2019-05-22 21:53:49.893786+00	\N	~	44	\N	\N	Number
+992	Premium Adult Individual Age 21		\N	\N	\N	2019-03-06 01:01:03.172235+00	2019-05-22 21:53:49.896285+00	2100	2019-05-22 21:53:49.897322+00	\N	~	44	\N	\N	Number
+993	Individual+2 children, Age 40		\N	\N	\N	2019-03-06 01:01:03.177556+00	2019-05-22 21:53:49.900009+00	2101	2019-05-22 21:53:49.90126+00	\N	~	44	\N	\N	Number
+994	Couple+1 child, Age 30 		\N	\N	\N	2019-03-06 01:01:03.186805+00	2019-05-22 21:53:49.903919+00	2102	2019-05-22 21:53:49.904938+00	\N	~	44	\N	\N	Number
+995	Individual+1 child, Age 21		\N	\N	\N	2019-03-06 01:01:03.204859+00	2019-05-22 21:53:49.907721+00	2103	2019-05-22 21:53:49.908933+00	\N	~	44	\N	\N	Number
+996	Individual+1 child, Age 40		\N	\N	\N	2019-03-06 01:01:03.209595+00	2019-05-22 21:53:49.911441+00	2104	2019-05-22 21:53:49.912303+00	\N	~	44	\N	\N	Number
+997	Couple+2 children, Age 30		\N	\N	\N	2019-03-06 01:01:03.218925+00	2019-05-22 21:53:49.914768+00	2105	2019-05-22 21:53:49.915747+00	\N	~	44	\N	\N	Number
+998	Premium Couple 21  		\N	\N	\N	2019-03-06 01:01:03.224497+00	2019-05-22 21:53:49.918345+00	2106	2019-05-22 21:53:49.920906+00	\N	~	44	\N	\N	Number
+999	Premium Couple 40		\N	\N	\N	2019-03-06 01:01:03.236432+00	2019-05-22 21:53:49.923742+00	2107	2019-05-22 21:53:49.925129+00	\N	~	44	\N	\N	Number
+1000	Couple+2 children, Age 50		\N	\N	\N	2019-03-06 01:01:03.245454+00	2019-05-22 21:53:49.928003+00	2108	2019-05-22 21:53:49.929058+00	\N	~	44	\N	\N	Number
+1001	Individual+2 children, Age 50		\N	\N	\N	2019-03-06 01:01:03.254985+00	2019-05-22 21:53:49.931855+00	2109	2019-05-22 21:53:49.932938+00	\N	~	44	\N	\N	Number
+1002	Couple+1 child, Age 40 		\N	\N	\N	2019-03-06 01:01:03.262574+00	2019-05-22 21:53:49.935955+00	2110	2019-05-22 21:53:49.936999+00	\N	~	44	\N	\N	Number
+1003	Individual+1 child, Age 50		\N	\N	\N	2019-03-06 01:01:03.268235+00	2019-05-22 21:53:49.939759+00	2111	2019-05-22 21:53:49.940762+00	\N	~	44	\N	\N	Number
+1004	Premium Couple 50		\N	\N	\N	2019-03-06 01:01:03.278988+00	2019-05-22 21:53:49.943494+00	2112	2019-05-22 21:53:49.944451+00	\N	~	44	\N	\N	Number
+1005	Couple+3 or more Children, Age 50		\N	\N	\N	2019-03-06 01:01:03.290525+00	2019-05-22 21:53:49.947457+00	2113	2019-05-22 21:53:49.948922+00	\N	~	44	\N	\N	Number
+1006	Individual+3 or more children, Age 21		\N	\N	\N	2019-03-06 01:01:03.300596+00	2019-05-22 21:53:49.951773+00	2114	2019-05-22 21:53:49.95277+00	\N	~	44	\N	\N	Number
+1007	Couple+2 children, Age 40		\N	\N	\N	2019-03-06 01:01:03.314676+00	2019-05-22 21:53:49.955738+00	2115	2019-05-22 21:53:49.956774+00	\N	~	44	\N	\N	Number
+1008	Individual+3 or more children, Age 50		\N	\N	\N	2019-03-06 01:01:03.324572+00	2019-05-22 21:53:49.959708+00	2116	2019-05-22 21:53:49.960806+00	\N	~	44	\N	\N	Number
+1009	Individual+1 child, Age 30		\N	\N	\N	2019-03-06 01:01:03.333111+00	2019-05-22 21:53:49.963413+00	2117	2019-05-22 21:53:49.964566+00	\N	~	44	\N	\N	Number
+1010	Couple+1 child, Age 50 		\N	\N	\N	2019-03-06 01:01:03.350292+00	2019-05-22 21:53:49.967356+00	2118	2019-05-22 21:53:49.968599+00	\N	~	44	\N	\N	Number
+1011	Premium Child		\N	\N	\N	2019-03-06 01:01:03.355981+00	2019-05-22 21:53:49.971611+00	2119	2019-05-22 21:53:49.972694+00	\N	~	44	\N	\N	Number
+1012	Premium Couple 60		\N	\N	\N	2019-03-06 01:01:03.397521+00	2019-05-22 21:53:49.975505+00	2120	2019-05-22 21:53:49.976612+00	\N	~	44	\N	\N	Number
+1013	Premium Adult Individual Age 27		\N	\N	\N	2019-03-06 01:01:03.428309+00	2019-05-22 21:53:49.979498+00	2121	2019-05-22 21:53:49.98047+00	\N	~	44	\N	\N	Number
+1014	Individual+2 children, Age 21		\N	\N	\N	2019-03-06 01:01:03.445575+00	2019-05-22 21:53:49.98308+00	2122	2019-05-22 21:53:49.984419+00	\N	~	44	\N	\N	Number
+1015	Couple+3 or more Children, Age 40		\N	\N	\N	2019-03-06 01:01:03.469562+00	2019-05-22 21:53:49.987214+00	2123	2019-05-22 21:53:49.988479+00	\N	~	44	\N	\N	Number
+1016	Customer Service Phone Number TTY		\N	\N	\N	2019-03-06 01:01:03.48751+00	2019-05-22 21:53:49.991262+00	2124	2019-05-22 21:53:49.992371+00	\N	~	44	\N	\N	Text
+1017	County		\N	\N	\N	2019-03-06 01:01:03.498591+00	2019-05-22 21:53:49.995328+00	2125	2019-05-22 21:53:49.996421+00	\N	~	44	\N	\N	Text
+1018	Drug Maximum Out of Pocket - individual		\N	\N	\N	2019-03-06 01:01:03.509554+00	2019-05-22 21:53:49.999228+00	2126	2019-05-22 21:53:50.000463+00	\N	~	44	\N	\N	Text
+1019	Medical Maximum Out of Pocket -family		\N	\N	\N	2019-03-06 01:01:03.518279+00	2019-05-22 21:53:50.003265+00	2127	2019-05-22 21:53:50.004332+00	\N	~	44	\N	\N	Text
+1020	Drug Maximum Out of Pocket - Family		\N	\N	\N	2019-03-06 01:01:03.525683+00	2019-05-22 21:53:50.006932+00	2128	2019-05-22 21:53:50.008141+00	\N	~	44	\N	\N	Text
+1021	Drug Deductible - individual		\N	\N	\N	2019-03-06 01:01:03.547397+00	2019-05-22 21:53:50.011712+00	2129	2019-05-22 21:53:50.012805+00	\N	~	44	\N	\N	Text
+1022	Network URL		\N	\N	\N	2019-03-06 01:01:03.553487+00	2019-05-22 21:53:50.016688+00	2130	2019-05-22 21:53:50.019158+00	\N	~	44	\N	\N	URL
+1023	Customer Service Phone Number Local		\N	\N	\N	2019-03-06 01:01:03.558586+00	2019-05-22 21:53:50.022039+00	2131	2019-05-22 21:53:50.02342+00	\N	~	44	\N	\N	Text
+1024	Drug Formulary URL		\N	\N	\N	2019-03-06 01:01:03.563396+00	2019-05-22 21:53:50.02625+00	2132	2019-05-22 21:53:50.027309+00	\N	~	44	\N	\N	URL
 \.
-
-
---
--- Name: data_facility_metadata_historicalvariable_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_historicalvariable_history_id_seq', 1030, true);
 
 
 --
@@ -8452,13 +9261,6 @@ SELECT pg_catalog.setval('public.data_facility_metadata_historicalvariable_histo
 
 COPY public.data_facility_metadata_physicaldatatable (id, path, created_at, updated_at, data_store_id, logical_data_table_id) FROM stdin;
 \.
-
-
---
--- Name: data_facility_metadata_physicaldatatable_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_physicaldatatable_id_seq', 1, false);
 
 
 --
@@ -8473,13 +9275,6 @@ COPY public.data_facility_metadata_storagetype (id, name, description, created_a
 
 
 --
--- Name: data_facility_metadata_storagetype_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_storagetype_id_seq', 3, true);
-
-
---
 -- Data for Name: data_facility_metadata_value; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -8488,1055 +9283,1116 @@ COPY public.data_facility_metadata_value (id, value, label, description, frequen
 
 
 --
--- Name: data_facility_metadata_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_value_id_seq', 1, false);
-
-
---
 -- Data for Name: data_facility_metadata_variable; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.data_facility_metadata_variable (id, name, description, unique_values, missing_values, top_k, created_at, updated_at, data_table_id, detected_type_id, provided_type) FROM stdin;
-1	Winning Numbers	Winning numbers	\N	\N	\N	2019-03-06 01:00:55.582268+00	2019-03-06 01:00:55.582297+00	1	\N	Text
-2	Cash Ball	Cash ball	\N	\N	\N	2019-03-06 01:00:55.58859+00	2019-03-06 01:00:55.588618+00	1	\N	Text
-3	Draw Date		\N	\N	\N	2019-03-06 01:00:55.593426+00	2019-03-06 01:00:55.593453+00	1	\N	Calendar date
-4	LAST NAME		\N	\N	\N	2019-03-06 01:00:55.669316+00	2019-03-06 01:00:55.669513+00	2	\N	Text
-5	NPI		\N	\N	\N	2019-03-06 01:00:55.67624+00	2019-03-06 01:00:55.676266+00	2	\N	Number
-6	FIRST NAME		\N	\N	\N	2019-03-06 01:00:55.681354+00	2019-03-06 01:00:55.681379+00	2	\N	Text
-7	Date_Reported		\N	\N	\N	2019-03-06 01:00:55.721571+00	2019-03-06 01:00:55.7216+00	3	\N	Calendar date
-8	Location		\N	\N	\N	2019-03-06 01:00:55.733231+00	2019-03-06 01:00:55.733262+00	3	\N	Text
-9	Statistical_Reporting_Area		\N	\N	\N	2019-03-06 01:00:55.741897+00	2019-03-06 01:00:55.741924+00	3	\N	Number
-10	Beat		\N	\N	\N	2019-03-06 01:00:55.746988+00	2019-03-06 01:00:55.747014+00	3	\N	Text
-11	Time_Reported		\N	\N	\N	2019-03-06 01:00:55.751731+00	2019-03-06 01:00:55.751797+00	3	\N	Text
-12	Computer_Aided_Dispatch_Event_Type		\N	\N	\N	2019-03-06 01:00:55.756875+00	2019-03-06 01:00:55.756901+00	3	\N	Text
-13	Incident Number	Master incident number as it relates to the call (different from incident as it relates to an offense)	\N	\N	\N	2019-03-06 01:00:55.794353+00	2019-03-06 01:00:55.79438+00	4	\N	text
-14	Division	The Largest of the police geographic areas ( 7 patrol divisions)	\N	\N	\N	2019-03-06 01:00:55.799481+00	2019-03-06 01:00:55.799508+00	4	\N	text
-15	Nature of Call	Problem type of call, for example loud music, burglary…etc.	\N	\N	\N	2019-03-06 01:00:55.808008+00	2019-03-06 01:00:55.808034+00	4	\N	text
-16	Priority	Calls are broken down to priority type 1-4,…. 1 being most urgent	\N	\N	\N	2019-03-06 01:00:55.813108+00	2019-03-06 01:00:55.813134+00	4	\N	text
-17	Date/Time	Date and time  of the call	\N	\N	\N	2019-03-06 01:00:55.818013+00	2019-03-06 01:00:55.818038+00	4	\N	calendar_date
-18	Responding Elements Number	Responding officers element (unit) number	\N	\N	\N	2019-03-06 01:00:55.823207+00	2019-03-06 01:00:55.823234+00	4	\N	text
-19	Block	Block number of address for the call	\N	\N	\N	2019-03-06 01:00:55.828355+00	2019-03-06 01:00:55.828382+00	4	\N	text
-20	Location	Street name of address for call	\N	\N	\N	2019-03-06 01:00:55.833311+00	2019-03-06 01:00:55.833337+00	4	\N	text
-21	Beat	The 2nd to smallest police geography (Beats are made of Reporting Areas)	\N	\N	\N	2019-03-06 01:00:55.838241+00	2019-03-06 01:00:55.838268+00	4	\N	text
-22	Reporting Area	Smallest police geography which makes up all other police geographic areas (Beats, Sectors, Divisions)	\N	\N	\N	2019-03-06 01:00:55.843487+00	2019-03-06 01:00:55.843516+00	4	\N	text
-23	Status	Status of the call as it relates to the responding officers	\N	\N	\N	2019-03-06 01:00:55.849243+00	2019-03-06 01:00:55.849271+00	4	\N	text
-24	PERMIT_NUMBER		\N	\N	\N	2019-03-06 01:00:55.890845+00	2019-03-06 01:00:55.890871+00	5	\N	Text
-25	CATEGORY		\N	\N	\N	2019-03-06 01:00:55.898124+00	2019-03-06 01:00:55.898152+00	5	\N	Text
-26	SEWER		\N	\N	\N	2019-03-06 01:00:55.903218+00	2019-03-06 01:00:55.903244+00	5	\N	Text
-27	FILE_DATE		\N	\N	\N	2019-03-06 01:00:55.908204+00	2019-03-06 01:00:55.908229+00	5	\N	Calendar date
-28	ZIP		\N	\N	\N	2019-03-06 01:00:55.913245+00	2019-03-06 01:00:55.913272+00	5	\N	Text
-29	WATER		\N	\N	\N	2019-03-06 01:00:55.919578+00	2019-03-06 01:00:55.919605+00	5	\N	Text
-30	PERMIT_TYPE		\N	\N	\N	2019-03-06 01:00:55.925086+00	2019-03-06 01:00:55.925112+00	5	\N	Text
-31	CENSUS_TRACT		\N	\N	\N	2019-03-06 01:00:55.930861+00	2019-03-06 01:00:55.930887+00	5	\N	Text
-32	ISSUE_DATE		\N	\N	\N	2019-03-06 01:00:55.935648+00	2019-03-06 01:00:55.935675+00	5	\N	Calendar date
-33	CITY		\N	\N	\N	2019-03-06 01:00:55.940509+00	2019-03-06 01:00:55.940535+00	5	\N	Text
-34	TYPE		\N	\N	\N	2019-03-06 01:00:55.94561+00	2019-03-06 01:00:55.945637+00	5	\N	Text
-35	Total Est. Fee	Estimated fee of job	\N	\N	\N	2019-03-06 01:00:55.985077+00	2019-03-06 01:00:55.98512+00	6	\N	Text
-36	Paid	Date when job is paid	\N	\N	\N	2019-03-06 01:00:55.990879+00	2019-03-06 01:00:55.990905+00	6	\N	Text
-37	Building Type	1-2-3 Family  or Other	\N	\N	\N	2019-03-06 01:00:55.996878+00	2019-03-06 01:00:55.996904+00	6	\N	Text
-38	House #	House Number of Residence or Commercial Property	\N	\N	\N	2019-03-06 01:00:56.002387+00	2019-03-06 01:00:56.002413+00	6	\N	Text
-39	Street Name	Street Name where Property is located	\N	\N	\N	2019-03-06 01:00:56.007861+00	2019-03-06 01:00:56.007895+00	6	\N	Text
-40	GIS_COUNCIL_DISTRICT	Council District	\N	\N	\N	2019-03-06 01:00:56.014691+00	2019-03-06 01:00:56.014718+00	6	\N	Text
-41	TOTAL_CONSTRUCTION_FLOOR_AREA	Total  Construction Floor Area	\N	\N	\N	2019-03-06 01:00:56.020336+00	2019-03-06 01:00:56.020362+00	6	\N	Text
-42	JOB_S1_NO	JOB_S1_NO	\N	\N	\N	2019-03-06 01:00:56.025635+00	2019-03-06 01:00:56.025662+00	6	\N	Text
-43	Plumbing	Plumbing Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.031052+00	2019-03-06 01:00:56.031078+00	6	\N	Text
-44	Other	Other? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.037542+00	2019-03-06 01:00:56.037568+00	6	\N	Text
-45	Applicant Professional Title	Applicant's Professional Title	\N	\N	\N	2019-03-06 01:00:56.042404+00	2019-03-06 01:00:56.042431+00	6	\N	Text
-46	Fire Suppression	Fire Suppression  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.047302+00	2019-03-06 01:00:56.047328+00	6	\N	Text
-47	GIS_LONGITUDE	Longitude	\N	\N	\N	2019-03-06 01:00:56.051969+00	2019-03-06 01:00:56.051995+00	6	\N	Text
-48	City 	City 	\N	\N	\N	2019-03-06 01:00:56.056919+00	2019-03-06 01:00:56.056945+00	6	\N	Text
-49	JOB_NO_GOOD_COUNT	Job No Good Count	\N	\N	\N	2019-03-06 01:00:56.062354+00	2019-03-06 01:00:56.06238+00	6	\N	Text
-50	Owner's Business Name	Business Name of Property Owner	\N	\N	\N	2019-03-06 01:00:56.067575+00	2019-03-06 01:00:56.067601+00	6	\N	Text
-51	Lot	Tax lot assigned by Department of Finance	\N	\N	\N	2019-03-06 01:00:56.072238+00	2019-03-06 01:00:56.072264+00	6	\N	Text
-52	PC Filed	Application Filed electronically, rather than manually	\N	\N	\N	2019-03-06 01:00:56.076772+00	2019-03-06 01:00:56.076798+00	6	\N	Text
-53	Zoning Dist3	Zoning Distr 3	\N	\N	\N	2019-03-06 01:00:56.081733+00	2019-03-06 01:00:56.08176+00	6	\N	Text
-54	Community - Board	3-digit identifier: Borough code = first position, last 2 = community board	\N	\N	\N	2019-03-06 01:00:56.086921+00	2019-03-06 01:00:56.086947+00	6	\N	Text
-55	Owner's House Number	House Number of Property Owner	\N	\N	\N	2019-03-06 01:00:56.091797+00	2019-03-06 01:00:56.091824+00	6	\N	Text
-56	Applicant's Last Name	Last Name of Applicant	\N	\N	\N	2019-03-06 01:00:56.096846+00	2019-03-06 01:00:56.096872+00	6	\N	Text
-57	Other Description	Other Description	\N	\N	\N	2019-03-06 01:00:56.10258+00	2019-03-06 01:00:56.102607+00	6	\N	Text
-58	Equipment	Equipment  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.108424+00	2019-03-06 01:00:56.108453+00	6	\N	Text
-59	Boiler	Boiler  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.117994+00	2019-03-06 01:00:56.118022+00	6	\N	Text
-60	Owner's First Name	First Name of property owner	\N	\N	\N	2019-03-06 01:00:56.123363+00	2019-03-06 01:00:56.123388+00	6	\N	Text
-61	Zoning Dist2	Zoning Distr 2	\N	\N	\N	2019-03-06 01:00:56.128617+00	2019-03-06 01:00:56.128643+00	6	\N	Text
-62	SPECIAL_ACTION_DATE	Special Action Date	\N	\N	\N	2019-03-06 01:00:56.133508+00	2019-03-06 01:00:56.133534+00	6	\N	Text
-63	Owner's Last Name	Last Name of property owner	\N	\N	\N	2019-03-06 01:00:56.138808+00	2019-03-06 01:00:56.138834+00	6	\N	Text
-64	Special District 1	Special Distr 1	\N	\N	\N	2019-03-06 01:00:56.146134+00	2019-03-06 01:00:56.146162+00	6	\N	Text
-65	Special District 2	Special District 2	\N	\N	\N	2019-03-06 01:00:56.15062+00	2019-03-06 01:00:56.150649+00	6	\N	Text
-66	Vertical Enlrgmt	Vertical Enlrgmt	\N	\N	\N	2019-03-06 01:00:56.155627+00	2019-03-06 01:00:56.155653+00	6	\N	Text
-67	Existing Occupancy	Existing Occupancy	\N	\N	\N	2019-03-06 01:00:56.160305+00	2019-03-06 01:00:56.160331+00	6	\N	Text
-68	Proposed No. of Stories	Proposed No. of Stories	\N	\N	\N	2019-03-06 01:00:56.16528+00	2019-03-06 01:00:56.165306+00	6	\N	Number
-69	Cluster	Cluster	\N	\N	\N	2019-03-06 01:00:56.174365+00	2019-03-06 01:00:56.174425+00	6	\N	Text
-70	Standpipe	Standpipe Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.185415+00	2019-03-06 01:00:56.185454+00	6	\N	Text
-71	Existing Zoning Sqft	Existing Zoning Sqft	\N	\N	\N	2019-03-06 01:00:56.201766+00	2019-03-06 01:00:56.202247+00	6	\N	Number
-72	Enlargement SQ Footage	Enlargement SQ Footage	\N	\N	\N	2019-03-06 01:00:56.214515+00	2019-03-06 01:00:56.214615+00	6	\N	Number
-73	Proposed Occupancy	Proposed Occupancy	\N	\N	\N	2019-03-06 01:00:56.224766+00	2019-03-06 01:00:56.2248+00	6	\N	Text
-74	Owner Type	Owner Type	\N	\N	\N	2019-03-06 01:00:56.234275+00	2019-03-06 01:00:56.234357+00	6	\N	Text
-75	State	State	\N	\N	\N	2019-03-06 01:00:56.243711+00	2019-03-06 01:00:56.243746+00	6	\N	Text
-76	Owner'sHouse Street Name	House Street Name of Property Owner	\N	\N	\N	2019-03-06 01:00:56.254733+00	2019-03-06 01:00:56.254762+00	6	\N	Text
-77	DOBRunDate	Date when query is run and pushed to Open Data. Could be used to differentiate report dates.	\N	\N	\N	2019-03-06 01:00:56.26562+00	2019-03-06 01:00:56.265665+00	6	\N	Calendar date
-78	WITHDRAWAL_FLAG	Withdrawal Indicator	\N	\N	\N	2019-03-06 01:00:56.28294+00	2019-03-06 01:00:56.283022+00	6	\N	Text
-79	GIS_LATITUDE	Latitude	\N	\N	\N	2019-03-06 01:00:56.29482+00	2019-03-06 01:00:56.294853+00	6	\N	Text
-80	ExistingNo. of Stories	ExistingNo. of Stories	\N	\N	\N	2019-03-06 01:00:56.313843+00	2019-03-06 01:00:56.313904+00	6	\N	Number
-81	Proposed Height	Proposed Height	\N	\N	\N	2019-03-06 01:00:56.326184+00	2019-03-06 01:00:56.326315+00	6	\N	Number
-82	Assigned	Date when job is assigned to plan examiner	\N	\N	\N	2019-03-06 01:00:56.333477+00	2019-03-06 01:00:56.333505+00	6	\N	Text
-83	Approved	Date when job is approved	\N	\N	\N	2019-03-06 01:00:56.339451+00	2019-03-06 01:00:56.33948+00	6	\N	Text
-84	Pre- Filing Date	Date when job is prefiled	\N	\N	\N	2019-03-06 01:00:56.346047+00	2019-03-06 01:00:56.346083+00	6	\N	Text
-85	Fully Paid	Date when job is paid and entered	\N	\N	\N	2019-03-06 01:00:56.352858+00	2019-03-06 01:00:56.352959+00	6	\N	Text
-86	Applicant's First Name	First Name of Applicant	\N	\N	\N	2019-03-06 01:00:56.359004+00	2019-03-06 01:00:56.359033+00	6	\N	Text
-87	Landmarked	L code indicates that the building has been assigned landmark status	\N	\N	\N	2019-03-06 01:00:56.365274+00	2019-03-06 01:00:56.365302+00	6	\N	Text
-88	Fee Status	Type of Fee	\N	\N	\N	2019-03-06 01:00:56.370635+00	2019-03-06 01:00:56.370663+00	6	\N	Text
-89	eFiling Filed	Application Filed electronically, rather than manually	\N	\N	\N	2019-03-06 01:00:56.376328+00	2019-03-06 01:00:56.376357+00	6	\N	Text
-90	Applicant License #	Number assigned to the skilled trade person/contractor or licensed professional	\N	\N	\N	2019-03-06 01:00:56.381694+00	2019-03-06 01:00:56.381807+00	6	\N	Text
-91	Little e	Hazardous	\N	\N	\N	2019-03-06 01:00:56.386637+00	2019-03-06 01:00:56.386665+00	6	\N	Text
-92	Job Type	Job Type, based on DOB Job Code (NB-New Building, A1, A2, A3- Alterations 1-3, SG-Sign, etc.)	\N	\N	\N	2019-03-06 01:00:56.392284+00	2019-03-06 01:00:56.392312+00	6	\N	Text
-93	City Owned	City Owned	\N	\N	\N	2019-03-06 01:00:56.399239+00	2019-03-06 01:00:56.399266+00	6	\N	Text
-94	Zip	Zip	\N	\N	\N	2019-03-06 01:00:56.405928+00	2019-03-06 01:00:56.405963+00	6	\N	Text
-95	Non-Profit	Non-Profit	\N	\N	\N	2019-03-06 01:00:56.412178+00	2019-03-06 01:00:56.412214+00	6	\N	Text
-96	Existing Dwelling Units	Existing Dwelling Units	\N	\N	\N	2019-03-06 01:00:56.418045+00	2019-03-06 01:00:56.418083+00	6	\N	Text
-97	Bin #	Number assigned by City Planning to a specific building	\N	\N	\N	2019-03-06 01:00:56.424265+00	2019-03-06 01:00:56.424293+00	6	\N	Text
-98	Job Status Descrp	Status code description	\N	\N	\N	2019-03-06 01:00:56.430757+00	2019-03-06 01:00:56.430795+00	6	\N	Text
-99	Job #	Number assigned by DOB to Job Filing	\N	\N	\N	2019-03-06 01:00:56.435522+00	2019-03-06 01:00:56.43555+00	6	\N	Text
-100	Doc #	Document Number	\N	\N	\N	2019-03-06 01:00:56.440143+00	2019-03-06 01:00:56.440172+00	6	\N	Text
-101	Latest Action Date	Latest status date	\N	\N	\N	2019-03-06 01:00:56.444733+00	2019-03-06 01:00:56.444774+00	6	\N	Calendar date
-102	GIS_CENSUS_TRACT	Census Tract	\N	\N	\N	2019-03-06 01:00:56.449441+00	2019-03-06 01:00:56.449469+00	6	\N	Text
-103	Job Status	DOB Status code of job (A-Pre Filed, I-Sign Off, P- Approved, R-Permit Entire) Complete List - http://www.nyc.gov/html/dob/downloads/pdf/bisjobstatus.pdf	\N	\N	\N	2019-03-06 01:00:56.453355+00	2019-03-06 01:00:56.453382+00	6	\N	Text
-104	GIS_BIN	BIN	\N	\N	\N	2019-03-06 01:00:56.457412+00	2019-03-06 01:00:56.45744+00	6	\N	Text
-105	Proposed Zoning Sqft	Proposed Zoning Sqft	\N	\N	\N	2019-03-06 01:00:56.461463+00	2019-03-06 01:00:56.46149+00	6	\N	Number
-106	BUILDING_CLASS	Building Class	\N	\N	\N	2019-03-06 01:00:56.465455+00	2019-03-06 01:00:56.46548+00	6	\N	Text
-107	Owner'sPhone #	Owner's  Phone #	\N	\N	\N	2019-03-06 01:00:56.470028+00	2019-03-06 01:00:56.470058+00	6	\N	Text
-108	Fully Permitted	Date when job is fully permitted	\N	\N	\N	2019-03-06 01:00:56.475063+00	2019-03-06 01:00:56.475089+00	6	\N	Text
-109	Initial Cost	 Estimated cost of job	\N	\N	\N	2019-03-06 01:00:56.479933+00	2019-03-06 01:00:56.479961+00	6	\N	Text
-110	SIGNOFF_DATE	Sign-off Date	\N	\N	\N	2019-03-06 01:00:56.486157+00	2019-03-06 01:00:56.486256+00	6	\N	Text
-111	Job Description	Job Description	\N	\N	\N	2019-03-06 01:00:56.491356+00	2019-03-06 01:00:56.491384+00	6	\N	Text
-112	Site Fill	Site Fill	\N	\N	\N	2019-03-06 01:00:56.495601+00	2019-03-06 01:00:56.495628+00	6	\N	Text
-113	Horizontal Enlrgmt	Horizontal Enlrgmt	\N	\N	\N	2019-03-06 01:00:56.499924+00	2019-03-06 01:00:56.499951+00	6	\N	Text
-114	Curb Cut	Curb Cut  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.503771+00	2019-03-06 01:00:56.503798+00	6	\N	Text
-115	SPECIAL_ACTION_STATUS	Special Action Status	\N	\N	\N	2019-03-06 01:00:56.507706+00	2019-03-06 01:00:56.507732+00	6	\N	Text
-116	Loft Board	Loft Board	\N	\N	\N	2019-03-06 01:00:56.511799+00	2019-03-06 01:00:56.511826+00	6	\N	Text
-117	Adult Estab	Adult Estab	\N	\N	\N	2019-03-06 01:00:56.515762+00	2019-03-06 01:00:56.515788+00	6	\N	Text
-118	Mechanical	Mechanical  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.520278+00	2019-03-06 01:00:56.520305+00	6	\N	Text
-119	Sprinkler	Sprinkler  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.524304+00	2019-03-06 01:00:56.524331+00	6	\N	Text
-120	Fuel Storage	Fuel Storage  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.528433+00	2019-03-06 01:00:56.52846+00	6	\N	Text
-121	Proposed Dwelling Units	Proposed Dwelling Units	\N	\N	\N	2019-03-06 01:00:56.532613+00	2019-03-06 01:00:56.532639+00	6	\N	Text
-122	Zoning Dist1	Zoning Distr 1	\N	\N	\N	2019-03-06 01:00:56.537324+00	2019-03-06 01:00:56.537351+00	6	\N	Text
-123	Borough	1= Manhattan, 2= Bronx, 3 = Brooklyn, 4 = Queens, 5 = Staten Island	\N	\N	\N	2019-03-06 01:00:56.541334+00	2019-03-06 01:00:56.541361+00	6	\N	Text
-124	Fuel Burning	Fuel Burning  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.545416+00	2019-03-06 01:00:56.545443+00	6	\N	Text
-125	Professional Cert	Job is Professionally Certified by Licensed Professional instead of having it reviewed by Department of Building's Plan Examiners	\N	\N	\N	2019-03-06 01:00:56.549498+00	2019-03-06 01:00:56.549523+00	6	\N	Text
-126	Street Frontage	Street Frontage	\N	\N	\N	2019-03-06 01:00:56.553644+00	2019-03-06 01:00:56.55367+00	6	\N	Number
-127	Existing Height	Existing Height	\N	\N	\N	2019-03-06 01:00:56.560452+00	2019-03-06 01:00:56.560495+00	6	\N	Number
-128	GIS_NTA_NAME	NTA Name	\N	\N	\N	2019-03-06 01:00:56.565489+00	2019-03-06 01:00:56.565517+00	6	\N	Text
-129	Block	Tax block assigned by Department of Finance	\N	\N	\N	2019-03-06 01:00:56.570008+00	2019-03-06 01:00:56.570035+00	6	\N	Text
-130	Fire Alarm	Fire Alarm  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.574106+00	2019-03-06 01:00:56.574133+00	6	\N	Text
-131	Apparatus_ID		\N	\N	\N	2019-03-06 01:00:56.602581+00	2019-03-06 01:00:56.60261+00	7	\N	Text
-132	Apparatus_Type_Code		\N	\N	\N	2019-03-06 01:00:56.607954+00	2019-03-06 01:00:56.607981+00	7	\N	Number
-133	Incident_ID		\N	\N	\N	2019-03-06 01:00:56.612612+00	2019-03-06 01:00:56.61264+00	7	\N	Number
-134	Apparartus_Type		\N	\N	\N	2019-03-06 01:00:56.617189+00	2019-03-06 01:00:56.617215+00	7	\N	Text
-135	Enroute_Scene_Time	The time the unit began travel to the scene	\N	\N	\N	2019-03-06 01:00:56.623716+00	2019-03-06 01:00:56.623742+00	7	\N	Calendar date
-136	Canceled_Enroute	Was the unit's response canceled by 911 or Incident Command prior to arrival?	\N	\N	\N	2019-03-06 01:00:56.628226+00	2019-03-06 01:00:56.628252+00	7	\N	Text
-137	Number_Of_People		\N	\N	\N	2019-03-06 01:00:56.632801+00	2019-03-06 01:00:56.632828+00	7	\N	Number
-138	Dispatch_Time	The time that the unit was alerted by the 911 Center	\N	\N	\N	2019-03-06 01:00:56.636855+00	2019-03-06 01:00:56.63688+00	7	\N	Calendar date
-139	Arrival_Time	The time the unit arrived at the location of the incident	\N	\N	\N	2019-03-06 01:00:56.640813+00	2019-03-06 01:00:56.640838+00	7	\N	Text
-140	Action_Taken_Code		\N	\N	\N	2019-03-06 01:00:56.645382+00	2019-03-06 01:00:56.645408+00	7	\N	Number
-141	Action_Taken		\N	\N	\N	2019-03-06 01:00:56.649739+00	2019-03-06 01:00:56.649763+00	7	\N	Text
-142	First_Arriving_Unit	Was this unit reported as first unit to arrive on scene?	\N	\N	\N	2019-03-06 01:00:56.654233+00	2019-03-06 01:00:56.65426+00	7	\N	Text
-143	Responded_From_Quarters	Was this unit located in its assigned station when alerted? (Often, a unit is dispatched while still returning from a previous call.)	\N	\N	\N	2019-03-06 01:00:56.658642+00	2019-03-06 01:00:56.658668+00	7	\N	Text
-144	FIrst_Due_Station		\N	\N	\N	2019-03-06 01:00:56.700711+00	2019-03-06 01:00:56.700739+00	8	\N	Number
-145	Action_Taken		\N	\N	\N	2019-03-06 01:00:56.710089+00	2019-03-06 01:00:56.710117+00	8	\N	Text
-146	Number_Fire_Personnel		\N	\N	\N	2019-03-06 01:00:56.718969+00	2019-03-06 01:00:56.719087+00	8	\N	Number
-147	Number_Engines		\N	\N	\N	2019-03-06 01:00:56.724628+00	2019-03-06 01:00:56.724654+00	8	\N	Number
-148	Number_Other_Personnel		\N	\N	\N	2019-03-06 01:00:56.729219+00	2019-03-06 01:00:56.729246+00	8	\N	Number
-149	Incident_Number		\N	\N	\N	2019-03-06 01:00:56.734004+00	2019-03-06 01:00:56.734032+00	8	\N	Number
-150	Incident_Type_Code		\N	\N	\N	2019-03-06 01:00:56.741701+00	2019-03-06 01:00:56.741753+00	8	\N	Number
-151	Fire_Service_Fatalities		\N	\N	\N	2019-03-06 01:00:56.748327+00	2019-03-06 01:00:56.748353+00	8	\N	Number
-152	Emergency_Medical_Service_Provided		\N	\N	\N	2019-03-06 01:00:56.753723+00	2019-03-06 01:00:56.75375+00	8	\N	Number
-153	State		\N	\N	\N	2019-03-06 01:00:56.758413+00	2019-03-06 01:00:56.758439+00	8	\N	Text
-154	Zip		\N	\N	\N	2019-03-06 01:00:56.762799+00	2019-03-06 01:00:56.762825+00	8	\N	Number
-155	Incident_Type		\N	\N	\N	2019-03-06 01:00:56.768543+00	2019-03-06 01:00:56.768571+00	8	\N	Text
-156	Citizen_Fatalities		\N	\N	\N	2019-03-06 01:00:56.773227+00	2019-03-06 01:00:56.773253+00	8	\N	Number
-157	Property_Use		\N	\N	\N	2019-03-06 01:00:56.77769+00	2019-03-06 01:00:56.777717+00	8	\N	Text
-158	Action_Taken_Code		\N	\N	\N	2019-03-06 01:00:56.782358+00	2019-03-06 01:00:56.782384+00	8	\N	Number
-159	Number_Ambulances		\N	\N	\N	2019-03-06 01:00:56.78675+00	2019-03-06 01:00:56.786776+00	8	\N	Number
-160	City		\N	\N	\N	2019-03-06 01:00:56.791347+00	2019-03-06 01:00:56.791374+00	8	\N	Text
-161	Date_Time		\N	\N	\N	2019-03-06 01:00:56.796071+00	2019-03-06 01:00:56.796097+00	8	\N	Calendar date
-162	Property_Use_Code		\N	\N	\N	2019-03-06 01:00:56.801177+00	2019-03-06 01:00:56.801203+00	8	\N	Number
-163	Number_Other		\N	\N	\N	2019-03-06 01:00:56.806279+00	2019-03-06 01:00:56.806305+00	8	\N	Number
-164	Number_Medical_Personnel		\N	\N	\N	2019-03-06 01:00:56.810831+00	2019-03-06 01:00:56.810858+00	8	\N	Number
-165	Fire_Service_Injuries		\N	\N	\N	2019-03-06 01:00:56.8151+00	2019-03-06 01:00:56.815125+00	8	\N	Number
-166	Citizen_Injuries		\N	\N	\N	2019-03-06 01:00:56.819362+00	2019-03-06 01:00:56.819387+00	8	\N	Number
-167	Incident_ID		\N	\N	\N	2019-03-06 01:00:56.850905+00	2019-03-06 01:00:56.850931+00	9	\N	Number
-168	Status		\N	\N	\N	2019-03-06 01:00:56.857428+00	2019-03-06 01:00:56.857477+00	9	\N	Text
-169	Apparatus_ID		\N	\N	\N	2019-03-06 01:00:56.864253+00	2019-03-06 01:00:56.86428+00	9	\N	Text
-170	Rank		\N	\N	\N	2019-03-06 01:00:56.869004+00	2019-03-06 01:00:56.869032+00	9	\N	Text
-171	incidentdate		\N	\N	\N	2019-03-06 01:00:56.873655+00	2019-03-06 01:00:56.873681+00	9	\N	Calendar date
-172	Location		\N	\N	\N	2019-03-06 01:00:56.905165+00	2019-03-06 01:00:56.905194+00	10	\N	Location
-173	Sub_Type_English		\N	\N	\N	2019-03-06 01:00:56.919319+00	2019-03-06 01:00:56.919356+00	10	\N	Text
-174	Sub_Type_Code	The sub-type code. Note that 'ALS' is an advanced life support call, meaning a paramedic's services are required. BLS is a basic life support call, for which an EMT is required.	\N	\N	\N	2019-03-06 01:00:56.92797+00	2019-03-06 01:00:56.927998+00	10	\N	Text
-175	Type_English		\N	\N	\N	2019-03-06 01:00:56.932991+00	2019-03-06 01:00:56.933018+00	10	\N	Text
-176	Incident_Date	The date the incident was created.	\N	\N	\N	2019-03-06 01:00:56.937538+00	2019-03-06 01:00:56.937565+00	10	\N	Calendar date
-177	ID	A unique incident number for each call.	\N	\N	\N	2019-03-06 01:00:56.941973+00	2019-03-06 01:00:56.942+00	10	\N	Number
-178	Station		\N	\N	\N	2019-03-06 01:00:56.946802+00	2019-03-06 01:00:56.94683+00	10	\N	Number
-179	Type_Code		\N	\N	\N	2019-03-06 01:00:56.952177+00	2019-03-06 01:00:56.952213+00	10	\N	Text
-180	Driver Exam	Upon Completion of TLC Driver Training (Taxi School), you will need to take and pass a final exam. Passing score is 70%. “Needed”: Your TLC Driver Exam information is not in our system. If you have not taken your TLC Driver Exam please do so. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you will not need to take this exam. “Complete”: Your TLC Driver Exam information has been received and updated in your TLC record\n	\N	\N	\N	2019-03-06 01:00:56.983569+00	2019-03-06 01:00:56.983666+00	11	\N	Text
-181	FRU Interview Scheduled	Fitness Review Unit Interview: “Not Applicable” if no Fitness Review is necessary. OR If there is a date, a Fitness Interview has been scheduled. Watch your mail/email for more information.\n	\N	\N	\N	2019-03-06 01:00:56.990005+00	2019-03-06 01:00:56.990033+00	11	\N	Text
-182	Other Requirements	This field is for miscellaneous items that may need more sensitive information. Visit www.nyc.gov/tlcup for more information and to upload missing requirements. “Not Applicable”: “Other requirements” do not apply to you at this time. \n	\N	\N	\N	2019-03-06 01:00:56.994643+00	2019-03-06 01:00:56.994671+00	11	\N	Text
-183	Medical Clearance Form	A Medical Clearance form from a licensed medical doctor is a requirement for those who apply for a Medallion or a For-Hire Vehicle driver’s license. If the entry is: “Needed”: Your Medical Clearance form is not in our system. If you have not been medically cleared by a licensed medical doctor please do so immediately. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you will not need to take this step as it is covered by your 19A status. “Complete”: Your Medical Clearance has been received and updated in your TLC record.\n	\N	\N	\N	2019-03-06 01:00:57.007598+00	2019-03-06 01:00:57.007625+00	11	\N	Text
-184	WAV Course	Wheelchair Accessible Vehicle Training (WAV) is a requirement for those who apply for a Medallion or For-Hire Vehicle driver’s license. “Needed”: You must take the Wheelchair Accessible Vehicle Training Course within 90 days from the date you submitted your application. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you will not need to take this training. “Complete”: Your WAV training information has been received and updated in your TLC record.\n	\N	\N	\N	2019-03-06 01:00:57.01368+00	2019-03-06 01:00:57.013707+00	11	\N	Text
-185	Status	"Incomplete": Your application is missing requirements. "Pending Fitness Interview": Your application has been forwarded to the Fitness Review Unit for a Fitness Interview. "Denied": Your application has been denied. "Under Review": Your application is still being processed. "Approved - License Issued": Your application has been approved and your license will be mailed to the address provided on your application. Allow up to two weeks after approval for delivery.\n	\N	\N	\N	2019-03-06 01:00:57.019337+00	2019-03-06 01:00:57.019366+00	11	\N	Text
-186	App No	This is the number linked to your application.\nOnce your application has been approved this will become your license number.	\N	\N	\N	2019-03-06 01:00:57.024515+00	2019-03-06 01:00:57.024545+00	11	\N	Number
-187	Defensive Driving	A NYS certified 6 hour Defensive Driving Course is a requirement to receive your TLC license.\n	\N	\N	\N	2019-03-06 01:00:57.029625+00	2019-03-06 01:00:57.029659+00	11	\N	Text
-188	Type	This is the classification of license you have applied for. HDR: Medallion /For-Hire Vehicle Operator. PDR: Paratransit Vehicle Operator. VDR: Commuter Van Vehicle Operator \n	\N	\N	\N	2019-03-06 01:00:57.035024+00	2019-03-06 01:00:57.035074+00	11	\N	Text
-189	Last Updated	Latest Updated Date\n	\N	\N	\N	2019-03-06 01:00:57.042214+00	2019-03-06 01:00:57.042247+00	11	\N	Calendar date
-235	Evening Daily Sum		\N	\N	\N	2019-03-06 01:00:57.520961+00	2019-03-06 01:00:57.520989+00	15	\N	Number
-190	App Date	The date you submitted your application.	\N	\N	\N	2019-03-06 01:00:57.047643+00	2019-03-06 01:00:57.047675+00	11	\N	Calendar date
-191	Drug Test	Drug testing is required for Medallion and FHV TLC driver’s licenses. "Needed": You must take and pass a drug test at an approved testing facility. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you do not need to take a TLC Drug Test. “Complete”: Your drug test information has been received and updated in your TLC record.	\N	\N	\N	2019-03-06 01:00:57.053474+00	2019-03-06 01:00:57.05351+00	11	\N	Text
-192	Hourly Rate	The hourly salary rates for individuals whose pay frequency is "hourly". Hourly employees have varying hours worked throughout the week, which is described in the "Frequency Description" column.	\N	\N	\N	2019-03-06 01:00:57.088987+00	2019-03-06 01:00:57.089019+00	12	\N	Number
-193	Typical Hours	Describes the typical amount of work for hourly employees. This data does not apply to salary employees.\n\n40 - Employee paid on an hourly basis; works an 8 hour day; can be either full-time permanent (FT/P) or full-time temporary (FT-T) which is a seasonal employee; 35 - Employee paid on an hourly basis; works a 7 hour day; can be either full-time permanent (FT/P) or full-time temporary (FT-T) which is a seasonal employee; 20 - Employee paid on a part-time, hourly basis; typically works a 4 hour day, 5 days a week; 10 - Employee paid on a part-time, hourly basis; works 10 hours or less in a week.	\N	\N	\N	2019-03-06 01:00:57.093909+00	2019-03-06 01:00:57.093939+00	12	\N	Number
-194	Department	Department where employee worked.	\N	\N	\N	2019-03-06 01:00:57.098883+00	2019-03-06 01:00:57.098913+00	12	\N	Text
-195	Job Titles	Title of employee at the time when the data was updated.	\N	\N	\N	2019-03-06 01:00:57.103745+00	2019-03-06 01:00:57.103774+00	12	\N	Text
-196	Full or Part-Time	Whether the employee was employed full- (F) or part-time (P).	\N	\N	\N	2019-03-06 01:00:57.108181+00	2019-03-06 01:00:57.10821+00	12	\N	Text
-197	Annual Salary	Annual salary rates. Only applies for employees whose pay frequency is "Salary". Hourly employees rates are only shown in "Hourly Rates" column.	\N	\N	\N	2019-03-06 01:00:57.112599+00	2019-03-06 01:00:57.112627+00	12	\N	Number
-198	Salary or Hourly	Defines whether an employee is paid on an hourly basis or salary basis. Hourly employees are further defined by the number of hours they work in a week. See the "Frequency Description" column.	\N	\N	\N	2019-03-06 01:00:57.117107+00	2019-03-06 01:00:57.117135+00	12	\N	Text
-199	Name	Name of employee	\N	\N	\N	2019-03-06 01:00:57.121789+00	2019-03-06 01:00:57.121816+00	12	\N	Text
-200	Residency Credit	An additional credit given on an exam to a candidate who maintains a continuous period of residency in New York City as described in the Notice of Examination for a specific title.     \n	\N	\N	\N	2019-03-06 01:00:57.152482+00	2019-03-06 01:00:57.15251+00	13	\N	Text
-201	Sibling Lgy Credit	A “Sibling Legacy Credit” is additional credit given on an exam (10 points) to a candidate who lost a sibling (FDNY, NYPD, or a First Responder, during or as a result of 911).\n	\N	\N	\N	2019-03-06 01:00:57.156682+00	2019-03-06 01:00:57.156709+00	13	\N	Text
-202	Anniversary Date	The date on which an eligible list is scheduled to expire.      \n	\N	\N	\N	2019-03-06 01:00:57.16153+00	2019-03-06 01:00:57.161555+00	13	\N	Calendar date
-203	Parent Lgy Credit	A “Parent Legacy credit” is an additional credit given on an exam (10 points) to a candidate who lost a parent (FDNY, NYPD, or a First Responder, during or as a result of 911).\n	\N	\N	\N	2019-03-06 01:00:57.167327+00	2019-03-06 01:00:57.167353+00	13	\N	Text
-204	Exam No	A four (4) digit number that identifies a civil service examination. \n\n	\N	\N	\N	2019-03-06 01:00:57.172677+00	2019-03-06 01:00:57.172703+00	13	\N	Text
-205	List No	An eligible candidate’s placement on a given list as of the business day that the data set is populated. \n\n	\N	\N	\N	2019-03-06 01:00:57.178295+00	2019-03-06 01:00:57.178321+00	13	\N	Number
-206	First Name	A candidate’s first name as it appears on their application.\n	\N	\N	\N	2019-03-06 01:00:57.183863+00	2019-03-06 01:00:57.183889+00	13	\N	Text
-207	Last Name	A candidate’s last name as it appears on their application.\n	\N	\N	\N	2019-03-06 01:00:57.189247+00	2019-03-06 01:00:57.189274+00	13	\N	Text
-208	MI	A candidate’s middle initial (MI) as it appears on their application.\n	\N	\N	\N	2019-03-06 01:00:57.194724+00	2019-03-06 01:00:57.194751+00	13	\N	Text
-209	List Title Code	A five (5) digit number that corresponds to and represents a civil service title.\n	\N	\N	\N	2019-03-06 01:00:57.199955+00	2019-03-06 01:00:57.19998+00	13	\N	Text
-210	Adj. FA	The Adjusted Final Average (“Adj. FA” or “AFA”) is an eligible candidate’s test score in addition to any additional credits granted.\n	\N	\N	\N	2019-03-06 01:00:57.204913+00	2019-03-06 01:00:57.204938+00	13	\N	Number
-211	Veteran Credit	An additional credit given to a Veteran (5 points) or disabled veteran (10 points) when s/he accepts a permanent position from an eligible list. \n	\N	\N	\N	2019-03-06 01:00:57.210116+00	2019-03-06 01:00:57.210142+00	13	\N	Text
-212	Extension Date	The date on which a list will be extended beyond its original expiration date.  \n	\N	\N	\N	2019-03-06 01:00:57.215135+00	2019-03-06 01:00:57.21516+00	13	\N	Calendar date
-213	Established Date	The date on which an eligible list is made available for certification to agencies to consider an eligible candidate for appointment.\n	\N	\N	\N	2019-03-06 01:00:57.220132+00	2019-03-06 01:00:57.220158+00	13	\N	Calendar date
-214	Published Date	The date on which an eligible list is made available for review by the general public and appointing agencies.  \n	\N	\N	\N	2019-03-06 01:00:57.225452+00	2019-03-06 01:00:57.225478+00	13	\N	Calendar date
-215	List Div Code	The promotional division codes/descriptions within the New York City Transit Authority only.\n	\N	\N	\N	2019-03-06 01:00:57.23062+00	2019-03-06 01:00:57.230645+00	13	\N	Text
-216	List Agency Desc	The name of an appointing Agency.\n	\N	\N	\N	2019-03-06 01:00:57.235536+00	2019-03-06 01:00:57.235562+00	13	\N	Text
-217	List Agency Code	A three (3) digit number used to identify an agency (For Promotion List Only).\n	\N	\N	\N	2019-03-06 01:00:57.24015+00	2019-03-06 01:00:57.240177+00	13	\N	Text
-218	Group No	Represents the certification order for a list. (e.g. – eligible candidates on a list with a 01 group number may be considered for appointment before an eligible candidate on primary list with a 00 group number).\n	\N	\N	\N	2019-03-06 01:00:57.245586+00	2019-03-06 01:00:57.245614+00	13	\N	Text
-219	List Title Desc	A descriptive name that identifies a civil service title. \n	\N	\N	\N	2019-03-06 01:00:57.250826+00	2019-03-06 01:00:57.250852+00	13	\N	Text
-220	City Name		\N	\N	\N	2019-03-06 01:00:57.319346+00	2019-03-06 01:00:57.319376+00	14	\N	Text
-221	Optout End Date		\N	\N	\N	2019-03-06 01:00:57.325492+00	2019-03-06 01:00:57.32553+00	14	\N	Calendar date
-222	Zip code		\N	\N	\N	2019-03-06 01:00:57.336069+00	2019-03-06 01:00:57.336356+00	14	\N	Text
-223	First Line Street Address		\N	\N	\N	2019-03-06 01:00:57.346634+00	2019-03-06 01:00:57.347082+00	14	\N	Text
-224	Specialty		\N	\N	\N	2019-03-06 01:00:57.361349+00	2019-03-06 01:00:57.361411+00	14	\N	Text
-225	First Name		\N	\N	\N	2019-03-06 01:00:57.37201+00	2019-03-06 01:00:57.372093+00	14	\N	Text
-226	Last Name		\N	\N	\N	2019-03-06 01:00:57.381546+00	2019-03-06 01:00:57.381576+00	14	\N	Text
-227	NPI		\N	\N	\N	2019-03-06 01:00:57.391358+00	2019-03-06 01:00:57.391442+00	14	\N	Text
-228	Second Line Street Address		\N	\N	\N	2019-03-06 01:00:57.401652+00	2019-03-06 01:00:57.401708+00	14	\N	Text
-229	State Code		\N	\N	\N	2019-03-06 01:00:57.413145+00	2019-03-06 01:00:57.413173+00	14	\N	Text
-230	Optout Effective Date		\N	\N	\N	2019-03-06 01:00:57.426483+00	2019-03-06 01:00:57.426509+00	14	\N	Calendar date
-231	Midday Win 4 #		\N	\N	\N	2019-03-06 01:00:57.496038+00	2019-03-06 01:00:57.496066+00	15	\N	Text
-232	Evening Daily Booster	Booster percentage for Evening  Daily number	\N	\N	\N	2019-03-06 01:00:57.502647+00	2019-03-06 01:00:57.502676+00	15	\N	Text
-233	Evening Win 4 Booster	Booster percentage for Evening Win4 number	\N	\N	\N	2019-03-06 01:00:57.508928+00	2019-03-06 01:00:57.508957+00	15	\N	Text
-234	Midday Win 4 Booster	Booster percentage for Midday Win4 number	\N	\N	\N	2019-03-06 01:00:57.514734+00	2019-03-06 01:00:57.514762+00	15	\N	Text
-236	Evening Daily #		\N	\N	\N	2019-03-06 01:00:57.526863+00	2019-03-06 01:00:57.526891+00	15	\N	Text
-237	Midday Daily Sum		\N	\N	\N	2019-03-06 01:00:57.532827+00	2019-03-06 01:00:57.532856+00	15	\N	Number
-238	Midday Daily #		\N	\N	\N	2019-03-06 01:00:57.538618+00	2019-03-06 01:00:57.538647+00	15	\N	Text
-239	Midday Win 4 Sum		\N	\N	\N	2019-03-06 01:00:57.546098+00	2019-03-06 01:00:57.546128+00	15	\N	Number
-240	Draw Date		\N	\N	\N	2019-03-06 01:00:57.551758+00	2019-03-06 01:00:57.551786+00	15	\N	Calendar date
-241	Evening Win 4 #		\N	\N	\N	2019-03-06 01:00:57.557016+00	2019-03-06 01:00:57.557044+00	15	\N	Text
-242	Evening Win 4 Sum		\N	\N	\N	2019-03-06 01:00:57.563952+00	2019-03-06 01:00:57.56398+00	15	\N	Number
-243	Midday Daily Booster	 Booster percentage for Midday Daily number	\N	\N	\N	2019-03-06 01:00:57.569966+00	2019-03-06 01:00:57.570061+00	15	\N	Text
-244	Order Date	Date Suspension ordered\n	\N	\N	\N	2019-03-06 01:00:57.630452+00	2019-03-06 01:00:57.630478+00	16	\N	Calendar date
-245	Last Date Updated	Last Date Updated	\N	\N	\N	2019-03-06 01:00:57.635905+00	2019-03-06 01:00:57.635932+00	16	\N	Calendar date
-246	Reason	Reason Code A,B,C or G\n	\N	\N	\N	2019-03-06 01:00:57.641312+00	2019-03-06 01:00:57.641339+00	16	\N	Text
-247	Base Address	Base Address	\N	\N	\N	2019-03-06 01:00:57.64677+00	2019-03-06 01:00:57.646796+00	16	\N	Text
-248	Website	Base Website	\N	\N	\N	2019-03-06 01:00:57.651997+00	2019-03-06 01:00:57.652022+00	16	\N	Text
-249	Base Telephone Number	Base Telephone NumberBase Telephone Number	\N	\N	\N	2019-03-06 01:00:57.657162+00	2019-03-06 01:00:57.657188+00	16	\N	Text
-250	VEH	Hybrid vehicle indicator\n	\N	\N	\N	2019-03-06 01:00:57.662364+00	2019-03-06 01:00:57.66239+00	16	\N	Text
-251	Base Type	Base Type	\N	\N	\N	2019-03-06 01:00:57.667627+00	2019-03-06 01:00:57.667653+00	16	\N	Text
-252	Base Name	Base Name	\N	\N	\N	2019-03-06 01:00:57.672781+00	2019-03-06 01:00:57.672806+00	16	\N	Text
-253	Base Number	Base Number	\N	\N	\N	2019-03-06 01:00:57.677978+00	2019-03-06 01:00:57.678003+00	16	\N	Text
-254	Vehicle Year	Vehicle Year	\N	\N	\N	2019-03-06 01:00:57.683085+00	2019-03-06 01:00:57.683114+00	16	\N	Number
-255	Hack Up Date	Hack Up Date	\N	\N	\N	2019-03-06 01:00:57.689753+00	2019-03-06 01:00:57.689782+00	16	\N	Calendar date
-256	Certification Date	Certification Date	\N	\N	\N	2019-03-06 01:00:57.694491+00	2019-03-06 01:00:57.694518+00	16	\N	Calendar date
-257	Wheelchair Accessible	Wheelchair Accessible Indicator\n	\N	\N	\N	2019-03-06 01:00:57.698921+00	2019-03-06 01:00:57.698947+00	16	\N	Text
-258	Vehicle VIN Number	Vehicle VIN Number	\N	\N	\N	2019-03-06 01:00:57.703409+00	2019-03-06 01:00:57.703434+00	16	\N	Text
-259	DMV License Plate Number	DMV License Plate Number	\N	\N	\N	2019-03-06 01:00:57.709051+00	2019-03-06 01:00:57.709087+00	16	\N	Text
-260	Permit License Number	Permit License Number	\N	\N	\N	2019-03-06 01:00:57.719036+00	2019-03-06 01:00:57.719064+00	16	\N	Text
-261	Expiration Date	Expiration Date	\N	\N	\N	2019-03-06 01:00:57.724543+00	2019-03-06 01:00:57.724572+00	16	\N	Calendar date
-262	License Type	TLC License Type\n	\N	\N	\N	2019-03-06 01:00:57.732198+00	2019-03-06 01:00:57.732227+00	16	\N	Text
-263	Name	Owner Name\n	\N	\N	\N	2019-03-06 01:00:57.748393+00	2019-03-06 01:00:57.748427+00	16	\N	Text
-264	Vehicle License Number	FHV Vehicle License Number	\N	\N	\N	2019-03-06 01:00:57.756364+00	2019-03-06 01:00:57.756393+00	16	\N	Text
-265	Active	Permit active or not\n	\N	\N	\N	2019-03-06 01:00:57.763719+00	2019-03-06 01:00:57.763747+00	16	\N	Text
-266	Last Time Updated	Last Time Updated	\N	\N	\N	2019-03-06 01:00:57.770268+00	2019-03-06 01:00:57.770351+00	16	\N	Text
-267	Specialist  - standard		\N	\N	\N	2019-03-06 01:00:57.813304+00	2019-03-06 01:00:57.81333+00	17	\N	Text
-268	Specialty Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:57.818223+00	2019-03-06 01:00:57.818248+00	17	\N	Text
-269	Specialty Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:57.823094+00	2019-03-06 01:00:57.82312+00	17	\N	Text
-270	Premium Couple 40		\N	\N	\N	2019-03-06 01:00:57.828263+00	2019-03-06 01:00:57.828289+00	17	\N	Number
-271	Non-preferred Brand Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:57.833392+00	2019-03-06 01:00:57.833418+00	17	\N	Text
-272	Drug Maximum Out of Pocket - Family - 73 percent		\N	\N	\N	2019-03-06 01:00:57.838323+00	2019-03-06 01:00:57.838349+00	17	\N	Text
-273	Medical Maximum Out of Pocket - family - 73 percent		\N	\N	\N	2019-03-06 01:00:57.843474+00	2019-03-06 01:00:57.8435+00	17	\N	Text
-274	Drug Deductible - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:57.848449+00	2019-03-06 01:00:57.848475+00	17	\N	Text
-275	Drug Deductible - family - standard		\N	\N	\N	2019-03-06 01:00:57.853063+00	2019-03-06 01:00:57.853089+00	17	\N	Text
-276	Drug Deductible - individual - 94 percent		\N	\N	\N	2019-03-06 01:00:57.860784+00	2019-03-06 01:00:57.860814+00	17	\N	Text
-277	Generic Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:57.866092+00	2019-03-06 01:00:57.866118+00	17	\N	Text
-278	Emergency Room - 73 percent		\N	\N	\N	2019-03-06 01:00:57.871505+00	2019-03-06 01:00:57.871531+00	17	\N	Text
-279	Medical Deductible - family - 94 percent		\N	\N	\N	2019-03-06 01:00:57.876574+00	2019-03-06 01:00:57.8766+00	17	\N	Text
-280	Premium Scenarios		\N	\N	\N	2019-03-06 01:00:57.882157+00	2019-03-06 01:00:57.882184+00	17	\N	Text
-281	Customer Service Phone Number Local		\N	\N	\N	2019-03-06 01:00:57.887231+00	2019-03-06 01:00:57.887257+00	17	\N	Text
-282	Metal Level		\N	\N	\N	2019-03-06 01:00:57.892061+00	2019-03-06 01:00:57.892089+00	17	\N	Text
-283	Individual+2 children, Age 30		\N	\N	\N	2019-03-06 01:00:57.89677+00	2019-03-06 01:00:57.896797+00	17	\N	Number
-284	Drug Maximum Out of Pocket - Family - 87 percent		\N	\N	\N	2019-03-06 01:00:57.901699+00	2019-03-06 01:00:57.901725+00	17	\N	Text
-285	Drug Maximum Out of Pocket - Family  - 94 percent		\N	\N	\N	2019-03-06 01:00:57.906773+00	2019-03-06 01:00:57.906798+00	17	\N	Text
-286	Inpatient Facility  - 94 percent		\N	\N	\N	2019-03-06 01:00:57.911687+00	2019-03-06 01:00:57.911713+00	17	\N	Text
-287	Individual+1 child, Age 21		\N	\N	\N	2019-03-06 01:00:57.916779+00	2019-03-06 01:00:57.916805+00	17	\N	Number
-288	Specialist - 94 percent		\N	\N	\N	2019-03-06 01:00:57.922195+00	2019-03-06 01:00:57.922222+00	17	\N	Text
-289	Primary Care Physician - 94 percent		\N	\N	\N	2019-03-06 01:00:57.927132+00	2019-03-06 01:00:57.927158+00	17	\N	Text
-290	Drug Maximum Out of Pocket - individual - 94 percent		\N	\N	\N	2019-03-06 01:00:57.932202+00	2019-03-06 01:00:57.932228+00	17	\N	Text
-291	94 Percent Actuarial Value Silver Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:57.936793+00	2019-03-06 01:00:57.936817+00	17	\N	Text
-292	County		\N	\N	\N	2019-03-06 01:00:57.941807+00	2019-03-06 01:00:57.941833+00	17	\N	Text
-293	Plan Type		\N	\N	\N	2019-03-06 01:00:57.94705+00	2019-03-06 01:00:57.947077+00	17	\N	Text
-294	Source		\N	\N	\N	2019-03-06 01:00:57.951924+00	2019-03-06 01:00:57.95195+00	17	\N	Text
-295	Standard Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:57.957089+00	2019-03-06 01:00:57.957115+00	17	\N	Text
-296	Premium Adult Individual Age 30		\N	\N	\N	2019-03-06 01:00:57.962325+00	2019-03-06 01:00:57.962351+00	17	\N	Number
-297	Couple+2 children, Age 40		\N	\N	\N	2019-03-06 01:00:57.96715+00	2019-03-06 01:00:57.967176+00	17	\N	Number
-298	Premium Adult Individual Age 21		\N	\N	\N	2019-03-06 01:00:57.971848+00	2019-03-06 01:00:57.971874+00	17	\N	Number
-299	Individual+3 or more children, Age 30		\N	\N	\N	2019-03-06 01:00:57.976609+00	2019-03-06 01:00:57.976635+00	17	\N	Number
-300	Couple+3 or more Children, Age 40		\N	\N	\N	2019-03-06 01:00:57.981606+00	2019-03-06 01:00:57.981632+00	17	\N	Number
-301	Individual+1 child, Age 40		\N	\N	\N	2019-03-06 01:00:57.986363+00	2019-03-06 01:00:57.986389+00	17	\N	Number
-302	Premium Adult Individual Age 40		\N	\N	\N	2019-03-06 01:00:57.991171+00	2019-03-06 01:00:57.991197+00	17	\N	Number
-303	Couple+2 children, Age 50		\N	\N	\N	2019-03-06 01:00:57.996457+00	2019-03-06 01:00:57.996483+00	17	\N	Number
-304	Premium Couple 21  		\N	\N	\N	2019-03-06 01:00:58.001464+00	2019-03-06 01:00:58.00149+00	17	\N	Number
-305	Couple+1 child, Age 40		\N	\N	\N	2019-03-06 01:00:58.006632+00	2019-03-06 01:00:58.006658+00	17	\N	Number
-306	Individual+3 or more children, Age 40		\N	\N	\N	2019-03-06 01:00:58.01213+00	2019-03-06 01:00:58.01216+00	17	\N	Number
-307	Premium Adult Individual Age 27		\N	\N	\N	2019-03-06 01:00:58.018176+00	2019-03-06 01:00:58.018202+00	17	\N	Number
-308	Individual+2 children, Age 40		\N	\N	\N	2019-03-06 01:00:58.023221+00	2019-03-06 01:00:58.023248+00	17	\N	Number
-309	Couple+1 child, Age 50		\N	\N	\N	2019-03-06 01:00:58.027737+00	2019-03-06 01:00:58.027765+00	17	\N	Number
-310	Premium Adult Individual Age 60		\N	\N	\N	2019-03-06 01:00:58.032353+00	2019-03-06 01:00:58.03238+00	17	\N	Number
-452	County Name		\N	\N	\N	2019-03-06 01:00:59.181259+00	2019-03-06 01:00:59.181286+00	24	\N	Text
-311	Couple+3 or more Children, Age 30		\N	\N	\N	2019-03-06 01:00:58.036871+00	2019-03-06 01:00:58.036897+00	17	\N	Number
-312	Premium Couple 60		\N	\N	\N	2019-03-06 01:00:58.042298+00	2019-03-06 01:00:58.042324+00	17	\N	Number
-313	Premium Couple 50		\N	\N	\N	2019-03-06 01:00:58.046872+00	2019-03-06 01:00:58.046899+00	17	\N	Number
-314	Individual+1 child, Age 30		\N	\N	\N	2019-03-06 01:00:58.051654+00	2019-03-06 01:00:58.051679+00	17	\N	Number
-315	Individual+3 or more children, Age 50		\N	\N	\N	2019-03-06 01:00:58.056493+00	2019-03-06 01:00:58.056518+00	17	\N	Number
-316	Couple+2 children, Age 21		\N	\N	\N	2019-03-06 01:00:58.06135+00	2019-03-06 01:00:58.061376+00	17	\N	Number
-317	Individual+2 children, Age 50		\N	\N	\N	2019-03-06 01:00:58.066094+00	2019-03-06 01:00:58.06612+00	17	\N	Number
-318	Couple+1 child, Age 21		\N	\N	\N	2019-03-06 01:00:58.070751+00	2019-03-06 01:00:58.070776+00	17	\N	Number
-319	Individual+1 child, Age 50		\N	\N	\N	2019-03-06 01:00:58.075735+00	2019-03-06 01:00:58.075761+00	17	\N	Number
-320	Premium Adult Individual Age 50		\N	\N	\N	2019-03-06 01:00:58.080638+00	2019-03-06 01:00:58.080664+00	17	\N	Number
-321	Premium Child		\N	\N	\N	2019-03-06 01:00:58.085777+00	2019-03-06 01:00:58.085803+00	17	\N	Number
-322	Individual+3 or more children, Age 21		\N	\N	\N	2019-03-06 01:00:58.091305+00	2019-03-06 01:00:58.091331+00	17	\N	Number
-323	Couple+2 children, Age 30		\N	\N	\N	2019-03-06 01:00:58.100458+00	2019-03-06 01:00:58.100486+00	17	\N	Number
-324	Individual+2 children, Age 21		\N	\N	\N	2019-03-06 01:00:58.105221+00	2019-03-06 01:00:58.105247+00	17	\N	Number
-325	Premium Couple 30		\N	\N	\N	2019-03-06 01:00:58.109992+00	2019-03-06 01:00:58.110018+00	17	\N	Number
-326	Couple+3 or more Children, Age 50		\N	\N	\N	2019-03-06 01:00:58.115084+00	2019-03-06 01:00:58.115111+00	17	\N	Number
-327	Couple+3 or more Children, Age 21		\N	\N	\N	2019-03-06 01:00:58.120307+00	2019-03-06 01:00:58.120333+00	17	\N	Number
-328	Couple+1 child, Age 30		\N	\N	\N	2019-03-06 01:00:58.125113+00	2019-03-06 01:00:58.125139+00	17	\N	Number
-329	Specialty Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.130428+00	2019-03-06 01:00:58.130453+00	17	\N	Text
-330	Inpatient Physician - standard		\N	\N	\N	2019-03-06 01:00:58.135211+00	2019-03-06 01:00:58.135236+00	17	\N	Text
-331	Non-preferred Brand Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.140321+00	2019-03-06 01:00:58.140347+00	17	\N	Text
-332	Preferred Brand Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.145456+00	2019-03-06 01:00:58.145483+00	17	\N	Text
-333	Primary Care Physician  - standard		\N	\N	\N	2019-03-06 01:00:58.150312+00	2019-03-06 01:00:58.150337+00	17	\N	Text
-334	Drug Deductible - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.15556+00	2019-03-06 01:00:58.155586+00	17	\N	Text
-335	Emergency Room  - standard		\N	\N	\N	2019-03-06 01:00:58.16073+00	2019-03-06 01:00:58.160756+00	17	\N	Text
-336	Inpatient Facility  - standard		\N	\N	\N	2019-03-06 01:00:58.165754+00	2019-03-06 01:00:58.16578+00	17	\N	Text
-337	Drug Maximum Out of Pocket - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:58.170889+00	2019-03-06 01:00:58.170916+00	17	\N	Text
-338	Medical Deductible - family - 73 percent		\N	\N	\N	2019-03-06 01:00:58.175485+00	2019-03-06 01:00:58.17551+00	17	\N	Text
-339	Generic Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.180278+00	2019-03-06 01:00:58.180304+00	17	\N	Text
-340	Medical Deductible - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:58.185542+00	2019-03-06 01:00:58.185568+00	17	\N	Text
-341	Drug Deductible - family - 73 percent		\N	\N	\N	2019-03-06 01:00:58.190354+00	2019-03-06 01:00:58.19038+00	17	\N	Text
-342	Primary Care Physician - 73 percent		\N	\N	\N	2019-03-06 01:00:58.195439+00	2019-03-06 01:00:58.195465+00	17	\N	Text
-343	Specialist - 73 percent		\N	\N	\N	2019-03-06 01:00:58.200516+00	2019-03-06 01:00:58.200543+00	17	\N	Text
-344	Medical Maximum Out Of Pocket - individual - standard		\N	\N	\N	2019-03-06 01:00:58.205518+00	2019-03-06 01:00:58.205544+00	17	\N	Text
-345	Drug Maximum Out of Pocket - individual - standard		\N	\N	\N	2019-03-06 01:00:58.210468+00	2019-03-06 01:00:58.210493+00	17	\N	Text
-346	Medical Maximum Out of Pocket - family - standard		\N	\N	\N	2019-03-06 01:00:58.215277+00	2019-03-06 01:00:58.215302+00	17	\N	Text
-347	Drug Maximum Out of Pocket - Family  - standard		\N	\N	\N	2019-03-06 01:00:58.220718+00	2019-03-06 01:00:58.220744+00	17	\N	Text
-348	Medical Deductible - individual - standard		\N	\N	\N	2019-03-06 01:00:58.225896+00	2019-03-06 01:00:58.225922+00	17	\N	Text
-349	Drug Deductible - individual - standard		\N	\N	\N	2019-03-06 01:00:58.230979+00	2019-03-06 01:00:58.231005+00	17	\N	Text
-350	Medical Deductible -family - standard		\N	\N	\N	2019-03-06 01:00:58.235892+00	2019-03-06 01:00:58.235918+00	17	\N	Text
-351	Medical Maximum Out Of Pocket -individual - 94 percent		\N	\N	\N	2019-03-06 01:00:58.240859+00	2019-03-06 01:00:58.240886+00	17	\N	Text
-352	Medical Deductible - individual - 94 percent		\N	\N	\N	2019-03-06 01:00:58.246065+00	2019-03-06 01:00:58.246091+00	17	\N	Text
-353	Specialty Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.251601+00	2019-03-06 01:00:58.251627+00	17	\N	Text
-354	Non-preferred Brand Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.256588+00	2019-03-06 01:00:58.256614+00	17	\N	Text
-355	Preferred Brand Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.261595+00	2019-03-06 01:00:58.261622+00	17	\N	Text
-356	Generic Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.266521+00	2019-03-06 01:00:58.266547+00	17	\N	Text
-357	Inpatient Physician - 87 percent		\N	\N	\N	2019-03-06 01:00:58.271469+00	2019-03-06 01:00:58.271495+00	17	\N	Text
-358	Inpatient Facility - 87 percent		\N	\N	\N	2019-03-06 01:00:58.276341+00	2019-03-06 01:00:58.276367+00	17	\N	Text
-359	Drug Deductible - family - 94 percent		\N	\N	\N	2019-03-06 01:00:58.281022+00	2019-03-06 01:00:58.281048+00	17	\N	Text
-360	Plan Brochure URL		\N	\N	\N	2019-03-06 01:00:58.285676+00	2019-03-06 01:00:58.285702+00	17	\N	URL
-361	Network URL		\N	\N	\N	2019-03-06 01:00:58.290677+00	2019-03-06 01:00:58.290706+00	17	\N	URL
-362	Drug Formulary URL		\N	\N	\N	2019-03-06 01:00:58.296208+00	2019-03-06 01:00:58.296234+00	17	\N	URL
-363	Medical Deductible - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.303603+00	2019-03-06 01:00:58.30363+00	17	\N	Text
-364	Customer Service Phone Number Toll Free		\N	\N	\N	2019-03-06 01:00:58.308494+00	2019-03-06 01:00:58.30852+00	17	\N	Text
-365	State		\N	\N	\N	2019-03-06 01:00:58.313421+00	2019-03-06 01:00:58.313451+00	17	\N	Text
-366	Issuer Name		\N	\N	\N	2019-03-06 01:00:58.318436+00	2019-03-06 01:00:58.318462+00	17	\N	Text
-367	Plan ID - Standard Component		\N	\N	\N	2019-03-06 01:00:58.323423+00	2019-03-06 01:00:58.323449+00	17	\N	Text
-368	Medical Deductible - family - 87 percent		\N	\N	\N	2019-03-06 01:00:58.328601+00	2019-03-06 01:00:58.328627+00	17	\N	Text
-369	87 Percent Actuarial Value Silver Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:58.333652+00	2019-03-06 01:00:58.333678+00	17	\N	Text
-370	Specialist - 87 percent		\N	\N	\N	2019-03-06 01:00:58.338596+00	2019-03-06 01:00:58.338622+00	17	\N	Text
-371	Primary Care Physician - 87 percent		\N	\N	\N	2019-03-06 01:00:58.343796+00	2019-03-06 01:00:58.343822+00	17	\N	Text
-372	Medical Maximum Out of Pocket - family - 87 percent		\N	\N	\N	2019-03-06 01:00:58.349122+00	2019-03-06 01:00:58.349147+00	17	\N	Text
-373	Medical Maximum Out Of Pocket - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.354353+00	2019-03-06 01:00:58.354378+00	17	\N	Text
-374	Drug Maximum Out of Pocket - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.360008+00	2019-03-06 01:00:58.360035+00	17	\N	Text
-375	Summary of Benefits URL		\N	\N	\N	2019-03-06 01:00:58.365214+00	2019-03-06 01:00:58.36524+00	17	\N	URL
-376	Plan Marketing Name		\N	\N	\N	2019-03-06 01:00:58.370511+00	2019-03-06 01:00:58.370538+00	17	\N	Text
-377	Child Only Offering		\N	\N	\N	2019-03-06 01:00:58.375357+00	2019-03-06 01:00:58.375384+00	17	\N	Text
-378	Rating Area		\N	\N	\N	2019-03-06 01:00:58.380137+00	2019-03-06 01:00:58.380163+00	17	\N	Text
-379	Customer Service Phone Number TTY		\N	\N	\N	2019-03-06 01:00:58.384874+00	2019-03-06 01:00:58.3849+00	17	\N	Text
-380	Drug Deductible - family - 87 percent		\N	\N	\N	2019-03-06 01:00:58.389762+00	2019-03-06 01:00:58.389788+00	17	\N	Text
-381	Preferred Brand Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:58.394652+00	2019-03-06 01:00:58.394679+00	17	\N	Text
-382	73 Percent Actuarial Value Silver Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:58.399307+00	2019-03-06 01:00:58.399332+00	17	\N	Text
-383	Medical Maximum Out Of Pocket - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:58.404116+00	2019-03-06 01:00:58.404142+00	17	\N	Text
-384	Non-preferred Brand Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:58.40899+00	2019-03-06 01:00:58.409016+00	17	\N	Text
-385	Inpatient Physician - 73 percent		\N	\N	\N	2019-03-06 01:00:58.413758+00	2019-03-06 01:00:58.413783+00	17	\N	Text
-386	Inpatient Facility - 73 percent		\N	\N	\N	2019-03-06 01:00:58.418806+00	2019-03-06 01:00:58.418834+00	17	\N	Text
-387	Child Dental		\N	\N	\N	2019-03-06 01:00:58.424755+00	2019-03-06 01:00:58.424781+00	17	\N	Text
-388	Adult Dental		\N	\N	\N	2019-03-06 01:00:58.429467+00	2019-03-06 01:00:58.429492+00	17	\N	Text
-389	Emergency Room - 94 percent		\N	\N	\N	2019-03-06 01:00:58.435413+00	2019-03-06 01:00:58.435439+00	17	\N	Text
-390	Medical Maximum Out of Pocket - family - 94 percent		\N	\N	\N	2019-03-06 01:00:58.44074+00	2019-03-06 01:00:58.440766+00	17	\N	Text
-391	Preferred Brand Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:58.445425+00	2019-03-06 01:00:58.44545+00	17	\N	Text
-392	Generic Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:58.450361+00	2019-03-06 01:00:58.450387+00	17	\N	Text
-393	Inpatient Physician  - 94 percent		\N	\N	\N	2019-03-06 01:00:58.454949+00	2019-03-06 01:00:58.454975+00	17	\N	Text
-394	Emergency Room - 87 percent		\N	\N	\N	2019-03-06 01:00:58.459977+00	2019-03-06 01:00:58.460003+00	17	\N	Text
-395	CredentialNumber		\N	\N	\N	2019-03-06 01:00:58.524441+00	2019-03-06 01:00:58.524468+00	18	\N	text
-396	LastName		\N	\N	\N	2019-03-06 01:00:58.535083+00	2019-03-06 01:00:58.535274+00	18	\N	text
-397	FirstName		\N	\N	\N	2019-03-06 01:00:58.548222+00	2019-03-06 01:00:58.548249+00	18	\N	text
-398	MiddleName		\N	\N	\N	2019-03-06 01:00:58.559183+00	2019-03-06 01:00:58.55922+00	18	\N	text
-399	CredentialType		\N	\N	\N	2019-03-06 01:00:58.568217+00	2019-03-06 01:00:58.568245+00	18	\N	text
-400	Status		\N	\N	\N	2019-03-06 01:00:58.577018+00	2019-03-06 01:00:58.577046+00	18	\N	text
-401	BirthYear		\N	\N	\N	2019-03-06 01:00:58.586161+00	2019-03-06 01:00:58.586203+00	18	\N	text
-402	CEDueDate		\N	\N	\N	2019-03-06 01:00:58.595092+00	2019-03-06 01:00:58.595121+00	18	\N	text
-403	FirstIssueDate		\N	\N	\N	2019-03-06 01:00:58.613658+00	2019-03-06 01:00:58.613739+00	18	\N	text
-404	LastIssueDate		\N	\N	\N	2019-03-06 01:00:58.623394+00	2019-03-06 01:00:58.623516+00	18	\N	text
-405	ExpirationDate		\N	\N	\N	2019-03-06 01:00:58.633842+00	2019-03-06 01:00:58.63387+00	18	\N	text
-406	ActionTaken		\N	\N	\N	2019-03-06 01:00:58.652565+00	2019-03-06 01:00:58.652687+00	18	\N	text
-407	Notifications		\N	\N	\N	2019-03-06 01:00:58.694471+00	2019-03-06 01:00:58.694498+00	19	\N	Text
-408	Web Site		\N	\N	\N	2019-03-06 01:00:58.699957+00	2019-03-06 01:00:58.699986+00	19	\N	URL
-409	County		\N	\N	\N	2019-03-06 01:00:58.708638+00	2019-03-06 01:00:58.708667+00	19	\N	Text
-410	User Fees		\N	\N	\N	2019-03-06 01:00:58.713674+00	2019-03-06 01:00:58.713702+00	19	\N	Text
-411	Date received	The date the CFPB received the complaint	\N	\N	\N	2019-03-06 01:00:58.758039+00	2019-03-06 01:00:58.758081+00	20	\N	calendar_date
-412	Product	The type of product the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.76466+00	2019-03-06 01:00:58.764689+00	20	\N	text
-413	Sub-product	The type of sub-product the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.771336+00	2019-03-06 01:00:58.771373+00	20	\N	text
-414	Issue	The issue the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.779152+00	2019-03-06 01:00:58.779193+00	20	\N	text
-415	Sub-issue	The sub-issue the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.797779+00	2019-03-06 01:00:58.797828+00	20	\N	text
-416	Consumer complaint narrative	Consumer complaint narrative is the consumer-submitted description of "what happened" from the complaint. Consumers must opt-in to share their narrative. We will not publish the narrative unless the consumer consents, and consumers can opt-out at any time. The CFPB takes reasonable steps to scrub personal information from each complaint that could be used to identify the consumer.	\N	\N	\N	2019-03-06 01:00:58.812928+00	2019-03-06 01:00:58.812974+00	20	\N	text
-417	Company public response	The company's optional, public-facing response to a consumer's complaint. Companies provide a public response to the CFPB, for posting on the public database, by selecting a response from a set list of options.	\N	\N	\N	2019-03-06 01:00:58.827641+00	2019-03-06 01:00:58.827673+00	20	\N	text
-418	Company	The complaint is about this company	\N	\N	\N	2019-03-06 01:00:58.838255+00	2019-03-06 01:00:58.838286+00	20	\N	text
-419	State	The consumer’s reported mailing state for the complaint	\N	\N	\N	2019-03-06 01:00:58.845035+00	2019-03-06 01:00:58.845062+00	20	\N	text
-420	ZIP code	Mailing ZIP code provided by the consumer. This field may: i) include the first five digits of a ZIP code; ii) include the first three digits of a ZIP code (if the consumer consented to publication of their complaint narrative); or iii) be blank (if ZIP codes have been submitted with non-numeric values, if there are less than 20,000 people in a given ZIP code, or if the complaint has an address outside of the United States).	\N	\N	\N	2019-03-06 01:00:58.851073+00	2019-03-06 01:00:58.851104+00	20	\N	text
-421	Tags	Data that supports easier searching and sorting of complaints submitted by or on behalf of consumers	\N	\N	\N	2019-03-06 01:00:58.864328+00	2019-03-06 01:00:58.864357+00	20	\N	text
-422	Consumer consent provided?	Identifies whether the consumer opted in to publish their complaint narrative	\N	\N	\N	2019-03-06 01:00:58.87033+00	2019-03-06 01:00:58.87036+00	20	\N	text
-423	Submitted via	How the complaint was submitted to CFPB	\N	\N	\N	2019-03-06 01:00:58.875813+00	2019-03-06 01:00:58.875842+00	20	\N	text
-424	Date sent to company	The date the CFPB sent the complaint to the company	\N	\N	\N	2019-03-06 01:00:58.880945+00	2019-03-06 01:00:58.880972+00	20	\N	calendar_date
-425	Company response to consumer	This is how the company responded	\N	\N	\N	2019-03-06 01:00:58.886287+00	2019-03-06 01:00:58.886315+00	20	\N	text
-426	Timely response?	Whether the company gave a timely response	\N	\N	\N	2019-03-06 01:00:58.892013+00	2019-03-06 01:00:58.892039+00	20	\N	text
-427	Consumer disputed?	Whether the consumer disputed the company’s response	\N	\N	\N	2019-03-06 01:00:58.897265+00	2019-03-06 01:00:58.897291+00	20	\N	text
-428	Complaint ID	The unique identification number for a complaint	\N	\N	\N	2019-03-06 01:00:58.902085+00	2019-03-06 01:00:58.902111+00	20	\N	number
-429	Last Time Updated	Last Time Updated	\N	\N	\N	2019-03-06 01:00:58.942716+00	2019-03-06 01:00:58.942742+00	21	\N	Text
-430	Last Date Updated	Last Date Updated	\N	\N	\N	2019-03-06 01:00:58.948131+00	2019-03-06 01:00:58.948158+00	21	\N	Calendar date
-431	Wheelchair Accessible Trained	WAV if Wheelchair Accessible Trained\n	\N	\N	\N	2019-03-06 01:00:58.953977+00	2019-03-06 01:00:58.954003+00	21	\N	Text
-432	Expiration Date	Expiration Date\n\n\n	\N	\N	\N	2019-03-06 01:00:58.961269+00	2019-03-06 01:00:58.961295+00	21	\N	Calendar date
-433	Type	Type of License\n\n	\N	\N	\N	2019-03-06 01:00:58.967163+00	2019-03-06 01:00:58.967189+00	21	\N	Text
-434	Name	Driver Name\n\n	\N	\N	\N	2019-03-06 01:00:58.972416+00	2019-03-06 01:00:58.972442+00	21	\N	Text
-435	License Number	FHV License Number\n	\N	\N	\N	2019-03-06 01:00:58.977616+00	2019-03-06 01:00:58.977642+00	21	\N	Number
-436	City		\N	\N	\N	2019-03-06 01:00:59.018645+00	2019-03-06 01:00:59.018673+00	22	\N	Text
-437	Business Name		\N	\N	\N	2019-03-06 01:00:59.025287+00	2019-03-06 01:00:59.025313+00	22	\N	Text
-438	Zip Code		\N	\N	\N	2019-03-06 01:00:59.030688+00	2019-03-06 01:00:59.030715+00	22	\N	Text
-439	License Type		\N	\N	\N	2019-03-06 01:00:59.036038+00	2019-03-06 01:00:59.036064+00	22	\N	Text
-440	License Number		\N	\N	\N	2019-03-06 01:00:59.041819+00	2019-03-06 01:00:59.041845+00	22	\N	Text
-441	Business Name		\N	\N	\N	2019-03-06 01:00:59.082407+00	2019-03-06 01:00:59.082437+00	23	\N	Text
-442	License Type		\N	\N	\N	2019-03-06 01:00:59.088579+00	2019-03-06 01:00:59.088605+00	23	\N	Text
-443	License Number		\N	\N	\N	2019-03-06 01:00:59.094428+00	2019-03-06 01:00:59.094454+00	23	\N	Text
-444	City		\N	\N	\N	2019-03-06 01:00:59.100032+00	2019-03-06 01:00:59.100058+00	23	\N	Text
-445	Zip Code		\N	\N	\N	2019-03-06 01:00:59.105246+00	2019-03-06 01:00:59.105272+00	23	\N	Text
-446	City		\N	\N	\N	2019-03-06 01:00:59.146162+00	2019-03-06 01:00:59.146261+00	24	\N	Text
-447	Street Address 2		\N	\N	\N	2019-03-06 01:00:59.153431+00	2019-03-06 01:00:59.153458+00	24	\N	Text
-448	Contact Name		\N	\N	\N	2019-03-06 01:00:59.158886+00	2019-03-06 01:00:59.158912+00	24	\N	Text
-449	Zip		\N	\N	\N	2019-03-06 01:00:59.164439+00	2019-03-06 01:00:59.164466+00	24	\N	Text
-450	Agency_Type		\N	\N	\N	2019-03-06 01:00:59.170252+00	2019-03-06 01:00:59.170279+00	24	\N	Text
-451	CEO Title		\N	\N	\N	2019-03-06 01:00:59.175418+00	2019-03-06 01:00:59.175443+00	24	\N	Text
-453	Fax Number		\N	\N	\N	2019-03-06 01:00:59.186955+00	2019-03-06 01:00:59.186982+00	24	\N	Text
-454	Agency Name		\N	\N	\N	2019-03-06 01:00:59.192702+00	2019-03-06 01:00:59.192729+00	24	\N	Text
-455	Street Address		\N	\N	\N	2019-03-06 01:00:59.198367+00	2019-03-06 01:00:59.198393+00	24	\N	Text
-456	Voice Number		\N	\N	\N	2019-03-06 01:00:59.203791+00	2019-03-06 01:00:59.203817+00	24	\N	Text
-457	CONTRACTOR_10_PHONE		\N	\N	\N	2019-03-06 01:00:59.246689+00	2019-03-06 01:00:59.246715+00	25	\N	Text
-458	CONTRACTOR_10_STATE		\N	\N	\N	2019-03-06 01:00:59.252977+00	2019-03-06 01:00:59.253002+00	25	\N	Text
-459	CONTRACTOR_15_STATE		\N	\N	\N	2019-03-06 01:00:59.259627+00	2019-03-06 01:00:59.259653+00	25	\N	Text
-460	CONTRACTOR_13_TYPE		\N	\N	\N	2019-03-06 01:00:59.265588+00	2019-03-06 01:00:59.265615+00	25	\N	Text
-461	CONTRACTOR_8_STATE		\N	\N	\N	2019-03-06 01:00:59.271459+00	2019-03-06 01:00:59.271485+00	25	\N	Text
-462	CONTRACTOR_6_NAME		\N	\N	\N	2019-03-06 01:00:59.276798+00	2019-03-06 01:00:59.276825+00	25	\N	Text
-463	CONTRACTOR_4_NAME		\N	\N	\N	2019-03-06 01:00:59.281978+00	2019-03-06 01:00:59.282004+00	25	\N	Text
-464	CONTRACTOR_5_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.287714+00	2019-03-06 01:00:59.28774+00	25	\N	Text
-465	CONTRACTOR_1_CITY		\N	\N	\N	2019-03-06 01:00:59.293248+00	2019-03-06 01:00:59.293274+00	25	\N	Text
-466	CONTRACTOR_2_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.298572+00	2019-03-06 01:00:59.298599+00	25	\N	Text
-467	CONTRACTOR_2_STATE		\N	\N	\N	2019-03-06 01:00:59.303764+00	2019-03-06 01:00:59.303804+00	25	\N	Text
-468	CONTRACTOR_15_NAME		\N	\N	\N	2019-03-06 01:00:59.309783+00	2019-03-06 01:00:59.309857+00	25	\N	Text
-469	CONTRACTOR_13_PHONE		\N	\N	\N	2019-03-06 01:00:59.317868+00	2019-03-06 01:00:59.317896+00	25	\N	Text
-470	CONTRACTOR_14_PHONE		\N	\N	\N	2019-03-06 01:00:59.324422+00	2019-03-06 01:00:59.324449+00	25	\N	Text
-471	 PIN9		\N	\N	\N	2019-03-06 01:00:59.329444+00	2019-03-06 01:00:59.329471+00	25	\N	Text
-472	CONTRACTOR_6_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.334571+00	2019-03-06 01:00:59.334597+00	25	\N	Text
-473	  PIN4		\N	\N	\N	2019-03-06 01:00:59.339972+00	2019-03-06 01:00:59.339997+00	25	\N	Text
-474	CONTRACTOR_2_PHONE		\N	\N	\N	2019-03-06 01:00:59.345979+00	2019-03-06 01:00:59.346006+00	25	\N	Text
-475	CONTRACTOR_14_NAME		\N	\N	\N	2019-03-06 01:00:59.351303+00	2019-03-06 01:00:59.351329+00	25	\N	Text
-476	CONTRACTOR_9_CITY		\N	\N	\N	2019-03-06 01:00:59.357013+00	2019-03-06 01:00:59.35704+00	25	\N	Text
-477	PERMIT#		\N	\N	\N	2019-03-06 01:00:59.362463+00	2019-03-06 01:00:59.362489+00	25	\N	Text
-478	CONTRACTOR_6_STATE		\N	\N	\N	2019-03-06 01:00:59.368095+00	2019-03-06 01:00:59.368121+00	25	\N	Text
-479	CONTRACTOR_7_NAME		\N	\N	\N	2019-03-06 01:00:59.373055+00	2019-03-06 01:00:59.373082+00	25	\N	Text
-480	CONTRACTOR_4_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.378465+00	2019-03-06 01:00:59.378492+00	25	\N	Text
-481	CONTRACTOR_12_TYPE		\N	\N	\N	2019-03-06 01:00:59.384342+00	2019-03-06 01:00:59.384368+00	25	\N	Text
-482	CONTRACTOR_3_NAME		\N	\N	\N	2019-03-06 01:00:59.389851+00	2019-03-06 01:00:59.389877+00	25	\N	Text
-483	CONTRACTOR_3_CITY		\N	\N	\N	2019-03-06 01:00:59.396357+00	2019-03-06 01:00:59.396383+00	25	\N	Text
-484	CONTRACTOR_15_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.405037+00	2019-03-06 01:00:59.405067+00	25	\N	Text
-485	LOCATION		\N	\N	\N	2019-03-06 01:00:59.410405+00	2019-03-06 01:00:59.410432+00	25	\N	Location
-486	CONTRACTOR_12_PHONE		\N	\N	\N	2019-03-06 01:00:59.415668+00	2019-03-06 01:00:59.415694+00	25	\N	Text
-487	CONTRACTOR_13_NAME		\N	\N	\N	2019-03-06 01:00:59.421377+00	2019-03-06 01:00:59.421426+00	25	\N	Text
-488	 PIN8		\N	\N	\N	2019-03-06 01:00:59.427742+00	2019-03-06 01:00:59.427768+00	25	\N	Text
-489	   AMOUNT_PAID	Fee amount customer has paid.	\N	\N	\N	2019-03-06 01:00:59.433421+00	2019-03-06 01:00:59.43345+00	25	\N	Number
-490	CONTRACTOR_9_TYPE		\N	\N	\N	2019-03-06 01:00:59.439371+00	2019-03-06 01:00:59.439398+00	25	\N	Text
-491	CONTRACTOR_8_PHONE		\N	\N	\N	2019-03-06 01:00:59.444808+00	2019-03-06 01:00:59.444833+00	25	\N	Text
-492	CONTRACTOR_9_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.449914+00	2019-03-06 01:00:59.449941+00	25	\N	Text
-493	CONTRACTOR_9_NAME		\N	\N	\N	2019-03-06 01:00:59.455108+00	2019-03-06 01:00:59.455134+00	25	\N	Text
-494	CONTRACTOR_8_CITY		\N	\N	\N	2019-03-06 01:00:59.460038+00	2019-03-06 01:00:59.460065+00	25	\N	Text
-495	CONTRACTOR_8_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.465387+00	2019-03-06 01:00:59.465413+00	25	\N	Text
-496	CONTRACTOR_8_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.470849+00	2019-03-06 01:00:59.470875+00	25	\N	Text
-497	CONTRACTOR_10_NAME		\N	\N	\N	2019-03-06 01:00:59.475924+00	2019-03-06 01:00:59.47595+00	25	\N	Text
-498	CONTRACTOR_10_TYPE		\N	\N	\N	2019-03-06 01:00:59.481161+00	2019-03-06 01:00:59.481187+00	25	\N	Text
-499	CONTRACTOR_10_CITY		\N	\N	\N	2019-03-06 01:00:59.487353+00	2019-03-06 01:00:59.487379+00	25	\N	Text
-500	CONTRACTOR_10_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.493104+00	2019-03-06 01:00:59.49313+00	25	\N	Text
-501	CONTRACTOR_9_STATE		\N	\N	\N	2019-03-06 01:00:59.498655+00	2019-03-06 01:00:59.49868+00	25	\N	Text
-502	CONTRACTOR_9_PHONE		\N	\N	\N	2019-03-06 01:00:59.50434+00	2019-03-06 01:00:59.504366+00	25	\N	Text
-503	CONTRACTOR_9_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.509776+00	2019-03-06 01:00:59.509805+00	25	\N	Text
-504	CONTRACTOR_7_TYPE		\N	\N	\N	2019-03-06 01:00:59.516533+00	2019-03-06 01:00:59.516559+00	25	\N	Text
-505	CONTRACTOR_6_PHONE		\N	\N	\N	2019-03-06 01:00:59.522513+00	2019-03-06 01:00:59.522539+00	25	\N	Text
-506	CONTRACTOR_6_TYPE		\N	\N	\N	2019-03-06 01:00:59.539168+00	2019-03-06 01:00:59.539238+00	25	\N	Text
-507	CONTRACTOR_6_CITY		\N	\N	\N	2019-03-06 01:00:59.553913+00	2019-03-06 01:00:59.553983+00	25	\N	Text
-508	CONTRACTOR_6_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.567368+00	2019-03-06 01:00:59.567402+00	25	\N	Text
-509	CONTRACTOR_7_PHONE		\N	\N	\N	2019-03-06 01:00:59.57322+00	2019-03-06 01:00:59.573249+00	25	\N	Text
-510	CONTRACTOR_7_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.578333+00	2019-03-06 01:00:59.578362+00	25	\N	Text
-511	CONTRACTOR_8_NAME		\N	\N	\N	2019-03-06 01:00:59.583486+00	2019-03-06 01:00:59.583513+00	25	\N	Text
-512	CONTRACTOR_8_TYPE		\N	\N	\N	2019-03-06 01:00:59.588772+00	2019-03-06 01:00:59.588802+00	25	\N	Text
-513	CONTRACTOR_7_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.593914+00	2019-03-06 01:00:59.593942+00	25	\N	Text
-514	CONTRACTOR_7_STATE		\N	\N	\N	2019-03-06 01:00:59.598513+00	2019-03-06 01:00:59.59854+00	25	\N	Text
-515	CONTRACTOR_7_CITY		\N	\N	\N	2019-03-06 01:00:59.603689+00	2019-03-06 01:00:59.603715+00	25	\N	Text
-516	CONTRACTOR_4_CITY		\N	\N	\N	2019-03-06 01:00:59.609009+00	2019-03-06 01:00:59.609035+00	25	\N	Text
-517	CONTRACTOR_4_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.614473+00	2019-03-06 01:00:59.614499+00	25	\N	Text
-518	CONTRACTOR_4_STATE		\N	\N	\N	2019-03-06 01:00:59.619995+00	2019-03-06 01:00:59.620021+00	25	\N	Text
-519	CONTRACTOR_3_PHONE		\N	\N	\N	2019-03-06 01:00:59.625615+00	2019-03-06 01:00:59.625641+00	25	\N	Text
-520	CONTRACTOR_3_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.631009+00	2019-03-06 01:00:59.631035+00	25	\N	Text
-521	CONTRACTOR_4_TYPE		\N	\N	\N	2019-03-06 01:00:59.636432+00	2019-03-06 01:00:59.636458+00	25	\N	Text
-522	CONTRACTOR_5_STATE		\N	\N	\N	2019-03-06 01:00:59.641827+00	2019-03-06 01:00:59.641853+00	25	\N	Text
-523	CONTRACTOR_5_CITY		\N	\N	\N	2019-03-06 01:00:59.647478+00	2019-03-06 01:00:59.647504+00	25	\N	Text
-524	CONTRACTOR_5_PHONE		\N	\N	\N	2019-03-06 01:00:59.652818+00	2019-03-06 01:00:59.652844+00	25	\N	Text
-525	CONTRACTOR_5_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.659581+00	2019-03-06 01:00:59.659623+00	25	\N	Text
-526	CONTRACTOR_5_TYPE		\N	\N	\N	2019-03-06 01:00:59.667812+00	2019-03-06 01:00:59.668139+00	25	\N	Text
-527	CONTRACTOR_4_PHONE		\N	\N	\N	2019-03-06 01:00:59.67748+00	2019-03-06 01:00:59.67751+00	25	\N	Text
-528	CONTRACTOR_5_NAME		\N	\N	\N	2019-03-06 01:00:59.685167+00	2019-03-06 01:00:59.685195+00	25	\N	Text
-529	CONTRACTOR_2_NAME		\N	\N	\N	2019-03-06 01:00:59.697957+00	2019-03-06 01:00:59.698004+00	25	\N	Text
-530	CONTRACTOR_2_TYPE		\N	\N	\N	2019-03-06 01:00:59.706223+00	2019-03-06 01:00:59.706266+00	25	\N	Text
-531	CONTRACTOR_2_CITY		\N	\N	\N	2019-03-06 01:00:59.715069+00	2019-03-06 01:00:59.715191+00	25	\N	Text
-532	CONTRACTOR_2_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.723545+00	2019-03-06 01:00:59.723578+00	25	\N	Text
-533	CONTRACTOR_1_STATE		\N	\N	\N	2019-03-06 01:00:59.732249+00	2019-03-06 01:00:59.732281+00	25	\N	Text
-534	CONTRACTOR_1_PHONE		\N	\N	\N	2019-03-06 01:00:59.742379+00	2019-03-06 01:00:59.742414+00	25	\N	Text
-535	CONTRACTOR_1_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.751147+00	2019-03-06 01:00:59.751174+00	25	\N	Text
-536	CONTRACTOR_3_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.769256+00	2019-03-06 01:00:59.769289+00	25	\N	Text
-537	CONTRACTOR_3_STATE		\N	\N	\N	2019-03-06 01:00:59.778949+00	2019-03-06 01:00:59.778976+00	25	\N	Text
-538	CONTRACTOR_3_TYPE		\N	\N	\N	2019-03-06 01:00:59.791905+00	2019-03-06 01:00:59.791935+00	25	\N	Text
-539	CONTRACTOR_15_PHONE		\N	\N	\N	2019-03-06 01:00:59.800157+00	2019-03-06 01:00:59.800187+00	25	\N	Text
-540	CONTRACTOR_15_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.80839+00	2019-03-06 01:00:59.80842+00	25	\N	Text
-541	LONGITUDE		\N	\N	\N	2019-03-06 01:00:59.81651+00	2019-03-06 01:00:59.816577+00	25	\N	Number
-542	LATITUDE		\N	\N	\N	2019-03-06 01:00:59.823959+00	2019-03-06 01:00:59.823989+00	25	\N	Number
-543	CONTRACTOR_15_CITY		\N	\N	\N	2019-03-06 01:00:59.834905+00	2019-03-06 01:00:59.834948+00	25	\N	Text
-544	CONTRACTOR_13_STATE		\N	\N	\N	2019-03-06 01:00:59.847737+00	2019-03-06 01:00:59.847805+00	25	\N	Text
-545	CONTRACTOR_13_CITY		\N	\N	\N	2019-03-06 01:00:59.85796+00	2019-03-06 01:00:59.857999+00	25	\N	Text
-546	CONTRACTOR_13_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.888695+00	2019-03-06 01:00:59.888728+00	25	\N	Text
-547	CONTRACTOR_13_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.894001+00	2019-03-06 01:00:59.894032+00	25	\N	Text
-548	CONTRACTOR_14_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.89993+00	2019-03-06 01:00:59.899959+00	25	\N	Text
-549	CONTRACTOR_14_STATE		\N	\N	\N	2019-03-06 01:00:59.905928+00	2019-03-06 01:00:59.905974+00	25	\N	Text
-550	CONTRACTOR_15_TYPE		\N	\N	\N	2019-03-06 01:00:59.9114+00	2019-03-06 01:00:59.911428+00	25	\N	Text
-551	CONTRACTOR_14_TYPE		\N	\N	\N	2019-03-06 01:00:59.918188+00	2019-03-06 01:00:59.918217+00	25	\N	Text
-552	CONTRACTOR_14_CITY		\N	\N	\N	2019-03-06 01:00:59.923628+00	2019-03-06 01:00:59.923657+00	25	\N	Text
-553	CONTRACTOR_14_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.928753+00	2019-03-06 01:00:59.928781+00	25	\N	Text
-554	CONTRACTOR_11_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.934216+00	2019-03-06 01:00:59.934297+00	25	\N	Text
-555	CONTRACTOR_11_NAME		\N	\N	\N	2019-03-06 01:00:59.939472+00	2019-03-06 01:00:59.9395+00	25	\N	Text
-556	CONTRACTOR_11_STATE		\N	\N	\N	2019-03-06 01:00:59.946042+00	2019-03-06 01:00:59.946071+00	25	\N	Text
-557	CONTRACTOR_11_CITY		\N	\N	\N	2019-03-06 01:00:59.951583+00	2019-03-06 01:00:59.951612+00	25	\N	Text
-558	CONTRACTOR_10_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.956927+00	2019-03-06 01:00:59.956955+00	25	\N	Text
-559	CONTRACTOR_11_TYPE		\N	\N	\N	2019-03-06 01:00:59.962324+00	2019-03-06 01:00:59.962368+00	25	\N	Text
-560	CONTRACTOR_12_CITY		\N	\N	\N	2019-03-06 01:00:59.970313+00	2019-03-06 01:00:59.970348+00	25	\N	Text
-561	CONTRACTOR_12_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.975798+00	2019-03-06 01:00:59.975832+00	25	\N	Text
-562	CONTRACTOR_12_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.98177+00	2019-03-06 01:00:59.981799+00	25	\N	Text
-563	CONTRACTOR_12_STATE		\N	\N	\N	2019-03-06 01:00:59.987145+00	2019-03-06 01:00:59.987191+00	25	\N	Text
-564	CONTRACTOR_11_PHONE		\N	\N	\N	2019-03-06 01:00:59.992433+00	2019-03-06 01:00:59.992462+00	25	\N	Text
-565	CONTRACTOR_11_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.998409+00	2019-03-06 01:00:59.998437+00	25	\N	Text
-566	CONTRACTOR_12_NAME		\N	\N	\N	2019-03-06 01:01:00.004052+00	2019-03-06 01:01:00.00408+00	25	\N	Text
-567	  PIN3		\N	\N	\N	2019-03-06 01:01:00.00939+00	2019-03-06 01:01:00.009417+00	25	\N	Text
-568	   PIN2		\N	\N	\N	2019-03-06 01:01:00.026432+00	2019-03-06 01:01:00.026464+00	25	\N	Text
-569	 PIN5		\N	\N	\N	2019-03-06 01:01:00.034004+00	2019-03-06 01:01:00.034034+00	25	\N	Text
-570	  SUFFIX		\N	\N	\N	2019-03-06 01:01:00.038416+00	2019-03-06 01:01:00.038445+00	25	\N	Text
-571	STREET_NAME		\N	\N	\N	2019-03-06 01:01:00.043209+00	2019-03-06 01:01:00.043237+00	25	\N	Text
-572	   PIN1		\N	\N	\N	2019-03-06 01:01:00.049673+00	2019-03-06 01:01:00.049702+00	25	\N	Text
-573	WORK_DESCRIPTION		\N	\N	\N	2019-03-06 01:01:00.054277+00	2019-03-06 01:01:00.054305+00	25	\N	Text
-574	CONTRACTOR_1_TYPE		\N	\N	\N	2019-03-06 01:01:00.05873+00	2019-03-06 01:01:00.058758+00	25	\N	Text
-575	     PIN10		\N	\N	\N	2019-03-06 01:01:00.063112+00	2019-03-06 01:01:00.063139+00	25	\N	Text
-576	CONTRACTOR_1_ADDRESS		\N	\N	\N	2019-03-06 01:01:00.067192+00	2019-03-06 01:01:00.067218+00	25	\N	Text
-577	CONTRACTOR_1_NAME		\N	\N	\N	2019-03-06 01:01:00.071452+00	2019-03-06 01:01:00.071478+00	25	\N	Text
-578	 PIN7		\N	\N	\N	2019-03-06 01:01:00.07574+00	2019-03-06 01:01:00.075765+00	25	\N	Text
-579	 PIN6		\N	\N	\N	2019-03-06 01:01:00.080096+00	2019-03-06 01:01:00.080122+00	25	\N	Text
-580	ID		\N	\N	\N	2019-03-06 01:01:00.084587+00	2019-03-06 01:01:00.084614+00	25	\N	Text
-581	    TOTAL_FEE	The amount waived plus amount paid plus any amount that may still be outstanding. This total can include various fees that are part of the permit fee, such as zoning, open space, deposit, or missed appointment.  It can also include stop work order fees, reinspection fees, and various penalty fees.	\N	\N	\N	2019-03-06 01:01:00.088877+00	2019-03-06 01:01:00.088903+00	25	\N	Number
-582	STREET DIRECTION		\N	\N	\N	2019-03-06 01:01:00.093564+00	2019-03-06 01:01:00.093591+00	25	\N	Text
-583	STREET_NUMBER		\N	\N	\N	2019-03-06 01:01:00.098004+00	2019-03-06 01:01:00.098031+00	25	\N	Number
-584	         ISSUE_DATE		\N	\N	\N	2019-03-06 01:01:00.102169+00	2019-03-06 01:01:00.102195+00	25	\N	Calendar date
-585	  PERMIT_TYPE		\N	\N	\N	2019-03-06 01:01:00.106496+00	2019-03-06 01:01:00.106522+00	25	\N	Text
-586	         AMOUNT_WAIVED	Fee amount waived by City Council ordinance	\N	\N	\N	2019-03-06 01:01:00.113034+00	2019-03-06 01:01:00.113062+00	25	\N	Number
-587	        ESTIMATED_COST		\N	\N	\N	2019-03-06 01:01:00.120951+00	2019-03-06 01:01:00.120977+00	25	\N	Number
-588	State		\N	\N	\N	2019-03-06 01:01:00.153563+00	2019-03-06 01:01:00.153593+00	26	\N	Text
-589	Street Name		\N	\N	\N	2019-03-06 01:01:00.1593+00	2019-03-06 01:01:00.159327+00	26	\N	Text
-590	Street Number		\N	\N	\N	2019-03-06 01:01:00.165434+00	2019-03-06 01:01:00.165463+00	26	\N	Number
-591	County		\N	\N	\N	2019-03-06 01:01:00.170266+00	2019-03-06 01:01:00.170292+00	26	\N	Text
-592	Sub District		\N	\N	\N	2019-03-06 01:01:00.174643+00	2019-03-06 01:01:00.17467+00	26	\N	Text
-593	District		\N	\N	\N	2019-03-06 01:01:00.178969+00	2019-03-06 01:01:00.178994+00	26	\N	Text
-594	License Type		\N	\N	\N	2019-03-06 01:01:00.183548+00	2019-03-06 01:01:00.183574+00	26	\N	Text
-595	DBA Name		\N	\N	\N	2019-03-06 01:01:00.188478+00	2019-03-06 01:01:00.188505+00	26	\N	Text
-596	Licensee Name		\N	\N	\N	2019-03-06 01:01:00.192975+00	2019-03-06 01:01:00.193+00	26	\N	Text
-597	License Number		\N	\N	\N	2019-03-06 01:01:00.197823+00	2019-03-06 01:01:00.197851+00	26	\N	Number
-598	latlng (zip)		\N	\N	\N	2019-03-06 01:01:00.203811+00	2019-03-06 01:01:00.203846+00	26	\N	Text
-599	Counties		\N	\N	\N	2019-03-06 01:01:00.208697+00	2019-03-06 01:01:00.208723+00	26	\N	Number
-600	latlng (address)		\N	\N	\N	2019-03-06 01:01:00.213509+00	2019-03-06 01:01:00.213535+00	26	\N	Text
-601	latlng (city)		\N	\N	\N	2019-03-06 01:01:00.218156+00	2019-03-06 01:01:00.218183+00	26	\N	Text
-602	latlng (state)		\N	\N	\N	2019-03-06 01:01:00.223005+00	2019-03-06 01:01:00.223032+00	26	\N	Text
-603	Missouri Counties		\N	\N	\N	2019-03-06 01:01:00.227636+00	2019-03-06 01:01:00.227662+00	26	\N	Number
-604	School Districts		\N	\N	\N	2019-03-06 01:01:00.232123+00	2019-03-06 01:01:00.232149+00	26	\N	Number
-605	City		\N	\N	\N	2019-03-06 01:01:00.237108+00	2019-03-06 01:01:00.237134+00	26	\N	Text
-606	Zip Code		\N	\N	\N	2019-03-06 01:01:00.242034+00	2019-03-06 01:01:00.242061+00	26	\N	Number
-607	Last Name		\N	\N	\N	2019-03-06 01:01:00.247027+00	2019-03-06 01:01:00.247053+00	26	\N	Text
-608	First Name		\N	\N	\N	2019-03-06 01:01:00.251659+00	2019-03-06 01:01:00.251685+00	26	\N	Text
-609	Business Phone		\N	\N	\N	2019-03-06 01:01:00.256204+00	2019-03-06 01:01:00.256239+00	26	\N	Text
-610	Renewal Date		\N	\N	\N	2019-03-06 01:01:00.26108+00	2019-03-06 01:01:00.261106+00	26	\N	Text
-611	latlng		\N	\N	\N	2019-03-06 01:01:00.265974+00	2019-03-06 01:01:00.266001+00	26	\N	Point
-612	Wholesaler Number		\N	\N	\N	2019-03-06 01:01:00.303255+00	2019-03-06 01:01:00.303282+00	27	\N	Number
-613	Effective Date		\N	\N	\N	2019-03-06 01:01:00.308526+00	2019-03-06 01:01:00.308553+00	27	\N	Calendar date
-614	Licensee Name		\N	\N	\N	2019-03-06 01:01:00.313577+00	2019-03-06 01:01:00.313603+00	27	\N	Text
-615	Solicitor Number		\N	\N	\N	2019-03-06 01:01:00.318244+00	2019-03-06 01:01:00.318269+00	27	\N	Number
-616	Wholesaler Name		\N	\N	\N	2019-03-06 01:01:00.323609+00	2019-03-06 01:01:00.323636+00	27	\N	Text
-617	Proof		\N	\N	\N	2019-03-06 01:01:00.32863+00	2019-03-06 01:01:00.328657+00	27	\N	Number
-618	Type		\N	\N	\N	2019-03-06 01:01:00.33366+00	2019-03-06 01:01:00.333687+00	27	\N	Text
-619	Brand Name		\N	\N	\N	2019-03-06 01:01:00.338408+00	2019-03-06 01:01:00.338434+00	27	\N	Text
-620	Brand Number		\N	\N	\N	2019-03-06 01:01:00.343366+00	2019-03-06 01:01:00.343393+00	27	\N	Text
-621	Class		\N	\N	\N	2019-03-06 01:01:00.348377+00	2019-03-06 01:01:00.348404+00	27	\N	Text
-709	latlng (state)		\N	\N	\N	2019-03-06 01:01:01.096174+00	2019-03-06 01:01:01.096202+00	32	\N	Text
-710	latlng (city)		\N	\N	\N	2019-03-06 01:01:01.103388+00	2019-03-06 01:01:01.103434+00	32	\N	Text
-622	Facility Number        	The unique number assigned to a facility distinguishing it from the other facilities. Each facility's number falls between 0-99. 	\N	\N	\N	2019-03-06 01:01:00.385088+00	2019-03-06 01:01:00.385115+00	28	\N	text
-623	Space Count	The total number of parking spaces available within the facility.	\N	\N	\N	2019-03-06 01:01:00.389978+00	2019-03-06 01:01:00.390005+00	28	\N	number
-624	Total Spaces	The total number of vehicle parking spaces within the facility	\N	\N	\N	2019-03-06 01:01:00.395527+00	2019-03-06 01:01:00.395554+00	28	\N	number
-625	Last Update	The last date and time information pertaining to the facility was modified.	\N	\N	\N	2019-03-06 01:01:00.40078+00	2019-03-06 01:01:00.400807+00	28	\N	calendar_date
-626	Legal 7		\N	\N	\N	2019-03-06 01:01:00.438353+00	2019-03-06 01:01:00.43838+00	29	\N	Text
-627	Counties		\N	\N	\N	2019-03-06 01:01:00.443316+00	2019-03-06 01:01:00.443342+00	29	\N	Number
-628	School Districts		\N	\N	\N	2019-03-06 01:01:00.448029+00	2019-03-06 01:01:00.448056+00	29	\N	Number
-629	Missouri Counties		\N	\N	\N	2019-03-06 01:01:00.453091+00	2019-03-06 01:01:00.453118+00	29	\N	Number
-630	latlng (zip)		\N	\N	\N	2019-03-06 01:01:00.458599+00	2019-03-06 01:01:00.458626+00	29	\N	Text
-631	latlng (state)		\N	\N	\N	2019-03-06 01:01:00.463419+00	2019-03-06 01:01:00.463446+00	29	\N	Text
-632	latlng (city)		\N	\N	\N	2019-03-06 01:01:00.468117+00	2019-03-06 01:01:00.468144+00	29	\N	Text
-633	latlng (address)		\N	\N	\N	2019-03-06 01:01:00.472762+00	2019-03-06 01:01:00.472789+00	29	\N	Text
-634	latlng		\N	\N	\N	2019-03-06 01:01:00.477777+00	2019-03-06 01:01:00.477803+00	29	\N	Point
-635	Legal 8		\N	\N	\N	2019-03-06 01:01:00.482335+00	2019-03-06 01:01:00.482362+00	29	\N	Text
-636	Legal 6		\N	\N	\N	2019-03-06 01:01:00.48718+00	2019-03-06 01:01:00.487207+00	29	\N	Text
-637	Legal 5		\N	\N	\N	2019-03-06 01:01:00.491967+00	2019-03-06 01:01:00.491993+00	29	\N	Text
-638	Legal 4		\N	\N	\N	2019-03-06 01:01:00.496667+00	2019-03-06 01:01:00.496693+00	29	\N	Text
-639	Legal 3		\N	\N	\N	2019-03-06 01:01:00.501679+00	2019-03-06 01:01:00.501705+00	29	\N	Text
-640	Legal 2		\N	\N	\N	2019-03-06 01:01:00.506222+00	2019-03-06 01:01:00.506249+00	29	\N	Text
-641	Legal 1		\N	\N	\N	2019-03-06 01:01:00.511204+00	2019-03-06 01:01:00.511235+00	29	\N	Text
-642	Mailing Address 4		\N	\N	\N	2019-03-06 01:01:00.516603+00	2019-03-06 01:01:00.516629+00	29	\N	Text
-643	Mailing Address 3		\N	\N	\N	2019-03-06 01:01:00.521949+00	2019-03-06 01:01:00.521975+00	29	\N	Text
-644	Mailing Address 2		\N	\N	\N	2019-03-06 01:01:00.527285+00	2019-03-06 01:01:00.527312+00	29	\N	Text
-645	Mailing Address 1		\N	\N	\N	2019-03-06 01:01:00.532218+00	2019-03-06 01:01:00.532245+00	29	\N	Text
-646	Zip Code		\N	\N	\N	2019-03-06 01:01:00.537336+00	2019-03-06 01:01:00.537362+00	29	\N	Text
-647	State		\N	\N	\N	2019-03-06 01:01:00.5419+00	2019-03-06 01:01:00.541926+00	29	\N	Text
-648	City		\N	\N	\N	2019-03-06 01:01:00.546712+00	2019-03-06 01:01:00.546739+00	29	\N	Text
-649	Street		\N	\N	\N	2019-03-06 01:01:00.552926+00	2019-03-06 01:01:00.552952+00	29	\N	Text
-650	Street Number		\N	\N	\N	2019-03-06 01:01:00.558033+00	2019-03-06 01:01:00.55806+00	29	\N	Text
-651	County		\N	\N	\N	2019-03-06 01:01:00.56395+00	2019-03-06 01:01:00.563979+00	29	\N	Text
-652	SubDistrict		\N	\N	\N	2019-03-06 01:01:00.568987+00	2019-03-06 01:01:00.569014+00	29	\N	Text
-653	District		\N	\N	\N	2019-03-06 01:01:00.574232+00	2019-03-06 01:01:00.574258+00	29	\N	Text
-654	Last Name		\N	\N	\N	2019-03-06 01:01:00.579041+00	2019-03-06 01:01:00.579066+00	29	\N	Text
-655	First Name		\N	\N	\N	2019-03-06 01:01:00.584032+00	2019-03-06 01:01:00.584059+00	29	\N	Text
-656	Manager Phone		\N	\N	\N	2019-03-06 01:01:00.588698+00	2019-03-06 01:01:00.588723+00	29	\N	Text
-657	Business Phone		\N	\N	\N	2019-03-06 01:01:00.59407+00	2019-03-06 01:01:00.594097+00	29	\N	Text
-658	Expiration Date		\N	\N	\N	2019-03-06 01:01:00.598731+00	2019-03-06 01:01:00.598756+00	29	\N	Calendar date
-659	Fee Type		\N	\N	\N	2019-03-06 01:01:00.603539+00	2019-03-06 01:01:00.603565+00	29	\N	Text
-660	Fee Date		\N	\N	\N	2019-03-06 01:01:00.608393+00	2019-03-06 01:01:00.608419+00	29	\N	Calendar date
-661	Effective Date		\N	\N	\N	2019-03-06 01:01:00.613017+00	2019-03-06 01:01:00.613044+00	29	\N	Calendar date
-662	Current Status		\N	\N	\N	2019-03-06 01:01:00.617941+00	2019-03-06 01:01:00.618003+00	29	\N	Text
-663	License Type		\N	\N	\N	2019-03-06 01:01:00.623187+00	2019-03-06 01:01:00.623213+00	29	\N	Text
-664	DBA Name		\N	\N	\N	2019-03-06 01:01:00.627865+00	2019-03-06 01:01:00.627892+00	29	\N	Text
-665	Licensee Name		\N	\N	\N	2019-03-06 01:01:00.63305+00	2019-03-06 01:01:00.633076+00	29	\N	Text
-666	License Number		\N	\N	\N	2019-03-06 01:01:00.639903+00	2019-03-06 01:01:00.63993+00	29	\N	Number
-667	LICENSEE		\N	\N	\N	2019-03-06 01:01:00.679005+00	2019-03-06 01:01:00.679032+00	30	\N	Text
-668	DBANAME		\N	\N	\N	2019-03-06 01:01:00.683896+00	2019-03-06 01:01:00.683923+00	30	\N	Text
-669	STREET NUMBER		\N	\N	\N	2019-03-06 01:01:00.688598+00	2019-03-06 01:01:00.688624+00	30	\N	Text
-670	STREET		\N	\N	\N	2019-03-06 01:01:00.693465+00	2019-03-06 01:01:00.693492+00	30	\N	Text
-671	CITY		\N	\N	\N	2019-03-06 01:01:00.698497+00	2019-03-06 01:01:00.698524+00	30	\N	Text
-672	STATE		\N	\N	\N	2019-03-06 01:01:00.703493+00	2019-03-06 01:01:00.70352+00	30	\N	Text
-673	ZIPCODE		\N	\N	\N	2019-03-06 01:01:00.708201+00	2019-03-06 01:01:00.708228+00	30	\N	Text
-674	PHONE NUMBER		\N	\N	\N	2019-03-06 01:01:00.712998+00	2019-03-06 01:01:00.713025+00	30	\N	Text
-675	PRIMARY LICENSE		\N	\N	\N	2019-03-06 01:01:00.717658+00	2019-03-06 01:01:00.717684+00	30	\N	Number
-676	SECONDARY LICENSE		\N	\N	\N	2019-03-06 01:01:00.722453+00	2019-03-06 01:01:00.722479+00	30	\N	Number
-677	PRIMARY TYPE		\N	\N	\N	2019-03-06 01:01:00.727169+00	2019-03-06 01:01:00.727196+00	30	\N	Text
-678	SECONDARY TYPE		\N	\N	\N	2019-03-06 01:01:00.731981+00	2019-03-06 01:01:00.732007+00	30	\N	Text
-679	COUNTY		\N	\N	\N	2019-03-06 01:01:00.736507+00	2019-03-06 01:01:00.736533+00	30	\N	Text
-680	DISTRICT		\N	\N	\N	2019-03-06 01:01:00.741385+00	2019-03-06 01:01:00.741412+00	30	\N	Text
-681	SUBDIST		\N	\N	\N	2019-03-06 01:01:00.745888+00	2019-03-06 01:01:00.745914+00	30	\N	Text
-682	LATLNG	Latitude and Longitude for address information	\N	\N	\N	2019-03-06 01:01:00.751238+00	2019-03-06 01:01:00.751265+00	30	\N	Point
-683	LATLNG (address)		\N	\N	\N	2019-03-06 01:01:00.755769+00	2019-03-06 01:01:00.755795+00	30	\N	Text
-684	LATLNG (city)		\N	\N	\N	2019-03-06 01:01:00.760934+00	2019-03-06 01:01:00.760961+00	30	\N	Text
-685	LATLNG (state)		\N	\N	\N	2019-03-06 01:01:00.776325+00	2019-03-06 01:01:00.776353+00	30	\N	Text
-686	LATLNG (zip)		\N	\N	\N	2019-03-06 01:01:00.781597+00	2019-03-06 01:01:00.781623+00	30	\N	Text
-687	Missouri Counties		\N	\N	\N	2019-03-06 01:01:00.785974+00	2019-03-06 01:01:00.786+00	30	\N	Number
-688	School Districts		\N	\N	\N	2019-03-06 01:01:00.790557+00	2019-03-06 01:01:00.790583+00	30	\N	Number
-689	Counties		\N	\N	\N	2019-03-06 01:01:00.795261+00	2019-03-06 01:01:00.795287+00	30	\N	Number
-690	VIN Number		\N	\N	\N	2019-03-06 01:01:00.835663+00	2019-03-06 01:01:00.835689+00	31	\N	Text
-691	Make		\N	\N	\N	2019-03-06 01:01:00.840477+00	2019-03-06 01:01:00.840502+00	31	\N	Text
-692	Year		\N	\N	\N	2019-03-06 01:01:00.845054+00	2019-03-06 01:01:00.84508+00	31	\N	Number
-693	Child Support Lien Date		\N	\N	\N	2019-03-06 01:01:00.854343+00	2019-03-06 01:01:00.85443+00	31	\N	Calendar date
-694	Lien Satisfaction Date		\N	\N	\N	2019-03-06 01:01:00.866347+00	2019-03-06 01:01:00.866489+00	31	\N	Calendar date
-695	County		\N	\N	\N	2019-03-06 01:01:00.939482+00	2019-03-06 01:01:00.94194+00	32	\N	Number
-696	SubDistrict		\N	\N	\N	2019-03-06 01:01:00.978698+00	2019-03-06 01:01:00.978863+00	32	\N	Number
-697	License Number		\N	\N	\N	2019-03-06 01:01:00.999701+00	2019-03-06 01:01:00.999791+00	32	\N	Text
-698	School Districts		\N	\N	\N	2019-03-06 01:01:01.008674+00	2019-03-06 01:01:01.008788+00	32	\N	Number
-699	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.022+00	2019-03-06 01:01:01.022299+00	32	\N	Number
-700	District		\N	\N	\N	2019-03-06 01:01:01.035231+00	2019-03-06 01:01:01.035265+00	32	\N	Number
-701	Original Date		\N	\N	\N	2019-03-06 01:01:01.043999+00	2019-03-06 01:01:01.044078+00	32	\N	Calendar date
-702	Counties		\N	\N	\N	2019-03-06 01:01:01.054139+00	2019-03-06 01:01:01.054167+00	32	\N	Number
-703	Current Status		\N	\N	\N	2019-03-06 01:01:01.059196+00	2019-03-06 01:01:01.059225+00	32	\N	Text
-704	License Type		\N	\N	\N	2019-03-06 01:01:01.06568+00	2019-03-06 01:01:01.065709+00	32	\N	Text
-705	BusinessType		\N	\N	\N	2019-03-06 01:01:01.071295+00	2019-03-06 01:01:01.071325+00	32	\N	Text
-706	DBAName		\N	\N	\N	2019-03-06 01:01:01.077737+00	2019-03-06 01:01:01.077765+00	32	\N	Text
-707	latlng (zip)		\N	\N	\N	2019-03-06 01:01:01.084795+00	2019-03-06 01:01:01.084824+00	32	\N	Text
-708	Licensee		\N	\N	\N	2019-03-06 01:01:01.09067+00	2019-03-06 01:01:01.090698+00	32	\N	Text
-711	latlng (address)		\N	\N	\N	2019-03-06 01:01:01.111881+00	2019-03-06 01:01:01.111928+00	32	\N	Text
-712	latlng		\N	\N	\N	2019-03-06 01:01:01.118802+00	2019-03-06 01:01:01.118831+00	32	\N	Point
-713	Zip Code		\N	\N	\N	2019-03-06 01:01:01.124135+00	2019-03-06 01:01:01.124164+00	32	\N	Text
-714	State		\N	\N	\N	2019-03-06 01:01:01.130568+00	2019-03-06 01:01:01.130596+00	32	\N	Text
-715	City		\N	\N	\N	2019-03-06 01:01:01.136416+00	2019-03-06 01:01:01.136446+00	32	\N	Text
-716	Street		\N	\N	\N	2019-03-06 01:01:01.143102+00	2019-03-06 01:01:01.143131+00	32	\N	Text
-717	Street Number		\N	\N	\N	2019-03-06 01:01:01.148916+00	2019-03-06 01:01:01.148953+00	32	\N	Text
-718	Street Name		\N	\N	\N	2019-03-06 01:01:01.209314+00	2019-03-06 01:01:01.209341+00	33	\N	Text
-719	latlng (city)		\N	\N	\N	2019-03-06 01:01:01.215438+00	2019-03-06 01:01:01.215465+00	33	\N	Text
-720	latlng (address)		\N	\N	\N	2019-03-06 01:01:01.220272+00	2019-03-06 01:01:01.220297+00	33	\N	Text
-721	latlng		\N	\N	\N	2019-03-06 01:01:01.225287+00	2019-03-06 01:01:01.225314+00	33	\N	Point
-722	Zip Code		\N	\N	\N	2019-03-06 01:01:01.230013+00	2019-03-06 01:01:01.230039+00	33	\N	Number
-723	City		\N	\N	\N	2019-03-06 01:01:01.235035+00	2019-03-06 01:01:01.235061+00	33	\N	Text
-724	State		\N	\N	\N	2019-03-06 01:01:01.239887+00	2019-03-06 01:01:01.239913+00	33	\N	Text
-725	License Number		\N	\N	\N	2019-03-06 01:01:01.244829+00	2019-03-06 01:01:01.244856+00	33	\N	Number
-726	Licensee Name		\N	\N	\N	2019-03-06 01:01:01.250189+00	2019-03-06 01:01:01.250215+00	33	\N	Text
-727	DBA Name		\N	\N	\N	2019-03-06 01:01:01.255139+00	2019-03-06 01:01:01.255166+00	33	\N	Text
-728	Business Type		\N	\N	\N	2019-03-06 01:01:01.259595+00	2019-03-06 01:01:01.25962+00	33	\N	Text
-729	License Type		\N	\N	\N	2019-03-06 01:01:01.264772+00	2019-03-06 01:01:01.264798+00	33	\N	Text
-730	License Current Status		\N	\N	\N	2019-03-06 01:01:01.269814+00	2019-03-06 01:01:01.26984+00	33	\N	Text
-731	Status Effective Date		\N	\N	\N	2019-03-06 01:01:01.274436+00	2019-03-06 01:01:01.274462+00	33	\N	Calendar date
-732	District		\N	\N	\N	2019-03-06 01:01:01.279551+00	2019-03-06 01:01:01.279577+00	33	\N	Text
-733	Sub District		\N	\N	\N	2019-03-06 01:01:01.284191+00	2019-03-06 01:01:01.284217+00	33	\N	Text
-734	County Number		\N	\N	\N	2019-03-06 01:01:01.289399+00	2019-03-06 01:01:01.289424+00	33	\N	Text
-735	Street Number		\N	\N	\N	2019-03-06 01:01:01.294655+00	2019-03-06 01:01:01.294681+00	33	\N	Number
-736	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.299108+00	2019-03-06 01:01:01.299134+00	33	\N	Number
-737	School Districts		\N	\N	\N	2019-03-06 01:01:01.304429+00	2019-03-06 01:01:01.304455+00	33	\N	Number
-738	Counties		\N	\N	\N	2019-03-06 01:01:01.309466+00	2019-03-06 01:01:01.309492+00	33	\N	Number
-739	latlng (zip)		\N	\N	\N	2019-03-06 01:01:01.314613+00	2019-03-06 01:01:01.314639+00	33	\N	Text
-740	latlng (state)		\N	\N	\N	2019-03-06 01:01:01.319965+00	2019-03-06 01:01:01.319991+00	33	\N	Text
-741	Room		\N	\N	\N	2019-03-06 01:01:01.3566+00	2019-03-06 01:01:01.356625+00	34	\N	Text
-742	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.362152+00	2019-03-06 01:01:01.362177+00	34	\N	Number
-743	School Districts		\N	\N	\N	2019-03-06 01:01:01.367237+00	2019-03-06 01:01:01.367263+00	34	\N	Number
-744	Counties		\N	\N	\N	2019-03-06 01:01:01.372395+00	2019-03-06 01:01:01.372421+00	34	\N	Number
-745	LatLng (zip)		\N	\N	\N	2019-03-06 01:01:01.377159+00	2019-03-06 01:01:01.377185+00	34	\N	Text
-746	LatLng (state)		\N	\N	\N	2019-03-06 01:01:01.382831+00	2019-03-06 01:01:01.382858+00	34	\N	Text
-747	LatLng (city)		\N	\N	\N	2019-03-06 01:01:01.387574+00	2019-03-06 01:01:01.3876+00	34	\N	Text
-748	LatLng (address)		\N	\N	\N	2019-03-06 01:01:01.392708+00	2019-03-06 01:01:01.392734+00	34	\N	Text
-749	LatLng		\N	\N	\N	2019-03-06 01:01:01.397701+00	2019-03-06 01:01:01.397727+00	34	\N	Point
-750	Amendment Date		\N	\N	\N	2019-03-06 01:01:01.402794+00	2019-03-06 01:01:01.402822+00	34	\N	Text
-751	Amendments		\N	\N	\N	2019-03-06 01:01:01.407764+00	2019-03-06 01:01:01.40779+00	34	\N	Text
-752	Publication Date		\N	\N	\N	2019-03-06 01:01:01.412742+00	2019-03-06 01:01:01.412768+00	34	\N	Text
-753	Archived URL		\N	\N	\N	2019-03-06 01:01:01.417545+00	2019-03-06 01:01:01.41757+00	34	\N	Text
-754	Materials URL		\N	\N	\N	2019-03-06 01:01:01.422629+00	2019-03-06 01:01:01.42266+00	34	\N	Text
-755	Notes		\N	\N	\N	2019-03-06 01:01:01.428883+00	2019-03-06 01:01:01.428909+00	34	\N	Text
-756	Email		\N	\N	\N	2019-03-06 01:01:01.434377+00	2019-03-06 01:01:01.434403+00	34	\N	Text
-757	Phone		\N	\N	\N	2019-03-06 01:01:01.439861+00	2019-03-06 01:01:01.439886+00	34	\N	Text
-758	Contact Last Name		\N	\N	\N	2019-03-06 01:01:01.44504+00	2019-03-06 01:01:01.445066+00	34	\N	Text
-759	Contact First Name		\N	\N	\N	2019-03-06 01:01:01.450475+00	2019-03-06 01:01:01.450501+00	34	\N	Text
-760	Conf Call Password		\N	\N	\N	2019-03-06 01:01:01.455883+00	2019-03-06 01:01:01.45591+00	34	\N	Text
-761	Conf Call ID		\N	\N	\N	2019-03-06 01:01:01.461338+00	2019-03-06 01:01:01.461365+00	34	\N	Text
-762	Conf Call Number		\N	\N	\N	2019-03-06 01:01:01.466755+00	2019-03-06 01:01:01.466782+00	34	\N	Text
-763	Is Conf Call		\N	\N	\N	2019-03-06 01:01:01.471437+00	2019-03-06 01:01:01.471464+00	34	\N	Number
-764	Is Video Conf		\N	\N	\N	2019-03-06 01:01:01.476045+00	2019-03-06 01:01:01.476073+00	34	\N	Number
-765	Webcast Plugin		\N	\N	\N	2019-03-06 01:01:01.480742+00	2019-03-06 01:01:01.480769+00	34	\N	Text
-766	Webcast URL		\N	\N	\N	2019-03-06 01:01:01.485515+00	2019-03-06 01:01:01.485542+00	34	\N	Text
-767	Zip		\N	\N	\N	2019-03-06 01:01:01.490704+00	2019-03-06 01:01:01.49073+00	34	\N	Text
-768	State		\N	\N	\N	2019-03-06 01:01:01.495849+00	2019-03-06 01:01:01.495875+00	34	\N	Text
-769	Meeting Body Name		\N	\N	\N	2019-03-06 01:01:01.501187+00	2019-03-06 01:01:01.501212+00	34	\N	Text
-770	Committee		\N	\N	\N	2019-03-06 01:01:01.505952+00	2019-03-06 01:01:01.505977+00	34	\N	Text
-771	Begin Date Time		\N	\N	\N	2019-03-06 01:01:01.5107+00	2019-03-06 01:01:01.510725+00	34	\N	Calendar date
-772	Is All Day		\N	\N	\N	2019-03-06 01:01:01.515653+00	2019-03-06 01:01:01.515679+00	34	\N	Number
-773	Has End		\N	\N	\N	2019-03-06 01:01:01.521046+00	2019-03-06 01:01:01.521077+00	34	\N	Number
-774	End Date Time		\N	\N	\N	2019-03-06 01:01:01.527418+00	2019-03-06 01:01:01.527444+00	34	\N	Calendar date
-775	City		\N	\N	\N	2019-03-06 01:01:01.535051+00	2019-03-06 01:01:01.535079+00	34	\N	Text
-776	Address2		\N	\N	\N	2019-03-06 01:01:01.540795+00	2019-03-06 01:01:01.540822+00	34	\N	Text
-777	Address		\N	\N	\N	2019-03-06 01:01:01.545375+00	2019-03-06 01:01:01.545401+00	34	\N	Text
-778	Building Name		\N	\N	\N	2019-03-06 01:01:01.549993+00	2019-03-06 01:01:01.55002+00	34	\N	Text
-779	Middle Name		\N	\N	\N	2019-03-06 01:01:01.583104+00	2019-03-06 01:01:01.58319+00	35	\N	Text
-780	Release Date Time		\N	\N	\N	2019-03-06 01:01:01.590074+00	2019-03-06 01:01:01.590102+00	35	\N	Calendar date
-781	Current Facility		\N	\N	\N	2019-03-06 01:01:01.595299+00	2019-03-06 01:01:01.595326+00	35	\N	Text
-782	Charge		\N	\N	\N	2019-03-06 01:01:01.601714+00	2019-03-06 01:01:01.601742+00	35	\N	Text
-783	Court Case / Cause Number		\N	\N	\N	2019-03-06 01:01:01.606764+00	2019-03-06 01:01:01.606791+00	35	\N	Text
-784	Court		\N	\N	\N	2019-03-06 01:01:01.611636+00	2019-03-06 01:01:01.611662+00	35	\N	Text
-785	RCW / Ordinance Number		\N	\N	\N	2019-03-06 01:01:01.616415+00	2019-03-06 01:01:01.616442+00	35	\N	Text
-786	Release Reason		\N	\N	\N	2019-03-06 01:01:01.622663+00	2019-03-06 01:01:01.622696+00	35	\N	Text
-787	JrSr		\N	\N	\N	2019-03-06 01:01:01.627738+00	2019-03-06 01:01:01.627765+00	35	\N	Text
-788	Booking Date Time		\N	\N	\N	2019-03-06 01:01:01.633491+00	2019-03-06 01:01:01.633528+00	35	\N	Calendar date
-789	First Name		\N	\N	\N	2019-03-06 01:01:01.638634+00	2019-03-06 01:01:01.638661+00	35	\N	Text
-790	Last Name		\N	\N	\N	2019-03-06 01:01:01.643085+00	2019-03-06 01:01:01.643112+00	35	\N	Text
-791	Book of Arrest Number		\N	\N	\N	2019-03-06 01:01:01.64744+00	2019-03-06 01:01:01.647467+00	35	\N	Text
-792	Winning Numbers		\N	\N	\N	2019-03-06 01:01:01.678494+00	2019-03-06 01:01:01.67852+00	36	\N	Text
-793	Draw Date		\N	\N	\N	2019-03-06 01:01:01.684076+00	2019-03-06 01:01:01.684103+00	36	\N	Calendar date
-794	Bonus #		\N	\N	\N	2019-03-06 01:01:01.690019+00	2019-03-06 01:01:01.690045+00	36	\N	Number
-795	Mailing Address		\N	\N	\N	2019-03-06 01:01:01.729874+00	2019-03-06 01:01:01.729901+00	37	\N	Text
-796	State		\N	\N	\N	2019-03-06 01:01:01.735306+00	2019-03-06 01:01:01.73535+00	37	\N	Text
-797	City		\N	\N	\N	2019-03-06 01:01:01.743246+00	2019-03-06 01:01:01.743271+00	37	\N	Text
-798	Street Name		\N	\N	\N	2019-03-06 01:01:01.749285+00	2019-03-06 01:01:01.749424+00	37	\N	Text
-799	Street Number		\N	\N	\N	2019-03-06 01:01:01.754281+00	2019-03-06 01:01:01.754307+00	37	\N	Number
-800	County		\N	\N	\N	2019-03-06 01:01:01.758983+00	2019-03-06 01:01:01.759009+00	37	\N	Text
-801	Sub District		\N	\N	\N	2019-03-06 01:01:01.764095+00	2019-03-06 01:01:01.764121+00	37	\N	Text
-802	District		\N	\N	\N	2019-03-06 01:01:01.769204+00	2019-03-06 01:01:01.769231+00	37	\N	Text
-803	Expiration Date		\N	\N	\N	2019-03-06 01:01:01.782493+00	2019-03-06 01:01:01.782519+00	37	\N	Calendar date
-804	License Current Status		\N	\N	\N	2019-03-06 01:01:01.787871+00	2019-03-06 01:01:01.787897+00	37	\N	Text
-805	License Type		\N	\N	\N	2019-03-06 01:01:01.793006+00	2019-03-06 01:01:01.793032+00	37	\N	Text
-806	Business Type		\N	\N	\N	2019-03-06 01:01:01.79973+00	2019-03-06 01:01:01.799966+00	37	\N	Text
-807	DBA Name		\N	\N	\N	2019-03-06 01:01:01.808913+00	2019-03-06 01:01:01.808939+00	37	\N	Text
-808	Licensee Name		\N	\N	\N	2019-03-06 01:01:01.813984+00	2019-03-06 01:01:01.81401+00	37	\N	Text
-809	License Number		\N	\N	\N	2019-03-06 01:01:01.819033+00	2019-03-06 01:01:01.81906+00	37	\N	Number
-810	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.824269+00	2019-03-06 01:01:01.824295+00	37	\N	Number
-811	School Districts		\N	\N	\N	2019-03-06 01:01:01.829177+00	2019-03-06 01:01:01.829203+00	37	\N	Number
-812	Counties		\N	\N	\N	2019-03-06 01:01:01.834391+00	2019-03-06 01:01:01.834417+00	37	\N	Number
-813	latlng (zip)		\N	\N	\N	2019-03-06 01:01:01.839373+00	2019-03-06 01:01:01.839399+00	37	\N	Text
-814	latlng (state)		\N	\N	\N	2019-03-06 01:01:01.844564+00	2019-03-06 01:01:01.844591+00	37	\N	Text
-815	latlng (city)		\N	\N	\N	2019-03-06 01:01:01.84956+00	2019-03-06 01:01:01.849587+00	37	\N	Text
-816	latlng (address)		\N	\N	\N	2019-03-06 01:01:01.854545+00	2019-03-06 01:01:01.854572+00	37	\N	Text
-817	latlng		\N	\N	\N	2019-03-06 01:01:01.859233+00	2019-03-06 01:01:01.859259+00	37	\N	Point
-818	Mailing Address Line 2		\N	\N	\N	2019-03-06 01:01:01.868523+00	2019-03-06 01:01:01.868626+00	37	\N	Text
-819	Zip Code		\N	\N	\N	2019-03-06 01:01:01.874873+00	2019-03-06 01:01:01.874898+00	37	\N	Number
-820	MSA Title		\N	\N	\N	2019-03-06 01:01:01.910703+00	2019-03-06 01:01:01.910729+00	38	\N	Text
-821	Counties		\N	\N	\N	2019-03-06 01:01:01.916051+00	2019-03-06 01:01:01.916077+00	38	\N	Text
-822	MSA		\N	\N	\N	2019-03-06 01:01:01.921789+00	2019-03-06 01:01:01.921815+00	38	\N	Number
-823	Contractor Address	"Street address" portion of contractor's address.	\N	\N	\N	2019-03-06 01:01:01.968935+00	2019-03-06 01:01:01.968962+00	39	\N	Text
-824	Contractor State	"State" portion of contractor's address.	\N	\N	\N	2019-03-06 01:01:01.97609+00	2019-03-06 01:01:01.976118+00	39	\N	Text
-825	Floor Area-L.A. Zoning Code Definition	Floor area as defined in the Los Angeles Zoning Code.	\N	\N	\N	2019-03-06 01:01:01.982315+00	2019-03-06 01:01:01.982343+00	39	\N	Number
-826	# of Residential Dwelling Units	Number of dwelling units for a residential building.	\N	\N	\N	2019-03-06 01:01:01.991491+00	2019-03-06 01:01:01.991569+00	39	\N	Number
-827	Principal Last Name	Last name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:01.996927+00	2019-03-06 01:01:01.996953+00	39	\N	Text
-828	License Expiration Date	Contractor license expiration date.	\N	\N	\N	2019-03-06 01:01:02.001924+00	2019-03-06 01:01:02.00195+00	39	\N	Calendar date
-829	Applicant Last Name	Last name of the permit applicant.	\N	\N	\N	2019-03-06 01:01:02.006868+00	2019-03-06 01:01:02.006894+00	39	\N	Text
-830	License #	Contractor's license number.	\N	\N	\N	2019-03-06 01:01:02.011704+00	2019-03-06 01:01:02.011729+00	39	\N	Number
-831	Principal First Name	First name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:02.017005+00	2019-03-06 01:01:02.017035+00	39	\N	Text
-832	Occupancy	Occupancy is the approved use for the structure.	\N	\N	\N	2019-03-06 01:01:02.023459+00	2019-03-06 01:01:02.023486+00	39	\N	Text
-833	Floor Area-L.A. Building Code Definition	Floor area as defined in the Los Angeles Building Code.	\N	\N	\N	2019-03-06 01:01:02.028769+00	2019-03-06 01:01:02.028796+00	39	\N	Number
-834	Applicant Business Name	If applicable, permit applicant's business name.	\N	\N	\N	2019-03-06 01:01:02.033094+00	2019-03-06 01:01:02.03312+00	39	\N	Text
-835	Latitude/Longitude	GPS location point.	\N	\N	\N	2019-03-06 01:01:02.038214+00	2019-03-06 01:01:02.03824+00	39	\N	Location
-836	Address End	Ending house number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address End is 200. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address End is 204. 	\N	\N	\N	2019-03-06 01:01:02.043635+00	2019-03-06 01:01:02.043662+00	39	\N	Number
-837	Permit Category	Permit category is used to determine how the permit application will be handled within the LADBS public counter and regular plan check business process.	\N	\N	\N	2019-03-06 01:01:02.048739+00	2019-03-06 01:01:02.048765+00	39	\N	Text
-838	Applicant Relationship		\N	\N	\N	2019-03-06 01:01:02.062915+00	2019-03-06 01:01:02.062986+00	39	\N	Text
-839	Permit Type	Permit application type.	\N	\N	\N	2019-03-06 01:01:02.070762+00	2019-03-06 01:01:02.070886+00	39	\N	Text
-840	Assessor Page	"Page" portion of the Los Angeles County Tax Assessor "Book-Page-Parcel" number.	\N	\N	\N	2019-03-06 01:01:02.078007+00	2019-03-06 01:01:02.078036+00	39	\N	Text
-841	Census Tract	A geographic area for population-related analysis.	\N	\N	\N	2019-03-06 01:01:02.086314+00	2019-03-06 01:01:02.086533+00	39	\N	Text
-842	# of Stories	Number of stories.	\N	\N	\N	2019-03-06 01:01:02.093295+00	2019-03-06 01:01:02.093323+00	39	\N	Number
-843	Valuation	The property/structure valuation amount is used to calculate the building permit fee and all fees calculated as percentage of the building fee.  For all building permit types, except for Grading, the valuation is measured in dollars. For Grading permit applications, the valuation is measured in cubic yards of soil removed or added.	\N	\N	\N	2019-03-06 01:01:02.098597+00	2019-03-06 01:01:02.098656+00	39	\N	Number
-844	Applicant First Name	First name of the permit applicant.	\N	\N	\N	2019-03-06 01:01:02.108663+00	2019-03-06 01:01:02.108692+00	39	\N	Text
-845	Principal Middle Name	Middle name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:02.120156+00	2019-03-06 01:01:02.120294+00	39	\N	Text
-846	Zone	The designated zone of the property or lot that determines the allowed use, maximum height, allowable area, required yards, and any other requirements specific to the property or lot.	\N	\N	\N	2019-03-06 01:01:02.131165+00	2019-03-06 01:01:02.131281+00	39	\N	Text
-847	Applicant Address 2	The unit portion of the permit applicant's address.	\N	\N	\N	2019-03-06 01:01:02.140957+00	2019-03-06 01:01:02.140983+00	39	\N	Text
-848	Council District	The City of Los Angeles council district that has jurisdiction over the property.	\N	\N	\N	2019-03-06 01:01:02.150432+00	2019-03-06 01:01:02.15046+00	39	\N	Text
-849	Assessor Book	"Book" portion of the Los Angeles County Tax Assessor "Book-Page-Parcel" number.	\N	\N	\N	2019-03-06 01:01:02.158627+00	2019-03-06 01:01:02.158661+00	39	\N	Text
-850	Assessor Parcel	"Parcel" portion of the Los Angeles County Tax Assessor "Book-Page-Parcel" number.	\N	\N	\N	2019-03-06 01:01:02.167201+00	2019-03-06 01:01:02.167228+00	39	\N	Text
-851	PCIS Permit #	This is the permit number assigned by the Plan Check and Inspection System as soon as an application for a permit has been filed.  Before a permit is issued, the number is known as the Application Number.  After the permit is issued, this same number becomes the Permit Number.	\N	\N	\N	2019-03-06 01:01:02.17245+00	2019-03-06 01:01:02.172478+00	39	\N	Text
-852	Status	Status of a permit, or of a permit application.	\N	\N	\N	2019-03-06 01:01:02.183163+00	2019-03-06 01:01:02.183227+00	39	\N	Text
-853	Address Start	Beginning house number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address Start is 200. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address Start is 202. 	\N	\N	\N	2019-03-06 01:01:02.192669+00	2019-03-06 01:01:02.192773+00	39	\N	Number
-854	Address Fraction End	Ending house number fraction of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address Fraction End is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address Fraction End is 1/2. 	\N	\N	\N	2019-03-06 01:01:02.20287+00	2019-03-06 01:01:02.203043+00	39	\N	Text
-855	Project Number	A number used to associate a permit application with a specific construction or a development project consisting of several permit applications.	\N	\N	\N	2019-03-06 01:01:02.212821+00	2019-03-06 01:01:02.212848+00	39	\N	Number
-973	Inpatient Facility 		\N	\N	\N	2019-03-06 01:01:03.077435+00	2019-03-06 01:01:03.077463+00	44	\N	Text
-856	Lot	"Lot" portion of a property's legal description as recorded with the Los Angeles County Recorder.	\N	\N	\N	2019-03-06 01:01:02.234975+00	2019-03-06 01:01:02.235012+00	39	\N	Text
-857	Applicant Address 3	The city and state of the permit applicant's address.	\N	\N	\N	2019-03-06 01:01:02.247586+00	2019-03-06 01:01:02.247625+00	39	\N	Text
-858	Work Description	Describes the work to be performed under the permit application.	\N	\N	\N	2019-03-06 01:01:02.25515+00	2019-03-06 01:01:02.255185+00	39	\N	Text
-859	License Type	Contractor's license type (class code).	\N	\N	\N	2019-03-06 01:01:02.261766+00	2019-03-06 01:01:02.261795+00	39	\N	Text
-860	Permit Sub-Type	The permit sub-type determines whether the permit application is for a 1 or 2 family dwelling, a multi-family dwelling, or a commercial structure. 	\N	\N	\N	2019-03-06 01:01:02.267426+00	2019-03-06 01:01:02.267454+00	39	\N	Text
-861	Issue Date	Permit issue date.	\N	\N	\N	2019-03-06 01:01:02.27261+00	2019-03-06 01:01:02.272638+00	39	\N	Calendar date
-862	Unit Range End	Ending unit number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave, #1-#8", Unit Range End is #8. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Unit Range End is null. 	\N	\N	\N	2019-03-06 01:01:02.277552+00	2019-03-06 01:01:02.277581+00	39	\N	Text
-863	Zip Code	Zip code of property address for permit application.	\N	\N	\N	2019-03-06 01:01:02.283023+00	2019-03-06 01:01:02.283056+00	39	\N	Number
-864	Street Direction	Street direction of property address for permit application.\nExample 1: For "200 - 200 Main Ave", Street Direction is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Street Direction is N. 	\N	\N	\N	2019-03-06 01:01:02.287864+00	2019-03-06 01:01:02.287893+00	39	\N	Text
-865	Street Suffix	Street suffix of property address for permit application. \nExample 1: For "200 - 200 Main Ave", Street Suffix is Ave. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Street Suffix is St. 	\N	\N	\N	2019-03-06 01:01:02.293459+00	2019-03-06 01:01:02.293487+00	39	\N	Text
-866	Block	"Block" portion of a property's legal description as recorded with the Los Angeles County Recorder.	\N	\N	\N	2019-03-06 01:01:02.299169+00	2019-03-06 01:01:02.299197+00	39	\N	Text
-867	Contractor City	"City" portion of contractor's address.	\N	\N	\N	2019-03-06 01:01:02.304218+00	2019-03-06 01:01:02.304246+00	39	\N	Text
-868	Street Name	Street name of property address for permit application.	\N	\N	\N	2019-03-06 01:01:02.309667+00	2019-03-06 01:01:02.309697+00	39	\N	Text
-869	Event Code	An event code, usually synonymous with a disaster code, represents permits issued related to repairing, demolishing, or rebuilding structures damaged from a disaster.	\N	\N	\N	2019-03-06 01:01:02.314806+00	2019-03-06 01:01:02.314838+00	39	\N	Text
-870	Applicant Address 1	The street address portion of the permit applicant's address.	\N	\N	\N	2019-03-06 01:01:02.320214+00	2019-03-06 01:01:02.320242+00	39	\N	Text
-871	Tract	"Tract" portion of a property's legal description as recorded with the Los Angeles County Recorder.	\N	\N	\N	2019-03-06 01:01:02.325129+00	2019-03-06 01:01:02.325158+00	39	\N	Text
-872	Reference # (Old Permit #)	A sequential reference number issued by the Cashiering System, and used to file and retrieve original paper copies.	\N	\N	\N	2019-03-06 01:01:02.329853+00	2019-03-06 01:01:02.329881+00	39	\N	Text
-873	Status Date	Permit status date.	\N	\N	\N	2019-03-06 01:01:02.335652+00	2019-03-06 01:01:02.33568+00	39	\N	Calendar date
-874	Address Fraction Start	Beginning fraction of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address Fraction Start is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address Fraction Start is 1/4. 	\N	\N	\N	2019-03-06 01:01:02.340707+00	2019-03-06 01:01:02.340737+00	39	\N	Text
-875	Initiating Office	Office location where the permit application is initiated, not necessarily issued.	\N	\N	\N	2019-03-06 01:01:02.353904+00	2019-03-06 01:01:02.353934+00	39	\N	Text
-876	Unit Range Start	Beginning unit number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave, #1-#8", Unit Range Start is #1. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Unit Range Start is null. 	\N	\N	\N	2019-03-06 01:01:02.360868+00	2019-03-06 01:01:02.360895+00	39	\N	Text
-877	Suffix Direction	Street suffix direction of property address for permit application. Example 1: For "200 - 200 N Main Ave", Suffix Direction is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Suffix Direction is SE. 	\N	\N	\N	2019-03-06 01:01:02.365207+00	2019-03-06 01:01:02.365235+00	39	\N	Text
-878	Contractor's Business Name	If applicable, the contractor's business name.	\N	\N	\N	2019-03-06 01:01:02.369271+00	2019-03-06 01:01:02.369297+00	39	\N	Text
-879	Violation Points		\N	\N	\N	2019-03-06 01:01:02.404388+00	2019-03-06 01:01:02.404414+00	40	\N	Number
-880	Violation_Record_ID		\N	\N	\N	2019-03-06 01:01:02.40861+00	2019-03-06 01:01:02.408636+00	40	\N	Text
-881	Business_ID		\N	\N	\N	2019-03-06 01:01:02.412558+00	2019-03-06 01:01:02.412584+00	40	\N	Text
-882	Inspection Score		\N	\N	\N	2019-03-06 01:01:02.416603+00	2019-03-06 01:01:02.41663+00	40	\N	Number
-883	Latitude		\N	\N	\N	2019-03-06 01:01:02.421009+00	2019-03-06 01:01:02.421034+00	40	\N	Number
-884	Description		\N	\N	\N	2019-03-06 01:01:02.426818+00	2019-03-06 01:01:02.426859+00	40	\N	Text
-885	Violation Type		\N	\N	\N	2019-03-06 01:01:02.431521+00	2019-03-06 01:01:02.431548+00	40	\N	Text
-886	Inspection_Serial_Num		\N	\N	\N	2019-03-06 01:01:02.435923+00	2019-03-06 01:01:02.43595+00	40	\N	Text
-887	Grade	Food establishment grade	\N	\N	\N	2019-03-06 01:01:02.443175+00	2019-03-06 01:01:02.443211+00	40	\N	Text
-888	Inspection Closed Business		\N	\N	\N	2019-03-06 01:01:02.447815+00	2019-03-06 01:01:02.447843+00	40	\N	Checkbox
-889	Name		\N	\N	\N	2019-03-06 01:01:02.452354+00	2019-03-06 01:01:02.452383+00	40	\N	Text
-890	Inspection Date		\N	\N	\N	2019-03-06 01:01:02.456803+00	2019-03-06 01:01:02.456829+00	40	\N	Calendar date
-891	Inspection Business Name		\N	\N	\N	2019-03-06 01:01:02.461074+00	2019-03-06 01:01:02.461102+00	40	\N	Text
-892	Inspection Result		\N	\N	\N	2019-03-06 01:01:02.465772+00	2019-03-06 01:01:02.465798+00	40	\N	Text
-893	Violation Description		\N	\N	\N	2019-03-06 01:01:02.469932+00	2019-03-06 01:01:02.469959+00	40	\N	Text
-894	Zip Code		\N	\N	\N	2019-03-06 01:01:02.47433+00	2019-03-06 01:01:02.474357+00	40	\N	Text
-895	City		\N	\N	\N	2019-03-06 01:01:02.479164+00	2019-03-06 01:01:02.479192+00	40	\N	Text
-896	Address		\N	\N	\N	2019-03-06 01:01:02.483596+00	2019-03-06 01:01:02.483624+00	40	\N	Text
-897	Program Identifier		\N	\N	\N	2019-03-06 01:01:02.487943+00	2019-03-06 01:01:02.48797+00	40	\N	Text
-898	Phone		\N	\N	\N	2019-03-06 01:01:02.492551+00	2019-03-06 01:01:02.492578+00	40	\N	Text
-899	Longitude		\N	\N	\N	2019-03-06 01:01:02.496806+00	2019-03-06 01:01:02.496832+00	40	\N	Number
-900	Inspection Type		\N	\N	\N	2019-03-06 01:01:02.501327+00	2019-03-06 01:01:02.501354+00	40	\N	Text
-901	Block	The partially redacted address where the incident occurred, placing it on the same block as the actual address. 	\N	\N	\N	2019-03-06 01:01:02.548255+00	2019-03-06 01:01:02.548288+00	41	\N	Text
-902	Location	The location where the incident occurred in a format that allows for creation of maps and other geographic operations on this data portal. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.555278+00	2019-03-06 01:01:02.555313+00	41	\N	Location
-903	Longitude	The longitude of the location where the incident occurred. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.560999+00	2019-03-06 01:01:02.561034+00	41	\N	Number
-904	Year	Year the incident occurred.	\N	\N	\N	2019-03-06 01:01:02.572629+00	2019-03-06 01:01:02.572673+00	41	\N	Number
-905	Y Coordinate	The y coordinate of the location where the incident occurred in State Plane Illinois East NAD 1983 projection. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.577764+00	2019-03-06 01:01:02.577795+00	41	\N	Number
-906	Latitude	The latitude of the location where the incident occurred. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.582391+00	2019-03-06 01:01:02.582421+00	41	\N	Number
-907	Updated On	Date and time the record was last updated.	\N	\N	\N	2019-03-06 01:01:02.587159+00	2019-03-06 01:01:02.58719+00	41	\N	Calendar date
-908	Ward	The ward (City Council district) where the incident occurred.  See the wards at https://data.cityofchicago.org/d/sp34-6z76.	\N	\N	\N	2019-03-06 01:01:02.592366+00	2019-03-06 01:01:02.592397+00	41	\N	Number
-909	X Coordinate	The x coordinate of the location where the incident occurred in State Plane Illinois East NAD 1983 projection.  This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.598003+00	2019-03-06 01:01:02.598033+00	41	\N	Number
-910	FBI Code	Indicates the crime classification as outlined in the FBI's National Incident-Based Reporting System (NIBRS).\n\nSee the Chicago Police Department listing of these classifications at http://gis.chicagopolice.org/clearmap_crime_sums/crime_types.html.\n	\N	\N	\N	2019-03-06 01:01:02.606893+00	2019-03-06 01:01:02.606923+00	41	\N	Text
-911	Domestic	Indicates whether the incident was domestic-related as defined by the Illinois Domestic Violence Act.	\N	\N	\N	2019-03-06 01:01:02.612043+00	2019-03-06 01:01:02.612072+00	41	\N	Checkbox
-912	District	Indicates the police district where the incident occurred.  See the districts at https://data.cityofchicago.org/d/fthy-xz3r.	\N	\N	\N	2019-03-06 01:01:02.616808+00	2019-03-06 01:01:02.616837+00	41	\N	Text
-913	Beat	Indicates the beat where the incident occurred.  A beat is the smallest police geographic area – each beat has a dedicated police beat car.  Three to five beats make up a police sector, and three sectors make up a police district.  The Chicago Police Department has 22 police districts.  \n\nSee the beats at https://data.cityofchicago.org/d/aerh-rz74.\n	\N	\N	\N	2019-03-06 01:01:02.621335+00	2019-03-06 01:01:02.621364+00	41	\N	Text
-914	IUCR	The Illinois Unifrom Crime Reporting code. This is directly linked to the Primary Type and Description. See the list of IUCR codes at https://data.cityofchicago.org/d/c7ck-438e.	\N	\N	\N	2019-03-06 01:01:02.626101+00	2019-03-06 01:01:02.62613+00	41	\N	Text
-915	Location Description	Description of the location where the incident occurred.	\N	\N	\N	2019-03-06 01:01:02.631462+00	2019-03-06 01:01:02.631492+00	41	\N	Text
-916	Description	The secondary description of the IUCR code, a subcategory of the primary description.	\N	\N	\N	2019-03-06 01:01:02.635893+00	2019-03-06 01:01:02.63592+00	41	\N	Text
-917	Case Number	The Chicago Police Department RD Number (Records Division Number), which is unique to the incident. 	\N	\N	\N	2019-03-06 01:01:02.640606+00	2019-03-06 01:01:02.640633+00	41	\N	Text
-918	ID	Unique identifier for the record.	\N	\N	\N	2019-03-06 01:01:02.645054+00	2019-03-06 01:01:02.645082+00	41	\N	Number
-919	Date	Date when the incident occurred. this is sometimes a best estimate. 	\N	\N	\N	2019-03-06 01:01:02.64987+00	2019-03-06 01:01:02.649898+00	41	\N	Calendar date
-920	Primary Type	The primary description of the IUCR code.	\N	\N	\N	2019-03-06 01:01:02.654375+00	2019-03-06 01:01:02.654402+00	41	\N	Text
-921	Community Area	Indicates the community area where the incident occurred.  Chicago has 77 community areas. \n\nSee the community areas at https://data.cityofchicago.org/d/cauq-8yn6.\n	\N	\N	\N	2019-03-06 01:01:02.65917+00	2019-03-06 01:01:02.659197+00	41	\N	Text
-922	Arrest	Indicates whether an arrest was made.	\N	\N	\N	2019-03-06 01:01:02.664337+00	2019-03-06 01:01:02.664364+00	41	\N	Checkbox
-923	business_id		\N	\N	\N	2019-03-06 01:01:02.698084+00	2019-03-06 01:01:02.698111+00	42	\N	url
-924	business_name		\N	\N	\N	2019-03-06 01:01:02.703108+00	2019-03-06 01:01:02.703134+00	42	\N	text
-925	business_address		\N	\N	\N	2019-03-06 01:01:02.709962+00	2019-03-06 01:01:02.709989+00	42	\N	text
-926	business_city		\N	\N	\N	2019-03-06 01:01:02.714549+00	2019-03-06 01:01:02.714577+00	42	\N	text
-927	business_state		\N	\N	\N	2019-03-06 01:01:02.718941+00	2019-03-06 01:01:02.718967+00	42	\N	text
-928	business_postal_code		\N	\N	\N	2019-03-06 01:01:02.723614+00	2019-03-06 01:01:02.72364+00	42	\N	text
-929	business_phone_number		\N	\N	\N	2019-03-06 01:01:02.728319+00	2019-03-06 01:01:02.728345+00	42	\N	text
-930	inspection_date		\N	\N	\N	2019-03-06 01:01:02.73291+00	2019-03-06 01:01:02.732937+00	42	\N	calendar_date
-931	inspection_score		\N	\N	\N	2019-03-06 01:01:02.738249+00	2019-03-06 01:01:02.738279+00	42	\N	number
-932	inspection_description		\N	\N	\N	2019-03-06 01:01:02.743108+00	2019-03-06 01:01:02.743134+00	42	\N	text
-933	inspection_type		\N	\N	\N	2019-03-06 01:01:02.747609+00	2019-03-06 01:01:02.747635+00	42	\N	text
-934	violation_description		\N	\N	\N	2019-03-06 01:01:02.752426+00	2019-03-06 01:01:02.752452+00	42	\N	text
-935	violation_code		\N	\N	\N	2019-03-06 01:01:02.757143+00	2019-03-06 01:01:02.757168+00	42	\N	text
-936	business_location		\N	\N	\N	2019-03-06 01:01:02.76323+00	2019-03-06 01:01:02.763256+00	42	\N	location
-937	Community Area Number		\N	\N	\N	2019-03-06 01:01:02.804586+00	2019-03-06 01:01:02.804615+00	43	\N	Number
-938	Community Area Name		\N	\N	\N	2019-03-06 01:01:02.811577+00	2019-03-06 01:01:02.81161+00	43	\N	Text
-939	Address		\N	\N	\N	2019-03-06 01:01:02.81916+00	2019-03-06 01:01:02.819285+00	43	\N	Text
-940	Property Type		\N	\N	\N	2019-03-06 01:01:02.82572+00	2019-03-06 01:01:02.825748+00	43	\N	Text
-941	Y Coordinate		\N	\N	\N	2019-03-06 01:01:02.83248+00	2019-03-06 01:01:02.832509+00	43	\N	Number
-942	X Coordinate		\N	\N	\N	2019-03-06 01:01:02.83772+00	2019-03-06 01:01:02.837865+00	43	\N	Number
-943	Units		\N	\N	\N	2019-03-06 01:01:02.843776+00	2019-03-06 01:01:02.843804+00	43	\N	Number
-944	Property Name		\N	\N	\N	2019-03-06 01:01:02.850165+00	2019-03-06 01:01:02.850203+00	43	\N	Text
-945	Phone Number		\N	\N	\N	2019-03-06 01:01:02.856629+00	2019-03-06 01:01:02.856658+00	43	\N	Text
-946	Management Company		\N	\N	\N	2019-03-06 01:01:02.861703+00	2019-03-06 01:01:02.861733+00	43	\N	Text
-947	Longitude		\N	\N	\N	2019-03-06 01:01:02.867705+00	2019-03-06 01:01:02.867818+00	43	\N	Number
-948	Zip Code		\N	\N	\N	2019-03-06 01:01:02.873504+00	2019-03-06 01:01:02.873533+00	43	\N	Text
-949	Location		\N	\N	\N	2019-03-06 01:01:02.878864+00	2019-03-06 01:01:02.879013+00	43	\N	Location
-950	Latitude		\N	\N	\N	2019-03-06 01:01:02.884842+00	2019-03-06 01:01:02.884871+00	43	\N	Number
-951	Premium Adult Individual Age 40		\N	\N	\N	2019-03-06 01:01:02.925536+00	2019-03-06 01:01:02.925568+00	44	\N	Number
-952	Plan Brochure URL		\N	\N	\N	2019-03-06 01:01:02.931231+00	2019-03-06 01:01:02.93126+00	44	\N	URL
-953	Customer Service Phone Number Toll Free		\N	\N	\N	2019-03-06 01:01:02.936774+00	2019-03-06 01:01:02.936804+00	44	\N	Text
-954	Plan Marketing Name		\N	\N	\N	2019-03-06 01:01:02.941644+00	2019-03-06 01:01:02.941673+00	44	\N	Text
-955	Plan Type		\N	\N	\N	2019-03-06 01:01:02.947168+00	2019-03-06 01:01:02.947196+00	44	\N	Text
-956	Summary of Benefits URL		\N	\N	\N	2019-03-06 01:01:02.95664+00	2019-03-06 01:01:02.956677+00	44	\N	URL
-957	Plan ID (standard component)		\N	\N	\N	2019-03-06 01:01:02.962115+00	2019-03-06 01:01:02.962144+00	44	\N	Text
-958	Metal Level		\N	\N	\N	2019-03-06 01:01:02.967552+00	2019-03-06 01:01:02.967581+00	44	\N	Text
-959	Issuer Name		\N	\N	\N	2019-03-06 01:01:02.973758+00	2019-03-06 01:01:02.973787+00	44	\N	Text
-960	Rating Area		\N	\N	\N	2019-03-06 01:01:02.979724+00	2019-03-06 01:01:02.979775+00	44	\N	Text
-961	Source		\N	\N	\N	2019-03-06 01:01:02.984685+00	2019-03-06 01:01:02.984713+00	44	\N	Text
-962	State		\N	\N	\N	2019-03-06 01:01:02.989855+00	2019-03-06 01:01:02.989883+00	44	\N	Text
-963	Drug Deductible -family		\N	\N	\N	2019-03-06 01:01:02.99809+00	2019-03-06 01:01:02.998126+00	44	\N	Text
-964	Medical Maximum Out Of Pocket -individual		\N	\N	\N	2019-03-06 01:01:03.011266+00	2019-03-06 01:01:03.011304+00	44	\N	Text
-965	Primary Care Physician		\N	\N	\N	2019-03-06 01:01:03.024997+00	2019-03-06 01:01:03.025035+00	44	\N	Text
-966	Specialist		\N	\N	\N	2019-03-06 01:01:03.039905+00	2019-03-06 01:01:03.040344+00	44	\N	Text
-967	Couple+3 or more Children, Age 21		\N	\N	\N	2019-03-06 01:01:03.047371+00	2019-03-06 01:01:03.047399+00	44	\N	Number
-968	Child Only Offering		\N	\N	\N	2019-03-06 01:01:03.052291+00	2019-03-06 01:01:03.052319+00	44	\N	Text
-969	Medical Deductible - individual		\N	\N	\N	2019-03-06 01:01:03.057199+00	2019-03-06 01:01:03.057227+00	44	\N	Text
-970	Non-preferred Brand Drugs		\N	\N	\N	2019-03-06 01:01:03.061791+00	2019-03-06 01:01:03.061824+00	44	\N	Text
-971	Emergency Room		\N	\N	\N	2019-03-06 01:01:03.066668+00	2019-03-06 01:01:03.066695+00	44	\N	Text
-972	Preferred Brand Drugs		\N	\N	\N	2019-03-06 01:01:03.072633+00	2019-03-06 01:01:03.072661+00	44	\N	Text
-974	Inpatient Physician		\N	\N	\N	2019-03-06 01:01:03.08215+00	2019-03-06 01:01:03.082178+00	44	\N	Text
-975	Generic Drugs		\N	\N	\N	2019-03-06 01:01:03.087949+00	2019-03-06 01:01:03.087982+00	44	\N	Text
-976	Medical Deductible -family		\N	\N	\N	2019-03-06 01:01:03.093083+00	2019-03-06 01:01:03.093112+00	44	\N	Text
-977	Specialty Drugs		\N	\N	\N	2019-03-06 01:01:03.098657+00	2019-03-06 01:01:03.098686+00	44	\N	Text
-978	Premium Scenarios		\N	\N	\N	2019-03-06 01:01:03.10353+00	2019-03-06 01:01:03.103559+00	44	\N	Text
-979	Child Dental		\N	\N	\N	2019-03-06 01:01:03.108641+00	2019-03-06 01:01:03.10867+00	44	\N	Text
-980	Adult Dental		\N	\N	\N	2019-03-06 01:01:03.113479+00	2019-03-06 01:01:03.113507+00	44	\N	Text
-981	Standard Plan Cost Sharing		\N	\N	\N	2019-03-06 01:01:03.118353+00	2019-03-06 01:01:03.118382+00	44	\N	Text
-982	Couple+2 children, Age 21		\N	\N	\N	2019-03-06 01:01:03.123197+00	2019-03-06 01:01:03.123225+00	44	\N	Number
-983	Individual+3 or more children, Age 40		\N	\N	\N	2019-03-06 01:01:03.127691+00	2019-03-06 01:01:03.127719+00	44	\N	Number
-984	Couple+3 or more Children, Age 30		\N	\N	\N	2019-03-06 01:01:03.132271+00	2019-03-06 01:01:03.132299+00	44	\N	Number
-985	Individual+2 children, Age 30		\N	\N	\N	2019-03-06 01:01:03.136974+00	2019-03-06 01:01:03.137003+00	44	\N	Number
-986	Premium Adult Individual Age 30		\N	\N	\N	2019-03-06 01:01:03.141721+00	2019-03-06 01:01:03.14175+00	44	\N	Number
-987	Individual+3 or more children, Age 30		\N	\N	\N	2019-03-06 01:01:03.146694+00	2019-03-06 01:01:03.146722+00	44	\N	Number
-988	Couple+1 child, Age 21		\N	\N	\N	2019-03-06 01:01:03.151302+00	2019-03-06 01:01:03.151331+00	44	\N	Number
-989	Premium Adult Individual Age 50		\N	\N	\N	2019-03-06 01:01:03.156054+00	2019-03-06 01:01:03.156096+00	44	\N	Number
-990	Premium Adult Individual Age 60		\N	\N	\N	2019-03-06 01:01:03.160896+00	2019-03-06 01:01:03.160926+00	44	\N	Number
-991	Premium Couple 30		\N	\N	\N	2019-03-06 01:01:03.165447+00	2019-03-06 01:01:03.165475+00	44	\N	Number
-992	Premium Adult Individual Age 21		\N	\N	\N	2019-03-06 01:01:03.172235+00	2019-03-06 01:01:03.172262+00	44	\N	Number
-993	Individual+2 children, Age 40		\N	\N	\N	2019-03-06 01:01:03.177556+00	2019-03-06 01:01:03.177582+00	44	\N	Number
-994	Couple+1 child, Age 30 		\N	\N	\N	2019-03-06 01:01:03.186805+00	2019-03-06 01:01:03.186831+00	44	\N	Number
-995	Individual+1 child, Age 21		\N	\N	\N	2019-03-06 01:01:03.204859+00	2019-03-06 01:01:03.204889+00	44	\N	Number
-996	Individual+1 child, Age 40		\N	\N	\N	2019-03-06 01:01:03.209595+00	2019-03-06 01:01:03.209625+00	44	\N	Number
-997	Couple+2 children, Age 30		\N	\N	\N	2019-03-06 01:01:03.218925+00	2019-03-06 01:01:03.218956+00	44	\N	Number
-998	Premium Couple 21  		\N	\N	\N	2019-03-06 01:01:03.224497+00	2019-03-06 01:01:03.224536+00	44	\N	Number
-999	Premium Couple 40		\N	\N	\N	2019-03-06 01:01:03.236432+00	2019-03-06 01:01:03.236471+00	44	\N	Number
-1000	Couple+2 children, Age 50		\N	\N	\N	2019-03-06 01:01:03.245454+00	2019-03-06 01:01:03.245494+00	44	\N	Number
-1001	Individual+2 children, Age 50		\N	\N	\N	2019-03-06 01:01:03.254985+00	2019-03-06 01:01:03.255013+00	44	\N	Number
-1002	Couple+1 child, Age 40 		\N	\N	\N	2019-03-06 01:01:03.262574+00	2019-03-06 01:01:03.262602+00	44	\N	Number
-1003	Individual+1 child, Age 50		\N	\N	\N	2019-03-06 01:01:03.268235+00	2019-03-06 01:01:03.268263+00	44	\N	Number
-1004	Premium Couple 50		\N	\N	\N	2019-03-06 01:01:03.278988+00	2019-03-06 01:01:03.279107+00	44	\N	Number
-1005	Couple+3 or more Children, Age 50		\N	\N	\N	2019-03-06 01:01:03.290525+00	2019-03-06 01:01:03.290554+00	44	\N	Number
-1006	Individual+3 or more children, Age 21		\N	\N	\N	2019-03-06 01:01:03.300596+00	2019-03-06 01:01:03.300813+00	44	\N	Number
-1007	Couple+2 children, Age 40		\N	\N	\N	2019-03-06 01:01:03.314676+00	2019-03-06 01:01:03.314711+00	44	\N	Number
-1008	Individual+3 or more children, Age 50		\N	\N	\N	2019-03-06 01:01:03.324572+00	2019-03-06 01:01:03.3246+00	44	\N	Number
-1009	Individual+1 child, Age 30		\N	\N	\N	2019-03-06 01:01:03.333111+00	2019-03-06 01:01:03.333138+00	44	\N	Number
-1010	Couple+1 child, Age 50 		\N	\N	\N	2019-03-06 01:01:03.350292+00	2019-03-06 01:01:03.350311+00	44	\N	Number
-1011	Premium Child		\N	\N	\N	2019-03-06 01:01:03.355981+00	2019-03-06 01:01:03.356008+00	44	\N	Number
-1012	Premium Couple 60		\N	\N	\N	2019-03-06 01:01:03.397521+00	2019-03-06 01:01:03.397577+00	44	\N	Number
-1013	Premium Adult Individual Age 27		\N	\N	\N	2019-03-06 01:01:03.428309+00	2019-03-06 01:01:03.428382+00	44	\N	Number
-1014	Individual+2 children, Age 21		\N	\N	\N	2019-03-06 01:01:03.445575+00	2019-03-06 01:01:03.44566+00	44	\N	Number
-1015	Couple+3 or more Children, Age 40		\N	\N	\N	2019-03-06 01:01:03.469562+00	2019-03-06 01:01:03.470761+00	44	\N	Number
-1016	Customer Service Phone Number TTY		\N	\N	\N	2019-03-06 01:01:03.48751+00	2019-03-06 01:01:03.487538+00	44	\N	Text
-1017	County		\N	\N	\N	2019-03-06 01:01:03.498591+00	2019-03-06 01:01:03.498618+00	44	\N	Text
-1018	Drug Maximum Out of Pocket - individual		\N	\N	\N	2019-03-06 01:01:03.509554+00	2019-03-06 01:01:03.509586+00	44	\N	Text
-1019	Medical Maximum Out of Pocket -family		\N	\N	\N	2019-03-06 01:01:03.518279+00	2019-03-06 01:01:03.518328+00	44	\N	Text
-1020	Drug Maximum Out of Pocket - Family		\N	\N	\N	2019-03-06 01:01:03.525683+00	2019-03-06 01:01:03.525726+00	44	\N	Text
-1021	Drug Deductible - individual		\N	\N	\N	2019-03-06 01:01:03.547397+00	2019-03-06 01:01:03.547428+00	44	\N	Text
-1022	Network URL		\N	\N	\N	2019-03-06 01:01:03.553487+00	2019-03-06 01:01:03.553515+00	44	\N	URL
-1023	Customer Service Phone Number Local		\N	\N	\N	2019-03-06 01:01:03.558586+00	2019-03-06 01:01:03.558615+00	44	\N	Text
-1024	Drug Formulary URL		\N	\N	\N	2019-03-06 01:01:03.563396+00	2019-03-06 01:01:03.563437+00	44	\N	URL
-1025	zip code		\N	\N	\N	2019-03-06 01:01:03.612852+00	2019-03-06 01:01:03.612884+00	45	\N	Text
-1026	county		\N	\N	\N	2019-03-06 01:01:03.618662+00	2019-03-06 01:01:03.618691+00	45	\N	Text
-1027	city		\N	\N	\N	2019-03-06 01:01:03.626351+00	2019-03-06 01:01:03.62638+00	45	\N	Text
+5	NPI		\N	\N	\N	2019-03-06 01:00:55.67624+00	2019-05-22 21:53:44.184836+00	2	\N	Number
 1028	First Name		\N	\N	\N	2019-03-06 01:01:03.662029+00	2019-03-06 01:01:03.662057+00	46	\N	Text
 1029	Last Name		\N	\N	\N	2019-03-06 01:01:03.666203+00	2019-03-06 01:01:03.666231+00	46	\N	Text
 1030	Business Phone		\N	\N	\N	2019-03-06 01:01:03.671104+00	2019-03-06 01:01:03.671132+00	46	\N	Text
+3	Draw Date		\N	\N	\N	2019-03-06 01:00:55.593426+00	2019-05-22 21:53:44.137914+00	1	\N	Calendar date
+1	Winning Numbers	Winning numbers	\N	\N	\N	2019-03-06 01:00:55.582268+00	2019-05-22 21:53:44.153177+00	1	\N	Text
+2	Cash Ball	Cash ball	\N	\N	\N	2019-03-06 01:00:55.58859+00	2019-05-22 21:53:44.156891+00	1	\N	Text
+6	FIRST NAME		\N	\N	\N	2019-03-06 01:00:55.681354+00	2019-05-22 21:53:44.189845+00	2	\N	Text
+4	LAST NAME		\N	\N	\N	2019-03-06 01:00:55.669316+00	2019-05-22 21:53:44.193802+00	2	\N	Text
+7	Date_Reported		\N	\N	\N	2019-03-06 01:00:55.721571+00	2019-05-22 21:53:44.214987+00	3	\N	Calendar date
+8	Location		\N	\N	\N	2019-03-06 01:00:55.733231+00	2019-05-22 21:53:44.219651+00	3	\N	Text
+9	Statistical_Reporting_Area		\N	\N	\N	2019-03-06 01:00:55.741897+00	2019-05-22 21:53:44.224011+00	3	\N	Number
+10	Beat		\N	\N	\N	2019-03-06 01:00:55.746988+00	2019-05-22 21:53:44.22784+00	3	\N	Text
+11	Time_Reported		\N	\N	\N	2019-03-06 01:00:55.751731+00	2019-05-22 21:53:44.232151+00	3	\N	Text
+12	Computer_Aided_Dispatch_Event_Type		\N	\N	\N	2019-03-06 01:00:55.756875+00	2019-05-22 21:53:44.235966+00	3	\N	Text
+13	Incident Number	Master incident number as it relates to the call (different from incident as it relates to an offense)	\N	\N	\N	2019-03-06 01:00:55.794353+00	2019-05-22 21:53:44.260697+00	4	\N	text
+14	Division	The Largest of the police geographic areas ( 7 patrol divisions)	\N	\N	\N	2019-03-06 01:00:55.799481+00	2019-05-22 21:53:44.266015+00	4	\N	text
+15	Nature of Call	Problem type of call, for example loud music, burglary…etc.	\N	\N	\N	2019-03-06 01:00:55.808008+00	2019-05-22 21:53:44.271511+00	4	\N	text
+16	Priority	Calls are broken down to priority type 1-4,…. 1 being most urgent	\N	\N	\N	2019-03-06 01:00:55.813108+00	2019-05-22 21:53:44.276436+00	4	\N	text
+17	Date/Time	Date and time  of the call	\N	\N	\N	2019-03-06 01:00:55.818013+00	2019-05-22 21:53:44.280556+00	4	\N	calendar_date
+18	Responding Elements Number	Responding officers element (unit) number	\N	\N	\N	2019-03-06 01:00:55.823207+00	2019-05-22 21:53:44.284769+00	4	\N	text
+19	Block	Block number of address for the call	\N	\N	\N	2019-03-06 01:00:55.828355+00	2019-05-22 21:53:44.288784+00	4	\N	text
+20	Location	Street name of address for call	\N	\N	\N	2019-03-06 01:00:55.833311+00	2019-05-22 21:53:44.292504+00	4	\N	text
+21	Beat	The 2nd to smallest police geography (Beats are made of Reporting Areas)	\N	\N	\N	2019-03-06 01:00:55.838241+00	2019-05-22 21:53:44.296464+00	4	\N	text
+163	Number_Other		\N	\N	\N	2019-03-06 01:00:56.806279+00	2019-05-22 21:53:45.05547+00	8	\N	Number
+22	Reporting Area	Smallest police geography which makes up all other police geographic areas (Beats, Sectors, Divisions)	\N	\N	\N	2019-03-06 01:00:55.843487+00	2019-05-22 21:53:44.300335+00	4	\N	text
+23	Status	Status of the call as it relates to the responding officers	\N	\N	\N	2019-03-06 01:00:55.849243+00	2019-05-22 21:53:44.304159+00	4	\N	text
+24	PERMIT_NUMBER		\N	\N	\N	2019-03-06 01:00:55.890845+00	2019-05-22 21:53:44.323981+00	5	\N	Text
+25	CATEGORY		\N	\N	\N	2019-03-06 01:00:55.898124+00	2019-05-22 21:53:44.328666+00	5	\N	Text
+26	SEWER		\N	\N	\N	2019-03-06 01:00:55.903218+00	2019-05-22 21:53:44.333614+00	5	\N	Text
+27	FILE_DATE		\N	\N	\N	2019-03-06 01:00:55.908204+00	2019-05-22 21:53:44.339708+00	5	\N	Calendar date
+28	ZIP		\N	\N	\N	2019-03-06 01:00:55.913245+00	2019-05-22 21:53:44.345838+00	5	\N	Text
+29	WATER		\N	\N	\N	2019-03-06 01:00:55.919578+00	2019-05-22 21:53:44.349881+00	5	\N	Text
+30	PERMIT_TYPE		\N	\N	\N	2019-03-06 01:00:55.925086+00	2019-05-22 21:53:44.353791+00	5	\N	Text
+31	CENSUS_TRACT		\N	\N	\N	2019-03-06 01:00:55.930861+00	2019-05-22 21:53:44.357222+00	5	\N	Text
+32	ISSUE_DATE		\N	\N	\N	2019-03-06 01:00:55.935648+00	2019-05-22 21:53:44.360874+00	5	\N	Calendar date
+33	CITY		\N	\N	\N	2019-03-06 01:00:55.940509+00	2019-05-22 21:53:44.364574+00	5	\N	Text
+34	TYPE		\N	\N	\N	2019-03-06 01:00:55.94561+00	2019-05-22 21:53:44.368119+00	5	\N	Text
+72	Enlargement SQ Footage	Enlargement SQ Footage	\N	\N	\N	2019-03-06 01:00:56.214515+00	2019-05-22 21:53:44.387465+00	6	\N	Number
+76	Owner'sHouse Street Name	House Street Name of Property Owner	\N	\N	\N	2019-03-06 01:00:56.254733+00	2019-05-22 21:53:44.391811+00	6	\N	Text
+78	WITHDRAWAL_FLAG	Withdrawal Indicator	\N	\N	\N	2019-03-06 01:00:56.28294+00	2019-05-22 21:53:44.397031+00	6	\N	Text
+82	Assigned	Date when job is assigned to plan examiner	\N	\N	\N	2019-03-06 01:00:56.333477+00	2019-05-22 21:53:44.401109+00	6	\N	Text
+102	GIS_CENSUS_TRACT	Census Tract	\N	\N	\N	2019-03-06 01:00:56.449441+00	2019-05-22 21:53:44.407196+00	6	\N	Text
+119	Sprinkler	Sprinkler  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.524304+00	2019-05-22 21:53:44.411135+00	6	\N	Text
+118	Mechanical	Mechanical  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.520278+00	2019-05-22 21:53:44.415266+00	6	\N	Text
+117	Adult Estab	Adult Estab	\N	\N	\N	2019-03-06 01:00:56.515762+00	2019-05-22 21:53:44.421502+00	6	\N	Text
+116	Loft Board	Loft Board	\N	\N	\N	2019-03-06 01:00:56.511799+00	2019-05-22 21:53:44.431505+00	6	\N	Text
+115	SPECIAL_ACTION_STATUS	Special Action Status	\N	\N	\N	2019-03-06 01:00:56.507706+00	2019-05-22 21:53:44.43525+00	6	\N	Text
+113	Horizontal Enlrgmt	Horizontal Enlrgmt	\N	\N	\N	2019-03-06 01:00:56.499924+00	2019-05-22 21:53:44.439087+00	6	\N	Text
+100	Doc #	Document Number	\N	\N	\N	2019-03-06 01:00:56.440143+00	2019-05-22 21:53:44.442937+00	6	\N	Text
+98	Job Status Descrp	Status code description	\N	\N	\N	2019-03-06 01:00:56.430757+00	2019-05-22 21:53:44.446841+00	6	\N	Text
+81	Proposed Height	Proposed Height	\N	\N	\N	2019-03-06 01:00:56.326184+00	2019-05-22 21:53:44.450432+00	6	\N	Number
+121	Proposed Dwelling Units	Proposed Dwelling Units	\N	\N	\N	2019-03-06 01:00:56.532613+00	2019-05-22 21:53:44.455296+00	6	\N	Text
+111	Job Description	Job Description	\N	\N	\N	2019-03-06 01:00:56.491356+00	2019-05-22 21:53:44.459063+00	6	\N	Text
+106	BUILDING_CLASS	Building Class	\N	\N	\N	2019-03-06 01:00:56.465455+00	2019-05-22 21:53:44.463211+00	6	\N	Text
+93	City Owned	City Owned	\N	\N	\N	2019-03-06 01:00:56.399239+00	2019-05-22 21:53:44.466497+00	6	\N	Text
+60	Owner's First Name	First Name of property owner	\N	\N	\N	2019-03-06 01:00:56.123363+00	2019-05-22 21:53:44.470357+00	6	\N	Text
+36	Paid	Date when job is paid	\N	\N	\N	2019-03-06 01:00:55.990879+00	2019-05-22 21:53:44.473855+00	6	\N	Text
+37	Building Type	1-2-3 Family  or Other	\N	\N	\N	2019-03-06 01:00:55.996878+00	2019-05-22 21:53:44.47752+00	6	\N	Text
+38	House #	House Number of Residence or Commercial Property	\N	\N	\N	2019-03-06 01:00:56.002387+00	2019-05-22 21:53:44.481907+00	6	\N	Text
+39	Street Name	Street Name where Property is located	\N	\N	\N	2019-03-06 01:00:56.007861+00	2019-05-22 21:53:44.487147+00	6	\N	Text
+130	Fire Alarm	Fire Alarm  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.574106+00	2019-05-22 21:53:44.492183+00	6	\N	Text
+80	ExistingNo. of Stories	ExistingNo. of Stories	\N	\N	\N	2019-03-06 01:00:56.313843+00	2019-05-22 21:53:44.497262+00	6	\N	Number
+40	GIS_COUNCIL_DISTRICT	Council District	\N	\N	\N	2019-03-06 01:00:56.014691+00	2019-05-22 21:53:44.501821+00	6	\N	Text
+41	TOTAL_CONSTRUCTION_FLOOR_AREA	Total  Construction Floor Area	\N	\N	\N	2019-03-06 01:00:56.020336+00	2019-05-22 21:53:44.506891+00	6	\N	Text
+42	JOB_S1_NO	JOB_S1_NO	\N	\N	\N	2019-03-06 01:00:56.025635+00	2019-05-22 21:53:44.512939+00	6	\N	Text
+46	Fire Suppression	Fire Suppression  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.047302+00	2019-05-22 21:53:44.517349+00	6	\N	Text
+48	City 	City 	\N	\N	\N	2019-03-06 01:00:56.056919+00	2019-05-22 21:53:44.521603+00	6	\N	Text
+55	Owner's House Number	House Number of Property Owner	\N	\N	\N	2019-03-06 01:00:56.091797+00	2019-05-22 21:53:44.525728+00	6	\N	Text
+61	Zoning Dist2	Zoning Distr 2	\N	\N	\N	2019-03-06 01:00:56.128617+00	2019-05-22 21:53:44.52992+00	6	\N	Text
+63	Owner's Last Name	Last Name of property owner	\N	\N	\N	2019-03-06 01:00:56.138808+00	2019-05-22 21:53:44.53401+00	6	\N	Text
+64	Special District 1	Special Distr 1	\N	\N	\N	2019-03-06 01:00:56.146134+00	2019-05-22 21:53:44.537781+00	6	\N	Text
+65	Special District 2	Special District 2	\N	\N	\N	2019-03-06 01:00:56.15062+00	2019-05-22 21:53:44.541323+00	6	\N	Text
+66	Vertical Enlrgmt	Vertical Enlrgmt	\N	\N	\N	2019-03-06 01:00:56.155627+00	2019-05-22 21:53:44.54516+00	6	\N	Text
+35	Total Est. Fee	Estimated fee of job	\N	\N	\N	2019-03-06 01:00:55.985077+00	2019-05-22 21:53:44.549083+00	6	\N	Text
+108	Fully Permitted	Date when job is fully permitted	\N	\N	\N	2019-03-06 01:00:56.475063+00	2019-05-22 21:53:44.552742+00	6	\N	Text
+109	Initial Cost	 Estimated cost of job	\N	\N	\N	2019-03-06 01:00:56.479933+00	2019-05-22 21:53:44.561545+00	6	\N	Text
+57	Other Description	Other Description	\N	\N	\N	2019-03-06 01:00:56.10258+00	2019-05-22 21:53:44.569011+00	6	\N	Text
+58	Equipment	Equipment  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.108424+00	2019-05-22 21:53:44.578715+00	6	\N	Text
+59	Boiler	Boiler  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.117994+00	2019-05-22 21:53:44.589598+00	6	\N	Text
+129	Block	Tax block assigned by Department of Finance	\N	\N	\N	2019-03-06 01:00:56.570008+00	2019-05-22 21:53:44.596056+00	6	\N	Text
+128	GIS_NTA_NAME	NTA Name	\N	\N	\N	2019-03-06 01:00:56.565489+00	2019-05-22 21:53:44.60236+00	6	\N	Text
+127	Existing Height	Existing Height	\N	\N	\N	2019-03-06 01:00:56.560452+00	2019-05-22 21:53:44.607606+00	6	\N	Number
+126	Street Frontage	Street Frontage	\N	\N	\N	2019-03-06 01:00:56.553644+00	2019-05-22 21:53:44.613357+00	6	\N	Number
+125	Professional Cert	Job is Professionally Certified by Licensed Professional instead of having it reviewed by Department of Building's Plan Examiners	\N	\N	\N	2019-03-06 01:00:56.549498+00	2019-05-22 21:53:44.61884+00	6	\N	Text
+124	Fuel Burning	Fuel Burning  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.545416+00	2019-05-22 21:53:44.62623+00	6	\N	Text
+123	Borough	1= Manhattan, 2= Bronx, 3 = Brooklyn, 4 = Queens, 5 = Staten Island	\N	\N	\N	2019-03-06 01:00:56.541334+00	2019-05-22 21:53:44.632289+00	6	\N	Text
+122	Zoning Dist1	Zoning Distr 1	\N	\N	\N	2019-03-06 01:00:56.537324+00	2019-05-22 21:53:44.638455+00	6	\N	Text
+120	Fuel Storage	Fuel Storage  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.528433+00	2019-05-22 21:53:44.643898+00	6	\N	Text
+67	Existing Occupancy	Existing Occupancy	\N	\N	\N	2019-03-06 01:00:56.160305+00	2019-05-22 21:53:44.649043+00	6	\N	Text
+107	Owner'sPhone #	Owner's  Phone #	\N	\N	\N	2019-03-06 01:00:56.470028+00	2019-05-22 21:53:44.654375+00	6	\N	Text
+104	GIS_BIN	BIN	\N	\N	\N	2019-03-06 01:00:56.457412+00	2019-05-22 21:53:44.659659+00	6	\N	Text
+97	Bin #	Number assigned by City Planning to a specific building	\N	\N	\N	2019-03-06 01:00:56.424265+00	2019-05-22 21:53:44.665707+00	6	\N	Text
+96	Existing Dwelling Units	Existing Dwelling Units	\N	\N	\N	2019-03-06 01:00:56.418045+00	2019-05-22 21:53:44.671169+00	6	\N	Text
+94	Zip	Zip	\N	\N	\N	2019-03-06 01:00:56.405928+00	2019-05-22 21:53:44.675698+00	6	\N	Text
+87	Landmarked	L code indicates that the building has been assigned landmark status	\N	\N	\N	2019-03-06 01:00:56.365274+00	2019-05-22 21:53:44.681143+00	6	\N	Text
+43	Plumbing	Plumbing Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.031052+00	2019-05-22 21:53:44.686784+00	6	\N	Text
+44	Other	Other? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.037542+00	2019-05-22 21:53:44.69229+00	6	\N	Text
+54	Community - Board	3-digit identifier: Borough code = first position, last 2 = community board	\N	\N	\N	2019-03-06 01:00:56.086921+00	2019-05-22 21:53:44.698168+00	6	\N	Text
+56	Applicant's Last Name	Last Name of Applicant	\N	\N	\N	2019-03-06 01:00:56.096846+00	2019-05-22 21:53:44.703449+00	6	\N	Text
+68	Proposed No. of Stories	Proposed No. of Stories	\N	\N	\N	2019-03-06 01:00:56.16528+00	2019-05-22 21:53:44.709163+00	6	\N	Number
+70	Standpipe	Standpipe Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.185415+00	2019-05-22 21:53:44.71432+00	6	\N	Text
+99	Job #	Number assigned by DOB to Job Filing	\N	\N	\N	2019-03-06 01:00:56.435522+00	2019-05-22 21:53:44.720343+00	6	\N	Text
+91	Little e	Hazardous	\N	\N	\N	2019-03-06 01:00:56.386637+00	2019-05-22 21:53:44.727085+00	6	\N	Text
+112	Site Fill	Site Fill	\N	\N	\N	2019-03-06 01:00:56.495601+00	2019-05-22 21:53:44.732573+00	6	\N	Text
+47	GIS_LONGITUDE	Longitude	\N	\N	\N	2019-03-06 01:00:56.051969+00	2019-05-22 21:53:44.739185+00	6	\N	Text
+52	PC Filed	Application Filed electronically, rather than manually	\N	\N	\N	2019-03-06 01:00:56.076772+00	2019-05-22 21:53:44.743613+00	6	\N	Text
+51	Lot	Tax lot assigned by Department of Finance	\N	\N	\N	2019-03-06 01:00:56.072238+00	2019-05-22 21:53:44.747579+00	6	\N	Text
+69	Cluster	Cluster	\N	\N	\N	2019-03-06 01:00:56.174365+00	2019-05-22 21:53:44.751459+00	6	\N	Text
+89	eFiling Filed	Application Filed electronically, rather than manually	\N	\N	\N	2019-03-06 01:00:56.376328+00	2019-05-22 21:53:44.755227+00	6	\N	Text
+83	Approved	Date when job is approved	\N	\N	\N	2019-03-06 01:00:56.339451+00	2019-05-22 21:53:44.7589+00	6	\N	Text
+84	Pre- Filing Date	Date when job is prefiled	\N	\N	\N	2019-03-06 01:00:56.346047+00	2019-05-22 21:53:44.762716+00	6	\N	Text
+90	Applicant License #	Number assigned to the skilled trade person/contractor or licensed professional	\N	\N	\N	2019-03-06 01:00:56.381694+00	2019-05-22 21:53:44.766694+00	6	\N	Text
+45	Applicant Professional Title	Applicant's Professional Title	\N	\N	\N	2019-03-06 01:00:56.042404+00	2019-05-22 21:53:44.770864+00	6	\N	Text
+85	Fully Paid	Date when job is paid and entered	\N	\N	\N	2019-03-06 01:00:56.352858+00	2019-05-22 21:53:44.775306+00	6	\N	Text
+86	Applicant's First Name	First Name of Applicant	\N	\N	\N	2019-03-06 01:00:56.359004+00	2019-05-22 21:53:44.780698+00	6	\N	Text
+92	Job Type	Job Type, based on DOB Job Code (NB-New Building, A1, A2, A3- Alterations 1-3, SG-Sign, etc.)	\N	\N	\N	2019-03-06 01:00:56.392284+00	2019-05-22 21:53:44.785879+00	6	\N	Text
+103	Job Status	DOB Status code of job (A-Pre Filed, I-Sign Off, P- Approved, R-Permit Entire) Complete List - http://www.nyc.gov/html/dob/downloads/pdf/bisjobstatus.pdf	\N	\N	\N	2019-03-06 01:00:56.453355+00	2019-05-22 21:53:44.791582+00	6	\N	Text
+62	SPECIAL_ACTION_DATE	Special Action Date	\N	\N	\N	2019-03-06 01:00:56.133508+00	2019-05-22 21:53:44.796949+00	6	\N	Text
+77	DOBRunDate	Date when query is run and pushed to Open Data. Could be used to differentiate report dates.	\N	\N	\N	2019-03-06 01:00:56.26562+00	2019-05-22 21:53:44.800321+00	6	\N	Calendar date
+50	Owner's Business Name	Business Name of Property Owner	\N	\N	\N	2019-03-06 01:00:56.067575+00	2019-05-22 21:53:44.804295+00	6	\N	Text
+88	Fee Status	Type of Fee	\N	\N	\N	2019-03-06 01:00:56.370635+00	2019-05-22 21:53:44.807654+00	6	\N	Text
+73	Proposed Occupancy	Proposed Occupancy	\N	\N	\N	2019-03-06 01:00:56.224766+00	2019-05-22 21:53:44.811509+00	6	\N	Text
+53	Zoning Dist3	Zoning Distr 3	\N	\N	\N	2019-03-06 01:00:56.081733+00	2019-05-22 21:53:44.815596+00	6	\N	Text
+95	Non-Profit	Non-Profit	\N	\N	\N	2019-03-06 01:00:56.412178+00	2019-05-22 21:53:44.819611+00	6	\N	Text
+110	SIGNOFF_DATE	Sign-off Date	\N	\N	\N	2019-03-06 01:00:56.486157+00	2019-05-22 21:53:44.823306+00	6	\N	Text
+79	GIS_LATITUDE	Latitude	\N	\N	\N	2019-03-06 01:00:56.29482+00	2019-05-22 21:53:44.8269+00	6	\N	Text
+49	JOB_NO_GOOD_COUNT	Job No Good Count	\N	\N	\N	2019-03-06 01:00:56.062354+00	2019-05-22 21:53:44.831394+00	6	\N	Text
+114	Curb Cut	Curb Cut  Work Type? (X=Yes, Blank=No)	\N	\N	\N	2019-03-06 01:00:56.503771+00	2019-05-22 21:53:44.837118+00	6	\N	Text
+74	Owner Type	Owner Type	\N	\N	\N	2019-03-06 01:00:56.234275+00	2019-05-22 21:53:44.841224+00	6	\N	Text
+71	Existing Zoning Sqft	Existing Zoning Sqft	\N	\N	\N	2019-03-06 01:00:56.201766+00	2019-05-22 21:53:44.845049+00	6	\N	Number
+75	State	State	\N	\N	\N	2019-03-06 01:00:56.243711+00	2019-05-22 21:53:44.849159+00	6	\N	Text
+101	Latest Action Date	Latest status date	\N	\N	\N	2019-03-06 01:00:56.444733+00	2019-05-22 21:53:44.853012+00	6	\N	Calendar date
+105	Proposed Zoning Sqft	Proposed Zoning Sqft	\N	\N	\N	2019-03-06 01:00:56.461463+00	2019-05-22 21:53:44.856951+00	6	\N	Number
+131	Apparatus_ID		\N	\N	\N	2019-03-06 01:00:56.602581+00	2019-05-22 21:53:44.880459+00	7	\N	Text
+132	Apparatus_Type_Code		\N	\N	\N	2019-03-06 01:00:56.607954+00	2019-05-22 21:53:44.885093+00	7	\N	Number
+133	Incident_ID		\N	\N	\N	2019-03-06 01:00:56.612612+00	2019-05-22 21:53:44.890201+00	7	\N	Number
+134	Apparartus_Type		\N	\N	\N	2019-03-06 01:00:56.617189+00	2019-05-22 21:53:44.896048+00	7	\N	Text
+135	Enroute_Scene_Time	The time the unit began travel to the scene	\N	\N	\N	2019-03-06 01:00:56.623716+00	2019-05-22 21:53:44.899861+00	7	\N	Calendar date
+291	94 Percent Actuarial Value Silver Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:57.936793+00	2019-05-22 21:53:45.988772+00	17	\N	Text
+136	Canceled_Enroute	Was the unit's response canceled by 911 or Incident Command prior to arrival?	\N	\N	\N	2019-03-06 01:00:56.628226+00	2019-05-22 21:53:44.904124+00	7	\N	Text
+137	Number_Of_People		\N	\N	\N	2019-03-06 01:00:56.632801+00	2019-05-22 21:53:44.90996+00	7	\N	Number
+138	Dispatch_Time	The time that the unit was alerted by the 911 Center	\N	\N	\N	2019-03-06 01:00:56.636855+00	2019-05-22 21:53:44.91388+00	7	\N	Calendar date
+139	Arrival_Time	The time the unit arrived at the location of the incident	\N	\N	\N	2019-03-06 01:00:56.640813+00	2019-05-22 21:53:44.917967+00	7	\N	Text
+140	Action_Taken_Code		\N	\N	\N	2019-03-06 01:00:56.645382+00	2019-05-22 21:53:44.921867+00	7	\N	Number
+141	Action_Taken		\N	\N	\N	2019-03-06 01:00:56.649739+00	2019-05-22 21:53:44.925885+00	7	\N	Text
+142	First_Arriving_Unit	Was this unit reported as first unit to arrive on scene?	\N	\N	\N	2019-03-06 01:00:56.654233+00	2019-05-22 21:53:44.930567+00	7	\N	Text
+143	Responded_From_Quarters	Was this unit located in its assigned station when alerted? (Often, a unit is dispatched while still returning from a previous call.)	\N	\N	\N	2019-03-06 01:00:56.658642+00	2019-05-22 21:53:44.934597+00	7	\N	Text
+144	FIrst_Due_Station		\N	\N	\N	2019-03-06 01:00:56.700711+00	2019-05-22 21:53:44.95757+00	8	\N	Number
+145	Action_Taken		\N	\N	\N	2019-03-06 01:00:56.710089+00	2019-05-22 21:53:44.963707+00	8	\N	Text
+146	Number_Fire_Personnel		\N	\N	\N	2019-03-06 01:00:56.718969+00	2019-05-22 21:53:44.967812+00	8	\N	Number
+147	Number_Engines		\N	\N	\N	2019-03-06 01:00:56.724628+00	2019-05-22 21:53:44.972185+00	8	\N	Number
+148	Number_Other_Personnel		\N	\N	\N	2019-03-06 01:00:56.729219+00	2019-05-22 21:53:44.976325+00	8	\N	Number
+149	Incident_Number		\N	\N	\N	2019-03-06 01:00:56.734004+00	2019-05-22 21:53:44.980449+00	8	\N	Number
+150	Incident_Type_Code		\N	\N	\N	2019-03-06 01:00:56.741701+00	2019-05-22 21:53:44.984018+00	8	\N	Number
+151	Fire_Service_Fatalities		\N	\N	\N	2019-03-06 01:00:56.748327+00	2019-05-22 21:53:44.988327+00	8	\N	Number
+152	Emergency_Medical_Service_Provided		\N	\N	\N	2019-03-06 01:00:56.753723+00	2019-05-22 21:53:44.992118+00	8	\N	Number
+153	State		\N	\N	\N	2019-03-06 01:00:56.758413+00	2019-05-22 21:53:44.997544+00	8	\N	Text
+154	Zip		\N	\N	\N	2019-03-06 01:00:56.762799+00	2019-05-22 21:53:45.005209+00	8	\N	Number
+155	Incident_Type		\N	\N	\N	2019-03-06 01:00:56.768543+00	2019-05-22 21:53:45.015947+00	8	\N	Text
+156	Citizen_Fatalities		\N	\N	\N	2019-03-06 01:00:56.773227+00	2019-05-22 21:53:45.023962+00	8	\N	Number
+157	Property_Use		\N	\N	\N	2019-03-06 01:00:56.77769+00	2019-05-22 21:53:45.031837+00	8	\N	Text
+158	Action_Taken_Code		\N	\N	\N	2019-03-06 01:00:56.782358+00	2019-05-22 21:53:45.037948+00	8	\N	Number
+159	Number_Ambulances		\N	\N	\N	2019-03-06 01:00:56.78675+00	2019-05-22 21:53:45.043194+00	8	\N	Number
+160	City		\N	\N	\N	2019-03-06 01:00:56.791347+00	2019-05-22 21:53:45.046316+00	8	\N	Text
+161	Date_Time		\N	\N	\N	2019-03-06 01:00:56.796071+00	2019-05-22 21:53:45.048987+00	8	\N	Calendar date
+162	Property_Use_Code		\N	\N	\N	2019-03-06 01:00:56.801177+00	2019-05-22 21:53:45.052622+00	8	\N	Number
+164	Number_Medical_Personnel		\N	\N	\N	2019-03-06 01:00:56.810831+00	2019-05-22 21:53:45.058161+00	8	\N	Number
+165	Fire_Service_Injuries		\N	\N	\N	2019-03-06 01:00:56.8151+00	2019-05-22 21:53:45.061131+00	8	\N	Number
+166	Citizen_Injuries		\N	\N	\N	2019-03-06 01:00:56.819362+00	2019-05-22 21:53:45.064131+00	8	\N	Number
+167	Incident_ID		\N	\N	\N	2019-03-06 01:00:56.850905+00	2019-05-22 21:53:45.090018+00	9	\N	Number
+168	Status		\N	\N	\N	2019-03-06 01:00:56.857428+00	2019-05-22 21:53:45.093422+00	9	\N	Text
+169	Apparatus_ID		\N	\N	\N	2019-03-06 01:00:56.864253+00	2019-05-22 21:53:45.098068+00	9	\N	Text
+170	Rank		\N	\N	\N	2019-03-06 01:00:56.869004+00	2019-05-22 21:53:45.101459+00	9	\N	Text
+171	incidentdate		\N	\N	\N	2019-03-06 01:00:56.873655+00	2019-05-22 21:53:45.105941+00	9	\N	Calendar date
+1031	Location (city)		\N	\N	\N	2019-05-22 21:53:45.130546+00	2019-05-22 21:53:45.130572+00	10	\N	Text
+173	Sub_Type_English		\N	\N	\N	2019-03-06 01:00:56.919319+00	2019-05-22 21:53:45.135698+00	10	\N	Text
+176	Incident_Date	The date the incident was created.	\N	\N	\N	2019-03-06 01:00:56.937538+00	2019-05-22 21:53:45.17459+00	10	\N	Calendar date
+177	ID	A unique incident number for each call.	\N	\N	\N	2019-03-06 01:00:56.941973+00	2019-05-22 21:53:45.179765+00	10	\N	Number
+172	Location		\N	\N	\N	2019-03-06 01:00:56.905165+00	2019-05-22 21:53:45.184937+00	10	\N	Point
+1032	Zip Codes		\N	\N	\N	2019-05-22 21:53:45.189924+00	2019-05-22 21:53:45.189953+00	10	\N	Number
+1033	Location (zip)		\N	\N	\N	2019-05-22 21:53:45.193823+00	2019-05-22 21:53:45.193852+00	10	\N	Text
+1034	Location (address)		\N	\N	\N	2019-05-22 21:53:45.197933+00	2019-05-22 21:53:45.197961+00	10	\N	Text
+1035	Location (state)		\N	\N	\N	2019-05-22 21:53:45.202262+00	2019-05-22 21:53:45.202291+00	10	\N	Text
+179	Type_Code		\N	\N	\N	2019-03-06 01:00:56.952177+00	2019-05-22 21:53:45.206391+00	10	\N	Text
+175	Type_English		\N	\N	\N	2019-03-06 01:00:56.932991+00	2019-05-22 21:53:45.210639+00	10	\N	Text
+174	Sub_Type_Code	The sub-type code. Note that 'ALS' is an advanced life support call, meaning a paramedic's services are required. BLS is a basic life support call, for which an EMT is required.	\N	\N	\N	2019-03-06 01:00:56.92797+00	2019-05-22 21:53:45.217086+00	10	\N	Text
+178	Station		\N	\N	\N	2019-03-06 01:00:56.946802+00	2019-05-22 21:53:45.221694+00	10	\N	Number
+189	Last Updated	Latest Updated Date\n	\N	\N	\N	2019-03-06 01:00:57.042214+00	2019-05-22 21:53:45.248094+00	11	\N	Calendar date
+191	Drug Test	Drug testing is required for Medallion and FHV TLC driver’s licenses. "Needed": You must take and pass a drug test at an approved testing facility. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you do not need to take a TLC Drug Test. “Complete”: Your drug test information has been received and updated in your TLC record.	\N	\N	\N	2019-03-06 01:00:57.053474+00	2019-05-22 21:53:45.252473+00	11	\N	Text
+180	Driver Exam	Upon Completion of TLC Driver Training (Taxi School), you will need to take and pass a final exam. Passing score is 70%. “Needed”: Your TLC Driver Exam information is not in our system. If you have not taken your TLC Driver Exam please do so. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you will not need to take this exam. “Complete”: Your TLC Driver Exam information has been received and updated in your TLC record\n	\N	\N	\N	2019-03-06 01:00:56.983569+00	2019-05-22 21:53:45.256519+00	11	\N	Text
+183	Medical Clearance Form	A Medical Clearance form from a licensed medical doctor is a requirement for those who apply for a Medallion or a For-Hire Vehicle driver’s license. If the entry is: “Needed”: Your Medical Clearance form is not in our system. If you have not been medically cleared by a licensed medical doctor please do so immediately. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you will not need to take this step as it is covered by your 19A status. “Complete”: Your Medical Clearance has been received and updated in your TLC record.\n	\N	\N	\N	2019-03-06 01:00:57.007598+00	2019-05-22 21:53:45.260802+00	11	\N	Text
+184	WAV Course	Wheelchair Accessible Vehicle Training (WAV) is a requirement for those who apply for a Medallion or For-Hire Vehicle driver’s license. “Needed”: You must take the Wheelchair Accessible Vehicle Training Course within 90 days from the date you submitted your application. “Not Applicable”: If you applied for a Paratransit or Commuter Van license you will not need to take this training. “Complete”: Your WAV training information has been received and updated in your TLC record.\n	\N	\N	\N	2019-03-06 01:00:57.01368+00	2019-05-22 21:53:45.264889+00	11	\N	Text
+181	FRU Interview Scheduled	Fitness Review Unit Interview: “Not Applicable” if no Fitness Review is necessary. OR If there is a date, a Fitness Interview has been scheduled. Watch your mail/email for more information.\n	\N	\N	\N	2019-03-06 01:00:56.990005+00	2019-05-22 21:53:45.270312+00	11	\N	Text
+200	Residency Credit	An additional credit given on an exam to a candidate who maintains a continuous period of residency in New York City as described in the Notice of Examination for a specific title.     \n	\N	\N	\N	2019-03-06 01:00:57.152482+00	2019-05-22 21:53:45.517857+00	13	\N	Text
+292	County		\N	\N	\N	2019-03-06 01:00:57.941807+00	2019-05-22 21:53:45.993212+00	17	\N	Text
+185	Status	"Incomplete": Your application is missing requirements. "Pending Fitness Interview": Your application has been forwarded to the Fitness Review Unit for a Fitness Interview. "Denied": Your application has been denied. "Under Review": Your application is still being processed. "Approved - License Issued": Your application has been approved and your license will be mailed to the address provided on your application. Allow up to two weeks after approval for delivery.\n	\N	\N	\N	2019-03-06 01:00:57.019337+00	2019-05-22 21:53:45.27598+00	11	\N	Text
+186	App No	This is the number linked to your application.\nOnce your application has been approved this will become your license number.	\N	\N	\N	2019-03-06 01:00:57.024515+00	2019-05-22 21:53:45.28045+00	11	\N	Number
+182	Other Requirements	This field is for miscellaneous items that may need more sensitive information. Visit www.nyc.gov/tlcup for more information and to upload missing requirements. “Not Applicable”: “Other requirements” do not apply to you at this time. \n	\N	\N	\N	2019-03-06 01:00:56.994643+00	2019-05-22 21:53:45.284896+00	11	\N	Text
+188	Type	This is the classification of license you have applied for. HDR: Medallion /For-Hire Vehicle Operator. PDR: Paratransit Vehicle Operator. VDR: Commuter Van Vehicle Operator \n	\N	\N	\N	2019-03-06 01:00:57.035024+00	2019-05-22 21:53:45.288962+00	11	\N	Text
+187	Defensive Driving	A NYS certified 6 hour Defensive Driving Course is a requirement to receive your TLC license.\n	\N	\N	\N	2019-03-06 01:00:57.029625+00	2019-05-22 21:53:45.292386+00	11	\N	Text
+190	App Date	The date you submitted your application.	\N	\N	\N	2019-03-06 01:00:57.047643+00	2019-05-22 21:53:45.295783+00	11	\N	Calendar date
+195	Job Titles	Title of employee at the time when the data was updated.	\N	\N	\N	2019-03-06 01:00:57.103745+00	2019-05-22 21:53:45.320422+00	12	\N	Text
+198	Salary or Hourly	Defines whether an employee is paid on an hourly basis or salary basis. Hourly employees are further defined by the number of hours they work in a week. See the "Frequency Description" column.	\N	\N	\N	2019-03-06 01:00:57.117107+00	2019-05-22 21:53:45.325993+00	12	\N	Text
+193	Typical Hours	Describes the typical amount of work for hourly employees. This data does not apply to salary employees.\n\n40 - Employee paid on an hourly basis; works an 8 hour day; can be either full-time permanent (FT/P) or full-time temporary (FT-T) which is a seasonal employee; 35 - Employee paid on an hourly basis; works a 7 hour day; can be either full-time permanent (FT/P) or full-time temporary (FT-T) which is a seasonal employee; 20 - Employee paid on a part-time, hourly basis; typically works a 4 hour day, 5 days a week; 10 - Employee paid on a part-time, hourly basis; works 10 hours or less in a week.	\N	\N	\N	2019-03-06 01:00:57.093909+00	2019-05-22 21:53:45.331225+00	12	\N	Number
+199	Name	Name of employee	\N	\N	\N	2019-03-06 01:00:57.121789+00	2019-05-22 21:53:45.335952+00	12	\N	Text
+194	Department	Department where employee worked.	\N	\N	\N	2019-03-06 01:00:57.098883+00	2019-05-22 21:53:45.340971+00	12	\N	Text
+196	Full or Part-Time	Whether the employee was employed full- (F) or part-time (P).	\N	\N	\N	2019-03-06 01:00:57.108181+00	2019-05-22 21:53:45.345175+00	12	\N	Text
+263	Name	Owner Name\n	\N	\N	\N	2019-03-06 01:00:57.748393+00	2019-05-22 21:53:45.675203+00	16	\N	Text
+192	Hourly Rate	The hourly salary rates for individuals whose pay frequency is "hourly". Hourly employees have varying hours worked throughout the week, which is described in the "Frequency Description" column.	\N	\N	\N	2019-03-06 01:00:57.088987+00	2019-05-22 21:53:45.3494+00	12	\N	Number
+197	Annual Salary	Annual salary rates. Only applies for employees whose pay frequency is "Salary". Hourly employees rates are only shown in "Hourly Rates" column.	\N	\N	\N	2019-03-06 01:00:57.112599+00	2019-05-22 21:53:45.353558+00	12	\N	Number
+226	Last Name		\N	\N	\N	2019-03-06 01:00:57.381546+00	2019-05-22 21:53:45.376394+00	14	\N	Text
+228	Second Line Street Address		\N	\N	\N	2019-03-06 01:00:57.401652+00	2019-05-22 21:53:45.381415+00	14	\N	Text
+224	Specialty		\N	\N	\N	2019-03-06 01:00:57.361349+00	2019-05-22 21:53:45.385121+00	14	\N	Text
+225	First Name		\N	\N	\N	2019-03-06 01:00:57.37201+00	2019-05-22 21:53:45.38868+00	14	\N	Text
+227	NPI		\N	\N	\N	2019-03-06 01:00:57.391358+00	2019-05-22 21:53:45.393207+00	14	\N	Text
+222	Zip code		\N	\N	\N	2019-03-06 01:00:57.336069+00	2019-05-22 21:53:45.397468+00	14	\N	Text
+223	First Line Street Address		\N	\N	\N	2019-03-06 01:00:57.346634+00	2019-05-22 21:53:45.401484+00	14	\N	Text
+229	State Code		\N	\N	\N	2019-03-06 01:00:57.413145+00	2019-05-22 21:53:45.405202+00	14	\N	Text
+221	Optout End Date		\N	\N	\N	2019-03-06 01:00:57.325492+00	2019-05-22 21:53:45.409745+00	14	\N	Calendar date
+220	City Name		\N	\N	\N	2019-03-06 01:00:57.319346+00	2019-05-22 21:53:45.413947+00	14	\N	Text
+230	Optout Effective Date		\N	\N	\N	2019-03-06 01:00:57.426483+00	2019-05-22 21:53:45.418537+00	14	\N	Calendar date
+203	Parent Lgy Credit	A “Parent Legacy credit” is an additional credit given on an exam (10 points) to a candidate who lost a parent (FDNY, NYPD, or a First Responder, during or as a result of 911).\n	\N	\N	\N	2019-03-06 01:00:57.167327+00	2019-05-22 21:53:45.445283+00	13	\N	Text
+210	Adj. FA	The Adjusted Final Average (“Adj. FA” or “AFA”) is an eligible candidate’s test score in addition to any additional credits granted.\n	\N	\N	\N	2019-03-06 01:00:57.204913+00	2019-05-22 21:53:45.449811+00	13	\N	Number
+219	List Title Desc	A descriptive name that identifies a civil service title. \n	\N	\N	\N	2019-03-06 01:00:57.250826+00	2019-05-22 21:53:45.45355+00	13	\N	Text
+218	Group No	Represents the certification order for a list. (e.g. – eligible candidates on a list with a 01 group number may be considered for appointment before an eligible candidate on primary list with a 00 group number).\n	\N	\N	\N	2019-03-06 01:00:57.245586+00	2019-05-22 21:53:45.45686+00	13	\N	Text
+209	List Title Code	A five (5) digit number that corresponds to and represents a civil service title.\n	\N	\N	\N	2019-03-06 01:00:57.199955+00	2019-05-22 21:53:45.460585+00	13	\N	Text
+217	List Agency Code	A three (3) digit number used to identify an agency (For Promotion List Only).\n	\N	\N	\N	2019-03-06 01:00:57.24015+00	2019-05-22 21:53:45.464843+00	13	\N	Text
+216	List Agency Desc	The name of an appointing Agency.\n	\N	\N	\N	2019-03-06 01:00:57.235536+00	2019-05-22 21:53:45.468569+00	13	\N	Text
+215	List Div Code	The promotional division codes/descriptions within the New York City Transit Authority only.\n	\N	\N	\N	2019-03-06 01:00:57.23062+00	2019-05-22 21:53:45.474591+00	13	\N	Text
+214	Published Date	The date on which an eligible list is made available for review by the general public and appointing agencies.  \n	\N	\N	\N	2019-03-06 01:00:57.225452+00	2019-05-22 21:53:45.478177+00	13	\N	Calendar date
+213	Established Date	The date on which an eligible list is made available for certification to agencies to consider an eligible candidate for appointment.\n	\N	\N	\N	2019-03-06 01:00:57.220132+00	2019-05-22 21:53:45.482722+00	13	\N	Calendar date
+202	Anniversary Date	The date on which an eligible list is scheduled to expire.      \n	\N	\N	\N	2019-03-06 01:00:57.16153+00	2019-05-22 21:53:45.488212+00	13	\N	Calendar date
+212	Extension Date	The date on which a list will be extended beyond its original expiration date.  \n	\N	\N	\N	2019-03-06 01:00:57.215135+00	2019-05-22 21:53:45.492483+00	13	\N	Calendar date
+211	Veteran Credit	An additional credit given to a Veteran (5 points) or disabled veteran (10 points) when s/he accepts a permanent position from an eligible list. \n	\N	\N	\N	2019-03-06 01:00:57.210116+00	2019-05-22 21:53:45.497852+00	13	\N	Text
+208	MI	A candidate’s middle initial (MI) as it appears on their application.\n	\N	\N	\N	2019-03-06 01:00:57.194724+00	2019-05-22 21:53:45.501851+00	13	\N	Text
+204	Exam No	A four (4) digit number that identifies a civil service examination. \n\n	\N	\N	\N	2019-03-06 01:00:57.172677+00	2019-05-22 21:53:45.507958+00	13	\N	Text
+206	First Name	A candidate’s first name as it appears on their application.\n	\N	\N	\N	2019-03-06 01:00:57.183863+00	2019-05-22 21:53:45.513654+00	13	\N	Text
+290	Drug Maximum Out of Pocket - individual - 94 percent		\N	\N	\N	2019-03-06 01:00:57.932202+00	2019-05-22 21:53:45.983993+00	17	\N	Text
+293	Plan Type		\N	\N	\N	2019-03-06 01:00:57.94705+00	2019-05-22 21:53:45.999142+00	17	\N	Text
+201	Sibling Lgy Credit	A “Sibling Legacy Credit” is additional credit given on an exam (10 points) to a candidate who lost a sibling (FDNY, NYPD, or a First Responder, during or as a result of 911).\n	\N	\N	\N	2019-03-06 01:00:57.156682+00	2019-05-22 21:53:45.522118+00	13	\N	Text
+207	Last Name	A candidate’s last name as it appears on their application.\n	\N	\N	\N	2019-03-06 01:00:57.189247+00	2019-05-22 21:53:45.526614+00	13	\N	Text
+205	List No	An eligible candidate’s placement on a given list as of the business day that the data set is populated. \n\n	\N	\N	\N	2019-03-06 01:00:57.178295+00	2019-05-22 21:53:45.532647+00	13	\N	Number
+234	Midday Win 4 Booster	Booster percentage for Midday Win4 number	\N	\N	\N	2019-03-06 01:00:57.514734+00	2019-05-22 21:53:45.55613+00	15	\N	Text
+232	Evening Daily Booster	Booster percentage for Evening  Daily number	\N	\N	\N	2019-03-06 01:00:57.502647+00	2019-05-22 21:53:45.560992+00	15	\N	Text
+242	Evening Win 4 Sum		\N	\N	\N	2019-03-06 01:00:57.563952+00	2019-05-22 21:53:45.56587+00	15	\N	Number
+241	Evening Win 4 #		\N	\N	\N	2019-03-06 01:00:57.557016+00	2019-05-22 21:53:45.569813+00	15	\N	Text
+238	Midday Daily #		\N	\N	\N	2019-03-06 01:00:57.538618+00	2019-05-22 21:53:45.573403+00	15	\N	Text
+239	Midday Win 4 Sum		\N	\N	\N	2019-03-06 01:00:57.546098+00	2019-05-22 21:53:45.577343+00	15	\N	Number
+231	Midday Win 4 #		\N	\N	\N	2019-03-06 01:00:57.496038+00	2019-05-22 21:53:45.581387+00	15	\N	Text
+243	Midday Daily Booster	 Booster percentage for Midday Daily number	\N	\N	\N	2019-03-06 01:00:57.569966+00	2019-05-22 21:53:45.585233+00	15	\N	Text
+240	Draw Date		\N	\N	\N	2019-03-06 01:00:57.551758+00	2019-05-22 21:53:45.588855+00	15	\N	Calendar date
+235	Evening Daily Sum		\N	\N	\N	2019-03-06 01:00:57.520961+00	2019-05-22 21:53:45.592919+00	15	\N	Number
+236	Evening Daily #		\N	\N	\N	2019-03-06 01:00:57.526863+00	2019-05-22 21:53:45.596691+00	15	\N	Text
+237	Midday Daily Sum		\N	\N	\N	2019-03-06 01:00:57.532827+00	2019-05-22 21:53:45.600644+00	15	\N	Number
+233	Evening Win 4 Booster	Booster percentage for Evening Win4 number	\N	\N	\N	2019-03-06 01:00:57.508928+00	2019-05-22 21:53:45.605854+00	15	\N	Text
+249	Base Telephone Number	Base Telephone NumberBase Telephone Number	\N	\N	\N	2019-03-06 01:00:57.657162+00	2019-05-22 21:53:45.628837+00	16	\N	Text
+247	Base Address	Base Address	\N	\N	\N	2019-03-06 01:00:57.64677+00	2019-05-22 21:53:45.632957+00	16	\N	Text
+266	Last Time Updated	Last Time Updated	\N	\N	\N	2019-03-06 01:00:57.770268+00	2019-05-22 21:53:45.637416+00	16	\N	Text
+252	Base Name	Base Name	\N	\N	\N	2019-03-06 01:00:57.672781+00	2019-05-22 21:53:45.641375+00	16	\N	Text
+251	Base Type	Base Type	\N	\N	\N	2019-03-06 01:00:57.667627+00	2019-05-22 21:53:45.645395+00	16	\N	Text
+250	VEH	Hybrid vehicle indicator\n	\N	\N	\N	2019-03-06 01:00:57.662364+00	2019-05-22 21:53:45.649772+00	16	\N	Text
+257	Wheelchair Accessible	Wheelchair Accessible Indicator\n	\N	\N	\N	2019-03-06 01:00:57.698921+00	2019-05-22 21:53:45.654867+00	16	\N	Text
+265	Active	Permit active or not\n	\N	\N	\N	2019-03-06 01:00:57.763719+00	2019-05-22 21:53:45.658665+00	16	\N	Text
+248	Website	Base Website	\N	\N	\N	2019-03-06 01:00:57.651997+00	2019-05-22 21:53:45.662365+00	16	\N	Text
+260	Permit License Number	Permit License Number	\N	\N	\N	2019-03-06 01:00:57.719036+00	2019-05-22 21:53:45.666316+00	16	\N	Text
+259	DMV License Plate Number	DMV License Plate Number	\N	\N	\N	2019-03-06 01:00:57.709051+00	2019-05-22 21:53:45.670912+00	16	\N	Text
+262	License Type	TLC License Type\n	\N	\N	\N	2019-03-06 01:00:57.732198+00	2019-05-22 21:53:45.679093+00	16	\N	Text
+261	Expiration Date	Expiration Date	\N	\N	\N	2019-03-06 01:00:57.724543+00	2019-05-22 21:53:45.683096+00	16	\N	Calendar date
+264	Vehicle License Number	FHV Vehicle License Number	\N	\N	\N	2019-03-06 01:00:57.756364+00	2019-05-22 21:53:45.687262+00	16	\N	Text
+258	Vehicle VIN Number	Vehicle VIN Number	\N	\N	\N	2019-03-06 01:00:57.703409+00	2019-05-22 21:53:45.691198+00	16	\N	Text
+256	Certification Date	Certification Date	\N	\N	\N	2019-03-06 01:00:57.694491+00	2019-05-22 21:53:45.69536+00	16	\N	Calendar date
+253	Base Number	Base Number	\N	\N	\N	2019-03-06 01:00:57.677978+00	2019-05-22 21:53:45.699483+00	16	\N	Text
+254	Vehicle Year	Vehicle Year	\N	\N	\N	2019-03-06 01:00:57.683085+00	2019-05-22 21:53:45.703793+00	16	\N	Number
+255	Hack Up Date	Hack Up Date	\N	\N	\N	2019-03-06 01:00:57.689753+00	2019-05-22 21:53:45.707545+00	16	\N	Calendar date
+245	Last Date Updated	Last Date Updated	\N	\N	\N	2019-03-06 01:00:57.635905+00	2019-05-22 21:53:45.711329+00	16	\N	Calendar date
+244	Order Date	Date Suspension ordered\n	\N	\N	\N	2019-03-06 01:00:57.630452+00	2019-05-22 21:53:45.715225+00	16	\N	Calendar date
+246	Reason	Reason Code A,B,C or G\n	\N	\N	\N	2019-03-06 01:00:57.641312+00	2019-05-22 21:53:45.719387+00	16	\N	Text
+395	CredentialNumber		\N	\N	\N	2019-03-06 01:00:58.524441+00	2019-05-22 21:53:45.751723+00	18	\N	text
+396	LastName		\N	\N	\N	2019-03-06 01:00:58.535083+00	2019-05-22 21:53:45.759186+00	18	\N	text
+397	FirstName		\N	\N	\N	2019-03-06 01:00:58.548222+00	2019-05-22 21:53:45.768213+00	18	\N	text
+398	MiddleName		\N	\N	\N	2019-03-06 01:00:58.559183+00	2019-05-22 21:53:45.774293+00	18	\N	text
+399	CredentialType		\N	\N	\N	2019-03-06 01:00:58.568217+00	2019-05-22 21:53:45.780591+00	18	\N	text
+400	Status		\N	\N	\N	2019-03-06 01:00:58.577018+00	2019-05-22 21:53:45.791089+00	18	\N	text
+401	BirthYear		\N	\N	\N	2019-03-06 01:00:58.586161+00	2019-05-22 21:53:45.798391+00	18	\N	text
+402	CEDueDate		\N	\N	\N	2019-03-06 01:00:58.595092+00	2019-05-22 21:53:45.806669+00	18	\N	text
+403	FirstIssueDate		\N	\N	\N	2019-03-06 01:00:58.613658+00	2019-05-22 21:53:45.816211+00	18	\N	text
+404	LastIssueDate		\N	\N	\N	2019-03-06 01:00:58.623394+00	2019-05-22 21:53:45.822853+00	18	\N	text
+405	ExpirationDate		\N	\N	\N	2019-03-06 01:00:58.633842+00	2019-05-22 21:53:45.832078+00	18	\N	text
+406	ActionTaken		\N	\N	\N	2019-03-06 01:00:58.652565+00	2019-05-22 21:53:45.840287+00	18	\N	text
+267	Specialist  - standard		\N	\N	\N	2019-03-06 01:00:57.813304+00	2019-05-22 21:53:45.871046+00	17	\N	Text
+268	Specialty Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:57.818223+00	2019-05-22 21:53:45.879259+00	17	\N	Text
+269	Specialty Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:57.823094+00	2019-05-22 21:53:45.885069+00	17	\N	Text
+270	Premium Couple 40		\N	\N	\N	2019-03-06 01:00:57.828263+00	2019-05-22 21:53:45.890385+00	17	\N	Number
+271	Non-preferred Brand Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:57.833392+00	2019-05-22 21:53:45.895907+00	17	\N	Text
+272	Drug Maximum Out of Pocket - Family - 73 percent		\N	\N	\N	2019-03-06 01:00:57.838323+00	2019-05-22 21:53:45.902999+00	17	\N	Text
+273	Medical Maximum Out of Pocket - family - 73 percent		\N	\N	\N	2019-03-06 01:00:57.843474+00	2019-05-22 21:53:45.909111+00	17	\N	Text
+274	Drug Deductible - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:57.848449+00	2019-05-22 21:53:45.914522+00	17	\N	Text
+275	Drug Deductible - family - standard		\N	\N	\N	2019-03-06 01:00:57.853063+00	2019-05-22 21:53:45.91949+00	17	\N	Text
+276	Drug Deductible - individual - 94 percent		\N	\N	\N	2019-03-06 01:00:57.860784+00	2019-05-22 21:53:45.925076+00	17	\N	Text
+277	Generic Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:57.866092+00	2019-05-22 21:53:45.930907+00	17	\N	Text
+278	Emergency Room - 73 percent		\N	\N	\N	2019-03-06 01:00:57.871505+00	2019-05-22 21:53:45.93532+00	17	\N	Text
+279	Medical Deductible - family - 94 percent		\N	\N	\N	2019-03-06 01:00:57.876574+00	2019-05-22 21:53:45.939453+00	17	\N	Text
+280	Premium Scenarios		\N	\N	\N	2019-03-06 01:00:57.882157+00	2019-05-22 21:53:45.94315+00	17	\N	Text
+281	Customer Service Phone Number Local		\N	\N	\N	2019-03-06 01:00:57.887231+00	2019-05-22 21:53:45.946807+00	17	\N	Text
+282	Metal Level		\N	\N	\N	2019-03-06 01:00:57.892061+00	2019-05-22 21:53:45.950867+00	17	\N	Text
+283	Individual+2 children, Age 30		\N	\N	\N	2019-03-06 01:00:57.89677+00	2019-05-22 21:53:45.954883+00	17	\N	Number
+284	Drug Maximum Out of Pocket - Family - 87 percent		\N	\N	\N	2019-03-06 01:00:57.901699+00	2019-05-22 21:53:45.958644+00	17	\N	Text
+285	Drug Maximum Out of Pocket - Family  - 94 percent		\N	\N	\N	2019-03-06 01:00:57.906773+00	2019-05-22 21:53:45.962593+00	17	\N	Text
+286	Inpatient Facility  - 94 percent		\N	\N	\N	2019-03-06 01:00:57.911687+00	2019-05-22 21:53:45.966439+00	17	\N	Text
+287	Individual+1 child, Age 21		\N	\N	\N	2019-03-06 01:00:57.916779+00	2019-05-22 21:53:45.971528+00	17	\N	Number
+288	Specialist - 94 percent		\N	\N	\N	2019-03-06 01:00:57.922195+00	2019-05-22 21:53:45.975887+00	17	\N	Text
+289	Primary Care Physician - 94 percent		\N	\N	\N	2019-03-06 01:00:57.927132+00	2019-05-22 21:53:45.979558+00	17	\N	Text
+294	Source		\N	\N	\N	2019-03-06 01:00:57.951924+00	2019-05-22 21:53:46.003482+00	17	\N	Text
+295	Standard Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:57.957089+00	2019-05-22 21:53:46.008483+00	17	\N	Text
+296	Premium Adult Individual Age 30		\N	\N	\N	2019-03-06 01:00:57.962325+00	2019-05-22 21:53:46.014719+00	17	\N	Number
+297	Couple+2 children, Age 40		\N	\N	\N	2019-03-06 01:00:57.96715+00	2019-05-22 21:53:46.019387+00	17	\N	Number
+298	Premium Adult Individual Age 21		\N	\N	\N	2019-03-06 01:00:57.971848+00	2019-05-22 21:53:46.024218+00	17	\N	Number
+299	Individual+3 or more children, Age 30		\N	\N	\N	2019-03-06 01:00:57.976609+00	2019-05-22 21:53:46.028538+00	17	\N	Number
+300	Couple+3 or more Children, Age 40		\N	\N	\N	2019-03-06 01:00:57.981606+00	2019-05-22 21:53:46.032813+00	17	\N	Number
+301	Individual+1 child, Age 40		\N	\N	\N	2019-03-06 01:00:57.986363+00	2019-05-22 21:53:46.038382+00	17	\N	Number
+302	Premium Adult Individual Age 40		\N	\N	\N	2019-03-06 01:00:57.991171+00	2019-05-22 21:53:46.042581+00	17	\N	Number
+303	Couple+2 children, Age 50		\N	\N	\N	2019-03-06 01:00:57.996457+00	2019-05-22 21:53:46.046224+00	17	\N	Number
+304	Premium Couple 21  		\N	\N	\N	2019-03-06 01:00:58.001464+00	2019-05-22 21:53:46.050279+00	17	\N	Number
+305	Couple+1 child, Age 40		\N	\N	\N	2019-03-06 01:00:58.006632+00	2019-05-22 21:53:46.054686+00	17	\N	Number
+306	Individual+3 or more children, Age 40		\N	\N	\N	2019-03-06 01:00:58.01213+00	2019-05-22 21:53:46.058526+00	17	\N	Number
+307	Premium Adult Individual Age 27		\N	\N	\N	2019-03-06 01:00:58.018176+00	2019-05-22 21:53:46.062505+00	17	\N	Number
+308	Individual+2 children, Age 40		\N	\N	\N	2019-03-06 01:00:58.023221+00	2019-05-22 21:53:46.066507+00	17	\N	Number
+309	Couple+1 child, Age 50		\N	\N	\N	2019-03-06 01:00:58.027737+00	2019-05-22 21:53:46.070765+00	17	\N	Number
+310	Premium Adult Individual Age 60		\N	\N	\N	2019-03-06 01:00:58.032353+00	2019-05-22 21:53:46.07448+00	17	\N	Number
+311	Couple+3 or more Children, Age 30		\N	\N	\N	2019-03-06 01:00:58.036871+00	2019-05-22 21:53:46.078768+00	17	\N	Number
+312	Premium Couple 60		\N	\N	\N	2019-03-06 01:00:58.042298+00	2019-05-22 21:53:46.082935+00	17	\N	Number
+313	Premium Couple 50		\N	\N	\N	2019-03-06 01:00:58.046872+00	2019-05-22 21:53:46.086814+00	17	\N	Number
+314	Individual+1 child, Age 30		\N	\N	\N	2019-03-06 01:00:58.051654+00	2019-05-22 21:53:46.0919+00	17	\N	Number
+315	Individual+3 or more children, Age 50		\N	\N	\N	2019-03-06 01:00:58.056493+00	2019-05-22 21:53:46.095557+00	17	\N	Number
+316	Couple+2 children, Age 21		\N	\N	\N	2019-03-06 01:00:58.06135+00	2019-05-22 21:53:46.099637+00	17	\N	Number
+317	Individual+2 children, Age 50		\N	\N	\N	2019-03-06 01:00:58.066094+00	2019-05-22 21:53:46.103234+00	17	\N	Number
+318	Couple+1 child, Age 21		\N	\N	\N	2019-03-06 01:00:58.070751+00	2019-05-22 21:53:46.106905+00	17	\N	Number
+319	Individual+1 child, Age 50		\N	\N	\N	2019-03-06 01:00:58.075735+00	2019-05-22 21:53:46.111021+00	17	\N	Number
+320	Premium Adult Individual Age 50		\N	\N	\N	2019-03-06 01:00:58.080638+00	2019-05-22 21:53:46.115318+00	17	\N	Number
+321	Premium Child		\N	\N	\N	2019-03-06 01:00:58.085777+00	2019-05-22 21:53:46.119471+00	17	\N	Number
+322	Individual+3 or more children, Age 21		\N	\N	\N	2019-03-06 01:00:58.091305+00	2019-05-22 21:53:46.123381+00	17	\N	Number
+323	Couple+2 children, Age 30		\N	\N	\N	2019-03-06 01:00:58.100458+00	2019-05-22 21:53:46.127019+00	17	\N	Number
+324	Individual+2 children, Age 21		\N	\N	\N	2019-03-06 01:00:58.105221+00	2019-05-22 21:53:46.132041+00	17	\N	Number
+325	Premium Couple 30		\N	\N	\N	2019-03-06 01:00:58.109992+00	2019-05-22 21:53:46.13597+00	17	\N	Number
+326	Couple+3 or more Children, Age 50		\N	\N	\N	2019-03-06 01:00:58.115084+00	2019-05-22 21:53:46.139935+00	17	\N	Number
+327	Couple+3 or more Children, Age 21		\N	\N	\N	2019-03-06 01:00:58.120307+00	2019-05-22 21:53:46.144038+00	17	\N	Number
+328	Couple+1 child, Age 30		\N	\N	\N	2019-03-06 01:00:58.125113+00	2019-05-22 21:53:46.148085+00	17	\N	Number
+329	Specialty Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.130428+00	2019-05-22 21:53:46.152172+00	17	\N	Text
+330	Inpatient Physician - standard		\N	\N	\N	2019-03-06 01:00:58.135211+00	2019-05-22 21:53:46.156281+00	17	\N	Text
+331	Non-preferred Brand Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.140321+00	2019-05-22 21:53:46.160134+00	17	\N	Text
+332	Preferred Brand Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.145456+00	2019-05-22 21:53:46.165276+00	17	\N	Text
+333	Primary Care Physician  - standard		\N	\N	\N	2019-03-06 01:00:58.150312+00	2019-05-22 21:53:46.169109+00	17	\N	Text
+334	Drug Deductible - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.15556+00	2019-05-22 21:53:46.173286+00	17	\N	Text
+335	Emergency Room  - standard		\N	\N	\N	2019-03-06 01:00:58.16073+00	2019-05-22 21:53:46.176886+00	17	\N	Text
+336	Inpatient Facility  - standard		\N	\N	\N	2019-03-06 01:00:58.165754+00	2019-05-22 21:53:46.182363+00	17	\N	Text
+337	Drug Maximum Out of Pocket - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:58.170889+00	2019-05-22 21:53:46.187787+00	17	\N	Text
+338	Medical Deductible - family - 73 percent		\N	\N	\N	2019-03-06 01:00:58.175485+00	2019-05-22 21:53:46.191615+00	17	\N	Text
+339	Generic Drugs - standard		\N	\N	\N	2019-03-06 01:00:58.180278+00	2019-05-22 21:53:46.195862+00	17	\N	Text
+340	Medical Deductible - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:58.185542+00	2019-05-22 21:53:46.199641+00	17	\N	Text
+341	Drug Deductible - family - 73 percent		\N	\N	\N	2019-03-06 01:00:58.190354+00	2019-05-22 21:53:46.203697+00	17	\N	Text
+342	Primary Care Physician - 73 percent		\N	\N	\N	2019-03-06 01:00:58.195439+00	2019-05-22 21:53:46.207505+00	17	\N	Text
+343	Specialist - 73 percent		\N	\N	\N	2019-03-06 01:00:58.200516+00	2019-05-22 21:53:46.212504+00	17	\N	Text
+344	Medical Maximum Out Of Pocket - individual - standard		\N	\N	\N	2019-03-06 01:00:58.205518+00	2019-05-22 21:53:46.216217+00	17	\N	Text
+345	Drug Maximum Out of Pocket - individual - standard		\N	\N	\N	2019-03-06 01:00:58.210468+00	2019-05-22 21:53:46.22019+00	17	\N	Text
+346	Medical Maximum Out of Pocket - family - standard		\N	\N	\N	2019-03-06 01:00:58.215277+00	2019-05-22 21:53:46.224295+00	17	\N	Text
+347	Drug Maximum Out of Pocket - Family  - standard		\N	\N	\N	2019-03-06 01:00:58.220718+00	2019-05-22 21:53:46.227962+00	17	\N	Text
+348	Medical Deductible - individual - standard		\N	\N	\N	2019-03-06 01:00:58.225896+00	2019-05-22 21:53:46.232277+00	17	\N	Text
+349	Drug Deductible - individual - standard		\N	\N	\N	2019-03-06 01:00:58.230979+00	2019-05-22 21:53:46.235894+00	17	\N	Text
+350	Medical Deductible -family - standard		\N	\N	\N	2019-03-06 01:00:58.235892+00	2019-05-22 21:53:46.239929+00	17	\N	Text
+351	Medical Maximum Out Of Pocket -individual - 94 percent		\N	\N	\N	2019-03-06 01:00:58.240859+00	2019-05-22 21:53:46.243603+00	17	\N	Text
+352	Medical Deductible - individual - 94 percent		\N	\N	\N	2019-03-06 01:00:58.246065+00	2019-05-22 21:53:46.247701+00	17	\N	Text
+353	Specialty Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.251601+00	2019-05-22 21:53:46.251475+00	17	\N	Text
+354	Non-preferred Brand Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.256588+00	2019-05-22 21:53:46.255496+00	17	\N	Text
+355	Preferred Brand Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.261595+00	2019-05-22 21:53:46.259113+00	17	\N	Text
+356	Generic Drugs - 87 percent		\N	\N	\N	2019-03-06 01:00:58.266521+00	2019-05-22 21:53:46.262757+00	17	\N	Text
+357	Inpatient Physician - 87 percent		\N	\N	\N	2019-03-06 01:00:58.271469+00	2019-05-22 21:53:46.266661+00	17	\N	Text
+358	Inpatient Facility - 87 percent		\N	\N	\N	2019-03-06 01:00:58.276341+00	2019-05-22 21:53:46.270976+00	17	\N	Text
+359	Drug Deductible - family - 94 percent		\N	\N	\N	2019-03-06 01:00:58.281022+00	2019-05-22 21:53:46.275056+00	17	\N	Text
+360	Plan Brochure URL		\N	\N	\N	2019-03-06 01:00:58.285676+00	2019-05-22 21:53:46.279276+00	17	\N	URL
+361	Network URL		\N	\N	\N	2019-03-06 01:00:58.290677+00	2019-05-22 21:53:46.283804+00	17	\N	URL
+362	Drug Formulary URL		\N	\N	\N	2019-03-06 01:00:58.296208+00	2019-05-22 21:53:46.28814+00	17	\N	URL
+363	Medical Deductible - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.303603+00	2019-05-22 21:53:46.292104+00	17	\N	Text
+364	Customer Service Phone Number Toll Free		\N	\N	\N	2019-03-06 01:00:58.308494+00	2019-05-22 21:53:46.295593+00	17	\N	Text
+365	State		\N	\N	\N	2019-03-06 01:00:58.313421+00	2019-05-22 21:53:46.299602+00	17	\N	Text
+366	Issuer Name		\N	\N	\N	2019-03-06 01:00:58.318436+00	2019-05-22 21:53:46.30311+00	17	\N	Text
+367	Plan ID - Standard Component		\N	\N	\N	2019-03-06 01:00:58.323423+00	2019-05-22 21:53:46.309079+00	17	\N	Text
+368	Medical Deductible - family - 87 percent		\N	\N	\N	2019-03-06 01:00:58.328601+00	2019-05-22 21:53:46.313952+00	17	\N	Text
+369	87 Percent Actuarial Value Silver Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:58.333652+00	2019-05-22 21:53:46.317539+00	17	\N	Text
+370	Specialist - 87 percent		\N	\N	\N	2019-03-06 01:00:58.338596+00	2019-05-22 21:53:46.321929+00	17	\N	Text
+371	Primary Care Physician - 87 percent		\N	\N	\N	2019-03-06 01:00:58.343796+00	2019-05-22 21:53:46.325771+00	17	\N	Text
+372	Medical Maximum Out of Pocket - family - 87 percent		\N	\N	\N	2019-03-06 01:00:58.349122+00	2019-05-22 21:53:46.329643+00	17	\N	Text
+373	Medical Maximum Out Of Pocket - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.354353+00	2019-05-22 21:53:46.333674+00	17	\N	Text
+374	Drug Maximum Out of Pocket - individual - 87 percent		\N	\N	\N	2019-03-06 01:00:58.360008+00	2019-05-22 21:53:46.338669+00	17	\N	Text
+375	Summary of Benefits URL		\N	\N	\N	2019-03-06 01:00:58.365214+00	2019-05-22 21:53:46.343197+00	17	\N	URL
+376	Plan Marketing Name		\N	\N	\N	2019-03-06 01:00:58.370511+00	2019-05-22 21:53:46.347385+00	17	\N	Text
+377	Child Only Offering		\N	\N	\N	2019-03-06 01:00:58.375357+00	2019-05-22 21:53:46.351517+00	17	\N	Text
+378	Rating Area		\N	\N	\N	2019-03-06 01:00:58.380137+00	2019-05-22 21:53:46.355407+00	17	\N	Text
+379	Customer Service Phone Number TTY		\N	\N	\N	2019-03-06 01:00:58.384874+00	2019-05-22 21:53:46.358784+00	17	\N	Text
+380	Drug Deductible - family - 87 percent		\N	\N	\N	2019-03-06 01:00:58.389762+00	2019-05-22 21:53:46.362496+00	17	\N	Text
+381	Preferred Brand Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:58.394652+00	2019-05-22 21:53:46.3666+00	17	\N	Text
+382	73 Percent Actuarial Value Silver Plan Cost Sharing		\N	\N	\N	2019-03-06 01:00:58.399307+00	2019-05-22 21:53:46.371107+00	17	\N	Text
+383	Medical Maximum Out Of Pocket - individual - 73 percent		\N	\N	\N	2019-03-06 01:00:58.404116+00	2019-05-22 21:53:46.374708+00	17	\N	Text
+384	Non-preferred Brand Drugs - 73 percent		\N	\N	\N	2019-03-06 01:00:58.40899+00	2019-05-22 21:53:46.37815+00	17	\N	Text
+385	Inpatient Physician - 73 percent		\N	\N	\N	2019-03-06 01:00:58.413758+00	2019-05-22 21:53:46.384081+00	17	\N	Text
+386	Inpatient Facility - 73 percent		\N	\N	\N	2019-03-06 01:00:58.418806+00	2019-05-22 21:53:46.387798+00	17	\N	Text
+387	Child Dental		\N	\N	\N	2019-03-06 01:00:58.424755+00	2019-05-22 21:53:46.39192+00	17	\N	Text
+388	Adult Dental		\N	\N	\N	2019-03-06 01:00:58.429467+00	2019-05-22 21:53:46.395273+00	17	\N	Text
+389	Emergency Room - 94 percent		\N	\N	\N	2019-03-06 01:00:58.435413+00	2019-05-22 21:53:46.39902+00	17	\N	Text
+390	Medical Maximum Out of Pocket - family - 94 percent		\N	\N	\N	2019-03-06 01:00:58.44074+00	2019-05-22 21:53:46.402691+00	17	\N	Text
+391	Preferred Brand Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:58.445425+00	2019-05-22 21:53:46.406445+00	17	\N	Text
+392	Generic Drugs - 94 percent		\N	\N	\N	2019-03-06 01:00:58.450361+00	2019-05-22 21:53:46.411608+00	17	\N	Text
+393	Inpatient Physician  - 94 percent		\N	\N	\N	2019-03-06 01:00:58.454949+00	2019-05-22 21:53:46.415889+00	17	\N	Text
+394	Emergency Room - 87 percent		\N	\N	\N	2019-03-06 01:00:58.459977+00	2019-05-22 21:53:46.419938+00	17	\N	Text
+433	Type	Type of License\n\n	\N	\N	\N	2019-03-06 01:00:58.967163+00	2019-05-22 21:53:46.442594+00	21	\N	Text
+435	License Number	FHV License Number\n	\N	\N	\N	2019-03-06 01:00:58.977616+00	2019-05-22 21:53:46.447287+00	21	\N	Number
+431	Wheelchair Accessible Trained	WAV if Wheelchair Accessible Trained\n	\N	\N	\N	2019-03-06 01:00:58.953977+00	2019-05-22 21:53:46.453347+00	21	\N	Text
+432	Expiration Date	Expiration Date\n\n\n	\N	\N	\N	2019-03-06 01:00:58.961269+00	2019-05-22 21:53:46.458736+00	21	\N	Calendar date
+430	Last Date Updated	Last Date Updated	\N	\N	\N	2019-03-06 01:00:58.948131+00	2019-05-22 21:53:46.463107+00	21	\N	Calendar date
+434	Name	Driver Name\n\n	\N	\N	\N	2019-03-06 01:00:58.972416+00	2019-05-22 21:53:46.46686+00	21	\N	Text
+429	Last Time Updated	Last Time Updated	\N	\N	\N	2019-03-06 01:00:58.942716+00	2019-05-22 21:53:46.471198+00	21	\N	Text
+407	Notifications		\N	\N	\N	2019-03-06 01:00:58.694471+00	2019-05-22 21:53:46.496083+00	19	\N	Text
+408	Web Site		\N	\N	\N	2019-03-06 01:00:58.699957+00	2019-05-22 21:53:46.503088+00	19	\N	URL
+409	County		\N	\N	\N	2019-03-06 01:00:58.708638+00	2019-05-22 21:53:46.51041+00	19	\N	Text
+410	User Fees		\N	\N	\N	2019-03-06 01:00:58.713674+00	2019-05-22 21:53:46.515871+00	19	\N	Text
+411	Date received	The date the CFPB received the complaint	\N	\N	\N	2019-03-06 01:00:58.758039+00	2019-05-22 21:53:46.542284+00	20	\N	calendar_date
+412	Product	The type of product the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.76466+00	2019-05-22 21:53:46.546403+00	20	\N	text
+413	Sub-product	The type of sub-product the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.771336+00	2019-05-22 21:53:46.550243+00	20	\N	text
+414	Issue	The issue the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.779152+00	2019-05-22 21:53:46.555208+00	20	\N	text
+415	Sub-issue	The sub-issue the consumer identified in the complaint	\N	\N	\N	2019-03-06 01:00:58.797779+00	2019-05-22 21:53:46.559165+00	20	\N	text
+416	Consumer complaint narrative	Consumer complaint narrative is the consumer-submitted description of "what happened" from the complaint. Consumers must opt-in to share their narrative. We will not publish the narrative unless the consumer consents, and consumers can opt-out at any time. The CFPB takes reasonable steps to scrub personal information from each complaint that could be used to identify the consumer.	\N	\N	\N	2019-03-06 01:00:58.812928+00	2019-05-22 21:53:46.563058+00	20	\N	text
+417	Company public response	The company's optional, public-facing response to a consumer's complaint. Companies provide a public response to the CFPB, for posting on the public database, by selecting a response from a set list of options.	\N	\N	\N	2019-03-06 01:00:58.827641+00	2019-05-22 21:53:46.566969+00	20	\N	text
+418	Company	The complaint is about this company	\N	\N	\N	2019-03-06 01:00:58.838255+00	2019-05-22 21:53:46.570878+00	20	\N	text
+419	State	The consumer’s reported mailing state for the complaint	\N	\N	\N	2019-03-06 01:00:58.845035+00	2019-05-22 21:53:46.574664+00	20	\N	text
+420	ZIP code	Mailing ZIP code provided by the consumer. This field may: i) include the first five digits of a ZIP code; ii) include the first three digits of a ZIP code (if the consumer consented to publication of their complaint narrative); or iii) be blank (if ZIP codes have been submitted with non-numeric values, if there are less than 20,000 people in a given ZIP code, or if the complaint has an address outside of the United States).	\N	\N	\N	2019-03-06 01:00:58.851073+00	2019-05-22 21:53:46.578704+00	20	\N	text
+421	Tags	Data that supports easier searching and sorting of complaints submitted by or on behalf of consumers	\N	\N	\N	2019-03-06 01:00:58.864328+00	2019-05-22 21:53:46.582659+00	20	\N	text
+422	Consumer consent provided?	Identifies whether the consumer opted in to publish their complaint narrative	\N	\N	\N	2019-03-06 01:00:58.87033+00	2019-05-22 21:53:46.586606+00	20	\N	text
+423	Submitted via	How the complaint was submitted to CFPB	\N	\N	\N	2019-03-06 01:00:58.875813+00	2019-05-22 21:53:46.591265+00	20	\N	text
+424	Date sent to company	The date the CFPB sent the complaint to the company	\N	\N	\N	2019-03-06 01:00:58.880945+00	2019-05-22 21:53:46.595658+00	20	\N	calendar_date
+425	Company response to consumer	This is how the company responded	\N	\N	\N	2019-03-06 01:00:58.886287+00	2019-05-22 21:53:46.599902+00	20	\N	text
+426	Timely response?	Whether the company gave a timely response	\N	\N	\N	2019-03-06 01:00:58.892013+00	2019-05-22 21:53:46.603566+00	20	\N	text
+427	Consumer disputed?	Whether the consumer disputed the company’s response	\N	\N	\N	2019-03-06 01:00:58.897265+00	2019-05-22 21:53:46.607311+00	20	\N	text
+428	Complaint ID	The unique identification number for a complaint	\N	\N	\N	2019-03-06 01:00:58.902085+00	2019-05-22 21:53:46.611413+00	20	\N	number
+437	Business Name		\N	\N	\N	2019-03-06 01:00:59.025287+00	2019-05-22 21:53:46.633685+00	22	\N	Text
+436	City		\N	\N	\N	2019-03-06 01:00:59.018645+00	2019-05-22 21:53:46.637785+00	22	\N	Text
+440	License Number		\N	\N	\N	2019-03-06 01:00:59.041819+00	2019-05-22 21:53:46.642361+00	22	\N	Text
+439	License Type		\N	\N	\N	2019-03-06 01:00:59.036038+00	2019-05-22 21:53:46.646552+00	22	\N	Text
+438	Zip Code		\N	\N	\N	2019-03-06 01:00:59.030688+00	2019-05-22 21:53:46.651471+00	22	\N	Text
+441	Business Name		\N	\N	\N	2019-03-06 01:00:59.082407+00	2019-05-22 21:53:46.673891+00	23	\N	Text
+442	License Type		\N	\N	\N	2019-03-06 01:00:59.088579+00	2019-05-22 21:53:46.67788+00	23	\N	Text
+443	License Number		\N	\N	\N	2019-03-06 01:00:59.094428+00	2019-05-22 21:53:46.681722+00	23	\N	Text
+445	Zip Code		\N	\N	\N	2019-03-06 01:00:59.105246+00	2019-05-22 21:53:46.685485+00	23	\N	Text
+444	City		\N	\N	\N	2019-03-06 01:00:59.100032+00	2019-05-22 21:53:46.689557+00	23	\N	Text
+578	 PIN7		\N	\N	\N	2019-03-06 01:01:00.07574+00	2019-05-22 21:53:46.710355+00	25	\N	Text
+535	CONTRACTOR_1_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.751147+00	2019-05-22 21:53:46.714872+00	25	\N	Text
+517	CONTRACTOR_4_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.614473+00	2019-05-22 21:53:46.720232+00	25	\N	Text
+538	CONTRACTOR_3_TYPE		\N	\N	\N	2019-03-06 01:00:59.791905+00	2019-05-22 21:53:46.72496+00	25	\N	Text
+480	CONTRACTOR_4_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.378465+00	2019-05-22 21:53:46.729044+00	25	\N	Text
+499	CONTRACTOR_10_CITY		\N	\N	\N	2019-03-06 01:00:59.487353+00	2019-05-22 21:53:46.73279+00	25	\N	Text
+555	CONTRACTOR_11_NAME		\N	\N	\N	2019-03-06 01:00:59.939472+00	2019-05-22 21:53:46.736448+00	25	\N	Text
+561	CONTRACTOR_12_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.975798+00	2019-05-22 21:53:46.740859+00	25	\N	Text
+587	        ESTIMATED_COST		\N	\N	\N	2019-03-06 01:01:00.120951+00	2019-05-22 21:53:46.746178+00	25	\N	Number
+493	CONTRACTOR_9_NAME		\N	\N	\N	2019-03-06 01:00:59.455108+00	2019-05-22 21:53:46.750411+00	25	\N	Text
+563	CONTRACTOR_12_STATE		\N	\N	\N	2019-03-06 01:00:59.987145+00	2019-05-22 21:53:46.754016+00	25	\N	Text
+551	CONTRACTOR_14_TYPE		\N	\N	\N	2019-03-06 01:00:59.918188+00	2019-05-22 21:53:46.758037+00	25	\N	Text
+575	     PIN10		\N	\N	\N	2019-03-06 01:01:00.063112+00	2019-05-22 21:53:46.761807+00	25	\N	Text
+570	  SUFFIX		\N	\N	\N	2019-03-06 01:01:00.038416+00	2019-05-22 21:53:46.766123+00	25	\N	Text
+475	CONTRACTOR_14_NAME		\N	\N	\N	2019-03-06 01:00:59.351303+00	2019-05-22 21:53:46.769953+00	25	\N	Text
+524	CONTRACTOR_5_PHONE		\N	\N	\N	2019-03-06 01:00:59.652818+00	2019-05-22 21:53:46.774452+00	25	\N	Text
+485	LOCATION		\N	\N	\N	2019-03-06 01:00:59.410405+00	2019-05-22 21:53:46.778018+00	25	\N	Point
+549	CONTRACTOR_14_STATE		\N	\N	\N	2019-03-06 01:00:59.905928+00	2019-05-22 21:53:46.782524+00	25	\N	Text
+565	CONTRACTOR_11_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.998409+00	2019-05-22 21:53:46.78664+00	25	\N	Text
+501	CONTRACTOR_9_STATE		\N	\N	\N	2019-03-06 01:00:59.498655+00	2019-05-22 21:53:46.79117+00	25	\N	Text
+509	CONTRACTOR_7_PHONE		\N	\N	\N	2019-03-06 01:00:59.57322+00	2019-05-22 21:53:46.795112+00	25	\N	Text
+569	 PIN5		\N	\N	\N	2019-03-06 01:01:00.034004+00	2019-05-22 21:53:46.799143+00	25	\N	Text
+566	CONTRACTOR_12_NAME		\N	\N	\N	2019-03-06 01:01:00.004052+00	2019-05-22 21:53:46.802752+00	25	\N	Text
+533	CONTRACTOR_1_STATE		\N	\N	\N	2019-03-06 01:00:59.732249+00	2019-05-22 21:53:46.806646+00	25	\N	Text
+476	CONTRACTOR_9_CITY		\N	\N	\N	2019-03-06 01:00:59.357013+00	2019-05-22 21:53:46.810551+00	25	\N	Text
+539	CONTRACTOR_15_PHONE		\N	\N	\N	2019-03-06 01:00:59.800157+00	2019-05-22 21:53:46.814387+00	25	\N	Text
+502	CONTRACTOR_9_PHONE		\N	\N	\N	2019-03-06 01:00:59.50434+00	2019-05-22 21:53:46.818559+00	25	\N	Text
+457	CONTRACTOR_10_PHONE		\N	\N	\N	2019-03-06 01:00:59.246689+00	2019-05-22 21:53:46.822223+00	25	\N	Text
+548	CONTRACTOR_14_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.89993+00	2019-05-22 21:53:46.825894+00	25	\N	Text
+580	ID		\N	\N	\N	2019-03-06 01:01:00.084587+00	2019-05-22 21:53:46.829828+00	25	\N	Text
+460	CONTRACTOR_13_TYPE		\N	\N	\N	2019-03-06 01:00:59.265588+00	2019-05-22 21:53:46.833791+00	25	\N	Text
+481	CONTRACTOR_12_TYPE		\N	\N	\N	2019-03-06 01:00:59.384342+00	2019-05-22 21:53:46.837674+00	25	\N	Text
+556	CONTRACTOR_11_STATE		\N	\N	\N	2019-03-06 01:00:59.946042+00	2019-05-22 21:53:46.842878+00	25	\N	Text
+554	CONTRACTOR_11_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.934216+00	2019-05-22 21:53:46.846708+00	25	\N	Text
+458	CONTRACTOR_10_STATE		\N	\N	\N	2019-03-06 01:00:59.252977+00	2019-05-22 21:53:46.851186+00	25	\N	Text
+500	CONTRACTOR_10_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.493104+00	2019-05-22 21:53:46.855217+00	25	\N	Text
+515	CONTRACTOR_7_CITY		\N	\N	\N	2019-03-06 01:00:59.603689+00	2019-05-22 21:53:46.859723+00	25	\N	Text
+522	CONTRACTOR_5_STATE		\N	\N	\N	2019-03-06 01:00:59.641827+00	2019-05-22 21:53:46.864241+00	25	\N	Text
+527	CONTRACTOR_4_PHONE		\N	\N	\N	2019-03-06 01:00:59.67748+00	2019-05-22 21:53:46.869116+00	25	\N	Text
+571	STREET_NAME		\N	\N	\N	2019-03-06 01:01:00.043209+00	2019-05-22 21:53:46.873634+00	25	\N	Text
+477	PERMIT#		\N	\N	\N	2019-03-06 01:00:59.362463+00	2019-05-22 21:53:46.877507+00	25	\N	Text
+583	STREET_NUMBER		\N	\N	\N	2019-03-06 01:01:00.098004+00	2019-05-22 21:53:46.881554+00	25	\N	Number
+568	   PIN2		\N	\N	\N	2019-03-06 01:01:00.026432+00	2019-05-22 21:53:46.885237+00	25	\N	Text
+1036	LOCATION (state)		\N	\N	\N	2019-05-22 21:53:46.890544+00	2019-05-22 21:53:46.890568+00	25	\N	Text
+488	 PIN8		\N	\N	\N	2019-03-06 01:00:59.427742+00	2019-05-22 21:53:46.893867+00	25	\N	Text
+1037	LOCATION (city)		\N	\N	\N	2019-05-22 21:53:46.898078+00	2019-05-22 21:53:46.898103+00	25	\N	Text
+1038	Boundaries - ZIP Codes		\N	\N	\N	2019-05-22 21:53:46.90166+00	2019-05-22 21:53:46.901684+00	25	\N	Number
+1039	Community Areas		\N	\N	\N	2019-05-22 21:53:46.905284+00	2019-05-22 21:53:46.90531+00	25	\N	Number
+1040	Zip Codes		\N	\N	\N	2019-05-22 21:53:46.908757+00	2019-05-22 21:53:46.908782+00	25	\N	Number
+577	CONTRACTOR_1_NAME		\N	\N	\N	2019-03-06 01:01:00.071452+00	2019-05-22 21:53:46.913836+00	25	\N	Text
+465	CONTRACTOR_1_CITY		\N	\N	\N	2019-03-06 01:00:59.293248+00	2019-05-22 21:53:46.917669+00	25	\N	Text
+534	CONTRACTOR_1_PHONE		\N	\N	\N	2019-03-06 01:00:59.742379+00	2019-05-22 21:53:46.921494+00	25	\N	Text
+520	CONTRACTOR_3_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.631009+00	2019-05-22 21:53:46.925421+00	25	\N	Text
+516	CONTRACTOR_4_CITY		\N	\N	\N	2019-03-06 01:00:59.609009+00	2019-05-22 21:53:46.929709+00	25	\N	Text
+525	CONTRACTOR_5_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.659581+00	2019-05-22 21:53:46.935463+00	25	\N	Text
+508	CONTRACTOR_6_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.567368+00	2019-05-22 21:53:46.942231+00	25	\N	Text
+513	CONTRACTOR_7_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.593914+00	2019-05-22 21:53:46.949098+00	25	\N	Text
+514	CONTRACTOR_7_STATE		\N	\N	\N	2019-03-06 01:00:59.598513+00	2019-05-22 21:53:46.955618+00	25	\N	Text
+557	CONTRACTOR_11_CITY		\N	\N	\N	2019-03-06 01:00:59.951583+00	2019-05-22 21:53:46.96457+00	25	\N	Text
+1041	Census Tracts		\N	\N	\N	2019-05-22 21:53:46.970296+00	2019-05-22 21:53:46.970337+00	25	\N	Number
+1042	Wards		\N	\N	\N	2019-05-22 21:53:46.975476+00	2019-05-22 21:53:46.975506+00	25	\N	Number
+560	CONTRACTOR_12_CITY		\N	\N	\N	2019-03-06 01:00:59.970313+00	2019-05-22 21:53:46.980264+00	25	\N	Text
+486	CONTRACTOR_12_PHONE		\N	\N	\N	2019-03-06 01:00:59.415668+00	2019-05-22 21:53:46.986062+00	25	\N	Text
+545	CONTRACTOR_13_CITY		\N	\N	\N	2019-03-06 01:00:59.85796+00	2019-05-22 21:53:46.993162+00	25	\N	Text
+584	         ISSUE_DATE		\N	\N	\N	2019-03-06 01:01:00.102169+00	2019-05-22 21:53:47.000536+00	25	\N	Calendar date
+581	    TOTAL_FEE	The amount waived plus amount paid plus any amount that may still be outstanding. This total can include various fees that are part of the permit fee, such as zoning, open space, deposit, or missed appointment.  It can also include stop work order fees, reinspection fees, and various penalty fees.	\N	\N	\N	2019-03-06 01:01:00.088877+00	2019-05-22 21:53:47.006993+00	25	\N	Number
+573	WORK_DESCRIPTION		\N	\N	\N	2019-03-06 01:01:00.054277+00	2019-05-22 21:53:47.014198+00	25	\N	Text
+572	   PIN1		\N	\N	\N	2019-03-06 01:01:00.049673+00	2019-05-22 21:53:47.019893+00	25	\N	Text
+579	 PIN6		\N	\N	\N	2019-03-06 01:01:00.080096+00	2019-05-22 21:53:47.026496+00	25	\N	Text
+550	CONTRACTOR_15_TYPE		\N	\N	\N	2019-03-06 01:00:59.9114+00	2019-05-22 21:53:47.032003+00	25	\N	Text
+471	 PIN9		\N	\N	\N	2019-03-06 01:00:59.329444+00	2019-05-22 21:53:47.036899+00	25	\N	Text
+530	CONTRACTOR_2_TYPE		\N	\N	\N	2019-03-06 01:00:59.706223+00	2019-05-22 21:53:47.043031+00	25	\N	Text
+529	CONTRACTOR_2_NAME		\N	\N	\N	2019-03-06 01:00:59.697957+00	2019-05-22 21:53:47.048594+00	25	\N	Text
+1043	:@computed_region_awaf_s7ux		\N	\N	\N	2019-05-22 21:53:47.053439+00	2019-05-22 21:53:47.053467+00	25	\N	Number
+1044	LOCATION (address)		\N	\N	\N	2019-05-22 21:53:47.060819+00	2019-05-22 21:53:47.060847+00	25	\N	Text
+582	STREET DIRECTION		\N	\N	\N	2019-03-06 01:01:00.093564+00	2019-05-22 21:53:47.065012+00	25	\N	Text
+559	CONTRACTOR_11_TYPE		\N	\N	\N	2019-03-06 01:00:59.962324+00	2019-05-22 21:53:47.07056+00	25	\N	Text
+532	CONTRACTOR_2_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.723545+00	2019-05-22 21:53:47.076227+00	25	\N	Text
+531	CONTRACTOR_2_CITY		\N	\N	\N	2019-03-06 01:00:59.715069+00	2019-05-22 21:53:47.081878+00	25	\N	Text
+466	CONTRACTOR_2_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.298572+00	2019-05-22 21:53:47.08748+00	25	\N	Text
+474	CONTRACTOR_2_PHONE		\N	\N	\N	2019-03-06 01:00:59.345979+00	2019-05-22 21:53:47.093099+00	25	\N	Text
+482	CONTRACTOR_3_NAME		\N	\N	\N	2019-03-06 01:00:59.389851+00	2019-05-22 21:53:47.098096+00	25	\N	Text
+536	CONTRACTOR_3_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.769256+00	2019-05-22 21:53:47.103508+00	25	\N	Text
+521	CONTRACTOR_4_TYPE		\N	\N	\N	2019-03-06 01:00:59.636432+00	2019-05-22 21:53:47.109188+00	25	\N	Text
+463	CONTRACTOR_4_NAME		\N	\N	\N	2019-03-06 01:00:59.281978+00	2019-05-22 21:53:47.114746+00	25	\N	Text
+526	CONTRACTOR_5_TYPE		\N	\N	\N	2019-03-06 01:00:59.667812+00	2019-05-22 21:53:47.120109+00	25	\N	Text
+528	CONTRACTOR_5_NAME		\N	\N	\N	2019-03-06 01:00:59.685167+00	2019-05-22 21:53:47.124258+00	25	\N	Text
+464	CONTRACTOR_5_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.287714+00	2019-05-22 21:53:47.127761+00	25	\N	Text
+523	CONTRACTOR_5_CITY		\N	\N	\N	2019-03-06 01:00:59.647478+00	2019-05-22 21:53:47.131644+00	25	\N	Text
+506	CONTRACTOR_6_TYPE		\N	\N	\N	2019-03-06 01:00:59.539168+00	2019-05-22 21:53:47.135756+00	25	\N	Text
+462	CONTRACTOR_6_NAME		\N	\N	\N	2019-03-06 01:00:59.276798+00	2019-05-22 21:53:47.139777+00	25	\N	Text
+507	CONTRACTOR_6_CITY		\N	\N	\N	2019-03-06 01:00:59.553913+00	2019-05-22 21:53:47.143404+00	25	\N	Text
+478	CONTRACTOR_6_STATE		\N	\N	\N	2019-03-06 01:00:59.368095+00	2019-05-22 21:53:47.14733+00	25	\N	Text
+505	CONTRACTOR_6_PHONE		\N	\N	\N	2019-03-06 01:00:59.522513+00	2019-05-22 21:53:47.151436+00	25	\N	Text
+504	CONTRACTOR_7_TYPE		\N	\N	\N	2019-03-06 01:00:59.516533+00	2019-05-22 21:53:47.155261+00	25	\N	Text
+510	CONTRACTOR_7_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.578333+00	2019-05-22 21:53:47.159234+00	25	\N	Text
+511	CONTRACTOR_8_NAME		\N	\N	\N	2019-03-06 01:00:59.583486+00	2019-05-22 21:53:47.163172+00	25	\N	Text
+496	CONTRACTOR_8_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.470849+00	2019-05-22 21:53:47.167143+00	25	\N	Text
+491	CONTRACTOR_8_PHONE		\N	\N	\N	2019-03-06 01:00:59.444808+00	2019-05-22 21:53:47.170931+00	25	\N	Text
+490	CONTRACTOR_9_TYPE		\N	\N	\N	2019-03-06 01:00:59.439371+00	2019-05-22 21:53:47.174893+00	25	\N	Text
+497	CONTRACTOR_10_NAME		\N	\N	\N	2019-03-06 01:00:59.475924+00	2019-05-22 21:53:47.178725+00	25	\N	Text
+562	CONTRACTOR_12_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.98177+00	2019-05-22 21:53:47.182711+00	25	\N	Text
+487	CONTRACTOR_13_NAME		\N	\N	\N	2019-03-06 01:00:59.421377+00	2019-05-22 21:53:47.186312+00	25	\N	Text
+547	CONTRACTOR_13_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.894001+00	2019-05-22 21:53:47.190751+00	25	\N	Text
+546	CONTRACTOR_13_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.888695+00	2019-05-22 21:53:47.194443+00	25	\N	Text
+553	CONTRACTOR_14_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.928753+00	2019-05-22 21:53:47.198281+00	25	\N	Text
+552	CONTRACTOR_14_CITY		\N	\N	\N	2019-03-06 01:00:59.923628+00	2019-05-22 21:53:47.20239+00	25	\N	Text
+543	CONTRACTOR_15_CITY		\N	\N	\N	2019-03-06 01:00:59.834905+00	2019-05-22 21:53:47.206773+00	25	\N	Text
+542	LATITUDE		\N	\N	\N	2019-03-06 01:00:59.823959+00	2019-05-22 21:53:47.21073+00	25	\N	Number
+541	LONGITUDE		\N	\N	\N	2019-03-06 01:00:59.81651+00	2019-05-22 21:53:47.215022+00	25	\N	Number
+479	CONTRACTOR_7_NAME		\N	\N	\N	2019-03-06 01:00:59.373055+00	2019-05-22 21:53:47.218987+00	25	\N	Text
+503	CONTRACTOR_9_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.509776+00	2019-05-22 21:53:47.222829+00	25	\N	Text
+574	CONTRACTOR_1_TYPE		\N	\N	\N	2019-03-06 01:01:00.05873+00	2019-05-22 21:53:47.226669+00	25	\N	Text
+558	CONTRACTOR_10_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.956927+00	2019-05-22 21:53:47.230777+00	25	\N	Text
+540	CONTRACTOR_15_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.80839+00	2019-05-22 21:53:47.234685+00	25	\N	Text
+537	CONTRACTOR_3_STATE		\N	\N	\N	2019-03-06 01:00:59.778949+00	2019-05-22 21:53:47.238736+00	25	\N	Text
+519	CONTRACTOR_3_PHONE		\N	\N	\N	2019-03-06 01:00:59.625615+00	2019-05-22 21:53:47.242641+00	25	\N	Text
+518	CONTRACTOR_4_STATE		\N	\N	\N	2019-03-06 01:00:59.619995+00	2019-05-22 21:53:47.246565+00	25	\N	Text
+498	CONTRACTOR_10_TYPE		\N	\N	\N	2019-03-06 01:00:59.481161+00	2019-05-22 21:53:47.250831+00	25	\N	Text
+494	CONTRACTOR_8_CITY		\N	\N	\N	2019-03-06 01:00:59.460038+00	2019-05-22 21:53:47.254806+00	25	\N	Text
+484	CONTRACTOR_15_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.405037+00	2019-05-22 21:53:47.258797+00	25	\N	Text
+473	  PIN4		\N	\N	\N	2019-03-06 01:00:59.339972+00	2019-05-22 21:53:47.262371+00	25	\N	Text
+472	CONTRACTOR_6_ZIPCODE		\N	\N	\N	2019-03-06 01:00:59.334571+00	2019-05-22 21:53:47.266211+00	25	\N	Text
+470	CONTRACTOR_14_PHONE		\N	\N	\N	2019-03-06 01:00:59.324422+00	2019-05-22 21:53:47.270404+00	25	\N	Text
+469	CONTRACTOR_13_PHONE		\N	\N	\N	2019-03-06 01:00:59.317868+00	2019-05-22 21:53:47.275329+00	25	\N	Text
+468	CONTRACTOR_15_NAME		\N	\N	\N	2019-03-06 01:00:59.309783+00	2019-05-22 21:53:47.279239+00	25	\N	Text
+467	CONTRACTOR_2_STATE		\N	\N	\N	2019-03-06 01:00:59.303764+00	2019-05-22 21:53:47.282906+00	25	\N	Text
+585	  PERMIT_TYPE		\N	\N	\N	2019-03-06 01:01:00.106496+00	2019-05-22 21:53:47.286444+00	25	\N	Text
+564	CONTRACTOR_11_PHONE		\N	\N	\N	2019-03-06 01:00:59.992433+00	2019-05-22 21:53:47.290583+00	25	\N	Text
+461	CONTRACTOR_8_STATE		\N	\N	\N	2019-03-06 01:00:59.271459+00	2019-05-22 21:53:47.29428+00	25	\N	Text
+567	  PIN3		\N	\N	\N	2019-03-06 01:01:00.00939+00	2019-05-22 21:53:47.298003+00	25	\N	Text
+492	CONTRACTOR_9_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.449914+00	2019-05-22 21:53:47.301594+00	25	\N	Text
+1045	LOCATION (zip)		\N	\N	\N	2019-05-22 21:53:47.305343+00	2019-05-22 21:53:47.305369+00	25	\N	Text
+495	CONTRACTOR_8_ADDRESS		\N	\N	\N	2019-03-06 01:00:59.465387+00	2019-05-22 21:53:47.308505+00	25	\N	Text
+512	CONTRACTOR_8_TYPE		\N	\N	\N	2019-03-06 01:00:59.588772+00	2019-05-22 21:53:47.312441+00	25	\N	Text
+489	   AMOUNT_PAID	Fee amount customer has paid.	\N	\N	\N	2019-03-06 01:00:59.433421+00	2019-05-22 21:53:47.316715+00	25	\N	Number
+586	         AMOUNT_WAIVED	Fee amount waived by City Council ordinance	\N	\N	\N	2019-03-06 01:01:00.113034+00	2019-05-22 21:53:47.320535+00	25	\N	Number
+459	CONTRACTOR_15_STATE		\N	\N	\N	2019-03-06 01:00:59.259627+00	2019-05-22 21:53:47.324893+00	25	\N	Text
+544	CONTRACTOR_13_STATE		\N	\N	\N	2019-03-06 01:00:59.847737+00	2019-05-22 21:53:47.328852+00	25	\N	Text
+483	CONTRACTOR_3_CITY		\N	\N	\N	2019-03-06 01:00:59.396357+00	2019-05-22 21:53:47.333049+00	25	\N	Text
+576	CONTRACTOR_1_ADDRESS		\N	\N	\N	2019-03-06 01:01:00.067192+00	2019-05-22 21:53:47.33657+00	25	\N	Text
+455	Street Address		\N	\N	\N	2019-03-06 01:00:59.198367+00	2019-05-22 21:53:47.35828+00	24	\N	Text
+451	CEO Title		\N	\N	\N	2019-03-06 01:00:59.175418+00	2019-05-22 21:53:47.361824+00	24	\N	Text
+450	Agency_Type		\N	\N	\N	2019-03-06 01:00:59.170252+00	2019-05-22 21:53:47.36567+00	24	\N	Text
+452	County Name		\N	\N	\N	2019-03-06 01:00:59.181259+00	2019-05-22 21:53:47.371225+00	24	\N	Text
+447	Street Address 2		\N	\N	\N	2019-03-06 01:00:59.153431+00	2019-05-22 21:53:47.376401+00	24	\N	Text
+456	Voice Number		\N	\N	\N	2019-03-06 01:00:59.203791+00	2019-05-22 21:53:47.380257+00	24	\N	Text
+453	Fax Number		\N	\N	\N	2019-03-06 01:00:59.186955+00	2019-05-22 21:53:47.384117+00	24	\N	Text
+448	Contact Name		\N	\N	\N	2019-03-06 01:00:59.158886+00	2019-05-22 21:53:47.387779+00	24	\N	Text
+449	Zip		\N	\N	\N	2019-03-06 01:00:59.164439+00	2019-05-22 21:53:47.391923+00	24	\N	Text
+446	City		\N	\N	\N	2019-03-06 01:00:59.146162+00	2019-05-22 21:53:47.396186+00	24	\N	Text
+454	Agency Name		\N	\N	\N	2019-03-06 01:00:59.192702+00	2019-05-22 21:53:47.400724+00	24	\N	Text
+622	Facility Number        	The unique number assigned to a facility distinguishing it from the other facilities. Each facility's number falls between 0-99. 	\N	\N	\N	2019-03-06 01:01:00.385088+00	2019-05-22 21:53:47.423534+00	28	\N	text
+623	Space Count	The total number of parking spaces available within the facility.	\N	\N	\N	2019-03-06 01:01:00.389978+00	2019-05-22 21:53:47.427474+00	28	\N	number
+624	Total Spaces	The total number of vehicle parking spaces within the facility	\N	\N	\N	2019-03-06 01:01:00.395527+00	2019-05-22 21:53:47.431339+00	28	\N	number
+625	Last Update	The last date and time information pertaining to the facility was modified.	\N	\N	\N	2019-03-06 01:01:00.40078+00	2019-05-22 21:53:47.43615+00	28	\N	calendar_date
+602	latlng (state)		\N	\N	\N	2019-03-06 01:01:00.223005+00	2019-05-22 21:53:47.458408+00	26	\N	Text
+601	latlng (city)		\N	\N	\N	2019-03-06 01:01:00.218156+00	2019-05-22 21:53:47.463819+00	26	\N	Text
+605	City		\N	\N	\N	2019-03-06 01:01:00.237108+00	2019-05-22 21:53:47.468656+00	26	\N	Text
+588	State		\N	\N	\N	2019-03-06 01:01:00.153563+00	2019-05-22 21:53:47.473782+00	26	\N	Text
+608	First Name		\N	\N	\N	2019-03-06 01:01:00.251659+00	2019-05-22 21:53:47.478203+00	26	\N	Text
+611	latlng		\N	\N	\N	2019-03-06 01:01:00.265974+00	2019-05-22 21:53:47.482908+00	26	\N	Point
+600	latlng (address)		\N	\N	\N	2019-03-06 01:01:00.213509+00	2019-05-22 21:53:47.486834+00	26	\N	Text
+610	Renewal Date		\N	\N	\N	2019-03-06 01:01:00.26108+00	2019-05-22 21:53:47.490541+00	26	\N	Text
+609	Business Phone		\N	\N	\N	2019-03-06 01:01:00.256204+00	2019-05-22 21:53:47.494549+00	26	\N	Text
+607	Last Name		\N	\N	\N	2019-03-06 01:01:00.247027+00	2019-05-22 21:53:47.498972+00	26	\N	Text
+606	Zip Code		\N	\N	\N	2019-03-06 01:01:00.242034+00	2019-05-22 21:53:47.503065+00	26	\N	Number
+592	Sub District		\N	\N	\N	2019-03-06 01:01:00.174643+00	2019-05-22 21:53:47.508622+00	26	\N	Text
+593	District		\N	\N	\N	2019-03-06 01:01:00.178969+00	2019-05-22 21:53:47.514789+00	26	\N	Text
+603	Missouri Counties		\N	\N	\N	2019-03-06 01:01:00.227636+00	2019-05-22 21:53:47.51868+00	26	\N	Number
+604	School Districts		\N	\N	\N	2019-03-06 01:01:00.232123+00	2019-05-22 21:53:47.522575+00	26	\N	Number
+599	Counties		\N	\N	\N	2019-03-06 01:01:00.208697+00	2019-05-22 21:53:47.526485+00	26	\N	Number
+589	Street Name		\N	\N	\N	2019-03-06 01:01:00.1593+00	2019-05-22 21:53:47.530648+00	26	\N	Text
+590	Street Number		\N	\N	\N	2019-03-06 01:01:00.165434+00	2019-05-22 21:53:47.534802+00	26	\N	Number
+591	County		\N	\N	\N	2019-03-06 01:01:00.170266+00	2019-05-22 21:53:47.538668+00	26	\N	Text
+594	License Type		\N	\N	\N	2019-03-06 01:01:00.183548+00	2019-05-22 21:53:47.544531+00	26	\N	Text
+595	DBA Name		\N	\N	\N	2019-03-06 01:01:00.188478+00	2019-05-22 21:53:47.548697+00	26	\N	Text
+596	Licensee Name		\N	\N	\N	2019-03-06 01:01:00.192975+00	2019-05-22 21:53:47.552346+00	26	\N	Text
+597	License Number		\N	\N	\N	2019-03-06 01:01:00.197823+00	2019-05-22 21:53:47.556397+00	26	\N	Number
+598	latlng (zip)		\N	\N	\N	2019-03-06 01:01:00.203811+00	2019-05-22 21:53:47.560194+00	26	\N	Text
+617	Proof		\N	\N	\N	2019-03-06 01:01:00.32863+00	2019-05-22 21:53:47.58398+00	27	\N	Number
+612	Wholesaler Number		\N	\N	\N	2019-03-06 01:01:00.303255+00	2019-05-22 21:53:47.589893+00	27	\N	Number
+618	Type		\N	\N	\N	2019-03-06 01:01:00.33366+00	2019-05-22 21:53:47.59385+00	27	\N	Text
+613	Effective Date		\N	\N	\N	2019-03-06 01:01:00.308526+00	2019-05-22 21:53:47.599167+00	27	\N	Calendar date
+614	Licensee Name		\N	\N	\N	2019-03-06 01:01:00.313577+00	2019-05-22 21:53:47.603268+00	27	\N	Text
+621	Class		\N	\N	\N	2019-03-06 01:01:00.348377+00	2019-05-22 21:53:47.607138+00	27	\N	Text
+620	Brand Number		\N	\N	\N	2019-03-06 01:01:00.343366+00	2019-05-22 21:53:47.610995+00	27	\N	Text
+619	Brand Name		\N	\N	\N	2019-03-06 01:01:00.338408+00	2019-05-22 21:53:47.614929+00	27	\N	Text
+615	Solicitor Number		\N	\N	\N	2019-03-06 01:01:00.318244+00	2019-05-22 21:53:47.618911+00	27	\N	Number
+616	Wholesaler Name		\N	\N	\N	2019-03-06 01:01:00.323609+00	2019-05-22 21:53:47.622709+00	27	\N	Text
+626	Legal 7		\N	\N	\N	2019-03-06 01:01:00.438353+00	2019-05-22 21:53:47.645004+00	29	\N	Text
+644	Mailing Address 2		\N	\N	\N	2019-03-06 01:01:00.527285+00	2019-05-22 21:53:47.649426+00	29	\N	Text
+643	Mailing Address 3		\N	\N	\N	2019-03-06 01:01:00.521949+00	2019-05-22 21:53:47.654568+00	29	\N	Text
+642	Mailing Address 4		\N	\N	\N	2019-03-06 01:01:00.516603+00	2019-05-22 21:53:47.660371+00	29	\N	Text
+641	Legal 1		\N	\N	\N	2019-03-06 01:01:00.511204+00	2019-05-22 21:53:47.664913+00	29	\N	Text
+640	Legal 2		\N	\N	\N	2019-03-06 01:01:00.506222+00	2019-05-22 21:53:47.668888+00	29	\N	Text
+639	Legal 3		\N	\N	\N	2019-03-06 01:01:00.501679+00	2019-05-22 21:53:47.673448+00	29	\N	Text
+638	Legal 4		\N	\N	\N	2019-03-06 01:01:00.496667+00	2019-05-22 21:53:47.677223+00	29	\N	Text
+637	Legal 5		\N	\N	\N	2019-03-06 01:01:00.491967+00	2019-05-22 21:53:47.681907+00	29	\N	Text
+645	Mailing Address 1		\N	\N	\N	2019-03-06 01:01:00.532218+00	2019-05-22 21:53:47.687108+00	29	\N	Text
+635	Legal 8		\N	\N	\N	2019-03-06 01:01:00.482335+00	2019-05-22 21:53:47.691185+00	29	\N	Text
+634	latlng		\N	\N	\N	2019-03-06 01:01:00.477777+00	2019-05-22 21:53:47.695223+00	29	\N	Point
+633	latlng (address)		\N	\N	\N	2019-03-06 01:01:00.472762+00	2019-05-22 21:53:47.699812+00	29	\N	Text
+632	latlng (city)		\N	\N	\N	2019-03-06 01:01:00.468117+00	2019-05-22 21:53:47.703449+00	29	\N	Text
+631	latlng (state)		\N	\N	\N	2019-03-06 01:01:00.463419+00	2019-05-22 21:53:47.707307+00	29	\N	Text
+630	latlng (zip)		\N	\N	\N	2019-03-06 01:01:00.458599+00	2019-05-22 21:53:47.711459+00	29	\N	Text
+646	Zip Code		\N	\N	\N	2019-03-06 01:01:00.537336+00	2019-05-22 21:53:47.715842+00	29	\N	Text
+647	State		\N	\N	\N	2019-03-06 01:01:00.5419+00	2019-05-22 21:53:47.719758+00	29	\N	Text
+648	City		\N	\N	\N	2019-03-06 01:01:00.546712+00	2019-05-22 21:53:47.723654+00	29	\N	Text
+649	Street		\N	\N	\N	2019-03-06 01:01:00.552926+00	2019-05-22 21:53:47.727375+00	29	\N	Text
+650	Street Number		\N	\N	\N	2019-03-06 01:01:00.558033+00	2019-05-22 21:53:47.731491+00	29	\N	Text
+651	County		\N	\N	\N	2019-03-06 01:01:00.56395+00	2019-05-22 21:53:47.73557+00	29	\N	Text
+652	SubDistrict		\N	\N	\N	2019-03-06 01:01:00.568987+00	2019-05-22 21:53:47.73953+00	29	\N	Text
+653	District		\N	\N	\N	2019-03-06 01:01:00.574232+00	2019-05-22 21:53:47.74335+00	29	\N	Text
+654	Last Name		\N	\N	\N	2019-03-06 01:01:00.579041+00	2019-05-22 21:53:47.747335+00	29	\N	Text
+655	First Name		\N	\N	\N	2019-03-06 01:01:00.584032+00	2019-05-22 21:53:47.751761+00	29	\N	Text
+656	Manager Phone		\N	\N	\N	2019-03-06 01:01:00.588698+00	2019-05-22 21:53:47.755651+00	29	\N	Text
+657	Business Phone		\N	\N	\N	2019-03-06 01:01:00.59407+00	2019-05-22 21:53:47.759527+00	29	\N	Text
+658	Expiration Date		\N	\N	\N	2019-03-06 01:01:00.598731+00	2019-05-22 21:53:47.763704+00	29	\N	Calendar date
+659	Fee Type		\N	\N	\N	2019-03-06 01:01:00.603539+00	2019-05-22 21:53:47.767922+00	29	\N	Text
+660	Fee Date		\N	\N	\N	2019-03-06 01:01:00.608393+00	2019-05-22 21:53:47.77188+00	29	\N	Calendar date
+661	Effective Date		\N	\N	\N	2019-03-06 01:01:00.613017+00	2019-05-22 21:53:47.776673+00	29	\N	Calendar date
+662	Current Status		\N	\N	\N	2019-03-06 01:01:00.617941+00	2019-05-22 21:53:47.78073+00	29	\N	Text
+663	License Type		\N	\N	\N	2019-03-06 01:01:00.623187+00	2019-05-22 21:53:47.785569+00	29	\N	Text
+664	DBA Name		\N	\N	\N	2019-03-06 01:01:00.627865+00	2019-05-22 21:53:47.790053+00	29	\N	Text
+665	Licensee Name		\N	\N	\N	2019-03-06 01:01:00.63305+00	2019-05-22 21:53:47.794214+00	29	\N	Text
+666	License Number		\N	\N	\N	2019-03-06 01:01:00.639903+00	2019-05-22 21:53:47.798332+00	29	\N	Number
+627	Counties		\N	\N	\N	2019-03-06 01:01:00.443316+00	2019-05-22 21:53:47.802285+00	29	\N	Number
+628	School Districts		\N	\N	\N	2019-03-06 01:01:00.448029+00	2019-05-22 21:53:47.806129+00	29	\N	Number
+629	Missouri Counties		\N	\N	\N	2019-03-06 01:01:00.453091+00	2019-05-22 21:53:47.810194+00	29	\N	Number
+636	Legal 6		\N	\N	\N	2019-03-06 01:01:00.48718+00	2019-05-22 21:53:47.813778+00	29	\N	Text
+694	Lien Satisfaction Date		\N	\N	\N	2019-03-06 01:01:00.866347+00	2019-05-22 21:53:47.835584+00	31	\N	Calendar date
+693	Child Support Lien Date		\N	\N	\N	2019-03-06 01:01:00.854343+00	2019-05-22 21:53:47.841661+00	31	\N	Calendar date
+690	VIN Number		\N	\N	\N	2019-03-06 01:01:00.835663+00	2019-05-22 21:53:47.848217+00	31	\N	Text
+692	Year		\N	\N	\N	2019-03-06 01:01:00.845054+00	2019-05-22 21:53:47.852547+00	31	\N	Number
+691	Make		\N	\N	\N	2019-03-06 01:01:00.840477+00	2019-05-22 21:53:47.856864+00	31	\N	Text
+688	School Districts		\N	\N	\N	2019-03-06 01:01:00.790557+00	2019-05-22 21:53:47.881363+00	30	\N	Number
+685	LATLNG (state)		\N	\N	\N	2019-03-06 01:01:00.776325+00	2019-05-22 21:53:47.885278+00	30	\N	Text
+683	LATLNG (address)		\N	\N	\N	2019-03-06 01:01:00.755769+00	2019-05-22 21:53:47.888674+00	30	\N	Text
+682	LATLNG	Latitude and Longitude for address information	\N	\N	\N	2019-03-06 01:01:00.751238+00	2019-05-22 21:53:47.892798+00	30	\N	Point
+680	DISTRICT		\N	\N	\N	2019-03-06 01:01:00.741385+00	2019-05-22 21:53:47.896758+00	30	\N	Text
+679	COUNTY		\N	\N	\N	2019-03-06 01:01:00.736507+00	2019-05-22 21:53:47.901082+00	30	\N	Text
+678	SECONDARY TYPE		\N	\N	\N	2019-03-06 01:01:00.731981+00	2019-05-22 21:53:47.905317+00	30	\N	Text
+677	PRIMARY TYPE		\N	\N	\N	2019-03-06 01:01:00.727169+00	2019-05-22 21:53:47.909312+00	30	\N	Text
+676	SECONDARY LICENSE		\N	\N	\N	2019-03-06 01:01:00.722453+00	2019-05-22 21:53:47.913162+00	30	\N	Number
+675	PRIMARY LICENSE		\N	\N	\N	2019-03-06 01:01:00.717658+00	2019-05-22 21:53:47.91859+00	30	\N	Number
+674	PHONE NUMBER		\N	\N	\N	2019-03-06 01:01:00.712998+00	2019-05-22 21:53:47.922441+00	30	\N	Text
+686	LATLNG (zip)		\N	\N	\N	2019-03-06 01:01:00.781597+00	2019-05-22 21:53:47.926702+00	30	\N	Text
+672	STATE		\N	\N	\N	2019-03-06 01:01:00.703493+00	2019-05-22 21:53:47.930357+00	30	\N	Text
+671	CITY		\N	\N	\N	2019-03-06 01:01:00.698497+00	2019-05-22 21:53:47.934551+00	30	\N	Text
+670	STREET		\N	\N	\N	2019-03-06 01:01:00.693465+00	2019-05-22 21:53:47.938311+00	30	\N	Text
+668	DBANAME		\N	\N	\N	2019-03-06 01:01:00.683896+00	2019-05-22 21:53:47.942206+00	30	\N	Text
+667	LICENSEE		\N	\N	\N	2019-03-06 01:01:00.679005+00	2019-05-22 21:53:47.945762+00	30	\N	Text
+681	SUBDIST		\N	\N	\N	2019-03-06 01:01:00.745888+00	2019-05-22 21:53:47.950144+00	30	\N	Text
+689	Counties		\N	\N	\N	2019-03-06 01:01:00.795261+00	2019-05-22 21:53:47.95393+00	30	\N	Number
+673	ZIPCODE		\N	\N	\N	2019-03-06 01:01:00.708201+00	2019-05-22 21:53:47.957963+00	30	\N	Text
+687	Missouri Counties		\N	\N	\N	2019-03-06 01:01:00.785974+00	2019-05-22 21:53:47.961638+00	30	\N	Number
+684	LATLNG (city)		\N	\N	\N	2019-03-06 01:01:00.760934+00	2019-05-22 21:53:47.965509+00	30	\N	Text
+669	STREET NUMBER		\N	\N	\N	2019-03-06 01:01:00.688598+00	2019-05-22 21:53:47.969625+00	30	\N	Text
+711	latlng (address)		\N	\N	\N	2019-03-06 01:01:01.111881+00	2019-05-22 21:53:47.998908+00	32	\N	Text
+713	Zip Code		\N	\N	\N	2019-03-06 01:01:01.124135+00	2019-05-22 21:53:48.003007+00	32	\N	Text
+714	State		\N	\N	\N	2019-03-06 01:01:01.130568+00	2019-05-22 21:53:48.008626+00	32	\N	Text
+715	City		\N	\N	\N	2019-03-06 01:01:01.136416+00	2019-05-22 21:53:48.013958+00	32	\N	Text
+701	Original Date		\N	\N	\N	2019-03-06 01:01:01.043999+00	2019-05-22 21:53:48.019078+00	32	\N	Calendar date
+700	District		\N	\N	\N	2019-03-06 01:01:01.035231+00	2019-05-22 21:53:48.023415+00	32	\N	Number
+696	SubDistrict		\N	\N	\N	2019-03-06 01:01:00.978698+00	2019-05-22 21:53:48.02784+00	32	\N	Number
+716	Street		\N	\N	\N	2019-03-06 01:01:01.143102+00	2019-05-22 21:53:48.032207+00	32	\N	Text
+717	Street Number		\N	\N	\N	2019-03-06 01:01:01.148916+00	2019-05-22 21:53:48.036255+00	32	\N	Text
+695	County		\N	\N	\N	2019-03-06 01:01:00.939482+00	2019-05-22 21:53:48.040155+00	32	\N	Number
+703	Current Status		\N	\N	\N	2019-03-06 01:01:01.059196+00	2019-05-22 21:53:48.044316+00	32	\N	Text
+704	License Type		\N	\N	\N	2019-03-06 01:01:01.06568+00	2019-05-22 21:53:48.048275+00	32	\N	Text
+705	BusinessType		\N	\N	\N	2019-03-06 01:01:01.071295+00	2019-05-22 21:53:48.052316+00	32	\N	Text
+706	DBAName		\N	\N	\N	2019-03-06 01:01:01.077737+00	2019-05-22 21:53:48.056273+00	32	\N	Text
+708	Licensee		\N	\N	\N	2019-03-06 01:01:01.09067+00	2019-05-22 21:53:48.06171+00	32	\N	Text
+697	License Number		\N	\N	\N	2019-03-06 01:01:00.999701+00	2019-05-22 21:53:48.065943+00	32	\N	Text
+699	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.022+00	2019-05-22 21:53:48.069908+00	32	\N	Number
+698	School Districts		\N	\N	\N	2019-03-06 01:01:01.008674+00	2019-05-22 21:53:48.073505+00	32	\N	Number
+702	Counties		\N	\N	\N	2019-03-06 01:01:01.054139+00	2019-05-22 21:53:48.077081+00	32	\N	Number
+712	latlng		\N	\N	\N	2019-03-06 01:01:01.118802+00	2019-05-22 21:53:48.080765+00	32	\N	Point
+707	latlng (zip)		\N	\N	\N	2019-03-06 01:01:01.084795+00	2019-05-22 21:53:48.084581+00	32	\N	Text
+709	latlng (state)		\N	\N	\N	2019-03-06 01:01:01.096174+00	2019-05-22 21:53:48.088689+00	32	\N	Text
+710	latlng (city)		\N	\N	\N	2019-03-06 01:01:01.103388+00	2019-05-22 21:53:48.092618+00	32	\N	Text
+820	MSA Title		\N	\N	\N	2019-03-06 01:01:01.910703+00	2019-05-22 21:53:48.1167+00	38	\N	Text
+821	Counties		\N	\N	\N	2019-03-06 01:01:01.916051+00	2019-05-22 21:53:48.120288+00	38	\N	Text
+822	MSA		\N	\N	\N	2019-03-06 01:01:01.921789+00	2019-05-22 21:53:48.125436+00	38	\N	Number
+794	Bonus #		\N	\N	\N	2019-03-06 01:01:01.690019+00	2019-05-22 21:53:48.156141+00	36	\N	Number
+793	Draw Date		\N	\N	\N	2019-03-06 01:01:01.684076+00	2019-05-22 21:53:48.166144+00	36	\N	Calendar date
+792	Winning Numbers		\N	\N	\N	2019-03-06 01:01:01.678494+00	2019-05-22 21:53:48.178639+00	36	\N	Text
+735	Street Number		\N	\N	\N	2019-03-06 01:01:01.294655+00	2019-05-22 21:53:48.221059+00	33	\N	Number
+723	City		\N	\N	\N	2019-03-06 01:01:01.235035+00	2019-05-22 21:53:48.229656+00	33	\N	Text
+724	State		\N	\N	\N	2019-03-06 01:01:01.239887+00	2019-05-22 21:53:48.236855+00	33	\N	Text
+733	Sub District		\N	\N	\N	2019-03-06 01:01:01.284191+00	2019-05-22 21:53:48.240883+00	33	\N	Text
+738	Counties		\N	\N	\N	2019-03-06 01:01:01.309466+00	2019-05-22 21:53:48.250058+00	33	\N	Number
+737	School Districts		\N	\N	\N	2019-03-06 01:01:01.304429+00	2019-05-22 21:53:48.257974+00	33	\N	Number
+736	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.299108+00	2019-05-22 21:53:48.263851+00	33	\N	Number
+722	Zip Code		\N	\N	\N	2019-03-06 01:01:01.230013+00	2019-05-22 21:53:48.269777+00	33	\N	Number
+725	License Number		\N	\N	\N	2019-03-06 01:01:01.244829+00	2019-05-22 21:53:48.275485+00	33	\N	Number
+726	Licensee Name		\N	\N	\N	2019-03-06 01:01:01.250189+00	2019-05-22 21:53:48.280819+00	33	\N	Text
+730	License Current Status		\N	\N	\N	2019-03-06 01:01:01.269814+00	2019-05-22 21:53:48.286391+00	33	\N	Text
+727	DBA Name		\N	\N	\N	2019-03-06 01:01:01.255139+00	2019-05-22 21:53:48.291756+00	33	\N	Text
+729	License Type		\N	\N	\N	2019-03-06 01:01:01.264772+00	2019-05-22 21:53:48.298001+00	33	\N	Text
+731	Status Effective Date		\N	\N	\N	2019-03-06 01:01:01.274436+00	2019-05-22 21:53:48.30223+00	33	\N	Calendar date
+728	Business Type		\N	\N	\N	2019-03-06 01:01:01.259595+00	2019-05-22 21:53:48.305731+00	33	\N	Text
+721	latlng		\N	\N	\N	2019-03-06 01:01:01.225287+00	2019-05-22 21:53:48.310473+00	33	\N	Point
+719	latlng (city)		\N	\N	\N	2019-03-06 01:01:01.215438+00	2019-05-22 21:53:48.314265+00	33	\N	Text
+720	latlng (address)		\N	\N	\N	2019-03-06 01:01:01.220272+00	2019-05-22 21:53:48.318115+00	33	\N	Text
+718	Street Name		\N	\N	\N	2019-03-06 01:01:01.209314+00	2019-05-22 21:53:48.322162+00	33	\N	Text
+732	District		\N	\N	\N	2019-03-06 01:01:01.279551+00	2019-05-22 21:53:48.326099+00	33	\N	Text
+739	latlng (zip)		\N	\N	\N	2019-03-06 01:01:01.314613+00	2019-05-22 21:53:48.32986+00	33	\N	Text
+734	County Number		\N	\N	\N	2019-03-06 01:01:01.289399+00	2019-05-22 21:53:48.333924+00	33	\N	Text
+740	latlng (state)		\N	\N	\N	2019-03-06 01:01:01.319965+00	2019-05-22 21:53:48.337893+00	33	\N	Text
+769	Meeting Body Name		\N	\N	\N	2019-03-06 01:01:01.501187+00	2019-05-22 21:53:48.361485+00	34	\N	Text
+774	End Date Time		\N	\N	\N	2019-03-06 01:01:01.527418+00	2019-05-22 21:53:48.366691+00	34	\N	Calendar date
+778	Building Name		\N	\N	\N	2019-03-06 01:01:01.549993+00	2019-05-22 21:53:48.370871+00	34	\N	Text
+741	Room		\N	\N	\N	2019-03-06 01:01:01.3566+00	2019-05-22 21:53:48.374917+00	34	\N	Text
+777	Address		\N	\N	\N	2019-03-06 01:01:01.545375+00	2019-05-22 21:53:48.379051+00	34	\N	Text
+776	Address2		\N	\N	\N	2019-03-06 01:01:01.540795+00	2019-05-22 21:53:48.382873+00	34	\N	Text
+775	City		\N	\N	\N	2019-03-06 01:01:01.535051+00	2019-05-22 21:53:48.386473+00	34	\N	Text
+768	State		\N	\N	\N	2019-03-06 01:01:01.495849+00	2019-05-22 21:53:48.39109+00	34	\N	Text
+767	Zip		\N	\N	\N	2019-03-06 01:01:01.490704+00	2019-05-22 21:53:48.394801+00	34	\N	Text
+766	Webcast URL		\N	\N	\N	2019-03-06 01:01:01.485515+00	2019-05-22 21:53:48.398623+00	34	\N	Text
+765	Webcast Plugin		\N	\N	\N	2019-03-06 01:01:01.480742+00	2019-05-22 21:53:48.402764+00	34	\N	Text
+764	Is Video Conf		\N	\N	\N	2019-03-06 01:01:01.476045+00	2019-05-22 21:53:48.409038+00	34	\N	Number
+763	Is Conf Call		\N	\N	\N	2019-03-06 01:01:01.471437+00	2019-05-22 21:53:48.412656+00	34	\N	Number
+762	Conf Call Number		\N	\N	\N	2019-03-06 01:01:01.466755+00	2019-05-22 21:53:48.417433+00	34	\N	Text
+761	Conf Call ID		\N	\N	\N	2019-03-06 01:01:01.461338+00	2019-05-22 21:53:48.421281+00	34	\N	Text
+760	Conf Call Password		\N	\N	\N	2019-03-06 01:01:01.455883+00	2019-05-22 21:53:48.425115+00	34	\N	Text
+759	Contact First Name		\N	\N	\N	2019-03-06 01:01:01.450475+00	2019-05-22 21:53:48.429042+00	34	\N	Text
+758	Contact Last Name		\N	\N	\N	2019-03-06 01:01:01.44504+00	2019-05-22 21:53:48.433302+00	34	\N	Text
+757	Phone		\N	\N	\N	2019-03-06 01:01:01.439861+00	2019-05-22 21:53:48.438551+00	34	\N	Text
+756	Email		\N	\N	\N	2019-03-06 01:01:01.434377+00	2019-05-22 21:53:48.442508+00	34	\N	Text
+755	Notes		\N	\N	\N	2019-03-06 01:01:01.428883+00	2019-05-22 21:53:48.446173+00	34	\N	Text
+754	Materials URL		\N	\N	\N	2019-03-06 01:01:01.422629+00	2019-05-22 21:53:48.449919+00	34	\N	Text
+753	Archived URL		\N	\N	\N	2019-03-06 01:01:01.417545+00	2019-05-22 21:53:48.453545+00	34	\N	Text
+752	Publication Date		\N	\N	\N	2019-03-06 01:01:01.412742+00	2019-05-22 21:53:48.4576+00	34	\N	Text
+751	Amendments		\N	\N	\N	2019-03-06 01:01:01.407764+00	2019-05-22 21:53:48.461437+00	34	\N	Text
+750	Amendment Date		\N	\N	\N	2019-03-06 01:01:01.402794+00	2019-05-22 21:53:48.465+00	34	\N	Text
+749	LatLng		\N	\N	\N	2019-03-06 01:01:01.397701+00	2019-05-22 21:53:48.469191+00	34	\N	Point
+748	LatLng (address)		\N	\N	\N	2019-03-06 01:01:01.392708+00	2019-05-22 21:53:48.472919+00	34	\N	Text
+747	LatLng (city)		\N	\N	\N	2019-03-06 01:01:01.387574+00	2019-05-22 21:53:48.476872+00	34	\N	Text
+746	LatLng (state)		\N	\N	\N	2019-03-06 01:01:01.382831+00	2019-05-22 21:53:48.480774+00	34	\N	Text
+745	LatLng (zip)		\N	\N	\N	2019-03-06 01:01:01.377159+00	2019-05-22 21:53:48.485168+00	34	\N	Text
+744	Counties		\N	\N	\N	2019-03-06 01:01:01.372395+00	2019-05-22 21:53:48.489516+00	34	\N	Number
+743	School Districts		\N	\N	\N	2019-03-06 01:01:01.367237+00	2019-05-22 21:53:48.494467+00	34	\N	Number
+742	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.362152+00	2019-05-22 21:53:48.500328+00	34	\N	Number
+773	Has End		\N	\N	\N	2019-03-06 01:01:01.521046+00	2019-05-22 21:53:48.506342+00	34	\N	Number
+772	Is All Day		\N	\N	\N	2019-03-06 01:01:01.515653+00	2019-05-22 21:53:48.512421+00	34	\N	Number
+771	Begin Date Time		\N	\N	\N	2019-03-06 01:01:01.5107+00	2019-05-22 21:53:48.517432+00	34	\N	Calendar date
+770	Committee		\N	\N	\N	2019-03-06 01:01:01.505952+00	2019-05-22 21:53:48.521463+00	34	\N	Text
+780	Release Date Time		\N	\N	\N	2019-03-06 01:01:01.590074+00	2019-05-22 21:53:48.542492+00	35	\N	Calendar date
+785	RCW / Ordinance Number		\N	\N	\N	2019-03-06 01:01:01.616415+00	2019-05-22 21:53:48.546115+00	35	\N	Text
+781	Current Facility		\N	\N	\N	2019-03-06 01:01:01.595299+00	2019-05-22 21:53:48.55297+00	35	\N	Text
+788	Booking Date Time		\N	\N	\N	2019-03-06 01:01:01.633491+00	2019-05-22 21:53:48.55916+00	35	\N	Calendar date
+787	JrSr		\N	\N	\N	2019-03-06 01:01:01.627738+00	2019-05-22 21:53:48.563095+00	35	\N	Text
+786	Release Reason		\N	\N	\N	2019-03-06 01:01:01.622663+00	2019-05-22 21:53:48.566994+00	35	\N	Text
+779	Middle Name		\N	\N	\N	2019-03-06 01:01:01.583104+00	2019-05-22 21:53:48.570804+00	35	\N	Text
+790	Last Name		\N	\N	\N	2019-03-06 01:01:01.643085+00	2019-05-22 21:53:48.574602+00	35	\N	Text
+783	Court Case / Cause Number		\N	\N	\N	2019-03-06 01:01:01.606764+00	2019-05-22 21:53:48.578729+00	35	\N	Text
+784	Court		\N	\N	\N	2019-03-06 01:01:01.611636+00	2019-05-22 21:53:48.582396+00	35	\N	Text
+791	Book of Arrest Number		\N	\N	\N	2019-03-06 01:01:01.64744+00	2019-05-22 21:53:48.586019+00	35	\N	Text
+789	First Name		\N	\N	\N	2019-03-06 01:01:01.638634+00	2019-05-22 21:53:48.590012+00	35	\N	Text
+782	Charge		\N	\N	\N	2019-03-06 01:01:01.601714+00	2019-05-22 21:53:48.593621+00	35	\N	Text
+802	District		\N	\N	\N	2019-03-06 01:01:01.769204+00	2019-05-22 21:53:48.613287+00	37	\N	Text
+819	Zip Code		\N	\N	\N	2019-03-06 01:01:01.874873+00	2019-05-22 21:53:48.618029+00	37	\N	Number
+796	State		\N	\N	\N	2019-03-06 01:01:01.735306+00	2019-05-22 21:53:48.624277+00	37	\N	Text
+797	City		\N	\N	\N	2019-03-06 01:01:01.743246+00	2019-05-22 21:53:48.629274+00	37	\N	Text
+798	Street Name		\N	\N	\N	2019-03-06 01:01:01.749285+00	2019-05-22 21:53:48.633724+00	37	\N	Text
+799	Street Number		\N	\N	\N	2019-03-06 01:01:01.754281+00	2019-05-22 21:53:48.637753+00	37	\N	Number
+800	County		\N	\N	\N	2019-03-06 01:01:01.758983+00	2019-05-22 21:53:48.641676+00	37	\N	Text
+801	Sub District		\N	\N	\N	2019-03-06 01:01:01.764095+00	2019-05-22 21:53:48.645289+00	37	\N	Text
+803	Expiration Date		\N	\N	\N	2019-03-06 01:01:01.782493+00	2019-05-22 21:53:48.649686+00	37	\N	Calendar date
+804	License Current Status		\N	\N	\N	2019-03-06 01:01:01.787871+00	2019-05-22 21:53:48.653588+00	37	\N	Text
+805	License Type		\N	\N	\N	2019-03-06 01:01:01.793006+00	2019-05-22 21:53:48.657424+00	37	\N	Text
+806	Business Type		\N	\N	\N	2019-03-06 01:01:01.79973+00	2019-05-22 21:53:48.66116+00	37	\N	Text
+807	DBA Name		\N	\N	\N	2019-03-06 01:01:01.808913+00	2019-05-22 21:53:48.664958+00	37	\N	Text
+808	Licensee Name		\N	\N	\N	2019-03-06 01:01:01.813984+00	2019-05-22 21:53:48.669363+00	37	\N	Text
+809	License Number		\N	\N	\N	2019-03-06 01:01:01.819033+00	2019-05-22 21:53:48.673685+00	37	\N	Number
+813	latlng (zip)		\N	\N	\N	2019-03-06 01:01:01.839373+00	2019-05-22 21:53:48.677452+00	37	\N	Text
+814	latlng (state)		\N	\N	\N	2019-03-06 01:01:01.844564+00	2019-05-22 21:53:48.681385+00	37	\N	Text
+810	Missouri Counties		\N	\N	\N	2019-03-06 01:01:01.824269+00	2019-05-22 21:53:48.685231+00	37	\N	Number
+811	School Districts		\N	\N	\N	2019-03-06 01:01:01.829177+00	2019-05-22 21:53:48.688896+00	37	\N	Number
+812	Counties		\N	\N	\N	2019-03-06 01:01:01.834391+00	2019-05-22 21:53:48.693189+00	37	\N	Number
+816	latlng (address)		\N	\N	\N	2019-03-06 01:01:01.854545+00	2019-05-22 21:53:48.696886+00	37	\N	Text
+815	latlng (city)		\N	\N	\N	2019-03-06 01:01:01.84956+00	2019-05-22 21:53:48.700884+00	37	\N	Text
+817	latlng		\N	\N	\N	2019-03-06 01:01:01.859233+00	2019-05-22 21:53:48.704454+00	37	\N	Point
+818	Mailing Address Line 2		\N	\N	\N	2019-03-06 01:01:01.868523+00	2019-05-22 21:53:48.708806+00	37	\N	Text
+795	Mailing Address		\N	\N	\N	2019-03-06 01:01:01.729874+00	2019-05-22 21:53:48.713848+00	37	\N	Text
+918	ID	Unique identifier for the record.	\N	\N	\N	2019-03-06 01:01:02.645054+00	2019-05-22 21:53:48.735823+00	41	\N	Number
+909	X Coordinate	The x coordinate of the location where the incident occurred in State Plane Illinois East NAD 1983 projection.  This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.598003+00	2019-05-22 21:53:48.740533+00	41	\N	Number
+902	Location	The location where the incident occurred in a format that allows for creation of maps and other geographic operations on this data portal. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.555278+00	2019-05-22 21:53:48.74551+00	41	\N	Point
+903	Longitude	The longitude of the location where the incident occurred. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.560999+00	2019-05-22 21:53:48.749783+00	41	\N	Number
+1046	Location (address)		\N	\N	\N	2019-05-22 21:53:48.753468+00	2019-05-22 21:53:48.753493+00	41	\N	Text
+908	Ward	The ward (City Council district) where the incident occurred.  See the wards at https://data.cityofchicago.org/d/sp34-6z76.	\N	\N	\N	2019-03-06 01:01:02.592366+00	2019-05-22 21:53:48.758852+00	41	\N	Number
+915	Location Description	Description of the location where the incident occurred.	\N	\N	\N	2019-03-06 01:01:02.631462+00	2019-05-22 21:53:48.763164+00	41	\N	Text
+916	Description	The secondary description of the IUCR code, a subcategory of the primary description.	\N	\N	\N	2019-03-06 01:01:02.635893+00	2019-05-22 21:53:48.767043+00	41	\N	Text
+922	Arrest	Indicates whether an arrest was made.	\N	\N	\N	2019-03-06 01:01:02.664337+00	2019-05-22 21:53:48.77067+00	41	\N	Checkbox
+905	Y Coordinate	The y coordinate of the location where the incident occurred in State Plane Illinois East NAD 1983 projection. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.577764+00	2019-05-22 21:53:48.774334+00	41	\N	Number
+1047	Police Districts		\N	\N	\N	2019-05-22 21:53:48.778128+00	2019-05-22 21:53:48.778153+00	41	\N	Number
+1048	Boundaries - ZIP Codes		\N	\N	\N	2019-05-22 21:53:48.7812+00	2019-05-22 21:53:48.781226+00	41	\N	Number
+1049	Wards		\N	\N	\N	2019-05-22 21:53:48.784879+00	2019-05-22 21:53:48.784951+00	41	\N	Number
+1050	Census Tracts		\N	\N	\N	2019-05-22 21:53:48.789057+00	2019-05-22 21:53:48.789083+00	41	\N	Number
+1051	Community Areas		\N	\N	\N	2019-05-22 21:53:48.79251+00	2019-05-22 21:53:48.792533+00	41	\N	Number
+1052	Zip Codes		\N	\N	\N	2019-05-22 21:53:48.795659+00	2019-05-22 21:53:48.795684+00	41	\N	Number
+1053	Historical Wards 2003-2015		\N	\N	\N	2019-05-22 21:53:48.799307+00	2019-05-22 21:53:48.799371+00	41	\N	Number
+1054	Police Beats		\N	\N	\N	2019-05-22 21:53:48.803324+00	2019-05-22 21:53:48.80335+00	41	\N	Number
+1055	Location (city)		\N	\N	\N	2019-05-22 21:53:48.806884+00	2019-05-22 21:53:48.806922+00	41	\N	Text
+1056	Location (zip)		\N	\N	\N	2019-05-22 21:53:48.810733+00	2019-05-22 21:53:48.81076+00	41	\N	Text
+921	Community Area	Indicates the community area where the incident occurred.  Chicago has 77 community areas. \n\nSee the community areas at https://data.cityofchicago.org/d/cauq-8yn6.\n	\N	\N	\N	2019-03-06 01:01:02.65917+00	2019-05-22 21:53:48.813963+00	41	\N	Text
+910	FBI Code	Indicates the crime classification as outlined in the FBI's National Incident-Based Reporting System (NIBRS).\n\nSee the Chicago Police Department listing of these classifications at http://gis.chicagopolice.org/clearmap_crime_sums/crime_types.html.\n	\N	\N	\N	2019-03-06 01:01:02.606893+00	2019-05-22 21:53:48.817729+00	41	\N	Text
+904	Year	Year the incident occurred.	\N	\N	\N	2019-03-06 01:01:02.572629+00	2019-05-22 21:53:48.821678+00	41	\N	Number
+911	Domestic	Indicates whether the incident was domestic-related as defined by the Illinois Domestic Violence Act.	\N	\N	\N	2019-03-06 01:01:02.612043+00	2019-05-22 21:53:48.825344+00	41	\N	Checkbox
+920	Primary Type	The primary description of the IUCR code.	\N	\N	\N	2019-03-06 01:01:02.654375+00	2019-05-22 21:53:48.829442+00	41	\N	Text
+906	Latitude	The latitude of the location where the incident occurred. This location is shifted from the actual location for partial redaction but falls on the same block.	\N	\N	\N	2019-03-06 01:01:02.582391+00	2019-05-22 21:53:48.833468+00	41	\N	Number
+907	Updated On	Date and time the record was last updated.	\N	\N	\N	2019-03-06 01:01:02.587159+00	2019-05-22 21:53:48.837549+00	41	\N	Calendar date
+931	inspection_score		\N	\N	\N	2019-03-06 01:01:02.738249+00	2019-05-22 21:53:49.355668+00	42	\N	number
+912	District	Indicates the police district where the incident occurred.  See the districts at https://data.cityofchicago.org/d/fthy-xz3r.	\N	\N	\N	2019-03-06 01:01:02.616808+00	2019-05-22 21:53:48.843173+00	41	\N	Text
+913	Beat	Indicates the beat where the incident occurred.  A beat is the smallest police geographic area – each beat has a dedicated police beat car.  Three to five beats make up a police sector, and three sectors make up a police district.  The Chicago Police Department has 22 police districts.  \n\nSee the beats at https://data.cityofchicago.org/d/aerh-rz74.\n	\N	\N	\N	2019-03-06 01:01:02.621335+00	2019-05-22 21:53:48.849688+00	41	\N	Text
+914	IUCR	The Illinois Unifrom Crime Reporting code. This is directly linked to the Primary Type and Description. See the list of IUCR codes at https://data.cityofchicago.org/d/c7ck-438e.	\N	\N	\N	2019-03-06 01:01:02.626101+00	2019-05-22 21:53:48.853487+00	41	\N	Text
+901	Block	The partially redacted address where the incident occurred, placing it on the same block as the actual address. 	\N	\N	\N	2019-03-06 01:01:02.548255+00	2019-05-22 21:53:48.857601+00	41	\N	Text
+919	Date	Date when the incident occurred. this is sometimes a best estimate. 	\N	\N	\N	2019-03-06 01:01:02.64987+00	2019-05-22 21:53:48.86113+00	41	\N	Calendar date
+917	Case Number	The Chicago Police Department RD Number (Records Division Number), which is unique to the incident. 	\N	\N	\N	2019-03-06 01:01:02.640606+00	2019-05-22 21:53:48.864589+00	41	\N	Text
+1057	Location (state)		\N	\N	\N	2019-05-22 21:53:48.868658+00	2019-05-22 21:53:48.868681+00	41	\N	Text
+838	Applicant Relationship		\N	\N	\N	2019-03-06 01:01:02.062915+00	2019-05-22 21:53:48.888855+00	39	\N	Text
+866	Block	"Block" portion of a property's legal description as recorded with the Los Angeles County Recorder.	\N	\N	\N	2019-03-06 01:01:02.299169+00	2019-05-22 21:53:48.894317+00	39	\N	Text
+869	Event Code	An event code, usually synonymous with a disaster code, represents permits issued related to repairing, demolishing, or rebuilding structures damaged from a disaster.	\N	\N	\N	2019-03-06 01:01:02.314806+00	2019-05-22 21:53:48.898251+00	39	\N	Text
+846	Zone	The designated zone of the property or lot that determines the allowed use, maximum height, allowable area, required yards, and any other requirements specific to the property or lot.	\N	\N	\N	2019-03-06 01:01:02.131165+00	2019-05-22 21:53:48.902447+00	39	\N	Text
+863	Zip Code	Zip code of property address for permit application.	\N	\N	\N	2019-03-06 01:01:02.283023+00	2019-05-22 21:53:48.906014+00	39	\N	Number
+864	Street Direction	Street direction of property address for permit application.\nExample 1: For "200 - 200 Main Ave", Street Direction is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Street Direction is N. 	\N	\N	\N	2019-03-06 01:01:02.287864+00	2019-05-22 21:53:48.910677+00	39	\N	Text
+871	Tract	"Tract" portion of a property's legal description as recorded with the Los Angeles County Recorder.	\N	\N	\N	2019-03-06 01:01:02.325129+00	2019-05-22 21:53:48.914207+00	39	\N	Text
+851	PCIS Permit #	This is the permit number assigned by the Plan Check and Inspection System as soon as an application for a permit has been filed.  Before a permit is issued, the number is known as the Application Number.  After the permit is issued, this same number becomes the Permit Number.	\N	\N	\N	2019-03-06 01:01:02.17245+00	2019-05-22 21:53:48.918599+00	39	\N	Text
+875	Initiating Office	Office location where the permit application is initiated, not necessarily issued.	\N	\N	\N	2019-03-06 01:01:02.353904+00	2019-05-22 21:53:48.922492+00	39	\N	Text
+865	Street Suffix	Street suffix of property address for permit application. \nExample 1: For "200 - 200 Main Ave", Street Suffix is Ave. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Street Suffix is St. 	\N	\N	\N	2019-03-06 01:01:02.293459+00	2019-05-22 21:53:48.926784+00	39	\N	Text
+842	# of Stories	Number of stories.	\N	\N	\N	2019-03-06 01:01:02.093295+00	2019-05-22 21:53:48.930639+00	39	\N	Number
+1058	Latitude/Longitude (city)		\N	\N	\N	2019-05-22 21:53:48.934714+00	2019-05-22 21:53:48.934739+00	39	\N	Text
+1059	Latitude/Longitude (state)		\N	\N	\N	2019-05-22 21:53:48.938127+00	2019-05-22 21:53:48.938152+00	39	\N	Text
+1060	Latitude/Longitude (address)		\N	\N	\N	2019-05-22 21:53:48.942136+00	2019-05-22 21:53:48.942161+00	39	\N	Text
+1061	LA Specific Plans		\N	\N	\N	2019-05-22 21:53:48.945497+00	2019-05-22 21:53:48.945522+00	39	\N	Number
+1062	Neighborhood Councils (Certified)		\N	\N	\N	2019-05-22 21:53:48.949375+00	2019-05-22 21:53:48.9494+00	39	\N	Number
+1063	Zip Codes		\N	\N	\N	2019-05-22 21:53:48.953387+00	2019-05-22 21:53:48.953412+00	39	\N	Number
+1064	Census Tracts		\N	\N	\N	2019-05-22 21:53:48.957024+00	2019-05-22 21:53:48.95706+00	39	\N	Number
+1065	Council Districts		\N	\N	\N	2019-05-22 21:53:48.96237+00	2019-05-22 21:53:48.962397+00	39	\N	Number
+1066	Precinct Boundaries		\N	\N	\N	2019-05-22 21:53:48.967046+00	2019-05-22 21:53:48.967073+00	39	\N	Number
+1067	Latitude/Longitude (zip)		\N	\N	\N	2019-05-22 21:53:48.971868+00	2019-05-22 21:53:48.971897+00	39	\N	Text
+855	Project Number	A number used to associate a permit application with a specific construction or a development project consisting of several permit applications.	\N	\N	\N	2019-03-06 01:01:02.212821+00	2019-05-22 21:53:48.977278+00	39	\N	Number
+862	Unit Range End	Ending unit number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave, #1-#8", Unit Range End is #8. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Unit Range End is null. 	\N	\N	\N	2019-03-06 01:01:02.277552+00	2019-05-22 21:53:48.981382+00	39	\N	Text
+823	Contractor Address	"Street address" portion of contractor's address.	\N	\N	\N	2019-03-06 01:01:01.968935+00	2019-05-22 21:53:48.985469+00	39	\N	Text
+844	Applicant First Name	First name of the permit applicant.	\N	\N	\N	2019-03-06 01:01:02.108663+00	2019-05-22 21:53:48.99019+00	39	\N	Text
+829	Applicant Last Name	Last name of the permit applicant.	\N	\N	\N	2019-03-06 01:01:02.006868+00	2019-05-22 21:53:48.994629+00	39	\N	Text
+841	Census Tract	A geographic area for population-related analysis.	\N	\N	\N	2019-03-06 01:01:02.086314+00	2019-05-22 21:53:48.998907+00	39	\N	Text
+835	Latitude/Longitude	GPS location point.	\N	\N	\N	2019-03-06 01:01:02.038214+00	2019-05-22 21:53:49.003002+00	39	\N	Point
+849	Assessor Book	"Book" portion of the Los Angeles County Tax Assessor "Book-Page-Parcel" number.	\N	\N	\N	2019-03-06 01:01:02.158627+00	2019-05-22 21:53:49.0071+00	39	\N	Text
+840	Assessor Page	"Page" portion of the Los Angeles County Tax Assessor "Book-Page-Parcel" number.	\N	\N	\N	2019-03-06 01:01:02.078007+00	2019-05-22 21:53:49.013801+00	39	\N	Text
+850	Assessor Parcel	"Parcel" portion of the Los Angeles County Tax Assessor "Book-Page-Parcel" number.	\N	\N	\N	2019-03-06 01:01:02.167201+00	2019-05-22 21:53:49.021005+00	39	\N	Text
+856	Lot	"Lot" portion of a property's legal description as recorded with the Los Angeles County Recorder.	\N	\N	\N	2019-03-06 01:01:02.234975+00	2019-05-22 21:53:49.025631+00	39	\N	Text
+872	Reference # (Old Permit #)	A sequential reference number issued by the Cashiering System, and used to file and retrieve original paper copies.	\N	\N	\N	2019-03-06 01:01:02.329853+00	2019-05-22 21:53:49.030094+00	39	\N	Text
+852	Status	Status of a permit, or of a permit application.	\N	\N	\N	2019-03-06 01:01:02.183163+00	2019-05-22 21:53:49.035153+00	39	\N	Text
+873	Status Date	Permit status date.	\N	\N	\N	2019-03-06 01:01:02.335652+00	2019-05-22 21:53:49.041382+00	39	\N	Calendar date
+839	Permit Type	Permit application type.	\N	\N	\N	2019-03-06 01:01:02.070762+00	2019-05-22 21:53:49.046713+00	39	\N	Text
+860	Permit Sub-Type	The permit sub-type determines whether the permit application is for a 1 or 2 family dwelling, a multi-family dwelling, or a commercial structure. 	\N	\N	\N	2019-03-06 01:01:02.267426+00	2019-05-22 21:53:49.050831+00	39	\N	Text
+837	Permit Category	Permit category is used to determine how the permit application will be handled within the LADBS public counter and regular plan check business process.	\N	\N	\N	2019-03-06 01:01:02.048739+00	2019-05-22 21:53:49.054417+00	39	\N	Text
+861	Issue Date	Permit issue date.	\N	\N	\N	2019-03-06 01:01:02.27261+00	2019-05-22 21:53:49.058369+00	39	\N	Calendar date
+932	inspection_description		\N	\N	\N	2019-03-06 01:01:02.743108+00	2019-05-22 21:53:49.361779+00	42	\N	text
+853	Address Start	Beginning house number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address Start is 200. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address Start is 202. 	\N	\N	\N	2019-03-06 01:01:02.192669+00	2019-05-22 21:53:49.06252+00	39	\N	Number
+874	Address Fraction Start	Beginning fraction of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address Fraction Start is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address Fraction Start is 1/4. 	\N	\N	\N	2019-03-06 01:01:02.340707+00	2019-05-22 21:53:49.066749+00	39	\N	Text
+836	Address End	Ending house number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address End is 200. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address End is 204. 	\N	\N	\N	2019-03-06 01:01:02.043635+00	2019-05-22 21:53:49.071193+00	39	\N	Number
+854	Address Fraction End	Ending house number fraction of property address on permit application. \nExample 1: For "200 - 200 N Main Ave", Address Fraction End is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Address Fraction End is 1/2. 	\N	\N	\N	2019-03-06 01:01:02.20287+00	2019-05-22 21:53:49.075521+00	39	\N	Text
+868	Street Name	Street name of property address for permit application.	\N	\N	\N	2019-03-06 01:01:02.309667+00	2019-05-22 21:53:49.079515+00	39	\N	Text
+877	Suffix Direction	Street suffix direction of property address for permit application. Example 1: For "200 - 200 N Main Ave", Suffix Direction is null. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Suffix Direction is SE. 	\N	\N	\N	2019-03-06 01:01:02.365207+00	2019-05-22 21:53:49.084156+00	39	\N	Text
+876	Unit Range Start	Beginning unit number of property address on permit application. \nExample 1: For "200 - 200 N Main Ave, #1-#8", Unit Range Start is #1. \nExample 2: For "202 1/4 - 204 1/2 N Main St SE", Unit Range Start is null. 	\N	\N	\N	2019-03-06 01:01:02.360868+00	2019-05-22 21:53:49.088162+00	39	\N	Text
+858	Work Description	Describes the work to be performed under the permit application.	\N	\N	\N	2019-03-06 01:01:02.25515+00	2019-05-22 21:53:49.09224+00	39	\N	Text
+843	Valuation	The property/structure valuation amount is used to calculate the building permit fee and all fees calculated as percentage of the building fee.  For all building permit types, except for Grading, the valuation is measured in dollars. For Grading permit applications, the valuation is measured in cubic yards of soil removed or added.	\N	\N	\N	2019-03-06 01:01:02.098597+00	2019-05-22 21:53:49.095849+00	39	\N	Number
+825	Floor Area-L.A. Zoning Code Definition	Floor area as defined in the Los Angeles Zoning Code.	\N	\N	\N	2019-03-06 01:01:01.982315+00	2019-05-22 21:53:49.1005+00	39	\N	Number
+826	# of Residential Dwelling Units	Number of dwelling units for a residential building.	\N	\N	\N	2019-03-06 01:01:01.991491+00	2019-05-22 21:53:49.104836+00	39	\N	Number
+878	Contractor's Business Name	If applicable, the contractor's business name.	\N	\N	\N	2019-03-06 01:01:02.369271+00	2019-05-22 21:53:49.109354+00	39	\N	Text
+1081	City		\N	\N	\N	2019-05-22 21:53:49.581716+00	2019-05-22 21:53:49.58174+00	47	\N	Text
+867	Contractor City	"City" portion of contractor's address.	\N	\N	\N	2019-03-06 01:01:02.304218+00	2019-05-22 21:53:49.114742+00	39	\N	Text
+824	Contractor State	"State" portion of contractor's address.	\N	\N	\N	2019-03-06 01:01:01.97609+00	2019-05-22 21:53:49.120276+00	39	\N	Text
+859	License Type	Contractor's license type (class code).	\N	\N	\N	2019-03-06 01:01:02.261766+00	2019-05-22 21:53:49.124234+00	39	\N	Text
+830	License #	Contractor's license number.	\N	\N	\N	2019-03-06 01:01:02.011704+00	2019-05-22 21:53:49.128278+00	39	\N	Number
+831	Principal First Name	First name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:02.017005+00	2019-05-22 21:53:49.132878+00	39	\N	Text
+845	Principal Middle Name	Middle name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:02.120156+00	2019-05-22 21:53:49.137351+00	39	\N	Text
+827	Principal Last Name	Last name of the contractor or personnel currently associated with the license.	\N	\N	\N	2019-03-06 01:01:01.996927+00	2019-05-22 21:53:49.141191+00	39	\N	Text
+828	License Expiration Date	Contractor license expiration date.	\N	\N	\N	2019-03-06 01:01:02.001924+00	2019-05-22 21:53:49.144831+00	39	\N	Calendar date
+834	Applicant Business Name	If applicable, permit applicant's business name.	\N	\N	\N	2019-03-06 01:01:02.033094+00	2019-05-22 21:53:49.14863+00	39	\N	Text
+870	Applicant Address 1	The street address portion of the permit applicant's address.	\N	\N	\N	2019-03-06 01:01:02.320214+00	2019-05-22 21:53:49.152697+00	39	\N	Text
+847	Applicant Address 2	The unit portion of the permit applicant's address.	\N	\N	\N	2019-03-06 01:01:02.140957+00	2019-05-22 21:53:49.156358+00	39	\N	Text
+857	Applicant Address 3	The city and state of the permit applicant's address.	\N	\N	\N	2019-03-06 01:01:02.247586+00	2019-05-22 21:53:49.161036+00	39	\N	Text
+832	Occupancy	Occupancy is the approved use for the structure.	\N	\N	\N	2019-03-06 01:01:02.023459+00	2019-05-22 21:53:49.164916+00	39	\N	Text
+833	Floor Area-L.A. Building Code Definition	Floor area as defined in the Los Angeles Building Code.	\N	\N	\N	2019-03-06 01:01:02.028769+00	2019-05-22 21:53:49.16921+00	39	\N	Number
+848	Council District	The City of Los Angeles council district that has jurisdiction over the property.	\N	\N	\N	2019-03-06 01:01:02.150432+00	2019-05-22 21:53:49.17358+00	39	\N	Text
+897	Program Identifier		\N	\N	\N	2019-03-06 01:01:02.487943+00	2019-05-22 21:53:49.195386+00	40	\N	Text
+883	Latitude		\N	\N	\N	2019-03-06 01:01:02.421009+00	2019-05-22 21:53:49.198965+00	40	\N	Number
+900	Inspection Type		\N	\N	\N	2019-03-06 01:01:02.501327+00	2019-05-22 21:53:49.203982+00	40	\N	Text
+893	Violation Description		\N	\N	\N	2019-03-06 01:01:02.469932+00	2019-05-22 21:53:49.209467+00	40	\N	Text
+892	Inspection Result		\N	\N	\N	2019-03-06 01:01:02.465772+00	2019-05-22 21:53:49.213431+00	40	\N	Text
+886	Inspection_Serial_Num		\N	\N	\N	2019-03-06 01:01:02.435923+00	2019-05-22 21:53:49.217206+00	40	\N	Text
+885	Violation Type		\N	\N	\N	2019-03-06 01:01:02.431521+00	2019-05-22 21:53:49.221052+00	40	\N	Text
+879	Violation Points		\N	\N	\N	2019-03-06 01:01:02.404388+00	2019-05-22 21:53:49.224741+00	40	\N	Number
+887	Grade	Food establishment grade	\N	\N	\N	2019-03-06 01:01:02.443175+00	2019-05-22 21:53:49.228816+00	40	\N	Text
+889	Name		\N	\N	\N	2019-03-06 01:01:02.452354+00	2019-05-22 21:53:49.232701+00	40	\N	Text
+891	Inspection Business Name		\N	\N	\N	2019-03-06 01:01:02.461074+00	2019-05-22 21:53:49.236707+00	40	\N	Text
+890	Inspection Date		\N	\N	\N	2019-03-06 01:01:02.456803+00	2019-05-22 21:53:49.240491+00	40	\N	Calendar date
+884	Description		\N	\N	\N	2019-03-06 01:01:02.426818+00	2019-05-22 21:53:49.244165+00	40	\N	Text
+899	Longitude		\N	\N	\N	2019-03-06 01:01:02.496806+00	2019-05-22 21:53:49.248032+00	40	\N	Number
+882	Inspection Score		\N	\N	\N	2019-03-06 01:01:02.416603+00	2019-05-22 21:53:49.252554+00	40	\N	Number
+895	City		\N	\N	\N	2019-03-06 01:01:02.479164+00	2019-05-22 21:53:49.256303+00	40	\N	Text
+896	Address		\N	\N	\N	2019-03-06 01:01:02.483596+00	2019-05-22 21:53:49.260228+00	40	\N	Text
+880	Violation_Record_ID		\N	\N	\N	2019-03-06 01:01:02.40861+00	2019-05-22 21:53:49.263734+00	40	\N	Text
+898	Phone		\N	\N	\N	2019-03-06 01:01:02.492551+00	2019-05-22 21:53:49.267676+00	40	\N	Text
+894	Zip Code		\N	\N	\N	2019-03-06 01:01:02.47433+00	2019-05-22 21:53:49.271405+00	40	\N	Text
+881	Business_ID		\N	\N	\N	2019-03-06 01:01:02.412558+00	2019-05-22 21:53:49.275414+00	40	\N	Text
+888	Inspection Closed Business		\N	\N	\N	2019-03-06 01:01:02.447815+00	2019-05-22 21:53:49.279131+00	40	\N	Checkbox
+923	business_id		\N	\N	\N	2019-03-06 01:01:02.698084+00	2019-05-22 21:53:49.304629+00	42	\N	url
+924	business_name		\N	\N	\N	2019-03-06 01:01:02.703108+00	2019-05-22 21:53:49.314411+00	42	\N	text
+925	business_address		\N	\N	\N	2019-03-06 01:01:02.709962+00	2019-05-22 21:53:49.32067+00	42	\N	text
+926	business_city		\N	\N	\N	2019-03-06 01:01:02.714549+00	2019-05-22 21:53:49.326371+00	42	\N	text
+927	business_state		\N	\N	\N	2019-03-06 01:01:02.718941+00	2019-05-22 21:53:49.330071+00	42	\N	text
+928	business_postal_code		\N	\N	\N	2019-03-06 01:01:02.723614+00	2019-05-22 21:53:49.335672+00	42	\N	text
+929	business_phone_number		\N	\N	\N	2019-03-06 01:01:02.728319+00	2019-05-22 21:53:49.343098+00	42	\N	text
+930	inspection_date		\N	\N	\N	2019-03-06 01:01:02.73291+00	2019-05-22 21:53:49.349607+00	42	\N	calendar_date
+933	inspection_type		\N	\N	\N	2019-03-06 01:01:02.747609+00	2019-05-22 21:53:49.367582+00	42	\N	text
+934	violation_description		\N	\N	\N	2019-03-06 01:01:02.752426+00	2019-05-22 21:53:49.373221+00	42	\N	text
+935	violation_code		\N	\N	\N	2019-03-06 01:01:02.757143+00	2019-05-22 21:53:49.378633+00	42	\N	text
+936	business_location		\N	\N	\N	2019-03-06 01:01:02.76323+00	2019-05-22 21:53:49.383924+00	42	\N	location
+1068	Census Tracts		\N	\N	\N	2019-05-22 21:53:49.41273+00	2019-05-22 21:53:49.412767+00	43	\N	Number
+1069	Historical Wards 2003-2015		\N	\N	\N	2019-05-22 21:53:49.417689+00	2019-05-22 21:53:49.417724+00	43	\N	Number
+1070	Location (state)		\N	\N	\N	2019-05-22 21:53:49.423346+00	2019-05-22 21:53:49.423377+00	43	\N	Text
+1071	Location (zip)		\N	\N	\N	2019-05-22 21:53:49.42808+00	2019-05-22 21:53:49.428108+00	43	\N	Text
+939	Address		\N	\N	\N	2019-03-06 01:01:02.81916+00	2019-05-22 21:53:49.4317+00	43	\N	Text
+949	Location		\N	\N	\N	2019-03-06 01:01:02.878864+00	2019-05-22 21:53:49.437597+00	43	\N	Point
+950	Latitude		\N	\N	\N	2019-03-06 01:01:02.884842+00	2019-05-22 21:53:49.443043+00	43	\N	Number
+937	Community Area Number		\N	\N	\N	2019-03-06 01:01:02.804586+00	2019-05-22 21:53:49.448135+00	43	\N	Number
+938	Community Area Name		\N	\N	\N	2019-03-06 01:01:02.811577+00	2019-05-22 21:53:49.453843+00	43	\N	Text
+940	Property Type		\N	\N	\N	2019-03-06 01:01:02.82572+00	2019-05-22 21:53:49.459538+00	43	\N	Text
+945	Phone Number		\N	\N	\N	2019-03-06 01:01:02.856629+00	2019-05-22 21:53:49.465554+00	43	\N	Text
+946	Management Company		\N	\N	\N	2019-03-06 01:01:02.861703+00	2019-05-22 21:53:49.470954+00	43	\N	Text
+947	Longitude		\N	\N	\N	2019-03-06 01:01:02.867705+00	2019-05-22 21:53:49.476629+00	43	\N	Number
+942	X Coordinate		\N	\N	\N	2019-03-06 01:01:02.83772+00	2019-05-22 21:53:49.482422+00	43	\N	Number
+943	Units		\N	\N	\N	2019-03-06 01:01:02.843776+00	2019-05-22 21:53:49.488511+00	43	\N	Number
+944	Property Name		\N	\N	\N	2019-03-06 01:01:02.850165+00	2019-05-22 21:53:49.493521+00	43	\N	Text
+948	Zip Code		\N	\N	\N	2019-03-06 01:01:02.873504+00	2019-05-22 21:53:49.497004+00	43	\N	Text
+941	Y Coordinate		\N	\N	\N	2019-03-06 01:01:02.83248+00	2019-05-22 21:53:49.501584+00	43	\N	Number
+1072	Location (city)		\N	\N	\N	2019-05-22 21:53:49.505464+00	2019-05-22 21:53:49.505528+00	43	\N	Text
+1073	Location (address)		\N	\N	\N	2019-05-22 21:53:49.510744+00	2019-05-22 21:53:49.510771+00	43	\N	Text
+1074	Community Areas		\N	\N	\N	2019-05-22 21:53:49.514466+00	2019-05-22 21:53:49.514503+00	43	\N	Number
+1075	Zip Codes		\N	\N	\N	2019-05-22 21:53:49.519201+00	2019-05-22 21:53:49.519229+00	43	\N	Number
+1076	Wards		\N	\N	\N	2019-05-22 21:53:49.522733+00	2019-05-22 21:53:49.522761+00	43	\N	Number
+1077	Hospital Type		\N	\N	\N	2019-05-22 21:53:49.568231+00	2019-05-22 21:53:49.56826+00	47	\N	Text
+1078	Mortality national comparison		\N	\N	\N	2019-05-22 21:53:49.571683+00	2019-05-22 21:53:49.571708+00	47	\N	Text
+1079	Effectiveness of care national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.574945+00	2019-05-22 21:53:49.57497+00	47	\N	Text
+1080	Effectiveness of care national comparison		\N	\N	\N	2019-05-22 21:53:49.578367+00	2019-05-22 21:53:49.578391+00	47	\N	Text
+1082	Address		\N	\N	\N	2019-05-22 21:53:49.585118+00	2019-05-22 21:53:49.585143+00	47	\N	Text
+1083	Hospital Name		\N	\N	\N	2019-05-22 21:53:49.588397+00	2019-05-22 21:53:49.588422+00	47	\N	Text
+1084	Provider ID		\N	\N	\N	2019-05-22 21:53:49.592152+00	2019-05-22 21:53:49.592177+00	47	\N	Text
+1085	Phone Number		\N	\N	\N	2019-05-22 21:53:49.595521+00	2019-05-22 21:53:49.595544+00	47	\N	Text
+1086	State		\N	\N	\N	2019-05-22 21:53:49.599393+00	2019-05-22 21:53:49.599418+00	47	\N	Text
+1087	ZIP Code		\N	\N	\N	2019-05-22 21:53:49.603216+00	2019-05-22 21:53:49.603241+00	47	\N	Text
+1088	Patient experience national comparison		\N	\N	\N	2019-05-22 21:53:49.606608+00	2019-05-22 21:53:49.606633+00	47	\N	Text
+1089	Patient experience national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.610349+00	2019-05-22 21:53:49.610374+00	47	\N	Text
+1090	Safety of care national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.613893+00	2019-05-22 21:53:49.613917+00	47	\N	Text
+1091	Readmission national comparison		\N	\N	\N	2019-05-22 21:53:49.617611+00	2019-05-22 21:53:49.617636+00	47	\N	Text
+1092	Readmission national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.621294+00	2019-05-22 21:53:49.621319+00	47	\N	Text
+1093	Hospital overall rating		\N	\N	\N	2019-05-22 21:53:49.624887+00	2019-05-22 21:53:49.624912+00	47	\N	Text
+1094	Hospital overall rating footnote		\N	\N	\N	2019-05-22 21:53:49.628629+00	2019-05-22 21:53:49.628654+00	47	\N	Text
+1095	Location		\N	\N	\N	2019-05-22 21:53:49.632303+00	2019-05-22 21:53:49.632327+00	47	\N	Location
+1096	Efficient use of medical imaging national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.635974+00	2019-05-22 21:53:49.635999+00	47	\N	Text
+1097	Efficient use of medical imaging national comparison		\N	\N	\N	2019-05-22 21:53:49.63937+00	2019-05-22 21:53:49.639395+00	47	\N	Text
+1098	Timeliness of care national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.642909+00	2019-05-22 21:53:49.642934+00	47	\N	Text
+1099	County Name		\N	\N	\N	2019-05-22 21:53:49.646571+00	2019-05-22 21:53:49.646596+00	47	\N	Text
+1100	Meets criteria for meaningful use of EHRs		\N	\N	\N	2019-05-22 21:53:49.650546+00	2019-05-22 21:53:49.650573+00	47	\N	Checkbox
+1101	Mortality national comparison footnote		\N	\N	\N	2019-05-22 21:53:49.654064+00	2019-05-22 21:53:49.654089+00	47	\N	Text
+1102	Safety of care national comparison		\N	\N	\N	2019-05-22 21:53:49.658105+00	2019-05-22 21:53:49.65813+00	47	\N	Text
+1103	Timeliness of care national comparison		\N	\N	\N	2019-05-22 21:53:49.661452+00	2019-05-22 21:53:49.661477+00	47	\N	Text
+1104	Emergency Services		\N	\N	\N	2019-05-22 21:53:49.664732+00	2019-05-22 21:53:49.664756+00	47	\N	Checkbox
+1105	Hospital Ownership		\N	\N	\N	2019-05-22 21:53:49.668225+00	2019-05-22 21:53:49.668299+00	47	\N	Text
+1025	zip code		\N	\N	\N	2019-03-06 01:01:03.612852+00	2019-05-22 21:53:49.694383+00	45	\N	Text
+1026	county		\N	\N	\N	2019-03-06 01:01:03.618662+00	2019-05-22 21:53:49.698257+00	45	\N	Text
+1027	city		\N	\N	\N	2019-03-06 01:01:03.626351+00	2019-05-22 21:53:49.702264+00	45	\N	Text
+951	Premium Adult Individual Age 40		\N	\N	\N	2019-03-06 01:01:02.925536+00	2019-05-22 21:53:49.724402+00	44	\N	Number
+952	Plan Brochure URL		\N	\N	\N	2019-03-06 01:01:02.931231+00	2019-05-22 21:53:49.729623+00	44	\N	URL
+953	Customer Service Phone Number Toll Free		\N	\N	\N	2019-03-06 01:01:02.936774+00	2019-05-22 21:53:49.733078+00	44	\N	Text
+954	Plan Marketing Name		\N	\N	\N	2019-03-06 01:01:02.941644+00	2019-05-22 21:53:49.736792+00	44	\N	Text
+955	Plan Type		\N	\N	\N	2019-03-06 01:01:02.947168+00	2019-05-22 21:53:49.741387+00	44	\N	Text
+956	Summary of Benefits URL		\N	\N	\N	2019-03-06 01:01:02.95664+00	2019-05-22 21:53:49.745391+00	44	\N	URL
+957	Plan ID (standard component)		\N	\N	\N	2019-03-06 01:01:02.962115+00	2019-05-22 21:53:49.749386+00	44	\N	Text
+958	Metal Level		\N	\N	\N	2019-03-06 01:01:02.967552+00	2019-05-22 21:53:49.753847+00	44	\N	Text
+959	Issuer Name		\N	\N	\N	2019-03-06 01:01:02.973758+00	2019-05-22 21:53:49.757624+00	44	\N	Text
+960	Rating Area		\N	\N	\N	2019-03-06 01:01:02.979724+00	2019-05-22 21:53:49.761729+00	44	\N	Text
+961	Source		\N	\N	\N	2019-03-06 01:01:02.984685+00	2019-05-22 21:53:49.765417+00	44	\N	Text
+962	State		\N	\N	\N	2019-03-06 01:01:02.989855+00	2019-05-22 21:53:49.769646+00	44	\N	Text
+963	Drug Deductible -family		\N	\N	\N	2019-03-06 01:01:02.99809+00	2019-05-22 21:53:49.773431+00	44	\N	Text
+964	Medical Maximum Out Of Pocket -individual		\N	\N	\N	2019-03-06 01:01:03.011266+00	2019-05-22 21:53:49.777654+00	44	\N	Text
+965	Primary Care Physician		\N	\N	\N	2019-03-06 01:01:03.024997+00	2019-05-22 21:53:49.781566+00	44	\N	Text
+966	Specialist		\N	\N	\N	2019-03-06 01:01:03.039905+00	2019-05-22 21:53:49.785799+00	44	\N	Text
+967	Couple+3 or more Children, Age 21		\N	\N	\N	2019-03-06 01:01:03.047371+00	2019-05-22 21:53:49.790618+00	44	\N	Number
+968	Child Only Offering		\N	\N	\N	2019-03-06 01:01:03.052291+00	2019-05-22 21:53:49.794686+00	44	\N	Text
+969	Medical Deductible - individual		\N	\N	\N	2019-03-06 01:01:03.057199+00	2019-05-22 21:53:49.798738+00	44	\N	Text
+970	Non-preferred Brand Drugs		\N	\N	\N	2019-03-06 01:01:03.061791+00	2019-05-22 21:53:49.802899+00	44	\N	Text
+971	Emergency Room		\N	\N	\N	2019-03-06 01:01:03.066668+00	2019-05-22 21:53:49.806833+00	44	\N	Text
+972	Preferred Brand Drugs		\N	\N	\N	2019-03-06 01:01:03.072633+00	2019-05-22 21:53:49.811471+00	44	\N	Text
+973	Inpatient Facility 		\N	\N	\N	2019-03-06 01:01:03.077435+00	2019-05-22 21:53:49.815101+00	44	\N	Text
+974	Inpatient Physician		\N	\N	\N	2019-03-06 01:01:03.08215+00	2019-05-22 21:53:49.819201+00	44	\N	Text
+975	Generic Drugs		\N	\N	\N	2019-03-06 01:01:03.087949+00	2019-05-22 21:53:49.82302+00	44	\N	Text
+976	Medical Deductible -family		\N	\N	\N	2019-03-06 01:01:03.093083+00	2019-05-22 21:53:49.826985+00	44	\N	Text
+977	Specialty Drugs		\N	\N	\N	2019-03-06 01:01:03.098657+00	2019-05-22 21:53:49.831272+00	44	\N	Text
+978	Premium Scenarios		\N	\N	\N	2019-03-06 01:01:03.10353+00	2019-05-22 21:53:49.8356+00	44	\N	Text
+979	Child Dental		\N	\N	\N	2019-03-06 01:01:03.108641+00	2019-05-22 21:53:49.839269+00	44	\N	Text
+980	Adult Dental		\N	\N	\N	2019-03-06 01:01:03.113479+00	2019-05-22 21:53:49.84522+00	44	\N	Text
+981	Standard Plan Cost Sharing		\N	\N	\N	2019-03-06 01:01:03.118353+00	2019-05-22 21:53:49.849094+00	44	\N	Text
+982	Couple+2 children, Age 21		\N	\N	\N	2019-03-06 01:01:03.123197+00	2019-05-22 21:53:49.853226+00	44	\N	Number
+983	Individual+3 or more children, Age 40		\N	\N	\N	2019-03-06 01:01:03.127691+00	2019-05-22 21:53:49.857285+00	44	\N	Number
+984	Couple+3 or more Children, Age 30		\N	\N	\N	2019-03-06 01:01:03.132271+00	2019-05-22 21:53:49.861251+00	44	\N	Number
+985	Individual+2 children, Age 30		\N	\N	\N	2019-03-06 01:01:03.136974+00	2019-05-22 21:53:49.864979+00	44	\N	Number
+986	Premium Adult Individual Age 30		\N	\N	\N	2019-03-06 01:01:03.141721+00	2019-05-22 21:53:49.869241+00	44	\N	Number
+987	Individual+3 or more children, Age 30		\N	\N	\N	2019-03-06 01:01:03.146694+00	2019-05-22 21:53:49.875229+00	44	\N	Number
+988	Couple+1 child, Age 21		\N	\N	\N	2019-03-06 01:01:03.151302+00	2019-05-22 21:53:49.879245+00	44	\N	Number
+989	Premium Adult Individual Age 50		\N	\N	\N	2019-03-06 01:01:03.156054+00	2019-05-22 21:53:49.885335+00	44	\N	Number
+990	Premium Adult Individual Age 60		\N	\N	\N	2019-03-06 01:01:03.160896+00	2019-05-22 21:53:49.889212+00	44	\N	Number
+991	Premium Couple 30		\N	\N	\N	2019-03-06 01:01:03.165447+00	2019-05-22 21:53:49.892867+00	44	\N	Number
+992	Premium Adult Individual Age 21		\N	\N	\N	2019-03-06 01:01:03.172235+00	2019-05-22 21:53:49.896285+00	44	\N	Number
+993	Individual+2 children, Age 40		\N	\N	\N	2019-03-06 01:01:03.177556+00	2019-05-22 21:53:49.900009+00	44	\N	Number
+994	Couple+1 child, Age 30 		\N	\N	\N	2019-03-06 01:01:03.186805+00	2019-05-22 21:53:49.903919+00	44	\N	Number
+995	Individual+1 child, Age 21		\N	\N	\N	2019-03-06 01:01:03.204859+00	2019-05-22 21:53:49.907721+00	44	\N	Number
+996	Individual+1 child, Age 40		\N	\N	\N	2019-03-06 01:01:03.209595+00	2019-05-22 21:53:49.911441+00	44	\N	Number
+997	Couple+2 children, Age 30		\N	\N	\N	2019-03-06 01:01:03.218925+00	2019-05-22 21:53:49.914768+00	44	\N	Number
+998	Premium Couple 21  		\N	\N	\N	2019-03-06 01:01:03.224497+00	2019-05-22 21:53:49.918345+00	44	\N	Number
+999	Premium Couple 40		\N	\N	\N	2019-03-06 01:01:03.236432+00	2019-05-22 21:53:49.923742+00	44	\N	Number
+1000	Couple+2 children, Age 50		\N	\N	\N	2019-03-06 01:01:03.245454+00	2019-05-22 21:53:49.928003+00	44	\N	Number
+1001	Individual+2 children, Age 50		\N	\N	\N	2019-03-06 01:01:03.254985+00	2019-05-22 21:53:49.931855+00	44	\N	Number
+1002	Couple+1 child, Age 40 		\N	\N	\N	2019-03-06 01:01:03.262574+00	2019-05-22 21:53:49.935955+00	44	\N	Number
+1003	Individual+1 child, Age 50		\N	\N	\N	2019-03-06 01:01:03.268235+00	2019-05-22 21:53:49.939759+00	44	\N	Number
+1004	Premium Couple 50		\N	\N	\N	2019-03-06 01:01:03.278988+00	2019-05-22 21:53:49.943494+00	44	\N	Number
+1005	Couple+3 or more Children, Age 50		\N	\N	\N	2019-03-06 01:01:03.290525+00	2019-05-22 21:53:49.947457+00	44	\N	Number
+1006	Individual+3 or more children, Age 21		\N	\N	\N	2019-03-06 01:01:03.300596+00	2019-05-22 21:53:49.951773+00	44	\N	Number
+1007	Couple+2 children, Age 40		\N	\N	\N	2019-03-06 01:01:03.314676+00	2019-05-22 21:53:49.955738+00	44	\N	Number
+1008	Individual+3 or more children, Age 50		\N	\N	\N	2019-03-06 01:01:03.324572+00	2019-05-22 21:53:49.959708+00	44	\N	Number
+1009	Individual+1 child, Age 30		\N	\N	\N	2019-03-06 01:01:03.333111+00	2019-05-22 21:53:49.963413+00	44	\N	Number
+1010	Couple+1 child, Age 50 		\N	\N	\N	2019-03-06 01:01:03.350292+00	2019-05-22 21:53:49.967356+00	44	\N	Number
+1011	Premium Child		\N	\N	\N	2019-03-06 01:01:03.355981+00	2019-05-22 21:53:49.971611+00	44	\N	Number
+1012	Premium Couple 60		\N	\N	\N	2019-03-06 01:01:03.397521+00	2019-05-22 21:53:49.975505+00	44	\N	Number
+1013	Premium Adult Individual Age 27		\N	\N	\N	2019-03-06 01:01:03.428309+00	2019-05-22 21:53:49.979498+00	44	\N	Number
+1014	Individual+2 children, Age 21		\N	\N	\N	2019-03-06 01:01:03.445575+00	2019-05-22 21:53:49.98308+00	44	\N	Number
+1015	Couple+3 or more Children, Age 40		\N	\N	\N	2019-03-06 01:01:03.469562+00	2019-05-22 21:53:49.987214+00	44	\N	Number
+1016	Customer Service Phone Number TTY		\N	\N	\N	2019-03-06 01:01:03.48751+00	2019-05-22 21:53:49.991262+00	44	\N	Text
+1017	County		\N	\N	\N	2019-03-06 01:01:03.498591+00	2019-05-22 21:53:49.995328+00	44	\N	Text
+1018	Drug Maximum Out of Pocket - individual		\N	\N	\N	2019-03-06 01:01:03.509554+00	2019-05-22 21:53:49.999228+00	44	\N	Text
+1019	Medical Maximum Out of Pocket -family		\N	\N	\N	2019-03-06 01:01:03.518279+00	2019-05-22 21:53:50.003265+00	44	\N	Text
+1020	Drug Maximum Out of Pocket - Family		\N	\N	\N	2019-03-06 01:01:03.525683+00	2019-05-22 21:53:50.006932+00	44	\N	Text
+1021	Drug Deductible - individual		\N	\N	\N	2019-03-06 01:01:03.547397+00	2019-05-22 21:53:50.011712+00	44	\N	Text
+1022	Network URL		\N	\N	\N	2019-03-06 01:01:03.553487+00	2019-05-22 21:53:50.016688+00	44	\N	URL
+1023	Customer Service Phone Number Local		\N	\N	\N	2019-03-06 01:01:03.558586+00	2019-05-22 21:53:50.022039+00	44	\N	Text
+1024	Drug Formulary URL		\N	\N	\N	2019-03-06 01:01:03.563396+00	2019-05-22 21:53:50.02625+00	44	\N	URL
 \.
-
-
---
--- Name: data_facility_metadata_variable_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.data_facility_metadata_variable_id_seq', 1030, true);
 
 
 --
@@ -9594,14 +10450,24 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 48	2019-05-14 18:15:37.99627+00	419	adrf-desktop [aaa-testa2]	2	[]	31	1
 49	2019-05-14 18:20:49.790274+00	419	adrf-desktop [aaa-testa2]	2	[]	31	1
 50	2019-05-14 20:37:20.234258+00	419	adrf-desktop [aaa-testa23]	2	[{"changed": {"fields": ["dataset_id"]}}]	31	1
+51	2019-05-28 21:19:59.282444+00	226	adrf-dev (owned by Jonathan Morgan)	2	[{"added": {"object": "adrf-dev (owned by Jonathan Morgan): Daniel Castellani (Member)", "name": "project member"}}]	22	1
+52	2019-05-28 21:22:35.111829+00	226	adrf-dev (owned by Jonathan Morgan)	2	[{"added": {"object": "Workspace_K8s  None", "name": "project tool"}}]	22	1
+53	2019-05-28 21:22:54.57157+00	226	adrf-dev (owned by Jonathan Morgan)	2	[{"added": {"object": "Postgres  None", "name": "project tool"}}, {"added": {"object": "Python  None", "name": "project tool"}}]	22	1
+54	2019-05-28 21:34:40.573009+00	226	adrf-dev (owned by Jonathan Morgan)	2	[]	22	1
+55	2019-05-28 21:35:06.725356+00	226	adrf-dev (owned by Jonathan Morgan)	2	[]	22	1
+56	2019-05-28 21:35:06.754472+00	226	adrf-dev (owned by Jonathan Morgan)	2	[]	22	1
+57	2019-05-28 21:35:14.646888+00	226	adrf-dev (owned by Jonathan Morgan)	2	[{"deleted": {"object": "Workspace_K8s  None", "name": "project tool"}}]	22	1
+58	2019-05-28 21:35:19.710433+00	226	adrf-dev (owned by Jonathan Morgan)	2	[]	22	1
+59	2019-05-28 21:38:38.303602+00	226	adrf-dev (owned by Jonathan Morgan)	2	[]	22	1
+60	2019-05-28 21:38:48.607804+00	226	adrf-dev (owned by Jonathan Morgan)	2	[{"changed": {"fields": ["abstract"]}}]	22	1
+61	2019-05-28 21:42:09.692981+00	226	adrf-dev (owned by Jonathan Morgan)	2	[]	22	1
+62	2019-05-28 21:42:57.934501+00	226	adrf-dev (owned by Jonathan Morgan)	2	[]	22	1
+63	2019-05-28 21:43:22.031791+00	226	adrf-dev (owned by Jonathan Morgan)	2	[]	22	1
+64	2019-05-28 21:47:39.842972+00	353	Academic librarian (owned by no one)	2	[{"changed": {"fields": ["workspace_path"]}}]	22	1
+65	2019-05-28 21:48:15.763027+00	421	test (owned by no one)	1	[{"added": {}}]	22	1
+66	2019-05-28 21:50:28.362336+00	421	test (owned by no one)	2	[]	22	1
+67	2019-05-28 21:51:21.607804+00	226	adrf-dev (owned by Jonathan Morgan)	2	[]	22	1
 \.
-
-
---
--- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 50, true);
 
 
 --
@@ -9678,13 +10544,6 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 67	data_facility_admin	historicalcategory
 68	data_facility_admin	category
 \.
-
-
---
--- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 68, true);
 
 
 --
@@ -9830,13 +10689,6 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 134, true);
-
-
---
 -- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -9876,11 +10728,500 @@ b7y54rrkvkagufmx8jwc7jy0f11ait51	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY
 7f186jb38ov53rjg74zwlji2ndighhtc	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-05-14 17:50:55.362629+00
 vfta5kwukl7esrl4fj9qe52dxnd0v9wy	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-05-14 18:22:43.405438+00
 h54mcndqkv9gixnif4pq5ig8zji7clgq	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-05-14 21:07:06.817857+00
+vlh74uhw3z2xxvfgjt4i44iqynydcqw7	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-05-22 22:25:19.338493+00
+098o2f8wjzoledamgr6cjgpelwki10db	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-05-28 21:48:24.637959+00
+uqcecfrlh261gn3ydq5yhrsth256xm6o	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-05-28 22:20:25.949196+00
+24go19mb66qvg2ujndtuyslr05l3ncfl	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-05-29 16:28:22.575424+00
+bjtq7901rhjqvzm1yf7qs27rcmyk6x0m	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-05-30 16:51:29.053774+00
+z3g3geelcjrhscy0g089c8ye7k7d938g	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-06-11 20:34:27.358109+00
+r84ukhmjbs95id6pwwt1qhafp25a32gp	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-06-12 15:53:57.947728+00
+69gpfct1nzotvuteiznzu35hz905ssaj	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-06-12 18:21:04.374093+00
+ejndvpg6d0dyvijqn1puqpwywm652gxe	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-06-12 19:40:46.498231+00
+bw66vfugguzkiina5vkl592bbfbkkuvp	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-06-13 15:08:22.394864+00
+29ffo11juzl0v0v6bgc5aqcttj14ukow	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-06-13 16:01:41.49996+00
+t8r54kpqlatq4ole2jobewllp1n6978j	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-06-13 17:08:38.801875+00
+2ldal9v6x2tbldue6g7hehkhr6v8mj5m	OGVjNTMwNjM5ZGUyOTdlNTE2ODJlZDhmOGYyMzBhNzBmNmY2NzA3Njp7Il9hdXRoX3VzZXJfaGFzaCI6IjdiNWU0M2QxYTEyZWIzMzVmY2MxYTU3YmZkNDA3YjA0OWIwM2FhNzYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-06-13 18:35:17.655894+00
 \.
 
 
 --
--- Name: auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_group_id_seq', 8, true);
+
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 309, true);
+
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 272, true);
+
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 4, true);
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_user_id_seq', 4, true);
+
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_category_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_dataagreement_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_dataagreement_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_dataagreementsignature_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_dataagreementsignature_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_databaseschema_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_databaseschema_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_dataclassification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_dataclassification_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_dataprovider_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_dataprovider_id_seq', 5, true);
+
+
+--
+-- Name: data_facility_admin_dataset_keywords_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_dataset_keywords_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_datasetaccess_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_datasetaccess_id_seq', 1, true);
+
+
+--
+-- Name: data_facility_admin_datasteward_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_datasteward_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicalcategory_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicalcategory_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicaldataagreement_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaldataagreement_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicaldataagreementsigna_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaldataagreementsigna_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicaldatabaseschema_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaldatabaseschema_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicaldataset_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaldataset_history_id_seq', 178, true);
+
+
+--
+-- Name: data_facility_admin_historicaldatasetaccess_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaldatasetaccess_history_id_seq', 3, true);
+
+
+--
+-- Name: data_facility_admin_historicaldatasteward_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaldatasteward_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicaldfrole_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaldfrole_history_id_seq', 37, true);
+
+
+--
+-- Name: data_facility_admin_historicalprofiletag_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicalprofiletag_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicalprojectmember_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicalprojectmember_history_id_seq', 10, true);
+
+
+--
+-- Name: data_facility_admin_historicalprojectrole_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicalprojectrole_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicalprojecttool_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicalprojecttool_history_id_seq', 106, true);
+
+
+--
+-- Name: data_facility_admin_historicalresearchproject_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicalresearchproject_history_id_seq', 173, true);
+
+
+--
+-- Name: data_facility_admin_historicalsignedtermsofuse_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicalsignedtermsofuse_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicaltermsofuse_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaltermsofuse_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicaltraining_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaltraining_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_historicaluser_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaluser_history_id_seq', 364, true);
+
+
+--
+-- Name: data_facility_admin_historicaluserdfrole_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicaluserdfrole_history_id_seq', 24, true);
+
+
+--
+-- Name: data_facility_admin_historicalusertraining_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_historicalusertraining_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_keyword_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_keyword_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_ldapobject_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_ldapobject_id_seq', 421, true);
+
+
+--
+-- Name: data_facility_admin_profiletag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_profiletag_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_projectmember_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_projectmember_id_seq', 8, true);
+
+
+--
+-- Name: data_facility_admin_projectrole_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_projectrole_id_seq', 4, true);
+
+
+--
+-- Name: data_facility_admin_projecttool_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_projecttool_id_seq', 105, true);
+
+
+--
+-- Name: data_facility_admin_signedtermsofuse_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_signedtermsofuse_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_systeminfo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_systeminfo_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_termsofuse_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_termsofuse_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_training_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_training_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_user_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_user_tags_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_admin_userdfrole_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_userdfrole_id_seq', 23, true);
+
+
+--
+-- Name: data_facility_admin_usertraining_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_admin_usertraining_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_metadata_datastore_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_datastore_id_seq', 2, true);
+
+
+--
+-- Name: data_facility_metadata_datatable_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_datatable_id_seq', 47, true);
+
+
+--
+-- Name: data_facility_metadata_datatype_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_datatype_id_seq', 16, true);
+
+
+--
+-- Name: data_facility_metadata_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_file_id_seq', 47, true);
+
+
+--
+-- Name: data_facility_metadata_fileformat_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_fileformat_id_seq', 27, true);
+
+
+--
+-- Name: data_facility_metadata_historicaldatastore_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_historicaldatastore_history_id_seq', 3, true);
+
+
+--
+-- Name: data_facility_metadata_historicaldatatable_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_historicaldatatable_history_id_seq', 47, true);
+
+
+--
+-- Name: data_facility_metadata_historicaldatatype_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_historicaldatatype_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_metadata_historicalfile_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_historicalfile_history_id_seq', 92, true);
+
+
+--
+-- Name: data_facility_metadata_historicalfileformat_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_historicalfileformat_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_metadata_historicalphysicaldatatab_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_historicalphysicaldatatab_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_metadata_historicalstoragetype_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_historicalstoragetype_history_id_seq', 2, true);
+
+
+--
+-- Name: data_facility_metadata_historicalvalue_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_historicalvalue_history_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_metadata_historicalvariable_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_historicalvariable_history_id_seq', 2132, true);
+
+
+--
+-- Name: data_facility_metadata_physicaldatatable_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_physicaldatatable_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_metadata_storagetype_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_storagetype_id_seq', 3, true);
+
+
+--
+-- Name: data_facility_metadata_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_value_id_seq', 1, false);
+
+
+--
+-- Name: data_facility_metadata_variable_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.data_facility_metadata_variable_id_seq', 1105, true);
+
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 67, true);
+
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 68, true);
+
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 134, true);
+
+
+--
+-- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_group
@@ -9888,7 +11229,7 @@ ALTER TABLE ONLY public.auth_group
 
 
 --
--- Name: auth_group_permissions_group_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_group_permissions auth_group_permissions_group_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_group_permissions
@@ -9896,7 +11237,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- Name: auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_group_permissions
@@ -9904,7 +11245,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- Name: auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_group
@@ -9912,7 +11253,7 @@ ALTER TABLE ONLY public.auth_group
 
 
 --
--- Name: auth_permission_content_type_id_codename_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_permission auth_permission_content_type_id_codename_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_permission
@@ -9920,7 +11261,7 @@ ALTER TABLE ONLY public.auth_permission
 
 
 --
--- Name: auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_permission
@@ -9928,7 +11269,7 @@ ALTER TABLE ONLY public.auth_permission
 
 
 --
--- Name: auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user_groups auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_groups
@@ -9936,7 +11277,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- Name: auth_user_groups_user_id_group_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user_groups auth_user_groups_user_id_group_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_groups
@@ -9944,7 +11285,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- Name: auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user
@@ -9952,7 +11293,7 @@ ALTER TABLE ONLY public.auth_user
 
 
 --
--- Name: auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user_user_permissions auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_user_permissions
@@ -9960,7 +11301,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- Name: auth_user_user_permissions_user_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user_user_permissions auth_user_user_permissions_user_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_user_permissions
@@ -9968,7 +11309,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- Name: auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user
@@ -9976,7 +11317,7 @@ ALTER TABLE ONLY public.auth_user
 
 
 --
--- Name: authtoken_token_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: authtoken_token authtoken_token_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.authtoken_token
@@ -9984,7 +11325,7 @@ ALTER TABLE ONLY public.authtoken_token
 
 
 --
--- Name: authtoken_token_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: authtoken_token authtoken_token_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.authtoken_token
@@ -9992,7 +11333,7 @@ ALTER TABLE ONLY public.authtoken_token
 
 
 --
--- Name: data_facility_admin_category_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_category data_facility_admin_category_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_category
@@ -10000,7 +11341,7 @@ ALTER TABLE ONLY public.data_facility_admin_category
 
 
 --
--- Name: data_facility_admin_category_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_category data_facility_admin_category_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_category
@@ -10008,7 +11349,7 @@ ALTER TABLE ONLY public.data_facility_admin_category
 
 
 --
--- Name: data_facility_admin_data_dataset_id_keyword_id_00778254_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset_keywords data_facility_admin_data_dataset_id_keyword_id_00778254_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset_keywords
@@ -10016,7 +11357,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset_keywords
 
 
 --
--- Name: data_facility_admin_dataagreement_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataagreement data_facility_admin_dataagreement_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataagreement
@@ -10024,7 +11365,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataagreement
 
 
 --
--- Name: data_facility_admin_dataagreement_user_id_1c004eb34df55e6d_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataagreementsignature data_facility_admin_dataagreement_user_id_1c004eb34df55e6d_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataagreementsignature
@@ -10032,7 +11373,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataagreementsignature
 
 
 --
--- Name: data_facility_admin_dataagreementsignature_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataagreementsignature data_facility_admin_dataagreementsignature_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataagreementsignature
@@ -10040,7 +11381,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataagreementsignature
 
 
 --
--- Name: data_facility_admin_databaseschema_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_databaseschema data_facility_admin_databaseschema_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_databaseschema
@@ -10048,7 +11389,7 @@ ALTER TABLE ONLY public.data_facility_admin_databaseschema
 
 
 --
--- Name: data_facility_admin_dataclassification_name_35c94f2a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataclassification data_facility_admin_dataclassification_name_35c94f2a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataclassification
@@ -10056,7 +11397,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataclassification
 
 
 --
--- Name: data_facility_admin_dataclassification_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataclassification data_facility_admin_dataclassification_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataclassification
@@ -10064,7 +11405,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataclassification
 
 
 --
--- Name: data_facility_admin_dataprovider_name_677157fc_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataprovider data_facility_admin_dataprovider_name_677157fc_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataprovider
@@ -10072,7 +11413,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataprovider
 
 
 --
--- Name: data_facility_admin_dataprovider_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataprovider data_facility_admin_dataprovider_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataprovider
@@ -10080,7 +11421,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataprovider
 
 
 --
--- Name: data_facility_admin_dataprovider_slug_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataprovider data_facility_admin_dataprovider_slug_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataprovider
@@ -10088,7 +11429,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataprovider
 
 
 --
--- Name: data_facility_admin_dataset_doi_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset data_facility_admin_dataset_doi_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset
@@ -10096,7 +11437,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset
 
 
 --
--- Name: data_facility_admin_dataset_keywords_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset_keywords data_facility_admin_dataset_keywords_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset_keywords
@@ -10104,7 +11445,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset_keywords
 
 
 --
--- Name: data_facility_admin_dataset_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset data_facility_admin_dataset_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset
@@ -10112,7 +11453,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset
 
 
 --
--- Name: data_facility_admin_datasetaccess_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_datasetaccess data_facility_admin_datasetaccess_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_datasetaccess
@@ -10120,7 +11461,7 @@ ALTER TABLE ONLY public.data_facility_admin_datasetaccess
 
 
 --
--- Name: data_facility_admin_datasteward_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_datasteward data_facility_admin_datasteward_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_datasteward
@@ -10128,7 +11469,7 @@ ALTER TABLE ONLY public.data_facility_admin_datasteward
 
 
 --
--- Name: data_facility_admin_dfrole_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dfrole data_facility_admin_dfrole_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dfrole
@@ -10136,7 +11477,7 @@ ALTER TABLE ONLY public.data_facility_admin_dfrole
 
 
 --
--- Name: data_facility_admin_dfrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dfrole data_facility_admin_dfrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dfrole
@@ -10144,7 +11485,7 @@ ALTER TABLE ONLY public.data_facility_admin_dfrole
 
 
 --
--- Name: data_facility_admin_historicalcategory_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalcategory data_facility_admin_historicalcategory_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalcategory
@@ -10152,7 +11493,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalcategory
 
 
 --
--- Name: data_facility_admin_historicaldataagreement_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldataagreement data_facility_admin_historicaldataagreement_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldataagreement
@@ -10160,7 +11501,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldataagreement
 
 
 --
--- Name: data_facility_admin_historicaldataagreementsignature_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldataagreementsignature data_facility_admin_historicaldataagreementsignature_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldataagreementsignature
@@ -10168,7 +11509,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldataagreementsignature
 
 
 --
--- Name: data_facility_admin_historicaldatabaseschema_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldatabaseschema data_facility_admin_historicaldatabaseschema_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldatabaseschema
@@ -10176,7 +11517,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldatabaseschema
 
 
 --
--- Name: data_facility_admin_historicaldataset_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldataset data_facility_admin_historicaldataset_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldataset
@@ -10184,7 +11525,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldataset
 
 
 --
--- Name: data_facility_admin_historicaldatasetaccess_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldatasetaccess data_facility_admin_historicaldatasetaccess_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldatasetaccess
@@ -10192,7 +11533,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldatasetaccess
 
 
 --
--- Name: data_facility_admin_historicaldatasteward_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldatasteward data_facility_admin_historicaldatasteward_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldatasteward
@@ -10200,7 +11541,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldatasteward
 
 
 --
--- Name: data_facility_admin_historicaldfrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldfrole data_facility_admin_historicaldfrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldfrole
@@ -10208,7 +11549,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldfrole
 
 
 --
--- Name: data_facility_admin_historicalprofiletag_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprofiletag data_facility_admin_historicalprofiletag_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprofiletag
@@ -10216,7 +11557,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalprofiletag
 
 
 --
--- Name: data_facility_admin_historicalprojectmember_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprojectmember data_facility_admin_historicalprojectmember_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprojectmember
@@ -10224,7 +11565,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalprojectmember
 
 
 --
--- Name: data_facility_admin_historicalprojectrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprojectrole data_facility_admin_historicalprojectrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprojectrole
@@ -10232,7 +11573,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalprojectrole
 
 
 --
--- Name: data_facility_admin_historicalprojecttool_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprojecttool data_facility_admin_historicalprojecttool_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprojecttool
@@ -10240,7 +11581,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalprojecttool
 
 
 --
--- Name: data_facility_admin_historicalresearchproject_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalproject data_facility_admin_historicalresearchproject_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalproject
@@ -10248,7 +11589,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalproject
 
 
 --
--- Name: data_facility_admin_historicalsignedtermsofuse_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalsignedtermsofuse data_facility_admin_historicalsignedtermsofuse_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalsignedtermsofuse
@@ -10256,7 +11597,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalsignedtermsofuse
 
 
 --
--- Name: data_facility_admin_historicaltermsofuse_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaltermsofuse data_facility_admin_historicaltermsofuse_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaltermsofuse
@@ -10264,7 +11605,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaltermsofuse
 
 
 --
--- Name: data_facility_admin_historicaltraining_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaltraining data_facility_admin_historicaltraining_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaltraining
@@ -10272,7 +11613,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaltraining
 
 
 --
--- Name: data_facility_admin_historicaluser_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaluser data_facility_admin_historicaluser_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaluser
@@ -10280,7 +11621,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaluser
 
 
 --
--- Name: data_facility_admin_historicaluserdfrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaluserdfrole data_facility_admin_historicaluserdfrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaluserdfrole
@@ -10288,7 +11629,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaluserdfrole
 
 
 --
--- Name: data_facility_admin_historicalusertraining_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalusertraining data_facility_admin_historicalusertraining_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalusertraining
@@ -10296,7 +11637,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalusertraining
 
 
 --
--- Name: data_facility_admin_keyword_name_8530e4c3_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_keyword data_facility_admin_keyword_name_8530e4c3_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_keyword
@@ -10304,7 +11645,7 @@ ALTER TABLE ONLY public.data_facility_admin_keyword
 
 
 --
--- Name: data_facility_admin_keyword_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_keyword data_facility_admin_keyword_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_keyword
@@ -10312,7 +11653,7 @@ ALTER TABLE ONLY public.data_facility_admin_keyword
 
 
 --
--- Name: data_facility_admin_ldapobject_ldap_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_ldapobject data_facility_admin_ldapobject_ldap_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_ldapobject
@@ -10320,7 +11661,7 @@ ALTER TABLE ONLY public.data_facility_admin_ldapobject
 
 
 --
--- Name: data_facility_admin_ldapobject_ldap_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_ldapobject data_facility_admin_ldapobject_ldap_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_ldapobject
@@ -10328,7 +11669,7 @@ ALTER TABLE ONLY public.data_facility_admin_ldapobject
 
 
 --
--- Name: data_facility_admin_ldapobject_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_ldapobject data_facility_admin_ldapobject_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_ldapobject
@@ -10336,7 +11677,7 @@ ALTER TABLE ONLY public.data_facility_admin_ldapobject
 
 
 --
--- Name: data_facility_admin_profiletag_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_profiletag data_facility_admin_profiletag_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_profiletag
@@ -10344,7 +11685,7 @@ ALTER TABLE ONLY public.data_facility_admin_profiletag
 
 
 --
--- Name: data_facility_admin_profiletag_text_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_profiletag data_facility_admin_profiletag_text_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_profiletag
@@ -10352,7 +11693,7 @@ ALTER TABLE ONLY public.data_facility_admin_profiletag
 
 
 --
--- Name: data_facility_admin_proj_project_id_tool_name_1f34891a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_projecttool data_facility_admin_proj_project_id_tool_name_1f34891a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_projecttool
@@ -10360,7 +11701,7 @@ ALTER TABLE ONLY public.data_facility_admin_projecttool
 
 
 --
--- Name: data_facility_admin_project_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_project data_facility_admin_project_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_project
@@ -10368,7 +11709,7 @@ ALTER TABLE ONLY public.data_facility_admin_project
 
 
 --
--- Name: data_facility_admin_projectmember_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_projectmember data_facility_admin_projectmember_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_projectmember
@@ -10376,7 +11717,7 @@ ALTER TABLE ONLY public.data_facility_admin_projectmember
 
 
 --
--- Name: data_facility_admin_projectrole_name_18ddfd4a7b773a4f_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_projectrole data_facility_admin_projectrole_name_18ddfd4a7b773a4f_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_projectrole
@@ -10384,7 +11725,7 @@ ALTER TABLE ONLY public.data_facility_admin_projectrole
 
 
 --
--- Name: data_facility_admin_projectrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_projectrole data_facility_admin_projectrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_projectrole
@@ -10392,7 +11733,7 @@ ALTER TABLE ONLY public.data_facility_admin_projectrole
 
 
 --
--- Name: data_facility_admin_projecttool_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_projecttool data_facility_admin_projecttool_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_projecttool
@@ -10400,7 +11741,7 @@ ALTER TABLE ONLY public.data_facility_admin_projecttool
 
 
 --
--- Name: data_facility_admin_signedtermsofuse_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_signedtermsofuse data_facility_admin_signedtermsofuse_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_signedtermsofuse
@@ -10408,7 +11749,7 @@ ALTER TABLE ONLY public.data_facility_admin_signedtermsofuse
 
 
 --
--- Name: data_facility_admin_systeminfo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_systeminfo data_facility_admin_systeminfo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_systeminfo
@@ -10416,7 +11757,7 @@ ALTER TABLE ONLY public.data_facility_admin_systeminfo
 
 
 --
--- Name: data_facility_admin_termsofuse_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_termsofuse data_facility_admin_termsofuse_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_termsofuse
@@ -10424,7 +11765,7 @@ ALTER TABLE ONLY public.data_facility_admin_termsofuse
 
 
 --
--- Name: data_facility_admin_termsofuse_text_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_termsofuse data_facility_admin_termsofuse_text_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_termsofuse
@@ -10432,7 +11773,7 @@ ALTER TABLE ONLY public.data_facility_admin_termsofuse
 
 
 --
--- Name: data_facility_admin_training_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_training data_facility_admin_training_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_training
@@ -10440,7 +11781,7 @@ ALTER TABLE ONLY public.data_facility_admin_training
 
 
 --
--- Name: data_facility_admin_user_django_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_user data_facility_admin_user_django_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_user
@@ -10448,7 +11789,7 @@ ALTER TABLE ONLY public.data_facility_admin_user
 
 
 --
--- Name: data_facility_admin_user_email_418d7fe8c7419e0e_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_user data_facility_admin_user_email_418d7fe8c7419e0e_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_user
@@ -10456,7 +11797,7 @@ ALTER TABLE ONLY public.data_facility_admin_user
 
 
 --
--- Name: data_facility_admin_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_user data_facility_admin_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_user
@@ -10464,7 +11805,7 @@ ALTER TABLE ONLY public.data_facility_admin_user
 
 
 --
--- Name: data_facility_admin_user_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_user_tags data_facility_admin_user_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_user_tags
@@ -10472,7 +11813,7 @@ ALTER TABLE ONLY public.data_facility_admin_user_tags
 
 
 --
--- Name: data_facility_admin_user_tags_user_id_profiletag_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_user_tags data_facility_admin_user_tags_user_id_profiletag_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_user_tags
@@ -10480,7 +11821,7 @@ ALTER TABLE ONLY public.data_facility_admin_user_tags
 
 
 --
--- Name: data_facility_admin_userdfrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_userdfrole data_facility_admin_userdfrole_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_userdfrole
@@ -10488,7 +11829,7 @@ ALTER TABLE ONLY public.data_facility_admin_userdfrole
 
 
 --
--- Name: data_facility_admin_userdfrole_user_id_6f85416c0505e41_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_userdfrole data_facility_admin_userdfrole_user_id_6f85416c0505e41_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_userdfrole
@@ -10496,7 +11837,7 @@ ALTER TABLE ONLY public.data_facility_admin_userdfrole
 
 
 --
--- Name: data_facility_admin_usertraining_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_usertraining data_facility_admin_usertraining_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_usertraining
@@ -10504,7 +11845,7 @@ ALTER TABLE ONLY public.data_facility_admin_usertraining
 
 
 --
--- Name: data_facility_metadata_datastore_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datastore data_facility_metadata_datastore_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datastore
@@ -10512,7 +11853,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datastore
 
 
 --
--- Name: data_facility_metadata_datastore_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datastore data_facility_metadata_datastore_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datastore
@@ -10520,7 +11861,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datastore
 
 
 --
--- Name: data_facility_metadata_datatable_dataset_id_name_e276c7b5_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datatable data_facility_metadata_datatable_dataset_id_name_e276c7b5_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datatable
@@ -10528,7 +11869,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datatable
 
 
 --
--- Name: data_facility_metadata_datatable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datatable data_facility_metadata_datatable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datatable
@@ -10536,7 +11877,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datatable
 
 
 --
--- Name: data_facility_metadata_datatype_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datatype data_facility_metadata_datatype_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datatype
@@ -10544,7 +11885,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datatype
 
 
 --
--- Name: data_facility_metadata_datatype_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datatype data_facility_metadata_datatype_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datatype
@@ -10552,7 +11893,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datatype
 
 
 --
--- Name: data_facility_metadata_file_dataset_id_name_7520a00a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_file data_facility_metadata_file_dataset_id_name_7520a00a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_file
@@ -10560,7 +11901,7 @@ ALTER TABLE ONLY public.data_facility_metadata_file
 
 
 --
--- Name: data_facility_metadata_file_location_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_file data_facility_metadata_file_location_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_file
@@ -10568,7 +11909,7 @@ ALTER TABLE ONLY public.data_facility_metadata_file
 
 
 --
--- Name: data_facility_metadata_file_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_file data_facility_metadata_file_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_file
@@ -10576,7 +11917,7 @@ ALTER TABLE ONLY public.data_facility_metadata_file
 
 
 --
--- Name: data_facility_metadata_file_type_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_file data_facility_metadata_file_type_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_file
@@ -10584,7 +11925,7 @@ ALTER TABLE ONLY public.data_facility_metadata_file
 
 
 --
--- Name: data_facility_metadata_fileformat_mimetype_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_fileformat data_facility_metadata_fileformat_mimetype_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_fileformat
@@ -10592,7 +11933,7 @@ ALTER TABLE ONLY public.data_facility_metadata_fileformat
 
 
 --
--- Name: data_facility_metadata_fileformat_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_fileformat data_facility_metadata_fileformat_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_fileformat
@@ -10600,7 +11941,7 @@ ALTER TABLE ONLY public.data_facility_metadata_fileformat
 
 
 --
--- Name: data_facility_metadata_historicaldatastore_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicaldatastore data_facility_metadata_historicaldatastore_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicaldatastore
@@ -10608,7 +11949,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicaldatastore
 
 
 --
--- Name: data_facility_metadata_historicaldatatable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicaldatatable data_facility_metadata_historicaldatatable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicaldatatable
@@ -10616,7 +11957,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicaldatatable
 
 
 --
--- Name: data_facility_metadata_historicaldatatype_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicaldatatype data_facility_metadata_historicaldatatype_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicaldatatype
@@ -10624,7 +11965,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicaldatatype
 
 
 --
--- Name: data_facility_metadata_historicalfile_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalfile data_facility_metadata_historicalfile_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalfile
@@ -10632,7 +11973,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalfile
 
 
 --
--- Name: data_facility_metadata_historicalfileformat_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalfileformat data_facility_metadata_historicalfileformat_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalfileformat
@@ -10640,7 +11981,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalfileformat
 
 
 --
--- Name: data_facility_metadata_historicalphysicaldatatable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalphysicaldatatable data_facility_metadata_historicalphysicaldatatable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalphysicaldatatable
@@ -10648,7 +11989,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalphysicaldatatable
 
 
 --
--- Name: data_facility_metadata_historicalstoragetype_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalstoragetype data_facility_metadata_historicalstoragetype_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalstoragetype
@@ -10656,7 +11997,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalstoragetype
 
 
 --
--- Name: data_facility_metadata_historicalvalue_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalvalue data_facility_metadata_historicalvalue_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalvalue
@@ -10664,7 +12005,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalvalue
 
 
 --
--- Name: data_facility_metadata_historicalvariable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalvariable data_facility_metadata_historicalvariable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalvariable
@@ -10672,7 +12013,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalvariable
 
 
 --
--- Name: data_facility_metadata_physicaldatatable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_physicaldatatable data_facility_metadata_physicaldatatable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_physicaldatatable
@@ -10680,7 +12021,7 @@ ALTER TABLE ONLY public.data_facility_metadata_physicaldatatable
 
 
 --
--- Name: data_facility_metadata_storagetype_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_storagetype data_facility_metadata_storagetype_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_storagetype
@@ -10688,7 +12029,7 @@ ALTER TABLE ONLY public.data_facility_metadata_storagetype
 
 
 --
--- Name: data_facility_metadata_storagetype_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_storagetype data_facility_metadata_storagetype_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_storagetype
@@ -10696,7 +12037,7 @@ ALTER TABLE ONLY public.data_facility_metadata_storagetype
 
 
 --
--- Name: data_facility_metadata_v_data_table_id_name_e1608315_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_variable data_facility_metadata_v_data_table_id_name_e1608315_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_variable
@@ -10704,7 +12045,7 @@ ALTER TABLE ONLY public.data_facility_metadata_variable
 
 
 --
--- Name: data_facility_metadata_value_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_value data_facility_metadata_value_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_value
@@ -10712,7 +12053,7 @@ ALTER TABLE ONLY public.data_facility_metadata_value
 
 
 --
--- Name: data_facility_metadata_value_variable_id_value_b45702fe_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_value data_facility_metadata_value_variable_id_value_b45702fe_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_value
@@ -10720,7 +12061,7 @@ ALTER TABLE ONLY public.data_facility_metadata_value
 
 
 --
--- Name: data_facility_metadata_variable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_variable data_facility_metadata_variable_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_variable
@@ -10728,7 +12069,7 @@ ALTER TABLE ONLY public.data_facility_metadata_variable
 
 
 --
--- Name: django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_admin_log
@@ -10736,7 +12077,7 @@ ALTER TABLE ONLY public.django_admin_log
 
 
 --
--- Name: django_content_type_app_label_45f3b1d93ec8c61c_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: django_content_type django_content_type_app_label_45f3b1d93ec8c61c_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_content_type
@@ -10744,7 +12085,7 @@ ALTER TABLE ONLY public.django_content_type
 
 
 --
--- Name: django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_content_type
@@ -10752,7 +12093,7 @@ ALTER TABLE ONLY public.django_content_type
 
 
 --
--- Name: django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_migrations
@@ -10760,7 +12101,7 @@ ALTER TABLE ONLY public.django_migrations
 
 
 --
--- Name: django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_session
@@ -12203,7 +13544,7 @@ CREATE INDEX django_session_session_key_461cfeaa630ca218_like ON public.django_s
 
 
 --
--- Name: D28040dab3e027ce6b8df08a6df9a49a; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_user_tags D28040dab3e027ce6b8df08a6df9a49a; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_user_tags
@@ -12211,7 +13552,7 @@ ALTER TABLE ONLY public.data_facility_admin_user_tags
 
 
 --
--- Name: D4298f08a74fa5a5c0eb525818561c9d; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataagreementsignature D4298f08a74fa5a5c0eb525818561c9d; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataagreementsignature
@@ -12219,7 +13560,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataagreementsignature
 
 
 --
--- Name: D701fae3d8c718e17cf72094784ff357; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset D701fae3d8c718e17cf72094784ff357; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset
@@ -12227,7 +13568,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset
 
 
 --
--- Name: D7a6dd00bfc431da0cd219c7b1bd64f3; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dfrole D7a6dd00bfc431da0cd219c7b1bd64f3; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dfrole
@@ -12235,7 +13576,7 @@ ALTER TABLE ONLY public.data_facility_admin_dfrole
 
 
 --
--- Name: D87bfcbe281a03f8aa785f5bb8ff9214; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_project D87bfcbe281a03f8aa785f5bb8ff9214; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_project
@@ -12243,7 +13584,7 @@ ALTER TABLE ONLY public.data_facility_admin_project
 
 
 --
--- Name: auth_content_type_id_508cf46651277a81_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_permission auth_content_type_id_508cf46651277a81_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_permission
@@ -12251,7 +13592,7 @@ ALTER TABLE ONLY public.auth_permission
 
 
 --
--- Name: auth_group_permissio_group_id_689710a9a73b7457_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_group_permissions auth_group_permissio_group_id_689710a9a73b7457_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_group_permissions
@@ -12259,7 +13600,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- Name: auth_group_permission_id_1f49ccbbdc69d2fc_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_group_permissions auth_group_permission_id_1f49ccbbdc69d2fc_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_group_permissions
@@ -12267,7 +13608,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- Name: auth_user__permission_id_384b62483d7071f0_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user_user_permissions auth_user__permission_id_384b62483d7071f0_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_user_permissions
@@ -12275,7 +13616,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- Name: auth_user_groups_group_id_33ac548dcf5f8e37_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user_groups auth_user_groups_group_id_33ac548dcf5f8e37_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_groups
@@ -12283,7 +13624,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- Name: auth_user_groups_user_id_4b5ed4ffdb8fd9b0_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user_groups auth_user_groups_user_id_4b5ed4ffdb8fd9b0_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_groups
@@ -12291,7 +13632,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- Name: auth_user_user_permiss_user_id_7f0938558328534a_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: auth_user_user_permissions auth_user_user_permiss_user_id_7f0938558328534a_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.auth_user_user_permissions
@@ -12299,7 +13640,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- Name: authtoken_token_user_id_35299eff_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: authtoken_token authtoken_token_user_id_35299eff_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.authtoken_token
@@ -12307,7 +13648,7 @@ ALTER TABLE ONLY public.authtoken_token
 
 
 --
--- Name: b47d5eaad58255dd5f82cc6ae5c31668; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_user b47d5eaad58255dd5f82cc6ae5c31668; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_user
@@ -12315,7 +13656,7 @@ ALTER TABLE ONLY public.data_facility_admin_user
 
 
 --
--- Name: b7833f358db56a92c7c05e1b76e6e260; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_usertraining b7833f358db56a92c7c05e1b76e6e260; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_usertraining
@@ -12323,7 +13664,7 @@ ALTER TABLE ONLY public.data_facility_admin_usertraining
 
 
 --
--- Name: d_terms_of_use_id_78f1c582_fk_data_facility_admin_termsofuse_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_signedtermsofuse d_terms_of_use_id_78f1c582_fk_data_facility_admin_termsofuse_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_signedtermsofuse
@@ -12331,7 +13672,7 @@ ALTER TABLE ONLY public.data_facility_admin_signedtermsofuse
 
 
 --
--- Name: data_facility__history_user_id_12036c86716e20e4_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldataset data_facility__history_user_id_12036c86716e20e4_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldataset
@@ -12339,7 +13680,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldataset
 
 
 --
--- Name: data_facility__history_user_id_14b81bafe47a091a_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprofiletag data_facility__history_user_id_14b81bafe47a091a_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprofiletag
@@ -12347,7 +13688,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalprofiletag
 
 
 --
--- Name: data_facility__history_user_id_238eb23d529ff3ab_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaltraining data_facility__history_user_id_238eb23d529ff3ab_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaltraining
@@ -12355,7 +13696,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaltraining
 
 
 --
--- Name: data_facility__history_user_id_41bf616caceb049a_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalusertraining data_facility__history_user_id_41bf616caceb049a_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalusertraining
@@ -12363,7 +13704,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalusertraining
 
 
 --
--- Name: data_facility__history_user_id_5e1ad3c5ebbf05f0_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldatasteward data_facility__history_user_id_5e1ad3c5ebbf05f0_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldatasteward
@@ -12371,7 +13712,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldatasteward
 
 
 --
--- Name: data_facility__history_user_id_639c0ed90a6c9092_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalsignedtermsofuse data_facility__history_user_id_639c0ed90a6c9092_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalsignedtermsofuse
@@ -12379,7 +13720,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalsignedtermsofuse
 
 
 --
--- Name: data_facility__history_user_id_6bdda26f095294b9_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldfrole data_facility__history_user_id_6bdda26f095294b9_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldfrole
@@ -12387,7 +13728,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldfrole
 
 
 --
--- Name: data_facility__history_user_id_6c27137f29bd8a84_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaltermsofuse data_facility__history_user_id_6c27137f29bd8a84_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaltermsofuse
@@ -12395,7 +13736,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaltermsofuse
 
 
 --
--- Name: data_facility__history_user_id_6d4253adf2b54b7e_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldataagreement data_facility__history_user_id_6d4253adf2b54b7e_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldataagreement
@@ -12403,7 +13744,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldataagreement
 
 
 --
--- Name: data_facility__history_user_id_727051a1ea1589d2_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalproject data_facility__history_user_id_727051a1ea1589d2_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalproject
@@ -12411,7 +13752,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalproject
 
 
 --
--- Name: data_facility__history_user_id_72a9466c025e8713_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprojectmember data_facility__history_user_id_72a9466c025e8713_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprojectmember
@@ -12419,7 +13760,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalprojectmember
 
 
 --
--- Name: data_facility__history_user_id_7451ea53e628101c_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaluser data_facility__history_user_id_7451ea53e628101c_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaluser
@@ -12427,7 +13768,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaluser
 
 
 --
--- Name: data_facility__history_user_id_793f093585f5781c_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaluserdfrole data_facility__history_user_id_793f093585f5781c_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaluserdfrole
@@ -12435,7 +13776,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaluserdfrole
 
 
 --
--- Name: data_facility_a_history_user_id_16e6fa8f4082a05_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprojectrole data_facility_a_history_user_id_16e6fa8f4082a05_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprojectrole
@@ -12443,7 +13784,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalprojectrole
 
 
 --
--- Name: data_facility_a_history_user_id_50753547ca98580_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldatasetaccess data_facility_a_history_user_id_50753547ca98580_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldatasetaccess
@@ -12451,7 +13792,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldatasetaccess
 
 
 --
--- Name: data_facility_a_history_user_id_70154f279fccaf7_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldataagreementsignature data_facility_a_history_user_id_70154f279fccaf7_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldataagreementsignature
@@ -12459,7 +13800,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldataagreementsignature
 
 
 --
--- Name: data_facility_a_history_user_id_7a5f71ae564c89b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalprojecttool data_facility_a_history_user_id_7a5f71ae564c89b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalprojecttool
@@ -12467,7 +13808,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalprojecttool
 
 
 --
--- Name: data_facility_admin__category_id_d8a17187_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset data_facility_admin__category_id_d8a17187_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset
@@ -12475,7 +13816,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset
 
 
 --
--- Name: data_facility_admin__data_provider_id_5f96ec95_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset data_facility_admin__data_provider_id_5f96ec95_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset
@@ -12483,7 +13824,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset
 
 
 --
--- Name: data_facility_admin__database_schema_id_3ec8fe84_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset data_facility_admin__database_schema_id_3ec8fe84_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset
@@ -12491,7 +13832,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset
 
 
 --
--- Name: data_facility_admin__dataset_id_8d4d8ecc_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset_keywords data_facility_admin__dataset_id_8d4d8ecc_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset_keywords
@@ -12499,7 +13840,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset_keywords
 
 
 --
--- Name: data_facility_admin__django_user_id_7664a8f9_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_user data_facility_admin__django_user_id_7664a8f9_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_user
@@ -12507,7 +13848,7 @@ ALTER TABLE ONLY public.data_facility_admin_user
 
 
 --
--- Name: data_facility_admin__history_user_id_1ea61773_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicalcategory data_facility_admin__history_user_id_1ea61773_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicalcategory
@@ -12515,7 +13856,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicalcategory
 
 
 --
--- Name: data_facility_admin__history_user_id_fc1fd7df_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_historicaldatabaseschema data_facility_admin__history_user_id_fc1fd7df_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_historicaldatabaseschema
@@ -12523,7 +13864,7 @@ ALTER TABLE ONLY public.data_facility_admin_historicaldatabaseschema
 
 
 --
--- Name: data_facility_admin__instructors_id_5b40a47c_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_project data_facility_admin__instructors_id_5b40a47c_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_project
@@ -12531,7 +13872,7 @@ ALTER TABLE ONLY public.data_facility_admin_project
 
 
 --
--- Name: data_facility_admin__keyword_id_5bdf80d3_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_dataset_keywords data_facility_admin__keyword_id_5bdf80d3_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_dataset_keywords
@@ -12539,7 +13880,7 @@ ALTER TABLE ONLY public.data_facility_admin_dataset_keywords
 
 
 --
--- Name: data_facility_admin__requester_id_359c425a_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_project data_facility_admin__requester_id_359c425a_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_project
@@ -12547,7 +13888,7 @@ ALTER TABLE ONLY public.data_facility_admin_project
 
 
 --
--- Name: data_facility_metada_data_store_id_76355d45_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_physicaldatatable data_facility_metada_data_store_id_76355d45_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_physicaldatatable
@@ -12555,7 +13896,7 @@ ALTER TABLE ONLY public.data_facility_metadata_physicaldatatable
 
 
 --
--- Name: data_facility_metada_data_store_id_b6718468_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datatype data_facility_metada_data_store_id_b6718468_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datatype
@@ -12563,7 +13904,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datatype
 
 
 --
--- Name: data_facility_metada_data_table_id_97cc7945_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_variable data_facility_metada_data_table_id_97cc7945_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_variable
@@ -12571,7 +13912,7 @@ ALTER TABLE ONLY public.data_facility_metadata_variable
 
 
 --
--- Name: data_facility_metada_dataset_id_2db18420_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_file data_facility_metada_dataset_id_2db18420_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_file
@@ -12579,7 +13920,7 @@ ALTER TABLE ONLY public.data_facility_metadata_file
 
 
 --
--- Name: data_facility_metada_dataset_id_83bc7d74_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datatable data_facility_metada_dataset_id_83bc7d74_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datatable
@@ -12587,7 +13928,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datatable
 
 
 --
--- Name: data_facility_metada_detected_type_id_bda94577_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_variable data_facility_metada_detected_type_id_bda94577_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_variable
@@ -12595,7 +13936,7 @@ ALTER TABLE ONLY public.data_facility_metadata_variable
 
 
 --
--- Name: data_facility_metada_file_id_15f53005_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datatable data_facility_metada_file_id_15f53005_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datatable
@@ -12603,7 +13944,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datatable
 
 
 --
--- Name: data_facility_metada_format_id_b048f9a1_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_file data_facility_metada_format_id_b048f9a1_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_file
@@ -12611,7 +13952,7 @@ ALTER TABLE ONLY public.data_facility_metadata_file
 
 
 --
--- Name: data_facility_metada_history_user_id_04649f99_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalphysicaldatatable data_facility_metada_history_user_id_04649f99_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalphysicaldatatable
@@ -12619,7 +13960,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalphysicaldatatable
 
 
 --
--- Name: data_facility_metada_history_user_id_167ada21_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalstoragetype data_facility_metada_history_user_id_167ada21_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalstoragetype
@@ -12627,7 +13968,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalstoragetype
 
 
 --
--- Name: data_facility_metada_history_user_id_22436e56_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalvariable data_facility_metada_history_user_id_22436e56_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalvariable
@@ -12635,7 +13976,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalvariable
 
 
 --
--- Name: data_facility_metada_history_user_id_5bf83c73_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicaldatastore data_facility_metada_history_user_id_5bf83c73_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicaldatastore
@@ -12643,7 +13984,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicaldatastore
 
 
 --
--- Name: data_facility_metada_history_user_id_6908f2e1_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalfileformat data_facility_metada_history_user_id_6908f2e1_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalfileformat
@@ -12651,7 +13992,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalfileformat
 
 
 --
--- Name: data_facility_metada_history_user_id_6e70cbba_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalfile data_facility_metada_history_user_id_6e70cbba_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalfile
@@ -12659,7 +14000,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalfile
 
 
 --
--- Name: data_facility_metada_history_user_id_74283443_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicaldatatype data_facility_metada_history_user_id_74283443_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicaldatatype
@@ -12667,7 +14008,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicaldatatype
 
 
 --
--- Name: data_facility_metada_history_user_id_79df3291_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicalvalue data_facility_metada_history_user_id_79df3291_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicalvalue
@@ -12675,7 +14016,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicalvalue
 
 
 --
--- Name: data_facility_metada_history_user_id_9e62384d_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_historicaldatatable data_facility_metada_history_user_id_9e62384d_fk_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_historicaldatatable
@@ -12683,7 +14024,7 @@ ALTER TABLE ONLY public.data_facility_metadata_historicaldatatable
 
 
 --
--- Name: data_facility_metada_logical_data_table_i_70b3f4d6_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_physicaldatatable data_facility_metada_logical_data_table_i_70b3f4d6_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_physicaldatatable
@@ -12691,7 +14032,7 @@ ALTER TABLE ONLY public.data_facility_metadata_physicaldatatable
 
 
 --
--- Name: data_facility_metada_type_id_bbe9c0c9_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_datastore data_facility_metada_type_id_bbe9c0c9_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_datastore
@@ -12699,7 +14040,7 @@ ALTER TABLE ONLY public.data_facility_metadata_datastore
 
 
 --
--- Name: data_facility_metada_variable_id_09261d00_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_metadata_value data_facility_metada_variable_id_09261d00_fk_data_faci; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_metadata_value
@@ -12707,7 +14048,7 @@ ALTER TABLE ONLY public.data_facility_metadata_value
 
 
 --
--- Name: djan_content_type_id_697914295151027a_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: django_admin_log djan_content_type_id_697914295151027a_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_admin_log
@@ -12715,7 +14056,7 @@ ALTER TABLE ONLY public.django_admin_log
 
 
 --
--- Name: django_admin_log_user_id_52fdd58701c5f563_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: django_admin_log django_admin_log_user_id_52fdd58701c5f563_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.django_admin_log
@@ -12723,20 +14064,11 @@ ALTER TABLE ONLY public.django_admin_log
 
 
 --
--- Name: role_id_3359b3ea41276235_fk_data_facility_admin_projectrole_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: data_facility_admin_projectmember role_id_3359b3ea41276235_fk_data_facility_admin_projectrole_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.data_facility_admin_projectmember
     ADD CONSTRAINT role_id_3359b3ea41276235_fk_data_facility_admin_projectrole_id FOREIGN KEY (role_id) REFERENCES public.data_facility_admin_projectrole(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
 
 
 --

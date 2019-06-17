@@ -21,7 +21,7 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 #DFAdmin Version
-VERSION = 'v2.3'
+VERSION = 'v2.3.1'
 
 ENV = config('ENV', default='PRODUCTION')
 ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
@@ -71,6 +71,8 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default=None)
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default=None)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
 EMAIL_FROM = config('EMAIL_FROM', default='dfadmin@adrf.info')
+SUPPORT_EMAIL = config('SUPPORT_EMAIL', default='support@dfadmin.local')
+
 SERVER_EMAIL = EMAIL_FROM
 DEFAULT_FROM_EMAIL = EMAIL_FROM
 
@@ -83,6 +85,7 @@ ADRF_URL = config('ADRF_URL')
 WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL_PUBLIC')
 PWD_RESET_INSTRUCTIONS = config('PWD_RESET_INSTRUCTIONS', default='???')
 ADRF_PASS_EXPIRATION_TIME = config('ADRF_PASS_EXPIRATION_TIME', cast=int, default=60)
+PASS_EXPIRATION_NOTIFICATION_DAYS = config('PASS_EXPIRATION_NOTIFICATION_DAYS', cast=int, default=7)
 ADRF_ENABLE_CUSTOM_USERNAME = config('ADRF_ENABLE_CUSTOM_USERNAME', cast=bool, default=False)
 
 # ----------------- DF Admin LDAP Configuration -------------------------
