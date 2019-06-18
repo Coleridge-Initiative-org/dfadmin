@@ -76,7 +76,7 @@ class LdapSerializersTests(TestCase):
         self.assertEqual(self.user_dc.ldap_id, int(self.ldap_user[1]['gidNumber'][0]))
 
     def test_user_ldap_serializer_dump_dn(self):
-        self.assertEqual('uid=%s,ou=People,dc=adrf,dc=info' % self.user_dc.ldap_name,
+        self.assertEqual('uid=%s,ou=People,dc=adrf,dc=local' % self.user_dc.ldap_name,
                          self.ldap_user[0])
 
 
