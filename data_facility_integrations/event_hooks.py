@@ -57,11 +57,11 @@ def dataset_saved(sender, instance, **kwargs):
         subject = 'Dataset updated: {0}'.format(instance.dataset_id)
 
     payload = {
-        'dataset_id': instance.dataset_id,
-        'endpoint': 'dfadmin.dev.adrf.cloud/api/v1/datasets/{0}'.format(instance.dataset_id),
+        'entity_id': instance.dataset_id,
+        'url': 'dfadmin.dev.adrf.cloud/api/v1/datasets/{0}'.format(instance.dataset_id),
         'sender': 'DFAdmin',
         'status': instance.status,
-        'name': instance.name,
+        'entity': instance.name,
     }
 
     # TODO: Log some nice message
