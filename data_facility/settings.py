@@ -346,7 +346,7 @@ LDAP_SETTINGS = {
 }
 
 KEYCLOAK = {
-    'API_URL': config('ID_ADRF_URL'),
+    'API_URL': config('ID_ADRF_URL_API'),
     'REALM': config('ID_ADRF_REALM', default=''),
     'ADMIN_USERNAME': config('ID_ADRF_USER', default=''),
     'ADMIN_PASSWORD': config('ID_ADRF_PASSWORD', default=''),
