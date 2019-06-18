@@ -21,7 +21,7 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 #DFAdmin Version
-VERSION = 'V2.2_2019-05'
+VERSION = 'v2.3'
 
 ENV = config('ENV', default='PRODUCTION')
 ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
@@ -80,7 +80,7 @@ ADRF_SYSTEM_NAME = config('ADRF_SYSTEM_NAME', default=None)
 
 ## --- DFADMIN
 ADRF_URL = config('ADRF_URL')
-WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL')
+WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL_PUBLIC')
 PWD_RESET_INSTRUCTIONS = config('PWD_RESET_INSTRUCTIONS', default='???')
 ADRF_PASS_EXPIRATION_TIME = config('ADRF_PASS_EXPIRATION_TIME', cast=int, default=60)
 ADRF_ENABLE_CUSTOM_USERNAME = config('ADRF_ENABLE_CUSTOM_USERNAME', cast=bool, default=False)
@@ -541,7 +541,7 @@ LOGGING = {
 from data_facility_admin import jwt
 JWT_AUTH = {
     'JWT_PAYLOAD_GET_USERNAME_HANDLER': jwt.jwt_get_username_from_payload_handler,
-    'JWT_PUBLIC_KEY': config('JWT_AUTH_PUBLIC_KEY', default=''),
+    'JWT_PUBLIC_KEY': config('JWT_AUTH_PUBLIC_KEY', default='?').replace('\\n', '\n'),
     'JWT_ALGORITHM': config('JWT_AUTH_ALGORITHM', default='RS256'),
     'JWT_AUDIENCE': config('JWT_AUTH_AUDIENCE', default='account'),
     'JWT_ISSUER': config('JWT_AUTH_ISSUER', default="https://id.dfadmin.local"),
@@ -570,4 +570,4 @@ SNS_HOOK = {
     'AWS_ACCESS_KEY_ID': config('SNS_HOOK_AWS_ACCESS_KEY_ID', default='?'),
     'AWS_ACCESS_KEY': config('SNS_HOOK_AWS_ACCESS_KEY', default='?'),
 }
-print ('DEBUG=', DEBUG)
+print ('DEBUG=%s' % DEBUG)
