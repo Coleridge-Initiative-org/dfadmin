@@ -173,7 +173,7 @@ class User(LdapObject):
     last_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
     orc_id = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
     affiliation = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
-    email = models.EmailField(unique=True, validators=[EmailValidator])
+    email = models.EmailField(unique=True, validators=[EmailValidator], null=False, blank=False)
 
     foreign_national = models.BooleanField(default=False)
     contractor = models.BooleanField(default=False)
@@ -485,6 +485,8 @@ class Project(LdapObject):
     request_id = models.IntegerField(default=None, blank=True, null=True,
                                      help_text=REQUEST_ID_HELP_TEXT)
     workspace_path = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
+    start = models.DateTimeField(null=True, blank=True)
+    end = models.DateTimeField(null=True, blank=True)
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
@@ -492,7 +494,10 @@ class Project(LdapObject):
     history = HistoricalRecords()
 
     def is_active(self):
-        return self.status == Project.STATUS_ACTIVE
+        now = timezone.now()
+        return self.status == Project.STATUS_ACTIVE \
+                and (not self.start or self.start < now) \
+                and (not self.end or now < self.end)
 
     def db_schema(self):
         return self.ldap_name.replace(Project.PROJECT_PREFIX, '')
