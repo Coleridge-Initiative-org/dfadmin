@@ -99,7 +99,7 @@ class ProfileTag(models.Model):
     history = HistoricalRecords()
 
     def __str__(self):
-        return  self.text + ' ' + self.description
+        return self.text + ' ' + self.description
 
     class Meta:
         ordering = ['text']
@@ -129,6 +129,8 @@ class DfRole(LdapObject):
                                     begin__lte=timezone.now(),
                                     user__status__in=User.MEMBERSHIP_STATUS_WHITELIST),
                                     Q(end__isnull=True) | Q(end__gt=timezone.now()))
+        # queryset = UserDfRole.objects.filter(Q(role=self, user__status__in=User.MEMBERSHIP_STATUS_WHITELIST))
+        # return queryset.filter(UserDfRole.FILTER_ACTIVE)
 
     def active_usernames(self):
         '''return a list of all active users checking their statuses.'''
@@ -152,6 +154,7 @@ class DfRole(LdapObject):
         ordering = ['name']
         verbose_name = 'Data Facility Role'
         verbose_name_plural = 'Data Facility Roles'
+
 
 
 class SystemInfo(models.Model):
@@ -279,6 +282,10 @@ class User(LdapObject):
                                         settings.LDAP_BASE_DN)
 
     @property
+    def active_roles(self):
+        return [udfr.role for udfr in UserDfRole.objects.filter(UserDfRole.FILTER_ACTIVE).filter(user=self)]
+
+    @property
     def username(self):
         return self.ldap_name
 
@@ -342,6 +349,9 @@ class UserDfRole(models.Model):
     ''' Many-to-many relationship between User and Role.
         Status disabled should be used instead of remove a reccord.
     '''
+    # Querysets
+    FILTER_ACTIVE = Q(begin__lte=timezone.now()) & Q(Q(end__isnull=True) | Q(end__gt=timezone.now()))
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     role = models.ForeignKey(DfRole, on_delete=models.PROTECT)
     begin = models.DateTimeField()
