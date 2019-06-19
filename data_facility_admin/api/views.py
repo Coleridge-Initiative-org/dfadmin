@@ -2,6 +2,8 @@ from django_filters import filters
 from rest_framework import mixins, generics, viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
+
+from data_facility_admin.models import User
 from .. import models
 from . import serializers
 from django.shortcuts import get_object_or_404
@@ -149,11 +151,13 @@ class ProjectViewSet(viewsets.ModelViewSet):
         Retrieve datasets respecting ACLs.
         """
         queryset = models.Project.objects.filter(status=models.Project.STATUS_ACTIVE)
-        member = self.request.query_params.get('member', None)
+        queryset= queryset.exclude(type=models.Project.PROJECT_TYPE_DATA_TRANSFER)
+        member = self.request.query_params.get('member', None) or self.request.query_params.get('user', None)
         logger.debug('member filter: %s' % member)
         # member
-        if self.request.query_params.get('member', None):
-            queryset = queryset.filter(projectmember__member__ldap_name=member)
+        if member:
+            queryset = queryset.filter(Q(projectmember__member__ldap_name=member) |
+                                       Q(instructors__userdfrole__user__ldap_name=member)).distinct()
 
         request_user = self.request.user
         logger.debug('Current user: %s' % request_user)
