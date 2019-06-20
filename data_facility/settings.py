@@ -219,7 +219,7 @@ ADMIN_REORDER = (
 )
 
 # ----------------- DJANGO GRAPPELLI -------------------------
-GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin < {0} @{1} >'.format(ADRF_SYSTEM_NAME, VERSION)
+GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin ([{0} {1})'.format(ADRF_SYSTEM_NAME, VERSION)
 
 # ----------------- CORS Config for Vue -------------------------
 # Based on: https://www.techiediaries.com/django-cors/
