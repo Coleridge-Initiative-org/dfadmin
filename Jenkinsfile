@@ -38,7 +38,7 @@ pipeline {
                 sh 'docker build . -t ${IMAGE_NAME}:ci'
             }
         }
-//        parallel {
+        parallel {
             stage('Vulnerability Scan') {
                 steps {
                     sh '$(aws ecr get-login --no-include-email)'
@@ -47,28 +47,33 @@ pipeline {
                     anchore name: "anchore_images"
                 }
             }
-            stage('Run') {
+//            stage('Run') {
+//                steps {
+//                    sh 'docker-compose up -d'
+//                    sh 'sleep 15s'
+//                }
+//            }
+//            stage('Check') {
+//                steps {
+//                    sh 'make check'
+//                }
+//            }
+            stage('Test') {
                 steps {
                     sh 'docker-compose up -d'
                     sh 'sleep 15s'
-                }
-            }
-            stage('Check') {
-                steps {
                     sh 'make check'
-                }
-            }
-            stage('Test') {
-                steps {
                     sh 'make test'
-    //                junit '**/target/*.xml'
-                }
-            }
-            stage('QA') {
-                steps {
                     sh 'make codacy-report'
+//                  junit '**/target/*.xml'
                 }
             }
+         }
+//            stage('QA') {
+//               steps {
+//                    sh 'make codacy-report'
+//                }
+//            }
 //        }
         stage('Stop') {
             steps {
