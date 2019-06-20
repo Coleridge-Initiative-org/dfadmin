@@ -349,13 +349,13 @@ class UserDfRole(models.Model):
     ''' Many-to-many relationship between User and Role.
         Status disabled should be used instead of remove a reccord.
     '''
-    # Querysets
-    FILTER_ACTIVE = Q(begin__lte=timezone.now()) & Q(Q(end__isnull=True) | Q(end__gt=timezone.now()))
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     role = models.ForeignKey(DfRole, on_delete=models.PROTECT)
     begin = models.DateTimeField()
     end = models.DateTimeField(blank=True, null=True)
+
+    # Querysets
+    FILTER_ACTIVE = Q(begin__lte=timezone.now()) & Q(Q(end__isnull=True) | Q(end__gt=timezone.now()))
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
