@@ -150,14 +150,16 @@ class ProjectViewSet(viewsets.ModelViewSet):
         """
         Retrieve datasets respecting ACLs.
         """
-        queryset = models.Project.objects.filter(status=models.Project.STATUS_ACTIVE)
+        queryset = models.Project.objects.filter(models.Project.FILTER_ACTIVE)
         user_filter = self.request.query_params.get('member', None) or self.request.query_params.get('user', None)
         logger.debug('member filter: %s' % user_filter)
         # member
         curator = False
         if user_filter:
             queryset = queryset.filter(Q(projectmember__member__ldap_name=user_filter) |
-                                       Q(instructors__userdfrole__user__ldap_name=user_filter)).distinct()
+                                       Q(instructors__userdfrole__user__ldap_name=user_filter))\
+            # queryset = queryset.filter(projectmember__project__start)
+            queryset = queryset.distinct()
 
         # TODO: Remove DATA TRANSFER filtering when new PG_SYNC is in place.
         # type

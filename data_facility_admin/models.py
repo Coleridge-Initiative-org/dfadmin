@@ -488,6 +488,10 @@ class Project(LdapObject):
     start = models.DateTimeField(null=True, blank=True)
     end = models.DateTimeField(null=True, blank=True)
 
+    # Querysets
+    FILTER_ACTIVE = Q(status=STATUS_ACTIVE) & Q(Q(start__isnull=True) | Q(start__lte=timezone.now())) \
+                    & Q(Q(end__isnull=True) | Q(end__gte=timezone.now()))
+
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
