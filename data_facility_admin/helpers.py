@@ -91,7 +91,7 @@ class KeycloakHelper(object):
                                               'otp_instructions': settings.ADRF_MFA_ACTIVATED,
                                               'system_name': settings.ADRF_SYSTEM_NAME,
                                               })
-                send_mail('Instructions for setting up Applied Data Analytics Program account',
+                send_mail(settings.WELCOME_EMAIL_SUBJECT,
                                     msg_plain,
                                     settings.EMAIL_FROM,
                                     [user.email])
