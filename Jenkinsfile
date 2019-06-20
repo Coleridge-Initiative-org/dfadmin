@@ -38,43 +38,45 @@ pipeline {
                 sh 'docker build . -t ${IMAGE_NAME}:ci'
             }
         }
-        parallel {
-            stage('Vulnerability Scan') {
-                steps {
-                    sh '$(aws ecr get-login --no-include-email)'
-                    sh 'docker push ${IMAGE_NAME}:ci'
-                    writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
-                    anchore name: "anchore_images"
+        stage('Verify') {
+            parallel {
+                stage('Vulnerability Scan') {
+                    steps {
+                        sh '$(aws ecr get-login --no-include-email)'
+                        sh 'docker push ${IMAGE_NAME}:ci'
+                        writeFile file: "anchore_images", text: "${IMAGE_NAME}:ci"
+                        anchore name: "anchore_images"
+                    }
                 }
-            }
-//            stage('Run') {
-//                steps {
-//                    sh 'docker-compose up -d'
-//                    sh 'sleep 15s'
-//                }
-//            }
-//            stage('Check') {
-//                steps {
-//                    sh 'make check'
-//                }
-//            }
-            stage('Test') {
-                steps {
-                    sh 'docker-compose up -d'
-                    sh 'sleep 15s'
-                    sh 'make check'
-                    sh 'make test'
-                    sh 'make codacy-report'
-//                  junit '**/target/*.xml'
+    //            stage('Run') {
+    //                steps {
+    //                    sh 'docker-compose up -d'
+    //                    sh 'sleep 15s'
+    //                }
+    //            }
+    //            stage('Check') {
+    //                steps {
+    //                    sh 'make check'
+    //                }
+    //            }
+                stage('Test') {
+                    steps {
+                        sh 'docker-compose up -d'
+                        sh 'sleep 15s'
+                        sh 'make check'
+                        sh 'make test'
+                        sh 'make codacy-report'
+    //                  junit '**/target/*.xml'
+                    }
                 }
-            }
-         }
-//            stage('QA') {
-//               steps {
-//                    sh 'make codacy-report'
-//                }
-//            }
-//        }
+             }
+    //            stage('QA') {
+    //               steps {
+    //                    sh 'make codacy-report'
+    //                }
+    //            }
+    //        }
+        }
         stage('Stop') {
             steps {
                 echo 'Stopping DFAdmin..'
