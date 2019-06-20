@@ -610,7 +610,7 @@ class ProjectRole(models.Model):
     history = HistoricalRecords()
 
     def __str__(self):
-        return '%s' % self.name
+        return '%s (%s)' % (self.name, self.system_role)
 
     class Meta:
         ordering = ['name']
