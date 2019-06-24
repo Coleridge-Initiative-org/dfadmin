@@ -469,17 +469,17 @@ class LDAPHelper:
                     if settings.LDAP_SETTINGS['General']['UserPrivateGroups']:
                         try:
                             self.ldap_add(ldap_private_group_tuple_new[df_user.username])
-                            self.logger.debug("Creating User Private Group %s" % df_user.username)
+                            self.logger.info("Creating User Private Group %s" % df_user.username)
                         except Exception as ex:
-                            self.logger.debug("Error creating User Private Group: %s" % ex.message)
+                            self.logger.error("Error creating User Private Group: %s" % ex.message)
 
                     self.ldap_add(ldap_tuple_df[df_user.username])
-                    self.logger.debug("Creating user %s in LDAP" % df_user.username)
+                    self.logger.info("Creating user %s in LDAP" % df_user.username)
                     df_user.status = User.STATUS_ACTIVE
                     df_user.changeReason = '[LDAP Export] updated 469: Activating user. NEW -> ACTIVE'
                     df_user.save()
                     created_users.append(df_user)
-                    self.logger.debug("Set status of user %s to Active", df_user.username)
+                    self.logger.info("Set status of user %s to Active", df_user.username)
                 except Exception:
                     self.logger.exception("The user %s was not created in LDAP" % df_user.username)
             elif df_user.status == User.STATUS_DISABLED or df_user.status == User.STATUS_LOCKED_BY_ADMIN:
@@ -553,6 +553,7 @@ class LDAPHelper:
                 except Exception:
                     self.logger.exception("User not updated: %s" % df_user.username)
 
+        keycloak_helper.send_welcome_email(created_users, reset_otp=True, reset_pwd=True)
 
     def export_projects(self):
         self.logger.info("Starting projects export.")
