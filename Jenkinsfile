@@ -19,12 +19,6 @@ pipeline {
     }
 
     stages {
-//        stage ('Start') {
-//              steps {
-//            // send build started notifications
-//                  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} #${env.GIT_COMMIT_HASH}  (${env.BUILD_URL})")
-//              }
-//        }
         stage('Prepare') {
             steps {
                 echo 'Initializing submodules..'
@@ -48,17 +42,6 @@ pipeline {
                         anchore name: "anchore_images"
                     }
                 }
-    //            stage('Run') {
-    //                steps {
-    //                    sh 'docker-compose up -d'
-    //                    sh 'sleep 15s'
-    //                }
-    //            }
-    //            stage('Check') {
-    //                steps {
-    //                    sh 'make check'
-    //                }
-    //            }
                 stage('Test') {
                     steps {
                         sh 'docker-compose up -d'
@@ -69,14 +52,20 @@ pipeline {
     //                  junit '**/target/*.xml'
                     }
                 }
+                stage('Sonarqube') {
+                    environment {
+                        scannerHome = tool 'SonarQubeScanner'
+                    }
+                    steps {
+                        withSonarQubeEnv('sonarqube') {
+                            sh "${scannerHome}/bin/sonar-scanner"
+                        }
+                        timeout(time: 10, unit: 'MINUTES') {
+                            waitForQualityGate abortPipeline: true
+                        }
+                    }
+                }
              }
-    //            stage('QA') {
-    //               steps {
-    //                    sh 'make codacy-report'
-    //                }
-    //            }
-    //        }
-        }
         stage('Stop') {
             steps {
                 echo 'Stopping DFAdmin..'
