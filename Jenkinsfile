@@ -66,6 +66,7 @@ pipeline {
                     }
                 }
              }
+        }
         stage('Stop') {
             steps {
                 echo 'Stopping DFAdmin..'
