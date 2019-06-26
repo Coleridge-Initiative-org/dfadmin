@@ -58,7 +58,7 @@ pipeline {
                         scannerHome = tool 'SonarQubeScanner'
                     }
                     steps {
-                        withSonarQubeEnv('sonarqube') {
+                        withSonarQubeEnv('ADRF Sonar') {
                             sh "${scannerHome}/bin/sonar-scanner"
                         }
                         timeout(time: 10, unit: 'MINUTES') {
