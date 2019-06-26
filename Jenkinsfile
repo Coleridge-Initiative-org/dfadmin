@@ -53,7 +53,10 @@ pipeline {
     //                  junit '**/target/*.xml'
                     }
                 }
-                stage('Sonarqube') {
+
+             }
+        }
+        stage('Sonarqube') {
                     environment {
                         scannerHome = tool 'SonarQubeScanner'
                     }
@@ -66,8 +69,6 @@ pipeline {
                         }
                     }
                 }
-             }
-        }
         stage('Stop') {
             steps {
                 echo 'Stopping DFAdmin..'
