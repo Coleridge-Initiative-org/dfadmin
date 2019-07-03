@@ -49,7 +49,6 @@ pipeline {
                         sh 'sleep 15s'
                         sh 'make check'
                         sh 'make test'
-                        sh 'make codacy-report'
     //                  junit '**/target/*.xml'
                     }
                 }
