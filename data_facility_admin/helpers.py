@@ -62,7 +62,7 @@ class KeycloakHelper(object):
     def send_welcome_email(self, df_users, reset_otp=False, reset_pwd=True):
         self.api.ldap_full_sync(settings.KEYCLOAK['LDAP_ID'])
         for user in df_users:
-            self.logger.info('[KeycloakHelper] Sending welcome email to user: %s' % df_user.username)
+            self.logger.info('[KeycloakHelper] Sending welcome email to user: %s' % user.username)
             tmp_password = None
             # Reset user password on Keycloak
             try:
