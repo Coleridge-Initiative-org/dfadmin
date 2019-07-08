@@ -48,6 +48,7 @@ class UserHelper:
 
         return ''.join(random.choice(charssets[t[_ % len(t)]]) for _ in range(0, int(z)))
 
+
 class KeycloakHelper(object):
     def __init__(self):
         self.api = KeycloakAPI(settings.KEYCLOAK['API_URL'], settings.KEYCLOAK['REALM'],
