@@ -5,6 +5,10 @@ from .models import User
 from data_facility_admin.helpers import KeycloakHelper, EmailHelper
 from django.conf import settings
 from django.contrib import messages
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def user_unlock(modeladmin, request, queryset):
     ''' Unlock selected users. '''
@@ -35,8 +39,10 @@ def user_send_welcome_email(modeladmin, request, queryset):
         messages.success(request, "Success! Email sent to user.")
     except (ConnectionError, TooManyRedirects, HTTPError) as ex:
         messages.error(request, "Error updating password on Keycloak.")
+        logger.exception(ex)
     except Exception as ex:
         messages.error(request, "Error sending email.")
+        logger.exception(ex)
 user_send_welcome_email.short_description = "Re-send the welcome email. (Reset Password + OTP)"
 
 
@@ -48,8 +54,10 @@ def user_reset_pwd_only(modeladmin, request, queryset):
         messages.success(request, "Success! Email sent to user.")
     except (ConnectionError, TooManyRedirects, HTTPError) as ex:
         messages.error(request, "Error updating password on Keycloak. The email was not sent.")
+        logger.exception(ex)
     except Exception as ex:
         messages.error(request, "Error sending email.")
+        logger.exception(ex)
 user_reset_pwd_only.short_description = "Reset User Password (only)"
 
 
@@ -61,8 +69,10 @@ def user_reset_otp_only(modeladmin, request, queryset):
         messages.success(request, "Success! Email sent to user.")
     except (ConnectionError, TooManyRedirects, HTTPError) as ex:
         messages.error(request, "Error updating password on Keycloak.")
+        logger.exception(ex)
     except Exception as ex:
         messages.error(request, "Error sending email.")
+        logger.exception(ex)
 user_reset_otp_only.short_description = "Reset User OTP (only)"
 
 
