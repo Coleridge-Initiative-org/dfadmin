@@ -52,8 +52,7 @@ class UserHelper:
 class KeycloakHelper(object):
     def __init__(self):
         self.api = KeycloakAPI(settings.KEYCLOAK['API_URL'], settings.KEYCLOAK['REALM'],
-                               settings.KEYCLOAK['ADMIN_USERNAME'],
-                               settings.KEYCLOAK['ADMIN_PASSWORD'])
+                               settings.KEYCLOAK['ADMIN_USERNAME'], settings.KEYCLOAK['ADMIN_PASSWORD'])
         self.logger = logging.getLogger(__name__)
 
     def close(self):
@@ -83,6 +82,7 @@ class KeycloakHelper(object):
                 keycloak_url = settings.WELCOME_EMAIL_KEYCLOAK_URL + 'auth/realms/' + settings.KEYCLOAK['REALM']
                 if reset_pwd:
                     keycloak_url += '/login-actions/reset-credentials?client_id=account'
+
                 else:
                     keycloak_url += '/account/'
 
