@@ -11,7 +11,8 @@ Please find instructions for setting up your account and accessing the {{ system
  1. Download DUO Mobile to your phone.
      If you do not have a phone capable of installing DUO Mobile, contact support at support@adrf.zendesk.com.
 
- 2. Go to {{ keycloak_url }} and set a new password or reset your OTP. You will receive another email with a reset link.
+ 2. To set a new password or reset your OTP, go to: {{ keycloak_url }}
+    You will receive another email with a reset link.
 
      Username: {{ username }}
 
