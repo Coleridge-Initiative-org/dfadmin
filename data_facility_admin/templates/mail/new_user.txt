@@ -1,5 +1,5 @@
 {% autoescape off %}
-Dear {{ username }},
+Dear {{ first_name }},
 
 Welcome to the Administrative Data Research Facility!
 
