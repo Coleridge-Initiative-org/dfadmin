@@ -555,7 +555,7 @@ class LDAPHelper:
                 except Exception:
                     self.logger.exception("User not updated: %s" % df_user.username)
 
-        keycloak_helper.send_welcome_email(created_users, reset_otp=True, reset_pwd=True)
+        keycloak_helper.send_welcome_email(created_users, reset_otp=settings.ADRF_MFA_ACTIVATED, reset_pwd=True)
 
     def export_projects(self):
         self.logger.info("Starting projects export.")
