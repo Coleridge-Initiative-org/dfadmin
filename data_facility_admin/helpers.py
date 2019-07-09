@@ -48,11 +48,11 @@ class UserHelper:
 
         return ''.join(random.choice(charssets[t[_ % len(t)]]) for _ in range(0, int(z)))
 
+
 class KeycloakHelper(object):
     def __init__(self):
         self.api = KeycloakAPI(settings.KEYCLOAK['API_URL'], settings.KEYCLOAK['REALM'],
-                               settings.KEYCLOAK['ADMIN_USERNAME'],
-                               settings.KEYCLOAK['ADMIN_PASSWORD'])
+                               settings.KEYCLOAK['ADMIN_USERNAME'], settings.KEYCLOAK['ADMIN_PASSWORD'])
         self.logger = logging.getLogger(__name__)
 
     def close(self):
@@ -61,36 +61,39 @@ class KeycloakHelper(object):
     def send_welcome_email(self, df_users, reset_otp=False, reset_pwd=True):
         self.api.ldap_full_sync(settings.KEYCLOAK['LDAP_ID'])
         for user in df_users:
+            self.logger.info('[KeycloakHelper] Sending welcome email to user: %s' % user.username)
             tmp_password = None
             # Reset user password on Keycloak
-            tmp_password = '(Your password did not change)'
             try:
                 keycloak_user = self.api.get_keycloak_user(user.email)
                 keycloak_user = keycloak_user[0]
                 if reset_pwd:
-                    tmp_password = UserHelper.pwgen(12, ['u', 'l', 'n', 's'])
-                    self.api.reset_user_password(keycloak_user['id'], tmp_password, True)
                     keycloak_user["requiredActions"] = ["UPDATE_PASSWORD"]
 
                 if reset_otp:
                     keycloak_user["requiredActions"].append("CONFIGURE_TOTP")
                 self.api.update_keycloak_user(keycloak_user['id'], keycloak_user)
+
             except Exception as ex:
                 self.logger.exception("Error reseting user password for user %s. Error message: %s" % (user.email, ex.message))
                 raise ex
             # send welcome email
             try:
-                keycloak_url = settings.WELCOME_EMAIL_KEYCLOAK_URL + 'auth/realms/' \
-                               + settings.KEYCLOAK['REALM'] + '/account/'
+                keycloak_url = settings.WELCOME_EMAIL_KEYCLOAK_URL + 'auth/realms/' + settings.KEYCLOAK['REALM']
+                if reset_pwd:
+                    keycloak_url += '/login-actions/reset-credentials?client_id=account'
+
+                else:
+                    keycloak_url += '/account/'
+
                 msg_plain = render_to_string('mail/new_user.txt',
                                              {'username': user.username,
-                                               'password': tmp_password,
                                                'current_time': timezone.now(),
                                                'keycloak_url': keycloak_url,
                                               'otp_instructions': settings.ADRF_MFA_ACTIVATED,
                                               'system_name': settings.ADRF_SYSTEM_NAME,
                                               })
-                send_mail('Instructions for setting up Applied Data Analytics Program account',
+                send_mail(settings.WELCOME_EMAIL_SUBJECT,
                                     msg_plain,
                                     settings.EMAIL_FROM,
                                     [user.email])
@@ -99,20 +102,24 @@ class KeycloakHelper(object):
                 raise ex
 
     def disable_user(self, df_user):
+        self.logger.info('[KeycloakHelper] Disabling user on Keycloak: %s' % df_user.username)
         try:
             keycloak_user = self.api.get_keycloak_user(df_user.email)
             if len(keycloak_user) == 0:
-                self.logger.info('Ignoring user not found on keycloak: %s' % df_user.username)
+                self.logger.debug('Ignoring user not found on keycloak: %s' % df_user.username)
                 return
             keycloak_user = keycloak_user[0]
             if keycloak_user["enabled"]:
                 keycloak_user["enabled"] = False
                 self.api.update_keycloak_user(keycloak_user['id'], keycloak_user)
+                self.logger.debug('User %s disabled on Keycloak!' % df_user.username)
+
         except Exception as ex:
             self.logger.exception("Error disabling user %s. Error message: %s"
                                   % (df_user.email, ex.message))
 
     def enable_user(self, df_user):
+        self.logger.info('[KeycloakHelper] Enabling user on Keycloak: %s' % df_user.username)
         try:
             keycloak_user = self.api.get_keycloak_user(df_user.email)
             keycloak_user = keycloak_user[0]
@@ -424,7 +431,7 @@ class LDAPHelper:
     def export_users(self):
         #self.logger.info("Starting LDAP export")
         ldap_users = self.get_ldap_users()
-        df_users = User.objects.all()
+        df_users = User.objects.all().order_by('ldap_name')
         #self.logger.debug("Exporting %d users", len(df_users))
         ldap_tuple_df = dict([(str(user.username), UserLDAPSerializer.dumps(user)) for user in df_users])
         ldap_tuple_curr = dict(
@@ -464,17 +471,17 @@ class LDAPHelper:
                     if settings.LDAP_SETTINGS['General']['UserPrivateGroups']:
                         try:
                             self.ldap_add(ldap_private_group_tuple_new[df_user.username])
-                            self.logger.debug("Creating User Private Group %s" % df_user.username)
+                            self.logger.info("Creating User Private Group %s" % df_user.username)
                         except Exception as ex:
-                            self.logger.debug("Error creating User Private Group: " + ex.message)
+                            self.logger.error("Error creating User Private Group: %s" % ex.message)
 
                     self.ldap_add(ldap_tuple_df[df_user.username])
-                    self.logger.debug("Creating user %s in LDAP" % df_user.username)
+                    self.logger.info("Creating user %s in LDAP" % df_user.username)
                     df_user.status = User.STATUS_ACTIVE
                     df_user.changeReason = '[LDAP Export] updated 469: Activating user. NEW -> ACTIVE'
                     df_user.save()
                     created_users.append(df_user)
-                    self.logger.debug("Set status of user %s to Active", df_user.username)
+                    self.logger.info("Set status of user %s to Active", df_user.username)
                 except Exception:
                     self.logger.exception("The user %s was not created in LDAP" % df_user.username)
             elif df_user.status == User.STATUS_DISABLED or df_user.status == User.STATUS_LOCKED_BY_ADMIN:
@@ -484,6 +491,7 @@ class LDAPHelper:
                     self.ldap_update(ldap_tuple, ldap_tuple_curr[df_user.username])
                     self.logger.debug("Locking user %s in LDAP" % df_user.username)
                     keycloak_helper.disable_user(df_user)
+                    self.logger.debug("User locked in Keycloak: %s" % df_user.username)
                 except Exception:
                     self.logger.exception("The user %s was not disabled in LDAP" % df_user.username)
             elif df_user.status == User.STATUS_UNLOCKED_BY_ADMIN:
@@ -495,6 +503,7 @@ class LDAPHelper:
                     self.logger.debug("Unlocking user %s in LDAP" % df_user.username)
                     df_user.status = User.STATUS_ACTIVE
                     keycloak_helper.enable_user(df_user)
+                    self.logger.debug("User unlocked in Keycloak: %s" % df_user.username)
                     df_user.changeReason = '[LDAP Export] updated 493: Unlocking user. STATUS_UNLOCKED_BY_ADMIN -> STATUS_ACTIVE'
                     df_user.save()
                     self.logger.debug("Set status of user %s to Active", df_user.username)
@@ -531,22 +540,22 @@ class LDAPHelper:
                         try:
                             self.ldap_update(ldap_private_group_tuple_new[df_user.username],
                                              ldap_groups_tuple_curr[df_user.username])
-                            self.logger.debug("Updating User Private Group for user %s", df_user.username)
+                            self.logger.debug("Updated User Private Group for user %s", df_user.username)
                         except Exception:
                             self.logger.exception("UserPrivateGroup not updated: %s", df_user.username)
                     elif df_user.status in User.MEMBERSHIP_STATUS_WHITELIST:
                         try:
                             self.ldap_add(ldap_private_group_tuple_new[df_user.username])
-                            self.logger.debug("Creating User Private Group for user %s in LDAP" % df_user.username)
+                            self.logger.debug("Created User Private Group for user %s in LDAP" % df_user.username)
                         except Exception:
                             self.logger.exception("UserPrivateGroup not created: %s", df_user.username)
                 try:
                     self.ldap_update(ldap_tuple_df[df_user.username], ldap_tuple_curr[df_user.username])
-                    self.logger.debug("Updating user %s in LDAP" % df_user.username)
+                    self.logger.debug("Updated user %s in LDAP" % df_user.username)
                 except Exception:
                     self.logger.exception("User not updated: %s" % df_user.username)
 
-        keycloak_helper.send_welcome_email(created_users, reset_otp=True, reset_pwd=True)
+        keycloak_helper.send_welcome_email(created_users, reset_otp=settings.ADRF_MFA_ACTIVATED, reset_pwd=True)
 
     def export_projects(self):
         self.logger.info("Starting projects export.")

@@ -126,6 +126,7 @@ class ProjectSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     class Meta:
         model = Project
         fields = ('name',
+                  'type',
                   'requester',
                   'abstract',
                   'owner',
