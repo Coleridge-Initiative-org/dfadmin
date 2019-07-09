@@ -49,7 +49,7 @@ pipeline {
                         sh 'sleep 15s'
                         sh 'make check'
                         sh 'make test'
-    //                  junit '**/target/*.xml'
+                      junit 'reports/junit.xml'
                     }
                 }
 
