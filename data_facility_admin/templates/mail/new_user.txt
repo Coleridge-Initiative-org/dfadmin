@@ -1,5 +1,5 @@
 {% autoescape off %}
-Dear {{ username }},
+Dear {{ first_name }},
 
 Welcome to the Administrative Data Research Facility!
 
@@ -23,11 +23,9 @@ The {{ system_name }} uses two-factor authentication for additional security. Yo
 
 
 {% else %}
-1. Go to {{ keycloak_url }} to request a password reset link. You will receive another email, click on the link.
+1. To set your OneTimePassword and password, enter your username ({{ username }}) here: {{ keycloak_url }}
 
-     Username: {{ username }}
-
-2. Enter a new password and click the Submit button.
+ You will then be sent a new link in a separate email to complete the following steps.
 
 If you face any issues, please contact our support at support@adrf.zendesk.com.
 {% endif %}
