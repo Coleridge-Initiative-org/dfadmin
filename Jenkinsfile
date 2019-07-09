@@ -48,8 +48,8 @@ pipeline {
                         sh 'docker-compose up -d'
                         sh 'sleep 15s'
                         sh 'make check'
-                        sh 'make test'
-                      junit 'reports/junit.xml'
+                        sh 'make jenkins'
+                        junit 'reports/junit.xml'
                     }
                 }
 

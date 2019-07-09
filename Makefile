@@ -49,12 +49,12 @@ test-quick:
 	docker-compose exec web coverage xml
 	docker-compose exec web coverage report
 
-codacy-report:
-	echo "Reporting test results to Codacy"
-	# docker-compose exec  -T web pytest --cov=data_facility --cov=data_facility_admin --cov=scripts --cov-report=xml:coverage.xml
-	docker-compose exec -T web python-codacy-coverage -r coverage.xml
+jenkins:
+	docker-compose exec -T web coverage run --source='.' manage.py jenkins --enable-coverage
 
-ci: dev-web-rebuild test codacy-report
+
+
+ci: dev-web-rebuild jenkins
 
 db-psql:
 	docker-compose exec db psql -U postgres

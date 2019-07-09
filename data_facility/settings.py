@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'data_facility_integrations',
     'graphene_django',
     'django_json_widget',
+    'django_jenkins',
     # 'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
