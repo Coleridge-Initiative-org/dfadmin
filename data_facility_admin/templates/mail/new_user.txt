@@ -1,34 +1,26 @@
 {% autoescape off %}
 Dear {{ username }},
 
-Congratulations on creating your {{ system_name }} account!
+Welcome to the Administrative Data Research Facility!
 
 Please find instructions for setting up your account and accessing the {{ system_name }} below.
 
 {% if otp_instructions %}
- The {{ system_name }} uses two-factor authentication for additional security. You'll need to install an one-time password (OTP) application to your mobile device.
+The {{ system_name }} uses two-factor authentication for additional security. You'll need to install an one-time password (OTP) application to your mobile device.
 
  1. Download DUO Mobile to your phone.
      If you do not have a phone capable of installing DUO Mobile, contact support at support@adrf.zendesk.com.
 
- 2. To set a new password or reset your OTP, go to: {{ keycloak_url }}
-    You will receive another email with a reset link.
+ 2. To set your OneTimePassword and password, enter your username ({{ username }}) here: {{ keycloak_url }}
 
-     Username: {{ username }}
+ You will then be sent a new link in a separate email to complete the following steps.
 
- 3. Scan the QR with the app. Enter the 6 digit code into the website and click Submit.
+ 3. Follow the new link from step 2 and scan the QR with the app on your mobile device. Enter the 6 digit code into the website and click Submit.
 
-     Note on OneTimePasswords: The important thing to know about these one-time codes is that any given 6 digit code only works for a 30 second window.  DUO Mobile represents this validity window with a circle that starts out full, and disappears, as if a clock hand was erasing it.  When the circle has disappeared, that 6 digit code is no longer valid and a new code will be generated.
+     Note on OneTimePasswords: The important thing to know about these one-time codes is that any given 6 digit code only works for a 30 second window.  DUO Mobile represents this validity window with a circle that starts out full at 30 seconds and disappears as the time counts towards zero. When the circle has disappeared, that 6 digit code is no longer valid and a new code will be generated.
 
-     If, when you first generate a code, the circle is just a small wedge, you might want to wait for that code to expire, and just use the next code so that you have a full 30 seconds to get it typed in.
+     If, when you first generate a code, the circle is nearly empty and the time remaining is close to zero, you might want to wait for that code to expire, and just use the next code so that you have a full 30 seconds to get it typed in.
 
-
- 4. Enter a new password and click the Submit button.
-
-     If you have successfully gotten to this point, you can try to log in to the workspace. Please refer to the “Accessing the workspace” instructions for how to log in to the ADRF: https://ada.coleridgeinitiative.org/accessing-the-adrf. (Website password: adrf)
-     Note on latency between activating your account and logging into the ADRF: be forewarned that there can be up to two minutes of latency in between when you first log in to {{ keycloak_url }} with your OTP, and when the workspace will be able to recognize one time tokens from your token generator.
-
-     Which is to say:  if you are successful at logging all the way in on {{ keycloak_url }}, if you immediately try to log in to the workspace, there's a chance it will fail, even though there's nothing wrong. If this happens, simply wait a minute and try again.  This delay is a one-time setup issue.
 
 {% else %}
 1. Go to {{ keycloak_url }} to request a password reset link. You will receive another email, click on the link.
