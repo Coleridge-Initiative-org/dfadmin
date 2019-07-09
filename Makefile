@@ -50,7 +50,7 @@ test-quick:
 	docker-compose exec web coverage report
 
 jenkins:
-	docker-compose exec -T web coverage run --source='.' manage.py jenkins --enable-coverage
+	docker-compose exec -T web coverage run --source='.' manage.py jenkins --enable-coverage --settings=data_facility.test_settings --noinput -v2 --parallel 1
 
 
 
