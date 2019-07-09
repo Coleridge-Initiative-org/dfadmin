@@ -88,6 +88,7 @@ class KeycloakHelper(object):
 
                 msg_plain = render_to_string('mail/new_user.txt',
                                              {'username': user.username,
+                                               'first_name': user.first_name,
                                                'current_time': timezone.now(),
                                                'keycloak_url': keycloak_url,
                                               'otp_instructions': settings.ADRF_MFA_ACTIVATED,
