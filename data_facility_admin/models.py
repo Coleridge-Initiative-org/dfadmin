@@ -99,7 +99,7 @@ class ProfileTag(models.Model):
     history = HistoricalRecords()
 
     def __str__(self):
-        return  self.text + ' ' + self.description
+        return self.text + ' ' + self.description
 
     class Meta:
         ordering = ['text']
@@ -129,6 +129,8 @@ class DfRole(LdapObject):
                                     begin__lte=timezone.now(),
                                     user__status__in=User.MEMBERSHIP_STATUS_WHITELIST),
                                     Q(end__isnull=True) | Q(end__gt=timezone.now()))
+        # queryset = UserDfRole.objects.filter(Q(role=self, user__status__in=User.MEMBERSHIP_STATUS_WHITELIST))
+        # return queryset.filter(UserDfRole.FILTER_ACTIVE)
 
     def active_usernames(self):
         '''return a list of all active users checking their statuses.'''
@@ -154,6 +156,7 @@ class DfRole(LdapObject):
         verbose_name_plural = 'Data Facility Roles'
 
 
+
 class SystemInfo(models.Model):
     ''' This model is internal and serves to store system information such as last sync time.'''
     last_export = models.DateTimeField(null=True, blank=True, editable=False)
@@ -170,7 +173,7 @@ class User(LdapObject):
     last_name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
     orc_id = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
     affiliation = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
-    email = models.EmailField(unique=True, validators=[EmailValidator])
+    email = models.EmailField(unique=True, validators=[EmailValidator], null=False, blank=False)
 
     foreign_national = models.BooleanField(default=False)
     contractor = models.BooleanField(default=False)
@@ -279,6 +282,10 @@ class User(LdapObject):
                                         settings.LDAP_BASE_DN)
 
     @property
+    def active_roles(self):
+        return [udfr.role for udfr in UserDfRole.objects.filter(UserDfRole.FILTER_ACTIVE).filter(user=self)]
+
+    @property
     def username(self):
         return self.ldap_name
 
@@ -346,6 +353,9 @@ class UserDfRole(models.Model):
     role = models.ForeignKey(DfRole, on_delete=models.PROTECT)
     begin = models.DateTimeField()
     end = models.DateTimeField(blank=True, null=True)
+
+    # Querysets
+    FILTER_ACTIVE = Q(begin__lte=timezone.now()) & Q(Q(end__isnull=True) | Q(end__gt=timezone.now()))
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
@@ -475,6 +485,12 @@ class Project(LdapObject):
     request_id = models.IntegerField(default=None, blank=True, null=True,
                                      help_text=REQUEST_ID_HELP_TEXT)
     workspace_path = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
+    start = models.DateTimeField(null=True, blank=True)
+    end = models.DateTimeField(null=True, blank=True)
+
+    # Querysets
+    FILTER_ACTIVE = Q(status=STATUS_ACTIVE) & Q(Q(start__isnull=True) | Q(start__lte=timezone.now())) \
+                    & Q(Q(end__isnull=True) | Q(end__gte=timezone.now()))
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
@@ -482,7 +498,10 @@ class Project(LdapObject):
     history = HistoricalRecords()
 
     def is_active(self):
-        return self.status == Project.STATUS_ACTIVE
+        now = timezone.now()
+        return self.status == Project.STATUS_ACTIVE \
+                and (not self.start or self.start < now) \
+                and (not self.end or now < self.end)
 
     def db_schema(self):
         return self.ldap_name.replace(Project.PROJECT_PREFIX, '')
@@ -591,7 +610,7 @@ class ProjectRole(models.Model):
     history = HistoricalRecords()
 
     def __str__(self):
-        return '%s' % self.name
+        return '%s (%s)' % (self.name, self.system_role)
 
     class Meta:
         ordering = ['name']
