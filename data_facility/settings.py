@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'graphene_django',
     'django_json_widget',
     'django_jenkins',
+    'django_prometheus',
     # 'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
@@ -142,6 +143,7 @@ GRAPHENE = {
 
 
 MIDDLEWARE_CLASSES = (
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -153,6 +155,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
     'admin_reorder.middleware.ModelAdminReorder',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
 )
 
 TEMPLATES = [
@@ -418,7 +421,7 @@ WSGI_APPLICATION = 'data_facility.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('DATABASE_ENGINE', default='django.db.backends.postgresql_psycopg2'),
+        'ENGINE': config('DATABASE_ENGINE', default='django_prometheus.db.backends.postgresql'),
         'NAME':  config('DATABASES_NAME'),
         'USER': config('DATABASES_USER'),
         'PASSWORD': config('DATABASES_PASSWORD'),
@@ -576,4 +579,8 @@ SNS_HOOK = {
     'AWS_ACCESS_KEY_ID': config('SNS_HOOK_AWS_ACCESS_KEY_ID', default='?'),
     'AWS_ACCESS_KEY': config('SNS_HOOK_AWS_ACCESS_KEY', default='?'),
 }
+
+# Prometheus configS
+# ROOT_URLCONF = "graphite.urls_prometheus_wrapper"
+
 print ('DEBUG=%s' % DEBUG)

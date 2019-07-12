@@ -69,6 +69,7 @@ urlpatterns += [
     url(r'^api/v1/docs/swagger/$', get_swagger_view(title=DFADMIN_API), name='api-swagger'),
     url(r'^api/v1/docs/open-api/', include_docs_urls(title=DFADMIN_API), name='api-docs'),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
+    url('^prometheus/', include('django_prometheus.urls')),
 ]
 
 
