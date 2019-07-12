@@ -73,7 +73,7 @@ pipeline {
                 echo 'Stopping DFAdmin..'
                 sh 'docker-compose stop || true'
                 sh 'docker-compose down || true'
-                sh 'sudo rm -rf logs || true'
+                sh 'sudo rm -rf logs reports || true'
 
             }
         }
