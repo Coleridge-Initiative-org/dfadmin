@@ -719,6 +719,7 @@ class LDAPHelper:
                     self.logger.exception("Dataset not updated: %s", cn)
         self.logger.info("Datasets Export has ended.")
 
+
 class EmailHelper:
     @staticmethod
     def send_updated_rules_of_behavior_email(users):
@@ -735,11 +736,9 @@ class EmailHelper:
                                                           system_user=False).values_list('email', flat=True))
         else:
             user_emails = (u.email for u in users)
-        logger.debug('emails: ', user_emails)
 
-        msg = EmailMultiAlternatives(email_subject, email_text, email_from, [], bcc=user_emails)
-
-        msg.send()
-        logger.info('Sent email (%s)\n Subject: %s\n To: %s\nText: %s' % (
-            timezone.now(), email_subject, user_emails, email_text))
+        now = timezone.now()
+        for user_email in user_emails:
+            send_mail(email_subject, email_text, email_from, [user_email])
+            logger.info('Sent email (%s) Subject: %s To: %s' % (now, email_subject, user_email))
 
