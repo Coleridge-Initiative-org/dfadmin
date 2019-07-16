@@ -19,4 +19,4 @@ RUN pip install -r test-requirements.txt
 LABEL maintainer="Daniel.Castellani@nyu.edu"
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt dist-upgrade
+RUN apt dist-upgrade -y
