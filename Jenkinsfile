@@ -91,7 +91,7 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        stage('Clean') {
+        stage('Clean Docker') {
             steps {
                 sh 'docker rmi ${IMAGE_NAME}:ci-${GIT_COMMIT_HASH}'
                 sh 'docker rmi ${IMAGE_NAME}:${IMAGE_TAG}'
@@ -104,6 +104,7 @@ pipeline {
          //   junit '**/nosetests.xml'
             cobertura coberturaReportFile: 'reports/coverage.xml'
          //   step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
+                sh 'sudo rm -rf logs reports || true'
         }
 	    success {
 	      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' by ${env.GIT_COMMITER} (${env.BUILD_URL})");
