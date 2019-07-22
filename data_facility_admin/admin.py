@@ -217,7 +217,7 @@ class UserAdmin(SimpleHistoryAdmin):
     """Admin Manager for model User"""
     list_display = ('username', 'full_name', 'affiliation', 'signed_terms_at',
                     'ldap_last_auth_time', 'status', 'profile_tags',
-                    'ldap_last_pwd_change')
+                    'ldap_last_pwd_change', 'created_at')
     search_fields = ('first_name', 'last_name', 'email', 'affiliation', 'orc_id',
                      'job_title', 'sponsor', 'ldap_name', 'ldap_id')
     list_filter = ['status', 'signed_terms_at', 'ldap_last_auth_time', 'affiliation',
