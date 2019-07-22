@@ -1,7 +1,6 @@
 FROM dancastellani/adrf-python2:1.0
 
 ENV PYTHONUNBUFFERED 1
-ENV CODACY_PROJECT_TOKEN 6aefb79c080240aeba2c4ac1e13428e8
 
 RUN mkdir /code
 WORKDIR /code
