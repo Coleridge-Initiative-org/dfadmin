@@ -108,6 +108,7 @@ def init(args):
     args_team_name = args.team_name
     args_file_name = args.file
     args_is_class = args.is_class
+    args_member_projects = args.member_projects
     ##
     # arg_roles = ['Students']
     # args_project_membership = 'Student'
@@ -123,7 +124,7 @@ def init(args):
         global DF_ROLES
         DF_ROLES = [DfRole.objects.get(name=role_name) for role_name in arg_roles]
     except DfRole.DoesNotExist as ex:
-        print('DFRole not found: ' + role_name)
+        print('DFRole not found: %s' % role_name)
         raise ex
 
     # Init PROJECTS
@@ -131,7 +132,7 @@ def init(args):
         global PROJECT_ROLE
         PROJECT_ROLE = ProjectRole.objects.get(name=args_project_membership)
     except ProjectRole.DoesNotExist as ex:
-        print('ProjectRole not found: ' + args_project_membership)
+        print('ProjectRole not found: %s' % args_project_membership)
         raise ex
 
     try:
@@ -143,8 +144,21 @@ def init(args):
         else:
             PROJECTS = None
     except Project.DoesNotExist as ex:
-        print('ProjectRole not found: ' + project_name)
+        print('ProjectRole not found: %s' % project_name)
         raise ex
+
+    try:
+        global MEMBER_PROJECTS
+        MEMBER_PROJECTS = []
+        if args_member_projects is not None and len(args_member_projects) > 0:
+            for project_name in args_member_projects:
+                MEMBER_PROJECTS.append(Project.objects.get(name=project_name))
+        else:
+            PROJECTS = None
+    except Project.DoesNotExist as ex:
+        print('ProjectRole not found: %s' % project_name)
+        raise ex
+
 
     global EXPIRATION_DATE
     if args_expiration:
@@ -212,7 +226,7 @@ def create_users(filename, class_file=False, errors=[]):
                     print('grant_roles')
                     grant_roles(user)
                     print('grant_projects')
-                    grant_projects(user, team)
+                    grant_projects(user, team, class_file)
                     print('    > Success')
 
 
@@ -224,12 +238,14 @@ def create_users(filename, class_file=False, errors=[]):
 
 def grant_roles(user):
     global DF_ROLES
+    global EXPIRATION_DATE
     for df_role in DF_ROLES:
-        UserDfRole(user=user, role=df_role, begin=TIME_NOW).save()
+        UserDfRole(user=user, role=df_role, begin=TIME_NOW, end=EXPIRATION_DATE).save()
 
 
-def grant_projects(user, team):
+def grant_projects(user, team, is_class):
     global PROJECTS
+    global MEMBER_PROJECTS
     global PROJECT_ROLE
     global EXPIRATION_DATE
     global TIME_NOW
@@ -241,19 +257,27 @@ def grant_projects(user, team):
                       start_date=TIME_NOW,
                       end_date=EXPIRATION_DATE).save()
 
-    try:
-        global TEAM_NAME_BASE
-        team_name = TEAM_NAME_BASE + str(team)
-        team = Project.objects.get(name=team_name)
-    except Project.DoesNotExist:
-        team = Project(name=team_name, abstract='Team Project')
-        team.save()
+    for project in MEMBER_PROJECTS:
+        ProjectMember(project=project,
+                      member=user,
+                      role=ProjectRole.objects.get(name='Member'),
+                      start_date=TIME_NOW,
+                      end_date=EXPIRATION_DATE).save()
 
-    ProjectMember(project=team,
-                  member=user,
-                  role=ProjectRole.objects.get(name='Member'),
-                  start_date=TIME_NOW,
-                  end_date=EXPIRATION_DATE).save()
+    if is_class:
+        try:
+            global TEAM_NAME_BASE
+            team_name = TEAM_NAME_BASE + str(team)
+            team = Project.objects.get(name=team_name)
+        except Project.DoesNotExist:
+            team = Project(name=team_name, abstract='Team Project')
+            team.save()
+
+        ProjectMember(project=team,
+                      member=user,
+                      role=ProjectRole.objects.get(name='Member'),
+                      start_date=TIME_NOW,
+                      end_date=EXPIRATION_DATE).save()
 
 
 def add_tags(user):
