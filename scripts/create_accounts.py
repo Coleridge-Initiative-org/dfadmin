@@ -55,6 +55,11 @@ parser.add_argument('--expiration', '-e',
                     help='Indicates when the new account roles and projects should expire. '
                          'Format: 2016-10-03T19:00:00',
                     default=None)
+parser.add_argument('--member_projects',
+                    help='Indicates to which project(s) to add the new accounts to as members. '
+                         'Multiple projects can be used.',
+                    nargs='+', default=None)
+
 
 def run(*script_args):
     '''
@@ -176,7 +181,7 @@ def create_users(filename, class_file=False, errors=[]):
             if 'first_name' in values:
                 continue
 
-            print('Creating user: ' + str(values))
+            print('Creating user: %s' % str(values))
             #Read from file
             if class_file:
                 first_name, last_name, email, team = values
@@ -188,7 +193,7 @@ def create_users(filename, class_file=False, errors=[]):
             username = None
             try:
                 if len(User.objects.filter(email=email)) > 0:
-                        print('  Skipping {0}   Already exists.'.format(line))
+                        print('  Already exists. Skipping: {0}'.format(line))
                         # raise Exception('Skipping {0}. Already exists.'.format(line))
                 else:
                     user = User(first_name=first_name,
