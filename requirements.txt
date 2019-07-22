@@ -56,3 +56,4 @@ python-jose
 git+https://github.com/NYU-Chicago-data-facility/django-json-widget.git@v0.2.1
 django_jenkins
 django-prometheus==1.0.15
+uwsgi
