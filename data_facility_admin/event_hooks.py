@@ -70,7 +70,11 @@ def dataset_saved(instance, **kwargs):
 
     # Check event dataset activated
     logger.debug('Checking if the dataset was activated...')
-    old_instance = Dataset.objects.get(id=instance.id)
+    try:
+        old_instance = Dataset.objects.get(id=instance.id)
+    except Dataset.DoesNotExist:
+        old_instance = None
+
     if instance.status == Dataset.STATUS_ACTIVE and (created or old_instance.status != instance.status):
             logger.debug('Dataset activated: %s' % instance.dataset_id)
             subject = 'Dataset activated: {0}'.format(instance.dataset_id)
@@ -85,9 +89,9 @@ def dataset_saved(instance, **kwargs):
 
     logger.debug('Checking for database schema updates...')
     current_schema = instance.database_schema
-    old_schema = old_instance.database_schema
+    old_schema = None if old_instance is None else old_instance.database_schema
     if current_schema is not None:
-        if old_schema != current_schema:
+        if old_schema is None or old_schema != current_schema:
             logger.debug('Dataset DB schema activated: %s' % current_schema.name)
             subject = 'Dataset db activated: {0} - {1}'.format(instance.dataset_id, current_schema.name)
             send_sns_event(SNS_HOOK['TOPIC_DATASET_DB_ACTIVATED'], subject, payload)
