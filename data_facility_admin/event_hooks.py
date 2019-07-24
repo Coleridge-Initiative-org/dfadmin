@@ -69,19 +69,37 @@ def dataset_saved(instance, **kwargs):
     send_sns_event(topic, subject, payload)
 
     # Check event dataset activated
+    logger.debug('Checking if the dataset was activated...')
     old_instance = Dataset.objects.get(id=instance.id)
     if instance.status == Dataset.STATUS_ACTIVE and (created or old_instance.status != instance.status):
             logger.debug('Dataset activated: %s' % instance.dataset_id)
-            topic = SNS_HOOK['TOPIC_DATASET_ACTIVATED']
             subject = 'Dataset activated: {0}'.format(instance.dataset_id)
-            send_sns_event(topic, subject, payload)
+            send_sns_event(SNS_HOOK['TOPIC_DATASET_ACTIVATED'], subject, payload)
 
     # Check for deactivation
+    logger.debug('Checking if the dataset was deactivated...')
     if not created and instance.status != Dataset.STATUS_ACTIVE and old_instance.status == Dataset.STATUS_ACTIVE:
         logger.debug('Dataset activated: %s' % instance.dataset_id)
-        topic = SNS_HOOK['TOPIC_DATASET_DEACTIVATED']
         subject = 'Dataset deactivated: {0}'.format(instance.dataset_id)
-        send_sns_event(topic, subject, payload)
+        send_sns_event(SNS_HOOK['TOPIC_DATASET_DEACTIVATED'], subject, payload)
+
+    logger.debug('Checking for database schema updates...')
+    current_schema = instance.database_schema
+    old_schema = old_instance.database_schema
+    if current_schema is not None:
+        if old_schema != current_schema:
+            logger.debug('Dataset DB schema activated: %s' % current_schema.name)
+            subject = 'Dataset db activated: {0} - {1}'.format(instance.dataset_id, current_schema.name)
+            send_sns_event(SNS_HOOK['TOPIC_DATASET_DB_ACTIVATED'], subject, payload)
+
+        if old_schema is not None:
+            logger.debug('Dataset DB schema changed. Deactivate previous one: %s' % old_schema.name)
+            subject = 'Dataset db activated: {0} - {1}'.format(instance.dataset_id, current_schema.name)
+            send_sns_event(SNS_HOOK['TOPIC_DATASET_DB_ACTIVATED'], subject, payload)
+
+
+
+
 
 
 
