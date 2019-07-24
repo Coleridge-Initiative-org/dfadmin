@@ -585,6 +585,8 @@ SNS_HOOK = {
     'TOPIC_DATASET_UPDATED': config('SNS_HOOK_TOPIC_DATASET_UPDATED', default='adrf-dataset-updated'),
     'TOPIC_DATASET_ACTIVATED': config('SNS_HOOK_TOPIC_DATASET_ACTIVATED', default='adrf-dataset-activated'),
     'TOPIC_DATASET_DEACTIVATED': config('SNS_HOOK_TOPIC_DATASET_DEACTIVATED', default='adrf-dataset-deactivated'),
+    'TOPIC_DATASET_DB_ACTIVATED': config('SNS_HOOK_TOPIC_DATASET_DB_ACTIVATED', default='adrf-dataset-db-activated'),
+    'TOPIC_DATASET_DB_DEACTIVATED': config('SNS_HOOK_TOPIC_DATASET_DB_DEACTIVATED', default='adrf-dataset-db-deactivated'),
 }
 
 # Prometheus configS
