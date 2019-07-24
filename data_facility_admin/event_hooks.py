@@ -48,11 +48,11 @@ def dataset_saved(instance, **kwargs):
     if not SNS_HOOK['ACTIVE']: return
     from data_facility_admin.models import Dataset
 
-    logger.debug('Dataset saved - from "{0}" with instance: {1} params: {2}'.format(sender, instance, kwargs))
+    logger.debug('Dataset saved - instance: {0} params: {1}'.format(instance, kwargs))
 
-    kwargs['created'] = kwargs['created'] if 'created' in kwargs else instance.id is None
+    created = kwargs['created'] if 'created' in kwargs else instance.id is None
     # When added to an active project
-    if kwargs['created']:
+    if created:
         topic = SNS_HOOK['TOPIC_DATASET_CREATED']
         subject = 'Dataset created: {0}'.format(instance.dataset_id)
     else:
@@ -70,10 +70,18 @@ def dataset_saved(instance, **kwargs):
 
     # Check event dataset activated
     old_instance = Dataset.objects.get(id=instance.id)
-    if instance.status == Dataset.STATUS_ACTIVE and (kwargs['created'] or old_instance.status != instance.status):
+    if instance.status == Dataset.STATUS_ACTIVE and (created or old_instance.status != instance.status):
             logger.debug('Dataset activated: %s' % instance.dataset_id)
             topic = SNS_HOOK['TOPIC_DATASET_ACTIVATED']
             subject = 'Dataset activated: {0}'.format(instance.dataset_id)
             send_sns_event(topic, subject, payload)
+
+    # Check for deactivation
+    if not created and instance.status != Dataset.STATUS_ACTIVE and old_instance.status == Dataset.STATUS_ACTIVE:
+        logger.debug('Dataset activated: %s' % instance.dataset_id)
+        topic = SNS_HOOK['TOPIC_DATASET_DEACTIVATED']
+        subject = 'Dataset deactivated: {0}'.format(instance.dataset_id)
+        send_sns_event(topic, subject, payload)
+
 
 
