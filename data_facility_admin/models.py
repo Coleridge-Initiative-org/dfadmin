@@ -14,6 +14,7 @@ import hashlib
 from model_utils import Choices
 from django.contrib.postgres.fields import JSONField
 from django.utils.text import slugify
+import event_hooks
 CHAR_FIELD_MAX_LENGTH = settings.CHAR_FIELD_MAX_LENGTH
 TEXT_FIELD_MAX_LENGTH = settings.TEXT_FIELD_MAX_LENGTH
 
@@ -961,6 +962,7 @@ class Dataset(LdapObject):
     def save(self, *args, **kwargs):
         if self.ldap_name is None:
             self.ldap_name = self.dataset_id
+        event_hooks.dataset_saved(self)
         super(Dataset, self).save(*args, **kwargs)
 
     def active_stewards(self):

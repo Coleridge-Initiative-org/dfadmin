@@ -1,4 +1,3 @@
-from data_facility_admin.models import Project, ProjectMember, ProjectRole, User, ProjectTool, Dataset
 from django.db.models.signals import pre_save, post_save, post_delete
 from django.dispatch import receiver
 import logging
@@ -13,11 +12,13 @@ SNS_HOOK = settings.SNS_HOOK
 
 
 def send_sns_event(topic, subject, payload):
+    logger.debug('[send_sns_event] Topic:%s, Subject:%s\nPayload:%s' % (topic, subject, payload))
     if SNS_HOOK['AWS_ACCESS_KEY_ID']:
         sns = boto3.client('sns',
                            region_name=SNS_HOOK['REGION'],
                            aws_access_key_id=SNS_HOOK['AWS_ACCESS_KEY_ID'],
-                           aws_secret_access_key=SNS_HOOK['AWS_ACCESS_KEY']
+                           aws_secret_access_key=SNS_HOOK['AWS_ACCESS_KEY'],
+                           aws_session_token=SNS_HOOK['AWS_SESSION_TOKEN']
                            )
     else:
         # When running on AWS, instance roles should be used.
@@ -37,45 +38,42 @@ def send_sns_event(topic, subject, payload):
     #     TopicArn='arn:aws:sns:us-east-1:441870321480:adrf-dataset-created',
     #     Message='Hello World!',
     # )
-
-    print(response)
     logger.debug('SNS Response: %s' % response)
     # except ClientError as error:
     #     raise
+    logger.info('SNS Event pushed with success: %s - %s' % (topic, subject))
 
 
-@receiver(post_save, sender=Dataset)
-def dataset_saved(sender, instance, **kwargs):
+def dataset_saved(instance, **kwargs):
+    if not SNS_HOOK['ACTIVE']: return
+    from data_facility_admin.models import Dataset
+
     logger.debug('Dataset saved - from "{0}" with instance: {1} params: {2}'.format(sender, instance, kwargs))
 
+    kwargs['created'] = kwargs['created'] if 'created' in kwargs else instance.id is None
     # When added to an active project
     if kwargs['created']:
-        topic = 'adrf-dataset-created'
+        topic = SNS_HOOK['TOPIC_DATASET_CREATED']
         subject = 'Dataset created: {0}'.format(instance.dataset_id)
     else:
-        topic = 'adrf-dataset-updated'
+        topic = SNS_HOOK['TOPIC_DATASET_UPDATED']
         subject = 'Dataset updated: {0}'.format(instance.dataset_id)
 
     payload = {
         'entity_id': instance.dataset_id,
-        'url': 'dfadmin.dev.adrf.cloud/api/v1/datasets/{0}'.format(instance.dataset_id),
+        'url': settings.DFADMIN_URL + '/api/v1/datasets/{0}'.format(instance.dataset_id),
         'sender': 'DFAdmin',
         'status': instance.status,
         'entity': instance.name,
     }
-
-    # TODO: Log some nice message
-    logger.info('Event generated: %s' % payload)
-    # Write to SNS
     send_sns_event(topic, subject, payload)
 
+    # Check event dataset activated
+    old_instance = Dataset.objects.get(id=instance.id)
+    if instance.status == Dataset.STATUS_ACTIVE and (kwargs['created'] or old_instance.status != instance.status):
+            logger.debug('Dataset activated: %s' % instance.dataset_id)
+            topic = SNS_HOOK['TOPIC_DATASET_ACTIVATED']
+            subject = 'Dataset activated: {0}'.format(instance.dataset_id)
+            send_sns_event(topic, subject, payload)
 
-# @receiver(post_delete, sender=ProjectTool)
-# def project_tool_deleted(sender, instance, **kwargs):
-#     logger.debug('project_tool_deleted - from "{0}" with params: {1}'.format(sender, kwargs))
-#     project_tool = instance
-#     project = project_tool.project
-#     if project_tool.tool_name == ProjectTool.TOOL_CHOICES.PG_RDS:
-#         logger.debug("RDS found")
-#         rds_client.delete_database(project_tool)
-#
+

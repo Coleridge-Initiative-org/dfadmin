@@ -20,8 +20,8 @@ class DataFacilityIntegrationsConfig(AppConfig):
             from data_facility_integrations import k8s_workspace_hooks
             logger.info('WS_K8S_INTEGRATION Activated')
 
-        if 'ACTIVE' in settings.SNS_HOOK and settings.SNS_HOOK['ACTIVE']:
-            from data_facility_integrations import event_hooks
-            logger.info('SNS_HOOK Activated')
+        # if 'ACTIVE' in settings.SNS_HOOK and settings.SNS_HOOK['ACTIVE']:
+        #     from data_facility_integrations import event_hooks
+        #     logger.info('SNS_HOOK Activated')
 
         logger.info('DFAdmin integrations loaded.')

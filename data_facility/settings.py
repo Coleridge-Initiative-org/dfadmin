@@ -81,6 +81,7 @@ ADRF_MFA_ACTIVATED = config('ADRF_MFA_ACTIVATED', cast=bool, default=True)
 ADRF_SYSTEM_NAME = config('ADRF_SYSTEM_NAME', default=None)
 
 ## --- DFADMIN
+DFADMIN_URL = config('DFADMIN_URL', default='https://dfadmin.dev.adrf.cloud')
 ADRF_URL = config('ADRF_URL')
 WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL_PUBLIC')
 WELCOME_EMAIL_SUBJECT = config('WELCOME_EMAIL_SUBJECT', default='Instructions for setting up your ADRF account!')
@@ -578,6 +579,12 @@ SNS_HOOK = {
     'REGION': config('SNS_HOOK_REGION', default='us-east-1'),
     'AWS_ACCESS_KEY_ID': config('SNS_HOOK_AWS_ACCESS_KEY_ID', default='?'),
     'AWS_ACCESS_KEY': config('SNS_HOOK_AWS_ACCESS_KEY', default='?'),
+    'AWS_SESSION_TOKEN': config('SNS_HOOK_AWS_SESSION_TOKEN', default='?'),
+
+    'TOPIC_DATASET_CREATED': config('SNS_HOOK_TOPIC_DATASET_CREATED', default='adrf-dataset-created'),
+    'TOPIC_DATASET_UPDATED': config('SNS_HOOK_TOPIC_DATASET_UPDATED', default='adrf-dataset-updated'),
+    'TOPIC_DATASET_ACTIVATED': config('SNS_HOOK_TOPIC_DATASET_ACTIVATED', default='adrf-dataset-activated'),
+    'TOPIC_DATASET_DEACTIVATED': config('SNS_HOOK_TOPIC_DATASET_DEACTIVATED', default='adrf-dataset-deactivated'),
 }
 
 # Prometheus configS
