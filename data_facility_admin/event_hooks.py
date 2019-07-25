@@ -5,6 +5,7 @@ import boto3
 # import boto3.ClientError
 import json
 from django.conf import settings
+import copy
 
 logger = logging.getLogger(__name__)
 
@@ -14,6 +15,7 @@ SNS_HOOK = settings.SNS_HOOK
 def send_sns_event(topic, subject, payload):
     logger.debug('[send_sns_event] Topic:%s, Subject:%s\nPayload:%s' % (topic, subject, payload))
     if SNS_HOOK['AWS_ACCESS_KEY_ID']:
+        logger.debug('Authenticating with credentials from env')
         sns = boto3.client('sns',
                            region_name=SNS_HOOK['REGION'],
                            aws_access_key_id=SNS_HOOK['AWS_ACCESS_KEY_ID'],
@@ -22,15 +24,13 @@ def send_sns_event(topic, subject, payload):
                            )
     else:
         # When running on AWS, instance roles should be used.
+        logger.debug('Authenticating with IAM Role')
         sns = boto3.client('sns', region_name=SNS_HOOK['REGION'])
-
-    # try:
-    payload["default"] = json.dumps(payload)
 
     response = sns.publish(
         TargetArn='%s:%s' % (SNS_HOOK['BASE_ARN'], topic),
         Subject=subject,
-        Message=json.dumps(payload),
+        Message=json.dumps({"default": json.dumps(payload)}),
         MessageStructure='json'
     )
 
@@ -93,13 +93,15 @@ def dataset_saved(instance, **kwargs):
     if current_schema is not None:
         if old_schema is None or old_schema != current_schema:
             logger.debug('Dataset DB schema activated: %s' % current_schema.name)
-            subject = 'Dataset db activated: {0} - {1}'.format(instance.dataset_id, current_schema.name)
+            subject = '{0} - {1}'.format(instance.dataset_id, current_schema.name)
+            payload['extra'] = {'schema': current_schema.name}
             send_sns_event(SNS_HOOK['TOPIC_DATASET_DB_ACTIVATED'], subject, payload)
 
         if old_schema is not None:
             logger.debug('Dataset DB schema changed. Deactivate previous one: %s' % old_schema.name)
-            subject = 'Dataset db activated: {0} - {1}'.format(instance.dataset_id, current_schema.name)
-            send_sns_event(SNS_HOOK['TOPIC_DATASET_DB_ACTIVATED'], subject, payload)
+            subject = '{0} - {1}'.format(instance.dataset_id, old_schema.name)
+            payload['extra'] = {'schema': old_schema.name}
+            send_sns_event(SNS_HOOK['TOPIC_DATASET_DB_DEACTIVATED'], subject, payload)
 
 
 

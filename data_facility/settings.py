@@ -577,9 +577,9 @@ SNS_HOOK = {
     'ACTIVE': config('SNS_HOOK_ACTIVE', cast=bool, default=False),
     'BASE_ARN': config('SNS_HOOK_BASE_ARN', default='?'),
     'REGION': config('SNS_HOOK_REGION', default='us-east-1'),
-    'AWS_ACCESS_KEY_ID': config('SNS_HOOK_AWS_ACCESS_KEY_ID', default='?'),
-    'AWS_ACCESS_KEY': config('SNS_HOOK_AWS_ACCESS_KEY', default='?'),
-    'AWS_SESSION_TOKEN': config('SNS_HOOK_AWS_SESSION_TOKEN', default='?'),
+    'AWS_ACCESS_KEY_ID': config('AWS_ACCESS_KEY_ID', default='?'),
+    'AWS_ACCESS_KEY': config('AWS_SECRE_ACCESS_KEY', default='?'),
+    'AWS_SESSION_TOKEN': config('AWS_SESSION_TOKEN', default='?'),
 
     'TOPIC_DATASET_CREATED': config('SNS_HOOK_TOPIC_DATASET_CREATED', default='adrf-dataset-created'),
     'TOPIC_DATASET_UPDATED': config('SNS_HOOK_TOPIC_DATASET_UPDATED', default='adrf-dataset-updated'),
