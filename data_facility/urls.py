@@ -13,6 +13,8 @@ from graphene_django.views import GraphQLView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
 import rest_framework
+from django.conf import settings
+
 
 class PrivateGraphQLView(LoginRequiredMixin, GraphQLView):
     """Adds a login requirement to graphQL API access via main endpoint."""
@@ -71,6 +73,12 @@ urlpatterns += [
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
     url('^prometheus/', include('django_prometheus.urls')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
 
 
 # # Admin to work on /
