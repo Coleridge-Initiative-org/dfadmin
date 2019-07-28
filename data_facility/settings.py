@@ -21,7 +21,7 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 #DFAdmin Version
-VERSION = 'v2.3'
+VERSION = 'v2.3.2'
 
 ENV = config('ENV', default='PRODUCTION')
 ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
@@ -71,6 +71,8 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default=None)
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default=None)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
 EMAIL_FROM = config('EMAIL_FROM', default='dfadmin@adrf.info')
+SUPPORT_EMAIL = config('SUPPORT_EMAIL', default='support@dfadmin.local')
+
 SERVER_EMAIL = EMAIL_FROM
 DEFAULT_FROM_EMAIL = EMAIL_FROM
 
@@ -81,8 +83,10 @@ ADRF_SYSTEM_NAME = config('ADRF_SYSTEM_NAME', default=None)
 ## --- DFADMIN
 ADRF_URL = config('ADRF_URL')
 WELCOME_EMAIL_KEYCLOAK_URL = config('ID_ADRF_URL_PUBLIC')
+WELCOME_EMAIL_SUBJECT = config('WELCOME_EMAIL_SUBJECT', default='Instructions for setting up your ADRF account!')
 PWD_RESET_INSTRUCTIONS = config('PWD_RESET_INSTRUCTIONS', default='???')
 ADRF_PASS_EXPIRATION_TIME = config('ADRF_PASS_EXPIRATION_TIME', cast=int, default=60)
+PASS_EXPIRATION_NOTIFICATION_DAYS = config('PASS_EXPIRATION_NOTIFICATION_DAYS', cast=int, default=7)
 ADRF_ENABLE_CUSTOM_USERNAME = config('ADRF_ENABLE_CUSTOM_USERNAME', cast=bool, default=False)
 
 # ----------------- DF Admin LDAP Configuration -------------------------
@@ -215,7 +219,7 @@ ADMIN_REORDER = (
 )
 
 # ----------------- DJANGO GRAPPELLI -------------------------
-GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin < {0} @{1} >'.format(ADRF_SYSTEM_NAME, VERSION)
+GRAPPELLI_ADMIN_TITLE = 'Data Facility Admin {1} - {0}'.format(ADRF_SYSTEM_NAME, VERSION)
 
 # ----------------- CORS Config for Vue -------------------------
 # Based on: https://www.techiediaries.com/django-cors/
