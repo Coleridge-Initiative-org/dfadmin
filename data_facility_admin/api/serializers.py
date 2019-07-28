@@ -126,6 +126,7 @@ class ProjectSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     class Meta:
         model = Project
         fields = ('name',
+                  'type',
                   'requester',
                   'abstract',
                   'owner',
@@ -144,7 +145,8 @@ class ProjectSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
                   'created_at',
                   'updated_at',
                   'tools',
-                  'related_tools'
+                  'related_tools',
+                  'ldap_name'
                   )
         # fields = '__all__'
 

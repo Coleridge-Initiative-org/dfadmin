@@ -2,6 +2,8 @@ from django_filters import filters
 from rest_framework import mixins, generics, viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
+
+from data_facility_admin.models import User
 from .. import models
 from . import serializers
 from django.shortcuts import get_object_or_404
@@ -134,7 +136,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     # queryset = models.Project.objects.all()
     serializer_class = serializers.ProjectSerializer
-    filter_fields = ('name', 'status', 'has_irb', 'owner')
+    filter_fields = ('name', 'status', 'has_irb', 'owner', 'type')
     search_fields = ('name', 'owner__first_name', 'owner__last_name',
                      'owner__ldap_name', 'methodology', 'abstract',
                      'outcomes', 'mission',
@@ -148,12 +150,28 @@ class ProjectViewSet(viewsets.ModelViewSet):
         """
         Retrieve datasets respecting ACLs.
         """
-        queryset = models.Project.objects.filter(status=models.Project.STATUS_ACTIVE)
-        member = self.request.query_params.get('member', None)
-        logger.debug('member filter: %s' % member)
+        queryset = models.Project.objects.filter(models.Project.FILTER_ACTIVE)
+        user_filter = self.request.query_params.get('member', None) or self.request.query_params.get('user', None)
+        logger.debug('member filter: %s' % user_filter)
         # member
-        if self.request.query_params.get('member', None):
-            queryset = queryset.filter(projectmember__member__ldap_name=member)
+        curator = False
+        if user_filter:
+            queryset = queryset.filter(Q(projectmember__member__ldap_name=user_filter) |
+                                       Q(instructors__userdfrole__user__ldap_name=user_filter))\
+            # queryset = queryset.filter(projectmember__project__start)
+            queryset = queryset.distinct()
+
+        # TODO: Remove DATA TRANSFER filtering when new PG_SYNC is in place.
+        # type
+        type_filter = self.request.query_params.get('type', None)
+        logger.debug('type filter: %s' % type_filter)
+        if not type_filter:     # Add default filter only when there is no type param and the user is not a Data Curator
+            data_curator = False
+            if user_filter:
+                user_roles = [dfr.name for dfr in models.User.objects.get(ldap_name=user_filter).active_roles]
+                data_curator = models.DfRole.ADRF_CURATORS in user_roles
+            if not data_curator:
+                queryset = queryset.exclude(type=models.Project.PROJECT_TYPE_DATA_TRANSFER)
 
         request_user = self.request.user
         logger.debug('Current user: %s' % request_user)
