@@ -3,6 +3,7 @@
 from unittest import TestCase, main
 from .serializers import _get_attr_value, UserLDAPSerializer
 from .models import User
+from django.conf import settings
 
 LDAP_USER_EXAMPLE = ('uid=chiahsuanyang,ou=People,dc=adrf,dc=info',
                      {
@@ -76,8 +77,7 @@ class LdapSerializersTests(TestCase):
         self.assertEqual(self.user_dc.ldap_id, int(self.ldap_user[1]['gidNumber'][0]))
 
     def test_user_ldap_serializer_dump_dn(self):
-        self.assertEqual('uid=%s,ou=People,dc=adrf,dc=info' % self.user_dc.ldap_name,
-                         self.ldap_user[0])
+        self.assertEqual('uid=%s,ou=People,%s' % (self.user_dc.ldap_name, settings.LDAP_BASE_DN), self.ldap_user[0])
 
 
 if __name__ == '__main__':

@@ -91,10 +91,10 @@ PASS_EXPIRATION_NOTIFICATION_DAYS = config('PASS_EXPIRATION_NOTIFICATION_DAYS', 
 ADRF_ENABLE_CUSTOM_USERNAME = config('ADRF_ENABLE_CUSTOM_USERNAME', cast=bool, default=False)
 
 # ----------------- DF Admin LDAP Configuration -------------------------
-ADRF_ADMIN_GROUP = 'adrf-admin-grp'
-LDAP_STAFF_GROUP = 'adrf-staff'
-LDAP_BASE_DN = config('LDAP_BASE_DN', default='dc=adrf,dc=info')
-LDAP_SERVER = config('LDAP_SERVER', default="ldaps://meat.adrf.info")
+ADRF_ADMIN_GROUP = config('ADRF_ADMIN_GROUP', default='dc=dfadmin,dc=local')
+LDAP_STAFF_GROUP = config('LDAP_STAFF_GROUP', default='dc=dfadmin,dc=local')
+LDAP_BASE_DN = config('LDAP_BASE_DN', default='dc=dfadmin,dc=local')
+LDAP_SERVER = config('LDAP_SERVER', default="ldaps://ldap.dfadmin.local")
 LDAP_USER_SEARCH = config('LDAP_USER_SEARCH', default="ou=People")
 LDAP_GROUP_SEARCH = config('LDAP_GROUP_SEARCH', default="ou=Groups")
 LDAP_DATASET_SEARCH = config('LDAP_DATASET_SEARCH', default="ou=Datasets")
@@ -321,7 +321,6 @@ LDAP_SETTINGS = {
     'Users': {
         'ObjectClasses': ['top', 'posixAccount', 'inetOrgPerson', 'adrfPerson', 'shadowAccount'],
         'DefaultHomeDirectory': '/nfshome/{0}',
-        # 'DefaultGidNumber': '502',
         'DefaultLoginShell': '/bin/bash',
         'BaseDn': 'ou=People',
         'DefaultNDA': 'FALSE',
@@ -347,19 +346,19 @@ LDAP_SETTINGS = {
         'UserPrivateGroups': True,
         'AttributesBlackList': ['memberUid'],
         'RecreateGroups': False,
-        'SystemUserPpolicyConfig': "cn=system-users,ou=policies,dc=adrf,dc=info",
+        'SystemUserPpolicyConfig': config('LDAP_SYSTEM_USER_POLICY_CONFIG', default=''),
         'PpolicyLockDownDurationSeconds': 900
     },
     'Connection': {
-        'BindDN': config('LDAP_BIND_DN', default="cn=admin,dc=adrf,dc=info"),
-        'BindPassword': config('LDAP_BIND_PASSWD', default="???"),
+        'BindDN': config('LDAP_BIND_DN', default='cn=admin,' + LDAP_BASE_DN),
+        'BindPassword': config('LDAP_BIND_PASSWD', default="LDAP_PASSWORD"),
     }
 }
 
 KEYCLOAK = {
     'API_URL': config('ID_ADRF_URL_API'),
-    'REALM': config('ID_ADRF_REALM', default='master'),
-    'ADMIN_USERNAME': config('ID_ADRF_USER', default='***REMOVED***'),
+    'REALM': config('ID_ADRF_REALM', default=''),
+    'ADMIN_USERNAME': config('ID_ADRF_USER', default=''),
     'ADMIN_PASSWORD': config('ID_ADRF_PASSWORD', default=''),
     'LDAP_ID': config('ID_ADRF_LDAP_ID', default=''),
 }
@@ -555,7 +554,7 @@ JWT_AUTH = {
     'JWT_PUBLIC_KEY': config('JWT_AUTH_PUBLIC_KEY', default='?').replace('\\n', '\n'),
     'JWT_ALGORITHM': config('JWT_AUTH_ALGORITHM', default='RS256'),
     'JWT_AUDIENCE': config('JWT_AUTH_AUDIENCE', default='account'),
-    'JWT_ISSUER': config('JWT_AUTH_ISSUER', default="https://meat.adrf.info/auth/realms/master"),
+    'JWT_ISSUER': config('JWT_AUTH_ISSUER', default="https://id.dfadmin.local"),
     'JWT_AUTH_HEADER_PREFIX': config('JWT_AUTH_HEADER_PREFIX', default="Bearer"),
     'JWT_VERIFY_EXPIRATION': config('JWT_AUTH_VERIFY_EXPIRATION', cast=bool, default=True),
 }

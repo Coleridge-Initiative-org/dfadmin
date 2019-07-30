@@ -8,62 +8,10 @@ import ldap
 from django.utils import timezone
 import datetime
 import pytz
+from test_ldap import BaseLdapTestCase
 
-class LdapTestCase(TestCase):
-    USER_LDAP_ID = LdapObject.MIN_LDAP_UID
-    USER_FULL_DN = 'uid=johnlennon,ou=people,dc=adrf,dc=info'
-    USER_GROUP_FULL_DN = 'cn=johnlennon,ou=groups,dc=adrf,dc=info' 
 
-    def setUp(self):
-        info = ('dc=info', { 'dc': ['info']})
-        adrf = ('dc=adrf,dc=info', { 'dc': ['adrf']})
-        admin = ('cn=admin,dc=adrf,dc=info', { 'cn': [ 'admin'], 'userPassword': [ '???']})
-        people = ('ou=People,dc=adrf,dc=info', { 'ou': ['People']})
-        groups = ('ou=Groups,dc=adrf,dc=info', { 'ou': ['Groups']})
-        projects = ('ou=Projects,dc=adrf,dc=info', { 'ou': ['Projects']})
-        datasets = ('ou=Datasets,dc=adrf,dc=info', { 'ou': ['Datasets']})
-
-        directory = dict([info, adrf, admin, people, groups, projects, datasets])
-        self.mockldap = MockLdap(directory)
-        self.mockldap.start()
-        self.ldapobj = self.mockldap['ldaps://meat.adrf.info']
-
-    def tearDown(self):
-        self.mockldap.stop()
-        del self.ldapobj
-
-    def setUser(self, ldap_id=USER_LDAP_ID, ldap_name=None, first_name="John",
-            last_name="Lennon",
-            email="johnlennon@adrf.info.dev",
-            status=User.STATUS_ACTIVE,
-            ldap_last_auth_time=None,
-            ldap_lock_time=None,
-            ldap_last_pwd_change=None,
-            created_at=None,
-            updated_at=None,
-            system_user=False):
-        result = User.objects.filter(ldap_id=ldap_id)
-        if len(result) == 0:
-            u = User(ldap_id=ldap_id)
-        else:
-            u = result[0]
-        u.first_name = first_name
-        u.last_name = last_name
-        u.email = email
-        u.status = status
-        u.system_user = system_user
-        if ldap_last_auth_time:
-            u.ldap_last_auth_time = ldap_last_auth_time
-        if ldap_lock_time:
-            u.ldap_lock_time = ldap_lock_time
-        if ldap_last_pwd_change:
-            u.ldap_last_pwd_change = ldap_last_pwd_change
-        if ldap_name:
-            u.ldap_name = ldap_name
-        if created_at:
-            u.created_at = created_at
-        u.save()
-
+class LdapTestCase(BaseLdapTestCase):
 
     @mock.patch('data_facility_admin.helpers.KeycloakHelper')
     def test_ldap_import_auth_time(self, mock_keycloak):
@@ -87,7 +35,6 @@ class LdapTestCase(TestCase):
         user = User.objects.filter(ldap_id=self.USER_LDAP_ID)[0]
 
         self.assertEqual(user.ldap_last_auth_time, auth_time)
-
 
     @mock.patch('data_facility_admin.helpers.KeycloakHelper')
     def test_ldap_import_last_pwd_change(self, mock_keycloak):
