@@ -589,10 +589,9 @@ SNS_HOOK = {
     'TOPIC_DATASET_DB_DEACTIVATED': config('SNS_HOOK_TOPIC_DATASET_DB_DEACTIVATED', default='adrf-dataset-db-deactivated'),
 }
 
-# Prometheus configS
-# ROOT_URLCONF = "graphite.urls_prometheus_wrapper"
-
-if DEBUG:
+# Django Debug Toolbar config
+TESTING = config('TESTING', cast=bool, default=False)
+if DEBUG and not TESTING:
     print ('DEBUG=%s' % DEBUG)
     INSTALLED_APPS += ('debug_toolbar',)
     INTERNAL_IPS = [
@@ -618,5 +617,6 @@ if DEBUG:
     }
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     DEBUG_TOOLBAR_CONFIG = {
-        "SHOW_TOOLBAR_CALLBACK" : lambda request: True,
+        "SHOW_TOOLBAR_CALLBACK": lambda request: DEBUG,
     }
+    DEBUG_TOOLBAR_PATCH_SETTINGS = False

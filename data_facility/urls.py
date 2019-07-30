@@ -74,11 +74,11 @@ urlpatterns += [
     url('^prometheus/', include('django_prometheus.urls')),
 ]
 
+# Django Debug Toolbar config
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
+    urlpatterns += [url(r'^__debug__/', include(debug_toolbar.urls)),]
+
 
 
 # # Admin to work on /
