@@ -109,3 +109,5 @@ class AdminSiteTests(TestCase):
             print(AdminSiteTests.ERROR_MESSAGE.format('add', model_name))
             raise ex
 
+    def test_prometheus_metrics(self):
+        self.assertEqual(200, Client().get('/prometheus/metrics').status_code)
