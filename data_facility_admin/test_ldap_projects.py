@@ -6,43 +6,30 @@ from mockldap import MockLdap
 from django.conf import settings
 import ldap
 from django.utils import timezone
+from test_ldap import BaseLdapTestCase
 
-class LdapProjectsTestCase(TestCase):
+
+class LdapProjectsTestCase(BaseLdapTestCase):
     PROJECT_LDAP_ID = LdapObject.MIN_LDAP_UID
-    PROJECT_FULL_DN = 'cn=project-test,ou=projects,dc=adrf,dc=info'
+    PROJECT_FULL_DN = 'cn=project-test,ou=projects,' + settings.LDAP_BASE_DN
     PROJECT_LDAP_BASE = "%s,%s" % (settings.LDAP_PROJECT_SEARCH, settings.LDAP_BASE_DN)
+
     def setUp(self):
-        info = ('dc=info', { 'dc': ['info']})
-        adrf = ('dc=adrf,dc=info', { 'dc': ['adrf']})
-        admin = ('cn=admin,dc=adrf,dc=info', { 'cn': [ 'admin'], 'userPassword': [ '???']})
-        people = ('ou=People,dc=adrf,dc=info', { 'ou': ['People']})
-        groups = ('ou=Groups,dc=adrf,dc=info', { 'ou': ['Groups']})
-        projects = ('ou=Projects,dc=adrf,dc=info', { 'ou': ['Projects']})
-        datasets = ('ou=Datasets,dc=adrf,dc=info', { 'ou': ['Datasets']})
-
-        directory = dict([info, adrf, admin, people, groups, projects, datasets])
-        self.mockldap = MockLdap(directory)
-        self.mockldap.start()
-        self.ldapobj = self.mockldap['ldaps://meat.adrf.info']
-
-        self.proj = Project(name='test', abstract='test', methodology='test', status=Project.STATUS_ACTIVE, type=Project.PROJECT_TYPE_CLASS )
+        super(LdapProjectsTestCase, self).setUp()
+        self.proj = Project(name='test', abstract='test', methodology='test', status=Project.STATUS_ACTIVE, type=Project.PROJECT_TYPE_CLASS)
         self.proj.save()
-
-    def tearDown(self):
-        self.mockldap.stop()
-        del self.ldapobj
 
     @classmethod
     def create_user(cls, ldap_name=None, first_name="John",
-            last_name="Lennon",
-            email="johnlennon@adrf.info.dev",
-            status=User.STATUS_NEW,
-            ldap_last_auth_time=None,
-            ldap_lock_time=None,
-            ldap_last_pwd_change=None,
-            created_at=None,
-            updated_at=None,
-            system_user=False):
+                    last_name="Lennon",
+                    email="johnlennon@adrf.info.dev",
+                    status=User.STATUS_NEW,
+                    ldap_last_auth_time=None,
+                    ldap_lock_time=None,
+                    ldap_last_pwd_change=None,
+                    created_at=None,
+                    updated_at=None,
+                    system_user=False):
 
         u = User()
         u.first_name = first_name
@@ -64,7 +51,7 @@ class LdapProjectsTestCase(TestCase):
 
     def test_ldap_project_create_disable(self):
         self.assertTrue(len(Project.objects.all()) == 1, "The database should have only one project")
- 
+
         ldap_helper = LDAPHelper()
         values = ldap_helper.flat_attributes_from_settings(settings.PROJECT_LDAP_MAP.values())
         self.ldapobj.search_s.seed(self.PROJECT_LDAP_BASE, ldap.SCOPE_SUBTREE, '(&(objectclass=posixGroup)(|(cn=project-*)(cn=yproject-*)))', values)([])
@@ -83,11 +70,11 @@ class LdapProjectsTestCase(TestCase):
         self.assertIn('delete_s', self.ldapobj.methods_called() )
 
         self.assertNotIn(self.PROJECT_FULL_DN, self.ldapobj.directory, "The project should notbe in LDAP")
-       
+
     @mock.patch('data_facility_admin.helpers.KeycloakHelper')
     def test_ldap_project_membership(self, mock_keycloak):
         self.assertTrue(len(Project.objects.all()) == 1, "The database should have only one project")
-        
+
         ldap_helper = LDAPHelper()
         values = ldap_helper.flat_attributes_from_settings(settings.PROJECT_LDAP_MAP.values())
         self.ldapobj.search_s.seed(self.PROJECT_LDAP_BASE, ldap.SCOPE_SUBTREE, '(&(objectclass=posixGroup)(|(cn=project-*)(cn=yproject-*)))', values)([])
@@ -96,7 +83,7 @@ class LdapProjectsTestCase(TestCase):
 
         self.assertEqual(len([x for x in self.ldapobj.methods_called() if x == 'add_s']), 1, "The add_s method should have been called adding a new project")
         self.assertIn(self.PROJECT_FULL_DN, self.ldapobj.directory, "The project should have been inserted")
-        
+
         user = self.create_user()
         user.save()
         ldap_helper.export_users()
@@ -118,7 +105,6 @@ class LdapProjectsTestCase(TestCase):
 
         self.ldapobj.search_s.seed(self.PROJECT_LDAP_BASE, ldap.SCOPE_SUBTREE, '(&(objectclass=posixGroup)(|(cn=project-*)(cn=yproject-*)))', ['name', 'creationdate', 'gidNumber', 'member', 'cn', 'summary'])([(self.PROJECT_FULL_DN, self.ldapobj.directory[self.PROJECT_FULL_DN])])
         self.assertIn('member', self.ldapobj.directory[self.PROJECT_FULL_DN])
-
 
         user.status=User.STATUS_LOCKED_BY_ADMIN
         user.save()

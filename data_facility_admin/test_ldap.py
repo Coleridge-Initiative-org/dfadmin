@@ -8,24 +8,26 @@ import ldap
 from django.utils import timezone
 import datetime
 
-class LdapTestCase(TestCase):
+
+class BaseLdapTestCase(TestCase):
     USER_LDAP_ID = LdapObject.MIN_LDAP_UID
-    USER_FULL_DN = 'uid=johnlennon,ou=people,dc=adrf,dc=info'
-    USER_GROUP_FULL_DN = 'cn=johnlennon,ou=groups,dc=adrf,dc=info'
+    USER_FULL_DN = 'uid=johnlennon,ou=people,' + settings.LDAP_BASE_DN
+    USER_GROUP_FULL_DN = 'cn=johnlennon,ou=groups,' + settings.LDAP_BASE_DN
 
     def setUp(self):
-        info = ('dc=info', { 'dc': ['info']})
-        adrf = ('dc=adrf,dc=info', { 'dc': ['adrf']})
-        admin = ('cn=admin,dc=adrf,dc=info', { 'cn': [ 'admin'], 'userPassword': [ '???']})
-        people = ('ou=People,dc=adrf,dc=info', { 'ou': ['People']})
-        groups = ('ou=Groups,dc=adrf,dc=info', { 'ou': ['Groups']})
-        projects = ('ou=Projects,dc=adrf,dc=info', { 'ou': ['Projects']})
-        datasets = ('ou=Datasets,dc=adrf,dc=info', { 'ou': ['Datasets']})
+        info = ('dc=local', { 'dc': ['local']})
+        adrf = (settings.LDAP_BASE_DN, { 'dc': ['dfadmin']})
+        admin = (settings.LDAP_SETTINGS['Connection']['BindDN'],
+                 { 'cn': [ 'admin'], 'userPassword': [settings.LDAP_SETTINGS['Connection']['BindPassword']]})
+        people = ('ou=People,' + settings.LDAP_BASE_DN, {'ou': ['People']})
+        groups = ('ou=Groups,' + settings.LDAP_BASE_DN, {'ou': ['Groups']})
+        projects = ('ou=Projects,' + settings.LDAP_BASE_DN, {'ou': ['Projects']})
+        datasets = ('ou=Datasets,' + settings.LDAP_BASE_DN, {'ou': ['Datasets']})
 
         directory = dict([info, adrf, admin, people, groups, projects, datasets])
         self.mockldap = MockLdap(directory)
         self.mockldap.start()
-        self.ldapobj = self.mockldap['ldaps://meat.adrf.info']
+        self.ldapobj = self.mockldap[settings.LDAP_SERVER]
 
     def tearDown(self):
         self.mockldap.stop()
@@ -33,15 +35,15 @@ class LdapTestCase(TestCase):
 
     @classmethod
     def setUser(cls, ldap_id=USER_LDAP_ID, ldap_name=None, first_name="John",
-            last_name="Lennon",
-            email="johnlennon@adrf.info.dev",
-            status=User.STATUS_ACTIVE,
-            ldap_last_auth_time=None,
-            ldap_lock_time=None,
-            ldap_last_pwd_change=None,
-            created_at=None,
-            updated_at=None,
-            system_user=False):
+                last_name="Lennon",
+                email="johnlennon@dfadmin.local",
+                status=User.STATUS_ACTIVE,
+                ldap_last_auth_time=None,
+                ldap_lock_time=None,
+                ldap_last_pwd_change=None,
+                created_at=None,
+                updated_at=None,
+                system_user=False):
         result = User.objects.filter(ldap_id=ldap_id)
         if len(result) == 0:
             u = User(ldap_id=ldap_id)
@@ -63,6 +65,9 @@ class LdapTestCase(TestCase):
         if created_at:
             u.created_at = created_at
         u.save()
+
+
+class LdapTestCase(BaseLdapTestCase):
 
     @mock.patch('data_facility_admin.helpers.KeycloakHelper')
     def test_ldap_pending_approval_user(self, mock_keycloak):

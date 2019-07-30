@@ -344,8 +344,8 @@ LDAP_SETTINGS = {
         'PpolicyLockDownDurationSeconds': 900
     },
     'Connection': {
-        'BindDN': config('LDAP_BIND_DN', default=''),
-        'BindPassword': config('LDAP_BIND_PASSWD', default="???"),
+        'BindDN': config('LDAP_BIND_DN', default='cn=admin,' + LDAP_BASE_DN),
+        'BindPassword': config('LDAP_BIND_PASSWD', default="LDAP_PASSWORD"),
     }
 }
 
