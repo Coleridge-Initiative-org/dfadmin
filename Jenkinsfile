@@ -47,7 +47,7 @@ pipeline {
                 }
                 stage('Test') {
                     steps {
-                        sh 'docker-compose up -d'
+                        sh 'docker-compose up -d --force-recreate'
                         sh 'sleep 15s'
                         sh 'make check'
                         sh 'make jenkins'
