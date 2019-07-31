@@ -12,6 +12,7 @@ pipeline {
     agent any
 
     environment {
+        PROJECT_NAME = 'dfadmin'
         IMAGE_NAME = '441870321480.dkr.ecr.us-east-1.amazonaws.com/dfadmin'
         // IMAGE_TAG = 'latest'
         IMAGE_TAG = sh (script: "date +'secure_%Y-%m-%d_%H-%M-%S'", returnStdout: true)
@@ -31,6 +32,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'docker build . -t ${IMAGE_NAME}:ci-${GIT_COMMIT_HASH}'
+                sh 'docker tag ${IMAGE_NAME}:ci-${GIT_COMMIT_HASH} ${PROJECT_NAME}:${GIT_COMMIT_HASH}'
             }
         }
         stage('Verify') {
