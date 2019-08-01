@@ -48,7 +48,7 @@ pipeline {
                 stage('Test') {
                     steps {
                         sh 'export GIT_COMMIT_HASH=${GIT_COMMIT_HASH}'
-                        sh 'docker-compose up -d --force-recreate'
+                        sh 'docker-compose up -d --force-recreate --build'
                         sh 'sleep 15s'
                         sh 'make check'
                         sh 'make jenkins'
