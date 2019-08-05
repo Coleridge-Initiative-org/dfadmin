@@ -734,7 +734,7 @@ class DataProvider(models.Model):
 
 
 class DatabaseSchema(models.Model):
-    name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
+    name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
     public = models.BooleanField(default=False, help_text='Check this if everyone should '
                                                           'have access to this schema. '
                                                           'Please consider the related dataset '
