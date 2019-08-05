@@ -110,5 +110,5 @@ http://getblimp.github.io/django-rest-framework-jwt/#additional-settings
 https://auth0.com/blog/building-modern-applications-with-django-and-vuejs/
 
 ## Contributors
-* [Daniel Castellani](@dancastellani)
-* [Rafael Ladislau](@rafael-ladislau)
+* [Daniel Castellani](https://github.com/dancastellani)
+* [Rafael Ladislau](https://github.com/rafael-ladislau)
