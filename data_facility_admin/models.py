@@ -1157,7 +1157,7 @@ class DatasetAccess(models.Model):
             return DatasetAccess.STATUS_REGISTERED
 
     def __str__(self):
-        return 'Project %s, has access to dataset %s. (Status=%s)' % (self.project, self.dataset_id, self.status())
+        return 'Project %s, has access to dataset %s. (Status=%s)' % (self.project, self.dataset.dataset_id, self.status())
 
     class Meta:
         ordering = ['project', 'dataset_id']
