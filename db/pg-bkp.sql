@@ -4545,8 +4545,8 @@ SELECT pg_catalog.setval('public.auth_permission_id_seq', 272, true);
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-1	pbkdf2_sha256$36000$aMFymx0F2PFi$QgquGpT6HcimUkiDQlIi2O3m6CA8m3ERmqvn7y9eK/w=	2019-08-06 22:53:32.263124+00	t	dfadmin			admin@dfadmin.local	t	t	2019-08-05 18:35:31.911311+00
 2		\N	f	craigwest	Craig	West	craig.west@example.com	f	t	2019-08-05 18:37:41.270669+00
+1	pbkdf2_sha256$36000$aMFymx0F2PFi$QgquGpT6HcimUkiDQlIi2O3m6CA8m3ERmqvn7y9eK/w=	2019-08-06 23:25:40.398845+00	t	dfadmin			admin@dfadmin.local	t	t	2019-08-05 18:35:31.911311+00
 3		\N	f	johnstevenson	John	Stevenson	john.stevenson@example.com	f	t	2019-08-05 18:37:41.292794+00
 4		\N	f	justinhenry	Justin	Henry	justin.henry@example.com	f	t	2019-08-05 18:37:41.317389+00
 5		\N	f	davidbutler	David	Butler	david.butler@example.com	f	t	2019-08-05 18:37:41.341899+00
@@ -4646,8 +4646,8 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 99		\N	f	sheliaparsons	Shelia	Parsons	shelia.parsons@example.com	f	t	2019-08-05 18:37:43.974456+00
 100		\N	f	jessicamcclure	Jessica	Mcclure	jessica.mcclure@example.com	f	t	2019-08-05 18:37:43.999005+00
 101		\N	f	angelanorris	Angela	Norris	angela.norris@example.com	f	t	2019-08-05 18:37:44.024123+00
-102		\N	f	daniel			daniel.castellani@nyu.edu	f	t	2019-08-05 18:52:35.675331+00
 103		\N	f	danielcastellani	daniel	castellani	daniel@dfadmin.local	f	t	2019-08-06 22:58:29.729914+00
+102		\N	f	daniel	daniel	castellani	daniel@dfadmin.local	f	t	2019-08-05 18:52:35.675331+00
 \.
 
 
@@ -5204,6 +5204,7 @@ COPY public.data_facility_admin_historicalproject (id, ldap_id, ldap_name, has_i
 255	1155	project-baking_pizzas	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 22:57:28.445927+00	101	2019-08-06 22:57:28.501897+00	\N	+	1	255	\N	\N	\N			\N	\N	\N
 255	1155	project-baking_pizzas	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 22:59:35.771817+00	102	2019-08-06 22:59:35.787632+00	\N	~	1	255	\N	\N	\N			\N	\N	\N
 255	1155	project-baking_pizzas	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 23:00:31.281719+00	103	2019-08-06 23:00:31.299635+00	\N	~	1	255	\N	\N	\N			\N	\N	\N
+255	1155	project-baking-pizzas	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 23:45:24.702878+00	104	2019-08-06 23:45:24.707924+00	\N	~	\N	255	\N	\N	\N			\N	\N	\N
 \.
 
 
@@ -5211,7 +5212,7 @@ COPY public.data_facility_admin_historicalproject (id, ldap_id, ldap_name, has_i
 -- Name: data_facility_admin_historicalproject_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_historicalproject_history_id_seq', 103, true);
+SELECT pg_catalog.setval('public.data_facility_admin_historicalproject_history_id_seq', 104, true);
 
 
 --
@@ -5617,6 +5618,7 @@ COPY public.data_facility_admin_historicaluser (id, ldap_id, ldap_name, first_na
 154	1054	angelanorris	Angela	Norris		Jackson LLC	angela.norris@example.com	Veterinary surgeon		New	\N	\N	\N	\N	2019-08-05 18:37:44.02133+00	2019-08-05 18:37:44.026079+00	f	200	2019-08-05 18:37:44.027512+00	\N	~	\N	154	f	f	101
 256	1156	danielcastellani	daniel	castellani			daniel@dfadmin.local			Active	\N	\N	\N	\N	2019-08-06 22:58:29.677722+00	2019-08-06 22:58:29.677744+00	f	201	2019-08-06 22:58:29.697397+00	\N	+	1	256	f	f	\N
 256	1156	danielcastellani	daniel	castellani			daniel@dfadmin.local			Active	\N	\N	\N	\N	2019-08-06 22:58:29.677722+00	2019-08-06 22:58:29.772825+00	f	202	2019-08-06 22:58:29.79742+00	\N	~	1	256	f	f	103
+256	1156	daniel	daniel	castellani			daniel@dfadmin.local			Active	\N	\N	\N	\N	2019-08-06 22:58:29.677722+00	2019-08-06 23:46:09.00339+00	f	203	2019-08-06 23:46:09.008015+00	\N	~	\N	256	f	f	103
 \.
 
 
@@ -5624,7 +5626,7 @@ COPY public.data_facility_admin_historicaluser (id, ldap_id, ldap_name, first_na
 -- Name: data_facility_admin_historicaluser_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_historicaluser_history_id_seq', 202, true);
+SELECT pg_catalog.setval('public.data_facility_admin_historicaluser_history_id_seq', 203, true);
 
 
 --
@@ -5931,9 +5933,9 @@ COPY public.data_facility_admin_ldapobject (id, ldap_id, ldap_name) FROM stdin;
 252	1152	project-associate_professor
 253	1153	project-regulatory_affairs_officer
 254	1154	project-restaurant_manager_fast_food
-256	1156	danielcastellani
 257	1157	test_dataset
-255	1155	project-baking_pizzas
+255	1155	project-baking-pizzas
+256	1156	daniel
 \.
 
 
@@ -6064,7 +6066,7 @@ COPY public.data_facility_admin_project (ldapobject_ptr_id, has_irb, name, abstr
 252	f	Associate Professor	Optometrist			Pending Approval	Research	Green	\N		2019-08-05 18:37:45.806132+00	2019-08-05 18:37:45.806152+00	\N	\N	\N			\N	\N	\N
 253	f	Regulatory affairs officer	Maintenance engineer			Pending Approval	Research	Green	\N		2019-08-05 18:37:45.82486+00	2019-08-05 18:37:45.824877+00	\N	\N	\N			\N	\N	\N
 254	f	Restaurant manager, fast food	Optometrist			Pending Approval	Research	Green	\N		2019-08-05 18:37:45.846015+00	2019-08-05 18:37:45.846038+00	\N	\N	\N			\N	\N	\N
-255	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 23:00:31.281719+00	\N	\N	\N			\N	\N	\N
+255	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 23:45:24.702878+00	\N	\N	\N			\N	\N	\N
 \.
 
 
@@ -6285,8 +6287,8 @@ SELECT pg_catalog.setval('public.data_facility_admin_training_id_seq', 1, false)
 
 COPY public.data_facility_admin_user (ldapobject_ptr_id, first_name, last_name, orc_id, affiliation, email, job_title, sponsor, status, signed_terms_at, ldap_last_auth_time, ldap_lock_time, ldap_last_pwd_change, created_at, updated_at, system_user, contractor, foreign_national, django_user_id) FROM stdin;
 55	Craig	West		Myers-Gutierrez	craig.west@example.com	Historic buildings inspector/conservation officer		New	\N	\N	\N	\N	2019-08-05 18:37:41.267589+00	2019-08-05 18:37:41.272942+00	f	f	f	2
-256	daniel	castellani			daniel@dfadmin.local			Active	\N	\N	\N	\N	2019-08-06 22:58:29.677722+00	2019-08-06 22:58:29.772825+00	f	f	f	103
 56	John	Stevenson		Williams, Little and Morales	john.stevenson@example.com	Ceramics designer		New	\N	\N	\N	\N	2019-08-05 18:37:41.290287+00	2019-08-05 18:37:41.294643+00	f	f	f	3
+256	daniel	castellani			daniel@dfadmin.local			Active	\N	\N	\N	\N	2019-08-06 22:58:29.677722+00	2019-08-06 23:46:09.00339+00	f	f	f	103
 57	Justin	Henry		Barber-Dixon	justin.henry@example.com	Network engineer		New	\N	\N	\N	\N	2019-08-05 18:37:41.314808+00	2019-08-05 18:37:41.319885+00	f	f	f	4
 58	David	Butler		Nelson-Wilcox	david.butler@example.com	Aid worker		New	\N	\N	\N	\N	2019-08-05 18:37:41.339742+00	2019-08-05 18:37:41.344143+00	f	f	f	5
 59	Melanie	Singh		Ortiz, Phillips and Ross	melanie.singh@example.com	Housing manager/officer		New	\N	\N	\N	\N	2019-08-05 18:37:41.363777+00	2019-08-05 18:37:41.368103+00	f	f	f	6
@@ -9174,6 +9176,7 @@ SELECT pg_catalog.setval('public.django_migrations_id_seq', 60, true);
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 p0eqhs108jfl2885n9oc4rouz0d3mtl9	ZWM3NmNmOTEzMWYxYWMwOGZiZGIxNDY0ZjVkMDM1MTkyMjZjMmIxNzp7Il9hdXRoX3VzZXJfaGFzaCI6ImVjM2ZlNzk0NDQ5ZTUzOGZjYTkwNDdhYjRiYjExNzE3NWVjMDYxOWMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-08-05 19:05:36.225113+00
 dk4bdgsinq7i41p2y7mditj8iwjnayyu	ZWM3NmNmOTEzMWYxYWMwOGZiZGIxNDY0ZjVkMDM1MTkyMjZjMmIxNzp7Il9hdXRoX3VzZXJfaGFzaCI6ImVjM2ZlNzk0NDQ5ZTUzOGZjYTkwNDdhYjRiYjExNzE3NWVjMDYxOWMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-08-06 23:23:32.274383+00
+q5qfstafil4jng73ynlzcd4al8m505gr	ZWM3NmNmOTEzMWYxYWMwOGZiZGIxNDY0ZjVkMDM1MTkyMjZjMmIxNzp7Il9hdXRoX3VzZXJfaGFzaCI6ImVjM2ZlNzk0NDQ5ZTUzOGZjYTkwNDdhYjRiYjExNzE3NWVjMDYxOWMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-08-06 23:55:40.406885+00
 \.
 
 
