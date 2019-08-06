@@ -4545,7 +4545,7 @@ SELECT pg_catalog.setval('public.auth_permission_id_seq', 272, true);
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-1	pbkdf2_sha256$36000$aMFymx0F2PFi$QgquGpT6HcimUkiDQlIi2O3m6CA8m3ERmqvn7y9eK/w=	2019-08-05 18:35:36.212982+00	t	dfadmin			admin@dfadmin.local	t	t	2019-08-05 18:35:31.911311+00
+1	pbkdf2_sha256$36000$aMFymx0F2PFi$QgquGpT6HcimUkiDQlIi2O3m6CA8m3ERmqvn7y9eK/w=	2019-08-06 22:53:32.263124+00	t	dfadmin			admin@dfadmin.local	t	t	2019-08-05 18:35:31.911311+00
 2		\N	f	craigwest	Craig	West	craig.west@example.com	f	t	2019-08-05 18:37:41.270669+00
 3		\N	f	johnstevenson	John	Stevenson	john.stevenson@example.com	f	t	2019-08-05 18:37:41.292794+00
 4		\N	f	justinhenry	Justin	Henry	justin.henry@example.com	f	t	2019-08-05 18:37:41.317389+00
@@ -4646,6 +4646,8 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 99		\N	f	sheliaparsons	Shelia	Parsons	shelia.parsons@example.com	f	t	2019-08-05 18:37:43.974456+00
 100		\N	f	jessicamcclure	Jessica	Mcclure	jessica.mcclure@example.com	f	t	2019-08-05 18:37:43.999005+00
 101		\N	f	angelanorris	Angela	Norris	angela.norris@example.com	f	t	2019-08-05 18:37:44.024123+00
+102		\N	f	daniel			daniel.castellani@nyu.edu	f	t	2019-08-05 18:52:35.675331+00
+103		\N	f	danielcastellani	daniel	castellani	daniel@dfadmin.local	f	t	2019-08-06 22:58:29.729914+00
 \.
 
 
@@ -4654,6 +4656,7 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 --
 
 COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
+1	102	2
 \.
 
 
@@ -4661,14 +4664,14 @@ COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
+SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, true);
 
 
 --
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.auth_user_id_seq', 101, true);
+SELECT pg_catalog.setval('public.auth_user_id_seq', 103, true);
 
 
 --
@@ -4834,6 +4837,7 @@ COPY public.data_facility_admin_dataset (ldapobject_ptr_id, public, dataset_id, 
 52	t	xubh-q36u	Hospital General Information	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-05 18:37:40.967589+00	2019-08-05 18:37:40.967601+00	\N	\N	Disabled	\N	A list of all hospitals that have been registered with Medicare. The list includes addresses, phone numbers, hospital type, and overall hospital rating.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 53	t	s6ha-ppgi	Affordable Rental Housing Developments	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-05 18:37:41.073762+00	2019-08-05 18:37:41.073777+00	\N	\N	Disabled	\N	The rental housing developments listed below are among the thousands of affordable units that are supported by City of Chicago programs to maintain affordability in local neighborhoods. The list is updated periodically when construction is completed for new projects or when the compliance period for older projects expire, typically after 30 years. The list is provided as a courtesy to the public. It does not include every City-assisted affordable housing unit that may be available for rent, nor does it include the hundreds of thousands of naturally occurring affordable housing units located throughout Chicago without City subsidies. For information on rents, income requirements and availability for the projects listed, contact each property directly. For information on other affordable rental properties in Chicago and Illinois, call (877) 428-8844, or visit www.ILHousingSearch.org.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 54	t	im7g-fucq	Missouri Zip Codes by County/City	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-05 18:37:41.175857+00	2019-08-05 18:37:41.175871+00	\N	\N	Disabled	\N	List of cities, zip codes and counties in Missouri	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+257	f	test_dataset	Test Dataset	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-06 23:00:12.725417+00	2019-08-06 23:00:12.72544+00	\N	\N	Active			\N	\N	\N	\N	\N	\N	f	\N	\N	t	\N
 \.
 
 
@@ -4857,6 +4861,7 @@ SELECT pg_catalog.setval('public.data_facility_admin_dataset_keywords_id_seq', 1
 --
 
 COPY public.data_facility_admin_datasetaccess (id, request_id, requested_at, reviewed_at, granted_at, expire_at, motivation, load_to_database, database_name, schema, database_status, created_at, updated_at, dataset_id, project_id) FROM stdin;
+1	\N	\N	\N	\N	\N		f			Requested	2019-08-06 22:59:35.852577+00	2019-08-06 23:00:31.346694+00	257	255
 \.
 
 
@@ -4864,7 +4869,7 @@ COPY public.data_facility_admin_datasetaccess (id, request_id, requested_at, rev
 -- Name: data_facility_admin_datasetaccess_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_datasetaccess_id_seq', 1, false);
+SELECT pg_catalog.setval('public.data_facility_admin_datasetaccess_id_seq', 1, true);
 
 
 --
@@ -4980,6 +4985,7 @@ COPY public.data_facility_admin_historicaldataset (id, ldap_id, ldap_name, publi
 23	923	vx8i-nprf	t	vx8i-nprf	Civil Service List (Active)	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-05 18:37:37.751398+00	2019-08-05 18:37:37.751412+00	14	2019-08-05 18:37:37.752064+00	\N	+	\N	\N	23	\N	Disabled	\N	A Civil Service List consists of all candidates who passed an exam, ranked in score order. An established list is considered active for no less than one year and no more than four years from the date of establishment. For more information visit DCAS’ “Work for the City” webpage at: https://www1.nyc.gov/site/dcas/employment/take-an-exam.page	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 24	924	8wbx-tsch	t	8wbx-tsch	For Hire Vehicles (FHV) - Active	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-05 18:37:37.826885+00	2019-08-05 18:37:37.826897+00	15	2019-08-05 18:37:37.827367+00	\N	+	\N	\N	24	\N	Disabled	\N	TLC authorized For-Hire vehicles that are active. This list is accurate to the date and time represented in the Last Date Updated and Last Time Updated fields. For inquiries about the contents of this dataset, please email licensinginquiries@tlc.nyc.gov.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 25	925	hsys-3def	t	hsys-3def	Lottery Daily Numbers/Win-4 Winning Numbers: Beginning 1980	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-05 18:37:37.905949+00	2019-08-05 18:37:37.905961+00	16	2019-08-05 18:37:37.906806+00	\N	+	\N	\N	25	\N	Disabled	\N	Go to http://on.ny.gov/1Cx6zvs or http://on.ny.gov/1KYjE6X on the New York Lottery website for past Daily Numbers/Win-4 results and payouts.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
+257	1157	test_dataset	f	test_dataset	Test Dataset	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-06 23:00:12.725417+00	2019-08-06 23:00:12.72544+00	46	2019-08-06 23:00:12.742043+00	\N	+	\N	1	257	\N	Active			\N	\N	\N	\N	\N	\N	f	\N	\N	t	\N
 26	926	qxh8-f4bd	t	qxh8-f4bd	Health Care Provider Credential Data	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-05 18:37:37.959426+00	2019-08-05 18:37:37.959441+00	17	2019-08-05 18:37:37.960528+00	\N	+	\N	\N	26	\N	Disabled	\N	The Washington State Department of Health presents this information as a service to the public. True and correct copies of legal disciplinary actions taken after July 1998 are available on our Provider Credential Search site. These records are considered certified by the Department of Health. \r\n\r\nThis includes information on health care providers.\r\n\r\nPlease contact our Customer Service Center at 360-236-4700 for information about actions before July 1998. \r\nThe information on this site comes directly from our database and is updated daily at 10:00 a.m.. This data is a primary source for verification of credentials and is extracted from the primary database at 2:00 a.m. daily.\r\n\r\nNews releases about disciplinary actions taken against Washington State healthcare providers, agencies or facilities are on the agency's Newsroom webpage.\r\n\r\nDisclaimer\r\nThe absence of information in the Provider Credential Search system doesn't imply any recommendation, endorsement or guarantee of competence of any healthcare professional. The presence of information in this system doesn't imply a provider isn't competent or qualified to practice. The reader is encouraged to carefully evaluate any information found in this data set.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 27	927	b8in-sz6k	t	b8in-sz6k	QHP Landscape Individual Market Medical	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-05 18:37:38.059544+00	2019-08-05 18:37:38.059564+00	18	2019-08-05 18:37:38.063148+00	\N	+	\N	\N	27	\N	Disabled	\N	QHP Landscape Individual Market Medical - For instructions on how to read and use this data, please view the documentation available under the ‘About’ tab on this page.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
 28	928	xjfq-wh2d	t	xjfq-wh2d	For Hire Vehicles (FHV) - Active Drivers	1	\N	\N	f	\N	\N	Green	No Reporting Needed	2019-08-05 18:37:38.547253+00	2019-08-05 18:37:38.547267+00	19	2019-08-05 18:37:38.548004+00	\N	+	\N	\N	28	\N	Disabled	\N	NYC TLC Licensed FHV drivers that are currently active and in good standing. This list is accurate to the date and time represented in the Last Date Updated and Last Time Updated fields. For inquiries about the contents of this dataset, please email licensinginquiries@tlc.nyc.gov.	\N	\N	\N	\N	NYC Open Data	['permalink']	f	\N	\N	t	\N
@@ -5016,7 +5022,7 @@ COPY public.data_facility_admin_historicaldataset (id, ldap_id, ldap_name, publi
 -- Name: data_facility_admin_historicaldataset_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_historicaldataset_history_id_seq', 45, true);
+SELECT pg_catalog.setval('public.data_facility_admin_historicaldataset_history_id_seq', 46, true);
 
 
 --
@@ -5024,6 +5030,8 @@ SELECT pg_catalog.setval('public.data_facility_admin_historicaldataset_history_i
 --
 
 COPY public.data_facility_admin_historicaldatasetaccess (id, request_id, requested_at, reviewed_at, granted_at, expire_at, motivation, load_to_database, database_name, schema, database_status, created_at, updated_at, history_id, history_date, history_change_reason, history_type, history_user_id, dataset_id, project_id) FROM stdin;
+1	\N	\N	\N	\N	\N		f			Requested	2019-08-06 22:59:35.852577+00	2019-08-06 22:59:35.852591+00	1	2019-08-06 22:59:35.858358+00	\N	+	1	46	255
+1	\N	\N	\N	\N	\N		f			Requested	2019-08-06 22:59:35.852577+00	2019-08-06 23:00:31.346694+00	2	2019-08-06 23:00:31.365194+00	\N	~	1	257	255
 \.
 
 
@@ -5031,7 +5039,7 @@ COPY public.data_facility_admin_historicaldatasetaccess (id, request_id, request
 -- Name: data_facility_admin_historicaldatasetaccess_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_historicaldatasetaccess_history_id_seq', 1, false);
+SELECT pg_catalog.setval('public.data_facility_admin_historicaldatasetaccess_history_id_seq', 2, true);
 
 
 --
@@ -5193,6 +5201,9 @@ COPY public.data_facility_admin_historicalproject (id, ldap_id, ldap_name, has_i
 252	1152	project-associate_professor	f	Associate Professor	Optometrist			Pending Approval	Research	Green	\N		2019-08-05 18:37:45.806132+00	2019-08-05 18:37:45.806152+00	98	2019-08-05 18:37:45.807203+00	\N	+	\N	252	\N	\N	\N			\N	\N	\N
 253	1153	project-regulatory_affairs_officer	f	Regulatory affairs officer	Maintenance engineer			Pending Approval	Research	Green	\N		2019-08-05 18:37:45.82486+00	2019-08-05 18:37:45.824877+00	99	2019-08-05 18:37:45.826068+00	\N	+	\N	253	\N	\N	\N			\N	\N	\N
 254	1154	project-restaurant_manager_fast_food	f	Restaurant manager, fast food	Optometrist			Pending Approval	Research	Green	\N		2019-08-05 18:37:45.846015+00	2019-08-05 18:37:45.846038+00	100	2019-08-05 18:37:45.848163+00	\N	+	\N	254	\N	\N	\N			\N	\N	\N
+255	1155	project-baking_pizzas	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 22:57:28.445927+00	101	2019-08-06 22:57:28.501897+00	\N	+	1	255	\N	\N	\N			\N	\N	\N
+255	1155	project-baking_pizzas	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 22:59:35.771817+00	102	2019-08-06 22:59:35.787632+00	\N	~	1	255	\N	\N	\N			\N	\N	\N
+255	1155	project-baking_pizzas	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 23:00:31.281719+00	103	2019-08-06 23:00:31.299635+00	\N	~	1	255	\N	\N	\N			\N	\N	\N
 \.
 
 
@@ -5200,7 +5211,7 @@ COPY public.data_facility_admin_historicalproject (id, ldap_id, ldap_name, has_i
 -- Name: data_facility_admin_historicalproject_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_historicalproject_history_id_seq', 100, true);
+SELECT pg_catalog.setval('public.data_facility_admin_historicalproject_history_id_seq', 103, true);
 
 
 --
@@ -5208,6 +5219,7 @@ SELECT pg_catalog.setval('public.data_facility_admin_historicalproject_history_i
 --
 
 COPY public.data_facility_admin_historicalprojectmember (id, request_id, start_date, end_date, created_at, updated_at, history_id, history_date, history_change_reason, history_type, history_user_id, role_id, member_id, project_id) FROM stdin;
+1	\N	\N	\N	2019-08-06 22:59:35.827281+00	2019-08-06 22:59:35.827307+00	1	2019-08-06 22:59:35.835333+00	\N	+	1	3	256	255
 \.
 
 
@@ -5215,7 +5227,7 @@ COPY public.data_facility_admin_historicalprojectmember (id, request_id, start_d
 -- Name: data_facility_admin_historicalprojectmember_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_historicalprojectmember_history_id_seq', 1, false);
+SELECT pg_catalog.setval('public.data_facility_admin_historicalprojectmember_history_id_seq', 1, true);
 
 
 --
@@ -5342,6 +5354,7 @@ COPY public.data_facility_admin_historicalprojecttool (id, additional_info, tool
 98	\N	Workspace_K8s		2019-08-05 18:37:45.812885+00	2019-08-05 18:37:45.812904+00	98	2019-08-05 18:37:45.814143+00	\N	+	\N	252	\N	{"JUPYTER_CPU": 1, "JUPYTER_IMAGE": "?", "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_IMAGE": "?", "REMOTE_DESKTOP_MEMORY": 1000}
 99	\N	Workspace_K8s		2019-08-05 18:37:45.833179+00	2019-08-05 18:37:45.833207+00	99	2019-08-05 18:37:45.834854+00	\N	+	\N	253	\N	{"JUPYTER_CPU": 1, "JUPYTER_IMAGE": "?", "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_IMAGE": "?", "REMOTE_DESKTOP_MEMORY": 1000}
 100	\N	Workspace_K8s		2019-08-05 18:37:45.855014+00	2019-08-05 18:37:45.85505+00	100	2019-08-05 18:37:45.856082+00	\N	+	\N	254	\N	{"JUPYTER_CPU": 1, "JUPYTER_IMAGE": "?", "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_IMAGE": "?", "REMOTE_DESKTOP_MEMORY": 1000}
+101	\N	Workspace_K8s		2019-08-06 22:57:28.661852+00	2019-08-06 22:57:28.66187+00	101	2019-08-06 22:57:28.694098+00	\N	+	1	255	\N	{"JUPYTER_CPU": 1, "JUPYTER_IMAGE": "?", "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_IMAGE": "?", "REMOTE_DESKTOP_MEMORY": 1000}
 \.
 
 
@@ -5349,7 +5362,7 @@ COPY public.data_facility_admin_historicalprojecttool (id, additional_info, tool
 -- Name: data_facility_admin_historicalprojecttool_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_historicalprojecttool_history_id_seq', 100, true);
+SELECT pg_catalog.setval('public.data_facility_admin_historicalprojecttool_history_id_seq', 101, true);
 
 
 --
@@ -5602,6 +5615,8 @@ COPY public.data_facility_admin_historicaluser (id, ldap_id, ldap_name, first_na
 153	1053	jessicamcclure	Jessica	Mcclure		Meyers, Bonilla and Johnson	jessica.mcclure@example.com	Glass blower/designer		New	\N	\N	\N	\N	2019-08-05 18:37:43.996878+00	2019-08-05 18:37:44.001055+00	f	198	2019-08-05 18:37:44.003195+00	\N	~	\N	153	f	f	100
 154	1054	angelanorris	Angela	Norris		Jackson LLC	angela.norris@example.com	Veterinary surgeon		New	\N	\N	\N	\N	2019-08-05 18:37:44.02133+00	2019-08-05 18:37:44.021372+00	f	199	2019-08-05 18:37:44.022616+00	\N	+	\N	154	f	f	\N
 154	1054	angelanorris	Angela	Norris		Jackson LLC	angela.norris@example.com	Veterinary surgeon		New	\N	\N	\N	\N	2019-08-05 18:37:44.02133+00	2019-08-05 18:37:44.026079+00	f	200	2019-08-05 18:37:44.027512+00	\N	~	\N	154	f	f	101
+256	1156	danielcastellani	daniel	castellani			daniel@dfadmin.local			Active	\N	\N	\N	\N	2019-08-06 22:58:29.677722+00	2019-08-06 22:58:29.677744+00	f	201	2019-08-06 22:58:29.697397+00	\N	+	1	256	f	f	\N
+256	1156	danielcastellani	daniel	castellani			daniel@dfadmin.local			Active	\N	\N	\N	\N	2019-08-06 22:58:29.677722+00	2019-08-06 22:58:29.772825+00	f	202	2019-08-06 22:58:29.79742+00	\N	~	1	256	f	f	103
 \.
 
 
@@ -5609,7 +5624,7 @@ COPY public.data_facility_admin_historicaluser (id, ldap_id, ldap_name, first_na
 -- Name: data_facility_admin_historicaluser_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_historicaluser_history_id_seq', 200, true);
+SELECT pg_catalog.setval('public.data_facility_admin_historicaluser_history_id_seq', 202, true);
 
 
 --
@@ -5916,6 +5931,9 @@ COPY public.data_facility_admin_ldapobject (id, ldap_id, ldap_name) FROM stdin;
 252	1152	project-associate_professor
 253	1153	project-regulatory_affairs_officer
 254	1154	project-restaurant_manager_fast_food
+256	1156	danielcastellani
+257	1157	test_dataset
+255	1155	project-baking_pizzas
 \.
 
 
@@ -5923,7 +5941,7 @@ COPY public.data_facility_admin_ldapobject (id, ldap_id, ldap_name) FROM stdin;
 -- Name: data_facility_admin_ldapobject_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_ldapobject_id_seq', 254, true);
+SELECT pg_catalog.setval('public.data_facility_admin_ldapobject_id_seq', 257, true);
 
 
 --
@@ -6046,6 +6064,7 @@ COPY public.data_facility_admin_project (ldapobject_ptr_id, has_irb, name, abstr
 252	f	Associate Professor	Optometrist			Pending Approval	Research	Green	\N		2019-08-05 18:37:45.806132+00	2019-08-05 18:37:45.806152+00	\N	\N	\N			\N	\N	\N
 253	f	Regulatory affairs officer	Maintenance engineer			Pending Approval	Research	Green	\N		2019-08-05 18:37:45.82486+00	2019-08-05 18:37:45.824877+00	\N	\N	\N			\N	\N	\N
 254	f	Restaurant manager, fast food	Optometrist			Pending Approval	Research	Green	\N		2019-08-05 18:37:45.846015+00	2019-08-05 18:37:45.846038+00	\N	\N	\N			\N	\N	\N
+255	f	baking-pizzas	baking-pizzas			Active	Research	Green	\N		2019-08-06 22:57:28.44591+00	2019-08-06 23:00:31.281719+00	\N	\N	\N			\N	\N	\N
 \.
 
 
@@ -6054,6 +6073,7 @@ COPY public.data_facility_admin_project (ldapobject_ptr_id, has_irb, name, abstr
 --
 
 COPY public.data_facility_admin_projectmember (id, request_id, start_date, end_date, created_at, updated_at, role_id, member_id, project_id) FROM stdin;
+1	\N	\N	\N	2019-08-06 22:59:35.827281+00	2019-08-06 22:59:35.827307+00	3	256	255
 \.
 
 
@@ -6061,7 +6081,7 @@ COPY public.data_facility_admin_projectmember (id, request_id, start_date, end_d
 -- Name: data_facility_admin_projectmember_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_projectmember_id_seq', 1, false);
+SELECT pg_catalog.setval('public.data_facility_admin_projectmember_id_seq', 1, true);
 
 
 --
@@ -6188,6 +6208,7 @@ COPY public.data_facility_admin_projecttool (id, additional_info, tool_name, oth
 98	\N	Workspace_K8s		2019-08-05 18:37:45.812885+00	2019-08-05 18:37:45.812904+00	252	\N	{"JUPYTER_CPU": 1, "JUPYTER_IMAGE": "?", "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_IMAGE": "?", "REMOTE_DESKTOP_MEMORY": 1000}
 99	\N	Workspace_K8s		2019-08-05 18:37:45.833179+00	2019-08-05 18:37:45.833207+00	253	\N	{"JUPYTER_CPU": 1, "JUPYTER_IMAGE": "?", "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_IMAGE": "?", "REMOTE_DESKTOP_MEMORY": 1000}
 100	\N	Workspace_K8s		2019-08-05 18:37:45.855014+00	2019-08-05 18:37:45.85505+00	254	\N	{"JUPYTER_CPU": 1, "JUPYTER_IMAGE": "?", "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_IMAGE": "?", "REMOTE_DESKTOP_MEMORY": 1000}
+101	\N	Workspace_K8s		2019-08-06 22:57:28.661852+00	2019-08-06 22:57:28.66187+00	255	\N	{"JUPYTER_CPU": 1, "JUPYTER_IMAGE": "?", "JUPYTER_MEMORY": 1000, "REMOTE_DESKTOP_CPU": 1, "REMOTE_DESKTOP_IMAGE": "?", "REMOTE_DESKTOP_MEMORY": 1000}
 \.
 
 
@@ -6195,7 +6216,7 @@ COPY public.data_facility_admin_projecttool (id, additional_info, tool_name, oth
 -- Name: data_facility_admin_projecttool_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.data_facility_admin_projecttool_id_seq', 100, true);
+SELECT pg_catalog.setval('public.data_facility_admin_projecttool_id_seq', 101, true);
 
 
 --
@@ -6264,6 +6285,7 @@ SELECT pg_catalog.setval('public.data_facility_admin_training_id_seq', 1, false)
 
 COPY public.data_facility_admin_user (ldapobject_ptr_id, first_name, last_name, orc_id, affiliation, email, job_title, sponsor, status, signed_terms_at, ldap_last_auth_time, ldap_lock_time, ldap_last_pwd_change, created_at, updated_at, system_user, contractor, foreign_national, django_user_id) FROM stdin;
 55	Craig	West		Myers-Gutierrez	craig.west@example.com	Historic buildings inspector/conservation officer		New	\N	\N	\N	\N	2019-08-05 18:37:41.267589+00	2019-08-05 18:37:41.272942+00	f	f	f	2
+256	daniel	castellani			daniel@dfadmin.local			Active	\N	\N	\N	\N	2019-08-06 22:58:29.677722+00	2019-08-06 22:58:29.772825+00	f	f	f	103
 56	John	Stevenson		Williams, Little and Morales	john.stevenson@example.com	Ceramics designer		New	\N	\N	\N	\N	2019-08-05 18:37:41.290287+00	2019-08-05 18:37:41.294643+00	f	f	f	3
 57	Justin	Henry		Barber-Dixon	justin.henry@example.com	Network engineer		New	\N	\N	\N	\N	2019-08-05 18:37:41.314808+00	2019-08-05 18:37:41.319885+00	f	f	f	4
 58	David	Butler		Nelson-Wilcox	david.butler@example.com	Aid worker		New	\N	\N	\N	\N	2019-08-05 18:37:41.339742+00	2019-08-05 18:37:41.344143+00	f	f	f	5
@@ -8972,6 +8994,11 @@ SELECT pg_catalog.setval('public.data_facility_metadata_variable_id_seq', 1027, 
 --
 
 COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+1	2019-08-06 22:57:28.783905+00	255	baking-pizzas (owned by no one)	1	[{"added": {}}]	30	1
+2	2019-08-06 22:58:29.930911+00	256	daniel castellani (danielcastellani)	1	[{"added": {}}]	42	1
+3	2019-08-06 22:59:35.869965+00	255	baking-pizzas (owned by no one)	2	[{"added": {"object": "baking-pizzas (owned by no one): daniel castellani (Member)", "name": "project member"}}, {"added": {"object": "Project baking-pizzas (owned by no one), has access to dataset j56h-zgnm. (Status=Disabled)", "name": "dataset access"}}]	30	1
+4	2019-08-06 23:00:12.782512+00	257	Test Dataset [test_dataset]	1	[{"added": {}}]	40	1
+5	2019-08-06 23:00:31.391414+00	255	baking-pizzas (owned by no one)	2	[{"changed": {"fields": ["dataset"], "object": "Project baking-pizzas (owned by no one), has access to dataset test_dataset. (Status=Disabled)", "name": "dataset access"}}]	30	1
 \.
 
 
@@ -8979,7 +9006,7 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, false);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 5, true);
 
 
 --
@@ -9146,6 +9173,7 @@ SELECT pg_catalog.setval('public.django_migrations_id_seq', 60, true);
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 p0eqhs108jfl2885n9oc4rouz0d3mtl9	ZWM3NmNmOTEzMWYxYWMwOGZiZGIxNDY0ZjVkMDM1MTkyMjZjMmIxNzp7Il9hdXRoX3VzZXJfaGFzaCI6ImVjM2ZlNzk0NDQ5ZTUzOGZjYTkwNDdhYjRiYjExNzE3NWVjMDYxOWMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-08-05 19:05:36.225113+00
+dk4bdgsinq7i41p2y7mditj8iwjnayyu	ZWM3NmNmOTEzMWYxYWMwOGZiZGIxNDY0ZjVkMDM1MTkyMjZjMmIxNzp7Il9hdXRoX3VzZXJfaGFzaCI6ImVjM2ZlNzk0NDQ5ZTUzOGZjYTkwNDdhYjRiYjExNzE3NWVjMDYxOWMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2019-08-06 23:23:32.274383+00
 \.
 
 
