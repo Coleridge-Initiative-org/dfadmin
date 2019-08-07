@@ -153,7 +153,7 @@ def create_project_with_membership_permission_for_test(system_role):
     user = User.objects.create(first_name='first_name', last_name='last_name',
                                ldap_name='test-user', email='a@a.a', status=User.STATUS_ACTIVE)
     role = ProjectRole.objects.create(name='admin', system_role=system_role)
-    pm = ProjectMember.objects.create(member=user, project=p, role=role, start_date=timezone.now())
+    pm = ProjectMember.objects.create(member=user, project=p, role=role, start_date=YESTERDAY, end_date=TOMORROW)
     p.projectmember_set.add(pm)
 
     p.refresh_from_db()
@@ -240,23 +240,23 @@ class ProjectMemberTests(TestCase):
 
     @staticmethod
     def test_membership_is_not_active_without_start_date():
-        membership = ProjectMember(start_date=None)
+        membership = ProjectMember(start_date=None, end_date=TOMORROW)
+        assert membership.active() is False
+
+    @staticmethod
+    def test_membership_is_not_active_without_end_date():
+        membership = ProjectMember(start_date=YESTERDAY, end_date=None)
         assert membership.active() is False
 
     @staticmethod
     def test_membership_is_active_with_start_date_in_the_past():
-        membership = ProjectMember(start_date=YESTERDAY)
+        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW)
         assert membership.active()
 
     @staticmethod
     def test_membership_is_not_active_with_start_date_in_the_future():
-        membership = ProjectMember(start_date=TOMORROW)
+        membership = ProjectMember(start_date=TOMORROW, end_date=TOMORROW)
         assert membership.active() is False
-
-    @staticmethod
-    def test_membership_is_active_with_no_end_date():
-        membership = ProjectMember(start_date=YESTERDAY, end_date=None)
-        assert membership.active()
 
     @staticmethod
     def test_membership_is_active_with_end_date_in_the_future():

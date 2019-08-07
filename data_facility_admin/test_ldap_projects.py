@@ -98,7 +98,8 @@ class LdapProjectsTestCase(BaseLdapTestCase):
         LDAPHelper().export_projects()
 
         self.assertNotIn('member', self.ldapobj.directory[self.PROJECT_FULL_DN])
-        project_member.start_date=timezone.now()
+        project_member.start_date=timezone.now() - timezone.timedelta(days=1)
+        project_member.end_date=timezone.now() + timezone.timedelta(days=1)
         project_member.save()
 
         ldap_helper.export_projects()

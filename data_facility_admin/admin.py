@@ -39,6 +39,7 @@ class ProjectMembershipInline(admin.TabularInline):
     extra = 0
     min_num = 0
     can_delete = False
+    readonly_fields = ['active']
     # form = make_ajax_form(ProjectMember, {
     #     'member': 'users',
     #     'project': 'projects',

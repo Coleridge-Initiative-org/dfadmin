@@ -628,7 +628,7 @@ class ProjectMember(models.Model):
     member = models.ForeignKey(User, on_delete=models.CASCADE, help_text=SEARCH_HELP_TEXT)
 
     def active(self):
-        if not self.start_date:
+        if self.start_date is None or self.end_date is None:
             return False
         if self.start_date and timezone.now() < self.start_date:
             return False
@@ -641,8 +641,8 @@ class ProjectMember(models.Model):
                            'so it is possible to trace back if more info is needed.'
     request_id = models.IntegerField(default=None, blank=True, null=True,
                                      help_text=REQUEST_ID_HELP_TEXT)
-    start_date = models.DateTimeField(null=True, blank=True)
-    end_date = models.DateTimeField(null=True, blank=True)
+    start_date = models.DateTimeField(null=True, blank=False, default=timezone.now)
+    end_date = models.DateTimeField(null=True, blank=False, default=timezone.now)
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)
