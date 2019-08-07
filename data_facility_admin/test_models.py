@@ -12,7 +12,8 @@ from data_facility_admin import models
 
 # pylint: disable:too-few-public-methods
 USERNAME = 'danielcastellani'
-
+YESTERDAY = end_date=timezone.now() - timezone.timedelta(days=1)
+TOMORROW = end_date= timezone.now() + timezone.timedelta(days=1)
 
 class DatabaseTests(TestCase):
     ''' Basic Database tests.'''
@@ -71,22 +72,22 @@ class DatasetTests(TestCase):
 
     def test_dataset_expired_system_status_is_disabled_when_disabled(self):
         dataset = Dataset(status=Dataset.STATUS_DISABLED,
-                          expiration=timezone.now() - timezone.timedelta(days=1))
+                          expiration=YESTERDAY)
         assert dataset.system_status() is Dataset.STATUS_DISABLED
 
     def test_dataset_expired_system_status_is_disabled_when_active(self):
         dataset = Dataset(status=Dataset.STATUS_ACTIVE,
-                          expiration=timezone.now() - timezone.timedelta(days=1))
+                          expiration=YESTERDAY)
         assert dataset.system_status() is Dataset.STATUS_DISABLED
 
     def test_dataset_not_expired_system_status_is_active_when_active(self):
         dataset = Dataset(status=Dataset.STATUS_ACTIVE,
-                          expiration=timezone.now() + timezone.timedelta(days=1))
+                          expiration=TOMORROW)
         assert dataset.system_status() is Dataset.STATUS_ACTIVE
 
     def test_dataset_not_expired_system_status_is_disabled_when_disabled(self):
         dataset = Dataset(status=Dataset.STATUS_DISABLED,
-                          expiration=timezone.now() + timezone.timedelta(days=1))
+                          expiration=TOMORROW)
         assert dataset.system_status() is Dataset.STATUS_DISABLED
 
 
@@ -95,7 +96,7 @@ class DatasetAccessTests(TestCase):
 
     def test_data_access_should_be_disabled_when_dataset_is_disabled(self):
         dataset = Dataset(status=Dataset.STATUS_DISABLED,
-                          expiration=timezone.now() + timezone.timedelta(days=1))
+                          expiration=TOMORROW)
         data_access = DatasetAccess(dataset=dataset)
         assert data_access.status() is Dataset.STATUS_DISABLED
 
@@ -156,7 +157,7 @@ def create_project_with_membership_permission_for_test(system_role):
     p.projectmember_set.add(pm)
 
     p.refresh_from_db()
-    return p, user, role
+    return p, user, role, pm
 
 
 class ProjectTests(TestCase):
@@ -198,37 +199,76 @@ class ProjectTests(TestCase):
         assert len(active_members) is 0
 
     def test_active_member_has_project_role_admin(self):
-        p, user, role = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_ADMIN)
+        p, user, role, pm = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_ADMIN)
         active_members = p.active_members()
         assert len(active_members) is 1
         assert user in active_members
 
     def test_active_member_has_project_role_reader(self):
-        p, user, role = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_READER)
+        p, user, role, pm = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_READER)
         active_members = p.active_members()
         assert len(active_members) is 1
         assert user in active_members
 
     def test_active_member_has_project_role_writer(self):
-        p, user, role = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_WRITER)
+        p, user, role, pm = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_WRITER)
         active_members = p.active_members()
         assert len(active_members) is 1
         assert user in active_members
 
     def test_active_member_permissions_has_project_role_admin(self):
-        p, user, role = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_ADMIN)
+        p, user, role, pm = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_ADMIN)
         active_member_permissions = p.active_member_permissions()
         assert len(active_member_permissions) is 1
         self.assertEqual(active_member_permissions[0]['system_role'], ProjectRole.SYSTEM_ROLE_ADMIN)
 
     def test_active_member_permissions_has_project_role_reader(self):
-        p, user, role = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_READER)
+        p, user, role, pm = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_READER)
         active_member_permissions = p.active_member_permissions()
         assert len(active_member_permissions) is 1
         self.assertEqual(active_member_permissions[0]['system_role'], ProjectRole.SYSTEM_ROLE_READER)
 
     def test_active_member_permissions_has_project_role_writer(self):
-        p, user, role = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_WRITER)
+        p, user, role, pm = create_project_with_membership_permission_for_test(ProjectRole.SYSTEM_ROLE_WRITER)
         active_member_permissions = p.active_member_permissions()
         assert len(active_member_permissions) is 1
         self.assertEqual(active_member_permissions[0]['system_role'], ProjectRole.SYSTEM_ROLE_WRITER)
+
+
+class ProjectMemberTests(TestCase):
+    ''' ProjectMember Logic tests.'''
+
+    @staticmethod
+    def test_membership_is_not_active_without_start_date():
+        membership = ProjectMember(start_date=None)
+        assert membership.active() is False
+
+    @staticmethod
+    def test_membership_is_active_with_start_date_in_the_past():
+        membership = ProjectMember(start_date=YESTERDAY)
+        assert membership.active()
+
+    @staticmethod
+    def test_membership_is_not_active_with_start_date_in_the_future():
+        membership = ProjectMember(start_date=TOMORROW)
+        assert membership.active() is False
+
+    @staticmethod
+    def test_membership_is_active_with_no_end_date():
+        membership = ProjectMember(start_date=YESTERDAY, end_date=None)
+        assert membership.active()
+
+    @staticmethod
+    def test_membership_is_active_with_end_date_in_the_future():
+        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW)
+        assert membership.active()
+
+    @staticmethod
+    def test_membership_is_not_active_with_end_date_in_the_past():
+        membership = ProjectMember(start_date=YESTERDAY, end_date=YESTERDAY)
+        assert membership.active() is False
+
+    @staticmethod
+    def test_membership_is_active_with_start_date_in_the_past_and_end_date_in_the_future():
+        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW)
+        assert membership.active()

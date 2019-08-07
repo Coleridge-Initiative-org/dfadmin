@@ -529,10 +529,14 @@ class Project(LdapObject):
         return None
 
     def active_members(self):
-        members = {pm.member for pm in ProjectMember.objects.filter(Q(project=self,
-                            start_date__lte=timezone.now(),
-                            member__status__in=User.MEMBERSHIP_STATUS_WHITELIST),
-                            Q(end_date__isnull=True) | Q(end_date__gt=timezone.now()))}
+        members = set()
+        for pm in self.projectmember_set.all():
+            if pm.active() and pm.member.status in User.MEMBERSHIP_STATUS_WHITELIST:
+                members.add(pm.member)
+        # members = {pm.member for pm in ProjectMember.objects.filter(Q(project=self,
+        #                     start_date__lte=timezone.now(),
+        #                     member__status__in=User.MEMBERSHIP_STATUS_WHITELIST),
+        #                     Q(end_date__isnull=True) | Q(end_date__gt=timezone.now()))}
 
         if self.instructors:
             members = members | {udr.user for udr in
@@ -624,13 +628,13 @@ class ProjectMember(models.Model):
     member = models.ForeignKey(User, on_delete=models.CASCADE, help_text=SEARCH_HELP_TEXT)
 
     def active(self):
-        if self.begin:
-            if self.end:
-                return (self.begin <= timezone.now() <= self.end)
-            else:
-                return self.begin <= timezone.now()
-        else:
+        if not self.start_date:
             return False
+        if self.start_date and timezone.now() < self.start_date:
+            return False
+        if self.end_date and timezone.now() > self.end_date:
+            return False
+        return True
 
     REQUEST_ID_HELP_TEXT = 'Id for from the ticketing system ' \
                            '(if not the same from project creation), ' \
