@@ -34,7 +34,7 @@ class DatasetAccessFactory(DjangoModelFactory):
         model = models.DatasetAccess
     project = factory.SubFactory(ProjectFactory)
     dataset = factory.SubFactory(DatasetFactory)
-    granted_at = factory.LazyFunction(lambda: timezone.now())
+    start_at = factory.LazyFunction(lambda: timezone.now())
 
 
 class DfRoleFactory(DjangoModelFactory):

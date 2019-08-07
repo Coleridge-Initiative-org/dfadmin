@@ -342,11 +342,11 @@ def import_datasets():
                     access = DatasetAccess.objects.get(dataset=dataset, project=project)
                 except DatasetAccess.DoesNotExist:
                     access = DatasetAccess(dataset=dataset, project=project)
-                    access.granted_at = TIME_NOW
-                if not access.requested_at:
-                    access.requested_at = TIME_NOW
-                if not access.reviewed_at:
-                    access.reviewed_at = TIME_NOW
+                    # access.granted_at = TIME_NOW
+                # if not access.requested_at:
+                    # access.requested_at = TIME_NOW
+                # if not access.reviewed_at:
+                #     access.reviewed_at = TIME_NOW
                 access.save()
         else:
             add_error('Dataset has no permissions', name)

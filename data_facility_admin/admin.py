@@ -176,7 +176,7 @@ class DatasetAdmin(SimpleHistoryAdmin):
                      'ldap_id', 'public', 'database_schema__name')
     list_filter = ['data_classification', 'available', 'data_provider', 'public']
     inlines = [DatasetAgreementInline, DataStewardInline, DatasetAccessInline]
-    readonly_fields = ['ldap_id', 'ldap_name']
+    readonly_fields = ['ldap_id', 'ldap_name', 'system_status']
 
 
 @admin.register(TermsOfUse)
@@ -316,8 +316,8 @@ class DatasetAccessAdmin(SimpleHistoryAdmin):
     """Admin Manager for model DatasetAccess"""
     search_fields = ('project__name', 'request_id', 'dataset__name', 'dataset__dataset_id')
     list_display = ('project', 'dataset_id', 'request_id', 'created_at', 'updated_at')
-    list_filter = ['dataset_id', 'project', 'requested_at', 'granted_at',
-                   'expire_at', 'load_to_database']
+    list_filter = ['dataset_id', 'project', 'start_at', 'end_at', 'load_to_database']
+    readonly_fields = ['status']
 
     def get_actions(self, request):
         # Disable delete
