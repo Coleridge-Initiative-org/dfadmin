@@ -5,6 +5,7 @@ logger = logging.getLogger(__name__)
 
 
 def jwt_get_username_from_payload_handler(payload):
+    logger.debug("jwt_get_username_from_payload_handler called with Payload=(%s)" % payload)
     if 'preferred_username' in payload:
         username = payload['preferred_username']
         logger.debug('API Called by JWT username: %s' % username)
@@ -21,6 +22,7 @@ def jwt_get_username_from_payload_handler(payload):
 
 
 def initialize_user_if_necessary(email, username):
+    logger.debug("initialize_user_if_necessary(%s, %s)" % (email, username))
     from django.contrib.auth.models import Group, User
 
     try:
