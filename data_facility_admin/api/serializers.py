@@ -51,10 +51,12 @@ class UserSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
 
 class DfRoleSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     active_users = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True, lookup_field='username')
+    url = serializers.HyperlinkedIdentityField(view_name='dfrole-detail', source='ldap_name',
+                                               lookup_url_kwarg='ldap_name', lookup_field='ldap_name')
 
     class Meta:
         model = DfRole
-        fields = ('name', 'description', 'active_users', 'active_usernames')
+        fields = ('name', 'description', 'active_users', 'active_usernames', 'url')
         # fields = '__all__'
 
 
