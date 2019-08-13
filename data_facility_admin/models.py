@@ -628,7 +628,7 @@ class ProjectMember(models.Model):
     member = models.ForeignKey(User, on_delete=models.CASCADE, help_text=SEARCH_HELP_TEXT)
 
     def active(self):
-        if self.start_date is None or self.end_date is None:
+        if self.start_date is None:
             return False
         if self.start_date and timezone.now() < self.start_date:
             return False

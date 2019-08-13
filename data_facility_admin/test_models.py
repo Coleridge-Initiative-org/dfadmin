@@ -12,8 +12,8 @@ from data_facility_admin import models
 
 # pylint: disable:too-few-public-methods
 USERNAME = 'danielcastellani'
-YESTERDAY = end_date=timezone.now() - timezone.timedelta(days=1)
-TOMORROW = end_date= timezone.now() + timezone.timedelta(days=1)
+YESTERDAY = timezone.now() - timezone.timedelta(days=1)
+TOMORROW = timezone.now() + timezone.timedelta(days=1)
 
 class DatabaseTests(TestCase):
     ''' Basic Database tests.'''
@@ -244,9 +244,9 @@ class ProjectMemberTests(TestCase):
         assert membership.active() is False
 
     @staticmethod
-    def test_membership_is_not_active_without_end_date():
+    def test_membership_is_active_without_end_date():
         membership = ProjectMember(start_date=YESTERDAY, end_date=None)
-        assert membership.active() is False
+        assert membership.active() is True
 
     @staticmethod
     def test_membership_is_active_with_start_date_in_the_past():
