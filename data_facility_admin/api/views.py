@@ -29,6 +29,16 @@ class DfRoleViewSet(viewsets.ModelViewSet):
     # lookup_url_kwarg = 'ldap_name'
 
 
+class DatabaseSchemaViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list` and `detail` actions.
+    """
+    queryset = models.DatabaseSchema.objects.all().order_by('name')
+    serializer_class = serializers.DatabaseSchemaSerializer
+    lookup_field = 'name'
+    filter_fields = ('public',)
+
+
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     Search based on name.

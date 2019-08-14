@@ -1,6 +1,6 @@
 from rest_framework.relations import PrimaryKeyRelatedField
 
-from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider, Category, ProjectTool
+from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider, Category, ProjectTool, DatabaseSchema
 from rest_framework import serializers
 from drf_dynamic_fields import DynamicFieldsMixin
 import logging
@@ -46,6 +46,15 @@ class UserSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
         model = User
         # fields = ('first_name', 'last_name', 'full_name',
         #           'username', 'email', 'job_title', 'affiliation', 'avatar', 'id', 'url')
+        fields = '__all__'
+
+
+class DatabaseSchemaSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
+    url = serializers.HyperlinkedIdentityField(view_name='databaseschema-detail', source='name',
+                                               lookup_url_kwarg='name', lookup_field='name')
+
+    class Meta:
+        model = DatabaseSchema
         fields = '__all__'
 
 
