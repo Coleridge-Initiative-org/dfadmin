@@ -240,35 +240,35 @@ class ProjectMemberTests(TestCase):
 
     @staticmethod
     def test_membership_is_not_active_without_start_date():
-        membership = ProjectMember(start_date=None, end_date=TOMORROW)
+        membership = ProjectMember(start_date=None, end_date=TOMORROW, member=User(status=User.STATUS_ACTIVE))
         assert membership.active() is False
 
     @staticmethod
     def test_membership_is_active_without_end_date():
-        membership = ProjectMember(start_date=YESTERDAY, end_date=None)
+        membership = ProjectMember(start_date=YESTERDAY, end_date=None, member=User(status=User.STATUS_ACTIVE))
         assert membership.active() is True
 
     @staticmethod
     def test_membership_is_active_with_start_date_in_the_past():
-        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW)
+        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW, member=User(status=User.STATUS_ACTIVE))
         assert membership.active()
 
     @staticmethod
     def test_membership_is_not_active_with_start_date_in_the_future():
-        membership = ProjectMember(start_date=TOMORROW, end_date=TOMORROW)
+        membership = ProjectMember(start_date=TOMORROW, end_date=TOMORROW, member=User(status=User.STATUS_ACTIVE))
         assert membership.active() is False
 
     @staticmethod
     def test_membership_is_active_with_end_date_in_the_future():
-        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW)
+        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW, member=User(status=User.STATUS_ACTIVE))
         assert membership.active()
 
     @staticmethod
     def test_membership_is_not_active_with_end_date_in_the_past():
-        membership = ProjectMember(start_date=YESTERDAY, end_date=YESTERDAY)
+        membership = ProjectMember(start_date=YESTERDAY, end_date=YESTERDAY, member=User(status=User.STATUS_ACTIVE))
         assert membership.active() is False
 
     @staticmethod
     def test_membership_is_active_with_start_date_in_the_past_and_end_date_in_the_future():
-        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW)
+        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW, member=User(status=User.STATUS_ACTIVE))
         assert membership.active()

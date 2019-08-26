@@ -634,7 +634,7 @@ class ProjectMember(models.Model):
             return False
         if self.end_date and timezone.now() > self.end_date:
             return False
-        return True
+        return self.member.status in User.MEMBERSHIP_STATUS_WHITELIST
 
     REQUEST_ID_HELP_TEXT = 'Id for from the ticketing system ' \
                            '(if not the same from project creation), ' \
