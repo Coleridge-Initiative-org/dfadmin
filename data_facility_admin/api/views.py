@@ -176,10 +176,9 @@ class ProjectViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(Q(projectmember__project__start__isnull=True) |
                                        Q(projectmember__project__start__lte=now))
             # Filter with invalid membership
+            queryset = queryset.filter(projectmember__start_date__lte=now)
             queryset = queryset.filter(Q(projectmember__project__end__isnull=True) |
                                        Q(projectmember__project__end__gte=now))
-            queryset = queryset.filter(projectmember__start_date__lte=now,
-                                       projectmember__end_date__gte=now)
             queryset = queryset.distinct()
 
         # TODO: Remove DATA TRANSFER filtering when new PG_SYNC is in place.

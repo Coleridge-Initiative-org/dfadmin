@@ -61,7 +61,7 @@ Represent what is the main purpose of the project and can be `Research`, `Class`
 
 
 #### A note on Workspace Visibility
-`Data Transfe` projects don't show up on the workspace list (neither on the API `api/v1/projects?member=daniel`) for normal users. These projects show only to Curators (DFRole `ADRF Curators`).
+`Data TransfeR` projects don't show up on the workspace list (neither on the API `api/v1/projects?member=daniel`) for normal users. These projects show only to Curators (DFRole `ADRF Curators`).
 
 
 #### Start and End dates

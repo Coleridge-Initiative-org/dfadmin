@@ -28,6 +28,9 @@ DF_ROLE_DESCRIPTION = 'test description'
 SERVER_URL = 'http://localhost:8000'
 API_BASE = '/api/v1/'
 
+YESTERDAY = timezone.now() - timezone.timedelta(days=1)
+TOMORROW = timezone.now() + timezone.timedelta(days=1)
+
 
 class ApiTests(TestCase):
 
@@ -312,6 +315,59 @@ class ApiClientTests(TestCase):
         response = self.client.get(reverse('project-list', args=[]), format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(1, response.data['count'])
+
+    def test_api_projects_return_active_project_without_dates(self):
+        project = factories.ProjectFactory.create(name='My Test Project',
+                                                  type=models.Project.PROJECT_TYPE_CAPSTONE,
+                                                  status=models.Project.STATUS_ACTIVE)
+        user = factories.UserFactory.create()
+        project_role = models.ProjectRole.objects.create(name='My Role',
+                                                         system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
+        models.ProjectMember.objects.create(project=project, member=user, role=project_role, start_date=timezone.now())
+        response = self.client.get(reverse('project-list', args=[]), {'member': user.username}, format='json')
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.assertEqual(1, response.data['count'])
+
+    def test_api_projects_return_active_project_with_start_without_end_date(self):
+        project = factories.ProjectFactory.create(name='My Test Project',
+                                                  type=models.Project.PROJECT_TYPE_CAPSTONE,
+                                                  status=models.Project.STATUS_ACTIVE,
+                                                  start=YESTERDAY)
+        user = factories.UserFactory.create()
+        project_role = models.ProjectRole.objects.create(name='My Role',
+                                                         system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
+        models.ProjectMember.objects.create(project=project, member=user, role=project_role, start_date=timezone.now())
+        response = self.client.get(reverse('project-list', args=[]), {'member': user.username}, format='json')
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.assertEqual(1, response.data['count'])
+
+    def test_api_projects_return_active_project_with_end_date_future(self):
+        project = factories.ProjectFactory.create(name='My Test Project',
+                                                  type=models.Project.PROJECT_TYPE_CAPSTONE,
+                                                  status=models.Project.STATUS_ACTIVE,
+                                                  start=YESTERDAY,
+                                                  end=TOMORROW)
+        user = factories.UserFactory.create()
+        project_role = models.ProjectRole.objects.create(name='My Role',
+                                                         system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
+        models.ProjectMember.objects.create(project=project, member=user, role=project_role, start_date=timezone.now())
+        response = self.client.get(reverse('project-list', args=[]), {'member': user.username}, format='json')
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.assertEqual(1, response.data['count'])
+
+    def test_api_projects_dont_return_active_project_with_end_date_past(self):
+        project = factories.ProjectFactory.create(name='My Test Project',
+                                                  type=models.Project.PROJECT_TYPE_CAPSTONE,
+                                                  status=models.Project.STATUS_ACTIVE,
+                                                  start=YESTERDAY,
+                                                  end=YESTERDAY)
+        user = factories.UserFactory.create()
+        project_role = models.ProjectRole.objects.create(name='My Role',
+                                                         system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
+        models.ProjectMember.objects.create(project=project, member=user, role=project_role, start_date=timezone.now())
+        response = self.client.get(reverse('project-list', args=[]), format='json', params={'member': user.username})
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.assertEqual(0, response.data['count'])
 
 
 class ApiAuthorizationTests(TestCase):
