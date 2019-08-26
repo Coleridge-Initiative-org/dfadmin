@@ -272,3 +272,8 @@ class ProjectMemberTests(TestCase):
     def test_membership_is_active_with_start_date_in_the_past_and_end_date_in_the_future():
         membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW, member=User(status=User.STATUS_ACTIVE))
         assert membership.active()
+
+    @staticmethod
+    def test_membership_is_not_active_with_start_date_in_the_past_and_end_date_in_the_future_but_user_not_active():
+        membership = ProjectMember(start_date=YESTERDAY, end_date=TOMORROW, member=User(status=User.STATUS_DISABLED))
+        assert membership.active() is False

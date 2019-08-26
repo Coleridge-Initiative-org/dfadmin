@@ -90,7 +90,9 @@ class LdapProjectsTestCase(BaseLdapTestCase):
         user = User.objects.filter(ldap_name="johnlennon")[0]
         member_role = ProjectRole(name="Member", system_role=ProjectRole.SYSTEM_ROLE_READER)
         member_role.save()
-        project_member = ProjectMember(member=user, role=member_role, project=self.proj)
+        project_member = ProjectMember(member=user, role=member_role, project=self.proj,
+                                       start_date=timezone.now(),
+                                       end_date=timezone.now())
         project_member.save()
 
         self.ldapobj.search_s.seed(self.PROJECT_LDAP_BASE, ldap.SCOPE_SUBTREE, '(&(objectclass=posixGroup)(|(cn=project-*)(cn=yproject-*)))', ['name', 'creationdate', 'gidNumber', 'member', 'cn', 'summary'])([(self.PROJECT_FULL_DN, self.ldapobj.directory[self.PROJECT_FULL_DN])])

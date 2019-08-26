@@ -486,8 +486,8 @@ class Project(LdapObject):
     request_id = models.IntegerField(default=None, blank=True, null=True,
                                      help_text=REQUEST_ID_HELP_TEXT)
     workspace_path = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
-    start = models.DateTimeField(null=True, blank=True)
-    end = models.DateTimeField(null=True, blank=True)
+    start = models.DateTimeField(null=True, blank=False)
+    end = models.DateTimeField(null=True, blank=False)
 
     # Querysets
     FILTER_ACTIVE = Q(status=STATUS_ACTIVE) & Q(Q(start__isnull=True) | Q(start__lte=timezone.now())) \
@@ -642,7 +642,7 @@ class ProjectMember(models.Model):
     request_id = models.IntegerField(default=None, blank=True, null=True,
                                      help_text=REQUEST_ID_HELP_TEXT)
     start_date = models.DateTimeField(null=True, blank=False, default=timezone.now)
-    end_date = models.DateTimeField(null=True, blank=False, default=timezone.now)
+    end_date = models.DateTimeField(null=True, blank=True)
 
     # Automatic Fields
     created_at = models.DateTimeField(auto_now_add=True)

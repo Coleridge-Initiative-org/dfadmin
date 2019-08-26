@@ -265,7 +265,7 @@ class ProjectAdmin(SimpleHistoryAdmin):
                     'created_at',)
     list_filter = ['environment', 'status', 'has_irb', 'type']
     inlines = [ProjectMembershipInline, DatasetAccessInline, ProjectToolInline]
-    readonly_fields = ['ldap_id', 'ldap_name']
+    readonly_fields = ['ldap_id', 'ldap_name', 'is_active']
     # form = make_ajax_form(Project, {
     #     'owner': 'users',
     #     'parent_project': 'projects',
