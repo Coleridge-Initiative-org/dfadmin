@@ -21,7 +21,7 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 #DFAdmin Version
-VERSION = 'v2.4-dev'
+VERSION = 'v2.4'
 
 ENV = config('ENV', default='PRODUCTION')
 ENVIRONMENT_COLORS = {'PRODUCTION': 'red',
