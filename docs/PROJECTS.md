@@ -4,9 +4,9 @@
 
 To create a project, click the `Add Project` button, which can be found at the Project List, or on the `+` button at the home page.
 
-1. Fill up at least the `project name` and `abstract`.
-2. Select the `Instructors` groups if any.
-3. Select the appropriate `status`.
+1. Fill up at least the `project name` and `abstract`
+2. Select the `Instructors` groups if any
+3. Select the appropriate `status` (see Fields for more details)
 4. Select the type of project. 
 
 
@@ -35,7 +35,7 @@ Granting access to data is possible adding a `Dataset Access` to the project fro
 For More details on Dataset Access, see the models page.
 
 
-# Fields
+# Project Fields
 
 
 ### Mandatory Fields: 
