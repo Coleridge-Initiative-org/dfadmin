@@ -173,12 +173,13 @@ class ProjectViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(Q(projectmember__member__ldap_name=user_filter) |
                                        Q(instructors__userdfrole__user__ldap_name=user_filter))
             # Filter expired or not started projects
-            queryset = queryset.filter(Q(projectmember__project__start__isnull=True) |
-                                       Q(projectmember__project__start__lte=now))
+            queryset = queryset.filter(Q(start__isnull=True) |
+                                       Q(start__lte=now))
+            queryset = queryset.filter(Q(end__isnull=True) |
+                                       Q(end__gte=now))
+
             # Filter with invalid membership
             queryset = queryset.filter(projectmember__start_date__lte=now)
-            queryset = queryset.filter(Q(projectmember__project__end__isnull=True) |
-                                       Q(projectmember__project__end__gte=now))
             queryset = queryset.distinct()
 
         # TODO: Remove DATA TRANSFER filtering when new PG_SYNC is in place.
