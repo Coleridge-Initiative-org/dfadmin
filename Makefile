@@ -103,5 +103,11 @@ ldap_import:
 docs:
 	docker-compose exec -T web python manage.py graph_models data_facility_admin data_facility_metadata -o documentation/current_class_diagram.png -g --exclude-models 'Historical*' #--layout fdp
 
+docs-html:
+	docker-compose exec web make -C docs html
+
+docs-clean:
+	docker-compose exec web make -C docs clean
+
 check:
 	docker-compose exec -T web python -Wall manage.py check

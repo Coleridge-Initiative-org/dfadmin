@@ -2,6 +2,7 @@ from django_filters import filters
 from rest_framework import mixins, generics, viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
+from django.utils import timezone
 
 from data_facility_admin.models import User
 from .. import models
@@ -26,6 +27,16 @@ class DfRoleViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.DfRoleSerializer
     lookup_field = 'ldap_name'
     # lookup_url_kwarg = 'ldap_name'
+
+
+class DatabaseSchemaViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list` and `detail` actions.
+    """
+    queryset = models.DatabaseSchema.objects.all().order_by('name')
+    serializer_class = serializers.DatabaseSchemaSerializer
+    lookup_field = 'name'
+    filter_fields = ('public',)
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -136,15 +147,17 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     # queryset = models.Project.objects.all()
     serializer_class = serializers.ProjectSerializer
-    filter_fields = ('name', 'status', 'has_irb', 'owner', 'type')
+    filter_fields = ('name', 'status', 'has_irb', 'owner', 'type', 'ldap_name')
     search_fields = ('name', 'owner__first_name', 'owner__last_name',
                      'owner__ldap_name', 'methodology', 'abstract',
                      'outcomes', 'mission',
                      'projectmember__member__ldap_name',
-                     'projectmember__member__first_name',
-                     'projectmember__member__last_name',
+                     # 'projectmember__member__first_name',
+                     # 'projectmember__member__last_name',
                      )
     ordering_fields = ('name', 'owner',)
+    lookup_field = 'ldap_name'
+    # lookup_url_kwarg = 'ldap_name'
 
     def get_queryset(self):
         """
@@ -156,9 +169,16 @@ class ProjectViewSet(viewsets.ModelViewSet):
         # member
         curator = False
         if user_filter:
+            now = timezone.now()
             queryset = queryset.filter(Q(projectmember__member__ldap_name=user_filter) |
-                                       Q(instructors__userdfrole__user__ldap_name=user_filter))\
-            # queryset = queryset.filter(projectmember__project__start)
+                                       Q(instructors__userdfrole__user__ldap_name=user_filter))
+            # Filter expired or not started projects
+            queryset = queryset.filter(Q(projectmember__project__start__isnull=True) |
+                                       Q(projectmember__project__start__lte=now))
+            # Filter with invalid membership
+            queryset = queryset.filter(projectmember__start_date__lte=now)
+            queryset = queryset.filter(Q(projectmember__project__end__isnull=True) |
+                                       Q(projectmember__project__end__gte=now))
             queryset = queryset.distinct()
 
         # TODO: Remove DATA TRANSFER filtering when new PG_SYNC is in place.

@@ -39,6 +39,7 @@ class ProjectMembershipInline(admin.TabularInline):
     extra = 0
     min_num = 0
     can_delete = False
+    readonly_fields = ['active']
     # form = make_ajax_form(ProjectMember, {
     #     'member': 'users',
     #     'project': 'projects',
@@ -176,7 +177,7 @@ class DatasetAdmin(SimpleHistoryAdmin):
                      'ldap_id', 'public', 'database_schema__name')
     list_filter = ['data_classification', 'available', 'data_provider', 'public']
     inlines = [DatasetAgreementInline, DataStewardInline, DatasetAccessInline]
-    readonly_fields = ['ldap_id', 'ldap_name']
+    readonly_fields = ['ldap_id', 'ldap_name', 'system_status']
 
 
 @admin.register(TermsOfUse)
@@ -264,7 +265,7 @@ class ProjectAdmin(SimpleHistoryAdmin):
                     'created_at',)
     list_filter = ['environment', 'status', 'has_irb', 'type']
     inlines = [ProjectMembershipInline, DatasetAccessInline, ProjectToolInline]
-    readonly_fields = ['ldap_id', 'ldap_name']
+    readonly_fields = ['ldap_id', 'ldap_name', 'is_active']
     # form = make_ajax_form(Project, {
     #     'owner': 'users',
     #     'parent_project': 'projects',
@@ -316,8 +317,8 @@ class DatasetAccessAdmin(SimpleHistoryAdmin):
     """Admin Manager for model DatasetAccess"""
     search_fields = ('project__name', 'request_id', 'dataset__name', 'dataset__dataset_id')
     list_display = ('project', 'dataset_id', 'request_id', 'created_at', 'updated_at')
-    list_filter = ['dataset_id', 'project', 'requested_at', 'granted_at',
-                   'expire_at', 'load_to_database']
+    list_filter = ['dataset_id', 'project', 'start_at', 'end_at', 'load_to_database']
+    readonly_fields = ['status']
 
     def get_actions(self, request):
         # Disable delete

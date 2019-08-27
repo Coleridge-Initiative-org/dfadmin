@@ -486,8 +486,8 @@ class Project(LdapObject):
     request_id = models.IntegerField(default=None, blank=True, null=True,
                                      help_text=REQUEST_ID_HELP_TEXT)
     workspace_path = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
-    start = models.DateTimeField(null=True, blank=True)
-    end = models.DateTimeField(null=True, blank=True)
+    start = models.DateTimeField(null=True, blank=False)
+    end = models.DateTimeField(null=True, blank=False)
 
     # Querysets
     FILTER_ACTIVE = Q(status=STATUS_ACTIVE) & Q(Q(start__isnull=True) | Q(start__lte=timezone.now())) \
@@ -529,10 +529,14 @@ class Project(LdapObject):
         return None
 
     def active_members(self):
-        members = {pm.member for pm in ProjectMember.objects.filter(Q(project=self,
-                            start_date__lte=timezone.now(),
-                            member__status__in=User.MEMBERSHIP_STATUS_WHITELIST),
-                            Q(end_date__isnull=True) | Q(end_date__gt=timezone.now()))}
+        members = set()
+        for pm in self.projectmember_set.all():
+            if pm.active() and pm.member.status in User.MEMBERSHIP_STATUS_WHITELIST:
+                members.add(pm.member)
+        # members = {pm.member for pm in ProjectMember.objects.filter(Q(project=self,
+        #                     start_date__lte=timezone.now(),
+        #                     member__status__in=User.MEMBERSHIP_STATUS_WHITELIST),
+        #                     Q(end_date__isnull=True) | Q(end_date__gt=timezone.now()))}
 
         if self.instructors:
             members = members | {udr.user for udr in
@@ -624,20 +628,20 @@ class ProjectMember(models.Model):
     member = models.ForeignKey(User, on_delete=models.CASCADE, help_text=SEARCH_HELP_TEXT)
 
     def active(self):
-        if self.begin:
-            if self.end:
-                return (self.begin <= timezone.now() <= self.end)
-            else:
-                return self.begin <= timezone.now()
-        else:
+        if self.start_date is None:
             return False
+        if self.start_date and timezone.now() < self.start_date:
+            return False
+        if self.end_date and timezone.now() > self.end_date:
+            return False
+        return self.member.status in User.MEMBERSHIP_STATUS_WHITELIST
 
     REQUEST_ID_HELP_TEXT = 'Id for from the ticketing system ' \
                            '(if not the same from project creation), ' \
                            'so it is possible to trace back if more info is needed.'
     request_id = models.IntegerField(default=None, blank=True, null=True,
                                      help_text=REQUEST_ID_HELP_TEXT)
-    start_date = models.DateTimeField(null=True, blank=True)
+    start_date = models.DateTimeField(null=True, blank=False, default=timezone.now)
     end_date = models.DateTimeField(null=True, blank=True)
 
     # Automatic Fields
@@ -734,7 +738,7 @@ class DataProvider(models.Model):
 
 
 class DatabaseSchema(models.Model):
-    name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH)
+    name = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, unique=True)
     public = models.BooleanField(default=False, help_text='Check this if everyone should '
                                                           'have access to this schema. '
                                                           'Please consider the related dataset '
@@ -932,12 +936,9 @@ class Dataset(LdapObject):
             members = {member for member in
                        User.objects.filter(status__in=User.MEMBERSHIP_STATUS_WHITELIST)}
         else:
-            for access in DatasetAccess.objects.filter(Q(dataset=self,
-                                                project__status=Project.STATUS_ACTIVE,
-                                                granted_at__lte=timezone.now()),
-                                                       Q(expire_at__isnull=True) |
-                                                       Q(expire_at__gt=timezone.now())):
-                members = members | set(access.project.active_members())
+            for access in DatasetAccess.objects.filter(Q(dataset=self, project__status=Project.STATUS_ACTIVE)):
+                if access.status() == DatasetAccess.STATUS_ACTIVE:
+                    members = members | set(access.project.active_members())
 
         return members
 
@@ -1093,8 +1094,8 @@ class DataAgreementSignature(models.Model):
 class DatasetAccess(models.Model):
     ''' Access granted to a dataset for a project. All data access is granted on project basis.
     '''
-    Q_ACTIVE = Q(Q(granted_at__lte=timezone.now()),
-                 Q(Q(expire_at__isnull=True) | Q(expire_at__gte=timezone.now())))
+    Q_ACTIVE = Q(Q(start_at__lte=timezone.now()),
+                 Q(Q(end_at__isnull=True) | Q(end_at__gte=timezone.now())))
 
     project = models.ForeignKey(Project, on_delete=models.PROTECT)
     dataset = models.ForeignKey(Dataset, on_delete=models.PROTECT)
@@ -1115,10 +1116,8 @@ class DatasetAccess(models.Model):
                            'so it is possible to trace back if more info is needed.'
     request_id = models.IntegerField(default=None, blank=True, null=True,
                                      help_text=REQUEST_ID_HELP_TEXT)
-    requested_at = models.DateTimeField(blank=True, null=True)
-    reviewed_at = models.DateTimeField(blank=True, null=True)
-    granted_at = models.DateTimeField(blank=True, null=True)
-    expire_at = models.DateTimeField(blank=True, null=True)
+    start_at = models.DateTimeField(blank=True, null=True)
+    end_at = models.DateTimeField(blank=True, null=True)
     MOTIVATION_HELP_TEXT = 'The reason of this request.'
     motivation = models.TextField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True, null=True,
                                   help_text=MOTIVATION_HELP_TEXT)
@@ -1140,24 +1139,23 @@ class DatasetAccess(models.Model):
     history = HistoricalRecords()
 
     def status(self):
-        if self.dataset.system_status() is not Dataset.STATUS_ACTIVE:
+        logger.debug('Dataset status: %s' % self.dataset.system_status())
+
+        if self.dataset.system_status() != Dataset.STATUS_ACTIVE:
+            logger.debug('DatasetAccess status: Disabled (dataset is disabled)')
+            return DatasetAccess.STATUS_DISABLED
+        if self.start_at and timezone.now() < self.start_at:
+            logger.debug('DatasetAccess status: Disabled (start date future)')
+            return DatasetAccess.STATUS_DISABLED
+        if self.end_at and timezone.now() > self.end_at:
+            logger.debug('DatasetAccess status: Disabled (end date past)')
             return DatasetAccess.STATUS_DISABLED
 
-        if self.expire_at and timezone.now() > self.expire_at:
-            return DatasetAccess.STATUS_DISABLED
-        elif self.granted_at and self.expire_at and (self.granted_at <= timezone.now() <= self.expire_at):
-            return DatasetAccess.STATUS_ACTIVE
-        elif self.granted_at and not self.expire_at and (self.granted_at <= timezone.now()):
-            return DatasetAccess.STATUS_ACTIVE
-        elif self.reviewed_at and timezone.now() > self.reviewed_at:
-            return DatasetAccess.STATUS_APPROVED
-        elif self.requested_at and timezone.now() > self.requested_at:
-            return DatasetAccess.STATUS_REQUESTED
-        else:
-            return DatasetAccess.STATUS_REGISTERED
+        logger.debug('DatasetAccess status: Active')
+        return DatasetAccess.STATUS_ACTIVE
 
     def __str__(self):
-        return 'Project %s, has access to dataset %s. (Status=%s)' % (self.project, self.dataset_id, self.status())
+        return 'Project %s, has access to dataset %s. (Status=%s)' % (self.project, self.dataset.dataset_id, self.status())
 
     class Meta:
         ordering = ['project', 'dataset_id']

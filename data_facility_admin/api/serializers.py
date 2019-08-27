@@ -1,6 +1,6 @@
 from rest_framework.relations import PrimaryKeyRelatedField
 
-from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider, Category, ProjectTool
+from ..models import Project, User, DfRole, Dataset, DataSteward, DataProvider, Category, ProjectTool, DatabaseSchema
 from rest_framework import serializers
 from drf_dynamic_fields import DynamicFieldsMixin
 import logging
@@ -49,12 +49,23 @@ class UserSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
         fields = '__all__'
 
 
+class DatabaseSchemaSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
+    url = serializers.HyperlinkedIdentityField(view_name='databaseschema-detail', source='name',
+                                               lookup_url_kwarg='name', lookup_field='name')
+
+    class Meta:
+        model = DatabaseSchema
+        fields = '__all__'
+
+
 class DfRoleSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     active_users = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True, lookup_field='username')
+    url = serializers.HyperlinkedIdentityField(view_name='dfrole-detail', source='ldap_name',
+                                               lookup_url_kwarg='ldap_name', lookup_field='ldap_name')
 
     class Meta:
         model = DfRole
-        fields = ('name', 'description', 'active_users', 'active_usernames')
+        fields = ('name', 'description', 'active_users', 'active_usernames', 'url')
         # fields = '__all__'
 
 
@@ -104,6 +115,7 @@ class DatasetSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
 
 
 class ProjectToolSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
+    related_projects = serializers.HyperlinkedRelatedField(many=False, view_name='project-detail', read_only=True, lookup_field='ldap_name')
 
     class Meta:
         model = ProjectTool
@@ -111,6 +123,8 @@ class ProjectToolSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
 
 
 class ProjectSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
+    # project_id = serializers.ReadOnlyField(source='ldap_name')
+
     # owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail',
     #                                             read_only=True, lookup_field='username')
     owner = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail', read_only=True, lookup_field='username')
@@ -122,6 +136,11 @@ class ProjectSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
     owner_username = serializers.ReadOnlyField(source='owner__ldap_name')
     # tools = PrimaryKeyRelatedField(queryset=ProjectTool.objects.all())
     related_tools = ProjectToolSerializer(many=True, read_only=True)
+
+    #Fix to You may have failed to include the related model in your API,
+    # or incorrectly configured the `lookup_field` attribute on this field.
+    url = serializers.HyperlinkedIdentityField(view_name='project-detail', source='ldap_name',
+                                               lookup_url_kwarg='ldap_name', lookup_field='ldap_name')
 
     class Meta:
         model = Project
@@ -146,7 +165,10 @@ class ProjectSerializer(DynamicFieldsMixin, DFAdminModelSerializerWithId):
                   'updated_at',
                   'tools',
                   'related_tools',
-                  'ldap_name'
+                  'ldap_name',
+                  'start',
+                  'end',
+                  # 'project_id'
                   )
         # fields = '__all__'
 
