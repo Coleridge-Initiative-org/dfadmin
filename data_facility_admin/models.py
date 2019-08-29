@@ -486,7 +486,7 @@ class Project(LdapObject):
     request_id = models.IntegerField(default=None, blank=True, null=True,
                                      help_text=REQUEST_ID_HELP_TEXT)
     workspace_path = models.CharField(max_length=CHAR_FIELD_MAX_LENGTH, blank=True)
-    start = models.DateTimeField(null=True, blank=False)
+    start = models.DateTimeField(null=True, blank=False, default=timezone.now)
     end = models.DateTimeField(null=True, blank=False)
 
     # Querysets
