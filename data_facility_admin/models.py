@@ -352,7 +352,7 @@ class UserDfRole(models.Model):
     '''
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     role = models.ForeignKey(DfRole, on_delete=models.PROTECT)
-    begin = models.DateTimeField()
+    begin = models.DateTimeField(default=timezone.now)
     end = models.DateTimeField(blank=True, null=True)
 
     # Querysets

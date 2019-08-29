@@ -267,11 +267,11 @@ class ApiClientTests(TestCase):
     #     self.assertEqual(status.HTTP_200_OK, response.status_code)
     # Project
 
-    # TODO: Test if the projects returning are correct.
     def test_api_project_do_not_return_data_transfer_projects(self):
         project = factories.ProjectFactory.create(name='My Test Project',
                                                   type=models.Project.PROJECT_TYPE_DATA_TRANSFER,
-                                                  status=models.Project.STATUS_ACTIVE)
+                                                  status=models.Project.STATUS_ACTIVE,
+                                                  start=YESTERDAY)
         user = factories.UserFactory.create()
         project_role = models.ProjectRole.objects.create(name='My Role',
                                                          system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
@@ -283,7 +283,8 @@ class ApiClientTests(TestCase):
     def test_api_project_return_class_projects(self):
         project = factories.ProjectFactory.create(name='My Test Project',
                                                   type=models.Project.PROJECT_TYPE_CLASS,
-                                                  status=models.Project.STATUS_ACTIVE)
+                                                  status=models.Project.STATUS_ACTIVE,
+                                                  start=YESTERDAY)
         user = factories.UserFactory.create()
         project_role = models.ProjectRole.objects.create(name='My Role',
                                                          system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
@@ -291,11 +292,13 @@ class ApiClientTests(TestCase):
         response = self.client.get(reverse('project-list', args=[]), format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(1, response.data['count'])
+        self.assertEqual(project.name, response.data['results'][0]['name'])
 
     def test_api_project_return_research_projects(self):
         project = factories.ProjectFactory.create(name='My Test Project',
                                                   type=models.Project.PROJECT_TYPE_RESEARCH,
-                                                  status=models.Project.STATUS_ACTIVE)
+                                                  status=models.Project.STATUS_ACTIVE,
+                                                  start=YESTERDAY)
         user = factories.UserFactory.create()
         project_role = models.ProjectRole.objects.create(name='My Role',
                                                          system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
@@ -303,11 +306,13 @@ class ApiClientTests(TestCase):
         response = self.client.get(reverse('project-list', args=[]), format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(1, response.data['count'])
+        self.assertEqual(project.name, response.data['results'][0]['name'])
 
     def test_api_project_return_capstone_projects(self):
         project = factories.ProjectFactory.create(name='My Test Project',
                                                   type=models.Project.PROJECT_TYPE_CAPSTONE,
-                                                  status=models.Project.STATUS_ACTIVE)
+                                                  status=models.Project.STATUS_ACTIVE,
+                                                  start=YESTERDAY)
         user = factories.UserFactory.create()
         project_role = models.ProjectRole.objects.create(name='My Role',
                                                          system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
@@ -315,8 +320,9 @@ class ApiClientTests(TestCase):
         response = self.client.get(reverse('project-list', args=[]), format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(1, response.data['count'])
+        self.assertEqual(project.name, response.data['results'][0]['name'])
 
-    def test_api_projects_return_active_project_without_dates(self):
+    def test_api_projects_dont_return_active_project_without_dates(self):
         project = factories.ProjectFactory.create(name='My Test Project',
                                                   type=models.Project.PROJECT_TYPE_CAPSTONE,
                                                   status=models.Project.STATUS_ACTIVE)
@@ -326,7 +332,7 @@ class ApiClientTests(TestCase):
         models.ProjectMember.objects.create(project=project, member=user, role=project_role, start_date=timezone.now())
         response = self.client.get(reverse('project-list', args=[]), {'member': user.username}, format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
-        self.assertEqual(1, response.data['count'])
+        self.assertEqual(0, response.data['count'])
 
     def test_api_projects_return_active_project_with_start_without_end_date(self):
         project = factories.ProjectFactory.create(name='My Test Project',
@@ -340,6 +346,7 @@ class ApiClientTests(TestCase):
         response = self.client.get(reverse('project-list', args=[]), {'member': user.username}, format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(1, response.data['count'])
+        self.assertEqual(project.name, response.data['results'][0]['name'])
 
     def test_api_projects_return_active_project_with_end_date_future(self):
         project = factories.ProjectFactory.create(name='My Test Project',
@@ -354,6 +361,7 @@ class ApiClientTests(TestCase):
         response = self.client.get(reverse('project-list', args=[]), {'member': user.username}, format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(1, response.data['count'])
+        self.assertEqual(project.name, response.data['results'][0]['name'])
 
     def test_api_projects_dont_return_active_project_with_end_date_past(self):
         project = factories.ProjectFactory.create(name='My Test Project',
@@ -365,9 +373,27 @@ class ApiClientTests(TestCase):
         project_role = models.ProjectRole.objects.create(name='My Role',
                                                          system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
         models.ProjectMember.objects.create(project=project, member=user, role=project_role, start_date=timezone.now())
-        response = self.client.get(reverse('project-list', args=[]), format='json', params={'member': user.username})
+        response = self.client.get(reverse('project-list', args=[]), {'member': user.username}, format='json')
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(0, response.data['count'])
+
+    def test_api_project_return_data_transfer_projects_if_data_steward(self):
+        project = factories.ProjectFactory.create(name='My Test Data Transfer Project',
+                                                  type=models.Project.PROJECT_TYPE_DATA_TRANSFER,
+                                                  status=models.Project.STATUS_ACTIVE,
+                                                  start=YESTERDAY)
+        user = factories.UserFactory.create()
+        project_role = models.ProjectRole.objects.create(name='My Role',
+                                                         system_role=models.ProjectRole.SYSTEM_ROLE_ADMIN)
+        models.ProjectMember.objects.create(project=project, member=user, role=project_role, start_date=timezone.now())
+        # Add Curator role
+        adrf_curators = models.DfRole.objects.create(name= models.DfRole.ADRF_CURATORS)
+        models.UserDfRole.objects.create(user=user, role=adrf_curators, begin=YESTERDAY)
+        #Check
+        response = self.client.get(reverse('project-list', args=[]), {'member': user.username}, format='json')
+        self.assertEqual(status.HTTP_200_OK, response.status_code)
+        self.assertEqual(1, response.data['count'])
+        self.assertEqual(project.name, response.data['results'][0]['name'])
 
 
 class ApiAuthorizationTests(TestCase):
