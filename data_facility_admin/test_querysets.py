@@ -20,7 +20,7 @@ class ProjectQueryTests(TestCase):
     # def setUp(self):
 
     def test_filter_active_with_status_active_returns_object(self):
-        p = ProjectFactory.create(status=Project.STATUS_ACTIVE)
+        p = ProjectFactory.create(status=Project.STATUS_ACTIVE, start=YESTERDAY)
         results = Project.objects.filter(Project.FILTER_ACTIVE)
         self.assertTrue(len(results) > 0)
         self.assertEqual(results[0], p)
@@ -35,11 +35,10 @@ class ProjectQueryTests(TestCase):
         results = Project.objects.filter(Project.FILTER_ACTIVE)
         self.assertEqual(len(results), 0)
 
-    def test_filter_active_with_start_null_returns_object(self):
+    def test_filter_active_with_start_null_returns_nothing(self):
         p = ProjectFactory.create(status=Project.STATUS_ACTIVE, start=None)
         results = Project.objects.filter(Project.FILTER_ACTIVE)
-        self.assertTrue(len(results) > 0)
-        self.assertEqual(results[0], p)
+        self.assertEqual(len(results), 0)
 
     def test_filter_active_with_start_past_returns_object(self):
         p = ProjectFactory.create(status=Project.STATUS_ACTIVE, start=YESTERDAY)
@@ -53,13 +52,13 @@ class ProjectQueryTests(TestCase):
         self.assertEqual(len(results), 0)
 
     def test_filter_active_with_end_null_returns_object(self):
-        p = ProjectFactory.create(status=Project.STATUS_ACTIVE, end=None)
+        p = ProjectFactory.create(status=Project.STATUS_ACTIVE, start=YESTERDAY, end=None)
         results = Project.objects.filter(Project.FILTER_ACTIVE)
         self.assertTrue(len(results) > 0)
         self.assertEqual(results[0], p)
 
     def test_filter_active_with_end_future_returns_object(self):
-        p = ProjectFactory.create(status=Project.STATUS_ACTIVE, end=TOMORROW)
+        p = ProjectFactory.create(status=Project.STATUS_ACTIVE, start=YESTERDAY, end=TOMORROW)
         results = Project.objects.filter(Project.FILTER_ACTIVE)
         self.assertTrue(len(results) > 0)
         self.assertEqual(results[0], p)
