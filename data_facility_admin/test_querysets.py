@@ -35,10 +35,10 @@ class ProjectQueryTests(TestCase):
         results = Project.objects.filter(Project.FILTER_ACTIVE)
         self.assertEqual(len(results), 0)
 
-    def test_filter_active_with_start_null_returns_nothing(self):
+    def test_filter_active_with_start_null_returns_object(self):
         p = ProjectFactory.create(status=Project.STATUS_ACTIVE, start=None)
         results = Project.objects.filter(Project.FILTER_ACTIVE)
-        self.assertEqual(len(results), 0)
+        self.assertEqual(len(results), 1)
 
     def test_filter_active_with_start_past_returns_object(self):
         p = ProjectFactory.create(status=Project.STATUS_ACTIVE, start=YESTERDAY)
@@ -64,7 +64,7 @@ class ProjectQueryTests(TestCase):
         self.assertEqual(results[0], p)
 
     def test_filter_active_with_end_past_returns_nothing(self):
-        p = ProjectFactory.create(status=Project.STATUS_ACTIVE, end=YESTERDAY)
+        p = ProjectFactory.create(status=Project.STATUS_ACTIVE, start=YESTERDAY, end=YESTERDAY)
         results = Project.objects.filter(Project.FILTER_ACTIVE)
         self.assertEqual(len(results), 0)
 
