@@ -49,6 +49,7 @@ if ENV == 'LOCAL':
 
 CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', cast=bool, default=True)
 SESSION_COOKIE_SECURE = config('CSRF_SESSION_COOKIE_SECURE', cast=bool, default=True)
+CSRF_COOKIE_HTTPONLY = config('CSRF_COOKIE_HTTPONLY', cast=bool, default=True)
 
 # DJANGO ADMIN CONFIG ------------------------------------------------------------------------------
 SESSION_COOKIE_AGE = config('SESSION_COOKIE_AGE', cast=int, default=60*60*24)
