@@ -4,11 +4,11 @@ from django.views.generic.base import RedirectView
 from django.contrib import admin
 from data_facility_admin.api import urls as admin_router
 from data_facility_metadata.api import urls as metadata_router
-from rest_framework_swagger.views import get_swagger_view
+#from rest_framework_swagger.views import get_swagger_view
 from ajax_select import urls as ajax_select_urls
-from rest_framework.documentation import include_docs_urls
+#from rest_framework.documentation import include_docs_urls
 from rest_framework.schemas import get_schema_view
-from rest_framework_swagger.renderers import OpenAPIRenderer
+#from rest_framework_swagger.renderers import OpenAPIRenderer
 from graphene_django.views import GraphQLView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
@@ -67,9 +67,9 @@ api_urls += metadata_router.urls
 urlpatterns += [
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^api/v1/', include(api_urls)),#,  namespace='api')),
-    url(r'^api/v1/schema.json$', get_schema_view(title=DFADMIN_API, renderer_classes=[OpenAPIRenderer]), name='api-schema'),
-    url(r'^api/v1/docs/swagger/$', get_swagger_view(title=DFADMIN_API), name='api-swagger'),
-    url(r'^api/v1/docs/open-api/', include_docs_urls(title=DFADMIN_API), name='api-docs'),
+#    url(r'^api/v1/schema.json$', get_schema_view(title=DFADMIN_API, renderer_classes=[OpenAPIRenderer]), name='api-schema'),
+#    url(r'^api/v1/docs/swagger/$', get_swagger_view(title=DFADMIN_API), name='api-swagger'),
+#    url(r'^api/v1/docs/open-api/', include_docs_urls(title=DFADMIN_API), name='api-docs'),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
     url('^prometheus/', include('django_prometheus.urls')),
 ]

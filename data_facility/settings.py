@@ -126,7 +126,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework_jwt',
     'django_filters',
-    'rest_framework_swagger',
+#    'rest_framework_swagger',
     'ajax_select',
     'nested_admin',
     'corsheaders',
