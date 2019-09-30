@@ -52,6 +52,9 @@ SESSION_COOKIE_HTTPONLY = config('SESSION_COOKIE_HTTPONLY', cast=bool, default=T
 CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', cast=bool, default=True)
 CSRF_COOKIE_HTTPONLY = config('CSRF_COOKIE_HTTPONLY', cast=bool, default=True)
 
+SECURE_BROWSER_XSS_FILTER = config('SECURE_BROWSER_XSS_FILTER', cast=bool, default=True)
+SECURE_CONTENT_TYPE_NOSNIFF = config('SECURE_CONTENT_TYPE_NOSNIFF', cast=bool, default=True)
+
 # DJANGO ADMIN CONFIG ------------------------------------------------------------------------------
 SESSION_COOKIE_AGE = config('SESSION_COOKIE_AGE', cast=int, default=60*60*24)
 
@@ -64,7 +67,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default=['dfadmin.adrf.info'
 ADMINS = [('Daniel Castellani', 'daniel.castellani@nyu.edu')]
 MANAGERS = ADMINS
 SEND_BROKEN_LINK_EMAILS = config('SEND_BROKEN_LINK_EMAILS', default=True)
-
 
 # Email
 EMAIL_HOST = config('EMAIL_HOST', default=None)
