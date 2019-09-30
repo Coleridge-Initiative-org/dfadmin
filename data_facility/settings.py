@@ -47,8 +47,9 @@ SECRET_KEY = config('SECRET_KEY')
 if ENV == 'LOCAL':
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', cast=bool, default=True)
+SESSION_COOKIE_HTTPONLY = config('SESSION_COOKIE_HTTPONLY', cast=bool, default=True)
 CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', cast=bool, default=True)
-SESSION_COOKIE_SECURE = config('CSRF_SESSION_COOKIE_SECURE', cast=bool, default=True)
 CSRF_COOKIE_HTTPONLY = config('CSRF_COOKIE_HTTPONLY', cast=bool, default=True)
 
 # DJANGO ADMIN CONFIG ------------------------------------------------------------------------------
