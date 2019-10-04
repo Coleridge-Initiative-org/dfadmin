@@ -17,6 +17,9 @@ env/bin/python manage.py migrate && \
 # Collect statics
 env/bin/python manage.py collectstatic -c --no-input && \
 
+# Remove static files that trigger Alerts in ZAP scanner
+sudo rm /www/dfadmin/static/grappelli/jquery/ui/index.html && \
+
 # Start service again
 sudo supervisorctl start dfadmin
 
