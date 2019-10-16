@@ -110,3 +110,6 @@ env-dfadmin/
 logs/
 
 data/*
+
+#Debug
+teste
