@@ -174,13 +174,21 @@ class ProjectViewSet(viewsets.ModelViewSet):
             now = timezone.now()
             queryset = queryset.filter(
                                         (
-                                            Q(projectmember__member__ldap_name=user_filter) |
-                                            Q(instructors__userdfrole__user__ldap_name=user_filter)
-                                        ) &
-                                        (
-                                            Q(projectmember__start_date__lte=now) & 
-                                            Q(projectmember__end_date__gte=now)
-                                        )
+                                            (
+                                                Q(projectmember__member__ldap_name=user_filter) &
+                                                (
+                                                    Q(projectmember__start_date__lte=now) & 
+                                                    Q(projectmember__end_date__gte=now)
+                                                )
+                                            )|
+                                            (
+                                                Q(instructors__userdfrole__user__ldap_name=user_filter) &
+                                                (
+                                                    Q(projectmember__start_date__lte=now) & 
+                                                    Q(projectmember__end_date__gte=now)
+                                                )
+                                            )
+                                        )                                         
                                        )
             # Filter expired or not started projects
             queryset = queryset.filter(Q(start__isnull=True) |
