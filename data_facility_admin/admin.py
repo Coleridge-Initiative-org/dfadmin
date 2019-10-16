@@ -261,9 +261,8 @@ class ProjectAdmin(SimpleHistoryAdmin):
     """Admin Manager for model Project"""
     search_fields = ('name', 'ldap_name', 'abstract', 'methodology', 'outcomes',
                      'status', 'environment', 'type', 'ldap_name', 'ldap_id')
-    list_display = ('name', 'owner', 'status', 'environment', 'members', 'members_count',
-                    'created_at',)
-    list_filter = ['name', 'environment', 'status', 'has_irb', 'type']
+    list_display = ('name', 'owner', 'status', 'environment', 'members', 'members_count', 'instructors', 'created_at',)
+    list_filter = ['name', 'environment', 'status', 'has_irb', 'type', 'instructors']
     inlines = [ProjectMembershipInline, DatasetAccessInline, ProjectToolInline]
     readonly_fields = ['ldap_id', 'ldap_name', 'is_active']
     # form = make_ajax_form(Project, {
