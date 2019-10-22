@@ -164,14 +164,42 @@ class ProjectViewSet(viewsets.ModelViewSet):
         Retrieve datasets respecting ACLs.
         """
         queryset = models.Project.objects.filter(models.Project.FILTER_ACTIVE)
+        for project in queryset.iterator():
+            logger.debug('iterator: %s' % project)    
         user_filter = self.request.query_params.get('member', None) or self.request.query_params.get('user', None)
         logger.debug('member filter: %s' % user_filter)
         # member
         curator = False
         if user_filter:
             now = timezone.now()
-            queryset = queryset.filter(Q(projectmember__member__ldap_name=user_filter) |
-                                       Q(instructors__userdfrole__user__ldap_name=user_filter))
+            queryset = queryset.filter(
+                                        (
+                                            (
+                                                Q(projectmember__member__ldap_name=user_filter) &
+                                                (
+                                                    Q(projectmember__start_date__isnull=False) & Q(projectmember__start_date__lte=now) & 
+                                                    (                                                        
+                                                        (
+                                                            Q(projectmember__end_date__isnull=False) & Q(projectmember__end_date__gte=now)
+                                                        ) |
+                                                        Q(projectmember__end_date__isnull=True)
+                                                    )
+                                                )
+                                            ) |
+                                            (
+                                                Q(instructors__userdfrole__user__ldap_name=user_filter) &
+                                                (
+                                                    Q(instructors__userdfrole__begin__isnull=False) & Q(instructors__userdfrole__begin__lte=now) & 
+                                                    (                                                        
+                                                        (
+                                                            Q(instructors__userdfrole__end__isnull=False) & Q(instructors__userdfrole__end__gte=now)
+                                                        ) |
+                                                        Q(instructors__userdfrole__end__isnull=True)
+                                                    )
+                                                )                                           
+                                            )
+                                        )                                         
+                                       )
             # Filter expired or not started projects
             queryset = queryset.filter(Q(start__isnull=True) |
                                        Q(start__lte=now))
@@ -179,7 +207,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
                                        Q(end__gte=now))
 
             # Filter with invalid membership
-            queryset = queryset.filter(projectmember__start_date__lte=now)
+            # queryset = queryset.filter(Q(projectmember__start_date__lte=now) & Q(projectmember__end_date__gte=now))
             queryset = queryset.distinct()
 
         # TODO: Remove DATA TRANSFER filtering when new PG_SYNC is in place.
