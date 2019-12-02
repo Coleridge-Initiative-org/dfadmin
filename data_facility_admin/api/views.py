@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 
 import logging
 # from django_filters import rest_framework as filters
-from django.db.models import Q
+from django.db.models import Q, QuerySet
 
 logger = logging.getLogger(__name__)
 
@@ -163,8 +163,10 @@ class ProjectViewSet(viewsets.ModelViewSet):
         """
         Retrieve datasets respecting ACLs.
         """
+        models.Project.objects.update()
         queryset = models.Project.objects.filter(models.Project.FILTER_ACTIVE)
-        for project in queryset.iterator():
+        queryset = QuerySet(model=models.Project, query=queryset.query)
+        for project in queryset.iterator(): 
             logger.debug('iterator: %s' % project)    
         user_filter = self.request.query_params.get('member', None) or self.request.query_params.get('user', None)
         logger.debug('member filter: %s' % user_filter)
