@@ -51,6 +51,7 @@ SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', cast=bool, default=True)
 SESSION_COOKIE_HTTPONLY = config('SESSION_COOKIE_HTTPONLY', cast=bool, default=True)
 CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', cast=bool, default=True)
 CSRF_COOKIE_HTTPONLY = config('CSRF_COOKIE_HTTPONLY', cast=bool, default=True)
+# CSRF_COOKIE_SAMESITE = config('CSRF_COOKIE_SAMESITE', default='Strict')
 
 # DJANGO ADMIN CONFIG ------------------------------------------------------------------------------
 SESSION_COOKIE_AGE = config('SESSION_COOKIE_AGE', cast=int, default=60*60*24)
@@ -147,11 +148,12 @@ GRAPHENE = {
 
 MIDDLEWARE_CLASSES = (
     'django_prometheus.middleware.PrometheusBeforeMiddleware',
+    'middleware.CookieIntercept',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',   
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
