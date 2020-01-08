@@ -137,6 +137,7 @@ INSTALLED_APPS = (
     'django_json_widget',
     'django_jenkins',
     'django_prometheus',
+    # 'compat'
     # 'django.contrib.admindocs.middleware.XViewMiddleware',
 )
 
@@ -148,7 +149,7 @@ GRAPHENE = {
 
 MIDDLEWARE_CLASSES = (
     'django_prometheus.middleware.PrometheusBeforeMiddleware',
-    'middleware.CookieIntercept',
+    'data_facility.middleware.CookieIntercept',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
