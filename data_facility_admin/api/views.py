@@ -140,6 +140,7 @@ class UserViewSet(viewsets.ModelViewSet):
     search_fields = ('first_name', 'last_name',)
     ordering_fields = ('first_name', 'last_name',)
 
+from django.db import transaction
 
 class ProjectViewSet(viewsets.ModelViewSet):
     """
@@ -159,6 +160,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     lookup_field = 'ldap_name'
     # lookup_url_kwarg = 'ldap_name'
 
+    @transaction.atomic
     def get_queryset(self):
         """
         Retrieve datasets respecting ACLs.
