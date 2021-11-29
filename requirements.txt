@@ -4,7 +4,7 @@ django-extensions==2.0.0
 psycopg2-binary==2.8.2
 six==1.10.0
 virtualenv==15.0.2
-python-ldap==2.4.25
+python-ldap==3.4.0
 django-simple-history==1.9
 pytz==2017.2
 docutils==0.14
